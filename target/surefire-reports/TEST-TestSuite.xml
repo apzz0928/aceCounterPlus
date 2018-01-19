@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="17.506" tests="2" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="61.454" tests="7" errors="0" skipped="0" failures="4">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -55,28 +55,217 @@
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="9.0.1+11"/>
-    <property name="classworlds.conf" value="E:\Selenium\eclipse\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf7202574034377971497.tmp"/>
+    <property name="classworlds.conf" value="E:\Selenium\eclipse\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf9926336546607847608.tmp"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="53.0"/>
   </properties>
-  <testcase name="login" classname="aceCounterPlus.backOffice" time="2.71"/>
-  <testcase name="setting" classname="aceCounterPlus.backOffice" time="9.19">
-    <failure message="Element not found {.modal-content}&#10;Expected: visible" type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: 
-Element not found {.modal-content}
-Expected: visible
-	at aceCounterPlus.backOffice.setting(backOffice.java:182)
+  <testcase name="login" classname="aceCounterPlus.backOffice" time="4.003"/>
+  <testcase name="comApply" classname="aceCounterPlus.backOffice" time="4.123">
+    <failure message="Element not found {.accordion-toggle}&#10;Expected: exist" type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: 
+Element not found {.accordion-toggle}
+Expected: exist
+	at aceCounterPlus.backOffice.comApply(backOffice.java:87)
 Caused by: org.openqa.selenium.NoSuchElementException: 
-Unable to locate element: .modal-content
+Unable to locate element: .accordion-toggle
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
 System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
 Driver info: org.openqa.selenium.remote.RemoteWebDriver
-Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.zjGkCHb7wLEh, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=14656, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
-Session ID: ef3b5429-cc8a-460a-9307-edfabfd77467
-*** Element info: {Using=css selector, value=.modal-content}
-	at aceCounterPlus.backOffice.setting(backOffice.java:182)
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+*** Element info: {Using=css selector, value=.accordion-toggle}
+	at aceCounterPlus.backOffice.comApply(backOffice.java:87)
 </failure>
-    <system-out><![CDATA[menu delete pass
-]]></system-out>
+  </testcase>
+  <testcase name="comPayment" classname="aceCounterPlus.backOffice" time="4.014">
+    <failure message="Index 1 out-of-bounds for length 0" type="java.lang.IndexOutOfBoundsException">java.lang.IndexOutOfBoundsException: Index 1 out-of-bounds for length 0
+	at aceCounterPlus.backOffice.comPayment(backOffice.java:98)
+</failure>
+  </testcase>
+  <testcase name="regCustomer" classname="aceCounterPlus.backOffice" time="8.753"/>
+  <testcase name="monitoring" classname="aceCounterPlus.backOffice" time="9.834"/>
+  <testcase name="contents" classname="aceCounterPlus.backOffice" time="21.547">
+    <failure message="Element not found {.sub_m[21]}&#10;Expected: visible" type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: 
+Element not found {.sub_m[21]}
+Expected: visible
+	at aceCounterPlus.backOffice.contents(backOffice.java:154)
+Caused by: org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+*** Element info: {Using=css selector, value=.sub_m}
+	at aceCounterPlus.backOffice.contents(backOffice.java:154)
+</failure>
+    <system-err><![CDATA[1월 19, 2018 5:00:00 오후 com.codeborne.selenide.impl.ScreenShotLaboratory printOnce
+심각: Tried to run command without establishing a connection
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+org.openqa.selenium.SessionNotCreatedException: Tried to run command without establishing a connection
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+	at jdk.internal.reflect.GeneratedConstructorAccessor12.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:185)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:586)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:643)
+	at org.openqa.selenium.remote.RemoteWebDriver.getPageSource(RemoteWebDriver.java:468)
+	at com.codeborne.selenide.impl.ScreenShotLaboratory.savePageSourceToFile(ScreenShotLaboratory.java:211)
+	at com.codeborne.selenide.impl.ScreenShotLaboratory.savePageSourceToFile(ScreenShotLaboratory.java:204)
+	at com.codeborne.selenide.impl.ScreenShotLaboratory.takeScreenShot(ScreenShotLaboratory.java:103)
+	at com.codeborne.selenide.impl.ScreenShotLaboratory.takeScreenShot(ScreenShotLaboratory.java:80)
+	at com.codeborne.selenide.impl.ScreenShotLaboratory.formatScreenShotPath(ScreenShotLaboratory.java:343)
+	at com.codeborne.selenide.ex.UIAssertionError.wrapThrowable(UIAssertionError.java:65)
+	at com.codeborne.selenide.ex.UIAssertionError.wrap(UIAssertionError.java:59)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:72)
+	at com.sun.proxy.$Proxy11.click(Unknown Source)
+	at aceCounterPlus.backOffice.contents(backOffice.java:154)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:386)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:323)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:143)
+
+1월 19, 2018 5:00:00 오후 com.codeborne.selenide.impl.ScreenShotLaboratory printOnce
+심각: Tried to run command without establishing a connection
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+org.openqa.selenium.SessionNotCreatedException: Tried to run command without establishing a connection
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+	at jdk.internal.reflect.GeneratedConstructorAccessor12.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:185)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:586)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:643)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:328)
+	at com.codeborne.selenide.impl.ScreenShotLaboratory.takeScreenshotImage(ScreenShotLaboratory.java:251)
+	at com.codeborne.selenide.impl.ScreenShotLaboratory.savePageImageToFile(ScreenShotLaboratory.java:180)
+	at com.codeborne.selenide.impl.ScreenShotLaboratory.takeScreenShot(ScreenShotLaboratory.java:106)
+	at com.codeborne.selenide.impl.ScreenShotLaboratory.takeScreenShot(ScreenShotLaboratory.java:80)
+	at com.codeborne.selenide.impl.ScreenShotLaboratory.formatScreenShotPath(ScreenShotLaboratory.java:343)
+	at com.codeborne.selenide.ex.UIAssertionError.wrapThrowable(UIAssertionError.java:65)
+	at com.codeborne.selenide.ex.UIAssertionError.wrap(UIAssertionError.java:59)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:72)
+	at com.sun.proxy.$Proxy11.click(Unknown Source)
+	at aceCounterPlus.backOffice.contents(backOffice.java:154)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:386)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:323)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:143)
+
+1월 19, 2018 5:00:00 오후 com.codeborne.selenide.Selenide getJavascriptErrors
+경고: org.openqa.selenium.SessionNotCreatedException: Tried to run command without establishing a connection
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+]]></system-err>
+  </testcase>
+  <testcase name="setting" classname="aceCounterPlus.backOffice" time="4.123">
+    <failure message="Element not found {.accordion-toggle[5]}&#10;Expected: exist" type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: 
+Element not found {.accordion-toggle[5]}
+Expected: exist
+	at aceCounterPlus.backOffice.setting(backOffice.java:169)
+Caused by: org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+*** Element info: {Using=css selector, value=.accordion-toggle}
+	at aceCounterPlus.backOffice.setting(backOffice.java:169)
+</failure>
+    <system-err><![CDATA[1월 19, 2018 5:00:04 오후 com.codeborne.selenide.impl.ScreenShotLaboratory printOnce
+심각: Failed to savePageSourceToFile: org.openqa.selenium.SessionNotCreatedException: Tried to run command without establishing a connection
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+1월 19, 2018 5:00:04 오후 com.codeborne.selenide.impl.ScreenShotLaboratory printOnce
+심각: Failed to takeScreenshotImage: org.openqa.selenium.SessionNotCreatedException: Tried to run command without establishing a connection
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+1월 19, 2018 5:00:04 오후 com.codeborne.selenide.Selenide getJavascriptErrors
+경고: org.openqa.selenium.SessionNotCreatedException: Tried to run command without establishing a connection
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\최영권\AppData\Local\Temp\rust_mozprofile.3QYhtI43UIIX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=3744, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: b08c6c6a-be4c-454b-9cc1-fa45600d04c4
+]]></system-err>
   </testcase>
 </testsuite>

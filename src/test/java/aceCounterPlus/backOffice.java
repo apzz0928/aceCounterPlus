@@ -48,19 +48,19 @@ public class backOffice {
     		   cap = DesiredCapabilities.chrome();
     		   RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD),cap);
     		   WebDriverRunner.setWebDriver(driver);
-    		   driver.manage().window().setSize(new Dimension(1650, 900));
+    		   driver.manage().window().setSize(new Dimension(1650, 1000));
      		} else if(browser.equals("firefox")) {
      			TestBrowser = "firefox";
      			cap = DesiredCapabilities.firefox();
      			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD),cap);
      			WebDriverRunner.setWebDriver(driver);
-     			driver.manage().window().setSize(new Dimension(1650, 900));
+     			driver.manage().window().setSize(new Dimension(1650, 1000));
      		} else if(browser.equals("edge")) {
      			TestBrowser = "edge";
      			cap = DesiredCapabilities.edge();
      			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD),cap);
      			WebDriverRunner.setWebDriver(driver);
-     			driver.manage().window().setSize(new Dimension(1650, 900));
+     			driver.manage().window().setSize(new Dimension(1650, 1000));
      		} else if(browser.equals("internetExplorer")) {
      			TestBrowser = "internetExplorer";
      			cap = DesiredCapabilities.internetExplorer();
@@ -70,7 +70,7 @@ public class backOffice {
      			cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true); //ie 캐시 삭제를 위한 부분
      			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD),cap);
      			WebDriverRunner.setWebDriver(driver);
-     			driver.manage().window().setSize(new Dimension(1650, 900));
+     			driver.manage().window().setSize(new Dimension(1650, 1000));
      		} 
        }
  	   
@@ -81,7 +81,7 @@ public class backOffice {
  	       $(".gui-input", 1).setValue(pw);
  	       $(".btn-primary").click();
        }
-       //@Test(priority = 1)
+       @Test(priority = 1)
        public void comApply() {
     	   for(int i=0;i<=2;i++) {
     		   $(".accordion-toggle", 0).hover();
@@ -90,8 +90,9 @@ public class backOffice {
      	       $(By.name("keyword")).setValue("9999999999");
      	       $(".ladda-button").click();
     	   }
+    	   System.out.println("-- comApply Test End --");
        }
-      // @Test(priority = 2)
+      @Test(priority = 2)
        public void comPayment() {
     	   for(int i=3;i<=5;i++) {
     		   $(".accordion-toggle", 1).hover();
@@ -100,13 +101,14 @@ public class backOffice {
      	       $(By.name("keyword")).setValue("9999999999");
      	       $(".ladda-button").click();
     	   }
+    	   System.out.println("-- comPayment Test End --");
        }
-       //@Test(priority = 3)
+       @Test(priority = 3)
        public void regCustomer() {
     	   for(int i=6;i<=12;i++) {
     		   $(".accordion-toggle", 2).hover();
     		   if(i == 6) { //이용자만 데이터 로딩 대기 필요
-        		   elementText("not", "normal", "td", "데이터가 없습니다.");    			   
+        		   //elementText("not", "normal", "td", "데이터가 없습니다.");    			   
     		   }
     		   $(".sub_m", i).click();
     		   if(i == 10 || i == 12) {
@@ -119,9 +121,10 @@ public class backOffice {
          	       $(".label-rounded-wide", 2).click();    			   
     		   }
     	   }
+    	   System.out.println("-- regCustomer Test End --");
        }
-       //@Test(priority = 4)
-       public void sending() {
+       @Test(priority = 4)
+       public void monitoring() {
            for(int i=13;i<=19;i++) {
     		   if(i == 16) {
     			   $(".accordion-toggle", 3).hover();
@@ -142,8 +145,9 @@ public class backOffice {
          	       $(".ladda-button").click();   
     		   } 
     	   }
+    	   System.out.println("-- Monitoring Test End --");
        }
-       //@Test(priority = 5)
+       @Test(priority = 5)
        public void contents() {
     	   for(int i=20;i<=24;i++) {
     		   $(".accordion-toggle", 4).hover();
@@ -158,39 +162,40 @@ public class backOffice {
         		   elementText("have", "normal", "td", "데이터가 없습니다.");     	    	   
      	       }
     	   }
+    	   System.out.println("-- Contents Test End --");
        }
        @Test(priority = 6)
        public void setting() {
-    	   for(int i=25;i<=26;i++) {
-    		   $(".accordion-toggle", 5).hover();
-    		   $(".sub_m", i).click();
-    		   if(i == 25) {
-    			   for(int x=0;x<=5;x++) {
-        			   $(".del", 1).click();
-    			   }
-    			   $(".save").click();
-    			   $(".modal-content").waitUntil(visible, 3000);
-        		   $("#btn-modal-alert-yes").click();
-        		   $(".btn-default", 1).click();
-        		   $(".form-group", 0).dragAndDropTo($(".favorite-menu"));
-        		   $(".form-group", 1).dragAndDropTo($(".favorite-menu"));
-        		   $(".form-group", 2).dragAndDropTo($(".favorite-menu"));
-        		   $(".form-group", 3).dragAndDropTo($(".favorite-menu"));
-        		   $(".form-group", 7).dragAndDropTo($(".favorite-menu"));
-        		   $(".form-group", 0).dragAndDropTo($(".favorite-menu"));
-    			   $(".save").click();
-    			   $(".modal-content").waitUntil(visible, 3000);
-        		   $("#btn-modal-alert-yes").click();
-        		   $(".btn-default", 1).click();
-    		   } else {
-        		   $(By.name("userLoginPwd")).setValue(pw);
-        		   $(".btn-sm").click();
-        		   $(".modal-content").waitUntil(visible, 3000);
-        		   $(".btn-modal-alert-yes").click();
-        		   $(".btn-default", 2).click();
-    		   }
-    	   }
-
+		   $(".accordion-toggle", 5).hover();
+		   $(".sub_m", 25).click();
+		   for(int x=0;x<=5;x++) {
+			   $(".del", 1).click();
+			   System.out.println(x + " 번째 메뉴 삭제");
+		   }
+		   $(".save").click();
+		   $(".modal-content").waitUntil(visible, 3000);
+		   $("#btn-modal-alert-yes").click();
+		   $(".btn-default", 1).click();
+		   $(".form-group", 0).dragAndDropTo($(".favorite-menu"));
+		   $(".form-group", 1).dragAndDropTo($(".favorite-menu"));
+		   $(".form-group", 2).dragAndDropTo($(".favorite-menu"));
+		   $(".form-group", 3).dragAndDropTo($(".favorite-menu"));
+		   $(".form-group", 7).dragAndDropTo($(".favorite-menu"));
+		   $(".form-group", 0).dragAndDropTo($(".favorite-menu"));
+		   $(".save").click();
+		   $(".modal-content").waitUntil(visible, 3000);
+		   $("#btn-modal-alert-yes").click();
+		   $(".btn-default", 1).click();
+		   System.out.println("-- Setting Menu Test End --");
+		   $(".save").waitUntil(visible, 1000);
+		   $(".accordion-toggle", 5).hover();
+		   $(".sub_m", 26).click();
+		   $(By.name("userLoginPwd")).setValue(pw);
+		   $(".btn-sm").click();
+		   $(".modal-content").waitUntil(visible, 3000);
+		   $("#btn-modal-alert-yes").click();
+		   $(".btn-default", 1).click();
+		   System.out.println("-- Setting User Test End --");
        }
        @AfterClass
        public void afterTest() {
