@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 17.506 s <<< FAILURE! - in TestSuite
+setting(aceCounterPlus.backOffice)  Time elapsed: 9.19 s  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: 
+Element not found {.modal-content}
+Expected: visible
+	at aceCounterPlus.backOffice.setting(backOffice.java:182)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Unable to locate element: .modal-content
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.249.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{moz:profile=C:\Users\ÃÖ¿µ±Ç\AppData\Local\Temp\rust_mozprofile.zjGkCHb7wLEh, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, platform=XP, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=57.0.4, platformVersion=10.0, moz:processID=14656, browserName=firefox, javascriptEnabled=true, platformName=XP, moz:webdriverClick=false}]
+Session ID: ef3b5429-cc8a-460a-9307-edfabfd77467
+*** Element info: {Using=css selector, value=.modal-content}
+	at aceCounterPlus.backOffice.setting(backOffice.java:182)
+
