@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.426 s - in TestSuite
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 13.082 s <<< FAILURE! - in TestSuite
+product(aceCounterPlus.frontPage)  Time elapsed: 5.278 s  <<< FAILURE!
+com.codeborne.selenide.ex.ElementShould: 
+Element should be visible {.go_product_info}
+Element: '<a class="go_product_info" href="#" displayed:false></a>'
+	at aceCounterPlus.frontPage.product(frontPage.java:100)
+

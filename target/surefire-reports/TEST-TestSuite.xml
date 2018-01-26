@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="11.426" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="13.082" tests="2" errors="0" skipped="0" failures="1">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -55,9 +55,18 @@
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="9.0.1+11"/>
-    <property name="classworlds.conf" value="E:\Selenium\eclipse\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf13380167449164448945.tmp"/>
+    <property name="classworlds.conf" value="E:\Selenium\eclipse\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4794603923918936734.tmp"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="53.0"/>
   </properties>
-  <testcase name="login" classname="aceCounterPlus.signUp" time="5.243"/>
+  <testcase name="login" classname="aceCounterPlus.frontPage" time="1.689"/>
+  <testcase name="product" classname="aceCounterPlus.frontPage" time="5.278">
+    <failure message="Element should be visible {.go_product_info}&#10;Element: &apos;&lt;a class=&quot;go_product_info&quot; href=&quot;#&quot; displayed:false&gt;&lt;/a&gt;&apos;" type="com.codeborne.selenide.ex.ElementShould"><![CDATA[com.codeborne.selenide.ex.ElementShould: 
+Element should be visible {.go_product_info}
+Element: '<a class="go_product_info" href="#" displayed:false></a>'
+	at aceCounterPlus.frontPage.product(frontPage.java:100)
+]]></failure>
+    <system-out><![CDATA[ ** -- * Product Intro * -- **
+]]></system-out>
+  </testcase>
 </testsuite>

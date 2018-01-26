@@ -5,7 +5,19 @@
   <test thread-count="5" name="Test">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="aceCounterPlus.signUp"/>
+      <class name="aceCounterPlus.frontPage"/>
     </classes>
   </test> <!-- Test -->
+  <test name="Test(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="aceCounterPlus.frontPage">
+        <methods>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+          <include name="product"/>
+        </methods>
+      </class> <!-- aceCounterPlus.frontPage -->
+    </classes>
+  </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
