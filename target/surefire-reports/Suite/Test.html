@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Jan 26 18:31:03 KST 2018</td>
+<td>Started on:</td><td>Mon Jan 29 18:35:15 KST 2018</td>
 </tr>
-<tr><td>Total time:</td><td>12 seconds (12694 ms)</td>
+<tr><td>Total time:</td><td>17 seconds (17681 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,36 +75,56 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='aceCounterPlus.frontPage.product()'><b>product</b><br>Test class: aceCounterPlus.frontPage</td>
-<td><div><pre>Element should be visible {.go_product_info}
-Element: &apos;&lt;a class=&quot;go_product_info&quot; href=&quot;#&quot; displayed:false&gt;&lt;/a&gt;&apos;
-Screenshot: file:/E:/Selenium/eclipse/eclipse-workspace/aceCounterPlus/build/reports/tests/1516959075386.0.png
-Page source: file:/E:/Selenium/eclipse/eclipse-workspace/aceCounterPlus/build/reports/tests/1516959075386.0.html
+<td title='aceCounterPlus.adminManage.mailing_summartReport()'><b>mailing_summartReport</b><br>Test class: aceCounterPlus.adminManage</td>
+<td><div><pre>Element not found {#btn-save}
+Expected: exist
+Screenshot: file:/E:/000.%20Selenium/eclipse/eclipse-workspace/aceCounterPlus/build/reports/tests/1517218532328.0.png
+Page source: file:/E:/000.%20Selenium/eclipse/eclipse-workspace/aceCounterPlus/build/reports/tests/1517218532328.0.html
 Timeout: 4 s.
-	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:66)
-	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+Caused by: WebDriverException: unknown error: Element &lt;button id=&quot;btn-save&quot; class=&quot;btn btn-info btn-lg w200&quot;&gt;...&lt;/button&gt; is not clickable at point (930, 573). Other element would receive the click: &lt;div class=&quot;modal-backdrop fade in&quot; style=&quot;height: 868px;&quot;&gt;&lt;/div&gt;
+	at com.codeborne.selenide.impl.WebElementSource.createElementNotFoundError(WebElementSource.java:31)
+	at com.codeborne.selenide.impl.ElementFinder.createElementNotFoundError(ElementFinder.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:116)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:63)
+	at com.sun.proxy.$Proxy11.click(Unknown Source)
+	at aceCounterPlus.adminManage.mailing_summartReport(adminManage.java:168)
+Caused by: org.openqa.selenium.WebDriverException: unknown error: Element &lt;button id=&quot;btn-save&quot; class=&quot;btn btn-info btn-lg w200&quot;&gt;...&lt;/button&gt; is not clickable at point (930, 573). Other element would receive the click: &lt;div class=&quot;modal-backdrop fade in&quot; style=&quot;height: 868px;&quot;&gt;&lt;/div&gt;
+  (Session info: chrome=64.0.3282.119)
+  (Driver info: chromedriver=2.34.522940 (1a76f96f66e3ca7b8e57d503b4dd3bccfba87af1),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.6.0&apos;, revision: &apos;6fbf3ec767&apos;, time: &apos;2017-09-27T15:28:36.4Z&apos;
+System info: host: &apos;DESKTOP-DPN1ULJ&apos;, ip: &apos;10.77.129.79&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;9.0.1&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{mobileEmulationEnabled=false, hasTouchScreen=false, platform=XP, acceptSslCerts=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, platformName=XP, setWindowRect=true, unexpectedAlertBehaviour=, applicationCacheEnabled=false, rotatable=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.34.522940 (1a76f96f66e3ca7b8e57d503b4dd3bccfba87af1), userDataDir=C:\Users\최영권\AppData\Local\Temp\scoped_dir13448_8847}, takesHeapSnapshot=true, pageLoadStrategy=normal, unhandledPromptBehavior=, databaseEnabled=false, handlesAlerts=true, version=64.0.3282.119, browserConnectionEnabled=false, nativeEvents=true, locationContextEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 8d0c5d494d0996114ec6e73287727096
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:82)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:45)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:586)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at com.codeborne.selenide.commands.Click.click(Click.java:29)
 	at com.codeborne.selenide.commands.Click.execute(Click.java:16)
 	at com.codeborne.selenide.commands.Click.execute(Click.java:12)
 	at com.codeborne.selenide.commands.Commands.execute(Commands.java:144)
 	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:87)
-	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:63)
-	at com.sun.proxy.$Proxy11.click(Unknown Source)
-	at aceCounterPlus.frontPage.product(frontPage.java:100)
-... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1919555524", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1919555524'><pre>Element should be visible {.go_product_info}
-Element: &apos;&lt;a class=&quot;go_product_info&quot; href=&quot;#&quot; displayed:false&gt;&lt;/a&gt;&apos;
-Screenshot: file:/E:/Selenium/eclipse/eclipse-workspace/aceCounterPlus/build/reports/tests/1516959075386.0.png
-Page source: file:/E:/Selenium/eclipse/eclipse-workspace/aceCounterPlus/build/reports/tests/1516959075386.0.html
+	... 30 more
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1137667747", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1137667747'><pre>Element not found {#btn-save}
+Expected: exist
+Screenshot: file:/E:/000.%20Selenium/eclipse/eclipse-workspace/aceCounterPlus/build/reports/tests/1517218532328.0.png
+Page source: file:/E:/000.%20Selenium/eclipse/eclipse-workspace/aceCounterPlus/build/reports/tests/1517218532328.0.html
 Timeout: 4 s.
-	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:66)
-	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
-	at com.codeborne.selenide.commands.Click.execute(Click.java:16)
-	at com.codeborne.selenide.commands.Click.execute(Click.java:12)
-	at com.codeborne.selenide.commands.Commands.execute(Commands.java:144)
-	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:87)
+Caused by: WebDriverException: unknown error: Element &lt;button id=&quot;btn-save&quot; class=&quot;btn btn-info btn-lg w200&quot;&gt;...&lt;/button&gt; is not clickable at point (930, 573). Other element would receive the click: &lt;div class=&quot;modal-backdrop fade in&quot; style=&quot;height: 868px;&quot;&gt;&lt;/div&gt;
+	at com.codeborne.selenide.impl.WebElementSource.createElementNotFoundError(WebElementSource.java:31)
+	at com.codeborne.selenide.impl.ElementFinder.createElementNotFoundError(ElementFinder.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:116)
 	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:63)
 	at com.sun.proxy.$Proxy11.click(Unknown Source)
-	at aceCounterPlus.frontPage.product(frontPage.java:100)
+	at aceCounterPlus.adminManage.mailing_summartReport(adminManage.java:168)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -132,9 +152,36 @@ Timeout: 4 s.
 	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:386)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:323)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:143)
+Caused by: org.openqa.selenium.WebDriverException: unknown error: Element &lt;button id=&quot;btn-save&quot; class=&quot;btn btn-info btn-lg w200&quot;&gt;...&lt;/button&gt; is not clickable at point (930, 573). Other element would receive the click: &lt;div class=&quot;modal-backdrop fade in&quot; style=&quot;height: 868px;&quot;&gt;&lt;/div&gt;
+  (Session info: chrome=64.0.3282.119)
+  (Driver info: chromedriver=2.34.522940 (1a76f96f66e3ca7b8e57d503b4dd3bccfba87af1),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.6.0&apos;, revision: &apos;6fbf3ec767&apos;, time: &apos;2017-09-27T15:28:36.4Z&apos;
+System info: host: &apos;DESKTOP-DPN1ULJ&apos;, ip: &apos;10.77.129.79&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;9.0.1&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{mobileEmulationEnabled=false, hasTouchScreen=false, platform=XP, acceptSslCerts=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, platformName=XP, setWindowRect=true, unexpectedAlertBehaviour=, applicationCacheEnabled=false, rotatable=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.34.522940 (1a76f96f66e3ca7b8e57d503b4dd3bccfba87af1), userDataDir=C:\Users\최영권\AppData\Local\Temp\scoped_dir13448_8847}, takesHeapSnapshot=true, pageLoadStrategy=normal, unhandledPromptBehavior=, databaseEnabled=false, handlesAlerts=true, version=64.0.3282.119, browserConnectionEnabled=false, nativeEvents=true, locationContextEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 8d0c5d494d0996114ec6e73287727096
+	at jdk.internal.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:82)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:45)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:586)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at com.codeborne.selenide.commands.Click.click(Click.java:29)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:16)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:12)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:144)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:87)
+	... 30 more
 </pre></div></td>
-<td>5</td>
-<td>aceCounterPlus.frontPage@3c46e67a</td></tr>
+<td>9</td>
+<td>aceCounterPlus.adminManage@206a70ef</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -144,10 +191,10 @@ Timeout: 4 s.
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='aceCounterPlus.frontPage.login()'><b>login</b><br>Test class: aceCounterPlus.frontPage</td>
+<td title='aceCounterPlus.adminManage.login()'><b>login</b><br>Test class: aceCounterPlus.adminManage</td>
 <td></td>
-<td>1</td>
-<td>aceCounterPlus.frontPage@3c46e67a</td></tr>
+<td>2</td>
+<td>aceCounterPlus.adminManage@206a70ef</td></tr>
 </table><p>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="13.082" tests="2" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="18.014" tests="2" errors="0" skipped="0" failures="1">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -20,7 +20,7 @@
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jre-9.0.1\bin"/>
     <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B test"/>
     <property name="jdk.debug" value="release"/>
-    <property name="maven.home" value="E:\Selenium\eclipse\eclipse-workspace\aceCounterPlus\EMBEDDED"/>
+    <property name="maven.home" value="E:\000. Selenium\eclipse\eclipse-workspace\aceCounterPlus\EMBEDDED"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\최영권"/>
     <property name="user.language" value="ko"/>
@@ -45,28 +45,39 @@
     <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\최영권\AppData\Local\Temp\"/>
     <property name="java.version" value="9.0.1"/>
-    <property name="user.dir" value="E:\Selenium\eclipse\eclipse-workspace\aceCounterPlus"/>
+    <property name="user.dir" value="E:\000. Selenium\eclipse\eclipse-workspace\aceCounterPlus"/>
     <property name="os.arch" value="amd64"/>
-    <property name="maven.multiModuleProjectDirectory" value="E:\Selenium\eclipse\eclipse-workspace\aceCounterPlus"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\000. Selenium\eclipse\eclipse-workspace\aceCounterPlus"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="java.library.path" value="C:\Program Files\Java\jre-9.0.1\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\Users\최영권\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Bandizip\;C:\Program Files\Java\jdk-9.0.1bin;C:\Program Files\Java\apache-maven-3.5.2\bin;;C:\Program Files\Microsoft VS Code\bin;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jre-9.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\Users\최영권\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Bandizip\;C:\Program Files\Java\jdk-9.0.1bin;C:\Program Files\Java\apache-maven-3.5.2\bin;;C:\Program Files\Microsoft VS Code\bin;."/>
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="9.0.1+11"/>
-    <property name="classworlds.conf" value="E:\Selenium\eclipse\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4794603923918936734.tmp"/>
+    <property name="classworlds.conf" value="E:\Selenium\eclipse\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf14354328254726264801.tmp"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="53.0"/>
   </properties>
-  <testcase name="login" classname="aceCounterPlus.frontPage" time="1.689"/>
-  <testcase name="product" classname="aceCounterPlus.frontPage" time="5.278">
-    <failure message="Element should be visible {.go_product_info}&#10;Element: &apos;&lt;a class=&quot;go_product_info&quot; href=&quot;#&quot; displayed:false&gt;&lt;/a&gt;&apos;" type="com.codeborne.selenide.ex.ElementShould"><![CDATA[com.codeborne.selenide.ex.ElementShould: 
-Element should be visible {.go_product_info}
-Element: '<a class="go_product_info" href="#" displayed:false></a>'
-	at aceCounterPlus.frontPage.product(frontPage.java:100)
+  <testcase name="login" classname="aceCounterPlus.adminManage" time="2.798"/>
+  <testcase name="mailing_summartReport" classname="aceCounterPlus.adminManage" time="9.979">
+    <failure message="Element not found {#btn-save}&#10;Expected: exist" type="com.codeborne.selenide.ex.ElementNotFound"><![CDATA[com.codeborne.selenide.ex.ElementNotFound: 
+Element not found {#btn-save}
+Expected: exist
+	at aceCounterPlus.adminManage.mailing_summartReport(adminManage.java:168)
+Caused by: org.openqa.selenium.WebDriverException: 
+unknown error: Element <button id="btn-save" class="btn btn-info btn-lg w200">...</button> is not clickable at point (930, 573). Other element would receive the click: <div class="modal-backdrop fade in" style="height: 868px;"></div>
+  (Session info: chrome=64.0.3282.119)
+  (Driver info: chromedriver=2.34.522940 (1a76f96f66e3ca7b8e57d503b4dd3bccfba87af1),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.129.79', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{mobileEmulationEnabled=false, hasTouchScreen=false, platform=XP, acceptSslCerts=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, platformName=XP, setWindowRect=true, unexpectedAlertBehaviour=, applicationCacheEnabled=false, rotatable=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.34.522940 (1a76f96f66e3ca7b8e57d503b4dd3bccfba87af1), userDataDir=C:\Users\최영권\AppData\Local\Temp\scoped_dir13448_8847}, takesHeapSnapshot=true, pageLoadStrategy=normal, unhandledPromptBehavior=, databaseEnabled=false, handlesAlerts=true, version=64.0.3282.119, browserConnectionEnabled=false, nativeEvents=true, locationContextEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 8d0c5d494d0996114ec6e73287727096
+	at aceCounterPlus.adminManage.mailing_summartReport(adminManage.java:168)
 ]]></failure>
-    <system-out><![CDATA[ ** -- * Product Intro * -- **
+    <system-out><![CDATA[ --- summaryReport : 발송메일 설정 : 메일 발송 : Pass --- 
 ]]></system-out>
   </testcase>
 </testsuite>

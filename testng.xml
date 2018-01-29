@@ -6,8 +6,9 @@
   <classes>
 <!-- 	<class name="aceCounterPlus.backOffice"/> -->
 <!-- 	<class name="aceCounterPlus.signUp"/> -->
-	<class name="aceCounterPlus.frontPage"/>
+<!-- 	<class name="aceCounterPlus.frontPage"/> -->
 <!-- 	<class name="aceCounterPlus.linkCheck"/> -->
+	<class name="aceCounterPlus.adminManage"/>
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
