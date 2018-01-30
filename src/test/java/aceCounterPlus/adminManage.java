@@ -150,23 +150,22 @@ public class adminManage {
 		System.out.println(" --- editService : 서비스 정보 : 정보 수정 : Pass --- ");
 	}
 	
-	@Test(priority = 4)
+	//@Test(priority = 4)
 	public void mailing_summartReport() throws InterruptedException {
 		$("#summaryReport").click();
 		$("#btn-sendMail").click();
 		$(".close", 1).click();
-		Thread.sleep(2000);
 		System.out.println(" --- summaryReport : 발송메일 설정 : 메일 발송 : Pass --- ");
 		js("window.scrollBy(999, 999);"); //요약리포트 선택 요일로 스크롤 이동
 		js("$('.reserve_day').click();");
-		//$(".reserve_day").click();
 		/*for(int i=1;i<=6;i++) {
 			js("$('.reserve_day').eq(" + i + ").click();");
 			//$(".reserve_day", i).click();	
 			System.out.println("i is " + i);
 		}*/
-		$("#btn-save").click();
-		$(".close", 1).click();
+		$("#btn-save").waitUntil(visible, 3000).click();
+		$(".br6").waitUntil(visible, 3000);
+		$(".close", 1).waitUntil(visible, 3000).click();
 		System.out.println(" --- summaryReport : 발송메일 설정 : 요약리포트 예약 발송 변경 : Pass --- ");
 		$("#btn-save").waitUntil(visible, 3000);
 		js("$('.reserve_day').click();");
@@ -175,8 +174,51 @@ public class adminManage {
 			System.out.println("i is " + i);
 		}*/
 		$("#btn-save").waitUntil(visible, 3000).click();
-		$(".close", 1).click();
+		$(".br6").waitUntil(visible, 3000);
+		$(".close", 1).waitUntil(visible, 3000).click();
 		System.out.println(" --- summaryReport : 발송메일 설정 : 요약리포트 예약 발송 원복 : Pass --- ");
+	}
+	
+	//@Test(priority = 5)
+	public void serviceInfo_submanager() throws InterruptedException {
+		$("#submanager").click();
+		$("#submanager_nm").setValue("최영권");
+		$("#submanager_email").setValue("apzz0928@nhnent.com");
+		$(".multiselect").click();
+		$("#treeDemo_1_check").click();
+		$("#select_auth").selectOptionByValue("20");
+		$("#btn_add_svc").click();
+		$("#btn_mail").waitUntil(visible, 3000).click();
+		$(".close", 2).waitUntil(visible, 3000).click();
+		refresh();
+		System.out.println(" --- serviceInfo : 부관리자 : 초대메일 발송 : Pass --- ");
+		$(".indicator").click();
+		$(".cross", 0).waitUntil(visible, 3000).click();
+		$(".w100").waitUntil(visible, 3000).click();
+		$("#btn-modal-alert-yes").click();
+		$(".close", 3).waitUntil(visible, 3000).click();
+		refresh();
+		System.out.println(" --- serviceInfo : 부관리자 : 권한 수정 : Pass --- ");
+		$(".br-dark", 2).waitUntil(visible, 3000).click();
+		$("#btn-modal-alert-yes").waitUntil(visible, 3000).click();
+		$(".close", 3).waitUntil(visible, 3000).click();
+		System.out.println(" --- serviceInfo : 부관리자 : 권한 삭제 : Pass --- ");
+	}
+	
+	@Test(priority = 6)
+	public void inhouseViralAddtestMethod() throws Exception{
+		open("https://new.acecounter.com/setting/inhouse/viral/add");
+		for(int i=13;i<=100;i++) {
+			$(By.name("campaign_name")).setValue("campaign_name" + i);
+			Thread.sleep(2000);
+			$(".material_name").setValue("material_name" + i);
+			Thread.sleep(2000);
+			$("#btn-save").click();
+			Thread.sleep(2000);
+			$(".close", 1).click();
+			Thread.sleep(2000);
+			$(By.linkText("추가")).click();
+		}
 	}
 	
 	@AfterClass

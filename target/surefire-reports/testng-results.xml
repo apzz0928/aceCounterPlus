@@ -1,107 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results total="2" passed="1" failed="1" skipped="0">
+<testng-results total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-01-29T09:35:15Z" name="Suite" finished-at="2018-01-29T09:35:32Z" duration-ms="17681">
+  <suite started-at="2018-01-30T07:04:19Z" name="Suite" finished-at="2018-01-30T07:17:48Z" duration-ms="809572">
     <groups>
     </groups>
-    <test started-at="2018-01-29T09:35:15Z" name="Test" finished-at="2018-01-29T09:35:32Z" duration-ms="17681">
+    <test started-at="2018-01-30T07:04:19Z" name="Test" finished-at="2018-01-30T07:17:48Z" duration-ms="809572">
       <class name="aceCounterPlus.adminManage">
-        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.adminManage@206a70ef]" started-at="2018-01-29T18:35:15Z" name="beforeTest" finished-at="2018-01-29T18:35:19Z" duration-ms="4844" status="PASS">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.adminManage@22555ebf]" started-at="2018-01-30T16:04:19Z" name="beforeTest" finished-at="2018-01-30T16:04:23Z" duration-ms="4449" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[chrome]]>
+                <![CDATA[firefox]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="login()[pri:0, instance:aceCounterPlus.adminManage@206a70ef]" started-at="2018-01-29T18:35:19Z" name="login" finished-at="2018-01-29T18:35:22Z" duration-ms="2797" status="PASS">
+        <test-method signature="login()[pri:0, instance:aceCounterPlus.adminManage@22555ebf]" started-at="2018-01-30T16:04:23Z" name="login" finished-at="2018-01-30T16:04:27Z" duration-ms="4377" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method signature="mailing_summartReport()[pri:4, instance:aceCounterPlus.adminManage@206a70ef]" started-at="2018-01-29T18:35:22Z" name="mailing_summartReport" finished-at="2018-01-29T18:35:32Z" duration-ms="9977" status="FAIL">
-          <exception class="com.codeborne.selenide.ex.ElementNotFound">
-            <message>
-              <![CDATA[Element not found {#btn-save}
-Expected: exist]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[Element not found {#btn-save}
-Expected: exist
-Screenshot: file:/E:/000.%20Selenium/eclipse/eclipse-workspace/aceCounterPlus/build/reports/tests/1517218532328.0.png
-Page source: file:/E:/000.%20Selenium/eclipse/eclipse-workspace/aceCounterPlus/build/reports/tests/1517218532328.0.html
-Timeout: 4 s.
-Caused by: WebDriverException: unknown error: Element <button id="btn-save" class="btn btn-info btn-lg w200">...</button> is not clickable at point (930, 573). Other element would receive the click: <div class="modal-backdrop fade in" style="height: 868px;"></div>
-	at com.codeborne.selenide.impl.WebElementSource.createElementNotFoundError(WebElementSource.java:31)
-	at com.codeborne.selenide.impl.ElementFinder.createElementNotFoundError(ElementFinder.java:82)
-	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:116)
-	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:63)
-	at com.sun.proxy.$Proxy11.click(Unknown Source)
-	at aceCounterPlus.adminManage.mailing_summartReport(adminManage.java:168)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:386)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:323)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:143)
-Caused by: org.openqa.selenium.WebDriverException: unknown error: Element <button id="btn-save" class="btn btn-info btn-lg w200">...</button> is not clickable at point (930, 573). Other element would receive the click: <div class="modal-backdrop fade in" style="height: 868px;"></div>
-  (Session info: chrome=64.0.3282.119)
-  (Driver info: chromedriver=2.34.522940 (1a76f96f66e3ca7b8e57d503b4dd3bccfba87af1),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
-System info: host: 'DESKTOP-DPN1ULJ', ip: '10.77.129.79', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '9.0.1'
-Driver info: org.openqa.selenium.remote.RemoteWebDriver
-Capabilities [{mobileEmulationEnabled=false, hasTouchScreen=false, platform=XP, acceptSslCerts=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, platformName=XP, setWindowRect=true, unexpectedAlertBehaviour=, applicationCacheEnabled=false, rotatable=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.34.522940 (1a76f96f66e3ca7b8e57d503b4dd3bccfba87af1), userDataDir=C:\Users\최영권\AppData\Local\Temp\scoped_dir13448_8847}, takesHeapSnapshot=true, pageLoadStrategy=normal, unhandledPromptBehavior=, databaseEnabled=false, handlesAlerts=true, version=64.0.3282.119, browserConnectionEnabled=false, nativeEvents=true, locationContextEnabled=true, cssSelectorsEnabled=true}]
-Session ID: 8d0c5d494d0996114ec6e73287727096
-	at jdk.internal.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
-	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:82)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:586)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
-	at com.codeborne.selenide.commands.Click.click(Click.java:29)
-	at com.codeborne.selenide.commands.Click.execute(Click.java:16)
-	at com.codeborne.selenide.commands.Click.execute(Click.java:12)
-	at com.codeborne.selenide.commands.Commands.execute(Commands.java:144)
-	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:87)
-	... 30 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- com.codeborne.selenide.ex.ElementNotFound -->
+        <test-method signature="testMethod()[pri:6, instance:aceCounterPlus.adminManage@22555ebf]" started-at="2018-01-30T16:04:27Z" name="testMethod" finished-at="2018-01-30T16:17:48Z" duration-ms="800090" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- mailing_summartReport -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.adminManage@206a70ef]" started-at="2018-01-29T18:35:32Z" name="afterTest" finished-at="2018-01-29T18:35:32Z" duration-ms="52" status="PASS">
+        </test-method> <!-- testMethod -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.adminManage@22555ebf]" started-at="2018-01-30T16:17:48Z" name="afterTest" finished-at="2018-01-30T16:17:48Z" duration-ms="652" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
