@@ -5,6 +5,7 @@ import java.net.URL;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -22,6 +23,8 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 import com.codeborne.selenide.testng.ScreenShooter;
 
 public class frontPage {
+	@SuppressWarnings("unused")
+	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, number, domain;
 
@@ -61,11 +64,7 @@ public class frontPage {
 		} else if (browser.equals("internetExplorer")) {
 			TestBrowser = "internetExplorer";
 			cap = DesiredCapabilities.internetExplorer();
-			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // IE
-																												// 실행을위한
-																												// 보안관련
-																												// 설정임시
-																												// 변경
+			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // 보안설정 변경
 			cap.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false); // ie text 입력 속도 향상을 위한 부분
 			cap.setCapability("requireWindowFocus", true); // ie text 입력 속도 향상을 위한 부분
 			cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true); // ie 캐시 삭제를 위한 부분
