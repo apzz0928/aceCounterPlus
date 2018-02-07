@@ -80,7 +80,7 @@ public class adminManage {
 		Object obj = executeJavaScript(javaScriptSource);
 	}
 
-	@Test(priority = 0)
+	//@Test(priority = 0)
 	public void login() {
 		open(baseUrl);
 		$("#uid").setValue(id);
@@ -89,7 +89,7 @@ public class adminManage {
 		$(".go_setting").click();
 	}
 
-	// @Test(priority = 1)
+	// //@Test(priority = 1)
 	public void my_info_modify() {
 		$(By.linkText("회원정보")).click();
 		$("#pwd").setValue(pw1);
@@ -128,7 +128,7 @@ public class adminManage {
 		System.out.println(" --- memberInfo rollBack : 회원정보 원복 : Pass --- ");
 	}
 
-	// @Test(priority = 2)
+	// //@Test(priority = 2)
 	public void serviceInfo_addService() {
 		$("#addService").click();
 		$(By.name("svcNm")).setValue("서비스추가해지테스트" + number);
@@ -141,7 +141,7 @@ public class adminManage {
 		System.out.println(" --- addService : 서비스 추가 : 서비스추가 : Pass --- ");
 	}
 
-	// @Test(priority = 3)
+	// //@Test(priority = 3)
 	public void serviceInfo_editService() {
 		$("#editService").click();
 		$(".opened", 0).click();
@@ -153,7 +153,7 @@ public class adminManage {
 		System.out.println(" --- editService : 서비스 정보 : 정보 수정 : Pass --- ");
 	}
 
-	// @Test(priority = 4)
+	// //@Test(priority = 4)
 	public void mailing_summartReport() throws InterruptedException {
 		$("#summaryReport").click();
 		$("#btn-sendMail").click();
@@ -181,7 +181,7 @@ public class adminManage {
 		System.out.println(" --- summaryReport : 발송메일 설정 : 요약리포트 예약 발송 원복 : Pass --- ");
 	}
 
-	// @Test(priority = 5)
+	// //@Test(priority = 5)
 	public void serviceInfo_submanager() throws InterruptedException {
 		$("#submanager").click();
 		$("#submanager_nm").setValue("최영권");
@@ -207,7 +207,7 @@ public class adminManage {
 		System.out.println(" --- serviceInfo : 부관리자 : 권한 삭제 : Pass --- ");
 	}
 
-	@Test(priority = 6)
+	//@Test(priority = 6)
 	public void inhouseViralAddtestMethod() throws Exception {
 		open("https://new.acecounter.com/setting/inhouse/viral/add");
 		for (int i = 13; i <= 100; i++) {
@@ -222,7 +222,35 @@ public class adminManage {
 			$(By.linkText("추가")).click();
 		}
 	}
+	@Test(priority = 7)
+	public void memoTest() throws Exception {
+		open("https://new.acecounter.com/stats/getInflowSummary");
+		$("#uid").setValue("apzz09288");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		open("https://new.acecounter.com/stats/getInflowSummary");
+	    $(By.linkText("Web Trial")).click();
+	    $(By.cssSelector("li.list-group-item > a > span.ace-svc-name.text-dark")).click();
+		$(By.id("memoHead")).click();
+		int x = 31;
+	    for(int i=0;i<=105;i++) {
+		    $(By.id("memoDatepicker")).click();
+		    Thread.sleep(1000);
+		    $(By.cssSelector("td.available.active.start-date.end-date")).click();
+		    Thread.sleep(1000);
+		    $(By.id("memo")).click();
+		    $(By.id("memo")).clear();
+		    $(By.id("memo")).sendKeys(i + "");
+		    Thread.sleep(1000);
+		    $(By.id("chartmemo")).click();
+		    Thread.sleep(1000);
+		    $(By.id("btn-submit")).click();
+		    Thread.sleep(2000);
+		    $(".btn-default", x).click();	   
+		    x++;
+	    }
 
+	}
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();
