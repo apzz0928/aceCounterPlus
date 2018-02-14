@@ -7,8 +7,8 @@
 <!-- 	<class name="aceCounterPlus.backOffice"/> -->
 <!-- 	<class name="aceCounterPlus.signUp"/> -->
 <!-- 	<class name="aceCounterPlus.frontPage"/> -->
-<!-- 	<class name="aceCounterPlus.linkCheck"/> -->
-	<class name="aceCounterPlus.adminManage"/>
+	<class name="aceCounterPlus.testScript"/>
+<!-- 	<class name="aceCounterPlus.adminManage"/> -->
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

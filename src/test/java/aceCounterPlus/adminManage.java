@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -221,35 +222,6 @@ public class adminManage {
 			Thread.sleep(2000);
 			$(By.linkText("Ãß°¡")).click();
 		}
-	}
-	@Test(priority = 7)
-	public void memoTest() throws Exception {
-		open("https://new.acecounter.com/stats/getInflowSummary");
-		$("#uid").setValue("apzz09288");
-		$("#upw").setValue("qordlf!@34");
-		$(".btn_login").click();
-		open("https://new.acecounter.com/stats/getInflowSummary");
-	    $(By.linkText("Web Trial")).click();
-	    $(By.cssSelector("li.list-group-item > a > span.ace-svc-name.text-dark")).click();
-		$(By.id("memoHead")).click();
-		int x = 31;
-	    for(int i=0;i<=105;i++) {
-		    $(By.id("memoDatepicker")).click();
-		    Thread.sleep(1000);
-		    $(By.cssSelector("td.available.active.start-date.end-date")).click();
-		    Thread.sleep(1000);
-		    $(By.id("memo")).click();
-		    $(By.id("memo")).clear();
-		    $(By.id("memo")).sendKeys(i + "");
-		    Thread.sleep(1000);
-		    $(By.id("chartmemo")).click();
-		    Thread.sleep(1000);
-		    $(By.id("btn-submit")).click();
-		    Thread.sleep(2000);
-		    $(".btn-default", x).click();	   
-		    x++;
-	    }
-
 	}
 	@AfterClass
 	public void afterTest() {
