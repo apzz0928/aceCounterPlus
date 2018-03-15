@@ -11,6 +11,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -167,7 +168,7 @@ public class testScript {
 	        Thread.sleep(1000);
 	    }
 	}
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void appPage() throws Exception {
 		open("http://naver.com");
 		String[] appData = {"https://mbr.acecounter.com:10000/v1/bridge?sid=111283&nac_md=daum_ad&nac_cpi=1&nac_m=1&nac_c=1&nac_sm=%EC%9C%A0%EB%A3%8C-%EA%B4%91%EA%B3%A0%EC%83%81%ED%92%88-1&nac_s=20	"
@@ -264,6 +265,49 @@ public class testScript {
 		    Thread.sleep(1000);
 		    $(".btn-default", 6).click();
 		    Thread.sleep(1000);
+	    }
+	}
+	//@Test(priority = 4)
+	public void appTestPlus() throws Exception {
+		open("https://new.acecounter.com/common/front");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+	    Thread.sleep(1000);
+		open("https://new.acecounter.com/setting/inflowmedia/config/userinflow?searchUseYn=y");
+	    $(By.linkText("Web Trialapzz0928888.org")).click();
+	    $(By.xpath("//div[@id='menu-top-service-items']/li[3]/a")).click();
+	    Thread.sleep(1000);
+	    int a = 3;
+	    for(int i=0;i<=300;i++) {
+	    	$("#addViewBtn").click();
+	    	Thread.sleep(1000);
+	    	$(".gui-input", 2).setValue("testdata:::" + i);
+	        $(By.name("campaignMaterialCd[]")).click();
+	        new Select($(By.name("campaignMaterialCd[]"))).selectByVisibleText("°Ë»ö");
+	        $(By.xpath("//option[@value='10']")).click();
+	        Thread.sleep(1000);
+	        $("#btnRegister").click();
+	        Thread.sleep(1000);
+	        $(".btn-sm", a).click();
+	        //a++;
+	        Thread.sleep(1000);
+	    }
+	}
+	//@Test(priority = 4)
+	public void appTestPlusMemo() throws Exception {
+		open("https://new.acecounter.com/common/front");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+	    Thread.sleep(1000);
+		open("https://new.acecounter.com/setting/inflowmedia/config/userinflow?searchUseYn=y");
+	    $(By.linkText("Web Trialapzz0928888.org")).click();
+	    $(By.xpath("//div[@id='menu-top-service-items']/li[0]/a")).click();
+	    Thread.sleep(1000);
+	    int a = 3;
+	    for(int i=0;i<=300;i++) {
+
 	    }
 	}
 	@AfterClass

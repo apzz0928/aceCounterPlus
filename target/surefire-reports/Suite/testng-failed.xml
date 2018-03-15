@@ -13,8 +13,8 @@
     <classes>
       <class name="aceCounterPlus.testScript">
         <methods>
-          <include name="appPage"/>
           <include name="beforeTest"/>
+          <include name="JIRA"/>
           <include name="afterTest"/>
         </methods>
       </class> <!-- aceCounterPlus.testScript -->
