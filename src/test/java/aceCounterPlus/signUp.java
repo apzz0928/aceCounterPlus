@@ -27,7 +27,7 @@ public class signUp {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, number, domain;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, number, number1, domain;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -39,6 +39,7 @@ public class signUp {
 		pw1 = "qordlf12#$";
 		number = "0007";
 		domain = "apzz";
+		number1 = "02";		
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
@@ -79,11 +80,12 @@ public class signUp {
 	private static void js(String javaScriptSource) {
 	    executeJavaScript(javaScriptSource);
 	}
-	public static void alertCheck(String check1, String check2, int i) throws InterruptedException {
+	public static void alertCheck(String check1, String check2, int i) {
 		String alertCheck = "";
 		if(check1.equals("입력")) {
 			alertCheck = $("p", i).text();
-			Thread.sleep(1000);
+			$("p", i).click();
+			$("p", i).click();
 			if(alertCheck.equals(check2 + " 입력해주세요.")) {
 				$(".btn-sm", i+1).click();
 				System.out.println(" *** " + check2 + " 미입력 체크 성공 *** ");
@@ -93,7 +95,8 @@ public class signUp {
 			}
 		} else if (check1.equals("유효성")) {
 			alertCheck = $("p", i).text();
-			Thread.sleep(1000);
+			$("p", i).click();
+			$("p", i).click();
 			if(alertCheck.equals("한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.")) {
 				$(".btn-sm", i+1).click();
 				System.out.println(" *** " + check2 + " 유효성 체크 성공 *** ");
@@ -201,7 +204,7 @@ public class signUp {
 		$(".btn-logout").click();
 	}
 	@Test(priority = 2)
-	public void addMarketing() throws InterruptedException {
+	public void addMarketing() {
 		open(baseUrl);
 		$("#uid").setValue(id + number);
 		$("#upw").setValue(pw);
@@ -237,7 +240,7 @@ public class signUp {
 		$("#campaign_nm").setValue(domain + number + ".com@");
 		$("#btnReg").click();
 		alertCheck("유효성", "캠페인명", 5);
-		$("#campaign_nm").setValue(domain + number + ".com");
+		$("#campaign_nm").setValue(domain + number + number1 + ".com");
 		$("#btnReg").click();
 		alertCheck("입력", "소재를", 6);
 		$("#campaign_material_value0").setValue(domain + number + ".com@");
@@ -257,6 +260,8 @@ public class signUp {
 		$("#original_url0").setValue("a");
 		$("#btnReg").click();
 		msgCheck = $("p", 9).text();
+		$("p", 9).click();
+		$("p", 9).click();
 		if(msgCheck.equals("올바른 URL을 입력하세요.")) {
 			$(".btn-sm", 10).click();
 			System.out.println(" *** 연결 URL 유효성 체크 성공 *** ");
@@ -267,6 +272,8 @@ public class signUp {
 		$("#original_url0").setValue(domain + number + ".com");
 		$("#btnReg").click();
 		msgCheck = $("p", 10).text();
+		$("p", 10).click();
+		$("p", 10).click();
 		if(msgCheck.equals("등록에 성공했습니다.")) {
 			$(".btn-sm", 11).click();
 			System.out.println(" *** 마케팅 유입 설정 추가 성공 *** ");

@@ -2,12 +2,12 @@
 <testng-results total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-03-21T09:33:56Z" name="Suite" finished-at="2018-03-21T09:34:13Z" duration-ms="16855">
+  <suite started-at="2018-03-22T01:43:56Z" name="Suite" finished-at="2018-03-22T01:44:12Z" duration-ms="15631">
     <groups>
     </groups>
-    <test started-at="2018-03-21T09:33:56Z" name="Test" finished-at="2018-03-21T09:34:13Z" duration-ms="16855">
+    <test started-at="2018-03-22T01:43:56Z" name="Test" finished-at="2018-03-22T01:44:12Z" duration-ms="15631">
       <class name="aceCounterPlus.signUp">
-        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.signUp@c730b35]" started-at="2018-03-21T18:33:56Z" name="beforeTest" finished-at="2018-03-21T18:34:01Z" duration-ms="4792" status="PASS">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.signUp@c730b35]" started-at="2018-03-22T10:43:56Z" name="beforeTest" finished-at="2018-03-22T10:44:01Z" duration-ms="5075" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="addMarketing()[pri:2, instance:aceCounterPlus.signUp@c730b35]" started-at="2018-03-21T18:34:01Z" name="addMarketing" finished-at="2018-03-21T18:34:13Z" duration-ms="12058" status="PASS">
+        <test-method signature="addMarketing()[pri:2, instance:aceCounterPlus.signUp@c730b35]" started-at="2018-03-22T10:44:01Z" name="addMarketing" finished-at="2018-03-22T10:44:12Z" duration-ms="10475" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addMarketing -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.signUp@c730b35]" started-at="2018-03-21T18:34:13Z" name="afterTest" finished-at="2018-03-21T18:34:13Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.signUp@c730b35]" started-at="2018-03-22T10:44:12Z" name="afterTest" finished-at="2018-03-22T10:44:12Z" duration-ms="70" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
