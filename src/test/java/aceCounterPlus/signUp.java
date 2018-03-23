@@ -37,7 +37,7 @@ public class signUp {
 		id = "nhnace";
 		pw = "qordlf!@34";
 		pw1 = "qordlf12#$";
-		number = "0011";
+		number = "0010";
 		domain = "apzz";
 		number1 = "00";		
 
