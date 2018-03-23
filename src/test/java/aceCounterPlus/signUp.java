@@ -37,9 +37,9 @@ public class signUp {
 		id = "nhnace";
 		pw = "qordlf!@34";
 		pw1 = "qordlf12#$";
-		number = "0007";
+		number = "0011";
 		domain = "apzz";
-		number1 = "02";		
+		number1 = "00";		
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
@@ -88,9 +88,9 @@ public class signUp {
 			$("p", i).click();
 			if(alertCheck.equals(check2 + " 입력해주세요.")) {
 				$(".btn-sm", i+1).click();
-				System.out.println(" *** " + check2 + " 미입력 체크 성공 *** ");
+				System.out.println(" *** " + check2 + " missing check Success *** ");
 			} else {
-				System.out.println(" *** " + check2 + " 미입력 체크 실패 *** ");
+				System.out.println(" *** " + check2 + " missing check Fail *** ");
 				close();
 			}
 		} else if (check1.equals("유효성")) {
@@ -99,23 +99,23 @@ public class signUp {
 			$("p", i).click();
 			if(alertCheck.equals("한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.")) {
 				$(".btn-sm", i+1).click();
-				System.out.println(" *** " + check2 + " 유효성 체크 성공 *** ");
+				System.out.println(" *** " + check2 + " validation check Success *** ");
 			} else {
-				System.out.println(" *** " + check2 + " 유효성 체크 실패 *** ");
+				System.out.println(" *** " + check2 + " validation check Fail *** ");
 				close();
 			}
 		}
 	}
 	
-	//@Test(priority = 0)
+	@Test(priority = 0)
 	public void login() {
 		open(baseUrl);
 		String signUp = $(".go_signup").text();
 		if(signUp.contentEquals("회원가입")) {
-			System.out.println(" 회원가입 버튼 확인 완료! ");
+			System.out.println(" SignUp Button check Success!! ");
 			$(".go_signup").click();		
 		} else {
-			System.out.println(" 회원가입 버튼을 찾을 수 없습니다! ");
+			System.out.println(" SignUp Button check Fail !! ");
 		}
 		$("input", 1).click();
 		js("$('#using').click();"); // 체크박스 체크가 안먹어서 js로
@@ -133,9 +133,9 @@ public class signUp {
 		$("#stepOneCompleted").click();
 		String stepOne = $(".request").text(); 
 		if(stepOne.equals("※ 서비스 선택이 어려우신가요? 딱 맞는 서비스를 추천해 드립니다.추천 받기")) {
-			System.out.println(" *** 회원가입 1단계 약관동의 및 회원정보 입력 성공 *** ");			
+			System.out.println(" *** SignUp Step.1 Success !! *** ");			
 		} else {
-			System.out.println(" *** 회원가입 1단계 실패 *** ");
+			System.out.println(" *** SignUp Step.1 Fail !! *** ");
 			close();
 		}
 		$(By.name("input-domain")).setValue(domain + number + ".com");
@@ -146,9 +146,9 @@ public class signUp {
 		$("#stepTwoCompleted").click();
 		String stepTwo = $("h3").text();
 		if(stepTwo.equals("회원가입(무료체험) 신청이 완료되었습니다.")) {
-			System.out.println(" *** 회원가입 2단계 서비스 정보 입력, 회원가입 3단계 서비스 신청 완료 *** ");			
+			System.out.println(" *** SignUp Step.2 Success !! *** ");			
 		} else {
-			System.out.println(" *** 회원가입 2단계 실패 *** ");
+			System.out.println(" *** SignUp Step.1 Fail !! *** ");
 			close();
 		}
 		$(".btn_join").click();
@@ -156,7 +156,7 @@ public class signUp {
 		$(".btn-logout").click();
 	}
 	
-	//@Test(priority = 1)
+	@Test(priority = 1)
 	public void changePassword() {
 		open(baseUrl);
 		$("#uid").setValue(id + number);
@@ -165,16 +165,16 @@ public class signUp {
 		String loginCheck = $(".btn_logout").text();
 		$(".btn_logout").getValue();
 		if(loginCheck.equals("로그아웃")) {
-			System.out.println(" *** 로그인 성공 *** ");
+			System.out.println(" *** Login Success !! *** ");
 		} else {
-			System.out.println(" *** 로그아웃 버튼을 찾을 수 없습니다. 로그인 여부를 확인해주세요 *** ");
+			System.out.println(" *** Login Fail !! *** ");
 			close();
 		}
 		$(".go_setting").click();
 		$(By.linkText("회원정보")).click();
 		$("#pwd").setValue(pw);
 		$("#btn-ok").click();
-		System.out.println(" *** 비밀번호 수정 페이지 접근 성공 *** ");
+		System.out.println(" *** Password change Page access Success !! *** ");
 		$("#prePwd").setValue(pw);
 		$("#changePwd").setValue(pw1);
 		$("#changePwdConfirm").setValue(pw1);
@@ -183,9 +183,9 @@ public class signUp {
 		String mbn = $(".mbn").text();
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
 			$("#okButton").click();
-			System.out.println(" *** 비밀번호 변경 성공 *** ");
+			System.out.println(" *** change Password Success !! *** ");
 		} else {
-			System.out.println(" *** 비밀번호 변경 실패 *** ");
+			System.out.println(" *** change Password Fail !! *** ");
 			close();
 		}
 		$("#prePwd").setValue(pw1);
@@ -195,9 +195,9 @@ public class signUp {
 		$("#btn-modal-alert-yes").click();
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
 			$("#okButton").click();
-			System.out.println(" *** 비밀번호 원복 성공 *** ");
+			System.out.println(" *** change Password Success !! *** ");
 		} else {
-			System.out.println(" *** 비밀번호 원복 실패 *** ");
+			System.out.println(" *** change Password Fail !! *** ");
 			close();
 		}
 		$(".dropdown-toggle", 3).click();
@@ -212,25 +212,25 @@ public class signUp {
 		String loginCheck = $(".btn_logout").text();
 		$(".btn_logout").getValue();
 		if(loginCheck.equals("로그아웃")) {
-			System.out.println(" *** 로그인 성공 *** ");
+			System.out.println(" *** Login Success !! *** ");
 		} else {
-			System.out.println(" *** 로그아웃 버튼을 찾을 수 없습니다. 로그인 여부를 확인해주세요 *** ");
+			System.out.println(" *** Login Fail !! *** ");
 			close();
 		}
 		$(".go_stat", 1).click();
 		String pageLoadingCheck = $(".ace-svc-name").text();
 		if(pageLoadingCheck.equals(domain + number + ".com")) {
-			System.out.println(" *** 통계보기 페이지 접근 성공 *** ");
+			System.out.println(" *** statsLiveDashboard Page Success !! *** ");
 		} else {
-			System.out.println(" *** 통계보기 페이지 접근 실패 *** ");
+			System.out.println(" *** statsLiveDashboard Page Fail !! *** ");
 			close();
 		}
 		$("#redirectConfBtn").click();
 		pageLoadingCheck = $(".notokr-bold").text();
 		if(pageLoadingCheck.equals("마케팅 유입 설정")) {
-			System.out.println(" *** 마케팅 유입 설정 페이지 접근 성공 *** ");
+			System.out.println(" *** appmarketing page Success !! *** ");
 		} else {
-			System.out.println(" *** 마케팅 유입 설정 페이지 접근 실패 *** ");
+			System.out.println(" *** appmarketing page Fail !! *** ");
 			close();
 		}
 		$("#inflowAddBtn").click();
@@ -252,9 +252,9 @@ public class signUp {
 		String msgCheck = $("p", 8).text();
 		if(msgCheck.equals("연결 URL을 입력하세요.")) {
 			$(".btn-sm", 9).click();
-			System.out.println(" *** 연결 URL 미입력 체크 성공 *** ");
+			System.out.println(" *** link URL Missing Check Success !! *** ");
 		} else {
-			System.out.println(" *** 연결 URL 미입력 체크 실패 *** ");
+			System.out.println(" *** link URL Missing Check Fail !! *** ");
 			close();
 		}
 		$("#original_url0").setValue("a");
@@ -264,9 +264,9 @@ public class signUp {
 		$("p", 9).click();
 		if(msgCheck.equals("올바른 URL을 입력하세요.")) {
 			$(".btn-sm", 10).click();
-			System.out.println(" *** 연결 URL 유효성 체크 성공 *** ");
+			System.out.println(" *** link URL validation check Success !! *** ");
 		} else {
-			System.out.println(" *** 연결 URL 유효성 체크 실패 *** ");
+			System.out.println(" *** link URL validation check Fail !! *** ");
 			close();
 		}
 		$("#original_url0").setValue(domain + number + ".com");
@@ -276,9 +276,9 @@ public class signUp {
 		$("p", 10).click();
 		if(msgCheck.equals("등록에 성공했습니다.")) {
 			$(".btn-sm", 11).click();
-			System.out.println(" *** 마케팅 유입 설정 추가 성공 *** ");
+			System.out.println(" *** Add Marketing Inflow settings Success !! *** ");
 		} else {
-			System.out.println(" *** 마케팅 유입 설정 추가 실패 *** ");
+			System.out.println(" *** Add Marketing Inflow settings Fail !! *** ");
 			close();
 		}
 	}

@@ -1,63 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="16.005" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="23.12" tests="3" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.specification.version" value="9"/>
-    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="RegionCode" value="APJ"/>
+    <property name="RUN_DISPLAY_URL" value="http://unconfigured-jenkins-location/job/aceCounter+%20%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85/7/display/redirect"/>
+    <property name="HUDSON_HOME" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home"/>
     <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="RUN_CHANGES_DISPLAY_URL" value="http://unconfigured-jenkins-location/job/aceCounter+%20%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85/7/display/redirect?page=changes"/>
     <property name="sun.jnu.encoding" value="MS949"/>
-    <property name="java.class.path" value="C:\Users\최영권\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_1.8.2.20171007-0216\jars\plexus-classworlds-2.5.2.jar"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="ALLUSERSPROFILE" value="C:\ProgramData"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="user.variant" value=""/>
+    <property name="SystemDrive" value="C:"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="JENKINS_SERVER_COOKIE" value="8239d3e7c4d85f14"/>
+    <property name="USERNAME" value="DESKTOP-DPN1ULJ$"/>
+    <property name="ProgramFiles(x86)" value="C:\Program Files (x86)"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-9.0.1\bin"/>
+    <property name="sun.java.command" value="jenkins.maven3.agent.Maven35Main C:\Program Files\Java\apache-maven-3.5.2 C:\Bitnami\jenkins-2.107.1-0\apache-tomcat\webapps\jenkins\WEB-INF\lib\remoting-3.17.jar C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven35-interceptor-1.12-alpha-1.jar C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.12-alpha-1.jar 56704"/>
+    <property name="maven.home" value="C:\Program Files\Java\apache-maven-3.5.2"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC"/>
+    <property name="POM_GROUPID" value="aceCounterPlus"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-9.0.1"/>
+    <property name="JENKINS_HOME" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="NODE_NAME" value="master"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="BUILD_DISPLAY_NAME" value="#7"/>
+    <property name="PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 158 Stepping 9, GenuineIntel"/>
+    <property name="maven3.interceptor" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven35-interceptor-1.12-alpha-1.jar"/>
+    <property name="PATH+MAVEN" value="C:\Program Files\Java\apache-maven-3.5.2/bin"/>
+    <property name="maven3.interceptor.common" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.12-alpha-1.jar"/>
+    <property name="ProgramFiles" value="C:\Program Files (x86)"/>
+    <property name="PUBLIC" value="C:\Users\Public"/>
+    <property name="windir" value="C:\WINDOWS"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="9.0.1+11"/>
+    <property name="JAVA_HOME" value="C:\Program Files\Java\jdk-9.0.1"/>
+    <property name="user.name" value="DESKTOP-DPN1ULJ$"/>
+    <property name="POM_ARTIFACTID" value="aceCounterPlus"/>
+    <property name="file.encoding" value="MS949"/>
+    <property name="APPDATA" value="C:\WINDOWS\system32\config\systemprofile\AppData\Roaming"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="WORKSPACE" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\workspace\aceCounter+ 회원가입"/>
+    <property name="Path" value="C:\Program Files\Java\jdk-9.0.1/bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps"/>
+    <property name="java.io.tmpdir" value="C:\WINDOWS\TEMP\"/>
+    <property name="java.version" value="9.0.1"/>
+    <property name="COMPUTERNAME" value="DESKTOP-DPN1ULJ"/>
+    <property name="PTSMINSTALLPATH" value="c:\Program Files\HP\HP ProtectTools Security Manager\Bin\"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="JOB_BASE_NAME" value="aceCounter+ 회원가입"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="ComSpec" value="C:\WINDOWS\system32\cmd.exe"/>
+    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="info"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-9.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\apache-maven-3.5.2/bin;C:\Program Files\Java\jdk-9.0.1/bin;C:\Program Files\Java\jdk-9.0.1/bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;."/>
+    <property name="BUILD_NUMBER" value="7"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="POM_DISPLAYNAME" value="aceCounterPlus"/>
+    <property name="NUMBER_OF_PROCESSORS" value="8"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="PROCESSOR_LEVEL" value="6"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.class.path" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven35-agent-1.12-alpha-1.jar;C:\Program Files\Java\apache-maven-3.5.2\boot\plexus-classworlds-2.5.2.jar;C:\Program Files\Java\apache-maven-3.5.2/conf/logging"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="PROCESSOR_ARCHITECTURE" value="x86"/>
+    <property name="PSModulePath" value="C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules;c:\Program Files\Intel\"/>
+    <property name="user.variant" value=""/>
+    <property name="MAVEN_HOME" value="C:\Program Files\Java\apache-maven-3.5.2"/>
     <property name="user.timezone" value="Asia/Seoul"/>
+    <property name="maven.conf" value="C:\Program Files\Java\apache-maven-3.5.2\conf"/>
     <property name="os.name" value="Windows 10"/>
     <property name="java.vm.specification.version" value="9"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="KR"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jre-9.0.1\bin"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B test"/>
-    <property name="jdk.debug" value="release"/>
-    <property name="maven.home" value="E:\000. Selenium\eclipse\eclipse-workspace\aceCounterPlus\EMBEDDED"/>
+    <property name="POM_VERSION" value="0.0.1-SNAPSHOT"/>
+    <property name="BUILD_TAG" value="jenkins-aceCounter+ 회원가입-7"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\최영권"/>
+    <property name="PROCESSOR_ARCHITEW6432" value="AMD64"/>
+    <property name="user.home" value="C:\WINDOWS\system32\config\systemprofile"/>
     <property name="user.language" value="ko"/>
-    <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.home" value="C:\Program Files\Java\jre-9.0.1"/>
-    <property name="file.separator" value="\"/>
-    <property name="java.vm.compressedOopsMode" value="Zero based"/>
-    <property name="line.separator" value="&#10;"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="platformcode" value="7F"/>
+    <property name="ProgramData" value="C:\ProgramData"/>
+    <property name="ProgramW6432" value="C:\Program Files"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="user.script" value=""/>
-    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="9.0.1+11"/>
-    <property name="user.name" value="최영권"/>
+    <property name="JOB_DISPLAY_URL" value="http://unconfigured-jenkins-location/job/aceCounter+%20%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85/display/redirect"/>
+    <property name="M2_HOME" value="C:\Program Files\Java\apache-maven-3.5.2"/>
+    <property name="LOCALAPPDATA" value="C:\WINDOWS\system32\config\systemprofile\AppData\Local"/>
+    <property name="POM_PACKAGING" value="jar"/>
+    <property name="USERDOMAIN" value="WORKGROUP"/>
     <property name="path.separator" value=";"/>
+    <property name="BUILD_ID" value="7"/>
     <property name="os.version" value="10.0"/>
+    <property name="JOB_NAME" value="aceCounter+ 회원가입"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="file.encoding" value="MS949"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="NODE_LABELS" value="master"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="PATH+JDK" value="C:\Program Files\Java\jdk-9.0.1/bin"/>
+    <property name="CommonProgramFiles" value="C:\Program Files (x86)\Common Files"/>
     <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\최영권\AppData\Local\Temp\"/>
-    <property name="java.version" value="9.0.1"/>
+    <property name="OS" value="Windows_NT"/>
     <property name="user.dir" value="E:\000. Selenium\eclipse\eclipse-workspace\aceCounterPlus"/>
     <property name="os.arch" value="amd64"/>
-    <property name="maven.multiModuleProjectDirectory" value="E:\000. Selenium\eclipse\eclipse-workspace\aceCounterPlus"/>
-    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
-    <property name="sun.os.patch.level" value=""/>
-    <property name="java.library.path" value="C:\Program Files\Java\jre-9.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\Users\최영권\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Bandizip\;C:\Program Files\Java\jdk-9.0.1bin;C:\Program Files\Java\apache-maven-3.5.2\bin;;C:\Program Files\Microsoft VS Code\bin;C:\Users\최영권\AppData\Local\Programs\Fiddler;."/>
+    <property name="EXECUTOR_NUMBER" value="0"/>
+    <property name="HUDSON_SERVER_COOKIE" value="8239d3e7c4d85f14"/>
+    <property name="OnlineServices" value="Online Services"/>
+    <property name="PROCESSOR_REVISION" value="9e09"/>
+    <property name="CLASSPATH" value=""/>
+    <property name="CommonProgramW6432" value="C:\Program Files\Common Files"/>
+    <property name="PTSMINSTALLPATH_X86" value="c:\Program Files (x86)\HP\HP ProtectTools Security Manager\Bin\"/>
+    <property name="SystemRoot" value="C:\WINDOWS"/>
+    <property name="TEMP" value="C:\WINDOWS\TEMP"/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="9.0.1+11"/>
-    <property name="classworlds.conf" value="E:\000. Selenium\eclipse\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf17091523343220776223.tmp"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="USERPROFILE" value="C:\WINDOWS\system32\config\systemprofile"/>
+    <property name="TMP" value="C:\WINDOWS\TEMP"/>
+    <property name="CommonProgramFiles(x86)" value="C:\Program Files (x86)\Common Files"/>
     <property name="java.class.version" value="53.0"/>
   </properties>
-  <testcase name="addMarketing" classname="aceCounterPlus.signUp" time="10.475"/>
+  <testcase name="login" classname="aceCounterPlus.signUp" time="5.645"/>
+  <testcase name="changePassword" classname="aceCounterPlus.signUp" time="4.983"/>
+  <testcase name="addMarketing" classname="aceCounterPlus.signUp" time="7.074"/>
 </testsuite>

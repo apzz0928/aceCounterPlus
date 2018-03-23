@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results total="1" passed="1" failed="0" skipped="0">
+<testng-results total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-03-22T01:43:56Z" name="Suite" finished-at="2018-03-22T01:44:12Z" duration-ms="15631">
+  <suite started-at="2018-03-23T06:11:13Z" name="Suite" finished-at="2018-03-23T06:11:36Z" duration-ms="22749">
     <groups>
     </groups>
-    <test started-at="2018-03-22T01:43:56Z" name="Test" finished-at="2018-03-22T01:44:12Z" duration-ms="15631">
+    <test started-at="2018-03-23T06:11:13Z" name="Test" finished-at="2018-03-23T06:11:36Z" duration-ms="22749">
       <class name="aceCounterPlus.signUp">
-        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.signUp@c730b35]" started-at="2018-03-22T10:43:56Z" name="beforeTest" finished-at="2018-03-22T10:44:01Z" duration-ms="5075" status="PASS">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.signUp@5b12b668]" started-at="2018-03-23T15:11:13Z" name="beforeTest" finished-at="2018-03-23T15:11:18Z" duration-ms="4981" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,19 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="addMarketing()[pri:2, instance:aceCounterPlus.signUp@c730b35]" started-at="2018-03-22T10:44:01Z" name="addMarketing" finished-at="2018-03-22T10:44:12Z" duration-ms="10475" status="PASS">
+        <test-method signature="login()[pri:0, instance:aceCounterPlus.signUp@5b12b668]" started-at="2018-03-23T15:11:18Z" name="login" finished-at="2018-03-23T15:11:23Z" duration-ms="5645" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="changePassword()[pri:1, instance:aceCounterPlus.signUp@5b12b668]" started-at="2018-03-23T15:11:23Z" name="changePassword" finished-at="2018-03-23T15:11:28Z" duration-ms="4984" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- changePassword -->
+        <test-method signature="addMarketing()[pri:2, instance:aceCounterPlus.signUp@5b12b668]" started-at="2018-03-23T15:11:28Z" name="addMarketing" finished-at="2018-03-23T15:11:35Z" duration-ms="7074" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addMarketing -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.signUp@c730b35]" started-at="2018-03-22T10:44:12Z" name="afterTest" finished-at="2018-03-22T10:44:12Z" duration-ms="70" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.signUp@5b12b668]" started-at="2018-03-23T15:11:35Z" name="afterTest" finished-at="2018-03-23T15:11:36Z" duration-ms="59" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
