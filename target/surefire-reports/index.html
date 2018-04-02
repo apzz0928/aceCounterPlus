@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods,   3 passed</span>
+                    <span class="method-stats">4 methods,   4 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,7 +102,12 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="aceCounterPlus.signUp" class="method navigator-link" hash-for-method="addMarketing">addMarketing</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="aceCounterPlus.signUp" class="method navigator-link" hash-for-method="addMarketing_add">addMarketing_add</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="aceCounterPlus.signUp" class="method navigator-link" hash-for-method="addMarketing_del">addMarketing_del</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -135,9 +140,16 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="addMarketing">
-                  </a> <!-- addMarketing -->
-                  <span class="method-name">addMarketing</span>
+                  <a name="addMarketing_add">
+                  </a> <!-- addMarketing_add -->
+                  <span class="method-name">addMarketing_add</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="addMarketing_del">
+                  </a> <!-- addMarketing_del -->
+                  <span class="method-name">addMarketing_del</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -209,24 +221,28 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(3);
+data.addRows(4);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'addMarketing')
+data.setCell(0, 1, 'addMarketing_add')
 data.setCell(0, 2, 'aceCounterPlus.signUp')
-data.setCell(0, 3, 7074);
+data.setCell(0, 3, 6804);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'login')
 data.setCell(1, 2, 'aceCounterPlus.signUp')
-data.setCell(1, 3, 5645);
+data.setCell(1, 3, 6099);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'changePassword')
 data.setCell(2, 2, 'aceCounterPlus.signUp')
-data.setCell(2, 3, 4984);
+data.setCell(2, 3, 4986);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'addMarketing_del')
+data.setCell(3, 2, 'aceCounterPlus.signUp')
+data.setCell(3, 3, 1935);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 17 seconds</span>
+              <span class="suite-total-time">Total running time: 19 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -259,19 +275,23 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">login</span>
-                <span class="method-start">4983 ms</span>
+                <span class="method-start">5281 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">changePassword</span>
-                <span class="method-start">10628 ms</span>
+                <span class="method-start">11380 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">addMarketing</span>
-                <span class="method-start">15612 ms</span>
+                <span class="method-name">addMarketing_add</span>
+                <span class="method-start">16366 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">addMarketing_del</span>
+                <span class="method-start">23170 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">afterTest</span>
-                <span class="method-start">22686 ms</span>
+                <span class="method-start">25105 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

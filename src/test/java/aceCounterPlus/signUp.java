@@ -2,6 +2,8 @@ package aceCounterPlus;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -27,19 +29,24 @@ public class signUp {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, number, number1, domain;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, number1, domain;
 
+	//신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
+	Date number_date = new Date();
+    SimpleDateFormat number_format = new SimpleDateFormat("MMddhhmmss");
+    String number = number_format.format(number_date);
+    
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "https://new.acecounter.com/common/front";
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
-		id = "nhnace";
+		id = "ap";
 		pw = "qordlf!@34";
 		pw1 = "qordlf12#$";
-		number = "0010";
 		domain = "apzz";
-		number1 = "00";		
+		//number = "0027";
+		number1 = "00";
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
@@ -80,6 +87,7 @@ public class signUp {
 	private static void js(String javaScriptSource) {
 	    executeJavaScript(javaScriptSource);
 	}
+	
 	public static void alertCheck(String check1, String check2, int i) {
 		String alertCheck = "";
 		if(check1.equals("입력")) {
@@ -110,6 +118,7 @@ public class signUp {
 	@Test(priority = 0)
 	public void login() {
 		open(baseUrl);
+		$(".go_signup").waitUntil(visible, 8000);
 		String signUp = $(".go_signup").text();
 		if(signUp.contentEquals("회원가입")) {
 			System.out.println(" SignUp Button check Success!! ");
@@ -146,7 +155,8 @@ public class signUp {
 		$("#stepTwoCompleted").click();
 		String stepTwo = $("h3").text();
 		if(stepTwo.equals("회원가입(무료체험) 신청이 완료되었습니다.")) {
-			System.out.println(" *** SignUp Step.2 Success !! *** ");			
+			System.out.println(" *** SignUp Step.2 Success !! *** ");
+			System.out.println("ID is : " + id + number);
 		} else {
 			System.out.println(" *** SignUp Step.1 Fail !! *** ");
 			close();
@@ -204,7 +214,7 @@ public class signUp {
 		$(".btn-logout").click();
 	}
 	@Test(priority = 2)
-	public void addMarketing() {
+	public void addMarketing_add() {
 		open(baseUrl);
 		$("#uid").setValue(id + number);
 		$("#upw").setValue(pw);
@@ -250,6 +260,8 @@ public class signUp {
 		$("#btnReg").click();
 		//alertCheck("입력", "연결 URL을 ", 8); alert 문구가 하세요. 라서 공통화 못시킴 문구 통일 필요
 		String msgCheck = $("p", 8).text();
+		$("p", 8).click();
+		$("p", 8).click();
 		if(msgCheck.equals("연결 URL을 입력하세요.")) {
 			$(".btn-sm", 9).click();
 			System.out.println(" *** link URL Missing Check Success !! *** ");
@@ -282,6 +294,45 @@ public class signUp {
 			close();
 		}
 	}
+	@Test(priority = 3)
+	public void addMarketing_del() {
+		String pageLoadingCheck = $(".notokr-bold").text();
+		if(pageLoadingCheck.equals("마케팅 유입 설정")) {
+			System.out.println(" *** appmarketing page Success !! *** ");
+		} else {
+			System.out.println(" *** appmarketing page Fail !! *** ");
+			close();
+		}
+		$("#deleteViewBtn").click();
+		$("#deleteBtn").click();
+		String msgCheck = $("p", 3).text();
+		$("p", 3).click();
+		$("p", 3).click();
+		System.out.println(msgCheck);
+		if(msgCheck.equals("삭제할 마케팅 유입 설정을 선택하세요.")) {
+			$(".btn-sm", 4).click();
+			System.out.println(" *** marketing delete validation check Sueecss !! *** ");
+		} else {
+			System.out.println(" *** marketing delete validation check Fail !! *** ");
+			close();
+		}
+		$("#checkAllCamp").click();
+		$("#deleteBtn").click();
+		msgCheck = $("p", 4).text();
+		$("p", 4).click();
+		$("p", 4).click();
+		if(msgCheck.equals("선택한 마케팅 유입 설정을 삭제하시겠습니까?\n" + 
+				"마케팅 유입설정 변수에 대해 수집/분석이 중지되며,\n" + 
+				"삭제 후 복구가 불가능합니다.")) {
+			$(".btn-sm", 6).click();
+			System.out.println(" *** marketing delete check Sueecss !! *** ");
+		} else {
+			System.out.println(" *** marketing delete check Fail !! *** ");
+			//close();
+		}
+		System.out.println(" *** !! *** ");
+	}
+	
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();
