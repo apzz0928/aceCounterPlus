@@ -29,12 +29,15 @@ public class signUp {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, number1, domain;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain;
 
 	//신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
 	Date number_date = new Date();
     SimpleDateFormat number_format = new SimpleDateFormat("MMddhhmmss");
     String number = number_format.format(number_date);
+    
+	Date number_date1 = new Date();
+    String number1 = number_format.format(number_date1);
     
 	@Parameters("browser")
 	@BeforeClass
@@ -46,7 +49,7 @@ public class signUp {
 		pw1 = "qordlf12#$";
 		domain = "apzz";
 		//number = "0027";
-		number1 = "00";
+		//number1 = "00";
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
@@ -115,7 +118,7 @@ public class signUp {
 		}
 	}
 	
-	@Test(priority = 0)
+	//@Test(priority = 0)
 	public void login() {
 		open(baseUrl);
 		$(".go_signup").waitUntil(visible, 8000);
@@ -169,7 +172,8 @@ public class signUp {
 	@Test(priority = 1)
 	public void changePassword() {
 		open(baseUrl);
-		$("#uid").setValue(id + number);
+		//$("#uid").setValue(id + number);
+		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
 		String loginCheck = $(".btn_logout").text();
@@ -213,10 +217,11 @@ public class signUp {
 		$(".dropdown-toggle", 3).click();
 		$(".btn-logout").click();
 	}
-	@Test(priority = 2)
+	//@Test(priority = 2)
 	public void addMarketing_add() {
 		open(baseUrl);
-		$("#uid").setValue(id + number);
+		//$("#uid").setValue(id + number);
+		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
 		String loginCheck = $(".btn_logout").text();
@@ -294,7 +299,7 @@ public class signUp {
 			close();
 		}
 	}
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void addMarketing_del() {
 		String pageLoadingCheck = $(".notokr-bold").text();
 		if(pageLoadingCheck.equals("마케팅 유입 설정")) {
