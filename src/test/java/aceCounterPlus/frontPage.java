@@ -33,7 +33,7 @@ public class frontPage {
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "https://new.acecounter.com/common/front";
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
-		id = "apzz09288";
+		id = "apzz0928888";
 		pw = "qordlf!@34";
 		number = "0002";
 		domain = "apzz";
@@ -86,7 +86,6 @@ public class frontPage {
 	public void product() {
 		$(".menu1").hover();
 		$(".go_product_intro").click();
-		// $("#Map_beta").scrollIntoView(true);
 		$("#Map_beta").scrollTo();
 		$("#Map").scrollIntoView(true);
 		$(".customer-support").scrollIntoView(true);
