@@ -102,7 +102,7 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="aceCounterPlus.changePassword" class="method navigator-link" hash-for-method="changePassword1">changePassword1</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="aceCounterPlus.changePassword" class="method navigator-link" hash-for-method="passwordChange">passwordChange</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -125,9 +125,9 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="changePassword1">
-                  </a> <!-- changePassword1 -->
-                  <span class="method-name">changePassword1</span>
+                  <a name="passwordChange">
+                  </a> <!-- passwordChange -->
+                  <span class="method-name">passwordChange</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -143,7 +143,7 @@
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Suite&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
-    &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;firefox&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;aceCounterPlus.changePassword&quot;/&gt;
     &lt;/classes&gt;
@@ -187,9 +187,9 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'changePassword1')
+data.setCell(0, 1, 'passwordChange')
 data.setCell(0, 2, 'aceCounterPlus.changePassword')
-data.setCell(0, 3, 7213);
+data.setCell(0, 3, 7844);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
@@ -222,16 +222,16 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">aceCounterPlus.changePassword</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">beforeTest(chrome)</span>
+                <span class="method-name">beforeTest(firefox)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">changePassword1</span>
-                <span class="method-start">5387 ms</span>
+                <span class="method-name">passwordChange</span>
+                <span class="method-start">4960 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">afterTest</span>
-                <span class="method-start">12601 ms</span>
+                <span class="method-start">12804 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

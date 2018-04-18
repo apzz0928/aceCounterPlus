@@ -2,27 +2,27 @@
 <testng-results total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-04-03T05:42:28Z" name="Suite" finished-at="2018-04-03T05:42:41Z" duration-ms="12683">
+  <suite started-at="2018-04-18T08:51:15Z" name="Suite" finished-at="2018-04-18T08:51:28Z" duration-ms="13072">
     <groups>
     </groups>
-    <test started-at="2018-04-03T05:42:28Z" name="Test" finished-at="2018-04-03T05:42:41Z" duration-ms="12683">
+    <test started-at="2018-04-18T08:51:15Z" name="Test" finished-at="2018-04-18T08:51:28Z" duration-ms="13072">
       <class name="aceCounterPlus.changePassword">
-        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.changePassword@55b0dcab]" started-at="2018-04-03T14:42:28Z" name="beforeTest" finished-at="2018-04-03T14:42:34Z" duration-ms="5385" status="PASS">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.changePassword@55b0dcab]" started-at="2018-04-18T17:51:15Z" name="beforeTest" finished-at="2018-04-18T17:51:20Z" duration-ms="4958" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[chrome]]>
+                <![CDATA[firefox]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="changePassword1()[pri:0, instance:aceCounterPlus.changePassword@55b0dcab]" started-at="2018-04-03T14:42:34Z" name="changePassword1" finished-at="2018-04-03T14:42:41Z" duration-ms="7213" status="PASS">
+        <test-method signature="passwordChange()[pri:0, instance:aceCounterPlus.changePassword@55b0dcab]" started-at="2018-04-18T17:51:20Z" name="passwordChange" finished-at="2018-04-18T17:51:27Z" duration-ms="7844" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- changePassword1 -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.changePassword@55b0dcab]" started-at="2018-04-03T14:42:41Z" name="afterTest" finished-at="2018-04-03T14:42:41Z" duration-ms="79" status="PASS">
+        </test-method> <!-- passwordChange -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.changePassword@55b0dcab]" started-at="2018-04-18T17:51:27Z" name="afterTest" finished-at="2018-04-18T17:51:28Z" duration-ms="266" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->

@@ -18,12 +18,13 @@ import org.testng.annotations.Test;
 
 import com.codeborne.selenide.WebDriverRunner;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-public class changePassword {
+public class changeMemberInfo {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
@@ -117,7 +118,7 @@ public class changePassword {
 		}
 	}
 	@Test(priority = 0)
-	public void passwordChange() {
+	public void memberInfoChange() throws InterruptedException {
 		open(baseUrl);
 		//$("#uid").setValue(id + number);
 		$("#uid").setValue("apzz0928888");
@@ -135,34 +136,44 @@ public class changePassword {
 		$(By.linkText("회원정보")).click();
 		$("#pwd").setValue(pw);
 		$("#btn-ok").click();
-		System.out.println(" *** Password change Page access Success !! *** ");
-		$("#prePwd").setValue(pw);
-		$("#changePwd").setValue(pw1);
-		$("#changePwdConfirm").setValue(pw1);
-		$("#modifyProc").click();
-		$("#btn-modal-alert-yes").click();
-		String mbn = $(".mbn").text();
-		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-			$("#okButton").click();
-			System.out.println(" *** Change Password Success !! *** ");
+		System.out.println(" *** MemberInfo change Page access Success !! *** ");
+		$("#s_name").setValue("변경이름");
+		$("#s_company").setValue("변경회사명");
+		$(By.name("s_hp1")).click();
+	    $(By.xpath("//option[@value='011']")).click();
+	    $("#s_hp2").setValue("0928");
+	    $("#s_hp3").setValue("9743");
+		$("#s_email").setValue("apzz0928@naver.com");
+	    $(".btn-lg", 1).click();
+	    String modalBody = $(".modal-body").text();
+	    $(".modal-dialog").waitUntil(visible, 3000);
+		if(modalBody.equals("회원정보가 수정되었습니다.")) {
+			$(".btn-sm", 4).click();
+			System.out.println(" *** change memberInfo Success !! *** ");
 		} else {
-			System.out.println(" *** Change Password Fail !! *** ");
+			System.out.println(" *** change memberInfo Fail !! *** ");
 			close();
 		}
-		$("#prePwd").setValue(pw1);
-		$("#changePwd").setValue(pw);
-		$("#changePwdConfirm").setValue(pw);
-		$("#modifyProc").click();
-		$("#btn-modal-alert-yes").click();
-		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-			$("#okButton").click();
-			System.out.println(" *** Restoration Password Success !! *** ");
+		$(".nav-tabs").waitUntil(visible, 3000);
+		$("#s_name").setValue("원래이름");
+		$("#s_company").setValue("원래회사명");
+		$(By.name("s_hp1")).click();
+	    $(By.xpath("//option[@value='010']")).click();
+	    $("#s_hp2").setValue("9743");
+	    $("#s_hp3").setValue("0928");
+		$("#s_email").setValue("apzz0928@gmail.com");
+	    $(".btn-lg", 1).click();
+	    $(".modal-dialog").waitUntil(visible, 3000);
+		if(modalBody.equals("회원정보가 수정되었습니다.")) {
+			$(".btn-sm", 4).click();
+			System.out.println(" *** Restoration memberInfo Success !! *** ");
 		} else {
-			System.out.println(" *** Restoration Password Fail !! *** ");
+			System.out.println(" *** Restoration memberInfo Fail !! *** ");
 			close();
 		}
+		$(".nav-tabs").waitUntil(visible, 3000);
 		$(".dropdown-toggle", 3).click();
-		$(".btn-logout").click();
+		$(".btn-logout", 0).click();
 		System.out.println(" *** Logout Success !! *** ");
 	}
 	@AfterClass
