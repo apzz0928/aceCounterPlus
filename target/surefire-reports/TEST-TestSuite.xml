@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="13.378" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="20.209" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.specification.version" value="9"/>
     <property name="RegionCode" value="APJ"/>
-    <property name="RUN_DISPLAY_URL" value="http://127.0.0.1/jenkins/job/changePassword/370/display/redirect"/>
+    <property name="RUN_DISPLAY_URL" value="http://127.0.0.1/jenkins/job/memberInfo/433/display/redirect"/>
     <property name="HUDSON_HOME" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home"/>
     <property name="sun.cpu.isalist" value="amd64"/>
-    <property name="RUN_CHANGES_DISPLAY_URL" value="http://127.0.0.1/jenkins/job/changePassword/370/display/redirect?page=changes"/>
+    <property name="RUN_CHANGES_DISPLAY_URL" value="http://127.0.0.1/jenkins/job/memberInfo/433/display/redirect?page=changes"/>
     <property name="sun.jnu.encoding" value="MS949"/>
     <property name="ALLUSERSPROFILE" value="C:\ProgramData"/>
     <property name="sun.arch.data.model" value="64"/>
@@ -18,7 +18,7 @@
     <property name="ProgramFiles(x86)" value="C:\Program Files (x86)"/>
     <property name="JENKINS_URL" value="http://127.0.0.1/jenkins/"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-9.0.1\bin"/>
-    <property name="sun.java.command" value="jenkins.maven3.agent.Maven35Main C:\Program Files\Java\apache-maven-3.5.2 C:\Bitnami\jenkins-2.107.1-0\apache-tomcat\webapps\jenkins\WEB-INF\lib\remoting-3.17.jar C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven35-interceptor-1.12-alpha-1.jar C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.12-alpha-1.jar 49622"/>
+    <property name="sun.java.command" value="jenkins.maven3.agent.Maven35Main C:\Program Files\Java\apache-maven-3.5.2 C:\Bitnami\jenkins-2.107.1-0\apache-tomcat\webapps\jenkins\WEB-INF\lib\remoting-3.17.jar C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven35-interceptor-1.12-alpha-1.jar C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.12-alpha-1.jar 65043"/>
     <property name="maven.home" value="C:\Program Files\Java\apache-maven-3.5.2"/>
     <property name="jdk.debug" value="release"/>
     <property name="PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC"/>
@@ -32,7 +32,7 @@
     <property name="NODE_NAME" value="master"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="BUILD_DISPLAY_NAME" value="#370"/>
+    <property name="BUILD_DISPLAY_NAME" value="#433"/>
     <property name="PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 158 Stepping 9, GenuineIntel"/>
     <property name="maven3.interceptor" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven35-interceptor-1.12-alpha-1.jar"/>
     <property name="PATH+MAVEN" value="C:\Program Files\Java\apache-maven-3.5.2/bin"/>
@@ -50,23 +50,23 @@
     <property name="APPDATA" value="C:\WINDOWS\system32\config\systemprofile\AppData\Roaming"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="HUDSON_URL" value="http://127.0.0.1/jenkins/"/>
-    <property name="WORKSPACE" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\workspace\changePassword"/>
+    <property name="WORKSPACE" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\workspace\memberInfo"/>
     <property name="Path" value="C:\Program Files\Java\jdk-9.0.1/bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps"/>
     <property name="java.io.tmpdir" value="C:\WINDOWS\TEMP\"/>
-    <property name="GIT_COMMIT" value="ee4e49df4d293809562693307acb89b60b57df42"/>
+    <property name="GIT_COMMIT" value="fe3ac360f1867868a680ae5c8258042c2cac9262"/>
     <property name="java.version" value="9.0.1"/>
     <property name="COMPUTERNAME" value="DESKTOP-DPN1ULJ"/>
     <property name="PTSMINSTALLPATH" value="c:\Program Files\HP\HP ProtectTools Security Manager\Bin\"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="JOB_BASE_NAME" value="changePassword"/>
+    <property name="JOB_BASE_NAME" value="memberInfo"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="ComSpec" value="C:\WINDOWS\system32\cmd.exe"/>
     <property name="org.slf4j.simpleLogger.defaultLogLevel" value="info"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk-9.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\apache-maven-3.5.2/bin;C:\Program Files\Java\jdk-9.0.1/bin;C:\Program Files\Java\jdk-9.0.1/bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;."/>
-    <property name="BUILD_NUMBER" value="370"/>
+    <property name="BUILD_NUMBER" value="433"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="BUILD_URL" value="http://127.0.0.1/jenkins/job/changePassword/370/"/>
+    <property name="BUILD_URL" value="http://127.0.0.1/jenkins/job/memberInfo/433/"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="POM_DISPLAYNAME" value="aceCounterPlus"/>
     <property name="GIT_URL" value="https://github.com/apzz0928/aceCounterPlus"/>
@@ -75,7 +75,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="PROCESSOR_LEVEL" value="6"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="JOB_URL" value="http://127.0.0.1/jenkins/job/changePassword/"/>
+    <property name="JOB_URL" value="http://127.0.0.1/jenkins/job/memberInfo/"/>
     <property name="java.class.path" value="C:\Bitnami\jenkins-2.107.1-0\apps\jenkins\jenkins_home\plugins\maven-plugin\WEB-INF\lib\maven35-agent-1.12-alpha-1.jar;C:\Program Files\Java\apache-maven-3.5.2\boot\plexus-classworlds-2.5.2.jar;C:\Program Files\Java\apache-maven-3.5.2/conf/logging"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="PROCESSOR_ARCHITECTURE" value="x86"/>
@@ -89,7 +89,7 @@
     <property name="user.country" value="KR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="POM_VERSION" value="0.0.1-SNAPSHOT"/>
-    <property name="BUILD_TAG" value="jenkins-changePassword-370"/>
+    <property name="BUILD_TAG" value="jenkins-memberInfo-433"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="PROCESSOR_ARCHITEW6432" value="AMD64"/>
     <property name="user.home" value="C:\WINDOWS\system32\config\systemprofile"/>
@@ -98,19 +98,19 @@
     <property name="ProgramData" value="C:\ProgramData"/>
     <property name="ProgramW6432" value="C:\Program Files"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="JOB_DISPLAY_URL" value="http://127.0.0.1/jenkins/job/changePassword/display/redirect"/>
+    <property name="JOB_DISPLAY_URL" value="http://127.0.0.1/jenkins/job/memberInfo/display/redirect"/>
     <property name="M2_HOME" value="C:\Program Files\Java\apache-maven-3.5.2"/>
     <property name="GIT_BRANCH" value="origin/master"/>
-    <property name="GIT_PREVIOUS_COMMIT" value="ee4e49df4d293809562693307acb89b60b57df42"/>
+    <property name="GIT_PREVIOUS_COMMIT" value="fe3ac360f1867868a680ae5c8258042c2cac9262"/>
     <property name="LOCALAPPDATA" value="C:\WINDOWS\system32\config\systemprofile\AppData\Local"/>
     <property name="POM_PACKAGING" value="jar"/>
     <property name="USERDOMAIN" value="WORKGROUP"/>
     <property name="path.separator" value=";"/>
-    <property name="BUILD_ID" value="370"/>
+    <property name="BUILD_ID" value="433"/>
     <property name="os.version" value="10.0"/>
-    <property name="JOB_NAME" value="changePassword"/>
+    <property name="JOB_NAME" value="memberInfo"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="GIT_PREVIOUS_SUCCESSFUL_COMMIT" value="ee4e49df4d293809562693307acb89b60b57df42"/>
+    <property name="GIT_PREVIOUS_SUCCESSFUL_COMMIT" value="fe3ac360f1867868a680ae5c8258042c2cac9262"/>
     <property name="NODE_LABELS" value="master"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="PATH+JDK" value="C:\Program Files\Java\jdk-9.0.1/bin"/>
@@ -119,7 +119,7 @@
     <property name="OS" value="Windows_NT"/>
     <property name="user.dir" value="E:\000. Selenium\eclipse\eclipse-workspace\aceCounterPlus"/>
     <property name="os.arch" value="amd64"/>
-    <property name="EXECUTOR_NUMBER" value="1"/>
+    <property name="EXECUTOR_NUMBER" value="0"/>
     <property name="HUDSON_SERVER_COOKIE" value="8239d3e7c4d85f14"/>
     <property name="OnlineServices" value="Online Services"/>
     <property name="PROCESSOR_REVISION" value="9e09"/>
@@ -135,5 +135,5 @@
     <property name="CommonProgramFiles(x86)" value="C:\Program Files (x86)\Common Files"/>
     <property name="java.class.version" value="53.0"/>
   </properties>
-  <testcase name="passwordChange" classname="aceCounterPlus.changePassword" time="7.844"/>
+  <testcase name="passwordChange" classname="aceCounterPlus.memberInfo" time="14.506"/>
 </testsuite>

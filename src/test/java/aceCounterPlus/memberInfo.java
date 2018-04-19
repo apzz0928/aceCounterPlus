@@ -18,12 +18,13 @@ import org.testng.annotations.Test;
 
 import com.codeborne.selenide.WebDriverRunner;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-public class changePassword {
+public class memberInfo {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
@@ -89,35 +90,9 @@ public class changePassword {
 	private static void js(String javaScriptSource) {
 	    executeJavaScript(javaScriptSource);
 	}
-	
-	public static void alertCheck(String check1, String check2, int i) {
-		String alertCheck = "";
-		if(check1.equals("입력")) {
-			alertCheck = $("p", i).text();
-			$("p", i).click();
-			$("p", i).click();
-			if(alertCheck.equals(check2 + " 입력해주세요.")) {
-				$(".btn-sm", i+1).click();
-				System.out.println(" *** " + check2 + " missing check Success *** ");
-			} else {
-				System.out.println(" *** " + check2 + " missing check Fail *** ");
-				close();
-			}
-		} else if (check1.equals("유효성")) {
-			alertCheck = $("p", i).text();
-			$("p", i).click();
-			$("p", i).click();
-			if(alertCheck.equals("한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.")) {
-				$(".btn-sm", i+1).click();
-				System.out.println(" *** " + check2 + " validation check Success *** ");
-			} else {
-				System.out.println(" *** " + check2 + " validation check Fail *** ");
-				close();
-			}
-		}
-	}
+
 	@Test(priority = 0)
-	public void passwordChange() {
+	public void passwordChange() throws InterruptedException {
 		open(baseUrl);
 		//$("#uid").setValue(id + number);
 		$("#uid").setValue("apzz0928888");
@@ -161,8 +136,43 @@ public class changePassword {
 			System.out.println(" *** Restoration Password Fail !! *** ");
 			close();
 		}
+		$("#s_name").setValue("변경이름");
+		$("#s_company").setValue("변경회사명");
+		$(By.name("s_hp1")).click();
+	    $(By.xpath("//option[@value='011']")).click();
+	    $("#s_hp2").setValue("0928");
+	    $("#s_hp3").setValue("9743");
+		$("#s_email").setValue("apzz0928@naver.com");
+	    $(".btn-lg", 1).click();
+	    String modalBody = $(".modal-body", 1).text();
+		Thread.sleep(1000);
+	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
+			$(".btn-sm", 5).click();
+			System.out.println(" *** change memberInfo Success !! *** ");
+		} else {
+			System.out.println(" *** change memberInfo Fail !! *** ");
+			close();
+		}
+		Thread.sleep(2000);
+		$("#s_name").setValue("원래이름");
+		$("#s_company").setValue("원래회사명");
+		$(By.name("s_hp1")).click();
+	    $(By.xpath("//option[@value='010']")).click();
+	    $("#s_hp2").setValue("9743");
+	    $("#s_hp3").setValue("0928");
+		$("#s_email").setValue("apzz0928@gmail.com");
+	    $(".btn-lg", 1).click();
+	    $(".modal-dialog").waitUntil(visible, 3000);
+		if(modalBody.equals("회원정보가 수정되었습니다.")) {
+			$(".btn-sm", 4).click();
+			System.out.println(" *** Restoration memberInfo Success !! *** ");
+		} else {
+			System.out.println(" *** Restoration memberInfo Fail !! *** ");
+			close();
+		}
+		$(".nav-tabs").waitUntil(visible, 3000);
 		$(".dropdown-toggle", 3).click();
-		$(".btn-logout").click();
+		$(".btn-logout", 0).click();
 		System.out.println(" *** Logout Success !! *** ");
 	}
 	@AfterClass

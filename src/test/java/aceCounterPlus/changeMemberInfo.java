@@ -154,7 +154,9 @@ public class changeMemberInfo {
 			System.out.println(" *** change memberInfo Fail !! *** ");
 			close();
 		}
-		$(".nav-tabs").waitUntil(visible, 3000);
+		//$(".nav-tabs").waitUntil(appear, 3000);
+		//$("#content").click();
+		Thread.sleep(2000);
 		$("#s_name").setValue("원래이름");
 		$("#s_company").setValue("원래회사명");
 		$(By.name("s_hp1")).click();
