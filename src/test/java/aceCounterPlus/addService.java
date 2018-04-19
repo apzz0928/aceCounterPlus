@@ -24,7 +24,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-public class memberInfo {
+public class addService {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
@@ -92,7 +92,7 @@ public class memberInfo {
 	}
 
 	@Test(priority = 0)
-	public void memberInfoChange() throws InterruptedException {
+	public void passwordChange() throws InterruptedException {
 		open(baseUrl);
 		//$("#uid").setValue(id + number);
 		$("#uid").setValue("apzz0928888");
@@ -107,73 +107,94 @@ public class memberInfo {
 			close();
 		}
 		$(".go_setting").click();
-		$(By.linkText("회원정보")).click();
-		$("#pwd").setValue(pw);
-		$("#btn-ok").click();
-		System.out.println(" *** Password change Page access Success !! *** ");
-		$("#prePwd").setValue(pw);
-		$("#changePwd").setValue(pw1);
-		$("#changePwdConfirm").setValue(pw1);
-		$("#modifyProc").click();
-		$("#btn-modal-alert-yes").click();
-		String mbn = $(".mbn").text();
-		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-			$("#okButton").click();
-			System.out.println(" *** Change Password Success !! *** ");
-		} else {
-			System.out.println(" *** Change Password Fail !! *** ");
-			close();
-		}
-		$("#prePwd").setValue(pw1);
-		$("#changePwd").setValue(pw);
-		$("#changePwdConfirm").setValue(pw);
-		$("#modifyProc").click();
-		$("#btn-modal-alert-yes").click();
-		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-			$("#okButton").click();
-			System.out.println(" *** Restoration Password Success !! *** ");
-		} else {
-			System.out.println(" *** Restoration Password Fail !! *** ");
-			close();
-		}
-		$("#s_name").setValue("변경이름");
-		$("#s_company").setValue("변경회사명");
-		$(By.name("s_hp1")).click();
-	    $(By.xpath("//option[@value='011']")).click();
-	    $("#s_hp2").setValue("0928");
-	    $("#s_hp3").setValue("9743");
-		$("#s_email").setValue("apzz0928@naver.com");
-	    $(".btn-lg", 1).click();
-	    String modalBody = $(".modal-body", 1).text();
+		$(By.linkText("서비스추가")).click();
+		String p4 = $("p", 4).text();
 		Thread.sleep(1000);
-	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
+		if(p4.equals("* 표시는 필수 입력")) {
+			System.out.println(" *** addService page access Success !! *** ");
+		} else {
+			System.out.println(" *** addService page access Fail !! *** ");
+			close();
+		}
+		$("#btn_submit").click();
+		String msgCheck = $("p", 10).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("웹사이트 이름을 입력해주세요.")) {
+			System.out.println(" *** submit button webSiteName validation check Success !! *** ");
 			$(".btn-sm", 5).click();
-			System.out.println(" *** change memberInfo Success !! *** ");
 		} else {
-			System.out.println(" *** change memberInfo Fail !! *** ");
+			System.out.println(" *** submit button webSiteName validation check Fail !! *** ");
 			close();
 		}
-		Thread.sleep(3000);
-		$("#s_name").setValue("원래이름");
-		$("#s_company").setValue("원래회사명");
-		$(By.name("s_hp1")).click();
-	    $(By.xpath("//option[@value='010']")).click();
-	    $("#s_hp2").setValue("9743");
-	    $("#s_hp3").setValue("0928");
-		$("#s_email").setValue("apzz0928@gmail.com");
-	    $(".btn-lg", 1).click();
-	    $(".modal-dialog").waitUntil(visible, 3000);
-		if(modalBody.equals("회원정보가 수정되었습니다.")) {
-			$(".btn-sm", 4).click();
-			System.out.println(" *** Restoration memberInfo Success !! *** ");
+		$(By.name("svcNm")).setValue(id + number);
+		$("#btn_submit").click();
+		msgCheck = $("p", 11).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("등록된 도메인이 없습니다.")) {
+			System.out.println(" *** submit button domain input validation check Success !! *** ");
+			$(".btn-sm", 6).click();
 		} else {
-			System.out.println(" *** Restoration memberInfo Fail !! *** ");
+			System.out.println(" *** submit button domain input validation check Fail !! *** ");
 			close();
 		}
-		$(".nav-tabs").waitUntil(visible, 3000);
-		$(".dropdown-toggle", 3).click();
-		$(".btn-logout", 0).click();
-		System.out.println(" *** Logout Success !! *** ");
+		$(".ace-btn-add-domain").click();
+		msgCheck = $("p", 12).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("도메인을 입력하세요.")) {
+			System.out.println(" *** add domain button domain input validation check Success !! *** ");
+			$(".btn-sm", 7).click();
+		} else {
+			System.out.println(" *** add domain button domain input validation check Fail !! *** ");
+			close();
+		}
+		$(".gui-input", 1).setValue(id + number);
+		$(".ace-btn-add-domain").click();
+		msgCheck = $("p", 13).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("도메인 형식이 올바르지 않습니다.")) {
+			System.out.println(" *** add domain button domain form validation check Success !! *** ");
+			$(".btn-sm", 8).click();
+		} else {
+			System.out.println(" *** add domain button domain form validation check Fail !! *** ");
+			close();
+		}
+		$(".gui-input", 1).setValue(id + number + ".com");
+		$(".ace-btn-add-domain").click();
+		$("#btn_submit").click();
+		msgCheck = $("p", 14).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("웹사이트 분류를 선택해주세요.")) {
+			System.out.println(" *** submit button website sort validation check Success !! *** ");
+			$(".btn-sm", 9).click();
+		} else {
+			System.out.println(" *** submit button website sort validation check Fail !! *** ");
+			close();
+		}
+	    $(By.name("largeCategoryCd")).click();
+	    $(By.xpath("//option[@value='22']")).click();
+		$("#btn_submit").click();
+		msgCheck = $("p", 15).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("웹사이트 분류를 선택해주세요.")) {
+			System.out.println(" *** submit button website sort validation check Success !! *** ");
+			$(".btn-sm", 10).click();
+		} else {
+			System.out.println(" *** submit button website sort validation check Fail !! *** ");
+			close();
+		}
+	    $(By.name("middleCategoryCd")).click();
+	    $(By.xpath("//option[@value='188']")).click();
+		$("#btn_submit").click();
+		Thread.sleep(2000);
+		msgCheck = $("h2").text();
+		if(msgCheck.equals("서비스 추가가 완료되었습니다.")) {
+			System.out.println(" *** addServiceComplete page access Success !! *** ");
+			$(".btn-dark").click();
+		} else {
+			System.out.println(" *** addServiceComplete page access Fail !! *** ");
+			close();
+		}
+		
 	}
 	@AfterClass
 	public void afterTest() {
