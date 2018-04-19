@@ -60,7 +60,7 @@
 		  		<inherited>true</inherited>
 		  			<configuration>
 		  				<suiteXmlFiles>
-		  					<suiteXmlFile>testng_changeMemberInfo.xml</suiteXmlFile>
+		  					<suiteXmlFile>testng_marketingInflowSetting.xml</suiteXmlFile>
 		  				</suiteXmlFiles>
 		  			</configuration>
 		  	</plugin>

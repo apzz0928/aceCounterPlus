@@ -24,7 +24,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-public class changeMemberInfo {
+public class marketingInflowSetting {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
@@ -118,7 +118,7 @@ public class changeMemberInfo {
 		}
 	}
 	@Test(priority = 0)
-	public void memberInfoChange() throws InterruptedException {
+	public void addMarketing_add() {
 		open(baseUrl);
 		//$("#uid").setValue(id + number);
 		$("#uid").setValue("apzz0928888");
@@ -132,51 +132,73 @@ public class changeMemberInfo {
 			System.out.println(" *** Login Fail !! *** ");
 			close();
 		}
-		$(".go_setting").click();
-		$(By.linkText("회원정보")).click();
-		$("#pwd").setValue(pw);
-		$("#btn-ok").click();
-		System.out.println(" *** MemberInfo change Page access Success !! *** ");
-		$("#s_name").setValue("변경이름");
-		$("#s_company").setValue("변경회사명");
-		$(By.name("s_hp1")).click();
-	    $(By.xpath("//option[@value='011']")).click();
-	    $("#s_hp2").setValue("0928");
-	    $("#s_hp3").setValue("9743");
-		$("#s_email").setValue("apzz0928@naver.com");
-	    $(".btn-lg", 1).click();
-	    String modalBody = $(".modal-body").text();
-	    $(".modal-dialog").waitUntil(visible, 3000);
-		if(modalBody.equals("회원정보가 수정되었습니다.")) {
-			$(".btn-sm", 4).click();
-			System.out.println(" *** change memberInfo Success !! *** ");
+		$(".go_stat", 1).click();
+		String secondbtn = $("#secondbtn").text();
+		System.out.println(secondbtn);
+		if(secondbtn.equals("초단위")) {
+			System.out.println(" *** statsLiveDashboard Page Success !! *** ");
 		} else {
-			System.out.println(" *** change memberInfo Fail !! *** ");
+			System.out.println(" *** statsLiveDashboard Page Fail !! *** ");
 			close();
 		}
-		//$(".nav-tabs").waitUntil(appear, 3000);
-		//$("#content").click();
-		Thread.sleep(2000);
-		$("#s_name").setValue("원래이름");
-		$("#s_company").setValue("원래회사명");
-		$(By.name("s_hp1")).click();
-	    $(By.xpath("//option[@value='010']")).click();
-	    $("#s_hp2").setValue("9743");
-	    $("#s_hp3").setValue("0928");
-		$("#s_email").setValue("apzz0928@gmail.com");
-	    $(".btn-lg", 1).click();
-	    $(".modal-dialog").waitUntil(visible, 3000);
-		if(modalBody.equals("회원정보가 수정되었습니다.")) {
-			$(".btn-sm", 4).click();
-			System.out.println(" *** Restoration memberInfo Success !! *** ");
+		$("#redirectConfBtn").click();
+		String pageLoadingCheck = $(".notokr-bold").text();
+		if(pageLoadingCheck.equals("마케팅 유입 설정")) {
+			System.out.println(" *** appmarketing page Success !! *** ");
 		} else {
-			System.out.println(" *** Restoration memberInfo Fail !! *** ");
+			System.out.println(" *** appmarketing page Fail !! *** ");
 			close();
 		}
-		$(".nav-tabs").waitUntil(visible, 3000);
-		$(".dropdown-toggle", 3).click();
-		$(".btn-logout", 0).click();
-		System.out.println(" *** Logout Success !! *** ");
+		$("#inflowAddBtn").click();
+		js("$('#channelDcd2').click();");
+		$("#btnReg").click();
+		alertCheck("입력", "캠페인명을", 4);
+		$("#campaign_nm").setValue(domain + number + ".com@");
+		$("#btnReg").click();
+		alertCheck("유효성", "캠페인명", 5);
+		$("#campaign_nm").setValue(domain + number + number1 + ".com");
+		$("#btnReg").click();
+		alertCheck("입력", "소재를", 6);
+		$("#campaign_material_value0").setValue(domain + number + ".com@");
+		$("#btnReg").click();
+		alertCheck("유효성", "소재", 7);
+		$("#campaign_material_value0").setValue(domain + number + ".com");
+		$("#btnReg").click();
+		//alertCheck("입력", "연결 URL을 ", 8); alert 문구가 하세요. 라서 공통화 못시킴 문구 통일 필요
+		String msgCheck = $("p", 8).text();
+		$("p", 8).click();
+		$("p", 8).click();
+		if(msgCheck.equals("연결 URL을 입력하세요.")) {
+			$(".btn-sm", 9).click();
+			System.out.println(" *** link URL Missing Check Success !! *** ");
+		} else {
+			System.out.println(" *** link URL Missing Check Fail !! *** ");
+			close();
+		}
+		$("#original_url0").setValue("a");
+		$("#btnReg").click();
+		msgCheck = $("p", 9).text();
+		$("p", 9).click();
+		$("p", 9).click();
+		if(msgCheck.equals("올바른 URL을 입력하세요.")) {
+			$(".btn-sm", 10).click();
+			System.out.println(" *** link URL validation check Success !! *** ");
+		} else {
+			System.out.println(" *** link URL validation check Fail !! *** ");
+			close();
+		}
+		$("#original_url0").setValue(domain + number + ".com");
+		$("#btnReg").click();
+		msgCheck = $("p", 10).text();
+		$("p", 10).click();
+		$("p", 10).click();
+		if(msgCheck.equals("등록에 성공했습니다.")) {
+			$(".btn-sm", 11).click();
+			System.out.println(" *** Add Marketing Inflow settings Success !! *** ");
+		} else {
+			System.out.println(" *** Add Marketing Inflow settings Fail !! *** ");
+			close();
+		}
 	}
 	@AfterClass
 	public void afterTest() {

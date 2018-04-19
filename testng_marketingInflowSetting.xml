@@ -7,7 +7,7 @@
 <!-- 	<class name="aceCounterPlus.backOffice"/> -->
 <!-- 	<class name="aceCounterPlus.signUp"/> -->
 <!-- <class name="aceCounterPlus.changePassword"/> -->
-<class name="aceCounterPlus.changeMemberInfo"/>
+<class name="aceCounterPlus.marketingInflowSetting"/>
 <!-- 	<class name="aceCounterPlus.frontPage"/> -->
 <!-- 	<class name="aceCounterPlus.testScript"/> -->
 <!-- 	<class name="aceCounterPlus.adminManage"/> -->

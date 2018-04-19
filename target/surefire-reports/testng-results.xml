@@ -2,12 +2,12 @@
 <testng-results total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-04-19T07:16:47Z" name="Suite" finished-at="2018-04-19T07:17:07Z" duration-ms="19878">
+  <suite started-at="2018-04-19T08:12:02Z" name="Suite" finished-at="2018-04-19T08:12:19Z" duration-ms="17531">
     <groups>
     </groups>
-    <test started-at="2018-04-19T07:16:47Z" name="Test" finished-at="2018-04-19T07:17:07Z" duration-ms="19878">
-      <class name="aceCounterPlus.memberInfo">
-        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.memberInfo@131ef10]" started-at="2018-04-19T16:16:47Z" name="beforeTest" finished-at="2018-04-19T16:16:52Z" duration-ms="5073" status="PASS">
+    <test started-at="2018-04-19T08:12:02Z" name="Test" finished-at="2018-04-19T08:12:19Z" duration-ms="17531">
+      <class name="aceCounterPlus.marketingInflowSetting">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.marketingInflowSetting@55b0dcab]" started-at="2018-04-19T17:12:02Z" name="beforeTest" finished-at="2018-04-19T17:12:07Z" duration-ms="5668" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,15 +18,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="passwordChange()[pri:0, instance:aceCounterPlus.memberInfo@131ef10]" started-at="2018-04-19T16:16:52Z" name="passwordChange" finished-at="2018-04-19T16:17:06Z" duration-ms="14504" status="PASS">
+        <test-method signature="addMarketing_add()[pri:0, instance:aceCounterPlus.marketingInflowSetting@55b0dcab]" started-at="2018-04-19T17:12:07Z" name="addMarketing_add" finished-at="2018-04-19T17:12:19Z" duration-ms="11858" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- passwordChange -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.memberInfo@131ef10]" started-at="2018-04-19T16:17:06Z" name="afterTest" finished-at="2018-04-19T16:17:07Z" duration-ms="294" status="PASS">
+        </test-method> <!-- addMarketing_add -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.marketingInflowSetting@55b0dcab]" started-at="2018-04-19T17:12:19Z" name="afterTest" finished-at="2018-04-19T17:12:19Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- aceCounterPlus.memberInfo -->
+      </class> <!-- aceCounterPlus.marketingInflowSetting -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
