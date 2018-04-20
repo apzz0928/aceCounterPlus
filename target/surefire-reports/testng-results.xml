@@ -2,12 +2,12 @@
 <testng-results total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-04-20T03:19:26Z" name="Suite" finished-at="2018-04-20T03:19:46Z" duration-ms="19908">
+  <suite started-at="2018-04-20T09:25:17Z" name="Suite" finished-at="2018-04-20T09:25:37Z" duration-ms="20487">
     <groups>
     </groups>
-    <test started-at="2018-04-20T03:19:26Z" name="Test" finished-at="2018-04-20T03:19:46Z" duration-ms="19908">
-      <class name="aceCounterPlus.addService">
-        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.addService@7817fd62]" started-at="2018-04-20T12:19:26Z" name="beforeTest" finished-at="2018-04-20T12:19:31Z" duration-ms="4961" status="PASS">
+    <test started-at="2018-04-20T09:25:17Z" name="Test" finished-at="2018-04-20T09:25:37Z" duration-ms="20487">
+      <class name="aceCounterPlus.memberInfo">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.memberInfo@131ef10]" started-at="2018-04-20T18:25:17Z" name="beforeTest" finished-at="2018-04-20T18:25:22Z" duration-ms="5041" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,15 +18,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="serviceAdd()[pri:0, instance:aceCounterPlus.addService@7817fd62]" started-at="2018-04-20T12:19:31Z" name="serviceAdd" finished-at="2018-04-20T12:19:46Z" duration-ms="14646" status="PASS">
+        <test-method signature="memberInfoChange()[pri:0, instance:aceCounterPlus.memberInfo@131ef10]" started-at="2018-04-20T18:25:22Z" name="memberInfoChange" finished-at="2018-04-20T18:25:37Z" duration-ms="15137" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- serviceAdd -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.addService@7817fd62]" started-at="2018-04-20T12:19:46Z" name="afterTest" finished-at="2018-04-20T12:19:46Z" duration-ms="294" status="PASS">
+        </test-method> <!-- memberInfoChange -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.memberInfo@131ef10]" started-at="2018-04-20T18:25:37Z" name="afterTest" finished-at="2018-04-20T18:25:37Z" duration-ms="304" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- aceCounterPlus.addService -->
+      </class> <!-- aceCounterPlus.memberInfo -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

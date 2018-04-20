@@ -116,6 +116,7 @@ public class memberInfo {
 		$("#changePwdConfirm").setValue(pw1);
 		$("#modifyProc").click();
 		$("#btn-modal-alert-yes").click();
+		$(".modal-backdrop").waitUntil(visible, 3000);
 		String mbn = $(".mbn").text();
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
 			$("#okButton").click();
@@ -129,6 +130,7 @@ public class memberInfo {
 		$("#changePwdConfirm").setValue(pw);
 		$("#modifyProc").click();
 		$("#btn-modal-alert-yes").click();
+		$(".modal-backdrop").waitUntil(visible, 3000);
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
 			$("#okButton").click();
 			System.out.println(" *** Restoration Password Success !! *** ");
@@ -145,7 +147,8 @@ public class memberInfo {
 		$("#s_email").setValue("apzz0928@naver.com");
 	    $(".btn-lg", 1).click();
 	    String modalBody = $(".modal-body", 1).text();
-		Thread.sleep(1000);
+		Thread.sleep(3000);
+		$(".modal-backdrop").waitUntil(visible, 3000);
 	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 5).click();
 			System.out.println(" *** change memberInfo Success !! *** ");
@@ -153,7 +156,7 @@ public class memberInfo {
 			System.out.println(" *** change memberInfo Fail !! *** ");
 			close();
 		}
-		Thread.sleep(3000);
+		$("p", 5).click();
 		$("#s_name").setValue("원래이름");
 		$("#s_company").setValue("원래회사명");
 		$(By.name("s_hp1")).click();
@@ -170,6 +173,8 @@ public class memberInfo {
 			System.out.println(" *** Restoration memberInfo Fail !! *** ");
 			close();
 		}
+		//Thread.sleep(1000);
+		$("p", 5).click();
 		$(".nav-tabs").waitUntil(visible, 3000);
 		$(".dropdown-toggle", 3).click();
 		$(".btn-logout", 0).click();

@@ -47,8 +47,6 @@ public class serviceInfo {
 		pw = "qordlf!@34";
 		pw1 = "qordlf12#$";
 		domain = "apzz";
-		//number = "0027";
-		//number1 = "00";
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
@@ -66,7 +64,8 @@ public class serviceInfo {
 			cap = DesiredCapabilities.firefox();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
-			driver.manage().window().setSize(new Dimension(1650, 1000));
+			//driver.manage().window().setSize(new Dimension(1650, 1000));
+			driver.manage().window().maximize();
 		} else if (browser.equals("edge")) {
 			TestBrowser = "edge";
 			cap = DesiredCapabilities.edge();
@@ -100,10 +99,16 @@ public class serviceInfo {
 			checkMsg = "도메인을 입력하세요.";
 		} else if (val.equals("domain_form_sm")) {
 			checkMsg = "도메인 형식이 올바르지 않습니다.";
-		} else if (val.equals("website_form_sub")) {
-			checkMsg = "웹사이트 분류를 선택해주세요.";
+		} else if (val.equals("email_input_sendbtn")) {
+			checkMsg = "올바른 이메일을 입력하세요.";
+		} else if (val.equals("email_input_sub")) {
+			checkMsg = "수신 이메일을 추가해 주세요.";
+		} else if (val.equals("email_send_sub")) {
+			checkMsg = "요약리포트가 발송되었습니다.";
+		} else if (val.equals("email_h1_check")) {
+			checkMsg = "주간요약 리포트입니다.";
 		}
-		$(".modal-backdrop").waitUntil(visible, 3000);
+		$(".modal-backdrop").waitUntil(visible, 15000);
 		if(msgCheck.equals(checkMsg)) {
 			System.out.println(" *** " + val + "-btn validation check Success !! *** ");
 			$(".btn-sm", btnNum).click();
@@ -116,7 +121,6 @@ public class serviceInfo {
 	@Test(priority = 0)
 	public void modifyInfo() throws InterruptedException {
 		open(baseUrl);
-		//$("#uid").setValue(id + number);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
@@ -131,62 +135,86 @@ public class serviceInfo {
 		$(".go_setting").click();
 		$(By.linkText("정보수정")).click();
 		String btninfo = $(".btn-info", 0).text();
-		Thread.sleep(1000);
 		if(btninfo.equals("서비스 추가")) {
-			System.out.println(" *** serviceInfo page access Success !! *** ");
+			System.out.println(" *** modify Info page access Success !! *** ");
 		} else {
-			System.out.println(" *** serviceInfo page access Fail !! *** ");
+			System.out.println(" *** modify Info page access Fail !! *** ");
 			close();
 		}
 		$(".collapsed", 0).click();
+		$(".ace-btn-edit").click();
+		String msgCheck = $("p", 120).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("변경된 정보가 없습니다.")) {
+			System.out.println(" *** don't InfoModify check Success !! *** ");
+			$(".btn-sm", 27).click();
+		} else {
+			System.out.println(" *** don't InfoModify check Fail !! *** ");
+			close();
+		}
 		$(".gui-input", 0).setValue("");
 		$(".ace-btn-remove", 0).click();
 		$(".ace-btn-remove", 0).click();
 		$(".ace-btn-edit").click();
-		String msgCheck = $("p", 110).text();
-		$(".modal-backdrop").waitUntil(visible, 3000);
-		if(msgCheck.equals("웹사이트 이름을 입력해주세요.")) {
-			System.out.println(" *** ace-btn-edit website name validation check Success !! *** ");
-			$(".btn-sm", 25).click();
-		} else {
-			System.out.println(" *** ace-btn-edit website name validation check Fail !! *** ");
-			close();
-		}
+		validationCheck(121, 28, "website_sub");
 		$(".gui-input", 0).setValue(number);
 		$(".ace-btn-edit").click();
-		msgCheck = $("p", 111).text();
-		$(".modal-backdrop").waitUntil(visible, 3000);
-		if(msgCheck.equals("등록된 도메인이 없습니다.")) {
-			System.out.println(" *** ace-btn-edit domain input validation check Success !! *** ");
-			$(".btn-sm", 26).click();
-		} else {
-			System.out.println(" *** ace-btn-edit domain input validation check Fail !! *** ");
-			close();
-		}
+		validationCheck(122, 29, "domain_input_sub");
 		$(".ace-btn-add-domain", 0).click();
-		msgCheck = $("p", 112).text();
-		$(".modal-backdrop").waitUntil(visible, 3000);
-		if(msgCheck.equals("도메인을 입력하세요.")) {
-			System.out.println(" *** ace-btn-add-domain domain input validation check Success !! *** ");
-			$(".btn-sm", 27).click();
-		} else {
-			System.out.println(" *** ace-btn-add-domain domain input validation check Fail !! *** ");
-			close();
-		}
+		validationCheck(123, 30, "domain_input_sm");
 		$(".gui-input", 1).setValue(id+number);
 		$(".ace-btn-add-domain", 0).click();
-		msgCheck = $("p", 113).text();
+		validationCheck(124, 31, "domain_form_sm");
+		$(".gui-input", 1).setValue(id+number + ".com");
+		$(".ace-btn-add-domain", 0).click();
+		$(".gui-input", 1).setValue("www." + id+number + ".com");
+		$(".ace-btn-add-domain", 0).click();
+		$(".ace-btn-edit").click();
+		msgCheck = $("p", 125).text();
 		$(".modal-backdrop").waitUntil(visible, 3000);
-		if(msgCheck.equals("도메인 형식이 올바르지 않습니다.")) {
-			System.out.println(" *** ace-btn-add-domain domain input validation check Success !! *** ");
-			$(".btn-sm", 27).click();
+		if(msgCheck.equals("수정이 완료되었습니다.")) {
+			System.out.println(" *** modify info check Success !! *** ");
+			$(".btn-sm", 32).click();
 		} else {
-			System.out.println(" *** ace-btn-add-domain domain input validation check Fail !! *** ");
+			System.out.println(" *** modify info check Fail !! *** ");
 			close();
 		}
+	}
+	@Test(priority = 1)
+	public void sendmailSetting() {
+		$(By.linkText("발송메일 설정")).click();
+		String mt10 = $(".mt10").text();
+		if(mt10.equals("* 표시는 필수 입력")) {
+			System.out.println(" *** sendmailSetting page access Success !! *** ");
+		} else {
+			System.out.println(" *** sendmailSetting page access Fail !! *** ");
+			close();
+		}
+		$(".btn-del-sendEmail").click();
+		$("#btn-sendEmail").click();
+		validationCheck(6, 5,"email_input_sendbtn");
+		$("#btn-sendMail").click();
+		validationCheck(7, 6,"email_input_sub");
+		$(".gui-input").setValue("apzz0928@nhnent");
+		$("#btn-sendEmail").click();
+		validationCheck(8, 7, "email_input_sendbtn");
+		$(".gui-input").setValue("apzz0928@nhnent.com");
+		$("#btn-sendEmail").click();
+		$("#btn-sendMail").click();
+		validationCheck(9, 8, "email_send_sub");
+		open("https://nhnent.dooray.com/mail/new");
+		
+		$(".one-line-block").click();
+		String mailCheck = $("h1").text();
+		if(mailCheck.equals("주간요약 리포트입니다.")) {
+			System.out.println(" *** mail Title check Success !! *** ");
+		} else {
+			System.out.println(" *** mail Title check Fail !! *** ");
+			close();
+		}
+		back();
 		
 	}
-	
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();
