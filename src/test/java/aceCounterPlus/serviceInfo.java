@@ -24,7 +24,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-public class addService {
+public class serviceInfo {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
@@ -112,8 +112,9 @@ public class addService {
 			close();
 		}
 	}
+
 	@Test(priority = 0)
-	public void serviceAdd() throws InterruptedException {
+	public void modifyInfo() throws InterruptedException {
 		open(baseUrl);
 		//$("#uid").setValue(id + number);
 		$("#uid").setValue("apzz0928888");
@@ -128,57 +129,64 @@ public class addService {
 			close();
 		}
 		$(".go_setting").click();
-		$(By.linkText("서비스추가")).click();
-		String p4 = $("p", 4).text();
+		$(By.linkText("정보수정")).click();
+		String btninfo = $(".btn-info", 0).text();
 		Thread.sleep(1000);
-		if(p4.equals("* 표시는 필수 입력")) {
-			System.out.println(" *** addService page access Success !! *** ");
+		if(btninfo.equals("서비스 추가")) {
+			System.out.println(" *** serviceInfo page access Success !! *** ");
 		} else {
-			System.out.println(" *** addService page access Fail !! *** ");
+			System.out.println(" *** serviceInfo page access Fail !! *** ");
 			close();
 		}
-		$("#btn_submit").click();
-		validationCheck(10, 5, "website_sub");
-		String msgCheck = $("p", 10).text();
-		$(By.name("svcNm")).setValue(id + number);
-		$("#btn_submit").click();
-		validationCheck(11, 6, "domain_input_sub");
-		$(".ace-btn-add-domain").click();
-		validationCheck(12, 7, "domain_input_sm");
-		$(".gui-input", 1).setValue(id + number);
-		$(".ace-btn-add-domain").click();
-		validationCheck(13, 8, "domain_form_sm");
-		$(".gui-input", 1).setValue(id + number + ".com");
-		$(".ace-btn-add-domain").click();
-		$("#btn_submit").click();
-		validationCheck(14, 9, "website_form_sub");
-	    $(By.name("largeCategoryCd")).click();
-	    $(By.xpath("//option[@value='22']")).click();
-		$("#btn_submit").click();
-		validationCheck(15, 10, "website_form_sub");
-	    $(By.name("middleCategoryCd")).click();
-	    $(By.xpath("//option[@value='188']")).click();
-		$("#btn_submit").click();
-		Thread.sleep(2000);
-		msgCheck = $("h2").text();
-		if(msgCheck.equals("서비스 추가가 완료되었습니다.")) {
-			System.out.println(" *** addServiceComplete page access Success !! *** ");
-			$(".btn-dark").click();
+		$(".collapsed", 0).click();
+		$(".gui-input", 0).setValue("");
+		$(".ace-btn-remove", 0).click();
+		$(".ace-btn-remove", 0).click();
+		$(".ace-btn-edit").click();
+		String msgCheck = $("p", 110).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("웹사이트 이름을 입력해주세요.")) {
+			System.out.println(" *** ace-btn-edit website name validation check Success !! *** ");
+			$(".btn-sm", 25).click();
 		} else {
-			System.out.println(" *** addServiceComplete page access Fail !! *** ");
+			System.out.println(" *** ace-btn-edit website name validation check Fail !! *** ");
 			close();
 		}
-		$(By.linkText("통합리포트 생성")).click();
-		Thread.sleep(1000);
-		if(p4.equals("* 표시는 필수 입력")) {
-			System.out.println(" *** integratedReport page access Success !! *** ");
+		$(".gui-input", 0).setValue(number);
+		$(".ace-btn-edit").click();
+		msgCheck = $("p", 111).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("등록된 도메인이 없습니다.")) {
+			System.out.println(" *** ace-btn-edit domain input validation check Success !! *** ");
+			$(".btn-sm", 26).click();
 		} else {
-			System.out.println(" *** integratedReport page access Fail !! *** ");
+			System.out.println(" *** ace-btn-edit domain input validation check Fail !! *** ");
 			close();
 		}
-		$("#report_nm").setValue("통합리포트 테스트 : " + number1);
+		$(".ace-btn-add-domain", 0).click();
+		msgCheck = $("p", 112).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("도메인을 입력하세요.")) {
+			System.out.println(" *** ace-btn-add-domain domain input validation check Success !! *** ");
+			$(".btn-sm", 27).click();
+		} else {
+			System.out.println(" *** ace-btn-add-domain domain input validation check Fail !! *** ");
+			close();
+		}
+		$(".gui-input", 1).setValue(id+number);
+		$(".ace-btn-add-domain", 0).click();
+		msgCheck = $("p", 113).text();
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals("도메인 형식이 올바르지 않습니다.")) {
+			System.out.println(" *** ace-btn-add-domain domain input validation check Success !! *** ");
+			$(".btn-sm", 27).click();
+		} else {
+			System.out.println(" *** ace-btn-add-domain domain input validation check Fail !! *** ");
+			close();
+		}
 		
 	}
+	
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();

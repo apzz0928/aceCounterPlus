@@ -5,7 +5,7 @@
   <test thread-count="5" name="Test">
     <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="aceCounterPlus.memberInfo"/>
+      <class name="aceCounterPlus.addService"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Failed suite [Suite] -->
