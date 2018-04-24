@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 
 import com.codeborne.selenide.WebDriverRunner;
 
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
@@ -91,7 +91,36 @@ public class serviceInfo {
 	}
 	public static void validationCheck(int pTagNum, int btnNum, String val) {
 		String msgCheck = $("p", pTagNum).text();
-		if(val.equals("website_sub")) {
+		switch(val) {
+		case "website_sub":
+			checkMsg = "웹사이트 이름을 입력해주세요.";
+			break;
+		case "domain_input_sub":
+			checkMsg = "등록된 도메인이 없습니다.";
+			break;
+		case "domain_input_sm":
+			checkMsg = "도메인을 입력하세요.";
+			break;
+		case "domain_form_sm":
+			checkMsg = "도메인 형식이 올바르지 않습니다.";
+			break;
+		case "email_input_sendbtn":
+			checkMsg = "올바른 이메일을 입력하세요.";
+			break;
+		case "email_input_sub":
+			checkMsg = "수신 이메일을 추가해 주세요.";
+			break;
+		case "email_send_sub":
+			checkMsg = "요약리포트가 발송되었습니다.";
+			break;
+		case "email_h1_check":
+			checkMsg = "주간요약 리포트입니다.";
+			break;
+		case "saveCheck":
+			checkMsg = "설정하신 내용이 저장되었습니다.\n설정내용은 익일부터 반영됩니다.";
+			break;
+		}
+		/*if(val.equals("website_sub")) {
 			checkMsg = "웹사이트 이름을 입력해주세요.";
 		} else if (val.equals("domain_input_sub")) {
 			checkMsg = "등록된 도메인이 없습니다.";
@@ -107,7 +136,9 @@ public class serviceInfo {
 			checkMsg = "요약리포트가 발송되었습니다.";
 		} else if (val.equals("email_h1_check")) {
 			checkMsg = "주간요약 리포트입니다.";
-		}
+		} else if (val.equals("saveCheck")) {
+			checkMsg = "설정하신 내용이 저장되었습니다.설정내용은 익일부터 반영됩니다";
+		}*/
 		$(".modal-backdrop").waitUntil(visible, 15000);
 		if(msgCheck.equals(checkMsg)) {
 			System.out.println(" *** " + val + "-btn validation check Success !! *** ");
@@ -171,7 +202,7 @@ public class serviceInfo {
 		$(".ace-btn-add-domain", 0).click();
 		$(".ace-btn-edit").click();
 		msgCheck = $("p", 125).text();
-		$(".modal-backdrop").waitUntil(visible, 3000);
+		$(".modal-backdrop").waitUntil(visible, 5000);
 		if(msgCheck.equals("수정이 완료되었습니다.")) {
 			System.out.println(" *** modify info check Success !! *** ");
 			$(".btn-sm", 32).click();
@@ -182,14 +213,17 @@ public class serviceInfo {
 	}
 	@Test(priority = 1)
 	public void sendmailSetting() {
+		$(".nav-tabs").waitUntil(visible, 3000);
 		$(By.linkText("발송메일 설정")).click();
 		String mt10 = $(".mt10").text();
+		$(".mt10").waitUntil(visible, 5000);
 		if(mt10.equals("* 표시는 필수 입력")) {
-			System.out.println(" *** sendmailSetting page access Success !! *** ");
+			System.out.println(" *** sendMailSetting page access Success !! *** ");
 		} else {
-			System.out.println(" *** sendmailSetting page access Fail !! *** ");
+			System.out.println(" *** sendMailSetting page access Fail !! *** ");
 			close();
 		}
+		$(".btn-del-sendEmail").waitUntil(visible, 5000);
 		$(".btn-del-sendEmail").click();
 		$("#btn-sendEmail").click();
 		validationCheck(6, 5,"email_input_sendbtn");
@@ -201,19 +235,54 @@ public class serviceInfo {
 		$(".gui-input").setValue("apzz0928@nhnent.com");
 		$("#btn-sendEmail").click();
 		$("#btn-sendMail").click();
+		$(".modal-backdrop").waitUntil(visible, 12000);
 		validationCheck(9, 8, "email_send_sub");
+		open("https://google.com"); //acecounter 페이지에서 두레이 바로 페이지 이동이 안되서 다른페이지를 거쳐가도록
 		open("https://nhnent.dooray.com/mail/new");
-		
+		String btnRed = $(".btn_red").text();
+		if(btnRed.equals("LOGIN")) {
+			System.out.println(" *** Dooray login page access Success !! *** ");
+		} else {
+			System.out.println(" *** Dooray login page access Fail !! *** ");
+			close();
+		}
+		$("#username").setValue("apzz0928");
+		$("#password").setValue("qordlf!@34");
+		$(".btn_red").click();
+		String name = $(".name", 8).text();
+		$(".name").waitUntil(visible, 5000);
+		if(name.equals("최영권")) {
+			System.out.println(" *** Dooray newMail page access Success !! *** ");
+		} else {
+			System.out.println(" *** Dooray newMail page access Fail !! *** ");
+			close();
+		}
 		$(".one-line-block").click();
-		String mailCheck = $("h1").text();
+		String mailCheck = $("h1", 0).text();
 		if(mailCheck.equals("주간요약 리포트입니다.")) {
 			System.out.println(" *** mail Title check Success !! *** ");
 		} else {
 			System.out.println(" *** mail Title check Fail !! *** ");
 			close();
 		}
-		back();
-		
+		open("https://google.com");//acecounter 페이지에서 두레이 바로 페이지 이동이 안되서 다른페이지를 거쳐가도록
+		open("https://new.acecounter.com/manage/mailing/summaryReport");
+		$("#btn-reserveEmail").click();
+		validationCheck(6, 5,"email_input_sendbtn");
+		$(".btn-del-reserveEmail").click();
+		$("#btn-save").click();
+		validationCheck(7, 6,"email_input_sub");
+		$(".gui-input", 3).setValue(number);
+		$("#btn-reserveEmail").click();
+		validationCheck(8, 7,"email_input_sendbtn");
+		$(".gui-input", 3).setValue("apzz0928@nhnent.com");
+		$("#btn-reserveEmail").click();
+		for(int i=18;i<=25;i++) {
+			$("label", i).click();
+		}
+		$("#btn-save").click();
+		validationCheck(9, 8,"saveCheck");
+		//back();
 	}
 	@AfterClass
 	public void afterTest() {
