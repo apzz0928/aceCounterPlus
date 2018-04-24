@@ -119,38 +119,39 @@ public class serviceInfo {
 		case "saveCheck":
 			checkMsg = "설정하신 내용이 저장되었습니다.\n설정내용은 익일부터 반영됩니다.";
 			break;
+		case "name_input_mail":
+			checkMsg = "담당자 이름을 입력해 주세요.";
+			break;
+		case "pEmail_input_mail":
+			checkMsg = "담당자 이메일을 입력해 주세요.";
+			break;
+		case "pEmail_form_mail":
+			checkMsg = "이메일 형식이 올바르지 않습니다.";
+			break;
+		case "service_input_mail":
+			checkMsg = "서비스를 추가해 주세요.";
+		break;
+		case "subManager_add_mail":
+			checkMsg = "이메일이 발송되었습니다.\n\n발송된 이메일의 회원가입 링크 유효기간은 총 7일로\n7일 이내 미가입 시 유효기간이 종료됩니다.";
+		break;
+		case "subManager_del":
+			checkMsg = "삭제가 완료되었습니다.";
+		break;
 		}
-		/*if(val.equals("website_sub")) {
-			checkMsg = "웹사이트 이름을 입력해주세요.";
-		} else if (val.equals("domain_input_sub")) {
-			checkMsg = "등록된 도메인이 없습니다.";
-		} else if (val.equals("domain_input_sm")) {
-			checkMsg = "도메인을 입력하세요.";
-		} else if (val.equals("domain_form_sm")) {
-			checkMsg = "도메인 형식이 올바르지 않습니다.";
-		} else if (val.equals("email_input_sendbtn")) {
-			checkMsg = "올바른 이메일을 입력하세요.";
-		} else if (val.equals("email_input_sub")) {
-			checkMsg = "수신 이메일을 추가해 주세요.";
-		} else if (val.equals("email_send_sub")) {
-			checkMsg = "요약리포트가 발송되었습니다.";
-		} else if (val.equals("email_h1_check")) {
-			checkMsg = "주간요약 리포트입니다.";
-		} else if (val.equals("saveCheck")) {
-			checkMsg = "설정하신 내용이 저장되었습니다.설정내용은 익일부터 반영됩니다";
-		}*/
 		$(".modal-backdrop").waitUntil(visible, 15000);
 		if(msgCheck.equals(checkMsg)) {
 			System.out.println(" *** " + val + "-btn validation check Success !! *** ");
 			$(".btn-sm", btnNum).click();
 		} else {
 			System.out.println(" *** " + val + "-btn validation check Fail !! *** ");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(msgCheck);
 			close();
 		}
 	}
 
 	@Test(priority = 0)
-	public void modifyInfo() throws InterruptedException {
+	public void modifyInfo() {
 		open(baseUrl);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
@@ -174,8 +175,8 @@ public class serviceInfo {
 		}
 		$(".collapsed", 0).click();
 		$(".ace-btn-edit").click();
-		String msgCheck = $("p", 120).text();
 		$(".modal-backdrop").waitUntil(visible, 3000);
+		String msgCheck = $("p", 120).text();
 		if(msgCheck.equals("변경된 정보가 없습니다.")) {
 			System.out.println(" *** don't InfoModify check Success !! *** ");
 			$(".btn-sm", 27).click();
@@ -212,7 +213,7 @@ public class serviceInfo {
 		}
 	}
 	@Test(priority = 1)
-	public void sendmailSetting() {
+	public void sendMailSetting() {
 		$(".nav-tabs").waitUntil(visible, 3000);
 		$(By.linkText("발송메일 설정")).click();
 		String mt10 = $(".mt10").text();
@@ -282,8 +283,102 @@ public class serviceInfo {
 		}
 		$("#btn-save").click();
 		validationCheck(9, 8,"saveCheck");
-		//back();
 	}
+	@Test(priority = 2)
+	public void subManager() {
+		$(".nav-tabs").waitUntil(visible, 3000);
+		$(By.xpath("(//a[contains(text(),'부관리자')])[2]")).click();
+		String btnMail = $("#btn_mail").text();
+		$("#btn_mail").waitUntil(visible, 5000);
+		if(btnMail.equals("메일발송")) {
+			System.out.println(" *** subManager page access Success !! *** ");
+		} else {
+			System.out.println(" *** subManager page access Fail !! *** ");
+			close();
+		}
+		$("#btn_mail").click();
+		validationCheck(5, 7, "name_input_mail");
+		$("#submanager_nm").setValue("부관리자" + number);
+		$("#btn_mail").click();
+		validationCheck(6, 8, "pEmail_input_mail");
+		$("#submanager_email").setValue("apzz0928@nhnent");
+		$("#btn_mail").click();
+		validationCheck(7, 9, "pEmail_form_mail");
+		$("#submanager_email").setValue("apzz0928@nhnent.com");
+		$("#btn_mail").click();
+		validationCheck(8, 10, "service_input_mail");
+	    $(By.xpath("//button[@type='button']")).click();
+	    $(By.id("treeDemo_2_check")).click();
+	    $(By.id("select_auth")).click();
+	    $(By.xpath("(//option[@value='10'])[2]")).click();
+	    $(By.id("btn_add_svc")).click();
+	    $("#btn_mail").click();
+		validationCheck(9, 11, "subManager_add_mail");
+		System.out.println(" *** subManager add Success !! *** ");
+		open("https://google.com");
+		open("https://nhnent.dooray.com/mail/new");
+		//메일발송때 로그인되어있어서 주석
+		/*String btnRed = $(".btn_red").text();
+		if(btnRed.equals("LOGIN")) {
+			System.out.println(" *** Dooray login page access Success !! *** ");
+		} else {
+			System.out.println(" *** Dooray login page access Fail !! *** ");
+			close();
+		}
+		$("#username").setValue("apzz0928");
+		$("#password").setValue("qordlf!@34");
+		$(".btn_red").click();*/
+		String name = $(".name", 8).text();
+		$(".name").waitUntil(visible, 5000);
+		if(name.equals("최영권")) {
+			System.out.println(" *** Dooray newMail page access Success !! *** ");
+		} else {
+			System.out.println(" *** Dooray newMail page access Fail !! *** ");
+			close();
+		}
+		$(".one-line-block").click();
+		String mailCheck = $("h1", 0).text();
+		if(mailCheck.equals("부관리자 회원가입 안내")) {
+			System.out.println(" *** subManager mail Title check Success !! *** ");
+		} else {
+			System.out.println(" *** subManager mail Title check Fail !! *** ");
+			close();
+		}
+		$(By.xpath("//div[@id='mailContentsView-subject-anchor']/section/div[3]/div/div/div/p/a/strong")).click();
+		switchTo().window(1);
+		$(By.xpath("//input[@name='']")).click();
+		$(By.linkText("확인")).click();
+		$(By.xpath("//form[@id='joinForm']/div/span/label")).click();
+		$("#userid").sendKeys(id + number);
+		$("#recheck").click();
+		$("#userpw").sendKeys("qordlf!@34");
+		$("#repeatpw").sendKeys("qordlf!@34");
+		$(".btn_join").click();
+		$(By.xpath("(//a[contains(text(),'확인')])[2]")).click();
+		switchTo().window(0);
+		open("https://google.com");
+		open("https://new.acecounter.com/manage/serviceInfo/submanager");
+		$("#btn_mail").waitUntil(visible, 5000);
+		if(btnMail.equals("메일발송")) {
+			System.out.println(" *** subManager page access2 Success !! *** ");
+		} else {
+			System.out.println(" *** subManager page access2 Fail !! *** ");
+			close();
+		}
+		$(".btn-sm", 5).click();
+		String alert = $("p", 5).text();
+		$("#btn_mail").waitUntil(visible, 5000);
+		if(alert.equals("부관리자 권한을 삭제하시겠습니까?")) {
+			System.out.println(" *** subManager delete message Success !! *** ");
+			$("#btn-modal-alert-yes").click();
+		} else {
+			System.out.println(" *** subManager delete message Fail !! *** ");
+			close();
+		}
+		validationCheck(6, 13,"subManager_del");
+		$("#btn_mail").waitUntil(visible, 5000);
+	}
+	
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();
