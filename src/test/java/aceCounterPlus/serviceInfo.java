@@ -142,10 +142,12 @@ public class serviceInfo {
 		if(msgCheck.equals(checkMsg)) {
 			System.out.println(" *** " + val + "-btn validation check Success !! *** ");
 			$(".btn-sm", btnNum).click();
+			if(val.equals("saveCheck")) {
+				System.out.println(" *** summary report mail send Success !! *** ");
+			}
 		} else {
 			System.out.println(" *** " + val + "-btn validation check Fail !! *** ");
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			System.out.println(msgCheck);
 			close();
 		}
 	}
@@ -283,6 +285,9 @@ public class serviceInfo {
 		}
 		$("#btn-save").click();
 		validationCheck(9, 8,"saveCheck");
+		$(".nav-tabs").waitUntil(visible, 3000);
+		$(By.linkText("알림메일 발송")).click();
+		
 	}
 	@Test(priority = 2)
 	public void subManager() {
