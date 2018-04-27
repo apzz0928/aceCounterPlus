@@ -378,12 +378,11 @@ public class serviceInfo {
 			$("#btn-modal-alert-yes").click();
 		} else {
 			System.out.println(" *** subManager delete message Fail !! *** ");
-			close();
+			close();;
 		}
 		validationCheck(6, 13,"subManager_del");
 		$("#btn_mail").waitUntil(visible, 5000);
 	}
-	
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();
