@@ -95,6 +95,12 @@ public class charge {
 		case "service_select_next":
 			checkMsg = "서비스를 선택해 주세요.";
 			break;
+		case "businessLicense_input_submit":
+			checkMsg = "사업자등록번호를 입력해 주세요.";
+			break;
+		case "businessLicense_input_number_submit":
+			checkMsg = "숫자만 입력할 수 있습니다.";
+			break;
 		}
 		$(".modal-backdrop").waitUntil(visible, 15000);
 		if(msgCheck.equals(checkMsg)) {
@@ -111,7 +117,7 @@ public class charge {
 	}
 
 	@Test(priority = 0)
-	public void modifyInfo() {
+	public void extensionCharge() {
 		open(baseUrl);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
@@ -151,6 +157,38 @@ public class charge {
 		$("#cancel_kcp_payifr").click();
 		$("#blockOverlayID").waitUntil(disabled, 3000);*/
 		System.out.println(" *** extension charge page Test Success !! *** ");
+	}
+	@Test(priority = 1)
+	public void addCharge() {
+		$(By.linkText("추가요금")).click();
+		$(".nav-tabs").waitUntil(visible, 5000);
+		$("#btn-next-step").click();
+		validationCheck(15, 4, "service_select_next");
+		System.out.println(" *** add charge page Test Success !! *** ");
+	}
+	@Test(priority = 2)
+	public void inquiryCharge() {
+		$(By.linkText("결제내역조회")).click();
+		$(".nav-tabs").waitUntil(visible, 5000);
+		$(".opened", 0).click();
+		System.out.println(" *** inquiry charge page Test Success !! *** ");		
+	}
+	@Test(priority = 3)
+	public void bill() {
+		$(By.linkText("계산서")).click();
+		$(".nav-tabs").waitUntil(visible, 5000);
+		$("#btn-business-info").click();
+		$(".mt20").waitUntil(visible, 3000);
+		$("#btn-submit").click();
+		validationCheck(7, 3, "businessLicense_input_submit");
+		$(By.name("businessRegistNoFirstPosNo")).setValue("ㅁㅁㅁ");
+		$("#btn-submit").click();
+		validationCheck(8, 4, "businessLicense_input_number_submit");
+		
+		$(By.name("businessRegistNoFirstPosNo")).setValue("999");
+		$(By.name("businessRegistNoMidPosNo")).setValue("99");
+		$(By.name("businessRegistNoEndPosNo")).setValue("99999");
+		System.out.println(" *** inquiry charge page Test Success !! *** ");		
 	}
 	@AfterClass
 	public void afterTest() {

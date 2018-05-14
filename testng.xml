@@ -9,9 +9,9 @@
 <!-- <class name="aceCounterPlus.changePassword"/> -->
 <!-- <class name="aceCounterPlus.changeMemberInfo"/> -->
 <!-- <class name="aceCounterPlus.serviceInfo"/> -->
-<class name="aceCounterPlus.charge"/>
+<!-- <class name="aceCounterPlus.charge"/> -->
 <!-- <class name="aceCounterPlus.frontPage"/> -->
-<!-- 	<class name="aceCounterPlus.testScript"/> -->
+<class name="aceCounterPlus.testScript"/>
 <!-- 	<class name="aceCounterPlus.adminManage"/> -->
   </classes>
   </test> <!-- Test -->

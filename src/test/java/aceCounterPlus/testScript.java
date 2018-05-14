@@ -305,9 +305,153 @@ public class testScript {
 	    $(By.linkText("Web Trialapzz0928888.org")).click();
 	    $(By.xpath("//div[@id='menu-top-service-items']/li[0]/a")).click();
 	    Thread.sleep(1000);
-	    int a = 3;
 	    for(int i=0;i<=300;i++) {
 
+	    }
+	}
+	//@Test(priority = 5)
+	public void 파트너_추가() throws Exception {
+		open("http://10.160.231.21");
+		Thread.sleep(1000);
+		$("#username").setValue("admin");
+		$("#password").setValue("nhnace");
+		$("input", 3).click();
+		Thread.sleep(1000);
+		open("http://10.160.231.21/advertiser/detail?agencyid=19");
+		Thread.sleep(2000);
+	    for(int i=0;i<=101;i++) {
+	    	$(By.name("clientname")).setValue("삭제할파트너_a" + i);
+	    	$(By.name("email")).setValue(i + "@m.net");
+	    	$(By.name("contact_2")).setValue("0000");
+	    	$(By.name("contact_3")).setValue("1111");
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    }
+	}
+	//@Test(priority = 6)
+	public void 에이전시_추가() throws Exception {
+		open("http://10.160.231.21");
+		Thread.sleep(1000);
+		$("#username").setValue("admin");
+		$("#password").setValue("nhnace");
+		$("input", 3).click();
+		Thread.sleep(2000);
+		open("http://10.160.231.21/agency/list");
+		Thread.sleep(1000);
+    	$(".btn-red").click();
+    	Thread.sleep(1000);
+	    for(int i=0;i<=101;i++) {
+	    	$(".i_text", 0).setValue("Agency_a" + i);    	
+	    	$(".i_text", 1).setValue("a" + i + "@m.net");
+	    	$(By.name("contact_2")).setValue("0000");
+	    	$(By.name("contact_3")).setValue("1111");
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    }
+	}
+	@Test(priority = 7)
+	public void 파트너_담당자_추가() throws Exception {
+		open("http://10.160.231.21");
+		Thread.sleep(1000);
+		$("#username").setValue("admin");
+		$("#password").setValue("nhnace");
+		$("input", 3).click();
+		Thread.sleep(1000);
+		open("http://10.160.231.21/advertiser/user/detail?accountid=158");
+		Thread.sleep(2000);
+	    for(int i=0;i<=101;i++) {
+	    	$(By.name("username")).setValue("Advertiser_a" + i);
+	    	$(".btn-red", 0).click();
+	    	$(By.name("contact_name")).setValue("삭제할사용자_a" + i);	    	
+	    	$(By.name("email_address")).setValue(i + "@m.net");
+	    	$(By.name("contact_2")).setValue("0000");
+	    	$(By.name("contact_3")).setValue("1111");
+	    	Thread.sleep(1000);
+	    	$(".btn-red", 1).click();
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    }
+	}
+	//@Test(priority = 8)
+	public void 에이전시_담당자_추가() throws Exception {
+/*		open("http://10.160.231.21");
+		Thread.sleep(1000);
+		$("#username").setValue("admin");
+		$("#password").setValue("nhnace");
+		$("input", 3).click();*/
+		Thread.sleep(1000);
+		open("http://10.160.231.21/agency/user/detail?accountid=72");
+		Thread.sleep(2000);
+	    for(int i=0;i<=101;i++) {
+	    	$(By.name("username")).setValue("delAgency_a" + i);
+	    	$(".btn-red", 0).click();
+	    	$(By.name("contact_name")).setValue("삭제할사용자_a" + i);	    	
+	    	$(By.name("email_address")).setValue(i + "@m.net");
+	    	$(By.name("contact_2")).setValue("0000");
+	    	$(By.name("contact_3")).setValue("1111");
+	    	Thread.sleep(1000);
+	    	$(".btn-red", 1).click();
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    }
+	}
+	//@Test(priority = 9)
+	public void 캠페인_추가() throws Exception {
+/*		open("http://10.160.231.21");
+		Thread.sleep(1000);
+		$("#username").setValue("admin");
+		$("#password").setValue("nhnace");
+		$("input", 3).click();*/
+		Thread.sleep(1000);
+		open("http://10.160.231.21/campaign/detail?agencyid=19&clientid=29");
+		Thread.sleep(2000);
+	    for(int i=0;i<=101;i++) {
+	    	$(By.name("campaignname")).setValue("delCampaign_a" + i);
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    }
+	}
+	//@Test(priority = 10)
+	public void 매체_사이트_추가() throws Exception {
+		/*open("http://10.160.231.21");
+		Thread.sleep(1000);
+		$("#username").setValue("admin");
+		$("#password").setValue("nhnace");
+		$("input", 3).click();*/
+		Thread.sleep(1000);
+		open("http://10.160.231.21/site/detail?agencyid=19");
+		Thread.sleep(2000);
+	    for(int i=0;i<=101;i++) {
+	    	$(By.name("name1")).setValue("delSite_a" + i);
+	    	$(By.name("website1")).setValue("http://URL_a" + i + ".com");
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    }
+	}
+	//@Test(priority = 11)
+	public void 매체_영역_추가() throws Exception {
+		/*open("http://10.160.231.21");
+		Thread.sleep(1000);
+		$("#username").setValue("admin");
+		$("#password").setValue("nhnace");
+		$("input", 3).click();*/
+		Thread.sleep(1000);
+		open("http://10.160.231.21/zone/detail?agencyid=19&affiliateid=41");
+		Thread.sleep(2000);
+	    for(int i=0;i<=101;i++) {
+	    	$(By.name("zonename1")).setValue("delZone_a" + i);
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
+	    	Thread.sleep(1000);
+	    	$(".btn-red").click();
 	    }
 	}
 	@AfterClass
