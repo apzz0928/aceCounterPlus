@@ -157,6 +157,7 @@ public class memberInfo {
 			System.out.println(" *** change memberInfo Fail !! *** ");
 			close();
 		}
+	    Thread.sleep(1000);
 		$("p", 5).click();
 		$("#s_name").setValue("원래이름");
 		$("#s_company").setValue("원래회사명");
