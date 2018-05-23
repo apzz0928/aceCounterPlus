@@ -134,7 +134,6 @@ public class charge {
 		$(By.linkText("연장요금")).click();
 		$(".nav-tabs").waitUntil(visible, 5000);
 		String panel = $(".panel-title", 0).text();
-		System.out.println("@@@" + panel + "@@@");
 		if(panel.equals("1서비스선택")) {
 			System.out.println(" *** extension charge page access Success !! *** ");
 		} else {
@@ -159,8 +158,10 @@ public class charge {
 		System.out.println(" *** extension charge page Test Success !! *** ");
 	}
 	@Test(priority = 1)
-	public void addCharge() {
-		$(By.linkText("추가요금")).click();
+	public void addCharge() throws InterruptedException {
+		Thread.sleep(2000);
+		//$(By.linkText("추가요금")).click();
+		open("https://new.acecounter.com//manage/charge/additionalCharge");
 		$(".nav-tabs").waitUntil(visible, 5000);
 		$("#btn-next-step").click();
 		validationCheck(15, 4, "service_select_next");

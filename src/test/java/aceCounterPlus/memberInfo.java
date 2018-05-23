@@ -138,6 +138,7 @@ public class memberInfo {
 			System.out.println(" *** Restoration Password Fail !! *** ");
 			close();
 		}
+		Thread.sleep(1500);
 		$("#s_name").setValue("변경이름");
 		$("#s_company").setValue("변경회사명");
 		$(By.name("s_hp1")).click();
@@ -147,7 +148,7 @@ public class memberInfo {
 		$("#s_email").setValue("apzz0928@naver.com");
 	    $(".btn-lg", 1).click();
 	    String modalBody = $(".modal-body", 1).text();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		$(".modal-backdrop").waitUntil(visible, 3000);
 	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 5).click();
