@@ -269,7 +269,7 @@ public class marketingInflowSetting {
 	}
 	@Test(priority = 2)
 	public void advertisingCodeDownload() throws InterruptedException {
-		Thread.sleep(1000);
+		Thread.sleep(2500);
 		$("#inflowMrkCodeDown").waitUntil(visible, 3000);
 		String pageLoadingCheck = $("#inflowMrkCodeDown").text();
 		if(pageLoadingCheck.equals("광고코드 다운로드")) {
@@ -293,8 +293,8 @@ public class marketingInflowSetting {
 	}
 	@Test(priority = 3)
 	public void advertisingProductManage_add() throws InterruptedException {
-		Thread.sleep(1000);
-		$(By.linkText("광고상품 관리")).click();
+		Thread.sleep(2000);
+		$(".btn-dark", 0).click();
 		Thread.sleep(1000);
 		$("#addViewBtn").waitUntil(visible, 3000);
 		String pageLoadingCheck = $("#addViewBtn").text();

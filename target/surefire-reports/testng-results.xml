@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-05-24T08:46:18Z" name="Suite" finished-at="2018-05-24T08:46:42Z" duration-ms="24044">
+  <suite started-at="2018-05-24T09:28:36Z" name="Suite" finished-at="2018-05-24T09:29:21Z" duration-ms="45126">
     <groups>
     </groups>
-    <test started-at="2018-05-24T08:46:18Z" name="Test" finished-at="2018-05-24T08:46:42Z" duration-ms="24044">
-      <class name="aceCounterPlus.memberInfo">
-        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.memberInfo@dd05255]" started-at="2018-05-24T17:46:18Z" name="beforeTest" finished-at="2018-05-24T17:46:23Z" duration-ms="4970" status="PASS">
+    <test started-at="2018-05-24T09:28:36Z" name="Test" finished-at="2018-05-24T09:29:21Z" duration-ms="45126">
+      <class name="aceCounterPlus.marketingInflowSetting">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.marketingInflowSetting@5aa9e4eb]" started-at="2018-05-24T18:28:36Z" name="beforeTest" finished-at="2018-05-24T18:28:41Z" duration-ms="4788" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,15 +18,27 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="memberInfoChange()[pri:0, instance:aceCounterPlus.memberInfo@dd05255]" started-at="2018-05-24T17:46:23Z" name="memberInfoChange" finished-at="2018-05-24T17:46:42Z" duration-ms="18793" status="PASS">
+        <test-method signature="mktInflowSetting_add()[pri:0, instance:aceCounterPlus.marketingInflowSetting@5aa9e4eb]" started-at="2018-05-24T18:28:41Z" name="mktInflowSetting_add" finished-at="2018-05-24T18:28:59Z" duration-ms="17453" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- memberInfoChange -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.memberInfo@dd05255]" started-at="2018-05-24T17:46:42Z" name="afterTest" finished-at="2018-05-24T17:46:42Z" duration-ms="274" status="PASS">
+        </test-method> <!-- mktInflowSetting_add -->
+        <test-method signature="mktInflowSetting_del()[pri:1, instance:aceCounterPlus.marketingInflowSetting@5aa9e4eb]" started-at="2018-05-24T18:28:59Z" name="mktInflowSetting_del" finished-at="2018-05-24T18:29:07Z" duration-ms="7971" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mktInflowSetting_del -->
+        <test-method signature="advertisingCodeDownload()[pri:2, instance:aceCounterPlus.marketingInflowSetting@5aa9e4eb]" started-at="2018-05-24T18:29:07Z" name="advertisingCodeDownload" finished-at="2018-05-24T18:29:11Z" duration-ms="4330" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- advertisingCodeDownload -->
+        <test-method signature="advertisingProductManage_add()[pri:3, instance:aceCounterPlus.marketingInflowSetting@5aa9e4eb]" started-at="2018-05-24T18:29:11Z" name="advertisingProductManage_add" finished-at="2018-05-24T18:29:21Z" duration-ms="10253" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- advertisingProductManage_add -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.marketingInflowSetting@5aa9e4eb]" started-at="2018-05-24T18:29:21Z" name="afterTest" finished-at="2018-05-24T18:29:21Z" duration-ms="322" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- aceCounterPlus.memberInfo -->
+      </class> <!-- aceCounterPlus.marketingInflowSetting -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
