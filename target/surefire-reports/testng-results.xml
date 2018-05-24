@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-05-23T02:56:28Z" name="Suite" finished-at="2018-05-23T02:56:57Z" duration-ms="28547">
+  <suite started-at="2018-05-24T08:46:18Z" name="Suite" finished-at="2018-05-24T08:46:42Z" duration-ms="24044">
     <groups>
     </groups>
-    <test started-at="2018-05-23T02:56:28Z" name="Test" finished-at="2018-05-23T02:56:57Z" duration-ms="28547">
+    <test started-at="2018-05-24T08:46:18Z" name="Test" finished-at="2018-05-24T08:46:42Z" duration-ms="24044">
       <class name="aceCounterPlus.memberInfo">
-        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.memberInfo@dd05255]" started-at="2018-05-23T11:56:28Z" name="beforeTest" finished-at="2018-05-23T11:56:34Z" duration-ms="5350" status="PASS">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.memberInfo@dd05255]" started-at="2018-05-24T17:46:18Z" name="beforeTest" finished-at="2018-05-24T17:46:23Z" duration-ms="4970" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="memberInfoChange()[pri:0, instance:aceCounterPlus.memberInfo@dd05255]" started-at="2018-05-23T11:56:34Z" name="memberInfoChange" finished-at="2018-05-23T11:56:56Z" duration-ms="22759" status="PASS">
+        <test-method signature="memberInfoChange()[pri:0, instance:aceCounterPlus.memberInfo@dd05255]" started-at="2018-05-24T17:46:23Z" name="memberInfoChange" finished-at="2018-05-24T17:46:42Z" duration-ms="18793" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- memberInfoChange -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.memberInfo@dd05255]" started-at="2018-05-23T11:56:56Z" name="afterTest" finished-at="2018-05-23T11:56:57Z" duration-ms="430" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.memberInfo@dd05255]" started-at="2018-05-24T17:46:42Z" name="afterTest" finished-at="2018-05-24T17:46:42Z" duration-ms="274" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->

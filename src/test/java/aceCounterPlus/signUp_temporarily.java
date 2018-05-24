@@ -27,7 +27,7 @@ import static org.testng.Assert.fail;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-public class marketingInflowSetting {
+public class signUp_temporarily {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")

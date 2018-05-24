@@ -60,7 +60,7 @@
 		  		<inherited>true</inherited>
 		  			<configuration>
 		  				<suiteXmlFiles>
-		  					<suiteXmlFile>testng.xml</suiteXmlFile>
+		  					<suiteXmlFile>testng_signUp.xml</suiteXmlFile>
 		  				</suiteXmlFiles>
 		  			</configuration>
 		  	</plugin>

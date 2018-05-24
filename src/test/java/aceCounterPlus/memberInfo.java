@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 
 import com.codeborne.selenide.WebDriverRunner;
 
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
@@ -157,7 +157,7 @@ public class memberInfo {
 			System.out.println(" *** change memberInfo Fail !! *** ");
 			close();
 		}
-	    Thread.sleep(1000);
+	    Thread.sleep(3000);
 		$("p", 5).click();
 		$("#s_name").setValue("원래이름");
 		$("#s_company").setValue("원래회사명");
