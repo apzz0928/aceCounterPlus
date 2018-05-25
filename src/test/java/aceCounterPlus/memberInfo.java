@@ -158,6 +158,7 @@ public class memberInfo {
 			close();
 		}
 	    Thread.sleep(3000);
+	    $("#s_name").waitUntil(visible, 10000);
 		$("#s_name").setValue("원래이름");
 		$("#s_company").setValue("원래회사명");
 		$(By.name("s_hp1")).click();

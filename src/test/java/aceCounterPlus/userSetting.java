@@ -23,7 +23,6 @@ import com.codeborne.selenide.WebDriverRunner;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
-import static org.testng.Assert.fail;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
@@ -31,7 +30,7 @@ public class userSetting {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
 	private static HttpURLConnection huc;
 	private static int respCode;
 	
@@ -85,34 +84,30 @@ public class userSetting {
 		}
 	}
 	
-	public static void alertCheck(String check1, String check2, int i) {
-		String alertCheck = "";
-		if(check1.equals("입력")) {
-			alertCheck = $("p", i).text();
-			$("p", i).click();
-			$("p", i).click();
-			if(alertCheck.equals(check2 + " 입력해주세요.")) {
-				$(".btn-sm", i+1).click();
-				System.out.println(" *** " + check2 + " missing check Success *** ");
-			} else {
-				System.out.println(" *** " + check2 + " missing check Fail *** ");
-				close();
-			}
-		} else if (check1.equals("유효성")) {
-			alertCheck = $("p", i).text();
-			$("p", i).click();
-			$("p", i).click();
-			if(alertCheck.equals("한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.")) {
-				if(check2.equals("광고상품명")) {
-					$(".btn-sm", i).click();
-				} else {
-					$(".btn-sm", i+1).click();
-				}
-				System.out.println(" *** " + check2 + " validation check Success *** ");
-			} else {
-				System.out.println(" *** " + check2 + " validation check Fail *** ");
-				close();
-			}
+	public static void valCheck(int pTagNum, int btnNum, String val) {
+		String msgCheck = $("p", pTagNum).text();
+		if(val.equals("CheckIP")) {
+			checkMsg = "IP를 입력하세요.";
+		} else if (val.equals("IPvalCheck")) {
+			checkMsg = "시스템 오류가 발생되었습니다. 다시 시도해주세요.";
+		} else if (val.equals("IPregister")) {
+			checkMsg = "IP가 등록되었습니다.";
+		}  else if (val.equals("IPduplication")) {
+			checkMsg = "등록된 IP 입니다. 다시 입력해주세요.";
+		}else if (val.equals("searchInputCheck")) {
+			checkMsg = "검색어를 입력해 주세요";
+		} else if (val.equals("delcheck")) {
+			checkMsg = "삭제할 IP를 선택하세요.";
+		} else if (val.equals("delIP")) {
+			checkMsg = "IP가 삭제되었습니다.";
+		}
+		$(".modal-backdrop").waitUntil(visible, 3000);
+		if(msgCheck.equals(checkMsg)) {
+			System.out.println(" *** " + val + " validation check Success !! *** ");
+			$(".btn-sm", btnNum).click();
+		} else {
+			System.out.println(" *** " + val + " validation check Fail ... *** ");
+			close();
 		}
 	}
 	
@@ -125,7 +120,7 @@ public class userSetting {
             respCode = huc.getResponseCode();
             if(respCode >= 400){
             	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " *****");
-            	fail();
+            	close();
             } else {
             	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " *****");
             }
@@ -136,9 +131,10 @@ public class userSetting {
         }
 		return false;
     }
-	
+
 	@Test(priority = 0)
-	public void mktInflowSetting_add() throws InterruptedException {
+	public void IPFilterring_add() throws InterruptedException {
+		System.out.println(" ----- IPFilterring_add Start ----- ");
 		open(baseUrl);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
@@ -148,266 +144,139 @@ public class userSetting {
 		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
-			System.out.println(" *** Login Fail !! *** ");
+			System.out.println(" *** Login Fail ... *** ");
 			close();
 		}
 		$(".go_stat", 1).click();
-		String pageLoadingCheck = $("h3", 2).text();
-		if(pageLoadingCheck.equals("방문수")) {
+		String pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
-			System.out.println(" *** statsLiveDashboard Page access Fail !! *** ");
+			System.out.println(" *** statsLiveDashboard Page access Fail ... *** ");
 			close();
 		}
 		$("#redirectConfBtn").click();
 		Thread.sleep(1000);
-		$("#inflowAddBtn").waitUntil(visible, 3000);
-		pageLoadingCheck = $("#inflowAddBtn").text();
-		if(pageLoadingCheck.equals("추가")) {
-			System.out.println(" *** appmarketing page Success !! *** ");
+		$("#redirectConfBtn").waitUntil(visible, 3000);
+		$(".accordion-toggle", 1).click();
+		$(By.linkText("IP필터링설정")).click();
+		Thread.sleep(1000);
+		$("h5", 2).waitUntil(visible, 3000);
+		pageLoadCheck = $("h5", 2).text();
+		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
+			System.out.println(" *** IP Filterring Page load Success !! *** ");
 		} else {
-			System.out.println(" *** appmarketing page Fail !! *** ");
+			System.out.println(" *** IP Filterring Page load Fail ... *** ");
 			close();
 		}
-		$("#inflowAddBtn").click();
-		$(By.xpath("//form[@id='mainForm']/div/div[2]/table/tbody/tr[2]/td/div/div/label[2]")).click();
-		$("#btnReg").click();
-		alertCheck("입력", "캠페인명을", 4);
-		$("#campaign_nm").setValue(domain + date + ".com@");
-		$("#btnReg").click();
-		alertCheck("유효성", "캠페인명", 5);
-		$("#campaign_nm").setValue(domain + date + date + ".com");
-		$("#btnReg").click();
-		alertCheck("입력", "소재를", 6);
-		$("#campaign_material_value0").setValue(domain + date + ".com@");
-		$("#btnReg").click();
-		alertCheck("유효성", "소재", 7);
-		$("#campaign_material_value0").setValue(domain + date + ".com");
-		$("#btnReg").click();
-		//alertCheck("입력", "연결 URL을 ", 8); alert 문구가 하세요. 라서 공통화 못시킴 문구 통일 필요
-		$("p", 8).waitUntil(visible, 3000);
-		String msgCheck = $("p", 8).text();
-		Thread.sleep(1500);
-		if(msgCheck.equals("연결 URL을 입력하세요.")) {
-			$(".btn-sm", 9).click();
-			System.out.println(" *** link URL Missing Check Success !! *** ");
+		$(".btn-info", 0).click();
+		$("th", 0).waitUntil(visible, 3000);
+		$(".btn-info", 2).click();
+		valCheck(4, 3, "CheckIP");
+		$("#filter-ipa").setValue("127");
+		$(".btn-info", 2).click();
+		valCheck(5, 4, "IPCheck");
+		$("#filter-ipb").setValue("0");
+		$(".btn-info", 2).click();
+		valCheck(6, 5, "IPCheck");
+		$("#filter-ipc").setValue("0");
+		$(".btn-info", 2).click();
+		valCheck(7, 6, "IPCheck");
+		$("#filter-ipd").setValue("ㅇ");
+		$(".btn-info", 2).click();
+		valCheck(8, 7, "IPvalCheck");
+		Thread.sleep(1000);
+		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
+			System.out.println(" *** IP Filterring Page val check Reload Success !! *** ");
 		} else {
-			System.out.println(" *** link URL Missing Check Fail !! *** ");
+			System.out.println(" *** IP Filterring Page val check Reload Fail ... *** ");
 			close();
 		}
-		$("#original_url0").setValue("a");
-		$("#btnReg").click();
-		$("p", 9).waitUntil(visible, 3000);
-		msgCheck = $("p", 9).text();
-		Thread.sleep(1500);
-		if(msgCheck.equals("올바른 URL을 입력하세요.")) {
-			$(".btn-sm", 10).click();
-			System.out.println(" *** link URL validation check Success !! *** ");
+		Thread.sleep(1000);
+		$(".btn-info", 0).click();
+		$("th", 0).waitUntil(visible, 3000);
+		$("#filter-ipa").setValue("127");
+		$("#filter-ipb").setValue("0");
+		$("#filter-ipc").setValue("0");
+		$("#filter-ipd").setValue("1");
+		$(".btn-info", 2).click();
+		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
+			System.out.println(" *** IP Filterring Page register check Reload Success !! *** ");
 		} else {
-			System.out.println(" *** link URL validation check Fail !! *** ");
+			System.out.println(" *** IP Filterring Page register check Reload Fail ... *** ");
 			close();
 		}
-		$("#original_url0").setValue(domain + date + ".com");
-		$("#btnReg").click();
-		$("p", 10).waitUntil(visible, 3000);
-		msgCheck = $("p", 10).text();
-		System.out.println(msgCheck + " : p태그 10번");
-		Thread.sleep(2500);
-		if(msgCheck.equals("등록에 성공했습니다.")) {
-			$(".btn-sm", 11).click();
-			System.out.println(" *** Add Marketing Inflow settings Success !! *** ");
-		} else {
-			System.out.println(" *** Add Marketing Inflow settings Fail !! *** ");
-			close();
-		}
+		valCheck(3, 3, "IPregister");
+		System.out.println(" ----- IPFilterring_add End ----- ");
 	}
 	@Test(priority = 1)
-	public void mktInflowSetting_del() throws InterruptedException {
-		Thread.sleep(2000);
-		$("#inflowAddBtn").waitUntil(visible, 3000);
-		String pageLoadingCheck = $("#inflowAddBtn").text();
-		if(pageLoadingCheck.equals("추가")) {
-			System.out.println(" *** appmarketing page Success !! *** ");
-		} else {
-			System.out.println(" *** appmarketing page Fail !! *** ");
-			close();
-		}
-		$("#deleteViewBtn").click();
-		$("#deleteBtn").click();
-		$("p", 3).waitUntil(visible, 3000);
-		String msgCheck = $("p", 3).text();
-		Thread.sleep(1000);
-		if(msgCheck.equals("삭제할 마케팅 유입 설정을 선택하세요.")) {
-			$(".btn-sm", 4).click();
-			System.out.println(" *** marketing delete validation check Sueecss !! *** ");
-		} else {
-			System.out.println(" *** marketing delete validation check Fail !! *** ");
-			close();
-		}
-		$("#checkAllCamp").click();
-		$("#deleteBtn").click();
-		msgCheck = $("p", 4).text();
-		Thread.sleep(1000);
-		if(msgCheck.equals("선택한 마케팅 유입 설정을 삭제하시겠습니까?\n" + 
-				"마케팅 유입설정 변수에 대해 수집/분석이 중지되며,\n" + 
-				"삭제 후 복구가 불가능합니다.")) {
-			$("#btn-modal-alert-yes").click();
-			System.out.println(" *** marketing delete confirm check Sueecss !! *** ");
-		} else {
-			System.out.println(" *** marketing delete confirm check Fail !! *** ");
-			close();
-		}
-		msgCheck = $("p", 5).text();
-		Thread.sleep(2000);
-		if(msgCheck.equals("마케팅 유입 설정 삭제가 완료되었습니다.")) {
-			$(".btn-sm", 7).click();
-			System.out.println(" *** marketing delete alert check Sueecss !! *** ");
-		} else {
-			System.out.println(" *** marketing delete alert confirm check Fail !! *** ");
-			close();
-		}
+	public void IPFilterring_duplicationCheck() throws InterruptedException {
+		System.out.println(" ----- IPFilterring_duplicationCheck Start ----- ");
+		$(".btn-info", 0).click();
+		Thread.sleep(1500);
+		$("th", 0).waitUntil(visible, 3000);
+		$("#filter-ipa").setValue("127");
+		$("#filter-ipb").setValue("0");
+		$("#filter-ipc").setValue("0");
+		$("#filter-ipd").setValue("1");
+		$(".btn-info", 2).click();
+		valCheck(4, 4, "IPduplication");
+		$(".btn-light", 0).click();
+		System.out.println(" ----- IPFilterring_duplicationCheck End ----- ");
 	}
 	@Test(priority = 2)
-	public void advertisingCodeDownload() throws InterruptedException {
-		Thread.sleep(2500);
-		$("#inflowMrkCodeDown").waitUntil(visible, 3000);
-		String pageLoadingCheck = $("#inflowMrkCodeDown").text();
-		if(pageLoadingCheck.equals("광고코드 다운로드")) {
-			System.out.println(" *** appmarketing page access Success !! *** ");
+	public void IPFilterring_search() {
+		System.out.println(" ----- IPFilterring_search Start ----- ");
+		$(".btn-default", 5).click();
+		valCheck(5, 5, "searchInputCheck");
+		$("#searchIp").setValue("03");
+		$(".btn-default", 5).click();
+		String search = $("h5", 2).text();
+		if(search.equals("등록된 IP가 없습니다.")) {
+			System.out.println(" *** IP Filterring don`t input search check Success !! *** ");
 		} else {
-			System.out.println(" *** appmarketing page access Fail !! *** ");
+			System.out.println(" *** IP Filterring don`t input search check Fail ... *** ");
 			close();
 		}
-		$("#inflowMrkCodeDown").click();
-		Thread.sleep(1000);
-		$("h4", 0).waitUntil(visible, 3000);
-		pageLoadingCheck = $("h4", 0).text();
-		if(pageLoadingCheck.equals("광고코드 다운로드")) {
-			brokenLinkCheck("advCodeDown", "https://new.acecounter.com/setting/appmarketing/codedown?inflow_media_cd=&inflow_mrkt_channel_dcd=10&down_term_cate=ALL&create_dt_st=&create_dt_ed=&original_url_yn=n&use_yn=y");
-			System.out.println(" *** advCodeDownload layer check Sueecss !! *** ");
-			$(".close", 0).click();
+		$("#searchIp").setValue("127");
+		$(".btn-default", 5).click();
+		$("td", 3).waitUntil(visible, 3000);
+		search = $("td", 3).text();
+		if(search.equals("127.0.0.1")) {
+			System.out.println(" *** IP Filterring input search check Success !! *** ");
 		} else {
-			System.out.println(" *** advCodeDownload layer check Fail !! *** ");
+			System.out.println(" *** IP Filterring input search check Fail ... *** ");
 			close();
 		}
+		System.out.println(" ----- IPFilterring_search End ----- ");
 	}
 	@Test(priority = 3)
-	public void advertisingProductManage_add() throws InterruptedException {
-		Thread.sleep(2000);
-		$(".btn-dark", 0).click();
+	public void IPFilterring_del() throws InterruptedException {
+		System.out.println(" ----- IPFilterring_del Start ----- ");
+		$(".btn-gray", 0).click();
+		String pageCheck = $(".btn-info", 1).text();
 		Thread.sleep(1000);
-		$("#addViewBtn").waitUntil(visible, 3000);
-		String pageLoadingCheck = $("#addViewBtn").text();
-		if(pageLoadingCheck.equals("추가")) {
-			System.out.println(" *** advProductManage page access Success !! *** ");
+		if(pageCheck.equals("선택항목삭제")) {
+			System.out.println(" *** IP Filterring delete page Load check Success !! *** ");
 		} else {
-			System.out.println(" *** advProductManage page access Fail !! *** ");
+			System.out.println(" *** IP Filterring delete page Load check Fail ... *** ");
 			close();
 		}
-		$("#addViewBtn").click();
-		$(".gui-input").waitUntil(visible, 2000);
+		$(".btn-info", 1).click();
+		valCheck(3, 3, "delcheck");
+		$("#chkAll").click();
+		$(".btn-info", 1).click();		
 		Thread.sleep(1000);
-		$("#btnRegister").click();
-		String alertCheck = $("p", 3).text();
-		if(alertCheck.equals("광고상품명을 입력하세요.")) {
-			System.out.println(" *** advProductName input check Sueecss !! *** ");
-			$(".btn-sm", 3).click();
+		$("h5", 2).waitUntil(visible, 3000);
+		String pageLoadCheck = $("h5", 2).text();
+		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
+			System.out.println(" *** IP Filterring Page load Success !! *** ");
 		} else {
-			System.out.println(" *** advProductName input check Fail !! *** ");
+			System.out.println(" *** IP Filterring Page load Fail ... *** ");
 			close();
 		}
-		$(".gui-input").setValue("@");
-		$("#btnRegister").click();
-		alertCheck("유효성", "광고상품명", 4);
-		$(".gui-input").setValue(date);
-		$("#btnRegister").click();
-		Thread.sleep(1000);
-		$("p", 5).waitUntil(visible, 2000);
-		alertCheck = $("p", 5).text();
-		if(alertCheck.equals("광고 속성을 선택하세요.")) {
-			System.out.println(" *** advAttribute select check Sueecss !! *** ");
-			$(".btn-sm", 5).click();
-		} else {
-			System.out.println(" *** advAttribute select check Fail !! *** ");
-			close();
-		}
-	    $(By.name("campaignMaterialCd[]")).click();
-	    $(By.xpath("//option[@value='90']")).click();
-		$("#btnRegister").click();
-		Thread.sleep(1000);
-		$("p", 6).waitUntil(visible, 2000);
-		alertCheck = $("p", 6).text();
-		if(alertCheck.equals("등록이 완료되었습니다.")) {
-			System.out.println(" *** advAttribute register Sueecss !! *** ");
-			$(".btn-sm", 6).click();
-		} else {
-			System.out.println(" *** advAttribute register Fail !! *** ");
-			close();
-		}
-	}
-	//@Test(priority = 4)
-	public void advertisingProductManage_del() throws InterruptedException {
-		Thread.sleep(1000);
-		$("#deleteViewBtn").waitUntil(visible, 3000);
-		String pageLoadingCheck = $("#deleteViewBtn").text();
-		if(pageLoadingCheck.equals("삭제")) {
-			System.out.println(" *** advProductManage page access Success !! *** ");
-		} else {
-			System.out.println(" *** advProductManage page access Fail !! *** ");
-			close();
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		$("#addViewBtn").click();
-		$(".gui-input").waitUntil(visible, 2000);
-		$("#btnRegister").click();
-		Thread.sleep(1000);
-		$("p", 5).waitUntil(visible, 2000);
-		String alertCheck = $("p", 3).text();
-		if(alertCheck.equals("광고상품명을 입력하세요.")) {
-			System.out.println(" *** advProductName input check Sueecss !! *** ");
-			$(".btn-sm", 3).click();
-		} else {
-			System.out.println(" *** advProductName input check Fail !! *** ");
-			close();
-		}
-//		alertCheck("입력", "광고상품명을", 3);
-		$(".gui-input").setValue("@");
-		$("#btnRegister").click();
-		alertCheck("유효성", "광고상품명", 4);
-		$(".gui-input").setValue(date);
-		$("#btnRegister").click();
-		Thread.sleep(1000);
-		$("p", 5).waitUntil(visible, 2000);
-		alertCheck = $("p", 5).text();
-		if(alertCheck.equals("광고 속성을 선택하세요.")) {
-			System.out.println(" *** advAttribute select check Sueecss !! *** ");
-			$(".btn-sm", 5).click();
-		} else {
-			System.out.println(" *** advAttribute select check Fail !! *** ");
-			close();
-		}
-	    $(By.name("campaignMaterialCd[]")).click();
-	    $(By.xpath("//option[@value='90']")).click();
-		$("#btnRegister").click();
-		Thread.sleep(1000);
-		$("p", 5).waitUntil(visible, 2000);
-		alertCheck = $("p", 6).text();
-		if(alertCheck.equals("등록이 완료되었습니다.")) {
-			System.out.println(" *** advAttribute register Sueecss !! *** ");
-			$(".btn-sm", 6).click();
-		} else {
-			System.out.println(" *** advAttribute register Fail !! *** ");
-			close();
-		}
+		valCheck(4, 3, "delIP");
+		System.out.println(" ----- IPFilterring_del End ----- ");
 	}
 	
 	@AfterClass
