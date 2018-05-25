@@ -90,7 +90,7 @@ public class addService {
 	private static void js(String javaScriptSource) {
 	    executeJavaScript(javaScriptSource);
 	}
-	public static void validationCheck(int pTagNum, int btnNum, String val) {
+	public static void valCheck(int pTagNum, int btnNum, String val) {
 		String msgCheck = $("p", pTagNum).text();
 		if(val.equals("website_sub")) {
 			checkMsg = "웹사이트 이름을 입력해주세요.";
@@ -138,24 +138,24 @@ public class addService {
 			close();
 		}
 		$("#btn_submit").click();
-		validationCheck(10, 5, "website_sub");
+		valCheck(10, 5, "website_sub");
 		String msgCheck = $("p", 10).text();
 		$(By.name("svcNm")).setValue(id + number);
 		$("#btn_submit").click();
-		validationCheck(11, 6, "domain_input_sub");
+		valCheck(11, 6, "domain_input_sub");
 		$(".ace-btn-add-domain").click();
-		validationCheck(12, 7, "domain_input_sm");
+		valCheck(12, 7, "domain_input_sm");
 		$(".gui-input", 1).setValue(id + number);
 		$(".ace-btn-add-domain").click();
-		validationCheck(13, 8, "domain_form_sm");
+		valCheck(13, 8, "domain_form_sm");
 		$(".gui-input", 1).setValue(id + number + ".com");
 		$(".ace-btn-add-domain").click();
 		$("#btn_submit").click();
-		validationCheck(14, 9, "website_form_sub");
+		valCheck(14, 9, "website_form_sub");
 	    $(By.name("largeCategoryCd")).click();
 	    $(By.xpath("//option[@value='22']")).click();
 		$("#btn_submit").click();
-		validationCheck(15, 10, "website_form_sub");
+		valCheck(15, 10, "website_form_sub");
 	    $(By.name("middleCategoryCd")).click();
 	    $(By.xpath("//option[@value='188']")).click();
 		$("#btn_submit").click();

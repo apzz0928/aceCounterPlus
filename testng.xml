@@ -5,7 +5,7 @@
   <parameter name="browser" value="firefox" />
   <classes>
 <!-- 	<class name="aceCounterPlus.backOffice"/> -->
-<class name="aceCounterPlus.signUp_temporarily"/>
+<class name="aceCounterPlus.marketingInflowSetting"/>
 <!-- <class name="aceCounterPlus.changePassword"/> -->
 <!-- <class name="aceCounterPlus.changeMemberInfo"/> -->
 <!-- <class name="aceCounterPlus.serviceInfo"/> -->

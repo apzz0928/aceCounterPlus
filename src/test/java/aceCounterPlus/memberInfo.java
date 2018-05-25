@@ -158,7 +158,6 @@ public class memberInfo {
 			close();
 		}
 	    Thread.sleep(3000);
-		$("p", 5).click();
 		$("#s_name").setValue("원래이름");
 		$("#s_company").setValue("원래회사명");
 		$(By.name("s_hp1")).click();
@@ -175,8 +174,7 @@ public class memberInfo {
 			System.out.println(" *** Restoration memberInfo Fail !! *** ");
 			close();
 		}
-		//Thread.sleep(1000);
-		$("p", 5).click();
+		Thread.sleep(2000);
 		$(".nav-tabs").waitUntil(visible, 3000);
 		$(".dropdown-toggle", 3).click();
 		$(".btn-logout", 0).click();
