@@ -94,12 +94,12 @@ public class userSettingGroup {
 			checkMsg = "등록이 완료되었습니다.";
 		}  else if (val.equals("groupModify")) {
 			checkMsg = "수정이 완료되었습니다.";
-		}else if (val.equals("")) {
-			checkMsg = "";
-		} else if (val.equals("")) {
-			checkMsg = "";
-		} else if (val.equals("")) {
-			checkMsg = "";
+		} else if (val.equals("delGroup_check")) {
+			checkMsg = "삭제할 회원그룹을 선택하세요.";
+		} else if (val.equals("delGroup_confirm")) {
+			checkMsg = "전체 회원그룹을 삭제하시겠습니까?";
+		} else if (val.equals("delGroup_alert")) {
+			checkMsg = "회원 그룹이 삭제 되었습니다.";
 		}
 		$(".modal-backdrop").waitUntil(visible, 3000);
 		if(msgCheck.equals(checkMsg)) {
@@ -170,8 +170,8 @@ public class userSettingGroup {
 			close();
 		}
 		$("#memgrpAdd").click();
-		$("#notokr-medium").waitUntil(visible, 3000);
-		pageLoadCheck = $("#notokr-medium").text();
+		$(".notokr-medium").waitUntil(visible, 3000);
+		pageLoadCheck = $(".notokr-medium").text();
 		if(pageLoadCheck.equals("회원그룹 추가하기")) {
 			System.out.println(" *** userGroupSetting add Page load Success !! *** ");
 		} else {
@@ -183,10 +183,10 @@ public class userSettingGroup {
 		$("#md_p_name").setValue(date);
 		$("#add_group_regist").click();
 		valCheck(4, 4, "groupVariable");
-		$("md_name_1").setValue(date);
+		$("#md_name_1").setValue(date);
 		$("#add_group_regist").click();
 		valCheck(5, 5, "groupVariable");
-		$("md_name_2").setValue(date);
+		$("#md_name_2").setValue(date);
 		$("#add_group_regist").click();
 		Thread.sleep(1000);
 		$("#memgrpAdd").waitUntil(visible, 3000);
@@ -204,7 +204,7 @@ public class userSettingGroup {
 	public void userGroupSetting_modify() throws InterruptedException {
 		System.out.println(" ! ----- userGroupSetting_modify Start ----- ! ");
 		$(".btn-xs").click();
-		String pageLoadCheck = $("#notokr-medium").text();
+		String pageLoadCheck = $(".notokr-medium").text();
 		if(pageLoadCheck.equals("회원그룹 추가하기")) {
 			System.out.println(" *** userGroupSetting add Page load Success !! *** ");
 		} else {
@@ -212,8 +212,8 @@ public class userSettingGroup {
 			close();
 		}
 		$("#md_p_name").setValue(date + "수정");
-		$("md_name_1").setValue(date + "수정");
-		$("md_name_2").setValue(date + "수정");
+		$("#md_name_1").setValue(date + "수정");
+		$("#md_name_2").setValue(date + "수정");
 		$("#add_group_regist").click();
 		confirm("수정하시겠습니까?");
 		Thread.sleep(1000);
@@ -225,9 +225,37 @@ public class userSettingGroup {
 			System.out.println(" *** userGroup Register Page load Fail ... *** ");
 			close();
 		}
-		valCheck(3, 3, "groupModify");
-		
+		valCheck(3, 3, "groupModify");		
 		System.out.println(" ! ----- userGroupSetting_modify End ----- ! ");
+	}
+	@Test(priority = 2)
+	public void userGroupSetting_del() throws InterruptedException {
+		System.out.println(" ! ----- userGroupSetting_del Start ----- ! ");
+		$(".btn-gray", 0).click();
+		String pageLoadCheck = $(".btn-gray", 1).text();
+		if(pageLoadCheck.equals("취소")) {
+			System.out.println(" *** userGroupSetting delete UI load Success !! *** ");
+		} else {
+			System.out.println(" *** userGroupSetting delete UI load Fail ... *** ");
+			close();
+		}
+		$(".btn-gray", 1).click();
+		$(".btn-gray", 0).click();
+		$(".btn-info", 1).click();
+		valCheck(4, 4, "delGroup_check");
+		$("#chkAll").click();
+		$(".btn-info", 1).click();
+		valCheck(5, 5, "delGroup_confirm");
+		pageLoadCheck = $("h5", 1).text();
+		if(pageLoadCheck.equals("등록된 회원그룹이 없습니다.")) {
+			System.out.println(" *** userGroupSetting Page load Success !! *** ");
+		} else {
+			System.out.println(" *** userGroupSetting Page load Fail ... *** ");
+			close();
+		}
+		valCheck(4, 3, "delGroup_alert");
+		
+		System.out.println(" ! ----- userGroupSetting_del End ----- ! ");
 	}
 		
 	@AfterClass
