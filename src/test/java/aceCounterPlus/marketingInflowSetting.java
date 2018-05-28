@@ -138,7 +138,7 @@ public class marketingInflowSetting {
 	
 	@Test(priority = 0)
 	public void mktInflowSetting_add() throws InterruptedException {
-		System.out.println(" ----- mktInflowSetting_add Start ----- ");
+		System.out.println(" ! ----- mktInflowSetting_add Start ----- ! ");
 		open(baseUrl);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
@@ -219,11 +219,11 @@ public class marketingInflowSetting {
 			System.out.println(" *** Add Marketing Inflow settings Fail ... *** ");
 			close();
 		}
-		System.out.println(" ----- mktInflowSetting_add End ----- ");
+		System.out.println(" ! ----- mktInflowSetting_add End ----- ! ");
 	}
 	@Test(priority = 1)
 	public void mktInflowSetting_del() throws InterruptedException {
-		System.out.println(" ----- mktInflowSetting_del Start ----- ");
+		System.out.println(" ! ----- mktInflowSetting_del Start ----- ! ");
 		Thread.sleep(2000);
 		$("#inflowAddBtn").waitUntil(visible, 3000);
 		String pageLoadCheck = $("#inflowAddBtn").text();
@@ -267,11 +267,11 @@ public class marketingInflowSetting {
 			System.out.println(" *** marketing delete alert confirm check Fail ... *** ");
 			close();
 		}
-		System.out.println(" ----- mktInflowSetting_del End ----- ");
+		System.out.println(" ! ----- mktInflowSetting_del End ----- ! ");
 	}
 	@Test(priority = 2)
 	public void advertisingCodeDownload() throws InterruptedException {
-		System.out.println(" ----- advertisingCodeDownload Start ----- ");
+		System.out.println(" ! ----- advertisingCodeDownload Start ----- ! ");
 		Thread.sleep(2500);
 		$("#inflowMrkCodeDown").waitUntil(visible, 3000);
 		String pageLoadCheck = $("#inflowMrkCodeDown").text();
@@ -293,11 +293,11 @@ public class marketingInflowSetting {
 			System.out.println(" *** advCodeDownload layer check Fail ... *** ");
 			close();
 		}
-		System.out.println(" ----- advertisingCodeDownload End ----- ");
+		System.out.println(" ! ----- advertisingCodeDownload End ----- ! ");
 	}
 	@Test(priority = 3)
 	public void advertisingProductManage_add() throws InterruptedException {
-		System.out.println(" ----- advertisingProductManage_add Start ----- ");
+		System.out.println(" ! ----- advertisingProductManage_add Start ----- ! ");
 		Thread.sleep(2000);
 		$(".btn-dark", 0).click();
 		Thread.sleep(1000);
@@ -353,11 +353,11 @@ public class marketingInflowSetting {
 			System.out.println(" *** advAttribute register Fail ... *** ");
 			close();
 		}
-		System.out.println(" ----- advertisingProductManage_add End ----- ");
+		System.out.println(" ! ----- advertisingProductManage_add End ----- ! ");
 	}
 	@Test(priority = 4)
 	public void advertisingProductManage_del() throws InterruptedException {
-		System.out.println(" ----- advertisingProductManage_del Start ----- ");
+		System.out.println(" ! ----- advertisingProductManage_del Start ----- ! ");
 		Thread.sleep(2500);
 		String pageLoadCheck = $("#deleteViewBtn").text();
 		if(pageLoadCheck.equals("ªË¡¶")) {
@@ -401,7 +401,7 @@ public class marketingInflowSetting {
 		}
 		Thread.sleep(1000);
 		$("#deleteViewBtn").waitUntil(visible, 3000);
-		System.out.println(" ----- advertisingProductManage_del End ----- ");
+		System.out.println(" ! ----- advertisingProductManage_del End ----- ! ");
 	}
 	
 	@AfterClass
