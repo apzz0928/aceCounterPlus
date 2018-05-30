@@ -282,6 +282,7 @@ public class userSetting {
 			System.out.println(" *** userGroupSetting Page load Fail ... *** ");
 			close();
 		}
+		Thread.sleep(1500);
 		$("#memgrpAdd").click();
 		$(".notokr-medium").waitUntil(visible, 3000);
 		pageLoadCheck = $(".notokr-medium").text();

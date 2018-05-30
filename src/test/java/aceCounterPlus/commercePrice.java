@@ -103,14 +103,15 @@ public class commercePrice {
 			checkMsg = "최고가격을 입력하세요.";
 		} else if (val.equals("min>maxPrice_alert")) {
 			checkMsg = "올바른 가격설정이 아닙니다.";
-		} else if (val.equals("")) {
-			checkMsg = "";
-		} else if (val.equals("")) {
-			checkMsg = "";
-		} else if (val.equals("")) {
-			checkMsg = "";
+		} else if (val.equals("currencyUnit_alert")) {
+			checkMsg = "설정된 통화 단위값과 동일합니다.\n" + 
+					"다시 선택해주세요.";
+		} else if (val.equals("currencyUnit_modify_confirm")) {
+			checkMsg = "통계 표기 통화 단위를 수정하시겠습니까?";
+		} else if (val.equals("currencyUnit_modify_alert")) {
+			checkMsg = "수정이 완료되었습니다.";
 		}
-		$(".modal-backdrop").waitUntil(visible, 3000);
+		$(".modal-backdrop").waitUntil(visible, 5000);
 		if(msgCheck.equals(checkMsg)) {
 			System.out.println(" *** " + val + " - check Success !! *** ");
 			$(".btn-sm", btnNum).click();
@@ -178,6 +179,7 @@ public class commercePrice {
 			System.out.println(" *** commercePrice Page load Fail ... *** ");
 			close();
 		}
+		Thread.sleep(1500);
 		$(".btn-info").click();
 		$("h3", 2).waitUntil(visible, 3000);
 		pageLoadCheck = $("h3", 2).text();
@@ -282,16 +284,10 @@ public class commercePrice {
 	@Test(priority = 3)
 	public void commercePrice_autoAdd() throws InterruptedException {
 		System.out.println(" ! ----- commercePrice_autoAdd Start ----- ! ");
-		String pageLoadCheck = $("h5", 1).text();
-		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
-			System.out.println(" *** commercePrice Page load Success !! *** ");
-		} else {
-			System.out.println(" *** commercePrice Page load Fail ... *** ");
-			close();
-		}
+		Thread.sleep(1000);
 		$(".btn-info").click();
 		$("h3", 2).waitUntil(visible, 3000);
-		pageLoadCheck = $("h3", 2).text();
+		String pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {
@@ -313,7 +309,8 @@ public class commercePrice {
 		Thread.sleep(1000);
 		$("#priceRangeInsert").click();
 		valCheck(6, 7, "priceSetup");
-		$(".btn-xs", 1).waitUntil(visible, 3000);
+		Thread.sleep(3500);
+		$(".btn-xs", 0).waitUntil(visible, 5000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("1,000원 ~ 10,000원")) {
 			System.out.println(" *** commercePrice autoAdd check Success !! *** ");
@@ -405,6 +402,72 @@ public class commercePrice {
 			close();
 		}
 		System.out.println(" ! ----- commercePrice_directAdd_del End ----- ! ");
+	}
+	@Test(priority = 6)
+	public void commerce_currencyUnit() throws InterruptedException {
+		System.out.println(" ! ----- commerce_currencyUnit Start ----- ! ");
+		$(By.linkText("통화 단위")).click();
+		$("#mViewBtn").waitUntil(visible, 3000);
+		String	pageLoadCheck = $("#mViewBtn").text();
+		if(pageLoadCheck.equals("수정")) {
+			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
+		} else {
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... *** ");
+			close();
+		}
+		$("#mViewBtn").click();
+		$("h3", 2).waitUntil(visible, 3000);
+		pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("수정하기")) {
+			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
+		} else {
+			System.out.println(" *** commerce_currencyUnit_modify Page load Fail ... *** ");
+			close();
+		}
+		$("#modifyBtn").click();
+		valCheck(3, 3, "currencyUnit_alert");
+	    $(By.name("nextIso")).click();
+	    $(By.xpath("//option[@value='USD']")).click();
+		Thread.sleep(1000);
+		$("#modifyBtn").click(); 
+		valCheck(4, 4, "currencyUnit_modify_confirm");
+		Thread.sleep(1000);
+		valCheck(5, 6, "currencyUnit_modify_alert");
+		Thread.sleep(2000);
+		$("#mViewBtn").waitUntil(visible, 3000);
+		pageLoadCheck = $("#mViewBtn").text();
+		if(pageLoadCheck.equals("수정")) {
+			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
+		} else {
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... *** ");
+			close();
+		}
+		$("#mViewBtn").click();
+		$("h3", 2).waitUntil(visible, 3000);
+		pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("수정하기")) {
+			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
+		} else {
+			System.out.println(" *** commerce_currencyUnit_modify Page load Fail ... *** ");
+			close();
+		}
+	    $(By.name("nextIso")).click();
+	    $(By.xpath("//option[@value='KRW']")).click();
+		Thread.sleep(1000);
+		$("#modifyBtn").click(); 
+		valCheck(3, 3, "currencyUnit_modify_confirm");
+		Thread.sleep(1000);
+		valCheck(4, 5, "currencyUnit_modify_alert");
+		Thread.sleep(2000);
+		$("#mViewBtn").waitUntil(visible, 3000);
+		pageLoadCheck = $("#mViewBtn").text();
+		if(pageLoadCheck.equals("수정")) {
+			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
+		} else {
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... *** ");
+			close();
+		}
+		System.out.println(" ! ----- commerce_currencyUnit End ----- ! ");
 	}
 	
 	@AfterClass
