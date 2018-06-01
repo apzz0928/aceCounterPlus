@@ -1,7 +1,5 @@
 package aceCounterPlus;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -31,8 +29,6 @@ public class commercePrice {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
-	private static HttpURLConnection huc;
-	private static int respCode;
 	
 	//신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
 	Date number_date = new Date();
@@ -121,28 +117,7 @@ public class commercePrice {
 		}
 	}
 	
-  	//입력된 URL 정상 여부 확인
-  	public static boolean brokenLinkCheck (String urlName, String urlLink){
-        try {
-            huc = (HttpURLConnection)(new URL(urlLink).openConnection());
-            huc.setRequestMethod("HEAD");
-            huc.connect();
-            respCode = huc.getResponseCode();
-            if(respCode >= 400){
-            	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " *****");
-            	close();
-            } else {
-            	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " *****");
-            }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-		return false;
-    }
-
-	@Test(priority = 0)
+  	@Test(priority = 0)
 	public void commercePrice_directAdd() throws InterruptedException {
 		System.out.println(" ! ----- commercePrice_directAdd Start ----- ! ");
 		open(baseUrl);
@@ -179,7 +154,7 @@ public class commercePrice {
 			System.out.println(" *** commercePrice Page load Fail ... *** ");
 			close();
 		}
-		Thread.sleep(1500);
+		Thread.sleep(2500);
 		$(".btn-info").click();
 		$("h3", 2).waitUntil(visible, 3000);
 		pageLoadCheck = $("h3", 2).text();
@@ -309,7 +284,7 @@ public class commercePrice {
 		Thread.sleep(1000);
 		$("#priceRangeInsert").click();
 		valCheck(6, 7, "priceSetup");
-		Thread.sleep(3500);
+		Thread.sleep(4000);
 		$(".btn-xs", 0).waitUntil(visible, 5000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("1,000원 ~ 10,000원")) {

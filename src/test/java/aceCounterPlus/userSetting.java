@@ -164,7 +164,7 @@ public class userSetting {
 		$("th", 0).waitUntil(visible, 3000);
 		$(".btn-info", 2).click();
 		valCheck(4, 3, "CheckIP");
-		Thread.sleep(1000);
+		Thread.sleep(2500);
 		$("#filter-ipa").setValue("127");
 		$(".btn-info", 2).click();
 		valCheck(5, 4, "IPCheck");
@@ -184,7 +184,7 @@ public class userSetting {
 			System.out.println(" *** IP Filterring Page val check Reload Fail ... *** ");
 			close();
 		}
-		Thread.sleep(1000);
+		Thread.sleep(2500);
 		$(".btn-info", 0).click();
 		$("th", 0).waitUntil(visible, 3000);
 		$("#filter-ipa").setValue("127");
