@@ -155,6 +155,7 @@ public class commercePrice {
 			close();
 		}
 		Thread.sleep(2500);
+		$(".btn-info").waitUntil(visible, 5000);
 		$(".btn-info").click();
 		$("h3", 2).waitUntil(visible, 3000);
 		pageLoadCheck = $("h3", 2).text();
@@ -285,7 +286,7 @@ public class commercePrice {
 		$("#priceRangeInsert").click();
 		valCheck(6, 7, "priceSetup");
 		Thread.sleep(4000);
-		$(".btn-xs", 0).waitUntil(visible, 5000);
+		//$(".btn-xs", 0).waitUntil(visible, 5000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("1,000¿ø ~ 10,000¿ø")) {
 			System.out.println(" *** commercePrice autoAdd check Success !! *** ");

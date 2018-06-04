@@ -163,8 +163,9 @@ public class userSetting {
 		$(".btn-info", 0).click();
 		$("th", 0).waitUntil(visible, 3000);
 		$(".btn-info", 2).click();
+		Thread.sleep(1500);
 		valCheck(4, 3, "CheckIP");
-		Thread.sleep(2500);
+		Thread.sleep(3500);
 		$("#filter-ipa").setValue("127");
 		$(".btn-info", 2).click();
 		valCheck(5, 4, "IPCheck");

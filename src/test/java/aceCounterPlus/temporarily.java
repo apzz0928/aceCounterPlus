@@ -126,6 +126,47 @@ public class temporarily {
 			checkMsg = "선택한 내부검색 URL을 삭제하시겠습니까?\n" + 
 					"내부검색어 변수에 대해 수집/분석이 중지되며,\n" + 
 					"삭제 후 복구가 불가능합니다.";
+		} else if (val.equals("innerSearch_del_alert")) {
+			checkMsg = "삭제가 완료되었습니다.";
+		} else if (val.equals("menuDel_confirm")) {
+			checkMsg = "메뉴를 삭제하시겠습니까?\n" + 
+					"메뉴를 삭제하면, 메뉴에 대한 분석이 중지됩니다.";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
+		} else if (val.equals("")) {
+			checkMsg = "";
 		} else if (val.equals("")) {
 			checkMsg = "";
 		} else if (val.equals("")) {
@@ -225,7 +266,7 @@ public class temporarily {
 		valCheck(11, 9, "URL_del_check");
 		System.out.println(" ! ----- URLSetting_URLInclusion End ----- ! ");
 	}
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void URLSetting_URLExcept_Add() throws InterruptedException {
 		System.out.println(" ! ----- URLSetting_URLExcept_Add Start ----- ! ");
 		$(By.linkText("URL제외")).click();
@@ -270,7 +311,7 @@ public class temporarily {
 		}
 		System.out.println(" ! ----- URLSetting_URLExcept_Add End ----- ! ");
 	}
-	@Test(priority = 2)
+	//@Test(priority = 2)
 	public void URLSetting_URLExcept_search() throws InterruptedException {
 		System.out.println(" ! ----- URLSetting_URLExcept_search Start ----- ! ");
 	    $(By.name("use_yn")).click();
@@ -316,7 +357,7 @@ public class temporarily {
 		}
 		System.out.println(" ! ----- URLSetting_URLExcept_search End ----- ! ");
 	}
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void URLSetting_URLExcept_del() throws InterruptedException {
 		System.out.println(" ! ----- URLSetting_URLExcept_del Start ----- ! ");
 	    $("#btn-list-delete").click();
@@ -339,7 +380,7 @@ public class temporarily {
 		}
 		System.out.println(" ! ----- URLSetting_URLExcept_del End ----- ! ");
 	}
-	@Test(priority = 4)
+	//@Test(priority = 4)
 	public void URLSetting_innerSearch_add() throws InterruptedException {
 		System.out.println(" ! ----- URLSetting_innerSearch_add Start ----- ! ");
 		$(By.linkText("내부검색")).click();
@@ -370,19 +411,20 @@ public class temporarily {
 		Thread.sleep(1000);
 		$(".input-sm", 1).setValue(date);
 		$("#btn-add").click();
+		Thread.sleep(1000);
 		valCheck(6, 5, "innerSearch_add_alert");
 		Thread.sleep(3000);
 		$(".text-nowrap", 1).waitUntil(visible, 3000);
 		pageLoadCheck = $(".text-nowrap", 1).text();
 		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** URLSetting_innerSearch page load Success !! *** ");
+			System.out.println(" *** URLSetting_innerSearch_add next page load Success !! *** ");
 		} else {
-			System.out.println(" *** URLSetting_innerSearch page load Fail ... *** ");
+			System.out.println(" *** URLSetting_innerSearch_add next page load Fail ... *** ");
 			close();
 		}
 		System.out.println(" ! ----- URLSetting_innerSearch_add End ----- ! ");
 	}
-	@Test(priority = 5)
+	//@Test(priority = 5)
 	public void URLSetting_innerSearch_duplicationAdd() throws InterruptedException {
 		System.out.println(" ! ----- URLSetting_innerSearch_duplicationAdd Start ----- ! ");
 		$(".btn-info", 0).click();
@@ -397,11 +439,12 @@ public class temporarily {
 		$("#page-url").setValue("/" + date);
 		$(".input-sm", 1).setValue(date);
 		$("#btn-add").click();
+		Thread.sleep(1000);
 		valCheck(4, 3, "innerSearch_deplication_add_alert");
 		$("#btn-add-cancel").click();
 		System.out.println(" ! ----- URLSetting_innerSearch_duplicationAdd End ----- ! ");
 	}
-	@Test(priority = 6)
+	//@Test(priority = 6)
 	public void URLSetting_innerSearch_search() throws InterruptedException {
 		System.out.println(" ! ----- URLSetting_innerSearch_search Start ----- ! ");
 		$(By.linkText("내부검색")).click();
@@ -410,7 +453,7 @@ public class temporarily {
 		if(pageLoadCheck.equals(date)) {
 			System.out.println(" *** URLSetting_innerSearch_search_selectbox page load Success !! *** ");
 		} else {
-			System.out.println(" *** URLSetting_innerSearch page load Fail ... *** ");
+			System.out.println(" *** URLSetting_innerSearch search_selectbox load Fail ... *** ");
 			close();
 		}
 	    $(By.name("use_yn")).click();
@@ -419,9 +462,9 @@ public class temporarily {
 	    $(".col-xs-8").waitUntil(visible, 3000);
 		pageLoadCheck = $(".col-xs-8").text();
 		if(pageLoadCheck.equals("페이지 URL")) {
-			System.out.println(" *** URLSetting_innerSearch page load Success !! *** ");
+			System.out.println(" *** URLSetting_innerSearch_search_selectbox N select page load Success !! *** ");
 		} else {
-			System.out.println(" *** URLSetting_innerSearch page load Fail ... *** ");
+			System.out.println(" *** URLSetting_innerSearch_search_selectbox N select page load Fail ... *** ");
 			close();
 		}
 	    $(".br-l-n").setValue(date);
@@ -438,14 +481,17 @@ public class temporarily {
 	    $(By.name("use_yn")).click();
 	    $(By.xpath("//option[@value='y']")).click();
 	    Thread.sleep(1500);
-	    $(".col-xs-8").waitUntil(visible, 3000);
-		pageLoadCheck = $(".col-xs-8").text();
+	    $(".text-nowrap", 1).waitUntil(visible, 3000);
+		pageLoadCheck = $(".text-nowrap", 1).text();
 		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** URLSetting_innerSearch page load Success !! *** ");
+			System.out.println(" *** URLSetting_innerSearch_search_selectbox Y select page load Success !! *** ");
 		} else {
-			System.out.println(" *** URLSetting_innerSearch page load Fail ... *** ");
+			System.out.println(" *** URLSetting_innerSearch_search_selectbox Y select load Fail ... *** ");
 			close();
 		}
+		//$(".br-l-n").setValue(date);
+		//$(By.name("query")).setValue(date);
+		//$(By.name("query")).sendKeys(date);
 		$(".br-l-n").setValue(date);
 		$("#btn-search").click();
 		Thread.sleep(1500);
@@ -459,7 +505,7 @@ public class temporarily {
 		}
 		System.out.println(" ! ----- URLSetting_innerSearch_search End ----- ! ");
 	}
-	@Test(priority = 7)
+	//@Test(priority = 7)
 	public void URLSetting_innerSearch_del() throws InterruptedException {
 		System.out.println(" ! ----- URLSetting_innerSearch_del Start ----- ! ");
 	    $("#btn-list-delete").click();
@@ -481,6 +527,34 @@ public class temporarily {
 			close();
 		}
 		System.out.println(" ! ----- URLSetting_innerSearch_del End ----- ! ");
+	}
+	@Test(priority = 8)
+	public void pageGroupSetting_menuAddDel() throws InterruptedException {
+		System.out.println(" ! ----- pageGroupSetting_menuAddDel Start ----- ! ");
+	    $(By.linkText("페이지그룹 설정")).click();
+	    $("#btn-tree-add").waitUntil(visible, 3000);
+		String pageLoadCheck = $("#btn-tree-add").text();
+		if(pageLoadCheck.equals("추가")) {
+			System.out.println(" *** pageGroupSetting_menuAdd Page load Success !! *** ");
+		} else {
+			System.out.println(" ***pageGroupSetting_menuAdd Page load Fail ... *** ");
+			close();
+		}
+	    $("#btn-tree-add").click();
+	    $(By.xpath("(//input[@value=''])[2]")).setValue(date);
+	    $(By.id("ui-id-1")).click();
+	    $(".fancytree-lastsib").click();
+	    $("#btn-tree-delete").click();
+	    valCheck(5, 5, "menuDel_confirm");
+		System.out.println(" ! ----- pageGroupSetting_menuAddDel End ----- ! ");
+	}
+	//@Test(priority = 9)
+	public void pageGroupSetting_menuDel() throws InterruptedException {
+		System.out.println(" ! ----- pageGroupSetting_menuDel Start ----- ! ");
+
+	    
+	    
+	    System.out.println(" ! ----- pageGroupSetting_menuDel End ----- ! ");
 	}
 	
 	@AfterClass

@@ -366,6 +366,7 @@ public class marketingInflowSetting {
 			System.out.println(" *** advProductManage page load Fail ... *** ");
 			close();
 		}
+		Thread.sleep(1000);
 		$("#deleteViewBtn").click();
 		$(".hiddenCheck", 0).waitUntil(visible, 3000);
 		$("#deleteBtn").click();
