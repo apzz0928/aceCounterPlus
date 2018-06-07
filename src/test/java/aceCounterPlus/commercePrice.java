@@ -107,12 +107,12 @@ public class commercePrice {
 		} else if (val.equals("currencyUnit_modify_alert")) {
 			checkMsg = "수정이 완료되었습니다.";
 		}
-		$(".modal-backdrop").waitUntil(visible, 5000);
+		$(".modal-backdrop").waitUntil(visible, 10000);
 		if(msgCheck.equals(checkMsg)) {
 			System.out.println(" *** " + val + " - check Success !! *** ");
 			$(".btn-sm", btnNum).click();
 		} else {
-			System.out.println(" *** " + val + " - check Fail ... *** ");
+			System.out.println(" *** " + val + " - check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 	}
@@ -129,7 +129,7 @@ public class commercePrice {
 		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
-			System.out.println(" *** Login Fail ... *** ");
+			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".go_stat", 1).click();
@@ -137,7 +137,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
-			System.out.println(" *** statsLiveDashboard Page access Fail ... *** ");
+			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#redirectConfBtn").click();
@@ -151,7 +151,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
 			System.out.println(" *** commercePrice Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commercePrice Page load Fail ... *** ");
+			System.out.println(" *** commercePrice Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		Thread.sleep(2500);
@@ -162,7 +162,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commercePrice add Page load Fail ... *** ");
+			System.out.println(" *** commercePrice add Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".input-sm", 3).setValue("1000");
@@ -171,7 +171,7 @@ public class commercePrice {
 		$(".input-sm", 6).setValue("10000");
 		//가격대 입력여부 유효성체크가 안되서 빼둠
 		$("#priceRangeInsert").click();
-		Thread.sleep(1000);
+		Thread.sleep(1500);
 		valCheck(3, 4, "priceSetup");
 		$(".btn-xs", 0).waitUntil(visible, 5000);
 		pageLoadCheck = $("td", 2).text();
@@ -184,15 +184,15 @@ public class commercePrice {
 				if(pageLoadCheck.equals("5,001원 ~ 10,000원")) {
 					System.out.println(" *** commercePrice directAdd twoStepPrice check Success !! *** ");
 				} else {
-					System.out.println(" *** commercePrice directAdd twoStepPrice check Fail ... *** ");
+					System.out.println(" *** commercePrice directAdd twoStepPrice check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
-				System.out.println(" *** commercePrice directAdd oneStepPrice check Fail ... *** ");
+				System.out.println(" *** commercePrice directAdd oneStepPrice check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		} else {
-			System.out.println(" *** commercePrice directAdd check Fail ... *** ");
+			System.out.println(" *** commercePrice directAdd check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- commercePrice_directAdd End ----- ! ");
@@ -205,7 +205,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice directAdd_modify Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commercePrice directAdd_modify Page load Fail ... *** ");
+			System.out.println(" *** commercePrice directAdd_modify Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".input-sm", 3).setValue("2000");
@@ -226,15 +226,15 @@ public class commercePrice {
 				if(pageLoadCheck.equals("10,001원 ~ 20,000원")) {
 					System.out.println(" *** commercePrice directAdd modify twoStepPrice check Success !! *** ");
 				} else {
-					System.out.println(" *** commercePrice directAdd modify twoStepPrice check Fail ... *** ");
+					System.out.println(" *** commercePrice directAdd modify twoStepPrice check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
-				System.out.println(" *** commercePrice directAdd modify oneStepPrice check Fail ... *** ");
+				System.out.println(" *** commercePrice directAdd modify oneStepPrice check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		} else {
-			System.out.println(" *** commercePrice directAdd modify check Fail ... *** ");
+			System.out.println(" *** commercePrice directAdd modify check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- commercePrice_directAdd_modify End ----- ! ");
@@ -252,7 +252,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
 			System.out.println(" *** commercePrice Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commercePrice Page load Fail ... *** ");
+			System.out.println(" *** commercePrice Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- commercePrice_directAdd_del End ----- ! ");
@@ -267,7 +267,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commercePrice add Page load Fail ... *** ");
+			System.out.println(" *** commercePrice add Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("label", 2).click();
@@ -284,9 +284,10 @@ public class commercePrice {
 		$("#rangeProc").click();
 		Thread.sleep(1000);
 		$("#priceRangeInsert").click();
+		Thread.sleep(1500);
 		valCheck(6, 7, "priceSetup");
-		Thread.sleep(4000);
-		//$(".btn-xs", 0).waitUntil(visible, 5000);
+		Thread.sleep(3500);
+		$(".btn-xs", 0).waitUntil(visible, 5000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("1,000원 ~ 10,000원")) {
 			System.out.println(" *** commercePrice autoAdd check Success !! *** ");
@@ -297,15 +298,15 @@ public class commercePrice {
 				if(pageLoadCheck.equals("5,501원 ~ 10,000원")) {
 					System.out.println(" *** commercePrice autoAdd twoStepPrice check Success !! *** ");
 				} else {
-					System.out.println(" *** commercePrice autoAdd twoStepPrice check Fail ... *** ");
+					System.out.println(" *** commercePrice autoAdd twoStepPrice check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
-				System.out.println(" *** commercePrice autoAdd oneStepPrice check Fail ... *** ");
+				System.out.println(" *** commercePrice autoAdd oneStepPrice check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		} else {
-			System.out.println(" *** commercePrice autoAdd check Fail ... *** ");
+			System.out.println(" *** commercePrice autoAdd check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- commercePrice_autoAdd End ----- ! ");
@@ -319,7 +320,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commercePrice add Page load Fail ... *** ");
+			System.out.println(" *** commercePrice add Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#rangeProc").click();
@@ -348,15 +349,15 @@ public class commercePrice {
 				if(pageLoadCheck.equals("11,001원 ~ 20,000원")) {
 					System.out.println(" *** commercePrice autoAdd twoStepPrice modify check Success !! *** ");
 				} else {
-					System.out.println(" *** commercePrice autoAdd twoStepPrice modify check Fail ... *** ");
+					System.out.println(" *** commercePrice autoAdd twoStepPrice modify check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
-				System.out.println(" *** commercePrice autoAdd oneStepPrice modify check Fail ... *** ");
+				System.out.println(" *** commercePrice autoAdd oneStepPrice modify check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		} else {
-			System.out.println(" *** commercePrice autoAdd modify check Fail ... *** ");
+			System.out.println(" *** commercePrice autoAdd modify check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- commercePrice_autoAdd_modify End ----- ! ");
@@ -374,7 +375,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
 			System.out.println(" *** commercePrice Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commercePrice Page load Fail ... *** ");
+			System.out.println(" *** commercePrice Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- commercePrice_directAdd_del End ----- ! ");
@@ -388,7 +389,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("수정")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commerce_currencyUnit Page load Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#mViewBtn").click();
@@ -397,7 +398,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("수정하기")) {
 			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commerce_currencyUnit_modify Page load Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit_modify Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#modifyBtn").click();
@@ -415,7 +416,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("수정")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commerce_currencyUnit Page load Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#mViewBtn").click();
@@ -424,7 +425,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("수정하기")) {
 			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commerce_currencyUnit_modify Page load Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit_modify Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 	    $(By.name("nextIso")).click();
@@ -440,7 +441,7 @@ public class commercePrice {
 		if(pageLoadCheck.equals("수정")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
 		} else {
-			System.out.println(" *** commerce_currencyUnit Page load Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- commerce_currencyUnit End ----- ! ");

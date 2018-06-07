@@ -113,7 +113,7 @@ public class userSetting {
 		} else if (val.equals("delGroup_alert")) {
 			checkMsg = "회원 그룹이 삭제 되었습니다.";
 		}
-		$(".modal-backdrop").waitUntil(visible, 3000);
+		$(".modal-backdrop").waitUntil(visible, 10000);
 		if(msgCheck.equals(checkMsg)) {
 			System.out.println(" *** " + val + " - check Success !! *** ");
 			$(".btn-sm", btnNum).click();
@@ -214,6 +214,8 @@ public class userSetting {
 		$("#filter-ipd").setValue("1");
 		$(".btn-info", 2).click();
 		valCheck(4, 4, "IPduplication");
+		Thread.sleep(1500);
+		$(".btn-light", 0).waitUntil(visible, 3000);
 		$(".btn-light", 0).click();
 		System.out.println(" ! ----- IPFilterring_duplicationCheck End ----- ! ");
 	}

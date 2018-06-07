@@ -103,7 +103,7 @@ public class memberInfo {
 		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
-			System.out.println(" *** Login Fail !! *** ");
+			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".go_setting").click();
@@ -116,13 +116,13 @@ public class memberInfo {
 		$("#changePwdConfirm").setValue(pw1);
 		$("#modifyProc").click();
 		$("#btn-modal-alert-yes").click();
-		$(".modal-backdrop").waitUntil(visible, 3000);
+		$(".modal-backdrop").waitUntil(visible, 10000);
 		String mbn = $(".mbn").text();
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
 			$("#okButton").click();
 			System.out.println(" *** Change Password Success !! *** ");
 		} else {
-			System.out.println(" *** Change Password Fail !! *** ");
+			System.out.println(" *** Change Password Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#prePwd").setValue(pw1);
@@ -130,12 +130,12 @@ public class memberInfo {
 		$("#changePwdConfirm").setValue(pw);
 		$("#modifyProc").click();
 		$("#btn-modal-alert-yes").click();
-		$(".modal-backdrop").waitUntil(visible, 3000);
+		$(".modal-backdrop").waitUntil(visible, 10000);
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
 			$("#okButton").click();
 			System.out.println(" *** Restoration Password Success !! *** ");
 		} else {
-			System.out.println(" *** Restoration Password Fail !! *** ");
+			System.out.println(" *** Restoration Password Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		Thread.sleep(1500);
@@ -149,12 +149,12 @@ public class memberInfo {
 	    $(".btn-lg", 1).click();
 	    String modalBody = $(".modal-body", 1).text();
 		Thread.sleep(2000);
-		$(".modal-backdrop").waitUntil(visible, 3000);
+		$(".modal-backdrop").waitUntil(visible, 10000);
 	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 5).click();
 			System.out.println(" *** change memberInfo Success !! *** ");
 		} else {
-			System.out.println(" *** change memberInfo Fail !! *** ");
+			System.out.println(" *** change memberInfo Fail ... !@#$%^&*() *** ");
 			close();
 		}
 	    Thread.sleep(3000);
@@ -167,16 +167,16 @@ public class memberInfo {
 	    $("#s_hp3").setValue("0928");
 		$("#s_email").setValue("apzz0928@gmail.com");
 	    $(".btn-lg", 1).click();
-	    $(".modal-dialog").waitUntil(visible, 3000);
+	    $(".modal-dialog").waitUntil(visible, 10000);
 		if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 4).click();
 			System.out.println(" *** Restoration memberInfo Success !! *** ");
 		} else {
-			System.out.println(" *** Restoration memberInfo Fail !! *** ");
+			System.out.println(" *** Restoration memberInfo Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		Thread.sleep(2000);
-		$(".nav-tabs").waitUntil(visible, 3000);
+		$(".nav-tabs").waitUntil(visible, 10000);
 		$(".dropdown-toggle", 3).click();
 		$(".btn-logout", 0).click();
 		System.out.println(" *** Logout Success !! *** ");
