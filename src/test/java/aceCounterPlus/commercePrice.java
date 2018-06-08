@@ -260,7 +260,6 @@ public class commercePrice {
 	@Test(priority = 3)
 	public void commercePrice_autoAdd() throws InterruptedException {
 		System.out.println(" ! ----- commercePrice_autoAdd Start ----- ! ");
-		Thread.sleep(1000);
 		$(".btn-info").click();
 		$("h3", 2).waitUntil(visible, 3000);
 		String pageLoadCheck = $("h3", 2).text();

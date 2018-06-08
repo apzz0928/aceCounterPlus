@@ -148,11 +148,11 @@ public class userSetting {
 		}
 		$("#redirectConfBtn").click();
 		Thread.sleep(1000);
-		$("#redirectConfBtn").waitUntil(visible, 3000);
+		$("#redirectConfBtn").waitUntil(visible, 10000);
 		$(".accordion-toggle", 1).click();
 		$(By.linkText("IP필터링설정")).click();
 		Thread.sleep(1000);
-		$("h5", 2).waitUntil(visible, 3000);
+		$("h5", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $("h5", 2).text();
 		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
 			System.out.println(" *** IP Filterring Page load Success !! *** ");
@@ -161,7 +161,7 @@ public class userSetting {
 			close();
 		}
 		$(".btn-info", 0).click();
-		$("th", 0).waitUntil(visible, 3000);
+		$("th", 0).waitUntil(visible, 10000);
 		$(".btn-info", 2).click();
 		Thread.sleep(1500);
 		valCheck(4, 3, "CheckIP");
@@ -185,9 +185,9 @@ public class userSetting {
 			System.out.println(" *** IP Filterring Page val check Reload Fail ... *** ");
 			close();
 		}
-		Thread.sleep(2500);
+		$(".btn-info", 0).waitUntil(visible, 10000);
 		$(".btn-info", 0).click();
-		$("th", 0).waitUntil(visible, 3000);
+		$("th", 0).waitUntil(visible, 10000);
 		$("#filter-ipa").setValue("127");
 		$("#filter-ipb").setValue("0");
 		$("#filter-ipc").setValue("0");
@@ -207,7 +207,7 @@ public class userSetting {
 		System.out.println(" ! ----- IPFilterring_duplicationCheck Start ----- ! ");
 		$(".btn-info", 0).click();
 		Thread.sleep(1500);
-		$("th", 0).waitUntil(visible, 3000);
+		$("th", 0).waitUntil(visible, 10000);
 		$("#filter-ipa").setValue("127");
 		$("#filter-ipb").setValue("0");
 		$("#filter-ipc").setValue("0");
@@ -215,7 +215,7 @@ public class userSetting {
 		$(".btn-info", 2).click();
 		valCheck(4, 4, "IPduplication");
 		Thread.sleep(1500);
-		$(".btn-light", 0).waitUntil(visible, 3000);
+		$(".btn-light", 0).waitUntil(visible, 10000);
 		$(".btn-light", 0).click();
 		System.out.println(" ! ----- IPFilterring_duplicationCheck End ----- ! ");
 	}
@@ -235,7 +235,7 @@ public class userSetting {
 		}
 		$("#searchIp").setValue("127");
 		$(".btn-default", 5).click();
-		$("td", 3).waitUntil(visible, 3000);
+		$("td", 3).waitUntil(visible, 10000);
 		search = $("td", 3).text();
 		if(search.equals("127.0.0.1")) {
 			System.out.println(" *** IP Filterring input search check Success !! *** ");
@@ -262,7 +262,7 @@ public class userSetting {
 		$("#chkAll").click();
 		$(".btn-info", 1).click();		
 		Thread.sleep(1000);
-		$("h5", 2).waitUntil(visible, 3000);
+		$("h5", 2).waitUntil(visible, 10000);
 		String pageLoadCheck = $("h5", 2).text();
 		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
 			System.out.println(" *** IP Filterring Page load Success !! *** ");
@@ -277,7 +277,7 @@ public class userSetting {
 	public void userGroupSetting_add() throws InterruptedException {
 		$(By.linkText("회원그룹설정")).click();
 		Thread.sleep(1000);
-		$("h5", 1).waitUntil(visible, 3000);
+		$("h5", 1).waitUntil(visible, 10000);
 		String pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 회원그룹이 없습니다.")) {
 			System.out.println(" *** userGroupSetting Page load Success !! *** ");
@@ -287,7 +287,7 @@ public class userSetting {
 		}
 		Thread.sleep(1500);
 		$("#memgrpAdd").click();
-		$(".notokr-medium").waitUntil(visible, 3000);
+		$(".notokr-medium").waitUntil(visible, 10000);
 		pageLoadCheck = $(".notokr-medium").text();
 		if(pageLoadCheck.equals("회원그룹 추가하기")) {
 			System.out.println(" *** userGroupSetting add Page load Success !! *** ");
@@ -306,7 +306,7 @@ public class userSetting {
 		$("#md_name_2").setValue(date);
 		$("#add_group_regist").click();
 		Thread.sleep(1000);
-		$("#memgrpAdd").waitUntil(visible, 3000);
+		$("#memgrpAdd").waitUntil(visible, 10000);
 		pageLoadCheck = $("#memgrpAdd").text();
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** userGroup Register Page load Success !! *** ");
@@ -324,7 +324,7 @@ public class userSetting {
 		valCheck(4, 4, "groupSearch_null");
 		$("#searchNm").setValue("qwer");
 		$("#frmBtn").click();
-		$("h5", 1).waitUntil(visible, 3000);
+		$("h5", 1).waitUntil(visible, 10000);
 		String pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 회원그룹이 없습니다.")) {
 			System.out.println(" *** userGroupSetting Page load Success !! *** ");
@@ -360,7 +360,7 @@ public class userSetting {
 		$("#add_group_regist").click();
 		confirm("수정하시겠습니까?");
 		Thread.sleep(1000);
-		$("#memgrpAdd").waitUntil(visible, 3000);
+		$("#memgrpAdd").waitUntil(visible, 10000);
 		pageLoadCheck = $("#memgrpAdd").text();
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** userGroup Register Page load Success !! *** ");

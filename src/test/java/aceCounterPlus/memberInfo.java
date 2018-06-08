@@ -47,8 +47,6 @@ public class memberInfo {
 		pw = "qordlf!@34";
 		pw1 = "qordlf12#$";
 		domain = "apzz";
-		//number = "0027";
-		//number1 = "00";
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
@@ -108,19 +106,22 @@ public class memberInfo {
 		}
 		$(".go_setting").click();
 		$(By.linkText("회원정보")).click();
+		$("h3", 2).waitUntil(visible, 10000);
 		$("#pwd").setValue(pw);
 		$("#btn-ok").click();
+		$("h3", 2).waitUntil(visible, 10000);
 		System.out.println(" *** Password change Page access Success !! *** ");
 		$("#prePwd").setValue(pw);
 		$("#changePwd").setValue(pw1);
 		$("#changePwdConfirm").setValue(pw1);
 		$("#modifyProc").click();
+		$(".modal-backdrop").waitUntil(visible, 10000);
 		$("#btn-modal-alert-yes").click();
 		$(".modal-backdrop").waitUntil(visible, 10000);
 		String mbn = $(".mbn").text();
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-			$("#okButton").click();
 			System.out.println(" *** Change Password Success !! *** ");
+			$("#okButton").click();
 		} else {
 			System.out.println(" *** Change Password Fail ... !@#$%^&*() *** ");
 			close();
@@ -129,11 +130,12 @@ public class memberInfo {
 		$("#changePwd").setValue(pw);
 		$("#changePwdConfirm").setValue(pw);
 		$("#modifyProc").click();
+		$(".modal-backdrop").waitUntil(visible, 10000);
 		$("#btn-modal-alert-yes").click();
 		$(".modal-backdrop").waitUntil(visible, 10000);
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-			$("#okButton").click();
 			System.out.println(" *** Restoration Password Success !! *** ");
+			$("#okButton").click();
 		} else {
 			System.out.println(" *** Restoration Password Fail ... !@#$%^&*() *** ");
 			close();
