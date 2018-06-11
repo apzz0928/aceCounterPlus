@@ -200,6 +200,7 @@ public class userSetting {
 			close();
 		}
 		valCheck(3, 3, "IPregister");
+		$(".modal-backdrop").waitUntil(hidden, 10000);
 		System.out.println(" ! ----- IPFilterring_add End ----- ! ");
 	}
 	@Test(priority = 1)
