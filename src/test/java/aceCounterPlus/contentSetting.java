@@ -198,8 +198,7 @@ public class contentSetting {
 			$(".btn-sm", btnNum).click();
 		    $(".modal-backdrop").waitUntil(hidden, 10000);
 		} else if (msgCheck.isEmpty()) {
-			System.out.println(val + " 's msgCheck is Empty plz check **** " + pTagNum + " ****");
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** �١ڡ١ڡ١� pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - msgCheck is Empty ... �١ڡ١ڡ١� *** ");
 			close();
 		} else {
 			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Fail ... !@#$%^&*() *** ");
