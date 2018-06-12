@@ -88,25 +88,39 @@ public class memberInfo {
 	private static void js(String javaScriptSource) {
 	    executeJavaScript(javaScriptSource);
 	}
-
+	
+  	public static void sleep(long millis) {
+  		try {
+  			Thread.sleep(millis);
+  		} catch (InterruptedException ex) {
+  		}
+  	}
+  	
 	@Test(priority = 0)
-	public void memberInfoChange() throws InterruptedException {
+	public void memberInfoChange() {
 		open(baseUrl);
-		//$("#uid").setValue(id + number);
+		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
-		String loginCheck = $(".btn_logout").text();
+		String pageLoadCheck = $(".btn_logout").text();
 		$(".btn_logout").getValue();
-		if(loginCheck.equals("로그아웃")) {
+		if(pageLoadCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
 			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".go_setting").click();
+		$(".notokr-bold").waitUntil(visible, 10000);
 		$(By.linkText("회원정보")).click();
 		$("h3", 2).waitUntil(visible, 10000);
+		pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("비밀번호 재확인")) {
+			System.out.println(" *** memberInfo Recongirming page load  *** ");
+		} else {
+			
+		}
 		$("#pwd").setValue(pw);
 		$("#btn-ok").click();
 		$("h3", 2).waitUntil(visible, 10000);
@@ -140,7 +154,6 @@ public class memberInfo {
 			System.out.println(" *** Restoration Password Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		Thread.sleep(1500);
 		$("#s_name").setValue("변경이름");
 		$("#s_company").setValue("변경회사명");
 		$(By.name("s_hp1")).click();
@@ -150,8 +163,8 @@ public class memberInfo {
 		$("#s_email").setValue("apzz0928@naver.com");
 	    $(".btn-lg", 1).click();
 	    String modalBody = $(".modal-body", 1).text();
-		Thread.sleep(2000);
 		$(".modal-backdrop").waitUntil(visible, 10000);
+		sleep(500);
 	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 5).click();
 			System.out.println(" *** change memberInfo Success !! *** ");
@@ -159,7 +172,6 @@ public class memberInfo {
 			System.out.println(" *** change memberInfo Fail ... !@#$%^&*() *** ");
 			close();
 		}
-	    Thread.sleep(3000);
 	    $("#s_name").waitUntil(visible, 10000);
 		$("#s_name").setValue("원래이름");
 		$("#s_company").setValue("원래회사명");
@@ -177,7 +189,6 @@ public class memberInfo {
 			System.out.println(" *** Restoration memberInfo Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		Thread.sleep(2000);
 		$(".nav-tabs").waitUntil(visible, 10000);
 		$(".dropdown-toggle", 3).click();
 		$(".btn-logout", 0).click();

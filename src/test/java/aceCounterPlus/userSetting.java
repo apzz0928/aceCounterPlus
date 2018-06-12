@@ -122,6 +122,13 @@ public class userSetting {
 			close();
 		}
 	}
+	
+  	public static void sleep(long millis) {
+  		try {
+  			Thread.sleep(millis);
+  		} catch (InterruptedException ex) {
+  		}
+  	}
 
 	@Test(priority = 0)
 	public void IPFilterring_add() throws InterruptedException {
@@ -397,6 +404,7 @@ public class userSetting {
 			System.out.println(" *** userGroupSetting Page load Fail ... *** ");
 			close();
 		}
+		sleep(1000);
 		valCheck(4, 3, "delGroup_alert");
 		
 		System.out.println(" ! ----- userGroupSetting_del End ----- ! ");

@@ -87,6 +87,7 @@ public class contentSetting {
 	}
 	
 	public static void valCheck(int pTagNum, int btnNum, String val) {
+		$(".modal-backdrop").waitUntil(visible, 10000);
 		String msgCheck = $("p", pTagNum).text();
         switch(val){
             case "URL_null": checkMsg = "동적페이지URL을 입력하세요.";
@@ -194,7 +195,6 @@ public class contentSetting {
 		if(msgCheck.equals(checkMsg)) {
 			//System.out.println(" *** " + val + " - check Success !! *** ");
 			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Success !! *** ");
-			$(".modal-backdrop").waitUntil(visible, 10000);
 			$(".btn-sm", btnNum).click();
 		    $(".modal-backdrop").waitUntil(hidden, 10000);
 		} else if (msgCheck.isEmpty()) {
@@ -930,6 +930,7 @@ public class contentSetting {
 		valCheck(8, 8, "outLinkBanner_linkURL_badURL");
 		$(".input-sm", 4).setValue("http://" + date + ".com");
 		$(".btn-info").click();
+		sleep(1000);
 		valCheck(9, 9, "outLinkBanner_add_alert");
 		$("#btn-search").waitUntil(appears, 10000);
 		pageLoadCheck = $("td", 2).text();
