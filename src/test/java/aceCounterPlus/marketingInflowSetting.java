@@ -94,7 +94,7 @@ public class marketingInflowSetting {
 				$(".modal-backdrop").waitUntil(hidden, 10000);
 				System.out.println(" *** " + check2 + " missing check Success *** ");
 			} else {
-				System.out.println(" *** " + check2 + " missing check Fail *** ");
+				System.out.println(" *** " + check2 + " missing check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		} else if (check1.equals("유효성")) {
@@ -111,7 +111,7 @@ public class marketingInflowSetting {
 				}
 				System.out.println(" *** " + check2 + " validation check Success *** ");
 			} else {
-				System.out.println(" *** " + check2 + " validation check Fail *** ");
+				System.out.println(" *** " + check2 + " validation check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -157,7 +157,7 @@ public class marketingInflowSetting {
 		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
-			System.out.println(" *** Login Fail ... *** ");
+			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".go_stat", 1).click();
@@ -166,7 +166,7 @@ public class marketingInflowSetting {
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page load Success !! *** ");
 		} else {
-			System.out.println(" *** statsLiveDashboard Page load Fail ... *** ");
+			System.out.println(" *** statsLiveDashboard Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#redirectConfBtn").click();
@@ -175,7 +175,7 @@ public class marketingInflowSetting {
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** appmarketing page Success !! *** ");
 		} else {
-			System.out.println(" *** appmarketing page Fail ... *** ");
+			System.out.println(" *** appmarketing page Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#inflowAddBtn").click();
@@ -203,7 +203,7 @@ public class marketingInflowSetting {
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 			System.out.println(" *** link URL Missing Check Success !! *** ");
 		} else {
-			System.out.println(" *** link URL Missing Check Fail ... *** ");
+			System.out.println(" *** link URL Missing Check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#original_url0").setValue("a");
@@ -217,7 +217,7 @@ public class marketingInflowSetting {
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 			System.out.println(" *** link URL validation check Success !! *** ");
 		} else {
-			System.out.println(" *** link URL validation check Fail ... *** ");
+			System.out.println(" *** link URL validation check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#original_url0").setValue(domain + date + ".com");
@@ -231,7 +231,7 @@ public class marketingInflowSetting {
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 			System.out.println(" *** Add Marketing Inflow settings Success !! *** ");
 		} else {
-			System.out.println(" *** Add Marketing Inflow settings Fail ... *** ");
+			System.out.println(" *** Add Marketing Inflow settings Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- mktInflowSetting_add End ----- ! ");
@@ -244,7 +244,7 @@ public class marketingInflowSetting {
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** appmarketing page Success !! *** ");
 		} else {
-			System.out.println(" *** appmarketing page Fail ... *** ");
+			System.out.println(" *** appmarketing page Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#deleteViewBtn").click();
@@ -258,7 +258,7 @@ public class marketingInflowSetting {
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 			System.out.println(" *** marketing delete validation check Sueecss !! *** ");
 		} else {
-			System.out.println(" *** marketing delete validation check Fail ... *** ");
+			System.out.println(" *** marketing delete validation check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#checkAllCamp").click();
@@ -271,7 +271,7 @@ public class marketingInflowSetting {
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 			System.out.println(" *** marketing delete confirm check Sueecss !! *** ");
 		} else {
-			System.out.println(" *** marketing delete confirm check Fail ... *** ");
+			System.out.println(" *** marketing delete confirm check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		Thread.onSpinWait();
@@ -282,7 +282,7 @@ public class marketingInflowSetting {
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 			System.out.println(" *** marketing delete alert check Sueecss !! *** ");
 		} else {
-			System.out.println(" *** marketing delete alert confirm check Fail ... *** ");
+			System.out.println(" *** marketing delete alert confirm check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- mktInflowSetting_del End ----- ! ");
@@ -295,7 +295,7 @@ public class marketingInflowSetting {
 		if(pageLoadCheck.equals("광고상품 관리")) {
 			System.out.println(" *** appmarketing page load Success !! *** ");
 		} else {
-			System.out.println(" *** appmarketing page load Fail ... *** ");
+			System.out.println(" *** appmarketing page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#inflowMrkCodeDown").click();
@@ -308,7 +308,7 @@ public class marketingInflowSetting {
 			$(".close", 0).click();
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 		} else {
-			System.out.println(" *** advCodeDownload layer check Fail ... *** ");
+			System.out.println(" *** advCodeDownload layer check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- advertisingCodeDownload End ----- ! ");
@@ -322,7 +322,7 @@ public class marketingInflowSetting {
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** advProductManage page load Success !! *** ");
 		} else {
-			System.out.println(" *** advProductManage page load Fail ... *** ");
+			System.out.println(" *** advProductManage page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#addViewBtn").click();
@@ -337,7 +337,7 @@ public class marketingInflowSetting {
 			$(".btn-sm", 3).click();
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 		} else {
-			System.out.println(" *** advProductName input check Fail ... *** ");
+			System.out.println(" *** advProductName input check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".gui-input").setValue("@");
@@ -353,7 +353,7 @@ public class marketingInflowSetting {
 			$(".btn-sm", 5).click();
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 		} else {
-			System.out.println(" *** advAttribute select check Fail ... *** ");
+			System.out.println(" *** advAttribute select check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 	    $(By.name("campaignMaterialCd[]")).click();
@@ -367,7 +367,7 @@ public class marketingInflowSetting {
 			$(".btn-sm", 6).click();
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 		} else {
-			System.out.println(" *** advAttribute register Fail ... *** ");
+			System.out.println(" *** advAttribute register Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- advertisingProductManage_add End ----- ! ");
@@ -380,7 +380,7 @@ public class marketingInflowSetting {
 		if(pageLoadCheck.equals("삭제")) {
 			System.out.println(" *** advProductManage page load Success !! *** ");
 		} else {
-			System.out.println(" *** advProductManage page load Fail ... *** ");
+			System.out.println(" *** advProductManage page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#deleteViewBtn").click();
@@ -394,7 +394,7 @@ public class marketingInflowSetting {
 			$(".btn-sm", 3).click();
 			$(".modal-backdrop").waitUntil(hidden, 10000);
 		} else {
-			System.out.println(" *** del checkBox check Fail ... *** ");
+			System.out.println(" *** del checkBox check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#checkAllCamp").click();
@@ -408,7 +408,7 @@ public class marketingInflowSetting {
 			$("#btn-modal-alert-yes").click();
 			$(".modal-backdrop").waitUntil(visible, 10000);
 		} else {
-			System.out.println(" *** del confirm message Fail ... *** ");
+			System.out.println(" *** del confirm message Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("p", 5).waitUntil(visible, 10000);
@@ -418,7 +418,7 @@ public class marketingInflowSetting {
 			System.out.println(" *** produce manage delete Success !! *** ");
 			$(".btn-sm", 6).click();
 		} else {
-			System.out.println(" *** produce manage delete Fail ... *** ");
+			System.out.println(" *** produce manage delete Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#deleteViewBtn").waitUntil(visible, 10000);

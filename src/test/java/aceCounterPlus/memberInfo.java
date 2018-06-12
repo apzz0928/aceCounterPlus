@@ -117,9 +117,9 @@ public class memberInfo {
 		$("h3", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("비밀번호 재확인")) {
-			System.out.println(" *** memberInfo Recongirming page load  *** ");
+			System.out.println(" *** memberInfo Recongirming page load Success !! *** ");
 		} else {
-			
+			System.out.println(" *** memberInfo Recongirming page load Fail ... !@#$%^&*() *** ");			
 		}
 		$("#pwd").setValue(pw);
 		$("#btn-ok").click();
@@ -136,6 +136,7 @@ public class memberInfo {
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
 			System.out.println(" *** Change Password Success !! *** ");
 			$("#okButton").click();
+			$(".modal-backdrop").waitUntil(hidden, 10000);
 		} else {
 			System.out.println(" *** Change Password Fail ... !@#$%^&*() *** ");
 			close();
@@ -150,6 +151,7 @@ public class memberInfo {
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
 			System.out.println(" *** Restoration Password Success !! *** ");
 			$("#okButton").click();
+			$(".modal-backdrop").waitUntil(hidden, 10000);
 		} else {
 			System.out.println(" *** Restoration Password Fail ... !@#$%^&*() *** ");
 			close();
@@ -167,6 +169,7 @@ public class memberInfo {
 		sleep(500);
 	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 5).click();
+			$(".modal-backdrop").waitUntil(hidden, 10000);
 			System.out.println(" *** change memberInfo Success !! *** ");
 		} else {
 			System.out.println(" *** change memberInfo Fail ... !@#$%^&*() *** ");
@@ -184,6 +187,7 @@ public class memberInfo {
 	    $(".modal-dialog").waitUntil(visible, 10000);
 		if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 4).click();
+			$(".modal-backdrop").waitUntil(hidden, 10000);
 			System.out.println(" *** Restoration memberInfo Success !! *** ");
 		} else {
 			System.out.println(" *** Restoration memberInfo Fail ... !@#$%^&*() *** ");

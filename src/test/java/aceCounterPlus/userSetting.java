@@ -128,13 +128,6 @@ public class userSetting {
 				close();
 			}
 		}
-	
-  	public static void sleep(long millis) {
-  		try {
-  			Thread.sleep(millis);
-  		} catch (InterruptedException ex) {
-  		}
-  	}
 
 	@Test(priority = 0)
 	public void IPFilterring_add() {
