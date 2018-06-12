@@ -1,0 +1,214 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>27/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Jun 12 10:37:33 KST 2018</td>
+</tr>
+<tr><td>Total time:</td><td>93 seconds (93097 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.URLSetting_URLExcept_Add()'><b>URLSetting_URLExcept_Add</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>4</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.URLSetting_URLExcept_del()'><b>URLSetting_URLExcept_del</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.URLSetting_URLExcept_search()'><b>URLSetting_URLExcept_search</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>3</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.URLSetting_URLInclusion()'><b>URLSetting_URLInclusion</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>7</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.URLSetting_innerSearch_add()'><b>URLSetting_innerSearch_add</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>3</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.URLSetting_innerSearch_del()'><b>URLSetting_innerSearch_del</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.URLSetting_innerSearch_duplicationAdd()'><b>URLSetting_innerSearch_duplicationAdd</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>1</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.URLSetting_innerSearch_search()'><b>URLSetting_innerSearch_search</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>3</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.fileDownload_add()'><b>fileDownload_add</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.fileDownload_del()'><b>fileDownload_del</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.fileDownload_duplicationAdd()'><b>fileDownload_duplicationAdd</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>1</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.fileDownload_search()'><b>fileDownload_search</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.innerBanner_add()'><b>innerBanner_add</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>5</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.innerBanner_del()'><b>innerBanner_del</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.innerBanner_duplicationAdd()'><b>innerBanner_duplicationAdd</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.innerBanner_linkURLdownload()'><b>innerBanner_linkURLdownload</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>0</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.innerBanner_search()'><b>innerBanner_search</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>1</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.outLinkBanner_add()'><b>outLinkBanner_add</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>5</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.outLinkBanner_del()'><b>outLinkBanner_del</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>3</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.outLinkBanner_duplicationAdd()'><b>outLinkBanner_duplicationAdd</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.outLinkBanner_modify()'><b>outLinkBanner_modify</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>3</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.outLinkBanner_search()'><b>outLinkBanner_search</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.pageGroupSetting_menuAddDel()'><b>pageGroupSetting_menuAddDel</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.pageGroupSetting_pageManage()'><b>pageGroupSetting_pageManage</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>1</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.pageGroupSetting_pageUpload()'><b>pageGroupSetting_pageUpload</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>0</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.pageGroupSetting_patternManagement()'><b>pageGroupSetting_patternManagement</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+<tr>
+<td title='aceCounterPlus.contentSetting.pageGroupSetting_patternRegister()'><b>pageGroupSetting_patternRegister</b><br>Test class: aceCounterPlus.contentSetting</td>
+<td></td>
+<td>2</td>
+<td>aceCounterPlus.contentSetting@4b2bac3f</td></tr>
+</table><p>
+</body>
+</html>

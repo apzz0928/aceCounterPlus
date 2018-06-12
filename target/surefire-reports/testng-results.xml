@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="27" passed="27" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2018-06-12T01:37:33Z" name="Suite" finished-at="2018-06-12T01:39:06Z" duration-ms="93097">
+    <groups>
+    </groups>
+    <test started-at="2018-06-12T01:37:33Z" name="Test" finished-at="2018-06-12T01:39:06Z" duration-ms="93097">
+      <class name="aceCounterPlus.contentSetting">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:37:33Z" name="beforeTest" finished-at="2018-06-12T10:37:47Z" duration-ms="14894" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="URLSetting_URLInclusion()[pri:0, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:37:47Z" name="URLSetting_URLInclusion" finished-at="2018-06-12T10:37:55Z" duration-ms="7965" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- URLSetting_URLInclusion -->
+        <test-method signature="URLSetting_URLExcept_Add()[pri:1, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:37:55Z" name="URLSetting_URLExcept_Add" finished-at="2018-06-12T10:38:00Z" duration-ms="4654" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- URLSetting_URLExcept_Add -->
+        <test-method signature="URLSetting_URLExcept_search()[pri:2, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:00Z" name="URLSetting_URLExcept_search" finished-at="2018-06-12T10:38:03Z" duration-ms="3016" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- URLSetting_URLExcept_search -->
+        <test-method signature="URLSetting_URLExcept_del()[pri:3, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:03Z" name="URLSetting_URLExcept_del" finished-at="2018-06-12T10:38:06Z" duration-ms="2809" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- URLSetting_URLExcept_del -->
+        <test-method signature="URLSetting_innerSearch_add()[pri:4, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:06Z" name="URLSetting_innerSearch_add" finished-at="2018-06-12T10:38:10Z" duration-ms="3652" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- URLSetting_innerSearch_add -->
+        <test-method signature="URLSetting_innerSearch_duplicationAdd()[pri:5, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:10Z" name="URLSetting_innerSearch_duplicationAdd" finished-at="2018-06-12T10:38:11Z" duration-ms="1446" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- URLSetting_innerSearch_duplicationAdd -->
+        <test-method signature="URLSetting_innerSearch_search()[pri:6, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:11Z" name="URLSetting_innerSearch_search" finished-at="2018-06-12T10:38:15Z" duration-ms="3558" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- URLSetting_innerSearch_search -->
+        <test-method signature="URLSetting_innerSearch_del()[pri:7, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:15Z" name="URLSetting_innerSearch_del" finished-at="2018-06-12T10:38:17Z" duration-ms="2706" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- URLSetting_innerSearch_del -->
+        <test-method signature="pageGroupSetting_menuAddDel()[pri:8, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:17Z" name="pageGroupSetting_menuAddDel" finished-at="2018-06-12T10:38:20Z" duration-ms="2291" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- pageGroupSetting_menuAddDel -->
+        <test-method signature="pageGroupSetting_pageManage()[pri:9, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:20Z" name="pageGroupSetting_pageManage" finished-at="2018-06-12T10:38:21Z" duration-ms="1380" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- pageGroupSetting_pageManage -->
+        <test-method signature="pageGroupSetting_patternRegister()[pri:10, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:21Z" name="pageGroupSetting_patternRegister" finished-at="2018-06-12T10:38:23Z" duration-ms="2401" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- pageGroupSetting_patternRegister -->
+        <test-method signature="pageGroupSetting_patternManagement()[pri:11, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:23Z" name="pageGroupSetting_patternManagement" finished-at="2018-06-12T10:38:26Z" duration-ms="2786" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- pageGroupSetting_patternManagement -->
+        <test-method signature="pageGroupSetting_pageUpload()[pri:12, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:26Z" name="pageGroupSetting_pageUpload" finished-at="2018-06-12T10:38:26Z" duration-ms="298" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- pageGroupSetting_pageUpload -->
+        <test-method signature="innerBanner_add()[pri:13, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:26Z" name="innerBanner_add" finished-at="2018-06-12T10:38:32Z" duration-ms="5315" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- innerBanner_add -->
+        <test-method signature="innerBanner_duplicationAdd()[pri:14, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:32Z" name="innerBanner_duplicationAdd" finished-at="2018-06-12T10:38:34Z" duration-ms="2028" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- innerBanner_duplicationAdd -->
+        <test-method signature="innerBanner_search()[pri:15, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:34Z" name="innerBanner_search" finished-at="2018-06-12T10:38:35Z" duration-ms="1313" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- innerBanner_search -->
+        <test-method signature="innerBanner_linkURLdownload()[pri:16, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:35Z" name="innerBanner_linkURLdownload" finished-at="2018-06-12T10:38:36Z" duration-ms="637" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- innerBanner_linkURLdownload -->
+        <test-method signature="innerBanner_del()[pri:17, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:36Z" name="innerBanner_del" finished-at="2018-06-12T10:38:38Z" duration-ms="2805" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- innerBanner_del -->
+        <test-method signature="fileDownload_add()[pri:18, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:38Z" name="fileDownload_add" finished-at="2018-06-12T10:38:41Z" duration-ms="2502" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fileDownload_add -->
+        <test-method signature="fileDownload_duplicationAdd()[pri:19, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:41Z" name="fileDownload_duplicationAdd" finished-at="2018-06-12T10:38:42Z" duration-ms="1343" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fileDownload_duplicationAdd -->
+        <test-method signature="fileDownload_search()[pri:20, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:42Z" name="fileDownload_search" finished-at="2018-06-12T10:38:45Z" duration-ms="2822" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fileDownload_search -->
+        <test-method signature="fileDownload_del()[pri:21, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:45Z" name="fileDownload_del" finished-at="2018-06-12T10:38:48Z" duration-ms="2694" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fileDownload_del -->
+        <test-method signature="outLinkBanner_add()[pri:22, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:48Z" name="outLinkBanner_add" finished-at="2018-06-12T10:38:54Z" duration-ms="5789" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- outLinkBanner_add -->
+        <test-method signature="outLinkBanner_duplicationAdd()[pri:23, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:54Z" name="outLinkBanner_duplicationAdd" finished-at="2018-06-12T10:38:56Z" duration-ms="2222" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- outLinkBanner_duplicationAdd -->
+        <test-method signature="outLinkBanner_search()[pri:24, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:56Z" name="outLinkBanner_search" finished-at="2018-06-12T10:38:59Z" duration-ms="2926" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- outLinkBanner_search -->
+        <test-method signature="outLinkBanner_modify()[pri:25, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:38:59Z" name="outLinkBanner_modify" finished-at="2018-06-12T10:39:02Z" duration-ms="3144" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- outLinkBanner_modify -->
+        <test-method signature="outLinkBanner_del()[pri:26, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:39:02Z" name="outLinkBanner_del" finished-at="2018-06-12T10:39:05Z" duration-ms="3269" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- outLinkBanner_del -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:aceCounterPlus.contentSetting@4b2bac3f]" started-at="2018-06-12T10:39:05Z" name="afterTest" finished-at="2018-06-12T10:39:06Z" duration-ms="410" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- aceCounterPlus.contentSetting -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
