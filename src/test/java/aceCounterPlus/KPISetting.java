@@ -27,7 +27,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-public class temporarily {
+public class KPISetting {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
@@ -528,7 +528,6 @@ public class temporarily {
 		}
 		System.out.println(" ! ----- reportDownload_oneshotDel End ----- ! ");
 	}
-	
 	
 	@AfterClass
 	public void afterTest() {

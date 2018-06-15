@@ -211,12 +211,6 @@ public class inhouseMarketingSetting {
         }
 		return false;
     }
-  	public static void sleep(long millis) {
-  		try {
-  			Thread.sleep(millis);
-  		} catch (InterruptedException ex) {
-  		}
-  	}
 
 	@Test(priority = 0)
 	public void viralSetting_add() {

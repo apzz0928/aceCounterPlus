@@ -10,6 +10,7 @@ aceCounterPlus\addService.class
 aceCounterPlus\marketingInflowSetting.class
 aceCounterPlus\charge.class
 aceCounterPlus\commercePrice.class
+aceCounterPlus\KPISetting.class
 aceCounterPlus\memberInfo.class
 aceCounterPlus\serviceInfo.class
 aceCounterPlus\adminManage.class
