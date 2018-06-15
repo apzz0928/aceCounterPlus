@@ -56,25 +56,33 @@ public class contentSetting {
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
+			/*ChromeOptions options = new ChromeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.chrome();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
-			// driver.manage().window().setSize(new Dimension(1650, 1000));
+			driver.manage().window().setSize(new Dimension(1650, 1000));
 			driver.manage().window().maximize();
 		} else if (browser.equals("firefox")) {
 			TestBrowser = "firefox";
+			//cap = DesiredCapabilities.firefox();
+			//RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			FirefoxOptions options = new FirefoxOptions();
 			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("edge")) {
 			TestBrowser = "edge";
+			/*EdgeOptions options = new EdgeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.edge();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("internetExplorer")) {
 			TestBrowser = "internetExplorer";
+			/*InternetExplorerOptions options = new InternetExplorerOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.internetExplorer();
 			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // 보안설정 변경
 			cap.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false); // ie text 입력 속도 향상을 위한 부분
@@ -795,7 +803,7 @@ public class contentSetting {
 	    $("#download-pattern").setValue(date);
 	    $("#btn-add").click();
 	    valCheck(5, 4, "downPattern_add_alert");
-	    $(".mv20").waitUntil(hidden, 10000);
+	    $("#btn-add").waitUntil(hidden, 10000);
 	    pageLoadCheck = $(".col-xs-9").text();
 		if(pageLoadCheck.equals("파일다운로드패턴")) {
 			System.out.println(" *** fileDownload_add refresh Page load Success !! *** ");
@@ -809,9 +817,9 @@ public class contentSetting {
 	public void fileDownload_duplicationAdd() {
 		System.out.println(" ! ----- fileDownload_duplicationAdd Start ----- ! ");
 	    $(".btn-info", 0).click();
-	    $(".mv20").waitUntil(visible, 10000);
-	    String pageLoadCheck = $(".mv20").text();
-	    if(pageLoadCheck.equals("'*'를 이용해 임의의 문자열을 패턴으로 등록합니다.(*.zip으로 등록할 경우 압축파일 다운로드 링크에 대해 분석합니다.)")) {
+	    $("#btn-add").waitUntil(visible, 10000);
+	    String pageLoadCheck = $("#btn-add").text();
+	    if(pageLoadCheck.equals("등록")) {
 			System.out.println(" *** fileDownload_add add UI Success !! *** ");	    	
 	    } else {
 			System.out.println(" *** fileDownload_add add UI Fail ... !@#$%^&*() *** ");

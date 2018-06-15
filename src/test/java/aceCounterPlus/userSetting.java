@@ -50,25 +50,33 @@ public class userSetting {
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
+			/*ChromeOptions options = new ChromeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.chrome();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
-			// driver.manage().window().setSize(new Dimension(1650, 1000));
+			driver.manage().window().setSize(new Dimension(1650, 1000));
 			driver.manage().window().maximize();
 		} else if (browser.equals("firefox")) {
 			TestBrowser = "firefox";
+			//cap = DesiredCapabilities.firefox();
+			//RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			FirefoxOptions options = new FirefoxOptions();
 			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("edge")) {
 			TestBrowser = "edge";
+			/*EdgeOptions options = new EdgeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.edge();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("internetExplorer")) {
 			TestBrowser = "internetExplorer";
+			/*InternetExplorerOptions options = new InternetExplorerOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.internetExplorer();
 			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // 보안설정 변경
 			cap.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false); // ie text 입력 속도 향상을 위한 부분

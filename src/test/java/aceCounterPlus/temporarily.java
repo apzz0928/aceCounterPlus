@@ -56,10 +56,12 @@ public class temporarily {
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
+			/*ChromeOptions options = new ChromeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.chrome();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
-			// driver.manage().window().setSize(new Dimension(1650, 1000));
+			driver.manage().window().setSize(new Dimension(1650, 1000));
 			driver.manage().window().maximize();
 		} else if (browser.equals("firefox")) {
 			TestBrowser = "firefox";
@@ -71,12 +73,16 @@ public class temporarily {
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("edge")) {
 			TestBrowser = "edge";
+			/*EdgeOptions options = new EdgeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.edge();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("internetExplorer")) {
 			TestBrowser = "internetExplorer";
+			/*InternetExplorerOptions options = new InternetExplorerOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.internetExplorer();
 			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // 보안설정 변경
 			cap.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false); // ie text 입력 속도 향상을 위한 부분
@@ -154,8 +160,6 @@ public class temporarily {
             break;
             case "talkAdd_sendNumber_validation": checkMsg = "숫자만 입력하세요.";
             break;
-            case "4": checkMsg = "";
-            break;
             case "talkAdd_URL_null": checkMsg = "연결 URL을 입력하세요.";
             break;
             case "talkAdd_URL_validation": checkMsg = "올바른 URL을 입력하세요.";
@@ -165,6 +169,12 @@ public class temporarily {
             case "talkdupAdd_confirm": checkMsg = "등록된 캠페인이 있습니다. 해당리스트에 업데이트하시겠습니까?";
             break;
             case "talkdupAdd_alert": checkMsg = "중복된 소재가 있습니다. 다시 입력하세요.";
+            break;
+            case "talkSetting_del_null": checkMsg = "삭제할 TALK 설정을 선택하세요.";
+            break;
+            case "talkSetting_del_confirm": checkMsg = "선택한 TALK 설정을 삭제하시겠습니까?\n" + "TALK 설정에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+            break;
+            case "talkSetting_del_alert": checkMsg = "TALK 설정 삭제가 완료되었습니다.";
             break;
         }
 		Thread.onSpinWait();
@@ -613,6 +623,7 @@ public class temporarily {
 		$("#btn-save").click();
 		valCheck(3, 3, "talkdupAdd_confirm");
 		valCheck(4, 5, "talkdupAdd_alert");
+		$(".btn-light", 0).click();
 		$(".btn-gray").waitUntil(visible, 10000);
 		String pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals(date)) {
@@ -622,6 +633,71 @@ public class temporarily {
 			close();
 		}
 		System.out.println(" ! ----- talkSetting_duplicationAdd  End ----- ! ");
+	}
+	@Test(priority = 11)
+	public void talkSetting_search() {
+		System.out.println(" ! ----- talkSetting_search Start ----- ! ");
+		$(By.name("use_yn")).click();
+	    $(By.xpath("//option[@value='n']")).click();
+		$(".btn-gray").waitUntil(hidden, 10000);
+		String pageLoadCheck = $(".btn-material-list").text();
+		if(pageLoadCheck.equals("보기")) {
+			System.out.println(" *** talkSetting_search del selectBox page load Success !! *** ");
+		} else {
+			System.out.println(" *** talkSetting_search del selectBox page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#s_key").setValue(date);
+		$("#btn-search").click();
+		$(".no-records-found").waitUntil(visible, 10000);
+		pageLoadCheck = $(".no-records-found").text();
+		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
+			System.out.println(" *** talkSetting_search delList search Success !! *** ");
+		} else {
+			System.out.println(" *** talkSetting_search delList search Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.name("use_yn")).click();
+	    $(By.xpath("//option[@value='y']")).click();
+		$(".btn-gray").waitUntil(visible, 10000);
+		pageLoadCheck = $(".btn-gray").text();
+		if(pageLoadCheck.equals("삭제")) {
+			System.out.println(" *** talkSetting_search set selectBox page load Success !! *** ");
+		} else {
+			System.out.println(" *** talkSetting_search set selectBox page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#s_key").setValue(date);
+		$("#btn-search").click();
+		pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals(date)) {
+			System.out.println(" *** talkSetting_search setList search Success !! *** ");
+		} else {
+			System.out.println(" *** talkSetting_search setList search Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- talkSetting_search  End ----- ! ");
+	}
+	@Test(priority = 12)
+	public void talkSetting_del() {
+		System.out.println(" ! ----- talkSetting_del Start ----- ! ");
+		$(".btn-gray").click();
+		$("#btn-del").waitUntil(visible, 10000);
+		$("#btn-del").click();
+		valCheck(3, 3, "talkSetting_del_null");
+		$("#campaignAllChk").click();
+		$("#btn-del").click();
+		valCheck(4, 4, "talkSetting_del_confirm");
+		valCheck(5, 6, "talkSetting_del_alert");
+		$("td", 3).waitUntil(hidden, 10000);
+		String pageLoadCheck = $("td").text();
+		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
+			System.out.println(" *** talkSetting_del list Page load Success !! *** ");
+		} else {
+			System.out.println(" *** talkSetting_del list Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- talkSetting_del  End ----- ! ");
 	}
 	
 	@AfterClass
