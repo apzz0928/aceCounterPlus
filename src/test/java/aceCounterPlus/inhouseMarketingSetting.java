@@ -27,7 +27,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-public class temporarily {
+public class inhouseMarketingSetting {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
@@ -63,8 +63,6 @@ public class temporarily {
 			driver.manage().window().maximize();
 		} else if (browser.equals("firefox")) {
 			TestBrowser = "firefox";
-			//cap = DesiredCapabilities.firefox();
-			//RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			FirefoxOptions options = new FirefoxOptions();
 			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);
 			WebDriverRunner.setWebDriver(driver);
@@ -162,9 +160,9 @@ public class temporarily {
             break;
             case "talkAdd_register": checkMsg = "등록이 완료되었습니다.";
             break;
-            case "talkdupAdd_confirm": checkMsg = "등록된 캠페인이 있습니다. 해당리스트에 업데이트하시겠습니까?";
+            case "04": checkMsg = "";
             break;
-            case "talkdupAdd_alert": checkMsg = "중복된 소재가 있습니다. 다시 입력하세요.";
+            case "05": checkMsg = "";
             break;
         }
 		Thread.onSpinWait();
@@ -589,7 +587,7 @@ public class temporarily {
 		valCheck(11, 11, "talkAdd_URL_validation");
 		$(".input-sm", 4).setValue("http://" + date + ".com");
 		$("#btn-save").click();
-		valCheck(12, 12, "talkAdd_register");
+		valCheck(13, 13, "talkAdd_register");
 		$(".btn-gray").waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals(date)) {
@@ -599,29 +597,6 @@ public class temporarily {
 			close();
 		}
 		System.out.println(" ! ----- talkSetting_add End ----- ! ");
-	}
-	@Test(priority = 10)
-	public void talkSetting_duplicationAdd() {
-		System.out.println(" ! ----- talkSetting_duplicationAdd Start ----- ! ");
-		$(".btn-info").click();
-		$("#btn-save").waitUntil(visible, 10000);
-		$(".input-sm", 0).setValue(date);
-		$(".input-sm", 1).setValue(date1);
-		$(".input-sm", 2).setValue(date);
-		$(".input-sm", 3).setValue("1234");
-		$(".input-sm", 4).setValue("http://" + date + ".com");
-		$("#btn-save").click();
-		valCheck(3, 3, "talkdupAdd_confirm");
-		valCheck(4, 5, "talkdupAdd_alert");
-		$(".btn-gray").waitUntil(visible, 10000);
-		String pageLoadCheck = $("td", 2).text();
-		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** talkSetting_add register Success !! *** ");
-		} else {
-			System.out.println(" *** talkSetting_add register Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- talkSetting_duplicationAdd  End ----- ! ");
 	}
 	
 	@AfterClass

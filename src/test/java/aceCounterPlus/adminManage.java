@@ -9,11 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 
 import com.codeborne.selenide.WebDriverRunner;
 
@@ -77,6 +75,7 @@ public class adminManage {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void js(String javaScriptSource) {
 		Object obj = executeJavaScript(javaScriptSource);
 	}

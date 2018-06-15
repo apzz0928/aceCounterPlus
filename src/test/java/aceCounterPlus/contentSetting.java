@@ -10,6 +10,7 @@ import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -27,7 +28,6 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 import com.codeborne.selenide.testng.ScreenShooter;
 
 public class contentSetting {
-	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
@@ -36,8 +36,8 @@ public class contentSetting {
 	
 	//신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
 	Date number_date = new Date();
-    SimpleDateFormat number_format = new SimpleDateFormat("YYMMDDhhmmss");
-    SimpleDateFormat number_format1 = new SimpleDateFormat("YYYY-MM-DD");
+    SimpleDateFormat number_format = new SimpleDateFormat("yyMMddHHmmss");
+    SimpleDateFormat number_format1 = new SimpleDateFormat("yyyy-MM-dd");
     String date = number_format.format(number_date);
     String date1 = number_format1.format(number_date);
     
@@ -63,8 +63,8 @@ public class contentSetting {
 			driver.manage().window().maximize();
 		} else if (browser.equals("firefox")) {
 			TestBrowser = "firefox";
-			cap = DesiredCapabilities.firefox();
-			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
+			FirefoxOptions options = new FirefoxOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("edge")) {
@@ -190,10 +190,8 @@ public class contentSetting {
             break;
             
         }
-		//$(".modal-backdrop").waitUntil(visible, 10000);
 		Thread.onSpinWait();
 		if(msgCheck.equals(checkMsg)) {
-			//System.out.println(" *** " + val + " - check Success !! *** ");
 			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Success !! *** ");
 			$(".btn-sm", btnNum).click();
 		    $(".modal-backdrop").waitUntil(hidden, 10000);

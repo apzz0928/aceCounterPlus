@@ -10,6 +10,7 @@ import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -27,7 +28,6 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 import com.codeborne.selenide.testng.ScreenShooter;
 
 public class marketingInflowSetting {
-	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain;
@@ -61,8 +61,8 @@ public class marketingInflowSetting {
 			driver.manage().window().maximize();
 		} else if (browser.equals("firefox")) {
 			TestBrowser = "firefox";
-			cap = DesiredCapabilities.firefox();
-			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
+			FirefoxOptions options = new FirefoxOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("edge")) {
