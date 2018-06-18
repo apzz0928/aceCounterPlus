@@ -30,13 +30,13 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class marketingInflowSetting {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
 	private static HttpURLConnection huc;
 	private static int respCode;
 	
 	//신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
 	Date number_date = new Date();
-    SimpleDateFormat number_format = new SimpleDateFormat("MMddhhmmss");
+    SimpleDateFormat number_format = new SimpleDateFormat("yyMMddHHmmss");
     String date = number_format.format(number_date);
     
 	@Parameters("browser")
@@ -91,37 +91,64 @@ public class marketingInflowSetting {
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		}
 	}
-	
-	public static void alertCheck(String check1, String check2, int i) {
-		String alertCheck = "";
-		if(check1.equals("입력")) {
-			alertCheck = $("p", i).text();
-			if(alertCheck.equals(check2 + " 입력해주세요.")) {
-				$(".modal-backdrop").waitUntil(visible, 10000);
-				$(".btn-sm", i+1).click();
-				$(".modal-backdrop").waitUntil(hidden, 10000);
-				System.out.println(" *** " + check2 + " missing check Success *** ");
-			} else {
-				System.out.println(" *** " + check2 + " missing check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		} else if (check1.equals("유효성")) {
-			alertCheck = $("p", i).text();
-			if(alertCheck.equals("한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.")) {
-				if(check2.equals("광고상품명")) {
-					$(".modal-backdrop").waitUntil(visible, 10000);
-					$(".btn-sm", i-1).click();
-					$(".modal-backdrop").waitUntil(hidden, 10000);
-				} else {
-					$(".modal-backdrop").waitUntil(visible, 10000);
-					$(".btn-sm", i+1).click();
-					$(".modal-backdrop").waitUntil(hidden, 10000);
-				}
-				System.out.println(" *** " + check2 + " validation check Success *** ");
-			} else {
-				System.out.println(" *** " + check2 + " validation check Fail ... !@#$%^&*() *** ");
-				close();
-			}
+	public static void valCheck(int pTagNum, int btnNum, String val) {
+	    $(".modal-backdrop").waitUntil(visible, 10000);
+	    String msgCheck = $("p", pTagNum).text();
+	    switch(val){
+	      case "mktInflowSetting_add_cmpName_null": checkMsg = "캠페인명을 입력해주세요.";
+	      break;
+	      case "mktInflowSetting_add_cmpName_validation": checkMsg = "한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.";
+	      break;
+	      case "mktInflowSetting_add_subjectMatter_null": checkMsg = "소재를 입력해주세요.";
+	      break;
+	      case "mktInflowSetting_add_subjectMatter_validation": checkMsg = "한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.";
+	      break;
+	      case "mktInflowSetting_add_linkURL_null": checkMsg = "연결 URL을 입력하세요.";
+	      break;
+	      case "mktInflowSetting_add_linkURL_validation": checkMsg = "올바른 URL을 입력하세요.";
+	      break;
+	      case "mktInflowSetting_register": checkMsg = "등록에 성공했습니다.";
+	      break;
+	      case "mktInflowSetting_del_null": checkMsg = "삭제할 마케팅 유입 설정을 선택하세요.";
+	      break;
+	      case "mktInflowSetting_del_confirm": checkMsg = "선택한 마케팅 유입 설정을 삭제하시겠습니까?\n" + "마케팅 유입설정 변수에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+	      break;
+	      case "mktInflowSetting_del_alert": checkMsg = "마케팅 유입 설정 삭제가 완료되었습니다.";
+	      break;
+	      case "inflowMediaNm_add_null": checkMsg = "광고상품명을 입력하세요.";
+	      break;
+	      case "inflowMediaNm_add_validation": checkMsg = "한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.";
+	      break;
+	      case "campaignMaterial_null": checkMsg = "광고 속성을 선택하세요.";
+	      break;
+	      case "advertisingProductManage_add_duplication": checkMsg = "이미 사용한 광고상품명입니다.\n" + "다른 광고상품명을 사용해주세요.";
+	      break;
+	      case "advertisingProductManage_add_register": checkMsg = "등록이 완료되었습니다.";
+	      break;
+	      case "advertisingProductManage_del_null": checkMsg = "삭제할 광고상품관리 설정을 선택하세요.";
+	      break;
+	      case "advertisingProductManage_del_confirm": checkMsg = "선택한 광고상품 관리 설정을 삭제하시겠습니까?\n" + "광고상품관리 변수에 대해 수집/분석이 중지되며, 삭제 후 복구가 불가능합니다.";
+	      break;
+	      case "advertisingProductManage_del_alert": checkMsg = "광고상품관리 설정 삭제가 완료되었습니다.";
+	      break;
+	      case "3": checkMsg = "";
+	      break;
+	      case "4": checkMsg = "";
+	      break;
+	      case "": checkMsg = "";
+	      break;
+	    }
+	    Thread.onSpinWait();
+		if(msgCheck.equals(checkMsg)) {
+			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Success !! *** ");
+			$(".btn-sm", btnNum).click();
+			$(".modal-backdrop").waitUntil(hidden, 10000);
+		} else if (msgCheck.isEmpty()) {
+			System.out.println(" *** ☆★☆★☆★ pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+			close();
+		} else {
+			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Fail ... !@#$%^&*() *** ");
+			close();
 		}
 	}
 	
@@ -181,65 +208,47 @@ public class marketingInflowSetting {
 		$("#inflowAddBtn").waitUntil(visible, 10000);
 		pageLoadCheck = $("#inflowAddBtn").text();
 		if(pageLoadCheck.equals("추가")) {
-			System.out.println(" *** appmarketing page Success !! *** ");
+			System.out.println(" *** mktInflowSetting_add list page Success !! *** ");
 		} else {
-			System.out.println(" *** appmarketing page Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** mktInflowSetting_add list page Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#inflowAddBtn").click();
-		$(By.xpath("//form[@id='mainForm']/div/div[2]/table/tbody/tr[2]/td/div/div/label[2]")).click();
-		$("#btnReg").click();
-		alertCheck("입력", "캠페인명을", 4);
-		$("#campaign_nm").setValue(domain + date + ".com@");
-		$("#btnReg").click();
-		alertCheck("유효성", "캠페인명", 5);
-		$("#campaign_nm").setValue(domain + date + date + ".com");
-		$("#btnReg").click();
-		alertCheck("입력", "소재를", 6);
-		$("#campaign_material_value0").setValue(domain + date + ".com@");
-		$("#btnReg").click();
-		alertCheck("유효성", "소재", 7);
-		$("#campaign_material_value0").setValue(domain + date + ".com");
-		$("#btnReg").click();
-		//alertCheck("입력", "연결 URL을 ", 8); alert 문구가 하세요. 라서 공통화 못시킴 문구 통일 필요
-		$("p", 8).waitUntil(visible, 10000);
-		Thread.onSpinWait();
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		String msgCheck = $("p", 8).text();
-		if(msgCheck.equals("연결 URL을 입력하세요.")) {
-			$(".btn-sm", 9).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-			System.out.println(" *** link URL Missing Check Success !! *** ");
+		$("#btnReg").waitUntil(visible, 10000);
+		pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("추가하기")) {
+			System.out.println(" *** mktInflowSetting_add add page Success !! *** ");
 		} else {
-			System.out.println(" *** link URL Missing Check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** mktInflowSetting_add add page Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#original_url0").setValue("a");
+		$("label", 3).click();
 		$("#btnReg").click();
-		$("p", 9).waitUntil(visible, 10000);
-		Thread.onSpinWait();
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		msgCheck = $("p", 9).text();
-		if(msgCheck.equals("올바른 URL을 입력하세요.")) {
-			$(".btn-sm", 10).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-			System.out.println(" *** link URL validation check Success !! *** ");
-		} else {
-			System.out.println(" *** link URL validation check Fail ... !@#$%^&*() *** ");
-			close();
-		}
+		valCheck(4, 5, "mktInflowSetting_add_cmpName_null");
+		$("#campaign_nm").setValue(domain + date + "@");
+		$("#btnReg").click();
+		valCheck(5, 6, "mktInflowSetting_add_cmpName_validation");
+		$("#campaign_nm").setValue(domain + date);
+		$("#btnReg").click();
+		valCheck(6, 7, "mktInflowSetting_add_subjectMatter_null");
+		$("#campaign_material_value0").setValue(domain + date + "@");
+		$("#btnReg").click();
+		valCheck(7, 8, "mktInflowSetting_add_subjectMatter_validation");
+		$("#campaign_material_value0").setValue(domain + date);
+		$("#btnReg").click();
+		valCheck(8, 9, "mktInflowSetting_add_linkURL_null");
+		$("#original_url0").setValue(domain + date);
+		$("#btnReg").click();
+		valCheck(9, 10, "mktInflowSetting_add_linkURL_validation");
 		$("#original_url0").setValue(domain + date + ".com");
 		$("#btnReg").click();
-		$("p", 10).waitUntil(visible, 10000);
-		Thread.onSpinWait();
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		msgCheck = $("p", 10).text();
-		if(msgCheck.equals("등록에 성공했습니다.")) {
-			$(".btn-sm", 11).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-			System.out.println(" *** Add Marketing Inflow settings Success !! *** ");
+		valCheck(10, 11, "mktInflowSetting_register");
+		$("#inflowMrkCodeDown").waitUntil(visible, 10000);
+		pageLoadCheck = $("#inflowMrkCodeDown").text();
+		if(pageLoadCheck.equals("광고코드 다운로드")) {
+			System.out.println(" *** mktInflowSetting_add register Success !! *** ");
 		} else {
-			System.out.println(" *** Add Marketing Inflow settings Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** mktInflowSetting_add register Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- mktInflowSetting_add End ----- ! ");
@@ -247,50 +256,19 @@ public class marketingInflowSetting {
 	@Test(priority = 1)
 	public void mktInflowSetting_del() {
 		System.out.println(" ! ----- mktInflowSetting_del Start ----- ! ");
-		$("#inflowAddBtn").waitUntil(visible, 10000);
-		String pageLoadCheck = $("#inflowAddBtn").text();
-		if(pageLoadCheck.equals("추가")) {
-			System.out.println(" *** appmarketing page Success !! *** ");
-		} else {
-			System.out.println(" *** appmarketing page Fail ... !@#$%^&*() *** ");
-			close();
-		}
 		$("#deleteViewBtn").click();
+		$("#deleteBtn").waitUntil(visible, 10000);
 		$("#deleteBtn").click();
-		$("p", 3).waitUntil(visible, 10000);
-		Thread.onSpinWait();
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		String msgCheck = $("p", 3).text();
-		if(msgCheck.equals("삭제할 마케팅 유입 설정을 선택하세요.")) {
-			$(".btn-sm", 4).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-			System.out.println(" *** marketing delete validation check Sueecss !! *** ");
-		} else {
-			System.out.println(" *** marketing delete validation check Fail ... !@#$%^&*() *** ");
-			close();
-		}
+		valCheck(3, 4, "mktInflowSetting_del_null");
 		$("#checkAllCamp").click();
 		$("#deleteBtn").click();
-		Thread.onSpinWait();
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		msgCheck = $("p", 4).text();
-		if(msgCheck.equals("선택한 마케팅 유입 설정을 삭제하시겠습니까?\n" + "마케팅 유입설정 변수에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.")) {
-			$("#btn-modal-alert-yes").click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-			System.out.println(" *** marketing delete confirm check Sueecss !! *** ");
+		valCheck(4, 5, "mktInflowSetting_del_confirm");
+		valCheck(5, 7, "mktInflowSetting_del_alert");
+		String pageLoadCheck = $(".no-records-found").text();
+		if(pageLoadCheck.equals("마케팅 유입설정이 존재하지 않습니다.")) {
+			System.out.println(" *** mktInflowSetting_del del Success !! *** ");
 		} else {
-			System.out.println(" *** marketing delete confirm check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		Thread.onSpinWait();
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		msgCheck = $("p", 5).text();
-		if(msgCheck.equals("마케팅 유입 설정 삭제가 완료되었습니다.")) {
-			$(".btn-sm", 7).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-			System.out.println(" *** marketing delete alert check Sueecss !! *** ");
-		} else {
-			System.out.println(" *** marketing delete alert confirm check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** mktInflowSetting_del del Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- mktInflowSetting_del End ----- ! ");
@@ -298,18 +276,10 @@ public class marketingInflowSetting {
 	@Test(priority = 2)
 	public void advertisingCodeDownload() {
 		System.out.println(" ! ----- advertisingCodeDownload Start ----- ! ");
-		$(".btn-dark", 0).waitUntil(visible, 10000);
-		String pageLoadCheck = $(".btn-dark", 0).text();
-		if(pageLoadCheck.equals("광고상품 관리")) {
-			System.out.println(" *** appmarketing page load Success !! *** ");
-		} else {
-			System.out.println(" *** appmarketing page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
 		$("#inflowMrkCodeDown").click();
 		$(".modal-backdrop").waitUntil(visible, 10000);
 		$("h4", 0).waitUntil(visible, 10000);
-		pageLoadCheck = $("h4", 0).text();
+		String pageLoadCheck = $("h4", 0).text();
 		if(pageLoadCheck.equals("광고코드 다운로드")) {
 			brokenLinkCheck("advCodeDown", "https://new.acecounter.com/setting/appmarketing/codedown?inflow_media_cd=&inflow_mrkt_channel_dcd=10&down_term_cate=ALL&create_dt_st=&create_dt_ed=&original_url_yn=n&use_yn=y");
 			System.out.println(" *** advCodeDownload layer check Sueecss !! *** ");
@@ -328,54 +298,33 @@ public class marketingInflowSetting {
 		$("#addViewBtn").waitUntil(visible, 10000);
 		String pageLoadCheck = $("#addViewBtn").text();
 		if(pageLoadCheck.equals("추가")) {
-			System.out.println(" *** advProductManage page load Success !! *** ");
+			System.out.println(" *** advProductManage_add list page load Success !! *** ");
 		} else {
-			System.out.println(" *** advProductManage page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** advProductManage_add list page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#addViewBtn").click();
 		$(".gui-input").waitUntil(visible, 10000);
 		$("#btnRegister").click();
-		sleep(1000);
-		Thread.onSpinWait();
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		String alertCheck = $("p", 4).text();
-		if(alertCheck.equals("광고상품명을 입력하세요.")) {
-			System.out.println(" *** advProductName input check Sueecss !! *** ");
-			$(".btn-sm", 3).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-		} else {
-			System.out.println(" *** advProductName input check Fail ... !@#$%^&*() *** ");
-			close();
-		}
+		valCheck(4, 3, "inflowMediaNm_add_null");
 		$(".gui-input").setValue("@");
 		$("#btnRegister").click();
-		alertCheck("유효성", "광고상품명", 5);
-		$(".gui-input").setValue(date);
+		valCheck(5, 4, "inflowMediaNm_add_validation");
+		$(".gui-input").setValue("1234test");
 		$("#btnRegister").click();
-		$("p", 6).waitUntil(visible, 10000);
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		alertCheck = $("p", 6).text();
-		if(alertCheck.equals("광고 속성을 선택하세요.")) {
-			System.out.println(" *** advAttribute select check Sueecss !! *** ");
-			$(".btn-sm", 5).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-		} else {
-			System.out.println(" *** advAttribute select check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-	    $(By.name("campaignMaterialCd[]")).click();
+		valCheck(6, 5, "campaignMaterial_null");
+		$(By.name("campaignMaterialCd[]")).click();
 	    $(By.xpath("//option[@value='90']")).click();
 		$("#btnRegister").click();
-		$("p", 7).waitUntil(visible, 10000);
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		alertCheck = $("p", 7).text();
-		if(alertCheck.equals("등록이 완료되었습니다.")) {
-			System.out.println(" *** advAttribute register Sueecss !! *** ");
-			$(".btn-sm", 6).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
+		valCheck(7, 6, "advertisingProductManage_add_duplication");
+		$(".gui-input").setValue(date);
+		$("#btnRegister").click();		
+		valCheck(8, 7, "advertisingProductManage_add_register");
+		$("#addViewBtn").waitUntil(visible, 10000);
+		if(pageLoadCheck.equals("추가")) {
+			System.out.println(" *** advertisingProductManage_add register Success !! *** ");
 		} else {
-			System.out.println(" *** advAttribute register Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** advertisingProductManage_add register Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- advertisingProductManage_add End ----- ! ");
@@ -383,53 +332,22 @@ public class marketingInflowSetting {
 	@Test(priority = 4)
 	public void advertisingProductManage_del() {
 		System.out.println(" ! ----- advertisingProductManage_del Start ----- ! ");
-		$("#deleteViewBtn").waitUntil(visible, 10000);
-		String pageLoadCheck = $("#deleteViewBtn").text();
-		if(pageLoadCheck.equals("삭제")) {
-			System.out.println(" *** advProductManage page load Success !! *** ");
-		} else {
-			System.out.println(" *** advProductManage page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
 		$("#deleteViewBtn").click();
-		$(".hiddenCheck", 0).waitUntil(visible, 10000);
+		$("#deleteBtn").waitUntil(visible, 10000);
 		$("#deleteBtn").click();
-		$("p", 3).waitUntil(visible, 10000);
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		pageLoadCheck = $("p", 3).text();
-		if(pageLoadCheck.equals("삭제할 광고상품관리 설정을 선택하세요.")) {
-			System.out.println(" *** del checkBox check Success !! *** ");
-			$(".btn-sm", 3).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-		} else {
-			System.out.println(" *** del checkBox check Fail ... !@#$%^&*() *** ");
-			close();
-		}
+		valCheck(3, 3, "advertisingProductManage_del_null");
 		$("#checkAllCamp").click();
 		$("#deleteBtn").click();
-		$("p", 4).waitUntil(visible, 10000);
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		pageLoadCheck = $("p", 4).text();
-		if(pageLoadCheck.equals("선택한 광고상품 관리 설정을 삭제하시겠습니까?\n" + 
-				"광고상품관리 변수에 대해 수집/분석이 중지되며, 삭제 후 복구가 불가능합니다.")) {
-			System.out.println(" *** del confirm message Success !! *** ");
-			$("#btn-modal-alert-yes").click();
-			$(".modal-backdrop").waitUntil(visible, 10000);
+		valCheck(4, 4, "advertisingProductManage_del_confirm");
+		valCheck(5, 6, "advertisingProductManage_del_alert");
+		$("h5", 1).waitUntil(visible, 10000);
+		String pageLoadCheck = $("h5", 1).text();
+		if(pageLoadCheck.equals("등록된 사용자정의 정보가 없습니다.")) {
+			System.out.println(" *** advertisingProductManage_del del Success !! *** ");
 		} else {
-			System.out.println(" *** del confirm message Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** advertisingProductManage_del del Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("p", 5).waitUntil(visible, 10000);
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		pageLoadCheck = $("p", 5).text();
-		if(pageLoadCheck.equals("광고상품관리 설정 삭제가 완료되었습니다.")) {
-			System.out.println(" *** produce manage delete Success !! *** ");
-			$(".btn-sm", 6).click();
-		} else {
-			System.out.println(" *** produce manage delete Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#deleteViewBtn").waitUntil(visible, 10000);
 		System.out.println(" ! ----- advertisingProductManage_del End ----- ! ");
 	}
 	

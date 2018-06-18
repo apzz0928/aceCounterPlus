@@ -184,7 +184,8 @@ public class memberInfo {
 			close();
 		}
 	    $("#s_name").waitUntil(visible, 10000);
-		$("#s_name").setValue("원래이름");
+		sleep(500);
+	    $("#s_name").setValue("원래이름");
 		$("#s_company").setValue("원래회사명");
 		$(By.name("s_hp1")).click();
 	    $(By.xpath("//option[@value='010']")).click();

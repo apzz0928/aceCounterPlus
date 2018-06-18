@@ -37,9 +37,7 @@ public class temporarily {
 	//신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
 	Date number_date = new Date();
     SimpleDateFormat number_format = new SimpleDateFormat("yyMMddHHmmss");
-    SimpleDateFormat number_format1 = new SimpleDateFormat("yyyy-MM-dd");
     String date = number_format.format(number_date);
-    String date1 = number_format1.format(number_date);
     
 	@Parameters("browser")
 	@BeforeClass
@@ -93,71 +91,58 @@ public class temporarily {
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		}
 	}
-	
 	public static void valCheck(int pTagNum, int btnNum, String val) {
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		String msgCheck = $("p", pTagNum).text();
-        switch(val){
-            case "KPIAdd_reporeName_null": checkMsg = "리포트명을 선택하세요.";
-            break;
-            case "KPIAdd_indicator_null": checkMsg = "지표를 선택하세요.";
-            break;
-            case "KPIAdd_indicator_duplication": checkMsg = "이미 추가한 항목입니다.";
-            break;
-            case "KPIAdd_indicator_badStandard": checkMsg = "진단 기준을 입력하세요.";
-            break;
-            case "KPIAdd_indicator_goodStandard": checkMsg = "변화율 범위에서는 숫자만 입력 가능합니다.";
-            break;
-            case "KPIAdd_indicator_full": checkMsg = "최대 15개 항목을 선택할 수 있습니다.";
-            break;
-            case "KPIAdd_register": checkMsg = "등록이 완료되었습니다.";
-            break;
-            case "KPISetting_modify_confirm": checkMsg = "수정하시겠습니까?";
-            break;
-            case "KPISetting_modify_alert": checkMsg = "수정이 완료되었습니다.";
-            break;
-            case "KPISetting_del_null": checkMsg = "삭제할 KPI 설정을 선택하세요.";
-            break;
-            case "KPISetting_del_confirm": checkMsg = "선택한 KPI 설정을 삭제하시겠습니까?\n" + "삭제 후 복구가 불가능합니다.";
-            break;
-            case "KPISetting_del_alert": checkMsg = "KPI 설정 삭제가 완료되었습니다.";
-            break;
-            case "reportDownload_reserveAdd_reportName_null": checkMsg = "리포트명을 입력하세요.";
-            break;
-            case "reportDownload_reserveAdd_reportName_validation": checkMsg = "한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.";
-            break;
-            case "reportDownload_reserveAdd_email_validation": checkMsg = "올바른 수신 이메일을 입력하세요.";
-            break;
-            case "reportDownload_reserveAdd_reportCheck_null": checkMsg = "리포트를 선택하세요.";
-            break;
-            case "reportDownload_reserveAdd_register": checkMsg = "리포트를 생성하였습니다.";
-            break;
-            case "reportDownload_reserveDel_register": checkMsg = "리포트를 수정하였습니다.";
-            break;
-            case "reportDownload_reservedel_confirm": checkMsg = "선택하신 예약 리포트 설정을 삭제하시겠습니까?";
-            break;
-            case "reportDownload_reservedel_alert": checkMsg = "설정 내역이 삭제되었습니다.";
-            break;
-            case "reportDownload_oneshotAdd_reportName_null": checkMsg = "리포트명을 입력하세요.";
-            break;
-            case "reportDownload_oneshotAdd_reportName_validation": checkMsg = "한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.";
-            break;
-            case "reportDownload_oneshotAdd_email_validation": checkMsg = "올바른 수신 이메일을 입력하세요.";
-            break;
-            case "reportDownload_oneshotAdd_reportCheck_null": checkMsg = "리포트를 선택하세요.";
-            break;
-            case "reportDownload_oneshotAdd_register": checkMsg = "리포트를 생성하였습니다.";
-            break;
-            case "reportDownload_oneshotDel_confirm": checkMsg = "선택하신 일회성 리포트 설정을 삭제하시겠습니까?";
-            break;            
-            case "reportDownload_oneshotDel_alert": checkMsg = "설정 내역이 삭제되었습니다.";
-            break;
-        }
-		Thread.onSpinWait();
+	    $(".modal-backdrop").waitUntil(visible, 10000);
+	    String msgCheck = $("p", pTagNum).text();
+	    switch(val){
+	      case "mktInflowSetting_add_cmpName_null": checkMsg = "캠페인명을 입력해주세요.";
+	      break;
+	      case "mktInflowSetting_add_cmpName_validation": checkMsg = "한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.";
+	      break;
+	      case "mktInflowSetting_add_subjectMatter_null": checkMsg = "소재를 입력해주세요.";
+	      break;
+	      case "mktInflowSetting_add_subjectMatter_validation": checkMsg = "한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.";
+	      break;
+	      case "mktInflowSetting_add_linkURL_null": checkMsg = "연결 URL을 입력하세요.";
+	      break;
+	      case "mktInflowSetting_add_linkURL_validation": checkMsg = "올바른 URL을 입력하세요.";
+	      break;
+	      case "mktInflowSetting_register": checkMsg = "등록에 성공했습니다.";
+	      break;
+	      case "mktInflowSetting_del_null": checkMsg = "삭제할 마케팅 유입 설정을 선택하세요.";
+	      break;
+	      case "mktInflowSetting_del_confirm": checkMsg = "선택한 마케팅 유입 설정을 삭제하시겠습니까?\n" + "마케팅 유입설정 변수에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+	      break;
+	      case "mktInflowSetting_del_alert": checkMsg = "마케팅 유입 설정 삭제가 완료되었습니다.";
+	      break;
+	      case "inflowMediaNm_add_null": checkMsg = "광고상품명을 입력하세요.";
+	      break;
+	      case "inflowMediaNm_add_validation": checkMsg = "한글, 영문(소문자), 숫자, 특수문자(!%()+-_=:./~#), 띄어쓰기로 입력하세요.";
+	      break;
+	      case "campaignMaterial_null": checkMsg = "광고 속성을 선택하세요.";
+	      break;
+	      case "advertisingProductManage_add_duplication": checkMsg = "이미 사용한 광고상품명입니다.\n" + "다른 광고상품명을 사용해주세요.";
+	      break;
+	      case "advertisingProductManage_add_register": checkMsg = "등록이 완료되었습니다.";
+	      break;
+	      case "advertisingProductManage_del_null": checkMsg = "삭제할 광고상품관리 설정을 선택하세요.";
+	      break;
+	      case "advertisingProductManage_del_confirm": checkMsg = "선택한 광고상품 관리 설정을 삭제하시겠습니까?\n" + "광고상품관리 변수에 대해 수집/분석이 중지되며, 삭제 후 복구가 불가능합니다.";
+	      break;
+	      case "advertisingProductManage_del_alert": checkMsg = "광고상품관리 설정 삭제가 완료되었습니다.";
+	      break;
+	      case "3": checkMsg = "";
+	      break;
+	      case "4": checkMsg = "";
+	      break;
+	      case "": checkMsg = "";
+	      break;
+	    }
+	    Thread.onSpinWait();
 		if(msgCheck.equals(checkMsg)) {
 			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Success !! *** ");
 			$(".btn-sm", btnNum).click();
-		    $(".modal-backdrop").waitUntil(hidden, 10000);
+			$(".modal-backdrop").waitUntil(hidden, 10000);
 		} else if (msgCheck.isEmpty()) {
 			System.out.println(" *** ☆★☆★☆★ pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
 			close();
@@ -175,10 +160,10 @@ public class temporarily {
             huc.connect();
             respCode = huc.getResponseCode();
             if(respCode >= 400){
-            	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " *****");
+            	System.out.println("*** " + urlName +" : Link Status HTTP : " + respCode + " ***");
             	close();
             } else {
-            	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " *****");
+            	System.out.println("*** " + urlName +" : Link Status HTTP : " + respCode + " ***");
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -193,10 +178,10 @@ public class temporarily {
   		} catch (InterruptedException ex) {
   		}
   	}
-
+	
 	@Test(priority = 0)
-	public void KPISetting_add() {
-		System.out.println(" ! ----- KPISetting_add Start ----- ! ");
+	public void mktInflowSetting_add() {
+		System.out.println(" ! ----- mktInflowSetting_add Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
@@ -214,321 +199,157 @@ public class temporarily {
 		$("h3", 2).waitUntil(visible, 10000);
 		String pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("방문수")) {
-			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
+			System.out.println(" *** statsLiveDashboard Page load Success !! *** ");
 		} else {
-			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** statsLiveDashboard Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#redirectConfBtn").click();
-		$(".input-sm").waitUntil(visible, 10000);
-		$(".sidebar-title", 6).click();
-		$("td").waitUntil(visible, 10000);
-		pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("등록된 KPI설정이 없습니다.\n" + "[추가]를 클릭해 KPI설정을 등록하세요.")) {
-			System.out.println(" *** KPISetting_add list Page load Success !! *** ");
+		$("#inflowAddBtn").waitUntil(visible, 10000);
+		pageLoadCheck = $("#inflowAddBtn").text();
+		if(pageLoadCheck.equals("추가")) {
+			System.out.println(" *** mktInflowSetting_add list page Success !! *** ");
 		} else {
-			System.out.println(" *** KPISetting_add list Page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** mktInflowSetting_add list page Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#addControl").click();
-		$("h4", 0).waitUntil(visible, 10000);
-		pageLoadCheck = $("h4", 0).text();
-		if(pageLoadCheck.equals("Step1. 지표선택")) {
-			System.out.println(" *** KPISetting_add add Page load Success !! *** ");
+		$("#inflowAddBtn").click();
+		$("#btnReg").waitUntil(visible, 10000);
+		pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("추가하기")) {
+			System.out.println(" *** mktInflowSetting_add add page Success !! *** ");
 		} else {
-			System.out.println(" *** KPISetting_add add Page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** mktInflowSetting_add add page Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#registBtn").scrollTo();
-		$("#registBtn").click();
-		valCheck(4, 807, "KPIAdd_reporeName_null");
-		$("h3", 1).scrollTo();
-		$(".input-sm").setValue(date);
-		$("#registBtn").scrollTo();
-		$("#registBtn").click();
-		valCheck(5, 808, "KPIAdd_indicator_null");
-		$("h3", 1).scrollTo();
-		$(".btn-sm", 11).click();
-		$(".btn-sm", 11).click();
-		valCheck(6, 809, "KPIAdd_indicator_duplication");
-		$(".bad").setValue("");
-		$("#registBtn").scrollTo();
-		$("#registBtn").click();
-		valCheck(7, 810, "KPIAdd_indicator_badStandard");
-		$("h3", 1).scrollTo();
-		$(".bad").setValue("5");
-		$(".good").setValue("ㅇ");
-		$("#registBtn").scrollTo();
-		$("#registBtn").click();
-		valCheck(8, 811, "KPIAdd_indicator_goodStandard");
-		$("h3", 1).scrollTo();
-		$(".cross").click();
-		for(int i=11;i<=17;i++) {
-			$(".btn-sm", i).click();
-			System.out.println("indicatorStatdard add number is " + i);
-		}
-		$(By.linkText("방문수")).click();
-		for(int i=18;i<=26;i++) {
-			$(".btn-sm", i).click();
-			System.out.println("indicatorStatdard add number is " + i);
-		}
-		valCheck(9, 812, "KPIAdd_indicator_full");
-		$("#registBtn").scrollTo();
-		$("#registBtn").click();
-		valCheck(10, 813, "KPIAdd_register");		
-		$("td", 2).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 2).text();
-		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** KPISetting_add register Success !! *** ");
+		$("label", 3).click();
+		$("#btnReg").click();
+		valCheck(4, 5, "mktInflowSetting_add_cmpName_null");
+		$("#campaign_nm").setValue(domain + date + "@");
+		$("#btnReg").click();
+		valCheck(5, 6, "mktInflowSetting_add_cmpName_validation");
+		$("#campaign_nm").setValue(domain + date);
+		$("#btnReg").click();
+		valCheck(6, 7, "mktInflowSetting_add_subjectMatter_null");
+		$("#campaign_material_value0").setValue(domain + date + "@");
+		$("#btnReg").click();
+		valCheck(7, 8, "mktInflowSetting_add_subjectMatter_validation");
+		$("#campaign_material_value0").setValue(domain + date);
+		$("#btnReg").click();
+		valCheck(8, 9, "mktInflowSetting_add_linkURL_null");
+		$("#original_url0").setValue(domain + date);
+		$("#btnReg").click();
+		valCheck(9, 10, "mktInflowSetting_add_linkURL_validation");
+		$("#original_url0").setValue(domain + date + ".com");
+		$("#btnReg").click();
+		valCheck(10, 11, "mktInflowSetting_register");
+		$("#inflowMrkCodeDown").waitUntil(visible, 10000);
+		pageLoadCheck = $("#inflowMrkCodeDown").text();
+		if(pageLoadCheck.equals("광고코드 다운로드")) {
+			System.out.println(" *** mktInflowSetting_add register Success !! *** ");
 		} else {
-			System.out.println(" *** KPISetting_add register Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** mktInflowSetting_add register Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- KPISetting_add End ----- ! ");
+		System.out.println(" ! ----- mktInflowSetting_add End ----- ! ");
 	}
 	@Test(priority = 1)
-	public void KPISetting_modify() {
-		System.out.println(" ! ----- KPISetting_modify Start ----- ! ");
-		$(".btn-xs").click();
-		String pageLoadCheck = $("h4", 0).text();
-		if(pageLoadCheck.equals("Step1. 지표선택")) {
-			System.out.println(" *** KPISetting_modify modify Page load Success !! *** ");
+	public void mktInflowSetting_del() {
+		System.out.println(" ! ----- mktInflowSetting_del Start ----- ! ");
+		$("#deleteViewBtn").click();
+		$("#deleteBtn").waitUntil(visible, 10000);
+		$("#deleteBtn").click();
+		valCheck(3, 4, "mktInflowSetting_del_null");
+		$("#checkAllCamp").click();
+		$("#deleteBtn").click();
+		valCheck(4, 5, "mktInflowSetting_del_confirm");
+		valCheck(5, 7, "mktInflowSetting_del_alert");
+		String pageLoadCheck = $(".no-records-found").text();
+		if(pageLoadCheck.equals("마케팅 유입설정이 존재하지 않습니다.")) {
+			System.out.println(" *** mktInflowSetting_del del Success !! *** ");
 		} else {
-			System.out.println(" *** KPISetting_modify modify Page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** mktInflowSetting_del del Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".input-sm").setValue(date + " 수정");
-		for(int i=13;i>=0;i--) {
-			$(".cross", i).click();
-			System.out.println("indicatorStatdard modify number is " + i);
-		}
-		$("#registBtn").scrollTo();
-		$("#registBtn").click();
-		valCheck(4, 807, "KPISetting_modify_confirm");
-		valCheck(5, 809, "KPISetting_modify_alert");
-		$(By.name("useYn")).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 2).text();
-		if(pageLoadCheck.equals(date + " 수정")) {
-			System.out.println(" *** KPISetting_modify register Success !! *** ");
-		} else {
-			System.out.println(" *** KPISetting_modify register Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(By.name("useYn")).click();
-	    $(By.xpath("//option[@value='n']")).click();
-	    $("#delControl").waitUntil(hidden, 10000);
-	    pageLoadCheck = $("#addControl").text();
-	    if(pageLoadCheck.equals("추가")) {
-			System.out.println(" *** KPISetting_modify del selectBox page load Success !! *** ");
-	    } else {
-			System.out.println(" *** KPISetting_modify del selectBox page load Fail ... !@#$%^&*() *** ");
-			close();
-	    }
-	    $(By.name("useYn")).click();
-	    $(By.xpath("//option[@value='y']")).click();
-	    $("#delControl").waitUntil(visible, 10000);
-	    pageLoadCheck = $("td", 2).text();
-	    if(pageLoadCheck.equals(date + " 수정")) {
-			System.out.println(" *** KPISetting_modify set selectBox page load Success !! *** ");	    	
-	    } else {
-			System.out.println(" *** KPISetting_modify set selectBox page load Fail ... !@#$%^&*() *** ");
-			close();	    	
-	    }
-		System.out.println(" ! ----- KPISetting_modify End ----- ! ");
+		System.out.println(" ! ----- mktInflowSetting_del End ----- ! ");
 	}
 	@Test(priority = 2)
-	public void KPISetting_del() {
-		System.out.println(" ! ----- KPISetting_del Start ----- ! ");
-		$("#delControl").click();
-		$("#delProcess").waitUntil(visible, 10000);
-		$("#delProcess").click();
-		valCheck(3, 3, "KPISetting_del_null");
-		$("#mainDelCheck").click();
-		$("#delProcess").click();
-		valCheck(4, 4, "KPISetting_del_confirm");
-		valCheck(5, 6, "KPISetting_del_alert");
-		$("#delProcess").waitUntil(hidden, 10000);
-		String pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("등록된 KPI설정이 없습니다.\n" + "[추가]를 클릭해 KPI설정을 등록하세요.")) {
-			System.out.println(" *** KPISetting_add list Page load Success !! *** ");
+	public void advertisingCodeDownload() {
+		System.out.println(" ! ----- advertisingCodeDownload Start ----- ! ");
+		$("#inflowMrkCodeDown").click();
+		$(".modal-backdrop").waitUntil(visible, 10000);
+		$("h4", 0).waitUntil(visible, 10000);
+		String pageLoadCheck = $("h4", 0).text();
+		if(pageLoadCheck.equals("광고코드 다운로드")) {
+			brokenLinkCheck("advCodeDown", "https://new.acecounter.com/setting/appmarketing/codedown?inflow_media_cd=&inflow_mrkt_channel_dcd=10&down_term_cate=ALL&create_dt_st=&create_dt_ed=&original_url_yn=n&use_yn=y");
+			System.out.println(" *** advCodeDownload layer check Sueecss !! *** ");
+			$(".close", 0).click();
+			$(".modal-backdrop").waitUntil(hidden, 10000);
 		} else {
-			System.out.println(" *** KPISetting_add list Page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** advCodeDownload layer check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- KPISetting_del End ----- ! ");
-	} 
+		System.out.println(" ! ----- advertisingCodeDownload End ----- ! ");
+	}
 	@Test(priority = 3)
-	public void reportDownload_reserveAdd() {
-		System.out.println(" ! ----- reportDownload_reserveAdd Start ----- ! ");
-		$(".sidebar-title", 7).click();
-		$("td").waitUntil(visible, 10000);
-		String pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("예약된 리포트 목록이 없습니다.\n" + "추가버튼을 눌러 일회성 혹은 예약 리포트를 추가하세요.")) {
-			System.out.println(" *** reportDownload_reserveAdd list Page load Success !! *** ");
+	public void advertisingProductManage_add() {
+		System.out.println(" ! ----- advertisingProductManage_add Start ----- ! ");
+		$(".btn-dark", 0).click();
+		$("#addViewBtn").waitUntil(visible, 10000);
+		String pageLoadCheck = $("#addViewBtn").text();
+		if(pageLoadCheck.equals("추가")) {
+			System.out.println(" *** advProductManage_add list page load Success !! *** ");
 		} else {
-			System.out.println(" *** reportDownload_reserveAdd list Page load Fail ... !@#$%^&*() *** ");
-		}
-		$(".btn-info").click();
-		$("#btn-select-report-all").waitUntil(visible, 10000);
-		pageLoadCheck = $("#btn-select-report-all").text();
-		if(pageLoadCheck.equals("전체선택")) {
-			System.out.println(" *** reportDownload_reserveAdd add Page load Success !! *** ");
-		} else {
-			System.out.println(" *** reportDownload_reserveAdd add Page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** advProductManage_add list page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(3, 5, "reportDownload_reserveAdd_reportName_null");
-		$(".form-control", 0).scrollTo();
-		$(".form-control", 0).setValue(date + "@");
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(4, 6, "reportDownload_reserveAdd_reportName_validation");
-		$(".form-control", 0).scrollTo();
-		$(".form-control", 0).setValue(date);
-		$(".form-control", 1).setValue(date);
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(5, 7, "reportDownload_reserveAdd_email_validation");
-		$(".form-control", 0).scrollTo();
-		$(".form-control", 1).setValue(date + "@test.com");
-		$("#btn-select-report-all").click();
-		$("#btn-select-report-cancle").click();
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(6, 8, "reportDownload_reserveAdd_reportCheck_null");
-		$(".form-control", 0).scrollTo();
-		$("label", 1).click();
-		for(int i=2;i<=8;i++) {
-			$("#report-menu-"+i).click();
-		}
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(7, 9, "reportDownload_reserveAdd_register");
-		$(".text-underline").waitUntil(visible, 10000);
-		pageLoadCheck = $(".text-underline").text();
-		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** reportDownload_reserveAdd register Success !! *** ");
+		$("#addViewBtn").click();
+		$(".gui-input").waitUntil(visible, 10000);
+		$("#btnRegister").click();
+		valCheck(4, 3, "inflowMediaNm_add_null");
+		$(".gui-input").setValue("@");
+		$("#btnRegister").click();
+		valCheck(5, 4, "inflowMediaNm_add_validation");
+		$(".gui-input").setValue("1234test");
+		$("#btnRegister").click();
+		valCheck(6, 5, "campaignMaterial_null");
+		$(By.name("campaignMaterialCd[]")).click();
+	    $(By.xpath("//option[@value='90']")).click();
+		$("#btnRegister").click();
+		valCheck(7, 6, "advertisingProductManage_add_duplication");
+		$(".gui-input").setValue(date);
+		$("#btnRegister").click();		
+		valCheck(8, 7, "advertisingProductManage_add_register");
+		$("#addViewBtn").waitUntil(visible, 10000);
+		if(pageLoadCheck.equals("추가")) {
+			System.out.println(" *** advertisingProductManage_add register Success !! *** ");
 		} else {
-			System.out.println(" *** reportDownload_reserveAdd register Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** advertisingProductManage_add register Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- reportDownload_reserveAdd End ----- ! ");
+		System.out.println(" ! ----- advertisingProductManage_add End ----- ! ");
 	}
 	@Test(priority = 4)
-	public void reportDownload_reserveDel() {
-		System.out.println(" ! ----- reportDownload_reserveDel Start ----- ! ");
-		$(By.linkText(date)).click();
-		$(".form-control", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $("th", 0).text();
-		if(pageLoadCheck.equals("리포트명")) {
-			System.out.println(" *** reportDownload_reserveDel modify Page load Success !! *** ");
+	public void advertisingProductManage_del() {
+		System.out.println(" ! ----- advertisingProductManage_del Start ----- ! ");
+		$("#deleteViewBtn").click();
+		$("#deleteBtn").waitUntil(visible, 10000);
+		$("#deleteBtn").click();
+		valCheck(3, 3, "advertisingProductManage_del_null");
+		$("#checkAllCamp").click();
+		$("#deleteBtn").click();
+		valCheck(4, 4, "advertisingProductManage_del_confirm");
+		valCheck(5, 6, "advertisingProductManage_del_alert");
+		$("h5", 1).waitUntil(visible, 10000);
+		String pageLoadCheck = $("h5", 1).text();
+		if(pageLoadCheck.equals("등록된 사용자정의 정보가 없습니다.")) {
+			System.out.println(" *** advertisingProductManage_del del Success !! *** ");
 		} else {
-			System.out.println(" *** reportDownload_reserveDel modify Page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** advertisingProductManage_del del Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".form-control", 0).setValue(date + "수정");
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(3, 5, "reportDownload_reserveDel_register");
-		$(".text-underline").waitUntil(visible, 10000);
-		pageLoadCheck = $(".text-underline").text();
-		if(pageLoadCheck.equals(date + "수정")) {
-			System.out.println(" *** reportDownload_reserveDel modify Success !! *** ");
-		} else {
-			System.out.println(" *** reportDownload_reserveDel modify Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".btn-dark", 0).click();
-		valCheck(3, 4, "reportDownload_reservedel_confirm");
-		valCheck(4, 6, "reportDownload_reservedel_alert");
-		$(".btn-info").waitUntil(visible, 10000);
-		pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("예약된 리포트 목록이 없습니다.\n" + "추가버튼을 눌러 일회성 혹은 예약 리포트를 추가하세요.")) {
-			System.out.println(" *** reportDownload_reserveDel list Page load Success !! *** ");
-		} else {
-			System.out.println(" *** reportDownload_reserveDel list Page load Fail ... !@#$%^&*() *** ");
-		}
-		System.out.println(" ! ----- reportDownload_reserveDel End ----- ! ");
+		System.out.println(" ! ----- advertisingProductManage_del End ----- ! ");
 	}
-	@Test(priority = 5)
-	public void reportDownload_oneshotAdd() {
-		System.out.println(" ! ----- reportDownload_oneshotAdd Start ----- ! ");
-		$(".btn-info").click();
-		$("#btn-select-report-all").waitUntil(visible, 10000);
-		String pageLoadCheck = $("#btn-select-report-all").text();
-		if(pageLoadCheck.equals("전체선택")) {
-			System.out.println(" *** reportDownload_oneshotAdd add Page load Success !! *** ");
-		} else {
-			System.out.println(" *** reportDownload_oneshotAdd add Page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(3, 5, "reportDownload_oneshotAdd_reportName_null");
-		$(".form-control", 0).scrollTo();
-		$(".form-control", 0).setValue(date + "@");
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(4, 6, "reportDownload_oneshotAdd_reportName_validation");
-		$(".form-control", 0).scrollTo();
-		$(".form-control", 0).setValue(date);
-		$(".form-control", 1).setValue(date);
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(5, 7, "reportDownload_oneshotAdd_email_validation");
-		$(".form-control", 0).scrollTo();
-		$(".form-control", 1).setValue(date + "@test.com");
-		$("#btn-select-report-all").click();
-		$("#btn-select-report-cancle").click();
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(6, 8, "reportDownload_oneshotAdd_reportCheck_null");
-		$(".form-control", 0).scrollTo();
-		for(int i=2;i<=8;i++) {
-			$("#report-menu-"+i).click();
-		}
-		$("#btn-add-report").scrollTo();
-		$("#btn-add-report").click();
-		valCheck(7, 9, "reportDownload_oneshotAdd_register");
-		$(".col-sm-2").waitUntil(visible, 10000);
-		pageLoadCheck = $(".col-sm-2").text();
-		if(pageLoadCheck.equals("* 리포트 생성 현황")) {
-			System.out.println(" *** reportDownload_oneshotAdd register Success !! *** ");
-		} else {
-			System.out.println(" *** reportDownload_oneshotAdd register Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- reportDownload_oneshotAdd End ----- ! ");
-	}
-	@Test(priority = 6)
-	public void reportDownload_oneshotDel() {
-		System.out.println(" ! ----- reportDownload_oneshotDel Start ----- ! ");
-		$(".form-control", 1).setValue(date);
-		$("#btn-search").click();
-		$(".btn-delete").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".text-left").text();
-		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** reportDownload_oneshotDel search Success !! *** ");	
-		} else {
-			System.out.println(" *** reportDownload_oneshotDel search Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".btn-delete").click();
-		valCheck(3, 3, "reportDownload_oneshotDel_confirm");
-		valCheck(4, 5, "reportDownload_oneshotDel_alert");
-		$(".muted").waitUntil(visible, 10000);
-		pageLoadCheck = $(".muted").text();
-		if(pageLoadCheck.equals("리포트 생성 이력이 없습니다.추가 탭에서 리포트를 생성하세요.")) {
-			System.out.println(" *** reportDownload_oneshotDel list Page load Success !! *** ");
-		} else {
-			System.out.println(" *** reportDownload_oneshotDel modify Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- reportDownload_oneshotDel End ----- ! ");
-	}
-	
 	
 	@AfterClass
 	public void afterTest() {

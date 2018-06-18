@@ -152,6 +152,14 @@ public class KPISetting {
             break;            
             case "reportDownload_oneshotDel_alert": checkMsg = "설정 내역이 삭제되었습니다.";
             break;
+			case "myMenu_add_menu_null": checkMsg = "통계를 선택하세요.";
+			break;
+			case "myMenu_add_menu_duplication": checkMsg = "이미 추가한 통계입니다.";
+			break;
+			case "myMenu_add_menu_max": checkMsg = "최대 20개까지 등록할 수 있습니다.";
+			break;
+			case "myMenu_save": checkMsg = "저장이 완료되었습니다.";
+			break;
         }
 		Thread.onSpinWait();
 		if(msgCheck.equals(checkMsg)) {
@@ -520,13 +528,80 @@ public class KPISetting {
 		valCheck(4, 5, "reportDownload_oneshotDel_alert");
 		$(".muted").waitUntil(visible, 10000);
 		pageLoadCheck = $(".muted").text();
-		if(pageLoadCheck.equals("리포트 생성 이력이 없습니다.추가 탭에서 리포트를 생성하세요.")) {
+		if(pageLoadCheck.equals("리포트 생성 이력이 없습니다.\n" + "추가 탭에서 리포트를 생성하세요.")) {
 			System.out.println(" *** reportDownload_oneshotDel list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** reportDownload_oneshotDel modify Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- reportDownload_oneshotDel End ----- ! ");
+	}
+	@Test(priority = 7)
+	public void myMenu_add() {
+		System.out.println(" ! ----- myMenu Start ----- ! ");
+		$("#redirectMyMenuBtn").click();
+		$(".top > .sub-nav > .active").waitUntil(visible, 10000);
+		$("#myMenu").click();
+		$(".top > .menu-service > .sidebar-title").click();
+		String pageLoadCheck = $("h4", 0).text();
+		if(pageLoadCheck.equals("Step1. 통계선택")) {
+			System.out.println(" *** myMenu_add list Page access Success !! *** ");
+		} else {
+			System.out.println(" *** myMenu_add list Page access Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".cross", 0).click();
+		$("#noMenu").waitUntil(visible, 10000);
+		pageLoadCheck = $("#noMenu").text();
+		if(pageLoadCheck.equals("통계를 선택하세요.")) {
+			System.out.println(" *** myMenu_add delete check Success !! *** ");
+		} else {
+			System.out.println(" *** myMenu_add delete check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#saveBtn").click();
+		valCheck(3, 51, "myMenu_add_menu_null");
+		$(".btn-sm", 2).click();
+		$(".btn-sm", 2).click();
+		valCheck(4, 52, "myMenu_add_menu_duplication");
+		for(int i=3;i<=7;i++) {
+			$(".btn-sm", i).click();
+			System.out.println("myMenu add btn number is " + i);
+		}
+		$(".tabs-left > li", 1).click();
+		for(int i=8;i<=10;i++) {
+			$(".btn-sm", i).click();
+			System.out.println("myMenu add btn number is " + i);
+		}
+		$(".tabs-left > li", 2).click();
+		for(int i=11;i<=19;i++) {
+			$(".btn-sm", i).click();
+			System.out.println("myMenu add btn number is " + i);
+		}
+		$(".tabs-left > li", 3).click();
+		for(int i=20;i<=22;i++) {
+			$(".btn-sm", i).click();
+			System.out.println("myMenu add btn number is " + i);
+		}
+		valCheck(5, 53, "myMenu_add_menu_max");
+		$("#saveBtn").click();
+		valCheck(6, 54, "myMenu_save");
+		pageLoadCheck = $("h4", 0).text();
+		if(pageLoadCheck.equals("Step1. 통계선택")) {
+			System.out.println(" *** myMenu_add register Success !! *** ");
+		} else {
+			System.out.println(" *** myMenu_add register Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".cross", 19).scrollTo();
+		$(".cross", 19).waitUntil(visible, 10000);
+		for(int i=19;i>=1;i--) {
+			$(".cross", i).click();
+			System.out.println("myMenu del btn number is " + i);
+		}
+		$("#saveBtn").click();
+		valCheck(3, 51, "myMenu_save");
+		System.out.println(" ! ----- myMenu End ----- ! ");
 	}
 	
 	@AfterClass
