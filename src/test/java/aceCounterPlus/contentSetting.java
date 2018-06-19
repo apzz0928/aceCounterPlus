@@ -1,4 +1,4 @@
-package aceCounterPlus;
+package aceCounterPlus; //통계설정 > 컨텐츠설정 (URL설정, 페이지그룹 설정, 내부배너 설정)
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
