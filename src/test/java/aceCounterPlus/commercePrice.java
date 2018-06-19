@@ -1,4 +1,4 @@
-package aceCounterPlus;
+package aceCounterPlus; //커머스 설정 > (제품가격대, 통화단위)
 
 import java.net.MalformedURLException;
 import java.net.URL;
