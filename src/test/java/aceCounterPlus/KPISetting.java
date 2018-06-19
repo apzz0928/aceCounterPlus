@@ -564,24 +564,22 @@ public class KPISetting {
 		$(".btn-sm", 2).click();
 		$(".btn-sm", 2).click();
 		valCheck(4, 52, "myMenu_add_menu_duplication");
-		for(int i=3;i<=7;i++) {
+		for(int i=3,x=1;i<=22;i++) {
 			$(".btn-sm", i).click();
 			System.out.println("myMenu add btn number is " + i);
-		}
-		$(".tabs-left > li", 1).click();
-		for(int i=8;i<=10;i++) {
-			$(".btn-sm", i).click();
-			System.out.println("myMenu add btn number is " + i);
-		}
-		$(".tabs-left > li", 2).click();
-		for(int i=11;i<=19;i++) {
-			$(".btn-sm", i).click();
-			System.out.println("myMenu add btn number is " + i);
-		}
-		$(".tabs-left > li", 3).click();
-		for(int i=20;i<=22;i++) {
-			$(".btn-sm", i).click();
-			System.out.println("myMenu add btn number is " + i);
+			if(i==7) {
+				$(".tabs-left > li", x).click();
+				System.out.println("myMenu Tab number is " + x);
+				x++;
+			} else if (i==10) {
+				$(".tabs-left > li", x).click();
+				System.out.println("myMenu Tab number is " + x);
+				x++;
+			} else if (i==19) {
+				$(".tabs-left > li", x).click();
+				System.out.println("myMenu Tab number is " + x);
+				x++;
+			}
 		}
 		valCheck(5, 53, "myMenu_add_menu_max");
 		$("#saveBtn").click();
