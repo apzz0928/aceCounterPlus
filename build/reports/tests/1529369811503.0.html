@@ -1,0 +1,1686 @@
+<html lang="ko"><head>
+<title>에이스카운터 플러스 - 웹/앱 로그분석 플랫폼</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="로그분석, 웹로그분석, 웹로그, 접속통계, 웹 로그분석, 웹 로그 분석, 무료 로그분석, 방문자 분석, 사이트 분석, 카운터, 웹사이트 분석, 홈페이지 분석, counter, 광고 분석, CRM, VRM">
+<meta name="description" content="NHN ACE 운영, 무료 웹 로그 분석, 방문자 통계, 앱분석 등 애널리틱스 리포트 제공">
+<meta property="og:type" content="website">
+<meta property="og:title" content="에이스카운터 플러스">
+<meta property="og:description" content="NHN ACE 운영, 무료 웹 로그 분석, 방문자 통계, 앱분석 등 애널리틱스 리포트 제공">
+<meta property="og:image" content="[https://new.acecounter.com/assets/img/logo_header.png](https://new.acecounter.com/assets/img/logo_header.png)">
+<meta property="og:url" content="[https://new.acecounter.com](https://new.acecounter.com)">
+<meta name="author" content="ACE Counter+">
+<meta name="naver-site-verification" content="cbee7b491a7b4619234997a8b95e5294f13401dd"><!--modal popup css-->
+<link rel="stylesheet" type="text/css" href="/plugins/magnific/magnific-popup.css">
+
+<!--fontawsome-->
+<link rel="stylesheet" type="text/css" href="/assets/css/fontawesome/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--Material icons-->
+<link rel="stylesheet" type="text/css" href="/assets/css/material-icons/material-icons.css">
+<!--daterangepicker css-->
+<link rel="stylesheet" type="text/css" href="/plugins/daterange/daterangepicker.css">
+
+<!--basic css-->
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<!--통계설정 페이지들용 -->
+		<link rel="stylesheet" type="text/css" href="/assets/css/responsive-setting.css">
+	<!--form css-->
+<link rel="stylesheet" type="text/css" href="/assets/css/ace-forms.css">
+
+<!--basic css-->
+<link rel="stylesheet" type="text/css" href="/plugins/tagmanager/tagmanager.css">
+
+<!-- bootstrap table -->
+<link rel="stylesheet" type="text/css" href="/assets/bootstrap-table/src/bootstrap-table.css">
+
+<!-- jQuery -->
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="https://mrss.aceclick.co.kr/aceclick.js?rt=1529369801247"></script><script src="https://cr.acecounter.com/Web/AceCounter_AW.js?gc=AH1A41895171963&amp;py=1&amp;gd=gtp4&amp;gp=8080&amp;up=NaPm_Ncisy&amp;rd=1529369801246"></script><script src="https://atm.acecounter.com/ac.js?tid=100418AX-10-A&amp;hsn=new.acecounter.com&amp;hrf=in&amp;dvp=0&amp;tgp=Login&amp;tn1=&amp;tn2=&amp;tn3=&amp;tw1=&amp;tw2=&amp;tw3=&amp;tw4=&amp;tw5=&amp;tw6=&amp;tw7=&amp;rnd=1529369801245&amp;py=0"></script><script src="/assets/js/jquery-1.11.1.min.js"></script>
+<script src="/assets/js/jquery_ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/front/js/jquery.validate.min.js"></script>
+
+<script src="/assets/js/ace.validate2.js"></script>
+
+<!-- bootstrap table -->
+<script src="/assets/bootstrap-table/src/bootstrap-table.js"></script>
+<script src="/assets/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
+<script src="/assets/bootstrap-table/src/extensions/export/FileSaver.min.js"></script>  
+<script src="/assets/bootstrap-table/src/extensions/export/tableExport.min.js"></script>  
+<script src="/assets/bootstrap-table/src/locale/bootstrap-table-ko-KR.js"></script>  
+<script src="/assets/bootstrap-table/src/extensions/mobile/bootstrap-table-mobile.js"></script>
+
+<!-- modal popup js -->
+<script src="/plugins/magnific/jquery.magnific-popup.js"></script>
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+<!-- report down to pdf -->
+<script src="/assets/js/downtopdf/jspdf.min.js"></script>
+<script src="/assets/js/downtopdf/html2canvas.js"></script>
+<script src="/assets/js/downtopdf/addhtml.js"></script>
+
+<!-- feedback layer -->
+<link type="text/css" rel="stylesheet" href="/assets/css/feedback_style.css">
+<script src="/assets/js/feedback.js"></script>
+
+<style type="text/css">.tooltip-inner.flexable {max-width: 100%;}</style><style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style><style type="text/css">::-ms-clear{display:none};</style></head>
+<body class="ace-elements-page sb-l-o sb-r-c onload-check" style="min-height: 1017px;">
+	<div id="main">
+
+		<!-- Start: Header -->
+<header class="navbar navbar-fixed-top">
+    <div class="navbar-branding hidden-xs hidden-sm">
+        <a class="navbar-brand" href="/">
+            <img src="/assets/img/logo/acecounter_bi_w.png" alt="acecounter">
+        </a>
+        <span id="toggle_sidemenu">
+          <span class="hidden-xs hidden-sm hidden-md hidden-lg">
+              <img src="/assets/img/sidebar_toggle.png" alt="" width="30px">
+          </span>
+          <span class="fa fa-bars hidden-xs hidden-sm hidden-md hidden-lg"></span>
+        </span>
+        <!--logo-small-->
+        <a class="navbar-brand-s" href="/">
+            <img src="/assets/img/logo/acecounter_bi_w_s.png" alt="acecounter" width="45px">
+        </a>
+    </div>
+
+    <!-- Mobile Home LOGO -->
+    <a class="mlogo mobile-version" href="#">
+        <img src="/assets/img/logo/acecounter_bi_w.png" alt="acecounter" width="135px">
+    </a>
+    <!-- End -->
+
+    <div class="navbar-middle">
+        <span id="toggle_sidemenu_l">
+          <span class="fa fa-bars"></span>
+        </span>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" id="menu-top-services">
+            <a class="dropdown-toggle pc-version" data-toggle="dropdown" href="#" title="사이트선택" style=" margin-right:0; margin-left:auto;text-align:right">
+                <span class="label label-rounded-wide label-br-wfe mr5">Web Free</span><span class="ace-svc-name text-dark">서비스추가해지테스트0001(test00011.org)</span><span class="caret text-dark"></span>
+            </a>
+            <a class="dropdown-toggle mobile-version" data-toggle="dropdown" href="#" title="사이트선택">
+                <span class="fa fa-list-ul"></span>
+            </a>
+            <ul class="dropdown-menu list-group dropdown-persist nano nano-primary affix ie_scroll has-scrollbar" role="menu">
+                <!-- 레이어화살표표시 -->
+                <div id="menu-top-service-items" class="nano-content nano-content1" style="max-height: 300px; padding: 0px; margin-right: -17px;" tabindex="0"></div>
+            <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 20px; transform: translate(0px, 0px);"></div></div></ul>
+        </li>
+        <li class="hidden-xs hidden-sm">
+                <a href="/help/setting?menuNo=89" title="본문도움말" target="_blank">
+                    <span class="material-icons" aria-hidden="true"></span>
+                </a>
+            </li>
+            <li class="dropdown hidden-xs hidden-sm">
+                <a class="dropdown-toggle fs22" data-toggle="dropdown" href="#" title="서비스관리">
+                    <span class="material-icons" aria-hidden="true"></span>
+                </a>
+                <ul class="dropdown-menu list-group dropdown-persist w130" role="menu">
+                    <li class="list-group-item">
+                        <a href="/common/frontIndex">서비스관리 메인</a>
+                    </li>
+                    <li class="list-group-item">
+                            <a href="/manage/script/scriptList">분석 스크립트</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="/manage/serviceInfo/addService">서비스 추가</a>
+                        </li>
+                    <li class="list-group-item">
+                        <a href="/manage/serviceInfo/editService">서비스 정보 수정</a>
+                    </li>
+                    <li class="list-group-item">
+                            <a href="/manage/serviceInfo/submanager">부관리자</a>
+                        </li>
+                    </ul>
+            </li>
+        <li class="dropdown hidden-xs hidden-sm">
+            <a class="dropdown-toggle fs22" href="#" data-toggle="dropdown" title="알림">
+                <span class="fa fa-user-o" aria-hidden="true"></span>
+                </a>
+            <ul class="dropdown-menu list-group member dropdown-persist w150" role="menu">
+                <li class="list-group-item">
+                    <a href="/manage/my_member_modify">내정보</a>
+                </li>
+                <li class="list-group-item">
+                        <a href="/manage/charge/additionalCharge">추가요금
+                            </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/manage/news/myAllimList">개인알림</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/manage/news/myNoticeList">서비스 공지</a>
+                    </li>
+                <li class="dropdown-footer">
+                        <a class="btn-logout"><span class="fa fa-power-off mr5"></span>로그아웃</a>
+                    </li>
+                </ul>
+        </li>
+        <li class="dropdown mobile-version">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="사용자">
+                <span class="fa fa-user-o" aria-hidden="true"></span>
+            </a>
+            <ul class="dropdown-menu list-group member dropdown-persist w250" role="menu">
+                <li class="dropdown-header">
+                    <div class="clearfix">
+                        <div class="pull-left ml10">
+                            <a href="/manage/userInfoPwdCheck" class="btn btn-default btn-sm">
+                                <span class="fa fa-user mr10"></span>내정보</a>
+                        </div>
+                        <div class="pull-right mr10">
+                            <a class="btn btn-default btn-sm btn-logout">
+                                <span class="fa fa-sign-out mr10"></span>로그아웃</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <a href="/setting/appmarketing/">
+                        <span class="fa fa-sliders"></span>통계설정</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/common/frontIndex">
+                        <span class="fa fa-users"></span>서비스관리 메인</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/manage/script/scriptList">
+                        <span class="fa fa-keyboard-o"></span>분석 스크립트</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/manage/serviceInfo/addService">
+                        <span class="fa fa-plus-square"></span>서비스 추가</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/manage/serviceInfo/editService">
+                        <span class="fa fa-pencil-square-o"></span>서비스 정보 수정</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="준비중입니다.">
+                        <span class="fa fa-user-plus"></span>부관리자
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown hidden-xs hidden-sm">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="언어선택">
+                <span class="material-icons" aria-hidden="true"></span>
+            </a>
+            <ul class="dropdown-menu pv5 animated animated-short flipInX" style="width:180px;" role="menu">
+                <li>
+                    <a href="?locale=ko">
+                        <div class="btn-group">
+                            <i class="fa fa-check text-primary-lights"></i>
+                            <span class="flag flag-kr mr10"></span>
+                        </div>
+                        KOREA</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="btn-group" role="group">
+                            <i style="width:12px;height:13px;display:inline-block;"></i>
+                            <span class="flag flag-en mr10"></span>
+                        </div>
+                        (준비중)ENGLISH</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="btn-group">
+                            <i style="width:12px;height:13px;display:inline-block;"></i>
+                            <span class="flag flag-jp mr10"></span>
+                        </div>
+                        (준비중)JAPAN</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="btn-group">
+                            <i style="width:12px;height:13px;display:inline-block;"></i>
+                            <span class="flag flag-cn mr10"></span>
+                        </div>
+                        (준비중)CHINA</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <form name="popForm">
+        <input id="lang" name="lang" value="" type="hidden">
+    </form>
+</header>
+<!-- End: Header -->
+
+<!-- feedback layer -->
+<!-- Start: Sidebar Left -->
+    <aside id="sidebar_left" class="nano nano-primary affix pt110 has-scrollbar">
+
+      <!-- Start: Sidebar Left Content -->
+      <div class="sidebar-left-content nano-content" tabindex="0" style="margin-right: -17px;">
+
+        <!-- Start: Sidebar Left Menu -->
+        <ul class="nav sidebar-menu">
+
+          <!-- <li class="top">
+            <a href="/stats/statsLiveDashboard" title="통계바로가기" class="fs15">
+              <span class="fa fa-signal"></span>
+              <span class="sidebar-title">통계바로가기</span>
+            </a>
+          </li> -->
+          
+          <li style="padding-top:5px">
+            <a class="accordion-toggle menu-open" href="/setting/appmarketing/" title="마케팅 유입 설정">
+              <!-- <span class="fa fa-shopping-bag"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">마케팅 유입 설정</span>
+              <span class="caret"></span>
+              <span class="currentarrow"></span>
+            </a>
+            <ul class="nav sub-nav">
+            <li class="active"> 
+                <a href="/setting/appmarketing/" sub-url="/setting/appmarketing/marketing,/setting/inflowmedia/config/userinflow" title="마케팅 유입설정">
+                    마케팅 유입설정
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/marketing-set1" sub-url="/setting/marketing-set2,/setting/marketing-set3" title="마케팅 비용연동">
+                    마케팅 비용연동
+                </a>
+              </li> 
+              </ul>
+          </li>
+          <li>
+            <a class="accordion-toggle" href="/setting/user/ipconf" title="사용자 설정">
+              <!-- <span class="fa fa-user"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">사용자 설정</span>
+              <span class="caret"></span>
+              <span class="currentarrow"></span>
+            </a>
+            <ul class="nav sub-nav">
+              <li>
+                <a href="/setting/user/ipconf" title="IP필터링설정">
+                    IP필터링설정
+                </a>
+              </li> 
+              <li> 
+                <a href="/setting/user/memgroup_setting" sub-url="/setting/user_memgroup_add" title="회원그룹설정">
+                    회원그룹설정
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="/setting/convList" sub-url="/setting/convAdd" title="전환 설정">
+              <!-- <span class="fa fa-random"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">전환 설정</span>
+            </a>
+          </li>
+          <li>
+            <a class="accordion-toggle" href="#" title="커머스설정">
+              <!-- <span class="fa fa-laptop"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">커머스 설정</span>
+              <span class="caret"></span>
+              <span class="currentarrow"></span>
+            </a>
+            <ul class="nav sub-nav">
+              <li>
+                <a href="/setting/commerce/price" sub-url="/setting/commerce/priceForm" title="제품가격대">
+                    제품가격대
+                </a>
+              </li> 
+              <li> 
+                <a href="/setting/commerce/grp" sub-url="/setting/commerce/grpForm" title="제품그룹">
+                    제품그룹
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/commerce/mainPrice" sub-url="/setting/commerce/mainPriceForm" title="메인제품분석">
+                    메인제품분석
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/commerce/currencyUnit" sub-url="/setting/commerce/currencyUnitFrom" title="통화 단위">
+                    통화 단위
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="accordion-toggle" href="/setting/contents/url" title="콘텐츠설정">
+              <!-- <span class="fa fa-file-text-o"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">콘텐츠 설정</span>
+              <span class="caret"></span>
+              <span class="currentarrow"></span>
+            </a>
+            <ul class="nav sub-nav">
+              <li>
+                <a href="/setting/contents/url" sub-url="/setting/contents/excludeUrl, /setting/contents/internalSearch" title="URL 설정">
+                    URL 설정
+                </a>
+              </li> 
+              <li> 
+                <a href="/setting/contents/pageGroup" title="페이지그룹 설정">
+                    페이지그룹 설정
+                </a>
+              </li>
+              <li>
+                <a href="/setting/contents/inBanner/list" sub-url="/setting/contents/inBanner/add" title="내부배너 설정">
+                    내부배너 설정
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/contents/scenario" sub-url="/setting/contents/scenario/form" title="시나리오">
+                    시나리오
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/contents/download" title="파일다운로드">
+                    파일다운로드
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/contents/outlinkBanner" sub-url="/setting/contents/outlinkBanner/form" title="아웃링크 배너">
+                    아웃링크 배너
+                </a>
+              </li> 
+            </ul>
+          </li>
+          <li>
+            <a class="accordion-toggle" href="/setting/inhouse/viral/list" title="인하우스마케팅 설정">
+              <!-- <span class="fa fa-home"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">인하우스마케팅 설정</span>
+              <span class="caret"></span>
+              <span class="currentarrow"></span>
+            </a>
+            <ul class="nav sub-nav">
+              <li> 
+                <a href="/setting/inhouse/viral/list" sub-url="/setting/inhouse/viral/add" title="바이럴 설정">
+                    바이럴 설정
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/inhouse/email/list" sub-url="/setting/inhouse/email/add" title="이메일 설정">
+                    이메일 설정
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/inhouse/talk/list" sub-url="/setting/inhouse/talk/add" title="Talk 설정">
+                    Talk 설정
+                </a>
+              </li>
+              </ul>
+          </li>
+          <li>
+            <a href="/setting/kpi/list" sub-url="/setting/kpi/form" title="KPI설정">
+              <!-- <span class="fa fa-envira"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">KPI 설정</span>
+            </a>
+          </li>
+          <li>
+            <a href="/setting/reportDown/reserve" title="리포트 다운로드" sub-url="/setting/reportDown/download, /setting/reportDown/reserve">
+              <span class="material-icons"></span> <!-- 리포트다운로드 아이콘변경 0328 -->
+              <span class="sidebar-title">리포트 다운로드</span>
+            </a>
+          </li>
+          </ul>
+        <!-- Start: Sidebar Collapse Button -->
+	      <div class="sidebar-toggle-mini">
+	        <a href="#">
+	          <span class="fa fa-sign-out"></span>
+	        </a>
+	      </div>
+	      <!-- End: Sidebar Collapse Button -->
+        <!-- End: Sidebar Menu --> 
+		<div class="side-bar-util navbar-fixed-bottom brt-grey" role="navigation">
+		    <div class="sidebar-inquire" style="display: none;">
+			  <img src="/assets/img/sidebar_inquire.jpg">
+			  <h5 class="text-dark ib">고객지원센터</h5>
+			  <h3 class="text-info ib">1544-5420</h3>
+		    </div> 
+			<ul class="nav nav-justified">
+				<li><a class="btn-default theme m-1" href="#" id="redirectStatsBtn" data-toggle="tooltip" data-placement="top" data-original-title="통계보기"><div class="lt_m"><span class="material-icons"></span><p class="txt">통계보기</p></div></a></li>
+				<li><a class="btn-default theme m-1 active" href="#" id="redirectConfBtn" data-toggle="tooltip" data-placement="top" data-original-title="통계설정"><div class="lt_m"><span class="material-icons"></span><p class="txt">통계설정</p></div></a></li>
+				<li><a class="btn-default theme m-1" href="#" id="redirectMyMenuBtn" data-toggle="tooltip" data-placement="top" data-original-title="나의 메뉴"><div class="lt_m"><span class="material-icons"></span><p class="txt">나의메뉴</p></div></a></li>
+			  </ul>
+		</div>
+         
+      </div>
+      <!-- End: Sidebar Left Content -->
+
+    <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 1022px; transform: translate(0px, 0px);"></div></div></aside>
+    <!-- End: Sidebar Left --><section id="content_wrapper">
+			<header id="topbar">
+				<div class="col-xs-12 col-sm-12 col-md-6">
+					<h3 class="notokr-bold" id="top-menu-name">마케팅 유입 설정
+						<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <a class="dropdown-toggle" title="페이지" href="#" data-toggle="dropdown" aria-expanded="true">
+	<span class="fa fa-question-circle"></span>
+</a> -->
+<a href="/help/setting?menuNo=89" target="_blank" id="button-link">
+	<span class="fa fa-question-circle"></span>
+</a>
+<!-- <div class="dropdown-guide animated animated-short flipInX">준비중입니다.</div> -->
+
+<script>
+$(document).ready(function(){
+	//console.log(window.location.pathname);
+	//console.log(window.location.href.split(window.location.pathname)[1]);
+	$.ajax({
+		url:'/menu/getMenuNoByUri.ajax',
+		type:'get',
+		data:{
+			uri:window.location.pathname + window.location.href.split(window.location.pathname)[1],
+		},
+		success:function(rs){
+			if(rs){
+				var menuCategory = 'stats';
+				var menuWorkDcd = rs.menuWorkDcd.toLowerCase(); 
+				if(menuWorkDcd == 'r')
+					menuCategory = 'stats';
+				else if(menuWorkDcd == 's')
+					menuCategory = 'setting';
+				$("#button-link").attr("href", "/help/"+menuCategory+"?menuNo="+rs.menuNo);	
+				// top 메뉴 도움말 링크
+				$elTopHelpBtn = $('header a[href="/help/stats"]');
+				if ($elTopHelpBtn && $elTopHelpBtn.length === 1) {
+					$elTopHelpBtn.attr('href', '/help/' + menuCategory + '?menuNo=' + rs.menuNo);
+				}
+			}else{
+				$.ajax({
+					url:'/menu/getMenuNoByUri.ajax',
+					type:'get',
+					data:{
+						uri:window.location.pathname,
+					},
+					success:function(obj){
+						var menuCategory = 'stats';
+						var menuWorkDcd = (obj && obj.menuWorkDcd) ? obj.menuWorkDcd.toLowerCase() : 'r'; 
+						if(menuWorkDcd == 'r')
+							menuCategory = 'stats';
+						else if(menuWorkDcd == 's')
+							menuCategory = 'setting';
+						$("#button-link").attr("href", "/help/"+menuCategory+"?menuNo="+obj.menuNo);	
+						$elTopHelpBtn = $('header a[href="/help/stats"]');
+						if ($elTopHelpBtn && $elTopHelpBtn.length === 1) {
+							$elTopHelpBtn.attr('href', '/help/' + menuCategory + '?menuNo=' + rs.menuNo);
+						}
+					}
+				})
+			}
+		},
+		error:function(rs){
+			
+		}
+	});
+});
+</script></h3>
+				</div>
+			</header>
+
+			<section id="content" class="">
+			<div class="panel">
+					<form id="mainForm">
+						<input name="pageNo" id="pageNo" value="0" type="hidden"> 
+						<input name="hiddenUseYn" id="hiddenUseYn" value="y" type="hidden">
+						<input name="storeCnt" value="0" type="hidden">
+						<div class="panel-function">
+							<div class="pull-left full" id="insertBtnGroup">
+								<a href="#" id="inflowAddBtn" class="btn btn-info">추가</a>
+								<a href="#" id="deleteViewBtn" class="btn btn-gray">삭제</a>
+								<a href="/setting/inflowmedia/config/userinflow" class="btn btn-dark">광고상품 관리</a>
+							</div>
+							<!-- 삭제 버튼 누르면 나오는 버튼입니다. 테이블의 체크박스는 삭제를 눌렀을 때만 나옵니다.-->
+							<div class="pull-left full" style="display: none" id="deleteBtnGroup">
+								<a href="#" data-del-kind="y" id="deleteBtn" class="btn btn-info">
+								선택 항목 삭제</a> 
+								<a href="#" id="deleteCancelBtn" class="btn btn-light">취소</a>
+							</div>
+							<div class="pull-right full" id="topRightFunctions">
+								<div class="form-inline">
+									<div class="form-group">
+										<label class="field select"> 
+										<select class="form-control" name="use_yn" onchange="goSubmit(0, 'search');">
+											<option value="y" selected="">설정리스트</option>
+											<option value="n">삭제리스트</option>
+										</select> 
+										<i class="arrow"></i>
+										</label>
+									</div>
+									<div class="form-group">
+										<label class="field select"> 
+										<select class="form-control" id="keyfield" name="keyfield">
+											<option value="campaign_nm">캠페인명</option>
+											<option value="campaign_material_value">키워드(소재)</option>
+										</select> 
+										<i class="arrow"></i>
+										</label>
+									</div>
+									<div class="input-group">
+										<span class="input-group-addon pl10" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="체크 시 일치검색, 해제 시 확장 검색이 가능합니다.">
+		                                    <label class="mn text-muted">
+		                                      <input id="check_yn" name="check_yn" value="y" class="mn" type="checkbox">
+		                                      	일치<span class="ml5">I</span><!-- 체크 해제 상태에서는 포함, 체크상태에서는 일치로 표기 -->
+		                                    </label>
+		                                </span>
+		                                <input class="form-control br-l-n" name="keyword" value="" placeholder="검색어를 입력하세요." style="padding-right:1.4em" type="text">
+		                                <span id="clearBtn" style="display: none; position: absolute; top: 0.5em; right: 2.2em; font-weight: bold; font-size: 1.4em; padding: 0px 0.2em; line-height: 1em; cursor: pointer; z-index: 3;">×</span>
+		                                <span class="input-group-btn">
+			                                <button id="searchBtn" class="btn btn-default" onclick="goSubmit(0,'search');">
+			                                	<i class="fa fa-search"></i>
+			                                </button>
+		                                </span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="teble-responsive">
+							<table id="list-table" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th class="hiddenCheck hide" width="30">
+											<input id="checkAllCamp" type="checkbox">
+										</th>
+										<th>No</th>
+										<th>
+											<div class="section mbn">
+												<label class="field select"> 
+												<select class="input-sm inflow_config" name="inflow_mrkt_channel_dcd" id="inflow_mrkt_channel_dcd">
+														<option value="" selected="">광고 구분</option>
+														<option value="10">유료마케팅</option>
+														<option value="20">일반마케팅</option>
+												</select> 
+												<i class="arrow"></i>
+												</label>
+											</div>
+										</th>
+										<th>
+											<div class="section mbn">
+												<label class="field select"> 
+												<select class="input-sm inflow_config" name="inflow_media_cd" id="inflow_media_cd" data-inflow-media-cd="" disabled="" style="background-color: rgb(234, 234, 234); color: rgb(187, 187, 187);">
+													<option value="" selected="">광고 상품</option>
+												</select> 
+												<i class="arrow"></i>
+												</label>
+											</div>
+										</th>
+										<th>
+											<div class="section mbn">
+												<label class="field select"> 
+												<select class="input-sm inflow_config" name="campaign_material_cd">
+													<option value="" selected="">광고 속성</option>
+													<option value="10">검색</option>
+													<option value="20">디스플레이</option>
+													<option value="30">동영상</option>
+													<option value="40">소셜</option>
+													<option value="50">쇼핑중계</option>
+													<option value="90">기타</option>
+													</select> 
+												<i class="arrow"></i>
+												</label>
+											</div>
+										</th>
+										<th>캠페인명</th>
+										<th>등록수</th>
+										<th width="120">광고코드</th>
+										<th>등록일</th>
+										<th>최종업데이트</th>
+										</tr>
+								</thead>
+								<tbody>
+									<tr class="no-records-found">
+												<td class="text-center" colspan="9">마케팅 유입설정이 존재하지 않습니다.</td>
+											</tr>
+										</tbody>
+							</table>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<div class="mt20">
+									<a id="inflowMrkCodeDown" data-toggle="modal" data-target="#codedown" class="btn btn-dark" style="">광고코드 다운로드</a>
+								</div>
+							</div>
+							<div class="col-md-4">
+								</div>
+							<div class="col-md-4">
+								<div class="text-right mt20">
+									
+										<div class="form-group ph5" style="display:inline-block;">
+											<label class="field select"> 
+											<select id="pageSize" class="input-sm" name="pageSize" onchange="goSearch('');">
+												<option value="10" selected="">10건씩 보기</option>
+												<option value="20">20건씩 보기</option>
+												<option value="50">50건씩 보기</option>
+												<option value="100">100건씩 보기</option>
+											</select> 
+											<i class="arrow"></i>
+											</label>
+										</div>
+									
+								</div>
+							</div>
+						</div></form>
+
+					
+				</div>
+				</section>
+			<!-- /#content -->
+			<!-- 한줄도움말/FAQ -->
+			<div class="faq-tabs" style="position:relative;">
+	<ul class="nav nav-tabs">
+		<li class="active"><a data-toggle="tab" href="#help">한줄도움말</a></li>
+	</ul>
+	<div class="tab-content">
+		<div id="help" class="tab-pane fade in active">
+			<div style="all:initial;font-size:13px;letter-spacing:-1px;color:#2a2a2a;">유료마케팅이나 일반마케팅을 진행하는 경우 광고영역의 링크를 클릭해 방문하는 효과를 분석하기 위한 설정입니다.<br>
+네이버 검색광고(사이트, 쇼핑, 브랜드 검색광고), 다음 클릭스, 구글 애드워즈(키워드 구분은 광고코드 발급 필요), 네오클릭, 리얼클릭(추적 URL 제공 상품)은 별도의 설정이 필요하지 않으며,<br>
+광고사의 추적URL 기능을 이용해 에이스카운터에서 자동분석됩니다.<br>
+자동분석이 되지 않는 광고 상품의 경우, 마케팅 유입설정을 하지 않으면 해당 광고상품에 속한 통계 항목에 반영되지 않습니다.<br>
+<strong>마케팅 유입설정은 1개 캠페인당 1회 10,000개까지의 키워드(검색어) 노출수, 클릭수 광고비를 등록</strong>할 수 있습니다.</div>
+		<div style="margin-top:30px"><a href="/help/setting?menuNo=89" target="_blank" class="btn btn-dark">전체 도움말 보기</a></div></div>
+		<div id="faq" class="tab-pane fade">
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var pathname = window.location.pathname;
+	var splitedUrl = pathname.split('/');
+	var menu = '';
+	
+	// path에 넘버링이 포함된 경우 넘버링 제외
+	if(!isNaN(parseInt(splitedUrl[splitedUrl.length-1]))) {
+		splitedUrl.splice(-1);
+		pathname = splitedUrl.join('/');
+	}
+	
+	if(window.location.pathname.indexOf('stats') > 0) {
+		menu = 'stats';
+	} else if(window.location.pathname.indexOf('setting') > 0 || window.location.pathname.indexOf('appmarketing') > 0) {
+		menu = 'setting';
+	} else {
+		menu = 'manage';
+	}
+	
+	$.ajax({
+		type:'get',
+		data: {
+			'url' : pathname
+		},
+		url:'/common/getLowerEndHelp',
+		success:function(data){
+			var faq = data.faq;
+			
+			if(typeof data.help[0] !== 'undefined') {
+				$('#help div')[0].innerHTML = data.help[0].content;
+				
+				if(menu !== 'manage') {
+					var link = '<div style="margin-top:30px"><a href="/help/' + menu + '?menuNo=' + data.help[0].menu_no + '" target="_blank" class="btn btn-dark">전체 도움말 보기</a></div>';
+					
+					$(link).appendTo('#help');
+				}
+			} else {
+				$('#help div')[0].innerHTML = '등록된 한줄도움말이 없습니다.';
+			}
+			
+			if(faq.length > 0) {
+				var faq_tab = '<li><a data-toggle="tab" href="#faq">FAQ</a></li>';
+				var faq_link = '';
+				
+				$(faq_tab).appendTo($('a[href=#help]').parents('ul.nav.nav-tabs'));
+				
+				for(var i = 0; i < faq.length; i++) {
+					faq_link = faq_link + '<a href="/help/svcCenter/viewFaq?idx=' + faq[i].post_no + '" target="_blank" style="text-decoration:underline">Q. ' + faq[i].title + '</a><br>';
+				}
+				
+				$('#faq')[0].innerHTML = faq_link;
+				
+				var link = '<div style="margin-top:30px"><a href="/help/svcCenter/faqList" target="_blank" class="btn btn-dark">전체 FAQ 보기</a></div>';
+				
+				$(link).appendTo('#faq');
+			}
+		}
+	});
+});
+</script><script src="/assets/js/common.js"></script>
+
+<!-- d3 chart -->
+<script src="/assets/js/d3.js"></script>
+<script src="/assets/js/d3.layout.cloud.js"></script>
+<script src="/assets/js/medley.js"></script>
+
+<!-- compare Bar -->
+ <!-- <script src="/assets/js/sumSearch.js"></script>  -->
+
+<!-- Time/Date Plugin Dependencies -->
+<script src="/plugins/globalize/globalize.min.js"></script>
+<script src="/plugins/moment/moment.min.js"></script>
+<script src="/plugins/moment/locale/kr.js"></script>
+      
+<!-- DateRange Plugin -->
+<script src="/plugins/daterange/daterangepicker.js?v=20171120"></script>
+
+<!-- Tag -->
+<script src="/plugins/tagmanager/tagmanager.js"></script>
+
+<!-- highchart -->
+<script src="/plugins/highchart/highcharts.js"></script>	
+<script src="/plugins/highchart/annotations.js"></script>	
+<script src="/plugins/highchart/modules/exporting.js"></script>	
+<script src="/plugins/highchart/modules/data.js"></script>
+<script src="/plugins/highchart/modules/heatmap.js"></script>
+<script src="/plugins/highchart/modules/treemap.js"></script>
+<script src="/plugins/highchart/modules/no-data-to-display.js"></script>
+<!-- <script src="/plugins/highchart/modules/custom/map.js"></script> -->
+<!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script> -->
+<!-- <script src="/plugins/highchart/modules/custom/world.js"></script> -->
+<!--  <script src="/assets/js/charts/ace-charts.js"></script>  -->
+
+<!-- Sparkline -->
+<script src="/plugins/sparkline/jquery.sparkline.min.js"></script>	
+
+<!-- Theme Javascript -->
+<script src="/assets/js/utility/utility.js"></script>
+<script src="/assets/js/powerlistmenu.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/slider.js"></script>
+
+<!-- Begin: Page Footer -->
+	  <div id="return-to-top">
+		  <a href="javascript:;" class="btn btn-light btn-sm top-btn">Top</a>
+	  </div>
+      <footer id="content-footer">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="sidebar-inquire">
+                <h5 class="text-dark ib">고객지원센터</h5>
+                <h3 class="text-danger ib">1544-5420</h3>
+            </div> 
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 footer-copyright">
+            <span class="footer-meta">Copyright by NHN ACE Corp. All right reserved</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End: Page Footer -->
+
+<!-- Acecounter 공통 모듈 -->
+<script src="/assets/js/ace.js"></script>
+<!-- 메뉴펼침 -->
+<script src="/assets/js/menuSlide.js"></script>
+<!-- 좌측 메뉴 버튼 이벤트 :: 추후 메뉴 작업시 이동될 예정 -->
+<script type="text/javascript">
+  $(function() {
+    var path = location.pathname;
+    var subAuthCd = '';
+
+    if (subAuthCd !== ''
+        && ((path.indexOf('/manage/') !== -1 && path !== '/manage/my_member_modify') // 서비스 관리 메뉴는 회원정보 제외하곤 접근 제한
+        || (path.indexOf('/stats/') !== -1 && subAuthCd === '-') // 통계보기 권한이 없으면 접근 제한
+        || (path.indexOf('/setting/') !== -1 && subAuthCd !== '20'))) { // 통계설정 권한이 없으면 접근 제한
+      ace.alert('부관리자는 사용권한이 없습니다.<br>권한을 부여한 관리자에게 문의해 주세요.');
+    }
+  });
+
+//통계보기 이동
+$("#redirectStatsBtn").on("click", function() {
+    if ( '10' == '30' ) {
+      location.href = "/stats/integrated/cross_overlap";
+    } else {
+      location.href = "/stats/statsLiveDashboard";
+    }
+});
+
+// 통계설정 이동
+$("#redirectConfBtn").on("click", function() {
+  if( '10' == '30' ) {
+    location.href = "/setting/integral/list";
+  } else {
+    location.href = "/setting/appmarketing/";
+  }
+});
+
+// 나의 메뉴 이동
+$('#redirectMyMenuBtn').on("click", function(){
+	location.href = "/myMenu";
+});
+</script>
+
+<!-- 분석스크립트 -->
+<script>
+    /** AceCounter Plus Login variable START */
+    var _AceTM=(_AceTM||{});
+    _AceTM.Login={
+        uID: 'apzz0928888', 	// 로그인사용자 고유값
+        uAge:0,   	// 로그인사용자 나이
+        uGender:'', // 로그인사용자 성별(man | woman)
+        uGroup1:'',	// 사용자 정의변수 1 ( 1 ~ 10 정수값)
+        uGroup2:'',	// 사용자 정의변수 2 ( 1 ~ 10 정수값)
+        uGroup3:''	// 사용자 정의변수 3 ( 1 ~ 10 정수값)
+    }
+    /** AceCounter Plus Login variable End */
+
+    /** This script is for AceCounter START */
+    var _ag   = 0 ;         // 로그인사용자 나이
+    var _id   = 'apzz0928888';    		// 로그인사용자 아이디
+    var _mr   = '';        	// 로그인사용자 결혼여부 ('single' , 'married' )
+    var _gd   = '';         // 로그인사용자 성별 ('man' , 'woman')
+    var _skey = '' ;        // 내부검색어
+
+    var _ud1 = '' ;			// 사용자 정의변수 1 ( 1 ~ 10 정수값)
+    var _ud2 = '' ;			// 사용자 정의변수 2 ( 1 ~ 10 정수값)
+    var _ud3 = '' ;			// 사용자 정의변수 3 ( 1 ~ 10 정수값)
+    /** AceCounter END */
+
+    /** AceClick varialbe START */
+    var mr_id = 'apzz0928888';	// 로그인 회원판단( 'member' 고정값)
+    var mr_ag = 0 ; 		// 로그인사용자 나이 (회원의 연령대 분석)
+    var mr_gd = ''; 		// 로그인사용자 성별 ('man' , 'woman')
+    var mr_buy = 0;		// 총구매금액 (신규구매,재구매 분석)
+    /** AceClick varialbe END */
+</script>
+<script src="/assets/js/ace.analysis.script.js"></script>
+<noscript><img src='http://gtp4.acecounter.com:8080/?uid=AH1A41895171963&je=n&' border='0' width='0' height='0' alt=''></noscript>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118672700-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118672700-1');
+</script></section>
+		<!-- /#content_wrapper -->
+
+	</div>
+
+	<!-- /#wrapper -->
+
+	<!-- 광고코드 다운로드(팝업)-->
+	<div class="modal modal-center fade" id="codedown" role="dialog">
+		<div class="modal-dialog modal-center">
+
+			<!-- Modal content-->
+			<div class="modal-content br6">
+				<div class="modal-header bg-dark">
+					<button class="close" data-dismiss="modal" type="button">×</button>
+					<h4 class="modal-title">광고코드 다운로드</h4>
+				</div>
+				<div class="modal-body text-center">
+					<form class="form-inline">
+						<table class="table table-setting">
+							<colgroup>
+								<col width="150px">
+								<col width="320px">
+							</colgroup>
+							<tbody><tr>
+								<th>광고구분</th>
+								<td class="text-left">
+									<label class="field select mw200">
+									<select id="sel_down_marketing" class="input-sm">
+										<option value="10">유료마케팅</option>
+										<option value="20">일반마케팅</option>
+									</select> 
+									<i class="arrow"></i>
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<th>광고상품</th>
+								<td class="text-left">
+									<label class="field select mw200">
+										<select id="sel_down_brand" class="input-sm"></select> 
+										<i class="arrow"></i>
+									</label>
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<input name="original_url_yn" type="checkbox">원본URL 표시
+								</td>
+							</tr>
+
+							<tr>
+								<th>기간</th>
+								<td class="text-left">
+									<div class="col-md-6">
+										<div class="option-group field">
+											<div class="radio-custom radio-primary">
+												<input id="term_all" name="down_term_cate" value="ALL" type="radio"> <label for="term_all">전체</label> <input id="term_reg" name="down_term_cate" value="REG" type="radio"> <label for="term_reg">등록일</label>
+											</div>
+										</div>
+									</div>
+									<div class="colo-md-6" id="reg_date_term">
+									<br><br>
+										<div class="form-group">
+											<input class="form-control input-sm datepicker hasDatepicker" placeholder="예) 2016-01-01" readonly="" id="dp1529369801047" type="text"> <label class="mh5">~</label> <input class="form-control input-sm datepicker hasDatepicker" placeholder="예) 2016-01-01" readonly="" id="dp1529369801048" type="text">
+										</div>
+									</div>
+
+								</td>
+							</tr>
+						</tbody></table>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<div class="pull-right">
+						<button type="button" class="btn btn-info btn-sm" id="btnCodeDown">다운로드</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+<!-- Modal Detail -->
+  <div class="modal modal-center fade" id="infoDetail" role="dialog">
+    <div class="modal-dialog modal-center modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content br6">
+        <div class="modal-header bg-dark">
+            <button class="close" data-dismiss="modal" type="button">×</button>
+            <h4 class="modal-title">광고코드 상세보기</h4>
+        </div>
+        <div class="modal-setting modal-body">
+          <div class="panel mn" style="display:inline-block;">
+          	<div class="panel-fucntion" style="margin:5px 0;">
+			  <div class="pull-left full" id="insertBtnGroup">
+				  <a href="#" id="deleteViewBtn" class="btn btn-gray">삭제</a>
+				</div>
+			  <!-- 삭제 버튼 누르면 나오는 버튼입니다. 테이블의 체크박스는 삭제를 눌렀을 때만 나옵니다.-->
+			<div class="pull-left full" style="display: none" id="deleteBtnGroup">
+				<a href="#" data-del-kind="y" id="deleteBtn" class="btn btn-info">선택 항목 삭제</a>
+				<a href="#" id="deleteCancelBtn" class="btn btn-light">취소</a>
+			</div>
+			</div>
+			</div>
+			<div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>광고구분</th>
+                    <th>광고상품</th>
+                    <th>캠페인속성</th>
+                    <th>캠페인명</th>
+                    <th>등록수</th>
+                    <th>등록일</th>
+                  </tr>
+                </thead>
+                <tbody>  
+                  <tr>
+                    <td>유료마케팅</td>
+                    <td>네이트 스페셜 링크</td>
+                    <td>검색</td>
+                    <td>원피스그룹</td>
+                    <td>212</td>
+                    <td>2016.08.20</td>
+                  </tr>
+                  <tr>
+                    <td colspan="6">
+                    <div id="infoDetailView">
+                    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th class="hiddenCheck hide" width="30">
+                            	<input name="checkCampaign" class="clsDelbox" type="checkbox">
+                            </th>
+                            <th width="50">No</th>
+                            <th width="350">소재</th>
+                            <th>광고코드 ( 아래 광고코드를 복사하여 광고의 연결 URL로 적용하세요.)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <!-- <td><input type="checkbox" id="inlineCheckbox1"></td> -->
+                            <td>1</td>
+                            <td>메인이미지</td>
+                            <td class="wrd-brk"><div class="br-a p5">www.acecounter.com?a=naver_br</div></td>
+                          </tr>
+                         </tbody>
+                       </table>
+                       </div>
+                    </td>
+                  </tr>
+                </tbody></table>
+
+           </div>
+        </div>
+      </div>
+      <!-- Modal content end -->
+     </div>
+    </div>
+    <!-- Modal Detail end -->
+	
+
+	<!-- jQuery -->
+
+	<script type="text/javascript">
+  jQuery(document).ready(function() {
+
+    "use strict";
+
+    //text input의 clear버튼
+    $('#clearBtn').css({
+    	'display': 'none',
+	    'position': 'absolute',
+	    'top': '0.5em',
+	    'right': '2.2em',
+	    'font-weight': 'bold',
+	    'font-size': '1.4em',
+	    'padding': '0 0.2em',
+	    'line-height': '1em',
+	    'cursor': 'pointer',
+	    'z-index' : '3'
+    });
+    
+  	//IE에서 clear버튼이 2개 뜨는 것을 막기 위함
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = '::-ms-clear{display:none};';
+    document.getElementsByTagName('head')[0].appendChild(style);
+	
+    //키가 입력되면 clear버튼 활성화
+    $('input[name=keyword]').keyup(function() {		
+		if(this.value.length>0) {
+			$('#clearBtn').show();
+		} else {
+			$('#clearBtn').hide();
+		}
+    });
+    
+    //clear버튼 누르면 input창 clear
+    $('#clearBtn').click(function() {
+    	var textInput = $('input[name=keyword]');
+    	$('#clearBtn').hide();
+		textInput.val("");
+    });
+    
+    // Table Toggle    
+	$(".report tr.odd").click(function(){
+		$(this).next("tr").toggle();
+		$(this).find(".arrow").toggleClass("up");
+	});
+   	
+    // ########################################################################
+    // # 삭제(복구) #############################################################
+    // ########################################################################
+    delAction($('section#content'));
+    
+	// ########################################################################
+    // # 광고코드 다운로드 ##########################################################
+    // ########################################################################
+	$('#sel_down_marketing').on('change', function() {
+		var $brand_tr = $('#sel_down_brand').parents('tr').eq(0); 
+		if($(this).val().trim() == '10') {
+			$brand_tr.show();
+		} else {
+			$brand_tr.hide();
+			$('#sel_down_brand option').eq(1).prop('selected', true);
+		}
+		
+		setInflowMedia($(this).val().trim(), $('#sel_down_brand'), '<option value="">-전체-</option>');
+	});
+	
+	$('input[name=down_term_cate]').each(function() {
+		$(this).on('click', function() {
+			if($('input[name=down_term_cate]:checked').val().trim() == 'REG') {
+				$('#reg_date_term').show();
+			} else {
+				$('#reg_date_term').hide();
+			}
+		});		
+	});
+	
+	$('.datepicker').datepicker({
+		beforeShow : function() {
+			setTimeout(function() {$('.ui-datepicker').css('z-index', '99999');}, 0);
+		}
+	});
+	
+	$('.btnRowDown').on('click', function() {
+		var campaign_no = $(this).attr('campn-no');
+		var inflow_mrkt_channel_dcd = $(this).attr('campn-ch');
+		
+		var url = "/setting/appmarketing/codedown";
+		var use_yn = $('#hiddenUseYn').val() || 'y';
+		var data = {"campaign_no":campaign_no,"inflow_mrkt_channel_dcd":inflow_mrkt_channel_dcd,"use_yn":use_yn};
+		var param = $.param(data);
+		
+		downProcess(url, param)
+	});
+	
+	$('#btnCodeDown').on('click', function() {
+		var inflow_media_cd = $('#sel_down_brand').val().trim();
+		var inflow_mrkt_channel_dcd = $('#sel_down_marketing').val().trim();
+		var down_term_cate = $('input[name=down_term_cate]:checked').val().trim();
+		var $regDtEl = $('#reg_date_term input.datepicker');
+		var create_dt_st = $regDtEl.eq(0).val().trim();
+		var create_dt_ed = $regDtEl.eq(1).val().trim();
+		var original_url_yn = ($("input[name='original_url_yn']").prop('checked'))?'y':'n'; 
+		
+		if(down_term_cate === 'REG') {
+			if(create_dt_st === "" || create_dt_ed === "") {
+//				MsgBox.alert('등록일을 입력하세요.');
+                ace.alert('등록일을 입력하세요.');
+				return;
+			}
+		}
+		
+		var url = "/setting/appmarketing/codedown";
+		var use_yn = $('#hiddenUseYn').val() || 'y';
+		var data = {"inflow_media_cd":inflow_media_cd,"inflow_mrkt_channel_dcd":inflow_mrkt_channel_dcd,"down_term_cate":down_term_cate,"create_dt_st":create_dt_st,"create_dt_ed":create_dt_ed,"original_url_yn":original_url_yn,"use_yn":use_yn};
+		var param = $.param(data);
+		downProcess(url, param);
+	});
+	
+	$('#inflowMrkCodeDown').on('click', function() {
+		// INIT CODE DOWN
+		$('#sel_down_marketing option').eq(0).prop('selected',true);
+		$('#sel_down_marketing').trigger('change');
+		$('input[name=down_term_cate]').eq(0).prop('checked',true).trigger('click');
+	});
+	
+	// ########################################################################
+    // # 마케팅 유입 상세 리스트 보기 ###################################################
+    // ########################################################################
+	$('.viewDetail').click(function(e){
+		e.preventDefault();
+		
+		var matCd = $(this).attr('mat-cd');
+		var parentTr = $(this).parents('tr').eq(0);
+		var nextClass = parentTr.next().attr("class");
+		var showCss = parentTr.next().css("display");
+		
+		if(nextClass == 'subMaterial'&&showCss =='none'){
+			parentTr.next().show(500);
+		}else if(nextClass == 'subMaterial'&&showCss !='none'){
+			parentTr.next().hide(200);
+		}else{
+			var campaign_no = parentTr.find("input[type=checkbox]").val();
+			var use_yn = $('#hiddenUseYn').val();
+			var campaign_material_value = "";
+			var materialL =[];
+			var addHtml = "";
+			var $self = $(this);
+			
+			if($('input:checkbox[id="check_yn"]').is(":checked") && $('#keyfield option:selected').val() =='campaign_material_cd'){
+				campaign_material_value = $('#keyword').val();
+			}
+			
+			var addDisplay ;
+			var checkedValue;
+			if(parentTr.find("td:eq(0)").is(".hide")){
+				addDisplay ='hide';
+				checkedValue = "";
+			}else{
+				addDisplay ="";
+				if(parentTr.find("input:checkbox:first").is(":checked")){
+					checkedValue = "checked";
+				}else{
+					checkedValue="";
+				}
+			}
+			
+			$.ajax({
+		        url : "./marketing/inflowmedia/materials",
+		        type: "GET",
+		        dataType: "json",
+		        data : {"campaign_no":campaign_no,"use_yn":use_yn,"campaign_material_value":campaign_material_value, "campaign_material_cd":matCd},
+		        success : function(data){
+		        	 if(data.result == 'success'){
+		        		 //상세가 100개 이상인 경우
+		        		 if(data.size>=100){
+		        			 var $infoTbl = $('#infoDetail table').eq(0).find('tbody').eq(0);
+		        			 var $mainTr = $('tr', $infoTbl).eq(0);
+		        			 var $detailArea = $('#infoDetailView tbody').eq(0);
+		        			 var $selInfo = $self.parents('tr').eq(0);
+		        			 
+// 		        			 $mainTr.css('cursor','pointer');
+		        			 
+		        			 $('td', $mainTr).remove();
+		        			 $('tr', $detailArea).remove();
+		        			 
+		        			 $('#infoDetailView').hide();
+		        			 
+		        			 $('#infoDetailView thead').find('input:checkbox[name=checkCampaign]').val(campaign_no);
+		        			 
+		        			 $('td', $selInfo).each(function(n) {
+		        				 if((n >= 2 && n <= 6) || n === 8) {
+		        					 $mainTr.append($(this).clone());
+		        				 }
+		        			 });
+		        			 
+// 		        			 $('.hiddenCheck', $mainTr).addClass('hide');
+// 		        			 $('.clsDelbox', $mainTr).prop('checked', false);
+		        			 
+		        			 var $detailLine;
+		        			 var $checkBoxInput = $('<input />');
+		        			 var $cloneInput;
+		        			 
+		        			 $checkBoxInput.attr({'name':'checkMaterial', 'type':'checkbox'}).addClass('clsDelbox');
+		        			 
+		        			 $.each(data.materialList,function(index,materialInfo){
+		        				 $detailLine = $('<tr></tr>');
+		        				 
+		        				 $cloneInput = $checkBoxInput.clone();
+		        				 $cloneInput.val(materialInfo.app_market_cd+'|'+materialInfo.campaign_material_no);
+		        				 
+		        				 $('<td></td>').addClass('hiddenCheck hide').html($cloneInput).appendTo($detailLine);
+		        				 $('<td class="text-center"></td>').html(index + 1).appendTo($detailLine);
+		        				 $('<td class="wrd-brk"></td>').html(materialInfo.campaign_material_value).appendTo($detailLine);
+		        				 $('<td class="wrd-brk"></td>').html(ace.util.highlightUrlParamsByKey(materialInfo.connect_url, 'nac_md')).appendTo($detailLine);
+		        				 
+		        				 $detailArea.append($detailLine);
+			        		 });
+		        			 
+		        			 delAction($('#infoDetail'));
+		        			 
+		        			 $('#infoDetailView').show();
+		        			 $('#infoDetail').modal({backdrop: 'static'});
+		        		 }else{
+		        		     var colspan = (addDisplay === 'hide') ? '9' : '10';
+		        			 addHtml+='<tr class="subMaterial" style="display:none;">';
+		        			 addHtml+=	'<td colspan=' + colspan + '>';
+		        			 addHtml+=		'<div class="showhide">';
+		        			 addHtml+=		'<table class="table table-bordered">';
+		        			 addHtml+=			'<thead>';
+		        			 addHtml+=				'<tr>';
+		        			 addHtml+=					'<th width="30" class="hiddenCheck text-left '+addDisplay+'"></th>';
+		        			 addHtml+=					'<th>' + (matCd == '10' ? '검색어' : '소재') + '</th>';
+		        			 addHtml+=					'<th>광고코드(아래 광고코드를 복사하여 광고의 연결 URL로 적용하세요.)</th>';
+		        			 addHtml+=				'</tr>';
+		        			 addHtml+=			'</thead>';
+		        			 addHtml+=			'<tbody>';
+		        			 materialL = data.materialList;
+		        			 $.each(materialL,function(index,materialInfo){
+								 addHtml+=				'<tr>';
+								 addHtml+=					'<td class="hiddenCheck '+addDisplay+'"><input type="checkbox" class="clsDelbox" name="checkMaterial" value="'+materialInfo.app_market_cd+'|'+materialInfo.campaign_material_no+'"'+checkedValue+'/></td>';
+								 addHtml+=					'<td class="text-left">'+materialInfo.campaign_material_value+'</td>';
+								 addHtml+=					'<td class="text-left wrd-brk">' + ace.util.highlightUrlParamsByKey(materialInfo.connect_url, 'nac_md').replace(/&/g, '&amp;') + '</td>';
+								 addHtml+=				'</tr>';		        			  
+			        		 })
+		        			 addHtml+=			'</tbody>';
+		        			 addHtml+=		'</table>';
+		        			 addHtml+=		'</div>';
+		        			 addHtml+=	'</td>';
+		        			 addHtml+='</tr>';
+		        			 parentTr.after(addHtml).next().show(500);
+		        			
+		        		 }
+		        		return;
+		        	 }else {
+//		        		 MsgBox.alert(data.resultMsg);
+                         ace.alert(data.resultMsg);
+		        		 return;
+		        	 }
+	        	  }
+		    });	
+		}
+	});
+	
+	
+	
+	// ########################################################################
+    // # 광고상품(매체유입) 설정 ####################################################
+    // ########################################################################
+   	$('.inflow_config').on("change",function(e){
+   		if(e.target.id === 'inflow_mrkt_channel_dcd') {
+   			$('#inflow_media_cd option').eq(0).prop('selected', true);
+   			$('select[name=campaign_material_cd] option').eq(0).prop({'selected':true});
+   		}
+   		
+   		goSubmit(0, 'search');
+	 }); 
+   	
+   	// INIT INFLOW MEDIA
+   	setInflowMedia($('#inflow_mrkt_channel_dcd option:selected').val(), $('#inflow_media_cd'), '<option value="">광고 상품</option>', true);
+   	
+   	$('#pageSize').change(function() {
+   		goSubmit(0, 'search');
+   	});
+   	
+   	$('#infoDetail').on("hidden.bs.modal", function(e){
+   		
+   		$('#infoDetail .hiddenCheck').addClass('hide');
+   		$('#infoDetail #deleteBtnGroup').hide();
+   		$('#infoDetail #insertBtnGroup').show();
+   	});
+   	
+   	// 앱 구분인 경우 : 스토어 설정이 되어있지 않으면 마케팅 유입설정 못하도록 처리 (플랫폼팀 이동근 과장 요청사항[2017-03-09 조원경])
+   	$('#inflowAddBtn').on('click', function(e) {
+   		e.preventDefault();
+   		
+   		var dcd = '10';
+   		if(dcd === '20') {
+   			var storeCnt = parseInt($('input[name=storeCnt]').val(), 10);
+	   		if(storeCnt <= 0) {
+	   			ace.alert('스토어 설정 후 이용하세요.');
+	   		} else {
+	   			location.href='./marketing';
+	   		}
+   		} else {
+	   		location.href='./marketing';
+   		}
+   	});
+   	
+  });
+  
+  function setInflowMedia(selVal, $targetObj, beforeOpt, campaignMatrialCdUse) {
+	 var inflowL =[];
+	 var userInflowL =[];
+	 if(selVal !=''){
+		 if(selVal === '10') {
+			 $.ajax({
+			        url : "/code/allCondInflowMedia",
+			        type: "POST",
+			        dataType: "json",
+			        async: false,
+			        data : {"sid":"110624", "use_yn":"y","web_app_use_dcd":"10","ad_cd_yn":"y"},
+			        success : function(data){
+		        		 $targetObj.html('');
+		        		 if(typeof beforeOpt !== 'undefined') $targetObj.append(beforeOpt);
+		        		 $.each(data,function(index,inflow){
+		        			 if(inflow.user_define_inflow_media_yn === 'y') {
+		        				 $targetObj.append('<option value="'+inflow.inflow_media_cd+'">'+inflow.inflow_media_nm+'</option>');	 
+		        			 }
+		        		 });
+		        		 
+		        		 $.each(data,function(index,inflow){
+		        			 if(inflow.user_define_inflow_media_yn === 'n') {
+		        				 $targetObj.append('<option value="'+inflow.inflow_media_cd+'">'+inflow.inflow_media_nm+'</option>');	 
+		        			 }
+		        		 });
+		        	  }
+			    });	
+		 } else {
+			 $.ajax({
+			        url : "/code/condInflowMedia",
+			        type: "POST",
+			        dataType: "json",
+			        async: false,
+			        data : {"inflow_mrkt_channel_dcd":selVal},
+			        success : function(data){
+		        		 $targetObj.html('');
+		        		 if(typeof beforeOpt !== 'undefined') $targetObj.append(beforeOpt);
+		        		 
+		        		 $.each(data, function(index,inflow){
+		        			$targetObj.append('<option value="'+inflow.inflow_media_cd+'">'+inflow.inflow_media_nm+'</option>');	
+		        			$targetObj.data('inflow-media-cd', inflow.inflow_media_cd);
+		        		 });
+		        	  }
+			    });
+		 }
+	}
+	 
+	 checkMediaSelected($targetObj, campaignMatrialCdUse);
+  }
+  
+  function checkMediaSelected($targetObj, campaignMatrialCdUse) {
+	  if(typeof $targetObj.data('inflow-media-cd') !== 'undefined') {
+		  var inflowMediaCd = $targetObj.data('inflow-media-cd');
+		  
+		  if(inflowMediaCd !== '') {
+			  $('option', $targetObj).each(function() {
+				if($(this).val().toString() === inflowMediaCd.toString()) {
+					$(this).prop('selected', true);
+					if(typeof campaignMatrialCdUse !== 'undefined') {
+						$('select[name=campaign_material_cd] option').eq(0).prop('selected', true);
+						$('select[name=campaign_material_cd]').prop('disabled', true).css({'backgroundColor': '#eaeaea','color':'#bbb'});
+					}
+				} else {
+					$(this).prop('selected', false);
+				}
+			  });
+		  }
+		}
+	  
+	  if($('select[name=inflow_mrkt_channel_dcd]').val() === '' || $('select[name=inflow_mrkt_channel_dcd]').val() === '20') {
+		  $('select[name=inflow_media_cd]').prop('disabled', true).css({'backgroundColor': '#eaeaea','color':'#bbb'});
+	  }
+	}
+  
+  function goSubmit(pageNo, pmode){
+		$('#pageNo').val(pageNo);
+		if(pmode == "search"){	// 검색버튼
+			$('#pmode').val('');
+			$kwdObj = $('input[name=keyword]');
+			$kwdObj.val($kwdObj.val().trim());
+			$('select[name=inflow_media_cd]').prop('disabled', false);
+			$('select[name=campaign_material_cd]').prop('disabled', false);
+		}else if(pmode != "paging"){	// 대시보드영역 클릭시
+			$('#pmode').val(pmode);
+			
+		}
+		//console.log("진입");
+		//console.log($('#mainForm').serialize());
+		$('#mainForm').attr("action","/setting/appmarketing/").attr("method","POST").submit();
+	}
+  
+  function downProcess(url, param) {
+	  	location.href = url + '?' + param;
+	}
+  
+  function delAction($targetObj) {
+	  $('.hiddenCheck', $targetObj).addClass('hide');
+		
+		//삭제모드
+	   	$targetObj.on('click', '#deleteViewBtn', function(e){
+	   		e.preventDefault();
+	   		
+	   		$('.hiddenCheck', $targetObj).removeClass('hide');
+	   		$('#deleteBtnGroup', $targetObj).show();
+	   		$('#insertBtnGroup', $targetObj).hide();
+	   		$('#topRightFunctions', $targetObj).hide();
+	   		if ($targetObj.attr('id') !== 'infoDetail') {
+                $('.no-records-found>td', $targetObj).attr('colspan', '10');
+			}
+	   	});
+		//삭제모드취소
+	   	$targetObj.on('click', '#deleteCancelBtn', function(e){
+	   		e.preventDefault();
+	   		
+	   		$('.hiddenCheck', $targetObj).addClass('hide');
+	   		$('#deleteBtnGroup', $targetObj).hide();
+	   		$('#insertBtnGroup', $targetObj).show();
+	   		$('#topRightFunctions', $targetObj).show();
+            if ($targetObj.attr('id') !== 'infoDetail') {
+                $('.no-records-found>td', $targetObj).attr('colspan', '9');
+            }
+	   	});
+		//전체선택 해제
+		$targetObj.on('change', '#checkAllCamp', function(){
+			if($("#checkAllCamp", $targetObj).is(":checked")){
+				if($('input:checkbox[name="checkCampaign"]', $targetObj).length<1){
+					ace.alert("선택할 마케팅 유입이 존재하지 않습니다.");
+					$('#checkAllCamp', $targetObj).prop("checked",false);
+					return;
+				}
+			 	
+				$('input:checkbox[name="checkCampaign"]', $targetObj).each(function() {
+		            this.checked = true; //checked 처리
+		            $(this).change();
+				 });
+			}else{
+				$('input:checkbox[name="checkCampaign"]', $targetObj).each(function() {
+		            this.checked = false; //unchecked 처리
+		            $(this).change();
+				 });
+			}
+		});
+		
+		$targetObj.on('change', 'input:checkbox[name="checkCampaign"]', function(){
+			
+			console.log('$targetObj: ', $targetObj);
+			
+			if($(this).is(":checked")){
+				if($('input:checkbox[name="checkCampaign"]', $targetObj).length === $('input:checkbox[name="checkCampaign"]:checked', $targetObj).length){
+					$('#checkAllCamp', $targetObj).prop("checked",true);
+				}
+			}else{
+				$('#checkAllCamp', $targetObj).prop("checked",false);
+			}
+			var trObj = $(this).parent().parent().next();
+			var nextClass = trObj.attr("class");
+			
+			if(nextClass == 'subMaterial'){
+				if($(this).is(":checked")){
+					trObj.find("input:checkbox").each(function(){
+						this.checked = true;
+					});
+				}else{
+					trObj.find("input:checkbox").each(function(){
+						this.checked = false;
+					});
+				}
+			} else if($(this).parents('#infoDetailView').length > 0) {
+				if($(this).is(":checked")){
+					$('#infoDetailView').find("input:checkbox").each(function(){
+						this.checked = true;
+					});
+				}else{
+					$('#infoDetailView').find("input:checkbox").each(function(){
+						this.checked = false;
+					});
+				}
+			}
+		});
+
+		$targetObj.on('click', 'input:checkbox[name="checkMaterial"]',function(){
+			var parent;
+			if($(this).parents('.subMaterial').length > 0) {
+				parent = $(this).parents('.subMaterial').eq(0);
+			} else if($(this).parents('#infoDetailView').length > 0) {
+				parent = $(this).parents('#infoDetailView').find('tbody').eq(0);
+			}
+			//체크했을 경우
+			if($(this).is(":checked")){
+				//메테리얼이 다 체크된 경우
+			    if(parent.find('input:checkbox[name="checkMaterial"]:checked').length === parent.find('input:checkbox[name="checkMaterial"]').length){
+			    	parent.prev().find('input:checkbox[name="checkCampaign"]').prop("checked",true).change();
+				}
+			//체크 풀었을 경우
+			}else{
+				 parent.prev().find('input:checkbox[name="checkCampaign"]').prop("checked",false);
+				 $('#checkAllCamp').prop("checked",false);
+			}
+		});
+
+		$targetObj.on('click', '#deleteBtn', function(e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+
+			var useYn = $(this).data('del-kind');
+			var MsgType ='';
+			var upStatus ;
+
+			//삭제처리 해야할 경우
+			  if(useYn ==''||useYn =='y' ){
+				  MsgType = '숨김';
+				  upStatus = 'n';
+			  //복구처리 해야할 경우
+			  }else{
+				  MsgType = '복구';
+				  upStatus = 'y';
+			  }
+
+			  if($('.clsDelbox:checked', $targetObj).length <= 0) {
+//                  ace.alert(MsgType + '할 항목을 체크하세요.');
+                  ace.alert('삭제할 마케팅 유입 설정을 선택하세요.');
+				  return;
+			  }
+
+			  ace.confirm('선택한 마케팅 유입 설정을 삭제하시겠습니까?<br/>마케팅 유입설정 변수에 대해 수집/분석이 중지되며,<br>삭제 후 복구가 불가능합니다.', function(result) {
+				if (result === true) {
+                    //1.체크상황 validation
+                    if (!$('#checkAllCamp', $targetObj).is(":checked")) {
+                        if ($('input:checkbox[name="checkCampaign"]:checked', $targetObj).length < 1) {
+                            if ($('input:checkbox[name="checkMaterial"]:checked', $targetObj).length < 1) {
+//							  MsgBox.alert(MsgType+"할 대상을 하나이상 선택하십시오.");
+                                ace.alert('삭제할 마케팅 유입 설정을 선택하세요.');
+                                return;
+                            }
+                        }
+                    }
+                    var campaignNos = '';
+                    var materialNos = "";
+                    //전체선택인 경우
+                    if ($('#checkAllCamp', $targetObj).is(":checked")) {
+                        $('input:checkbox[name="checkCampaign"]:checked', $targetObj).each(function () {
+                            if (campaignNos == '') {
+                                campaignNos = $(this).val();
+                            } else {
+                                campaignNos += "," + $(this).val();
+                            }
+                        });
+                        //전체선택이 아닌경우
+                    } else {
+                        $('input:checkbox[name="checkCampaign"]', $targetObj).each(function () {
+                            //1.캠패인이 체크인 경우
+                            if ($(this).is(":checked")) {
+                                if (campaignNos == '') {
+                                    campaignNos = $(this).val();
+                                } else {
+                                    campaignNos += "," + $(this).val();
+                                }
+                                //2.캠패인이 언체크인 경우
+                            } else {
+                                var tempCampainNo = $(this).val();
+                                var parentTr = $(this).parent().parent();
+                                //material이 있는 경우
+                                var isParentObj = false;
+                                if (parentTr.next().attr("class") === 'subMaterial' || parentTr.next().find('#infoDetailView').length > 0) {
+                                    isParentObj = true;
+                                }
+                                if (isParentObj) {
+                                    parentTr.next().find('input:checkbox[name="checkMaterial"]:checked', $targetObj).each(function () {
+                                        if (materialNos == '') {
+                                            materialNos = tempCampainNo + '|' + $(this).val();
+                                        } else {
+                                            materialNos += "," + tempCampainNo + '|' + $(this).val();
+                                        }
+                                    });
+                                }
+
+                            }
+                        });
+                    }
+					/* console.log("campaignNos=" +campaignNos);
+				  console.log("materialNos=" +materialNos);
+				  console.log("status=" +upStatus); */
+				  $.ajax({
+				        url : "./marketing/inflowmedia/useyn",
+				        type: "GET",
+				        dataType: "json",
+				        data : {"campaignNos":campaignNos,"materialNos":materialNos,"status":upStatus},
+				        success : function(data) {
+                            if (data.result == 'success') {
+                                ace.alert('마케팅 유입 설정 삭제가 완료되었습니다.', function () {
+                                    location.reload();
+                                });
+                                return;
+                            } else {
+//                                MsgBox.alert("상태변경이 실패했습니다.");
+                                ace.alert(ace._('common.ajax.error.msg'));
+                                return;
+                            }
+                        }
+
+                  });
+                }
+			  });
+		});
+  }
+  </script>
+	<!-- END: PAGE SCRIPTS -->
+
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div></body></html>
