@@ -98,13 +98,65 @@ public class temporarily {
 		$(".modal-backdrop").waitUntil(visible, 10000);
 		String msgCheck = $("p", pTagNum).text();
 		switch(val){
-			case "myMenu_add_menu_null": checkMsg = "통계를 선택하세요.";
+			case "1": checkMsg = "";
 			break;
-			case "myMenu_add_menu_duplication": checkMsg = "이미 추가한 통계입니다.";
+			case "2": checkMsg = "";
 			break;
-			case "myMenu_add_menu_max": checkMsg = "최대 20개까지 등록할 수 있습니다.";
+			case "3": checkMsg = "";
 			break;
-			case "myMenu_save": checkMsg = "저장이 완료되었습니다.";
+			case "4": checkMsg = "";
+			break;
+			case "5": checkMsg = "";
+			break;
+			case "6": checkMsg = "";
+			break;
+			case "7": checkMsg = "";
+			break;
+			case "8": checkMsg = "";
+			break;
+			case "9": checkMsg = "";
+			break;
+			case "10": checkMsg = "";
+			break;
+			case "11": checkMsg = "";
+			break;
+			case "12": checkMsg = "";
+			break;
+			case "13": checkMsg = "";
+			break;
+			case "14": checkMsg = "";
+			break;
+			case "15": checkMsg = "";
+			break;
+			case "16": checkMsg = "";
+			break;
+			case "17": checkMsg = "";
+			break;
+			case "18": checkMsg = "";
+			break;
+			case "19": checkMsg = "";
+			break;
+			case "20": checkMsg = "";
+			break;
+			case "21": checkMsg = "";
+			break;
+			case "22": checkMsg = "";
+			break;
+			case "23": checkMsg = "";
+			break;
+			case "24": checkMsg = "";
+			break;
+			case "25": checkMsg = "";
+			break;
+			case "26": checkMsg = "";
+			break;            
+			case "27": checkMsg = "";
+			break;
+			case "28": checkMsg = "";
+			break;
+			case "29": checkMsg = "";
+			break;
+			case "30": checkMsg = "";
 			break;
 		}
 		Thread.onSpinWait();
@@ -148,10 +200,9 @@ public class temporarily {
   		}
   	}
 
-	
-	@Test(priority = 7)
-	public void myMenu_add() {
-		System.out.println(" ! ----- myMenu Start ----- ! ");
+	@Test(priority = 0)
+	public void serviceManage_main() {
+		System.out.println(" ! ----- serviceManage_main Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
@@ -165,76 +216,16 @@ public class temporarily {
 			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".go_stat", 1).click();
-		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text();
-		if(pageLoadCheck.equals("방문수")) {
-			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
+		$(".go_setting").click();
+		$(".notokr-bold", 0).waitUntil(visible, 1000);
+		String pageLoadCheck = $(".notokr-bold", 0).text();
+		if(pageLoadCheck.equals("서비스 관리")) {
+			System.out.println(" *** serviceManage page load Success !! *** ");
 		} else {
-			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
-			close();
+			System.out.println(" *** serviceManage page load Fail ... !@#$%^&*() *** ");
+			close();			
 		}
-		$("#redirectMyMenuBtn").click();
-		$(".top > .sub-nav > .active").waitUntil(visible, 10000);
-		$("#myMenu").click();
-		$(".top > .menu-service > .sidebar-title").click();
-		pageLoadCheck = $("h4", 0).text();
-		if(pageLoadCheck.equals("Step1. 통계선택")) {
-			System.out.println(" *** myMenu_add list Page access Success !! *** ");
-		} else {
-			System.out.println(" *** myMenu_add list Page access Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".cross", 0).click();
-		$("#noMenu").waitUntil(visible, 10000);
-		pageLoadCheck = $("#noMenu").text();
-		if(pageLoadCheck.equals("통계를 선택하세요.")) {
-			System.out.println(" *** myMenu_add delete check Success !! *** ");
-		} else {
-			System.out.println(" *** myMenu_add delete check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#saveBtn").click();
-		valCheck(3, 51, "myMenu_add_menu_null");
-		$(".btn-sm", 2).click();
-		$(".btn-sm", 2).click();
-		valCheck(4, 52, "myMenu_add_menu_duplication");
-		for(int i=3,x=1;i<=22;i++) {
-			$(".btn-sm", i).click();
-			System.out.println("myMenu add btn number is " + i);
-			if(i==7) {
-				$(".tabs-left > li", x).click();
-				System.out.println("myMenu Tab number is " + x);
-				x++;
-			} else if (i==10) {
-				$(".tabs-left > li", x).click();
-				System.out.println("myMenu Tab number is " + x);
-				x++;
-			} else if (i==19) {
-				$(".tabs-left > li", x).click();
-				System.out.println("myMenu Tab number is " + x);
-				x++;
-			}
-		}
-		valCheck(5, 53, "myMenu_add_menu_max");
-		$("#saveBtn").click();
-		valCheck(6, 54, "myMenu_save");
-		pageLoadCheck = $("h4", 0).text();
-		if(pageLoadCheck.equals("Step1. 통계선택")) {
-			System.out.println(" *** myMenu_add register Success !! *** ");
-		} else {
-			System.out.println(" *** myMenu_add register Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".cross", 19).scrollTo();
-		$(".cross", 19).waitUntil(visible, 10000);
-		for(int i=19;i>=1;i--) {
-			$(".cross", i).click();
-			System.out.println("myMenu del btn number is " + i);
-		}
-		$("#saveBtn").click();
-		valCheck(3, 51, "myMenu_save");
-		System.out.println(" ! ----- myMenu End ----- ! ");
+		System.out.println(" ! ----- serviceManage_main End ----- ! ");
 	}
 	
 	@AfterClass
