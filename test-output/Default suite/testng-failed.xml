@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test name="Default test" verbose="2">
+    <classes>
+      <class name="aceCounterPlus.backOffice"/>
+      <class name="aceCounterPlus.frontPage"/>
+      <class name="aceCounterPlus.linkCheck"/>
+      <class name="aceCounterPlus.adminManage"/>
+      <class name="aceCounterPlus.signUp"/>
+    </classes>
+  </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="aceCounterPlus.backOffice">
+        <methods>
+          <include name="login"/>
+          <include name="regCustomer"/>
+          <include name="contents"/>
+          <include name="comPayment"/>
+          <include name="comApply"/>
+          <include name="setting"/>
+          <include name="monitoring"/>
+        </methods>
+      </class> <!-- aceCounterPlus.backOffice -->
+      <class name="aceCounterPlus.linkCheck">
+        <methods>
+          <include name="login"/>
+          <include name="linkCheck"/>
+        </methods>
+      </class> <!-- aceCounterPlus.linkCheck -->
+      <class name="aceCounterPlus.adminManage">
+        <methods>
+          <include name="memoTest"/>
+        </methods>
+      </class> <!-- aceCounterPlus.adminManage -->
+      <class name="aceCounterPlus.frontPage">
+        <methods>
+          <include name="login"/>
+          <include name="product"/>
+        </methods>
+      </class> <!-- aceCounterPlus.frontPage -->
+      <class name="aceCounterPlus.signUp">
+        <methods>
+          <include name="login"/>
+        </methods>
+      </class> <!-- aceCounterPlus.signUp -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
