@@ -1,4 +1,4 @@
-package aceCounterPlus; 
+package aceCounterPlus; //통계설정 > 사용자설정(IP필터링, 회원그룹)
 
 import java.net.MalformedURLException;
 import java.net.URL;
