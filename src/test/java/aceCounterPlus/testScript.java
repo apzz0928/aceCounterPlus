@@ -1,4 +1,4 @@
-package aceCounterPlus;
+package aceCounterPlus; //프로젝트QA할때 간편한 테스트를 자동화하기위해 사용하는 파일
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -24,16 +24,16 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-import java.util.Iterator;
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class testScript {
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
+	private static HttpURLConnection huc;
+	private static int respCode;
 	private WebDriver driver;
+	
 	@SuppressWarnings("unused")
 	private int invalidLinksCount;
 
@@ -49,37 +49,71 @@ public class testScript {
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
+			/*ChromeOptions options = new ChromeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.chrome();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
-			driver.manage().window().setSize(new Dimension(1650, 900));
+			driver.manage().window().setSize(new Dimension(1650, 1000));
+			driver.manage().window().maximize();
 		} else if (browser.equals("firefox")) {
 			TestBrowser = "firefox";
-			cap = DesiredCapabilities.firefox();
-			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
+			//cap = DesiredCapabilities.firefox();
+			//RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
+			FirefoxOptions options = new FirefoxOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);
 			WebDriverRunner.setWebDriver(driver);
-			driver.manage().window().setSize(new Dimension(1650, 900));
+			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("edge")) {
 			TestBrowser = "edge";
+			/*EdgeOptions options = new EdgeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.edge();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
-			driver.manage().window().setSize(new Dimension(1650, 900));
+			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("internetExplorer")) {
 			TestBrowser = "internetExplorer";
+			/*InternetExplorerOptions options = new InternetExplorerOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.internetExplorer();
-			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); //  보안설정
+			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // 보안설정 변경
 			cap.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false); // ie text 입력 속도 향상을 위한 부분
 			cap.setCapability("requireWindowFocus", true); // ie text 입력 속도 향상을 위한 부분
 			cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true); // ie 캐시 삭제를 위한 부분
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
-			driver.manage().window().setSize(new Dimension(1650, 900));
+			driver.manage().window().setSize(new Dimension(1650, 1000));
 		}
 	}
 	private static void js(String javaScriptSource) {
 		Object obj = executeJavaScript(javaScriptSource);
 	}
+	public static boolean brokenLinkCheck (String urlName, String urlLink){
+        try {
+            huc = (HttpURLConnection)(new URL(urlLink).openConnection());
+            huc.setRequestMethod("HEAD");
+            huc.connect();
+            respCode = huc.getResponseCode();
+            if(respCode >= 400){
+            	System.out.println("*** " + urlName +" : Link Status HTTP : " + respCode + " ***");
+            	close();
+            } else {
+            	System.out.println("*** " + urlName +" : Link Status HTTP : " + respCode + " ***");
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return false;
+    }
+  	public static void sleep(long millis) {
+  		try {
+  			Thread.sleep(millis);
+  		} catch (InterruptedException ex) {
+  		}
+  	}
 	//@Test(priority = 0)
 	public void login() throws InterruptedException {
 		open(baseUrl);
