@@ -1,4 +1,4 @@
-package aceCounterPlus;
+package aceCounterPlus; //회원정보 변경
 
 import java.net.MalformedURLException;
 import java.net.URL;
