@@ -1,4 +1,4 @@
-package aceCounterPlus; // 통계설정 > KPIV설정, 리포트다운로드 / 나의메뉴
+package aceCounterPlus; // 통계설정 > KPI설정, 리포트다운로드 / 나의메뉴
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
