@@ -1,4 +1,4 @@
-package aceCounterPlus;
+package aceCounterPlus; //통계설정 - 마케팅유입설정
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
