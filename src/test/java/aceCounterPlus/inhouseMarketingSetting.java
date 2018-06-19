@@ -1,4 +1,4 @@
-package aceCounterPlus;
+package aceCounterPlus; //통계설정 > 인하우스마케팅 설정 (바이럴, 이메일, Talk)
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

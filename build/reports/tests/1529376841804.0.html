@@ -1,0 +1,1148 @@
+<html lang="ko"><head>
+<title>에이스카운터 플러스 - 웹/앱 로그분석 플랫폼</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="로그분석, 웹로그분석, 웹로그, 접속통계, 웹 로그분석, 웹 로그 분석, 무료 로그분석, 방문자 분석, 사이트 분석, 카운터, 웹사이트 분석, 홈페이지 분석, counter, 광고 분석, CRM, VRM">
+<meta name="description" content="NHN ACE 운영, 무료 웹 로그 분석, 방문자 통계, 앱분석 등 애널리틱스 리포트 제공">
+<meta property="og:type" content="website">
+<meta property="og:title" content="에이스카운터 플러스">
+<meta property="og:description" content="NHN ACE 운영, 무료 웹 로그 분석, 방문자 통계, 앱분석 등 애널리틱스 리포트 제공">
+<meta property="og:image" content="[https://new.acecounter.com/assets/img/logo_header.png](https://new.acecounter.com/assets/img/logo_header.png)">
+<meta property="og:url" content="[https://new.acecounter.com](https://new.acecounter.com)">
+<meta name="author" content="ACE Counter+">
+<meta name="naver-site-verification" content="cbee7b491a7b4619234997a8b95e5294f13401dd"><!--modal popup css-->
+<link rel="stylesheet" type="text/css" href="/plugins/magnific/magnific-popup.css">
+
+<!--fontawsome-->
+<link rel="stylesheet" type="text/css" href="/assets/css/fontawesome/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--Material icons-->
+<link rel="stylesheet" type="text/css" href="/assets/css/material-icons/material-icons.css">
+<!--daterangepicker css-->
+<link rel="stylesheet" type="text/css" href="/plugins/daterange/daterangepicker.css">
+
+<!--basic css-->
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<!--통계설정 페이지들용 -->
+		<link rel="stylesheet" type="text/css" href="/assets/css/responsive-setting.css">
+	<!--form css-->
+<link rel="stylesheet" type="text/css" href="/assets/css/ace-forms.css">
+
+<!--basic css-->
+<link rel="stylesheet" type="text/css" href="/plugins/tagmanager/tagmanager.css">
+
+<!-- bootstrap table -->
+<link rel="stylesheet" type="text/css" href="/assets/bootstrap-table/src/bootstrap-table.css">
+
+<!-- jQuery -->
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="https://mrss.aceclick.co.kr/aceclick.js?rt=1529376831407"></script><script src="https://cr.acecounter.com/Web/AceCounter_AW.js?gc=AH1A41895171963&amp;py=1&amp;gd=gtp4&amp;gp=8080&amp;up=NaPm_Ncisy&amp;rd=1529376831407"></script><script src="https://atm.acecounter.com/ac.js?tid=100418AX-10-A&amp;hsn=new.acecounter.com&amp;hrf=in&amp;dvp=0&amp;tgp=Login&amp;tn1=&amp;tn2=&amp;tn3=&amp;tw1=&amp;tw2=&amp;tw3=&amp;tw4=&amp;tw5=&amp;tw6=&amp;tw7=&amp;rnd=1529376831406&amp;py=0"></script><script src="/assets/js/jquery-1.11.1.min.js"></script>
+<script src="/assets/js/jquery_ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/front/js/jquery.validate.min.js"></script>
+
+<script src="/assets/js/ace.validate2.js"></script>
+
+<!-- bootstrap table -->
+<script src="/assets/bootstrap-table/src/bootstrap-table.js"></script>
+<script src="/assets/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
+<script src="/assets/bootstrap-table/src/extensions/export/FileSaver.min.js"></script>  
+<script src="/assets/bootstrap-table/src/extensions/export/tableExport.min.js"></script>  
+<script src="/assets/bootstrap-table/src/locale/bootstrap-table-ko-KR.js"></script>  
+<script src="/assets/bootstrap-table/src/extensions/mobile/bootstrap-table-mobile.js"></script>
+
+<!-- modal popup js -->
+<script src="/plugins/magnific/jquery.magnific-popup.js"></script>
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+<!-- report down to pdf -->
+<script src="/assets/js/downtopdf/jspdf.min.js"></script>
+<script src="/assets/js/downtopdf/html2canvas.js"></script>
+<script src="/assets/js/downtopdf/addhtml.js"></script>
+
+<!-- feedback layer -->
+<link type="text/css" rel="stylesheet" href="/assets/css/feedback_style.css">
+<script src="/assets/js/feedback.js"></script>
+
+<style type="text/css">.tooltip-inner.flexable {max-width: 100%;}</style><style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+<body class="ace-elements-page sb-l-o sb-r-c modal-open onload-check" style="min-height: 1017px; padding-right: 17px;">
+	<div id="main">
+
+	<!-- Start: Header -->
+<header class="navbar navbar-fixed-top">
+    <div class="navbar-branding hidden-xs hidden-sm">
+        <a class="navbar-brand" href="/">
+            <img src="/assets/img/logo/acecounter_bi_w.png" alt="acecounter">
+        </a>
+        <span id="toggle_sidemenu">
+          <span class="hidden-xs hidden-sm hidden-md hidden-lg">
+              <img src="/assets/img/sidebar_toggle.png" alt="" width="30px">
+          </span>
+          <span class="fa fa-bars hidden-xs hidden-sm hidden-md hidden-lg"></span>
+        </span>
+        <!--logo-small-->
+        <a class="navbar-brand-s" href="/">
+            <img src="/assets/img/logo/acecounter_bi_w_s.png" alt="acecounter" width="45px">
+        </a>
+    </div>
+
+    <!-- Mobile Home LOGO -->
+    <a class="mlogo mobile-version" href="#">
+        <img src="/assets/img/logo/acecounter_bi_w.png" alt="acecounter" width="135px">
+    </a>
+    <!-- End -->
+
+    <div class="navbar-middle">
+        <span id="toggle_sidemenu_l">
+          <span class="fa fa-bars"></span>
+        </span>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" id="menu-top-services">
+            <a class="dropdown-toggle pc-version" data-toggle="dropdown" href="#" title="사이트선택" style=" margin-right:0; margin-left:auto;text-align:right">
+                <span class="label label-rounded-wide label-br-wfe mr5">Web Free</span><span class="ace-svc-name text-dark">서비스추가해지테스트0001(test00011.org)</span><span class="caret text-dark"></span>
+            </a>
+            <a class="dropdown-toggle mobile-version" data-toggle="dropdown" href="#" title="사이트선택">
+                <span class="fa fa-list-ul"></span>
+            </a>
+            <ul class="dropdown-menu list-group dropdown-persist nano nano-primary affix ie_scroll has-scrollbar" role="menu">
+                <!-- 레이어화살표표시 -->
+                <div id="menu-top-service-items" class="nano-content nano-content1" style="max-height: 300px; padding: 0px; margin-right: -17px;" tabindex="0"></div>
+            <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 20px; transform: translate(0px, 0px);"></div></div></ul>
+        </li>
+        <li class="hidden-xs hidden-sm">
+                <a href="/help/setting?menuNo=174" title="본문도움말" target="_blank">
+                    <span class="material-icons" aria-hidden="true"></span>
+                </a>
+            </li>
+            <li class="dropdown hidden-xs hidden-sm">
+                <a class="dropdown-toggle fs22" data-toggle="dropdown" href="#" title="서비스관리">
+                    <span class="material-icons" aria-hidden="true"></span>
+                </a>
+                <ul class="dropdown-menu list-group dropdown-persist w130" role="menu">
+                    <li class="list-group-item">
+                        <a href="/common/frontIndex">서비스관리 메인</a>
+                    </li>
+                    <li class="list-group-item">
+                            <a href="/manage/script/scriptList">분석 스크립트</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="/manage/serviceInfo/addService">서비스 추가</a>
+                        </li>
+                    <li class="list-group-item">
+                        <a href="/manage/serviceInfo/editService">서비스 정보 수정</a>
+                    </li>
+                    <li class="list-group-item">
+                            <a href="/manage/serviceInfo/submanager">부관리자</a>
+                        </li>
+                    </ul>
+            </li>
+        <li class="dropdown hidden-xs hidden-sm">
+            <a class="dropdown-toggle fs22" href="#" data-toggle="dropdown" title="알림">
+                <span class="fa fa-user-o" aria-hidden="true"></span>
+                </a>
+            <ul class="dropdown-menu list-group member dropdown-persist w150" role="menu">
+                <li class="list-group-item">
+                    <a href="/manage/my_member_modify">내정보</a>
+                </li>
+                <li class="list-group-item">
+                        <a href="/manage/charge/additionalCharge">추가요금
+                            </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/manage/news/myAllimList">개인알림</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/manage/news/myNoticeList">서비스 공지</a>
+                    </li>
+                <li class="dropdown-footer">
+                        <a class="btn-logout"><span class="fa fa-power-off mr5"></span>로그아웃</a>
+                    </li>
+                </ul>
+        </li>
+        <li class="dropdown mobile-version">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="사용자">
+                <span class="fa fa-user-o" aria-hidden="true"></span>
+            </a>
+            <ul class="dropdown-menu list-group member dropdown-persist w250" role="menu">
+                <li class="dropdown-header">
+                    <div class="clearfix">
+                        <div class="pull-left ml10">
+                            <a href="/manage/userInfoPwdCheck" class="btn btn-default btn-sm">
+                                <span class="fa fa-user mr10"></span>내정보</a>
+                        </div>
+                        <div class="pull-right mr10">
+                            <a class="btn btn-default btn-sm btn-logout">
+                                <span class="fa fa-sign-out mr10"></span>로그아웃</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <a href="/setting/appmarketing/">
+                        <span class="fa fa-sliders"></span>통계설정</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/common/frontIndex">
+                        <span class="fa fa-users"></span>서비스관리 메인</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/manage/script/scriptList">
+                        <span class="fa fa-keyboard-o"></span>분석 스크립트</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/manage/serviceInfo/addService">
+                        <span class="fa fa-plus-square"></span>서비스 추가</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/manage/serviceInfo/editService">
+                        <span class="fa fa-pencil-square-o"></span>서비스 정보 수정</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="준비중입니다.">
+                        <span class="fa fa-user-plus"></span>부관리자
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown hidden-xs hidden-sm">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="언어선택">
+                <span class="material-icons" aria-hidden="true"></span>
+            </a>
+            <ul class="dropdown-menu pv5 animated animated-short flipInX" style="width:180px;" role="menu">
+                <li>
+                    <a href="?locale=ko">
+                        <div class="btn-group">
+                            <i class="fa fa-check text-primary-lights"></i>
+                            <span class="flag flag-kr mr10"></span>
+                        </div>
+                        KOREA</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="btn-group" role="group">
+                            <i style="width:12px;height:13px;display:inline-block;"></i>
+                            <span class="flag flag-en mr10"></span>
+                        </div>
+                        (준비중)ENGLISH</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="btn-group">
+                            <i style="width:12px;height:13px;display:inline-block;"></i>
+                            <span class="flag flag-jp mr10"></span>
+                        </div>
+                        (준비중)JAPAN</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="btn-group">
+                            <i style="width:12px;height:13px;display:inline-block;"></i>
+                            <span class="flag flag-cn mr10"></span>
+                        </div>
+                        (준비중)CHINA</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <form name="popForm">
+        <input id="lang" name="lang" value="" type="hidden">
+    </form>
+</header>
+<!-- End: Header -->
+
+<!-- feedback layer -->
+<!-- Start: Sidebar Left -->
+    <aside id="sidebar_left" class="nano nano-primary affix pt110 has-scrollbar">
+
+      <!-- Start: Sidebar Left Content -->
+      <div class="sidebar-left-content nano-content" tabindex="0" style="margin-right: -17px;">
+
+        <!-- Start: Sidebar Left Menu -->
+        <ul class="nav sidebar-menu">
+
+          <!-- <li class="top">
+            <a href="/stats/statsLiveDashboard" title="통계바로가기" class="fs15">
+              <span class="fa fa-signal"></span>
+              <span class="sidebar-title">통계바로가기</span>
+            </a>
+          </li> -->
+          
+          <li style="padding-top:5px">
+            <a class="accordion-toggle" href="/setting/appmarketing/" title="마케팅 유입 설정">
+              <!-- <span class="fa fa-shopping-bag"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">마케팅 유입 설정</span>
+              <span class="caret"></span>
+              <span class="currentarrow"></span>
+            </a>
+            <ul class="nav sub-nav">
+            <li> 
+                <a href="/setting/appmarketing/" sub-url="/setting/appmarketing/marketing,/setting/inflowmedia/config/userinflow" title="마케팅 유입설정">
+                    마케팅 유입설정
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/marketing-set1" sub-url="/setting/marketing-set2,/setting/marketing-set3" title="마케팅 비용연동">
+                    마케팅 비용연동
+                </a>
+              </li> 
+              </ul>
+          </li>
+          <li>
+            <a class="accordion-toggle menu-open" href="/setting/user/ipconf" title="사용자 설정">
+              <!-- <span class="fa fa-user"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">사용자 설정</span>
+              <span class="caret"></span>
+              <span class="currentarrow"></span>
+            </a>
+            <ul class="nav sub-nav">
+              <li>
+                <a href="/setting/user/ipconf" title="IP필터링설정">
+                    IP필터링설정
+                </a>
+              </li> 
+              <li class="active"> 
+                <a href="/setting/user/memgroup_setting" sub-url="/setting/user_memgroup_add" title="회원그룹설정">
+                    회원그룹설정
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="/setting/convList" sub-url="/setting/convAdd" title="전환 설정">
+              <!-- <span class="fa fa-random"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">전환 설정</span>
+            </a>
+          </li>
+          <li>
+            <a class="accordion-toggle" href="#" title="커머스설정">
+              <!-- <span class="fa fa-laptop"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">커머스 설정</span>
+              <span class="caret"></span>
+              <span class="currentarrow"></span>
+            </a>
+            <ul class="nav sub-nav">
+              <li>
+                <a href="/setting/commerce/price" sub-url="/setting/commerce/priceForm" title="제품가격대">
+                    제품가격대
+                </a>
+              </li> 
+              <li> 
+                <a href="/setting/commerce/grp" sub-url="/setting/commerce/grpForm" title="제품그룹">
+                    제품그룹
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/commerce/mainPrice" sub-url="/setting/commerce/mainPriceForm" title="메인제품분석">
+                    메인제품분석
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/commerce/currencyUnit" sub-url="/setting/commerce/currencyUnitFrom" title="통화 단위">
+                    통화 단위
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="accordion-toggle" href="/setting/contents/url" title="콘텐츠설정">
+              <!-- <span class="fa fa-file-text-o"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">콘텐츠 설정</span>
+              <span class="caret"></span>
+              <span class="currentarrow"></span>
+            </a>
+            <ul class="nav sub-nav">
+              <li>
+                <a href="/setting/contents/url" sub-url="/setting/contents/excludeUrl, /setting/contents/internalSearch" title="URL 설정">
+                    URL 설정
+                </a>
+              </li> 
+              <li> 
+                <a href="/setting/contents/pageGroup" title="페이지그룹 설정">
+                    페이지그룹 설정
+                </a>
+              </li>
+              <li>
+                <a href="/setting/contents/inBanner/list" sub-url="/setting/contents/inBanner/add" title="내부배너 설정">
+                    내부배너 설정
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/contents/scenario" sub-url="/setting/contents/scenario/form" title="시나리오">
+                    시나리오
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/contents/download" title="파일다운로드">
+                    파일다운로드
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/contents/outlinkBanner" sub-url="/setting/contents/outlinkBanner/form" title="아웃링크 배너">
+                    아웃링크 배너
+                </a>
+              </li> 
+            </ul>
+          </li>
+          <li>
+            <a class="accordion-toggle" href="/setting/inhouse/viral/list" title="인하우스마케팅 설정">
+              <!-- <span class="fa fa-home"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">인하우스마케팅 설정</span>
+              <span class="caret"></span>
+              <span class="currentarrow"></span>
+            </a>
+            <ul class="nav sub-nav">
+              <li> 
+                <a href="/setting/inhouse/viral/list" sub-url="/setting/inhouse/viral/add" title="바이럴 설정">
+                    바이럴 설정
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/inhouse/email/list" sub-url="/setting/inhouse/email/add" title="이메일 설정">
+                    이메일 설정
+                </a>
+              </li>
+              <li> 
+                <a href="/setting/inhouse/talk/list" sub-url="/setting/inhouse/talk/add" title="Talk 설정">
+                    Talk 설정
+                </a>
+              </li>
+              </ul>
+          </li>
+          <li>
+            <a href="/setting/kpi/list" sub-url="/setting/kpi/form" title="KPI설정">
+              <!-- <span class="fa fa-envira"></span> -->
+              <span class="material-icons"></span>
+              <span class="sidebar-title">KPI 설정</span>
+            </a>
+          </li>
+          <li>
+            <a href="/setting/reportDown/reserve" title="리포트 다운로드" sub-url="/setting/reportDown/download, /setting/reportDown/reserve">
+              <span class="material-icons"></span> <!-- 리포트다운로드 아이콘변경 0328 -->
+              <span class="sidebar-title">리포트 다운로드</span>
+            </a>
+          </li>
+          </ul>
+        <!-- Start: Sidebar Collapse Button -->
+	      <div class="sidebar-toggle-mini">
+	        <a href="#">
+	          <span class="fa fa-sign-out"></span>
+	        </a>
+	      </div>
+	      <!-- End: Sidebar Collapse Button -->
+        <!-- End: Sidebar Menu --> 
+		<div class="side-bar-util navbar-fixed-bottom brt-grey" role="navigation">
+		    <div class="sidebar-inquire" style="display: none;">
+			  <img src="/assets/img/sidebar_inquire.jpg">
+			  <h5 class="text-dark ib">고객지원센터</h5>
+			  <h3 class="text-info ib">1544-5420</h3>
+		    </div> 
+			<ul class="nav nav-justified">
+				<li><a class="btn-default theme m-1" href="#" id="redirectStatsBtn" data-toggle="tooltip" data-placement="top" data-original-title="통계보기"><div class="lt_m"><span class="material-icons"></span><p class="txt">통계보기</p></div></a></li>
+				<li><a class="btn-default theme m-1 active" href="#" id="redirectConfBtn" data-toggle="tooltip" data-placement="top" data-original-title="통계설정"><div class="lt_m"><span class="material-icons"></span><p class="txt">통계설정</p></div></a></li>
+				<li><a class="btn-default theme m-1" href="#" id="redirectMyMenuBtn" data-toggle="tooltip" data-placement="top" data-original-title="나의 메뉴"><div class="lt_m"><span class="material-icons"></span><p class="txt">나의메뉴</p></div></a></li>
+			  </ul>
+		</div>
+         
+      </div>
+      <!-- End: Sidebar Left Content -->
+
+    <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 1022px; transform: translate(0px, 0px);"></div></div></aside>
+    <!-- End: Sidebar Left --><section id="content_wrapper">
+		<header id="topbar">
+		  <div class="col-xs-12 col-sm-12 col-md-6">
+			<h3 class="notokr-bold" id="top-menu-name">회원그룹
+				<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <a class="dropdown-toggle" title="페이지" href="#" data-toggle="dropdown" aria-expanded="true">
+	<span class="fa fa-question-circle"></span>
+</a> -->
+<a href="/help/setting?menuNo=174" target="_blank" id="button-link">
+	<span class="fa fa-question-circle"></span>
+</a>
+<!-- <div class="dropdown-guide animated animated-short flipInX">준비중입니다.</div> -->
+
+<script>
+$(document).ready(function(){
+	//console.log(window.location.pathname);
+	//console.log(window.location.href.split(window.location.pathname)[1]);
+	$.ajax({
+		url:'/menu/getMenuNoByUri.ajax',
+		type:'get',
+		data:{
+			uri:window.location.pathname + window.location.href.split(window.location.pathname)[1],
+		},
+		success:function(rs){
+			if(rs){
+				var menuCategory = 'stats';
+				var menuWorkDcd = rs.menuWorkDcd.toLowerCase(); 
+				if(menuWorkDcd == 'r')
+					menuCategory = 'stats';
+				else if(menuWorkDcd == 's')
+					menuCategory = 'setting';
+				$("#button-link").attr("href", "/help/"+menuCategory+"?menuNo="+rs.menuNo);	
+				// top 메뉴 도움말 링크
+				$elTopHelpBtn = $('header a[href="/help/stats"]');
+				if ($elTopHelpBtn && $elTopHelpBtn.length === 1) {
+					$elTopHelpBtn.attr('href', '/help/' + menuCategory + '?menuNo=' + rs.menuNo);
+				}
+			}else{
+				$.ajax({
+					url:'/menu/getMenuNoByUri.ajax',
+					type:'get',
+					data:{
+						uri:window.location.pathname,
+					},
+					success:function(obj){
+						var menuCategory = 'stats';
+						var menuWorkDcd = (obj && obj.menuWorkDcd) ? obj.menuWorkDcd.toLowerCase() : 'r'; 
+						if(menuWorkDcd == 'r')
+							menuCategory = 'stats';
+						else if(menuWorkDcd == 's')
+							menuCategory = 'setting';
+						$("#button-link").attr("href", "/help/"+menuCategory+"?menuNo="+obj.menuNo);	
+						$elTopHelpBtn = $('header a[href="/help/stats"]');
+						if ($elTopHelpBtn && $elTopHelpBtn.length === 1) {
+							$elTopHelpBtn.attr('href', '/help/' + menuCategory + '?menuNo=' + rs.menuNo);
+						}
+					}
+				})
+			}
+		},
+		error:function(rs){
+			
+		}
+	});
+});
+</script></h3>
+		  </div>
+		</header>
+
+		<section id="content" class="">
+		  <form class="form-inline" name="groupFrm">
+		  <input name="mode" id="mode" type="hidden">
+		  <input name="mode_sno" id="mode_sno" type="hidden">
+		  <input name="mode_nm" id="mode_nm" type="hidden">
+		  <input name="validTotal" value="0" type="hidden">
+
+		  <div class="panel">
+			  <div class="panel-function">
+				  <div class="pull-left full" id="btn1">
+					  <a href="#" id="memgrpAdd" class="btn btn-info">추가</a>
+					  <a href="#" class="btn btn-gray" onclick="showCheckBox();return false;">삭제</a>
+				   </div>
+				  <!-- 삭제 버튼 누르면 나오는 버튼입니다. 테이블의 체크박스는 삭제를 눌렀을 때만 나옵니다.-->
+				  <div class="pull-left full" style="display:none;" id="btn2">
+					  <a href="#" class="btn btn-info" onclick="delCheckedList();return false;">선택항목삭제</a>
+					  <a href="#" class="btn btn-gray" onclick="hideCheckBox();return false;">취소</a>
+				  </div>
+
+				  <div class="pull-right full">
+					  <div class="input-group">
+						<span class="input-group-addon pl10" data-toggle="tooltip" data-placement="top" data-original-title="체크 시 일치검색, 해제 시 확장 검색이 가능합니다.">
+							<label class="mn text-muted">
+								<input id="equCk" name="equCk" class="mn" type="checkbox">
+									일치<span class="ml5">I</span>
+							</label>
+						</span>
+						<input class="form-control br-l-n" name="searchNm" id="searchNm" placeholder="검색어를 입력하세요" value="" onkeypress="if(event.keyCode==13){searchFrm(); return false;}" type="text">
+						<span class="input-group-btn">
+						<button class="btn btn-default" type="button" id="frmBtn">
+						<i class="fa fa-search"></i>
+						</button>
+						</span>
+					   </div>
+
+				  </div>
+			  </div>
+             <div class="normal-tabs"> 
+			  <div class="table-responsive">
+				  <table id="groupTable" class="table table-bordered table-striped3">
+					  <thead>
+						<tr>
+						  <th style="display:none" id="listTh1" width="30"><input id="chkAll" name="chkAll" type="checkbox"></th>
+						  <th>사용자 정의변수</th>
+						  <th>회원그룹명</th>
+						  <th>구분변수</th>
+						  <th>등록일</th>
+						  <th>수정일</th>
+						  <th>수정</th>
+						</tr>
+					  </thead>
+					  <tbody>
+					  <tr class="no-records-found">
+								<td colspan="6">
+									<div class="emptymsg text-center">
+										<h5>등록된 회원그룹이 없습니다.</h5>
+										<p>추가를 클릭해 회원그룹을 등록하세요.</p>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+				  </table>
+			  </div>
+		</div>
+			  <!-- paging start -->
+			  <div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		</div>
+	<div class="col-md-4">
+		<div class="text-right mt20">
+			<div class="form-inline">
+				<div class="form-group ph5">
+					<label class="field select">
+						<select class="input-sm select-page-offset">
+							<option value="10" selected="">10건씩 보기</option>
+							<option value="20">20건씩 보기</option>
+							<option value="50">50건씩 보기</option>
+							<option value="100">100건씩 보기</option>
+						</select>
+						<i class="arrow"></i>
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- paging end -->
+		  </div>
+		  </form>
+		</section>
+		<!-- /#content -->
+		<!-- 한줄도움말/FAQ -->
+		<div class="faq-tabs" style="position:relative;">
+	<ul class="nav nav-tabs">
+		<li class="active"><a data-toggle="tab" href="#help">한줄도움말</a></li>
+	</ul>
+	<div class="tab-content">
+		<div id="help" class="tab-pane fade in active">
+			<div style="all:initial;font-size:13px;letter-spacing:-1px;color:#2a2a2a;">회원의 성별, 연령대에 대한 기본 특성 이외에 다른 회원정보에 대한 그룹을 설정합니다.<br>
+회원등급, 직업 등과 같은 회원정보를 받는다면, 회원그룹설정을 통해 회원특성에 대해 분석할 수 있습니다.<br>
+<strong>회원그룹은 최대 3개, 하나의 그룹은 최대 10개의 변수 값으로 설정</strong>이 가능합니다.</div>
+		<div style="margin-top:30px"><a href="/help/setting?menuNo=174" target="_blank" class="btn btn-dark">전체 도움말 보기</a></div></div>
+		<div id="faq" class="tab-pane fade">
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var pathname = window.location.pathname;
+	var splitedUrl = pathname.split('/');
+	var menu = '';
+	
+	// path에 넘버링이 포함된 경우 넘버링 제외
+	if(!isNaN(parseInt(splitedUrl[splitedUrl.length-1]))) {
+		splitedUrl.splice(-1);
+		pathname = splitedUrl.join('/');
+	}
+	
+	if(window.location.pathname.indexOf('stats') > 0) {
+		menu = 'stats';
+	} else if(window.location.pathname.indexOf('setting') > 0 || window.location.pathname.indexOf('appmarketing') > 0) {
+		menu = 'setting';
+	} else {
+		menu = 'manage';
+	}
+	
+	$.ajax({
+		type:'get',
+		data: {
+			'url' : pathname
+		},
+		url:'/common/getLowerEndHelp',
+		success:function(data){
+			var faq = data.faq;
+			
+			if(typeof data.help[0] !== 'undefined') {
+				$('#help div')[0].innerHTML = data.help[0].content;
+				
+				if(menu !== 'manage') {
+					var link = '<div style="margin-top:30px"><a href="/help/' + menu + '?menuNo=' + data.help[0].menu_no + '" target="_blank" class="btn btn-dark">전체 도움말 보기</a></div>';
+					
+					$(link).appendTo('#help');
+				}
+			} else {
+				$('#help div')[0].innerHTML = '등록된 한줄도움말이 없습니다.';
+			}
+			
+			if(faq.length > 0) {
+				var faq_tab = '<li><a data-toggle="tab" href="#faq">FAQ</a></li>';
+				var faq_link = '';
+				
+				$(faq_tab).appendTo($('a[href=#help]').parents('ul.nav.nav-tabs'));
+				
+				for(var i = 0; i < faq.length; i++) {
+					faq_link = faq_link + '<a href="/help/svcCenter/viewFaq?idx=' + faq[i].post_no + '" target="_blank" style="text-decoration:underline">Q. ' + faq[i].title + '</a><br>';
+				}
+				
+				$('#faq')[0].innerHTML = faq_link;
+				
+				var link = '<div style="margin-top:30px"><a href="/help/svcCenter/faqList" target="_blank" class="btn btn-dark">전체 FAQ 보기</a></div>';
+				
+				$(link).appendTo('#faq');
+			}
+		}
+	});
+});
+</script><script src="/assets/js/common.js"></script>
+
+<!-- d3 chart -->
+<script src="/assets/js/d3.js"></script>
+<script src="/assets/js/d3.layout.cloud.js"></script>
+<script src="/assets/js/medley.js"></script>
+
+<!-- compare Bar -->
+ <!-- <script src="/assets/js/sumSearch.js"></script>  -->
+
+<!-- Time/Date Plugin Dependencies -->
+<script src="/plugins/globalize/globalize.min.js"></script>
+<script src="/plugins/moment/moment.min.js"></script>
+<script src="/plugins/moment/locale/kr.js"></script>
+      
+<!-- DateRange Plugin -->
+<script src="/plugins/daterange/daterangepicker.js?v=20171120"></script>
+
+<!-- Tag -->
+<script src="/plugins/tagmanager/tagmanager.js"></script>
+
+<!-- highchart -->
+<script src="/plugins/highchart/highcharts.js"></script>	
+<script src="/plugins/highchart/annotations.js"></script>	
+<script src="/plugins/highchart/modules/exporting.js"></script>	
+<script src="/plugins/highchart/modules/data.js"></script>
+<script src="/plugins/highchart/modules/heatmap.js"></script>
+<script src="/plugins/highchart/modules/treemap.js"></script>
+<script src="/plugins/highchart/modules/no-data-to-display.js"></script>
+<!-- <script src="/plugins/highchart/modules/custom/map.js"></script> -->
+<!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script> -->
+<!-- <script src="/plugins/highchart/modules/custom/world.js"></script> -->
+<!--  <script src="/assets/js/charts/ace-charts.js"></script>  -->
+
+<!-- Sparkline -->
+<script src="/plugins/sparkline/jquery.sparkline.min.js"></script>	
+
+<!-- Theme Javascript -->
+<script src="/assets/js/utility/utility.js"></script>
+<script src="/assets/js/powerlistmenu.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/slider.js"></script>
+
+<!-- Begin: Page Footer -->
+	  <div id="return-to-top">
+		  <a href="javascript:;" class="btn btn-light btn-sm top-btn">Top</a>
+	  </div>
+      <footer id="content-footer">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="sidebar-inquire">
+                <h5 class="text-dark ib">고객지원센터</h5>
+                <h3 class="text-danger ib">1544-5420</h3>
+            </div> 
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 footer-copyright">
+            <span class="footer-meta">Copyright by NHN ACE Corp. All right reserved</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End: Page Footer -->
+
+<!-- Acecounter 공통 모듈 -->
+<script src="/assets/js/ace.js"></script>
+<!-- 메뉴펼침 -->
+<script src="/assets/js/menuSlide.js"></script>
+<!-- 좌측 메뉴 버튼 이벤트 :: 추후 메뉴 작업시 이동될 예정 -->
+<script type="text/javascript">
+  $(function() {
+    var path = location.pathname;
+    var subAuthCd = '';
+
+    if (subAuthCd !== ''
+        && ((path.indexOf('/manage/') !== -1 && path !== '/manage/my_member_modify') // 서비스 관리 메뉴는 회원정보 제외하곤 접근 제한
+        || (path.indexOf('/stats/') !== -1 && subAuthCd === '-') // 통계보기 권한이 없으면 접근 제한
+        || (path.indexOf('/setting/') !== -1 && subAuthCd !== '20'))) { // 통계설정 권한이 없으면 접근 제한
+      ace.alert('부관리자는 사용권한이 없습니다.<br>권한을 부여한 관리자에게 문의해 주세요.');
+    }
+  });
+
+//통계보기 이동
+$("#redirectStatsBtn").on("click", function() {
+    if ( '10' == '30' ) {
+      location.href = "/stats/integrated/cross_overlap";
+    } else {
+      location.href = "/stats/statsLiveDashboard";
+    }
+});
+
+// 통계설정 이동
+$("#redirectConfBtn").on("click", function() {
+  if( '10' == '30' ) {
+    location.href = "/setting/integral/list";
+  } else {
+    location.href = "/setting/appmarketing/";
+  }
+});
+
+// 나의 메뉴 이동
+$('#redirectMyMenuBtn').on("click", function(){
+	location.href = "/myMenu";
+});
+</script>
+
+<!-- 분석스크립트 -->
+<script>
+    /** AceCounter Plus Login variable START */
+    var _AceTM=(_AceTM||{});
+    _AceTM.Login={
+        uID: 'apzz0928888', 	// 로그인사용자 고유값
+        uAge:0,   	// 로그인사용자 나이
+        uGender:'', // 로그인사용자 성별(man | woman)
+        uGroup1:'',	// 사용자 정의변수 1 ( 1 ~ 10 정수값)
+        uGroup2:'',	// 사용자 정의변수 2 ( 1 ~ 10 정수값)
+        uGroup3:''	// 사용자 정의변수 3 ( 1 ~ 10 정수값)
+    }
+    /** AceCounter Plus Login variable End */
+
+    /** This script is for AceCounter START */
+    var _ag   = 0 ;         // 로그인사용자 나이
+    var _id   = 'apzz0928888';    		// 로그인사용자 아이디
+    var _mr   = '';        	// 로그인사용자 결혼여부 ('single' , 'married' )
+    var _gd   = '';         // 로그인사용자 성별 ('man' , 'woman')
+    var _skey = '' ;        // 내부검색어
+
+    var _ud1 = '' ;			// 사용자 정의변수 1 ( 1 ~ 10 정수값)
+    var _ud2 = '' ;			// 사용자 정의변수 2 ( 1 ~ 10 정수값)
+    var _ud3 = '' ;			// 사용자 정의변수 3 ( 1 ~ 10 정수값)
+    /** AceCounter END */
+
+    /** AceClick varialbe START */
+    var mr_id = 'apzz0928888';	// 로그인 회원판단( 'member' 고정값)
+    var mr_ag = 0 ; 		// 로그인사용자 나이 (회원의 연령대 분석)
+    var mr_gd = ''; 		// 로그인사용자 성별 ('man' , 'woman')
+    var mr_buy = 0;		// 총구매금액 (신규구매,재구매 분석)
+    /** AceClick varialbe END */
+</script>
+<script src="/assets/js/ace.analysis.script.js"></script>
+<noscript><img src='http://gtp4.acecounter.com:8080/?uid=AH1A41895171963&je=n&' border='0' width='0' height='0' alt=''></noscript>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118672700-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118672700-1');
+</script></section>
+</div>
+<!-- /#wrapper -->
+
+
+
+<script src="/assets/js/ace.setting.js"></script>
+
+<script>
+var selectList = ["구매", "회원가입", "사용자정의전환", "사용자정의전환(전환가치세팅)"];
+
+$('.single-item').slick({
+	  dots: true
+	});	
+ $('.slick-responsive').slick({
+	  dots: true,
+	  infinite: false,
+	  speed: 300,
+	  slidesToShow: 4,
+	  slidesToScroll: 4,
+	  responsive: [{
+		breakpoint: 1024,
+		settings: {
+		  slidesToShow: 3,
+		  slidesToScroll: 3,
+		  infinite: true,
+		  dots: true
+		}
+	  }, {
+		breakpoint: 600,
+		settings: {
+		  slidesToShow: 2,
+		  slidesToScroll: 2
+		}
+	  }, {
+		breakpoint: 480,
+		settings: {
+		  slidesToShow: 1,
+		  slidesToScroll: 1
+		}
+	  }]
+	});
+$(function() {
+	
+	if('' > 0) {
+		if(''=="modify"){
+			MsgBox.alert('수정이 완료되었습니다.');
+		} else {
+			MsgBox.alert('등록이 완료되었습니다.');
+		}
+	} else if('' < 0 ){
+		MsgBox.alert('회원 그룹 추가가 실패 하였습니다.');
+	}
+	
+	if('1' > 0){
+		MsgBox.alert('회원 그룹이 삭제 되었습니다.');
+	} else if ('1' < 0){
+		MsgBox.alert('회원 그룹 삭제에 실패 하였습니다.');
+	}
+	
+	$("#chkAll").click(function(){
+        var chk = $(this).is(":checked");//.attr('checked');
+        
+        if(chk) {
+	       /*  $('input[name=exclude_no]:checkbox').each(function() {
+	        	$(this).prop('checked', true);
+	        }); */
+	        $('[type=checkbox]').each(function() {
+	        	$(this).prop('checked', true);
+	        });
+        } else {
+	        /* $('input[name=exclude_no]:checkbox').each(function() {
+	        	$(this).prop('checked', false);
+	        }); */
+        	$('[type=checkbox]').each(function() {
+	        	$(this).prop('checked', false);
+	        });
+        } 
+    });
+	
+	$('#frmBtn').click(function(event){
+		//var event = e ? e : window.event;
+		event.preventDefault();
+		searchFrm();
+		
+	});
+	
+	$('#memgrpAdd').on('click', function(e) {
+		e.preventDefault();
+		
+		var total = $('input[name=validTotal]').val();
+		
+		if(parseInt(total, 10) >= 5) {
+			ace.alert('최대 5개까지 등록이 가능합니다.');
+		} else {
+			location.href='/setting/user_memgroup_add';
+		}
+	});
+	
+	// for tr border line issue
+	$('div[id^="detailview"]').on('hidden.bs.collapse', function() {
+		$(this).parents('tr').hide()
+	});
+	$('div[id^="detailview"]').on('show.bs.collapse', function() {
+		$(this).parents('tr').show()
+	});
+});
+
+
+function goSubmit(pageNo , mode){
+	var frm = document.groupFrm;
+	
+	$('#pageNo').val(pageNo);
+	
+	frm.action = '/setting/user/memgroup_setting' ;
+	frm.method = 'post' ;
+	frm.submit();
+		
+		
+}
+
+function searchFrm() {
+	var frm = document.groupFrm;
+	//var event = e ? e : window.event;
+	//event.preventDefault();
+	if($('#searchNm').val()=='') {
+		MsgBox.alert('검색어를 입력하세요.');
+		return;
+	}
+	
+	frm.method='post';
+	frm.action = '/setting/user/memgroup_setting';
+	frm.submit();
+}
+
+function chkAll_item(tid){
+	var isChecked = $('#anal_base_item_sno' + tid).is(":checked");
+	if(isChecked){
+		$('#detailTview'+tid+' td').each(function() {
+        	$(this).find('input:checkbox').prop('checked', true);
+        });
+		
+		$('#detailChkAll'+tid).prop('checked', true);	//	하위테이블 전체선택 체크박스를 선택한다.
+	}else{
+		$('#detailTview'+tid+' td').each(function() {
+        	$(this).find('input:checkbox').prop('checked', false);
+        });
+		
+		$('#detailChkAll'+tid).prop('checked', false);	//	하위테이블 전체선택 체크박스를 해제한다.
+	}
+}
+
+function chkAll_detail(tid) {
+	//detailTview ,detailChkAll1
+	var chk = $('#detailChkAll'+tid).is(":checked"); //.attr('checked');
+    //console.log("detail=> "+chk);
+    
+    var detail_chk =$('#'+tid);
+    if(chk) {
+       
+    	$('#detailTview'+tid+' td').each(function() {
+        	$(this).find('input:checkbox').prop('checked', true);
+        });
+       
+    } else {
+      
+    	$('#detailTview'+tid+' td').each(function() {
+        	$(this).find('input:checkbox').prop('checked', false);
+        });
+		
+    	if($('#chkAll').is(":checked")){ //전체선택 체크 되어있으면 해제 한다.
+    		$('#chkAll').prop('checked', false);
+    	}
+    } 
+}
+
+//child 테이블의 하위 체크박스에서 체크 해제 했을때 테이블과 테이블 상위 tr 체크박스 해제체크  
+function chkboxChild(e, id) {
+	var itemListIndex = $(e).closest('table').attr("itemListIndex");		//	회원그룹리스트 인덱스
+	if(!$(e).is(':checked')) {
+		$('#chkAll').prop('checked', false);	//	전체선택 체크박스를 해제한다.
+		$('#detailChkAll' + itemListIndex).prop('checked', false);	//	하위테이블 전체선택 체크박스를 해제한다.
+		$('#anal_base_item_sno' + itemListIndex).prop('checked', false);	//	회원그룹리스트 체크박스를 해제한다.
+	}
+}
+
+function showCheckBox() {
+	$("#btn1").css("display",'none');
+	$("#btn2").css("display",'');
+	$("#listTh1").css("display",'');
+	var leng= '0';
+	
+	for (var i=1; i <= $("#groupTable tr").length ; i++ ) {
+		$("#listTd"+i).css("display",'');
+	}
+	for(var i=0; i<leng; i++) {
+		$("#detailListTh"+(i+1)).css("display",'');
+		var tleng = $('#detailTview'+(i+1)+' tr' ).length;
+		for(var z=0; z < tleng;z++) {
+			$("#siadListTd_"+(i+1)+"_"+(z+1)).css("display",'');
+		}
+	}
+    $('.no-records-found>td').attr('colspan', '7');
+}
+
+function hideCheckBox() {
+	$("#btn1").css("display",'');
+	$("#btn2").css("display",'none');
+	$("#listTh1").css("display",'none');
+
+	var leng= '0';
+	
+	for (var i=1; i <= $("#groupTable tr").length ; i++ ) {
+		$("#listTd"+i).css("display",'none');
+	}
+	for(var i=0; i<leng; i++) {
+		$("#detailListTh"+(i+1)).css("display",'none');
+		var tleng = $('#detailTview'+(i+1)+' tr' ).length;
+		for(var z=0; z < tleng;z++) {
+			$("#siadListTd_"+(i+1)+"_"+(z+1)).css("display",'none');
+		}
+	}
+	/* for (var i=1; i <= $("#ipTable tr").length ; i++ ) {
+		$("#hiddenTd"+i).css("display",'none');
+	}
+	$('input[name=exclude_no]:checkbox').each(function() {
+    	$(this).prop('checked', false);
+    }); */
+	$('input[name=detail_no]:checkbox').each(function() {
+    	$(this).prop('checked', false);
+    });
+	$('input[name=anal_base_item_sno]:checkbox').each(function() {
+    	$(this).prop('checked', false);
+    });
+	$("#chkAll").prop('checked', false);
+    $('.no-records-found>td').attr('colspan', '6');
+}
+
+function delCheckedList() {
+	var checkVal = false;
+	$('input[name=anal_base_item_sno]:checkbox').each(function() {
+		
+    	if($(this).is(":checked")){
+    		checkVal = true; //하나라도 체크가 되어있는지 확인
+    	}
+    	
+    });
+	$('input[name=detail_no]:checkbox').each(function() {
+		
+    	if($(this).is(":checked")){
+    		checkVal = true; //하나라도 체크가 되어있는지 확인
+    	}
+    	
+    });
+	
+	if(!checkVal) {
+		MsgBox.alert('삭제할 회원그룹을 선택하세요.');
+		return;
+	}
+	
+	if($("#chkAll").is(':checked')){
+		MsgBox.confirmExpands('전체 회원그룹을 삭제하시겠습니까?', '', delProc);
+	} else {
+		MsgBox.confirmExpands('회원그룹을 삭제하시겠습니까?', '', delProc);
+	}
+	
+
+}
+
+function delProc() {
+	var frm = document.groupFrm;
+	
+	frm.method='post';
+	frm.action = '/setting/user_memgroup_del_proc' ;
+	frm.submit();
+}
+
+function groupModify(sno, nm) {
+	
+	$('#mode').val('modify');
+	$('#mode_sno').val(sno);
+	$('#mode_nm').val(nm);
+	
+	var frm = document.groupFrm;
+	
+	frm.method = 'post';
+	frm.action = "/setting/user_memgroup_add";
+	frm.submit();
+}
+
+//변환시켜야할 메서드 정의해야함
+function changeSegment(segmentList) {
+
+}
+
+
+
+	
+
+</script>
+<script src="/plugins/highchart/customEvents.js"></script>	
+
+<div class="modal modal-center fade in" id="warning2" role="dialog" style="display: block; padding-right: 17px;" aria-hidden="false"><div class="modal-backdrop fade in" style="height: 919px;"></div><div class="modal-dialog modal-center modal-sm" style="width:350px"><div class="modal-content br6"><div class="modal-header "><button class="close" data-dismiss="modal" type="button">×</button><h4 class="modal-title">알림</h4></div><div class="modal-body text-center"><p class="mbn">회원 그룹이 삭제 되었습니다.</p></div><div class="modal-footer"><button id="okButton" type="button" class="btn btn-default btn-sm" data-dismiss="modal">닫기</button></div></div></div></div></body></html>
