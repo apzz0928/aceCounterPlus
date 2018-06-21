@@ -256,7 +256,6 @@ public class temporarily {
 
 	@Test(priority = 0)
 	public void serviceManage_main() {
-		System.out.println("Start date is : " + date);
 		System.out.println(" ! ----- serviceManage_main Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 10000);
@@ -308,7 +307,6 @@ public class temporarily {
 		js("window.open('https://nhnent.dooray.com/mail/folders/2241107403578885832');");
 		switchTo().window(1);
 		pageLoadCheck = $("label", 0).text();
-		System.out.println("***********" + pageLoadCheck + "***********");
 		if(pageLoadCheck.equals("Username:")) {
 			System.out.println(" *** scriptList what's up login page load Success !! *** ");			
 		} else {
@@ -438,18 +436,15 @@ public class temporarily {
 		$("#changePwdConfirm").setValue(pw1);
 		$("#modifyProc").click();
 		valCheck(10, 8, "memberInfo_pw_confirm");
-		$("#modifyProc").waitUntil(hidden, 10000);
-		$("#modifyProc").waitUntil(visible, 10000);
+		sleep(1500);
 		valCheck(6, 4, "memberInfo_pw_alert");
 		$("#prePwd").setValue(pw1);
 		$("#changePwd").setValue(pw);
 		$("#changePwdConfirm").setValue(pw);
 		$("#modifyProc").click();
 		valCheck(7, 5, "memberInfo_pw1_confirm");
-		$("#modifyProc").waitUntil(hidden, 10000);
-		$("#modifyProc").waitUntil(visible, 10000);
+		sleep(1800);
 		valCheck(6, 4, "memberInfo_pw1_alert");
-		$("#modifyProc").waitUntil(hidden, 10000);
 		$("#modifyProc").waitUntil(visible, 10000);
 		pageLoadCheck = $("#modifyProc").text();
 		if(pageLoadCheck.equals("변경하기")) {
@@ -574,7 +569,6 @@ public class temporarily {
 	}
 	@Test(priority = 6)
 	public void addView() {
-		System.out.println("middle date is : " + date);
 		System.out.println(" ! ----- addView Start ----- ! ");
 		$(By.linkText("뷰필터 추가")).click();
 		$(".div_not_paid").waitUntil(visible, 10000);
@@ -677,8 +671,8 @@ public class temporarily {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
 		$(By.linkText("발송메일 설정")).click();
 		$("#btn-sendMail").waitUntil(visible, 10000);
-		
-		
+		switchTo().window(1);
+		sleep(5000);
 		
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
