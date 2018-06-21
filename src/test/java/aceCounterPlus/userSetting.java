@@ -401,7 +401,8 @@ public class userSetting {
 		$("#chkAll").click();
 		$(".btn-info", 1).click();
 		valCheck(5, 5, "delGroup_confirm");
-		sleep(500);
+		$(".btn-info", 1).waitUntil(hidden, 10000);
+		$("#memgrpAdd").waitUntil(visible, 10000);
 		valCheck(4, 3, "delGroup_alert");
 		$("h5", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $("h5", 1).text();
