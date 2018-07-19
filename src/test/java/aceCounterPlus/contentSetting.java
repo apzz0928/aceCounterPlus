@@ -604,6 +604,7 @@ public class contentSetting {
 	@Test(priority = 11)
 	public void pageGroupSetting_patternManagement() {
 		System.out.println(" ! ----- pageGroupSetting_patternManagement Start ----- ! ");
+		sleep(1000);
 		$(By.linkText("패턴관리")).click();
 		$(".col-xs-5", 1).waitUntil(visible, 10000);
 		String pageLoadCheck = $(".col-xs-5", 1).text();

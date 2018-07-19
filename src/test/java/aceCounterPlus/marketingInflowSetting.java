@@ -277,7 +277,8 @@ public class marketingInflowSetting {
 	public void advertisingCodeDownload() {
 		System.out.println(" ! ----- advertisingCodeDownload Start ----- ! ");
 		$("#inflowMrkCodeDown").click();
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		//sleep(1000);
+		//$(".close", 0).waitUntil(visible, 10000);
 		$("h4", 0).waitUntil(visible, 10000);
 		String pageLoadCheck = $("h4", 0).text();
 		if(pageLoadCheck.equals("광고코드 다운로드")) {

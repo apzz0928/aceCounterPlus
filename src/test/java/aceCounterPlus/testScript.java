@@ -7,7 +7,7 @@ import java.net.URL;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -21,6 +21,7 @@ import com.codeborne.selenide.WebDriverRunner;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
+import static com.codeborne.selenide.Condition.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
@@ -42,7 +43,9 @@ public class testScript {
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "http://new.acecounter.com/admin/login";
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
-
+		domain = "apzz";
+		pw = "qordlf!@34";
+		
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
 		ScreenShooter.captureSuccessfulTests = false;
@@ -55,7 +58,7 @@ public class testScript {
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
-			driver.manage().window().maximize();
+			//driver.manage().window().maximize();
 		} else if (browser.equals("firefox")) {
 			TestBrowser = "firefox";
 			//cap = DesiredCapabilities.firefox();
@@ -114,7 +117,7 @@ public class testScript {
   		} catch (InterruptedException ex) {
   		}
   	}
-	//@Test(priority = 0)
+	////@Test(priority = 0)
 	public void login() throws InterruptedException {
 		open(baseUrl);
 		$(".gui-input", 0).setValue("apzz0928");
@@ -123,7 +126,7 @@ public class testScript {
 		Thread.sleep(5000);
 	}
 
-	//@Test(priority = 1)
+	////@Test(priority = 1)
 	public void memoTest() throws Exception {
 		open("https://new.acecounter.com/stats/getInflowSummary");
 		$("#uid").setValue("apzz09288");
@@ -151,7 +154,7 @@ public class testScript {
 		    x++;
 	    }
 	}
-	//@Test(priority = 2)
+	////@Test(priority = 2)
 	public void appMarketing() throws Exception {
 		open("https://new.acecounter.com/stats/getInflowSummary");
 		$("#uid").setValue("apzz0928888");
@@ -202,7 +205,7 @@ public class testScript {
 	        Thread.sleep(1000);
 	    }
 	}
-	//@Test(priority = 3)
+	////@Test(priority = 3)
 	public void appPage() throws Exception {
 		open("http://naver.com");
 		String[] appData = {"https://mbr.acecounter.com:10000/v1/bridge?sid=111283&nac_md=daum_ad&nac_cpi=1&nac_m=1&nac_c=1&nac_sm=%EC%9C%A0%EB%A3%8C-%EA%B4%91%EA%B3%A0%EC%83%81%ED%92%88-1&nac_s=20	"
@@ -272,7 +275,7 @@ public class testScript {
 		}
 		Thread.sleep(10000);
 	}
-	//@Test(priority = 4)
+	////@Test(priority = 4)
 	public void user() throws Exception {
 		open("https://new.acecounter.com/common/front");
 		$("#uid").setValue("apzz09288");
@@ -301,7 +304,7 @@ public class testScript {
 		    Thread.sleep(1000);
 	    }
 	}
-	//@Test(priority = 4)
+	////@Test(priority = 4)
 	public void appTestPlus() throws Exception {
 		open("https://new.acecounter.com/common/front");
 		$("#uid").setValue("apzz0928888");
@@ -328,7 +331,7 @@ public class testScript {
 	        Thread.sleep(1000);
 	    }
 	}
-	//@Test(priority = 4)
+	////@Test(priority = 4)
 	public void appTestPlusMemo() throws Exception {
 		open("https://new.acecounter.com/common/front");
 		$("#uid").setValue("apzz0928888");
@@ -343,7 +346,7 @@ public class testScript {
 
 	    }
 	}
-	//@Test(priority = 5)
+	////@Test(priority = 5)
 	public void 파트너_추가() throws Exception {
 		open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -364,7 +367,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	//@Test(priority = 6)
+	////@Test(priority = 6)
 	public void 에이전시_추가() throws Exception {
 		open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -387,7 +390,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	@Test(priority = 7)
+	////@Test(priority = 7)
 	public void 파트너_담당자_추가() throws Exception {
 		open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -410,7 +413,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	//@Test(priority = 8)
+	////@Test(priority = 8)
 	public void 에이전시_담당자_추가() throws Exception {
 /*		open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -433,7 +436,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	//@Test(priority = 9)
+	////@Test(priority = 9)
 	public void 캠페인_추가() throws Exception {
 /*		open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -451,7 +454,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	//@Test(priority = 10)
+	////@Test(priority = 10)
 	public void 매체_사이트_추가() throws Exception {
 		/*open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -470,7 +473,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	//@Test(priority = 11)
+	////@Test(priority = 11)
 	public void 매체_영역_추가() throws Exception {
 		/*open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -487,6 +490,217 @@ public class testScript {
 	    	Thread.sleep(1000);
 	    	$(".btn-red").click();
 	    }
+	}
+	//@Test(priority = 0)
+	public void 백오피스_리포트생성확인() throws Exception {
+		int x=1;
+		int y=1;
+		int z=0;
+		int w=3;
+		String reportCheck = "";
+		String siteName = "";
+		String siteEmail = "";
+		String[] siteInfo = new String[400];
+
+		open("https://new.acecounter.com/admin/login");
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+		$("#username").setValue("apzz0928");
+		$("#password").setValue("qordlf!@34");
+		$(".btn-primary").click();
+		$(".btn-dark").waitUntil(visible, 10000);
+	    $(By.id("__BVID__1_")).click();
+	    sleep(1500);
+	    $(By.xpath("//option[@value='ACE+']")).click();
+	    sleep(1500);
+	    $(By.id("__BVID__4_")).click();
+	    sleep(1500);
+	    $(By.xpath("//option[@value='p1']")).click();
+	    sleep(1500);
+	    $(".btn-dark").click();
+		sleep(2000);
+		for(int i=49;i<=229;i=i+9) {
+			siteName = $(".text-left", y).text();
+			y = y+2;
+			$("a", i).click();
+			switchTo().window(x);
+			x++;
+			open("https://new.acecounter.com/setting/reportDown/download");
+			$("h4").waitUntil(visible, 20000);
+			reportCheck = $(".muted").text();
+			if(reportCheck.equals("리포트 생성 이력이 없습니다.\n" + "추가 탭에서 리포트를 생성하세요.")) {
+				System.out.println(siteName + "은 설정된 리포트가 없습니다.");
+				System.out.println("----------------절취선-----------------");
+			} else {
+				siteInfo[z] = siteName;
+				z++;
+				siteInfo[z] = siteEmail;
+				z++;
+				System.out.println(siteName + "은 설정된 리포트가 있습니다!!!!!!!!!!!!!!!!!!!!!!!!! 검색어 : " + siteEmail);
+				System.out.println("------------------------절취선-------------------------");
+			}
+			driver.close();
+			//driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "w");
+			switchTo().window(0);
+			if(y==41 || y==61 || y==81 || y==101) {
+				$(".page-link", 0).scrollTo();
+				$(".page-link", w).click();
+				w++;
+				sleep(2000);
+			}
+		}
+		System.out.println("확인완료");
+		System.out.println(siteInfo);
+	}
+	//@Test(priority = 0)
+	public void go_signup() {
+		open("http://10.77.129.52:8083/common/front");
+		$(".btn_login").waitUntil(visible, 100000);
+		for(int x=4;x<=100; x++) {
+			$(".go_signup").waitUntil(visible, 8000);
+			String signUp = $(".go_signup").text();
+			if(signUp.contentEquals("회원가입")) {
+				System.out.println(" SignUp Button check Success!! ");
+				$(".go_signup").click();		
+			} else {
+				System.out.println(" SignUp Button check Fail !! ");
+			}
+			$("input", 1).click();
+			js("$('#using').click();"); // 체크박스 체크가 안먹어서 js로
+			js("$('#info').click();");
+			$("#stepOneCompleted").scrollIntoView(true);
+			$("#userid").setValue("apzz" + x);
+			$("#recheck").click();
+			$("#userpw").setValue(pw);
+			$("#repeatpw").setValue(pw);
+			$("#usernm").setValue("회원가입테스트");
+			$("#useremail").setValue("apzz0928@nate.com");
+			js("$('#news').click();"); // 체크박스 체크가 안먹어서 js로
+			$("#mp2").setValue("0000");
+			$("#mp3").setValue("0000");
+			$("#stepOneCompleted").click();
+			String stepOne = $(".request").text(); 
+			if(stepOne.equals("※ 서비스 선택이 어려우신가요? 딱 맞는 서비스를 추천해 드립니다.추천 받기")) {
+				System.out.println(" *** SignUp Step.1 Success !! *** ");			
+			} else {
+				System.out.println(" *** SignUp Step.1 Fail !! *** ");
+				close();
+			}
+			$(By.name("input-domain")).setValue(domain + x + ".com");
+			$(".ace-btn-add-domain").waitUntil(visible, 1000);
+			$(By.name("largeCategoryCd")).selectOptionByValue("22");
+			$(By.name("middleCategoryCd")).selectOptionByValue("188");
+			$(".ace-btn-add-domain").click(); // 페이지 이동 속도때문에 도메인 체크를 나중에
+			$("#stepTwoCompleted").click();
+			String stepTwo = $("h3").text();
+			if(stepTwo.equals("회원가입(무료체험) 신청이 완료되었습니다.")) {
+				System.out.println(" *** SignUp Step.2 Success !! *** ");
+				System.out.println("ID is : " + "apzz" + x);
+			} else {
+				System.out.println(" *** SignUp Step.2 Fail !! *** ");
+				close();
+			}
+			$(".btn_join").click();
+			$(".dropdown-toggle", 3).click();
+			$(".btn-logout").click();
+			/*System.out.println(" *** SignUp *** Success !! *** ");
+			$("#uid").setValue("apzz" + i);
+			$("#upw").setValue(pw);
+			sleep(1000);
+			$(".btn_login").click();
+			String loginCheck = $(".btn_logout").text();
+			$(".btn_logout").getValue();
+			if(loginCheck.equals("로그아웃")) {
+				System.out.println(" *** Login Success !! *** ");
+			} else {
+				System.out.println(" *** Login Fail !! *** ");
+				close();
+			}*/
+		}
+	}
+	//@Test(priority = 0)
+	public void api_setting() {
+		open("http://10.77.129.80:8081/common/front");
+		$(".btn_login").waitUntil(visible, 100000);
+		for(int i=68;i<=100; i++) {
+			$("#uid").setValue("apzz" + i);
+			$("#upw").setValue(pw);
+			$(".btn_login").click();
+			$(".btn_logout").waitUntil(visible, 10000);
+			open("http://10.77.129.80:8081/setting/marketing-set1");
+			$(".btn-info", 0).waitUntil(visible, 10000);
+			$(".btn-info", 0).click();
+			$(".btn-info", 1).waitUntil(visible, 10000);
+			$("#apiId").setValue("1415862");
+			$("#apiKey").setValue("0100000000e59db4dd8ed5d4ec04144437159badb7ff5f461ecadc595577bd3c72757c97a8");
+			$("#pwdKey").setValue("AQAAAADlnbTdjtXU7AQURDcVm6237Rlu7v2zA/SqgFA3zMC7jA==");
+			$("#agree").click();
+			$(".btn-info", 1).click();
+			sleep(1000);
+			$(".btn-sm", 3).click();
+			$(".btn-info", 1).waitUntil(hidden, 10000);
+			for(int x=0;x<=2;x++) {
+				sleep(1500);
+				$(".br-dark", 0).click();
+				sleep(1500);
+				$(".btn-sm", 3).click();
+				sleep(1500);
+				System.out.println("x is : " + x);
+			}
+			open("http://10.77.129.80:8081/common/front");
+			$(".btn_logout").click();
+			$(".btn_login").waitUntil(visible, 10000);
+		}
+	}
+	//@Test(priority = 0)
+	public void api_add() {
+		open("http://10.77.129.80:8081/common/front");
+		$(".btn_login").waitUntil(visible, 100000);
+		$("#username").setValue("apzz0928");
+		$("#password").setValue(pw);
+		$(".btn-primary").click();
+		open("http://10.77.129.80:8081/admin/monitoring/apiManualCalling/form");
+		for(int i=0;i<=4;i++) {
+			$("label", i).click();	
+		}
+		$(".form-control", 2).waitUntil(visible, 10000);
+	}
+	@Test(priority = 0)
+	public void decoding_add() {
+		for(int i=0;i<=101;i++) {
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%A3%BC%EB%AC%B8");
+			open("http://apzz0928.egloos.com/category/%25EA%25B0%2580");
+			open("https://new.acecounter.com/common/front");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EA%B0%80%EC%9E%85");
+			open("http://apzz0928.egloos.com/category/%25EB%2582%2598");
+			open("https://new.acecounter.com/common/front");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%98%88%EC%95%BD");
+			open("http://apzz0928.egloos.com/category/%25EB%258B%25A4");
+			open("https://new.acecounter.com/common/front");
+			open("http://apzz0928.egloos.com/category/%25EA%25B0%2580%25EB%2582%2598");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%98%88%EC%95%BD?nac_md=kakao_ta&nac_cpi=61&nac_sm=%EA%B2%80%EC%83%89%EC%96%B4-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%98%88%EC%95%BD");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%A3%BC%EB%AC%B8?apzz0928.blogs nac_md=naver_br&nac_cpi=60&nac_kw=%EA%B2%80%EC%83%89%EC%96%B4-%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%A3%BC%EB%AC%B8");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EA%B0%80%EC%9E%85?apzz0928.b nac_md=daum_br&nac_cpi=59&nac_kw=%EA%B2%80%EC%83%89%EC%96%B4-%EC%9D%B8%EC%BD%94%EB%94%A9-%EA%B0%80%EC%9E%85");
+			System.out.println("인코딩 전환, 가입, 예약 페이지를 각 " + (i+1) + "번씩 방문했습니다.");
+		}
+	}
+	//@Test(priority = 1)
+	public void decoding_add1() {
+		for(int i=0;i<=100;i++) {
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%A3%BC%EB%AC%B8");
+			open("http://apzz0928.blogspot.com/");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EA%B0%80%EC%9E%85");
+			open("http://apzz0928.blogspot.com/");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%98%88%EC%95%BD");
+			open("http://apzz0928.blogspot.com/");
+			open("http://apzz0928.egloos.com/category/%25EA%25B0%2580");
+			open("http://apzz0928.egloos.com");
+			open("http://apzz0928.egloos.com/category/%25EB%2582%2598");
+			open("http://apzz0928.egloos.com");
+			open("http://apzz0928.egloos.com/category/%25EB%258B%25A4");
+			open("http://apzz0928.egloos.com");
+			open("http://apzz0928.egloos.com/category/%25EA%25B0%2580%25EB%2582%2598");
+			System.out.println("콘텐츠 - 경로의 이동경로와 이전/다음 페이지를 보기위한 페이지를 각 " + (i+1) + "번씩 방문했습니다.");
+		}
 	}
 	@AfterClass
 	public void afterTest() {

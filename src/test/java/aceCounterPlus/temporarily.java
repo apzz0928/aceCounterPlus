@@ -191,17 +191,59 @@ public class temporarily {
 			break;
 			case "editService_restore_alert": checkMsg = "수정이 완료되었습니다.";
 			break;
+			case "summaryReport_sendEmail_null": checkMsg = "수신 이메일을 추가해 주세요.";
+			break;
+			case "summaryReport_sendEmail_check": checkMsg = "올바른 이메일을 입력하세요.";
+			break;
+			case "summaryReport_sendEmail_send": checkMsg = "요약리포트가 발송되었습니다.";
+			break;
+			case "summaryReport_reserveEmail_null": checkMsg = "수신 이메일을 추가해 주세요.";
+			break;
+			case "summaryReport_reserveEmail_check": checkMsg = "올바른 이메일을 입력하세요.";
+			break;
+			case "summaryReport_reserveEmail_send": checkMsg = "설정하신 내용이 저장되었습니다.\n" + "설정내용은 익일부터 반영됩니다.";
+			break;
+			case "subManager_name_null": checkMsg = "담당자 이름을 입력해 주세요.";
+			break;
+			case "subManager_email_null": checkMsg = "담당자 이메일을 입력해 주세요.";
+			break;
+			case "subManager_email_check": checkMsg = "이메일 형식이 올바르지 않습니다.";
+			break;
+			case "subManager_service_null": checkMsg = "서비스를 추가해 주세요.";
+			break;
+			case "31": checkMsg = "";
+			break;
+			case "41": checkMsg = "";
+			break;
+			case "7": checkMsg = "";
+			break;
+			case "8": checkMsg = "";
+			break;
+			case "69": checkMsg = "";
+			break;
 			case "1": checkMsg = "";
 			break;
-			case "2": checkMsg = "";
+			case "0": checkMsg = "";
 			break;
-			case "3": checkMsg = "";
+			case "2": checkMsg = "";
 			break;
 			case "4": checkMsg = "";
 			break;
 			case "5": checkMsg = "";
 			break;
-			case "61": checkMsg = "";
+			case "669": checkMsg = "";
+			break;
+			case "37": checkMsg = "";
+			break;
+			case "318": checkMsg = "";
+			break;
+			case "419": checkMsg = "";
+			break;
+			case "10": checkMsg = "";
+			break;
+			case "11": checkMsg = "";
+			break;
+			case "12": checkMsg = "";
 			break;
 			
 		}
@@ -326,6 +368,13 @@ public class temporarily {
 			close();
 		}
 		$(".d-toolbar-white-btn", 2).click();
+		$(".navi-item", 6).click();
+		$(".list-box-title").waitUntil(visible, 10000);
+		$(".dcon-checkbox-unchecked", 1).click();
+		$(".d-toolbar-white-btn", 2).click();
+		$(".action-btn").waitUntil(visible, 10000);
+		$(".action-btn").click();
+		$(".navi-item-content", 12).click();
 		System.out.println(" *** Testmail delete !! *** ");
 		switchTo().window(0);
 		pageLoadCheck = $("#scriptList").text();
@@ -346,7 +395,7 @@ public class temporarily {
 			close();
 		}
 		$("#scroll_target_121333").click();
-		$(".text-danger", 0).waitUntil(hidden, 10000);
+		//$(".text-danger", 0).waitUntil(hidden, 10000);
 		System.out.println(" ! ----- scriptList End ----- ! ");
 	}
 	@Test(priority = 2)
@@ -433,6 +482,7 @@ public class temporarily {
 		$("#changePwdConfirm").setValue(pw);
 		$("#modifyProc").click();
 		valCheck(9, 7, "memberInfo_newPw_validation");
+		sleep(1000);
 		$("#changePwdConfirm").setValue(pw1);
 		$("#modifyProc").click();
 		valCheck(10, 8, "memberInfo_pw_confirm");
@@ -671,8 +721,74 @@ public class temporarily {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
 		$(By.linkText("발송메일 설정")).click();
 		$("#btn-sendMail").waitUntil(visible, 10000);
+		$(".cross", 0).click();
+		$(".sendEmail").waitUntil(hidden, 10000);
+		$("#btn-sendMail").click();
+		valCheck(6, 5, "summaryReport_sendEmail_null");
+		$(".gui-input", 0).setValue("apzz0928@");
+		$("#btn-sendEmail").click();
+		valCheck(7, 6, "summaryReport_sendEmail_check");
+		$(".gui-input", 0).setValue("apzz0928@nhnent.com");
+		$("#btn-sendEmail").click();
+		$(".sendEmail").waitUntil(visible, 10000);
+		$("#btn-sendMail").click();	
+		$(".modal-center", 5).waitUntil(visible, 10000);
+		valCheck(8, 7, "summaryReport_sendEmail_send");
 		switchTo().window(1);
-		sleep(5000);
+		$(".subject", 0).click();
+		String pageLoadCheck = $("h1").text();
+		if(pageLoadCheck.equals("주간요약 리포트입니다.")) {
+			System.out.println(" *** summaryReport sendMail Check Success !! *** ");
+		} else {
+			System.out.println(" *** summaryReport sendMail Check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		switchTo().window(0);
+		$("#btn-save").scrollTo();
+		$(".cross", 1).click();
+		$(".reserveEmail").waitUntil(hidden, 10000);
+		$("#btn-save").click();
+		valCheck(6, 5, "summaryReport_reserveEmail_null");
+		$(".gui-input", 3).setValue("apzz0928@");
+		$("#btn-reserveEmail").click();
+		valCheck(7, 6, "summaryReport_reserveEmail_check");
+		$(".gui-input", 3).setValue("apzz0928@nhnent.net");
+		$("#btn-reserveEmail").click();
+		$(".reserveEmail").waitUntil(visible, 10000);
+		for(int i=18;i<=25;i++) {
+			$("label", i).click();
+		}
+		$("#btn-save").click();
+		valCheck(8, 7, "summaryReport_reserveEmail_send");
+		$("#btn-save").waitUntil(visible, 10000);
+		for(int i=18;i<=25;i++) {
+			$("label", i).click();
+		}
+		$("#btn-save").click();
+		valCheck(6, 5, "summaryReport_reserveEmail_send");
+		$("#btn-save").waitUntil(visible, 10000);
+		System.out.println(" ! ----- summaryReport End ----- ! ");
+	}
+	@Test(priority = 10)
+	public void subManager() {
+		System.out.println(" ! ----- summaryReport Start ----- ! ");
+		$(By.linkText("부관리자")).click();
+		$("#btn_mail").waitUntil(visible, 10000);
+		$("#btn_mail").click();
+		valCheck(5, 7, "subManager_name_null");
+		$("#submanager_nm").setValue("최영권");
+		$("#btn_mail").click();
+		valCheck(6, 8, "subManager_email_null");
+		$("#submanager_email").setValue("apzz0928@");
+		$("#btn_mail").click();
+		valCheck(7, 9, "subManager_email_check");
+		$("#submanager_email").setValue("apzz0928@nhnent.net");
+		$("#btn_mail").click();
+		valCheck(8, 10, "subManager_service_null");
+		
+		
+		
+		
 		
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}

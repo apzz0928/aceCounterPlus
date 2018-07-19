@@ -127,7 +127,9 @@ public class userSetting {
 		if(msgCheck.equals(checkMsg)) {
 			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Success !! *** ");
 			$(".btn-sm", btnNum).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
+			if(!val.equals("delGroup_confirm")) {
+				$(".modal-backdrop").waitUntil(hidden, 10000);				
+			}
 		} else if (msgCheck.isEmpty()) {
 			System.out.println(" *** �١ڡ١ڡ١� pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - msgCheck is Empty ... �١ڡ١ڡ١� *** ");
 			close();
@@ -267,6 +269,7 @@ public class userSetting {
 		$("#chkAll").click();
 		$(".btn-info", 1).click();
 		$(".btn-info", 1).waitUntil(hidden, 10000);
+		sleep(1000);
 		valCheck(4, 3, "delIP");
 		$("h5", 2).waitUntil(visible, 10000);
 		String pageLoadCheck = $("h5", 2).text();

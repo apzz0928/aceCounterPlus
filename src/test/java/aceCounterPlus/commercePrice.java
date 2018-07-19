@@ -382,7 +382,7 @@ public class commercePrice {
 		System.out.println(" ! ----- commercePrice_directAdd_del End ----- ! ");
 	}
 	@Test(priority = 6)
-	public void commerce_currencyUnit() throws InterruptedException {
+	public void commerce_currencyUnit() {
 		System.out.println(" ! ----- commerce_currencyUnit Start ----- ! ");
 		$(By.linkText("통화 단위")).click();
 		$("#mViewBtn").waitUntil(visible, 10000);
