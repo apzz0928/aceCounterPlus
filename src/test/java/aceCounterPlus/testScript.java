@@ -117,7 +117,7 @@ public class testScript {
   		} catch (InterruptedException ex) {
   		}
   	}
-	////@Test(priority = 0)
+	//@Test(priority = 0)
 	public void login() throws InterruptedException {
 		open(baseUrl);
 		$(".gui-input", 0).setValue("apzz0928");
@@ -125,8 +125,7 @@ public class testScript {
 		$(".btn-primary").click();
 		Thread.sleep(5000);
 	}
-
-	////@Test(priority = 1)
+	//@Test(priority = 1)
 	public void memoTest() throws Exception {
 		open("https://new.acecounter.com/stats/getInflowSummary");
 		$("#uid").setValue("apzz09288");
@@ -154,7 +153,7 @@ public class testScript {
 		    x++;
 	    }
 	}
-	////@Test(priority = 2)
+	//@Test(priority = 2)
 	public void appMarketing() throws Exception {
 		open("https://new.acecounter.com/stats/getInflowSummary");
 		$("#uid").setValue("apzz0928888");
@@ -205,7 +204,7 @@ public class testScript {
 	        Thread.sleep(1000);
 	    }
 	}
-	////@Test(priority = 3)
+	//@Test(priority = 3)
 	public void appPage() throws Exception {
 		open("http://naver.com");
 		String[] appData = {"https://mbr.acecounter.com:10000/v1/bridge?sid=111283&nac_md=daum_ad&nac_cpi=1&nac_m=1&nac_c=1&nac_sm=%EC%9C%A0%EB%A3%8C-%EA%B4%91%EA%B3%A0%EC%83%81%ED%92%88-1&nac_s=20	"
@@ -275,7 +274,7 @@ public class testScript {
 		}
 		Thread.sleep(10000);
 	}
-	////@Test(priority = 4)
+	//@Test(priority = 4)
 	public void user() throws Exception {
 		open("https://new.acecounter.com/common/front");
 		$("#uid").setValue("apzz09288");
@@ -304,7 +303,7 @@ public class testScript {
 		    Thread.sleep(1000);
 	    }
 	}
-	////@Test(priority = 4)
+	//@Test(priority = 4)
 	public void appTestPlus() throws Exception {
 		open("https://new.acecounter.com/common/front");
 		$("#uid").setValue("apzz0928888");
@@ -331,7 +330,7 @@ public class testScript {
 	        Thread.sleep(1000);
 	    }
 	}
-	////@Test(priority = 4)
+	//@Test(priority = 4)
 	public void appTestPlusMemo() throws Exception {
 		open("https://new.acecounter.com/common/front");
 		$("#uid").setValue("apzz0928888");
@@ -346,7 +345,7 @@ public class testScript {
 
 	    }
 	}
-	////@Test(priority = 5)
+	//@Test(priority = 5)
 	public void 파트너_추가() throws Exception {
 		open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -367,7 +366,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	////@Test(priority = 6)
+	//@Test(priority = 6)
 	public void 에이전시_추가() throws Exception {
 		open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -390,7 +389,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	////@Test(priority = 7)
+	//@Test(priority = 7)
 	public void 파트너_담당자_추가() throws Exception {
 		open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -413,7 +412,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	////@Test(priority = 8)
+	//@Test(priority = 8)
 	public void 에이전시_담당자_추가() throws Exception {
 /*		open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -436,7 +435,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	////@Test(priority = 9)
+	//@Test(priority = 9)
 	public void 캠페인_추가() throws Exception {
 /*		open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -454,7 +453,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	////@Test(priority = 10)
+	//@Test(priority = 10)
 	public void 매체_사이트_추가() throws Exception {
 		/*open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -473,7 +472,7 @@ public class testScript {
 	    	$(".btn-red").click();
 	    }
 	}
-	////@Test(priority = 11)
+	//@Test(priority = 11)
 	public void 매체_영역_추가() throws Exception {
 		/*open("http://10.160.231.21");
 		Thread.sleep(1000);
@@ -664,7 +663,7 @@ public class testScript {
 		}
 		$(".form-control", 2).waitUntil(visible, 10000);
 	}
-	@Test(priority = 0)
+	//@Test(priority = 0)
 	public void decoding_add() {
 		for(int i=0;i<=101;i++) {
 			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%A3%BC%EB%AC%B8");
@@ -700,6 +699,143 @@ public class testScript {
 			open("http://apzz0928.egloos.com");
 			open("http://apzz0928.egloos.com/category/%25EA%25B0%2580%25EB%2582%2598");
 			System.out.println("콘텐츠 - 경로의 이동경로와 이전/다음 페이지를 보기위한 페이지를 각 " + (i+1) + "번씩 방문했습니다.");
+		}
+	}
+	//@Test(priority = 1)
+	public void switchTowindow() {
+		open("https://new.acecounter.com/common/front");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		open("https://new.acecounter.com/manage/mailing/summaryReport");
+		$("#btn-sendMail").waitUntil(visible, 10000);
+		$("#btn-sendMail").click();
+		$(".btn-default", 5).waitUntil(visible, 10000);
+		$(".btn-default", 5).click();
+		System.out.println("1 번째 메일 발송");
+		js("window.open('https://nhnent.dooray.com/mail/folders/2241107403578885832');");
+		switchTo().window(1);
+		$("#username").setValue("apzz0928");
+		$("#password").setValue(pw);
+		$(".btn_red").click();
+		String time = $(".list-item-time", 0).text();
+		String subject = $(".subject", 0).text();
+		System.out.println("1 번째 테스트메일 맨윗줄 메일 발신시간 " + time);
+		System.out.println("1 번째 테스트메일 맨윗줄 메일 제목 : " + subject);
+		$(".subject", 0).click();
+		$(".d-toolbar-white-btn", 2).click();
+		$(".navi-item", 6).click();
+		$(".subject", 0).click();
+		System.out.println("1 번째 삭제메일 맨윗줄 메일 발신시간 " + time);
+		System.out.println("1 번째 삭제메일 맨윗줄 메일 제목 : " + subject);
+		$(".d-toolbar-white-btn", 2).click();
+		$(".action-btn").click();
+		$(".navi-name", 22).click();
+		switchTo().window(0);
+		for(int i=2;i<=102;i++) {
+			$("#btn-sendMail").waitUntil(visible, 10000);
+			$("#btn-sendMail").click();
+			$(".btn-default", 5).waitUntil(visible, 10000);
+			$(".btn-default", 5).click();
+			System.out.println(i + " 번째 메일 발송");
+			switchTo().window(1);
+			time = $(".list-item-time", 0).text();
+			subject = $(".subject", 0).text();
+			System.out.println(i + " 번째 테스트메일 맨윗줄 메일 발신시간 " + time);
+			System.out.println(i + " 번째 테스트메일 맨윗줄 메일 제목 : " + subject);
+			$(".subject", 0).click();
+			$(".d-toolbar-white-btn", 2).click();
+			$(".navi-item", 6).click();
+			$(".subject", 0).click();
+			time = $(".list-item-time", 0).text();
+			subject = $(".subject", 0).text();
+			System.out.println(i + " 번째 삭제메일 맨윗줄 메일 발신시간 " + time);
+			System.out.println(i + " 번째 삭제메일 맨윗줄 메일 제목 : " + subject);
+			$(".d-toolbar-white-btn", 2).click();
+			$(".action-btn").click();
+			$(".navi-name", 22).click();
+			switchTo().window(0);
+			sleep(3000);
+		}
+	}
+	//@Test(priority = 1)
+	public void convList_add() {
+		for(int i=0;i<=300;i++) {
+			open("http://apzz0928.blogspot.com/search/label/Category1");
+			open("http://apzz0928.blogspot.com/search/label/Category2");
+			open("http://apzz0928.blogspot.com/search/label/Category3");
+			open("http://apzz0928.blogspot.com/search/label/Category4");
+			open("http://apzz0928.blogspot.com/search/label/Category5");
+			open("http://apzz0928.blogspot.com/search/label/Category6");
+			open("http://apzz0928.blogspot.com/search?q=aaaaa");
+			js("console.log(document.cookie)");
+			driver.manage().deleteAllCookies();
+			System.out.println("쿠키 캐시 삭제");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%88%EC%BC%80%ED%8C%85");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4-%EB%B0%94%EC%9D%B4%EB%9F%B4/");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4-%EC%9D%B4%EB%A9%94%EC%9D%BC/");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4-Talk/");
+			open("http://apzz0928.blogspot.com/2018/01/2018-01-10_9.html");
+			open("http://apzz0928.blogspot.com/search?q=bbbbb");
+			open("http://apzz0928.blogspot.com/search?q=ccccc");
+			js("console.log(document.cookie)");
+			driver.manage().deleteAllCookies();
+			js("console.log(document.cookie)");
+			System.out.println("쿠키 캐시 삭제");
+			System.out.println("전환 " + (i+1) + "번씩 방문했습니다.");
+		}
+	}
+	//@Test(priority = 0)
+	public void URLsetting() {
+		open("https://new.acecounter.com/common/front");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		open("https://new.acecounter.com/setting/contents/url");
+		for(int i=60;i<=160;i++) {
+			$(".btn-info", 0).click();
+			sleep(1000);
+			$("#page-url").setValue("/common/front/learningCenter/trend/deta" + i + "?post_no=1");
+			sleep(1000);
+			$("#btn-add").click();
+			sleep(1000);
+			$(".btn-sm", 7).click();
+			sleep(1000);
+		}
+	}
+	@Test(priority = 0)
+	public void ncp_add() {
+		open("http://10.160.231.210:8082/admin/login");
+		$("#username").setValue("apzz0928");
+		$("#password").setValue("qordlf!@34");
+		$(".pull-right").click();
+		sleep(3000);
+		open("http://10.160.231.210:8082/admin/comCooperation/ncpManagement");
+		for(int i=1;i<=300;i++) {
+			$(".w150").click();
+			sleep(1000);
+			$("#aName_1").setValue("이름" + i);
+			if(i % 2 == 0) {
+				$("#aPhone_1").setValue("010-1234-5678");				
+			} else {
+				$("#aPhone_1").setValue("010-9876-5432");
+			}
+			if(i % 2 == 0) {
+				$("#aEmail_1").setValue(i + "abc@mail.com");
+			} else {
+				$("#aEmail_1").setValue(i + "cba@mail.com");
+			}
+			if(i % 2 == 0) {
+				$("#aCompany_1").setValue("회사명" + i);
+			} else {
+				$("#aCompany_1").setValue("company" + i);
+			}
+			$(".btn-primary").click();
+			sleep(1000);
+			$("#btn-modal-alert-yes").click();
+			sleep(1000);
+			$(".btn-default", 1).click();
+			sleep(2000);
 		}
 	}
 	@AfterClass

@@ -249,26 +249,26 @@ public class KPISetting {
 		}
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(4, 807, "KPIAdd_reporeName_null");
+		valCheck(4, 818, "KPIAdd_reporeName_null");
 		$("h3", 1).scrollTo();
 		$(".input-sm").setValue(date);
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(5, 808, "KPIAdd_indicator_null");
+		valCheck(5, 819, "KPIAdd_indicator_null");
 		$("h3", 1).scrollTo();
 		$(".btn-sm", 11).click();
 		$(".btn-sm", 11).click();
-		valCheck(6, 809, "KPIAdd_indicator_duplication");
+		valCheck(6, 820, "KPIAdd_indicator_duplication");
 		$(".bad").setValue("");
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(7, 810, "KPIAdd_indicator_badStandard");
+		valCheck(7, 821, "KPIAdd_indicator_badStandard");
 		$("h3", 1).scrollTo();
 		$(".bad").setValue("5");
 		$(".good").setValue("¤·");
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(8, 811, "KPIAdd_indicator_goodStandard");
+		valCheck(8, 822, "KPIAdd_indicator_goodStandard");
 		$("h3", 1).scrollTo();
 		$(".cross").click();
 		for(int i=11;i<=17;i++) {
@@ -280,10 +280,10 @@ public class KPISetting {
 			$(".btn-sm", i).click();
 			System.out.println("indicatorStatdard add number is " + i);
 		}
-		valCheck(9, 812, "KPIAdd_indicator_full");
+		valCheck(9, 823, "KPIAdd_indicator_full");
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(10, 813, "KPIAdd_register");		
+		valCheck(10, 824, "KPIAdd_register");		
 		$("td", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals(date)) {
@@ -312,8 +312,8 @@ public class KPISetting {
 		}
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(4, 807, "KPISetting_modify_confirm");
-		valCheck(5, 809, "KPISetting_modify_alert");
+		valCheck(4, 818, "KPISetting_modify_confirm");
+		valCheck(5, 820, "KPISetting_modify_alert");
 		$(By.name("useYn")).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals(date + " ¼öÁ¤")) {

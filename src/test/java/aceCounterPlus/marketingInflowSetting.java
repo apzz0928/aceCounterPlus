@@ -277,9 +277,9 @@ public class marketingInflowSetting {
 	public void advertisingCodeDownload() {
 		System.out.println(" ! ----- advertisingCodeDownload Start ----- ! ");
 		$("#inflowMrkCodeDown").click();
-		//sleep(1000);
+		sleep(1500);
 		//$(".close", 0).waitUntil(visible, 10000);
-		$("h4", 0).waitUntil(visible, 10000);
+		//$(".modal-backdrop").waitUntil(visible, 10000);
 		String pageLoadCheck = $("h4", 0).text();
 		if(pageLoadCheck.equals("광고코드 다운로드")) {
 			brokenLinkCheck("advCodeDown", "https://new.acecounter.com/setting/appmarketing/codedown?inflow_media_cd=&inflow_mrkt_channel_dcd=10&down_term_cate=ALL&create_dt_st=&create_dt_ed=&original_url_yn=n&use_yn=y");
