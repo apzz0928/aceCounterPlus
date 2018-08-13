@@ -463,6 +463,7 @@ public class KPISetting {
 	@Test(priority = 5)
 	public void reportDownload_oneshotAdd() {
 		System.out.println(" ! ----- reportDownload_oneshotAdd Start ----- ! ");
+		sleep(1000);
 		$(".btn-info").click();
 		$("#btn-select-report-all").waitUntil(visible, 10000);
 		String pageLoadCheck = $("#btn-select-report-all").text();
