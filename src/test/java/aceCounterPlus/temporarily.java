@@ -433,6 +433,7 @@ public class temporarily {
 		$(".btn-dark", 1).click();
 		$(".btn-dark", 1).waitUntil(hidden, 10000);
 		valCheck(63, 5, "scriptList_email_send");
+		sleep(15000);
 		js("window.open('https://nhnent.dooray.com/mail/folders/2241107403578885832');");
 		switchTo().window(1);
 		pageLoadCheck = $("label", 0).text();
@@ -556,93 +557,96 @@ public class temporarily {
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
 		$(By.linkText("회원정보")).click();
-		$("#btn-ok").waitUntil(visible, 10000);
-		$("#btn-ok").click();
-		valCheck(5, 4, "memberInfo_checkpage_pw_null");
+		$("h3", 2).waitUntil(visible, 10000);
+		String pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("비밀번호 재확인")) {
+			System.out.println(" *** memberInfo Recongirming page load Success !! *** ");
+		} else {
+			System.out.println(" *** memberInfo Recongirming page load Fail ... !@#$%^&*() *** ");			
+		}
 		$("#pwd").setValue(pw);
 		$("#btn-ok").click();
-		$("#modifyProc").waitUntil(visible, 10000);
-		String pageLoadCheck = $("#modifyProc").text();
-		if (pageLoadCheck.equals("변경하기")) {
-			System.out.println(" *** memberInfo page load Success !! *** ");
-		} else {
-			System.out.println(" *** memberInfo page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#modifyProc").click();
-		valCheck(6, 4, "memberInfo_oldPw_null");
+		$("h3", 2).waitUntil(visible, 10000);
+		System.out.println(" *** Password change Page access Success !! *** ");
 		$("#prePwd").setValue(pw);
-		$("#modifyProc").click();
-		valCheck(7, 5, "memberInfo_newPw_null");
 		$("#changePwd").setValue(pw1);
-		$("#modifyProc").click();
-		valCheck(8, 6, "memberInfo_newPwCk_null");
-		$("#changePwdConfirm").setValue(pw);
-		$("#modifyProc").click();
-		valCheck(9, 7, "memberInfo_newPw_validation");
-		sleep(1000);
 		$("#changePwdConfirm").setValue(pw1);
 		$("#modifyProc").click();
-		valCheck(10, 8, "memberInfo_pw_confirm");
-		sleep(1500);
-		valCheck(6, 4, "memberInfo_pw_alert");
+		$(".modal-backdrop").waitUntil(visible, 10000);
+		$("#btn-modal-alert-yes").click();
+		$(".modal-backdrop").waitUntil(visible, 10000);
+		String mbn = $(".mbn").text();
+		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
+			System.out.println(" *** Change Password Success !! *** ");
+			$("#okButton").click();
+			$(".modal-backdrop").waitUntil(hidden, 10000);
+		} else {
+			System.out.println(" *** Change Password Fail ... !@#$%^&*() *** ");
+			close();
+		}
 		$("#prePwd").setValue(pw1);
 		$("#changePwd").setValue(pw);
 		$("#changePwdConfirm").setValue(pw);
 		$("#modifyProc").click();
-		valCheck(7, 5, "memberInfo_pw1_confirm");
-		sleep(2500);
-		valCheck(6, 4, "memberInfo_pw1_alert");
-		$("#modifyProc").waitUntil(visible, 10000);
-		pageLoadCheck = $("#modifyProc").text();
-		if (pageLoadCheck.equals("변경하기")) {
-			System.out.println(" *** memberInfo change Success !! *** ");
+		$(".modal-backdrop").waitUntil(visible, 10000);
+		$("#btn-modal-alert-yes").click();
+		$(".modal-backdrop").waitUntil(visible, 10000);
+		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
+			System.out.println(" *** Restoration Password Success !! *** ");
+			$("#okButton").click();
+			$(".modal-backdrop").waitUntil(hidden, 10000);
 		} else {
-			System.out.println(" *** memberInfo change Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** Restoration Password Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#s_name").setValue("");
-		$(".btn-info", 1).scrollTo();
-		$(".btn-info", 1).click();
-		valCheck(7, 5, "memberInfo_name_null");
 		$("#s_name").setValue("변경이름");
 		$("#s_company").setValue("변경회사명");
-		$("#s_email").scrollTo();
-		$("#s_email").setValue("");
-		$(".btn-info", 1).scrollTo();
-		$(".btn-info", 1).click();
-		valCheck(8, 6, "memberInfo_email_null");
-		$("#s_email").setValue(date);
-		$(".btn-info", 1).click();
-		valCheck(9, 7, "memberInfo_email_validation");
-		$("#s_email").setValue(date + "@new.com");
-		$(".btn-info", 1).click();
-		valCheck(10, 8, "memberInfo_change_ok");
-		$(".btn-info", 1).waitUntil(hidden, 10000);
-		$(".btn-info", 1).waitUntil(visible, 10000);
-		$("#s_email").scrollTo();
-		$("#s_name").setValue("원래이름");
-		$("#s_company").setValue("원래회사명");
-		$("#s_email").setValue("apzz0928@gmail.com");
-		$(".btn-info", 1).scrollTo();
-		$(".btn-info", 1).click();
-		valCheck(6, 4, "memberInfo_change1_ok");
-		$(".btn-info", 1).waitUntil(visible, 10000);
-		pageLoadCheck = $(".btn-info", 1).text();
-		if (pageLoadCheck.equals("수정하기")) {
-			System.out.println(" *** memberInfo change Success !! *** ");
+		$(By.name("s_hp1")).click();
+	    $(By.xpath("//option[@value='011']")).click();
+	    $("#s_hp2").setValue("0928");
+	    $("#s_hp3").setValue("9743");
+		$("#s_email").setValue("apzz0928@naver.com");
+	    $(".btn-lg", 1).click();
+	    String modalBody = $(".modal-body", 1).text();
+		$(".modal-backdrop").waitUntil(visible, 10000);
+		sleep(500);
+	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
+			$(".btn-sm", 5).click();
+			$(".modal-backdrop").waitUntil(hidden, 10000);
+			System.out.println(" *** change memberInfo Success !! *** ");
 		} else {
-			System.out.println(" *** memberInfo change Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** change memberInfo Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    sleep(1000);
+	    $("#s_name").waitUntil(visible, 10000);
+		sleep(500);
+	    $("#s_name").setValue("원래이름");
+		$("#s_company").setValue("원래회사명");
+		$(By.name("s_hp1")).click();
+	    $(By.xpath("//option[@value='010']")).click();
+	    $("#s_hp2").setValue("9743");
+	    $("#s_hp3").setValue("0928");
+		$("#s_email").setValue("apzz0928@gmail.com");
+	    $(".btn-lg", 1).click();
+	    $(".modal-dialog").waitUntil(visible, 10000);
+		if(modalBody.equals("회원정보가 수정되었습니다.")) {
+			$(".btn-sm", 4).click();
+			$(".modal-backdrop").waitUntil(hidden, 10000);
+			System.out.println(" *** Restoration memberInfo Success !! *** ");
+		} else {
+			System.out.println(" *** Restoration memberInfo Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- memberInfo End ----- ! ");
 	}
 
-	@Test(priority = 4)
+	//@Test(priority = 4)
 	public void myCoupon() {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
-		$(By.linkText("쿠폰관리")).click();
-		$("#btn-save").waitUntil(visible, 10000);
+		open("https://new.acecounter.com/manage/myCoupon");
+		sleep(2000);
+		//$("#btn-save").waitUntil(visible, 10000);
 		String pageLoadCheck = $("#btn-save").text();
 		if (pageLoadCheck.equals("쿠폰등록")) {
 			System.out.println(" *** myCoupon page load Success !! *** ");
@@ -847,6 +851,7 @@ public class temporarily {
 		$("#btn-sendMail").click();
 		$(".modal-center", 5).waitUntil(visible, 10000);
 		valCheck(8, 7, "summaryReport_sendEmail_send");
+		sleep(15000);
 		switchTo().window(1);
 		String subject = $(".subject", 0).text();
 		System.out.println("sub0 is : " + subject);
@@ -887,7 +892,7 @@ public class temporarily {
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
 
-	@Test(priority = 10)
+	//@Test(priority = 10)
 	public void subManager() {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
 		$(By.linkText("부관리자")).click();

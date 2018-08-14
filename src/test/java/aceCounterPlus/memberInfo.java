@@ -183,6 +183,7 @@ public class memberInfo {
 			System.out.println(" *** change memberInfo Fail ... !@#$%^&*() *** ");
 			close();
 		}
+	    sleep(1000);
 	    $("#s_name").waitUntil(visible, 10000);
 		sleep(500);
 	    $("#s_name").setValue("원래이름");
