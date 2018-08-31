@@ -663,16 +663,16 @@ public class testScript {
 		}
 		$(".form-control", 2).waitUntil(visible, 10000);
 	}
-	//@Test(priority = 0)
+	//@Test(priority = 1)
 	public void decoding_add() {
 		for(int i=0;i<=101;i++) {
-			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%A3%BC%EB%AC%B8");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%A3%BC%EB%AC%B8"); //인코딩-주문
 			open("http://apzz0928.egloos.com/category/%25EA%25B0%2580");
 			open("https://new.acecounter.com/common/front");
-			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EA%B0%80%EC%9E%85");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EA%B0%80%EC%9E%85"); //인코딩-가입
 			open("http://apzz0928.egloos.com/category/%25EB%2582%2598");
 			open("https://new.acecounter.com/common/front");
-			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%98%88%EC%95%BD");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%98%88%EC%95%BD"); //인코딩-예약
 			open("http://apzz0928.egloos.com/category/%25EB%258B%25A4");
 			open("https://new.acecounter.com/common/front");
 			open("http://apzz0928.egloos.com/category/%25EA%25B0%2580%25EB%2582%2598");
@@ -682,14 +682,14 @@ public class testScript {
 			System.out.println("인코딩 전환, 가입, 예약 페이지를 각 " + (i+1) + "번씩 방문했습니다.");
 		}
 	}
-	//@Test(priority = 1)
+	//@Test(priority = 2)
 	public void decoding_add1() {
 		for(int i=0;i<=100;i++) {
-			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%A3%BC%EB%AC%B8");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%A3%BC%EB%AC%B8"); //인코딩-주문
 			open("http://apzz0928.blogspot.com/");
-			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EA%B0%80%EC%9E%85");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EA%B0%80%EC%9E%85"); //인코딩-가입
 			open("http://apzz0928.blogspot.com/");
-			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%98%88%EC%95%BD");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%98%88%EC%95%BD"); //인코딩-예약
 			open("http://apzz0928.blogspot.com/");
 			open("http://apzz0928.egloos.com/category/%25EA%25B0%2580");
 			open("http://apzz0928.egloos.com");
@@ -699,6 +699,21 @@ public class testScript {
 			open("http://apzz0928.egloos.com");
 			open("http://apzz0928.egloos.com/category/%25EA%25B0%2580%25EB%2582%2598");
 			System.out.println("콘텐츠 - 경로의 이동경로와 이전/다음 페이지를 보기위한 페이지를 각 " + (i+1) + "번씩 방문했습니다.");
+		}
+	}
+	//@Test(priority = 0)
+	public void URL설정_페이지교체확인용() {
+		for(int i=0;i<=100;i++) {
+			open("http://apzz0928.blogspot.com/search/label/missing/missingA"); //인코딩-주문
+			open("http://apzz0928.blogspot.com/search/label/missing/missingB"); //인코딩-가입
+			open("http://apzz0928.blogspot.com/search/label/missing/missingC"); //인코딩-예약
+			open("http://apzz0928.blogspot.com/2018/01/blog-post_14.html");
+			open("http://apzz0928.blogspot.com/2018/01/3.html");
+			open("http://apzz0928.blogspot.com/2018/01/2.html");
+			open("http://apzz0928.blogspot.com/2018/01/1.html");
+			open("http://apzz0928.blogspot.com/2018/01/blog-post_77.html");
+			open("http://apzz0928.blogspot.com/2018/05/test.html");
+			System.out.println("페이지 교체 확인용 페이지를 각 " + (i+1) + "번씩 방문했습니다.");
 		}
 	}
 	//@Test(priority = 1)
@@ -771,10 +786,10 @@ public class testScript {
 			js("console.log(document.cookie)");
 			driver.manage().deleteAllCookies();
 			System.out.println("쿠키 캐시 삭제");
-			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%88%EC%BC%80%ED%8C%85");
-			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4-%EB%B0%94%EC%9D%B4%EB%9F%B4/");
-			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4-%EC%9D%B4%EB%A9%94%EC%9D%BC/");
-			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4-Talk/");
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%88%EC%BC%80%ED%8C%85"); //인하우스마케팅
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4-%EB%B0%94%EC%9D%B4%EB%9F%B4/"); //인하우스-바이럴/
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4-%EC%9D%B4%EB%A9%94%EC%9D%BC/"); //인하우스-이메일/
+			open("http://apzz0928.blogspot.com/search/label/%EC%9D%B8%ED%95%98%EC%9A%B0%EC%8A%A4-Talk/"); //인하우스-Talk
 			open("http://apzz0928.blogspot.com/2018/01/2018-01-10_9.html");
 			open("http://apzz0928.blogspot.com/search?q=bbbbb");
 			open("http://apzz0928.blogspot.com/search?q=ccccc");
@@ -785,7 +800,7 @@ public class testScript {
 			System.out.println("전환 " + (i+1) + "번씩 방문했습니다.");
 		}
 	}
-	//@Test(priority = 0)
+	//@Test(priority = 2)
 	public void URLsetting() {
 		open("https://new.acecounter.com/common/front");
 		$("#uid").setValue("apzz0928888");
@@ -803,7 +818,7 @@ public class testScript {
 			sleep(1000);
 		}
 	}
-	@Test(priority = 0)
+	//@Test(priority = 0)
 	public void ncp_add() {
 		open("http://10.160.231.210:8082/admin/login");
 		$("#username").setValue("apzz0928");
@@ -837,6 +852,230 @@ public class testScript {
 			$(".btn-default", 1).click();
 			sleep(2000);
 		}
+	}
+	//@Test(priority = 0)
+	public void URL설정_동적페이지_추가스크립트() {
+		open("http://10.77.129.80:8081/setting/contents/url");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		sleep(2000);
+		open("http://10.77.129.80:8081/setting/contents/url");
+		for(int i=1;i<=300;i++) {
+			$(".btn-info", 0).click();
+			sleep(1000);
+			$(By.name("page_url")).setValue("http://test.com/test" + i + "?a=a&b=b");
+			$(By.name("exclude_url_char")).setValue("" + i);
+			$("#btn-add").click();
+			sleep(1500);
+			$(".btn-sm", 7).click();
+			sleep(2500);
+		}
+	}
+	//@Test(priority = 0)
+	public void URL설정_페이지교체_추가스크립트() {
+		open("http://10.77.129.80:8081/setting/contents/url");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		sleep(2000);
+		open("http://10.77.129.80:8081/setting/contents/pageReplacement");
+		for(int i=1;i<=300;i++) {
+			$(".btn-info", 0).click();
+			sleep(1000);
+			$(By.name("targetPage")).setValue("/test" + i + "/.*");
+			$(By.name("replacementPage")).setValue("/test/" + i + "/");
+			$("#btn-add").click();
+			sleep(1500);
+			$(".btn-sm", 3).click();
+			sleep(2500);
+		}
+	}
+	//@Test(priority = 0)
+	public void URL설정_내부검색_추가스크립트() {
+		open("http://10.77.129.80:8081/setting/contents/url");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		sleep(2000);
+		open("http://10.77.129.80:8081/setting/contents/internalSearch");
+		for(int i=1;i<=300;i++) {
+			$(".btn-info", 0).click();
+			sleep(1000);
+			$(By.name("page_url")).setValue("/test" + i);
+			$(By.name("internal_search_param")).setValue("" + i);
+			$("#btn-add").click();
+			sleep(1500);
+			$(".btn-sm", 3).click();
+			sleep(1500);
+		}
+	}
+	//@Test(priority = 0)
+	public void 오프라인교육_백오피스_교육추가() {
+		open("http://10.77.129.52:8083/admin/contents/offline");
+		$("#username").setValue("apzz0928");
+		$("#password").setValue("qordlf!@34");
+		$(".btn-primary").click();
+		sleep(2000);
+		open("http://10.77.129.52:8083/admin/contents/offline");
+		for(int i=1;i<=300;i++) {
+			$(".label-br-g", 0).click();
+			sleep(2000);
+			$(".form-control", 17).setValue("Test " + i + "번째 등록");
+			js("$('#thumbnail').click();");
+		    sleep(3000);
+			$(".btn-primary").scrollTo();
+			$(".btn-primary").click();
+			sleep(1000);
+			confirm("등록이 완료되었습니다.");
+			sleep(2000);
+		}
+	}
+	//@Test(priority = 0)
+	public void 오프라인교육_백오피스_접수내역페이지페이징처리() {
+		open("http://10.77.129.52:8083/admin/login");
+		$("#username").setValue("apzz0928");
+		$("#password").setValue("qordlf!@34");
+		$(".btn-primary").click();
+		sleep(2000);
+		open("http://10.77.129.52:8083/admin/contents/offline/applyList?postNo=100");
+		for(int i=220;i<=300;i++) {
+			$(".btn-primary", 0).click();
+			sleep(1000);
+			$(".form-control", 0).setValue("Test" + i);
+			$(".form-control", 1).setValue("Test" + i);
+			$(".form-control", 2).setValue("Test" + i);
+			$(".form-control", 4).setValue("1234");
+			$(".form-control", 5).setValue("1234");
+			$(".form-control", 6).setValue("Test" + i);
+			$(".btn-primary").click();
+			sleep(1000);
+			confirm("신청정보를 추가하시겠습니까?");
+			sleep(500);
+			confirm("추가되었습니다.");
+			sleep(1000);
+		}
+	}
+	//@Test(priority = 0)
+	public void 무통장입금_추가요금계정찾기() {
+		open("http://10.77.129.82:8080//admin/login");
+		$("#username").setValue("apzz0928");
+		$("#password").setValue("qordlf!@34");
+		$(".btn-primary").click();
+		sleep(2000);
+		open("http://10.77.129.82:8080/admin/noPassbookDeposit/makeview");
+		String checker = "";
+		String Msg = "";
+	    $(By.id("chargeType")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='요금구분'])[1]/following::option[3]")).click();
+		for(int i=100010;i>=0;i--) {
+			$(By.name("cSid")).setValue("" + i);
+			$(".btn-dark").click();
+			//checker = $(".extraTr").text();
+			int a = 0;
+			Msg = $("p", a).text();
+			if(checker.equals("추가결제내역이 없습니다.")) {
+				System.out.println("SID " + i + " 는 추가결제내역 없음..");
+			} else if (checker.equals("해당 sid가 존재하지 않습니다.")) {
+				System.out.println("SID " + i + " 는 DB에 없는 SID 입니다..");
+				sleep(500);
+				js("$('.btn-default:last').click();");
+				//$(".btn-default").click();
+				a++;
+				sleep(500);
+			} else {
+				System.out.println("☆★☆★ 추가결제내역 있는 SID " + i + " 입니다!! ☆★☆★");
+				close();
+			}
+			sleep(1000);
+		}
+	}
+	//@Test(priority = 0)
+	public void 서비스리스트순서변경_서비스추가() {
+		open("http://10.77.129.22:18080/common/front");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		sleep(2000);
+		open("http://10.77.129.22:18080/manage/serviceInfo/addService");
+	    for(int i=1;i<=200;i++) {
+	    	sleep(1000);
+	    	System.out.println("서비스 추가 페이지 접근");
+	    	$(".input-sm", 0).setValue("순서변경" + i);
+	    	System.out.println("웹사이트 이름 입력");
+	    	$(".gui-input", 1).setValue("testWeb" + i + ".com");
+	    	System.out.println("웹사이트 도메인 입력");
+	    	$(".ace-btn-add-domain").click();
+	    	System.out.println("웹사이트 도메인 추가");
+	    	$(By.name("largeCategoryCd")).click();
+	    	sleep(500);
+	        $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='대분류'])[1]/following::option[9]")).click();
+	        sleep(500);
+	        System.out.println("웹사이트 분류(대분류) 선택");
+	    	$(By.name("middleCategoryCd")).click();
+	    	sleep(500);
+	    	$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='중분류'])[1]/following::option[3]")).click();
+	        sleep(500);
+	        System.out.println("웹사이트 분류(중분류) 선택");
+	        $("#btn_submit").click();
+	        System.out.println("서비스 " + i + "번 째 추가");
+	        sleep(2000);
+	        open("http://10.77.129.22:18080/manage/serviceInfo/addService");
+	    }
+	}
+	//@Test(priority = 0)
+	public void 리포트생성신청_리스트추가() {
+		open("http://10.77.129.80:8082/common/front");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		sleep(2000);
+		open("http://10.77.129.80:8082/setting/reportDown/add");
+	    for(int i=298;i<=300;i++) {
+	    	sleep(1000);
+	    	$(By.name("report-name")).setValue("페이지확인" + i);
+	    	sleep(1000);
+	    	$(By.id("datepicker-reportdown-onetime")).click();
+	    	sleep(1000);
+	    	$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='오늘'])[1]/following::li[1]")).click();
+	    	sleep(1000);
+	    	$("#btn-select-report-all").click();
+	    	sleep(1000);
+	    	$("#btn-add-report").scrollTo();
+	    	$("#btn-add-report").click();
+	    	sleep(1000);
+	    	open("http://10.77.129.80:8082/setting/reportDown/add");	
+	    }
+	}
+	@Test(priority = 0)
+	public void 리포트생성신청_생성신청버튼클릭() {
+		open("http://10.77.129.80:8082/admin/login");
+		$("#username").setValue("apzz0928");
+		$("#password").setValue("qordlf!@34");
+		$(".btn-primary").click();
+		sleep(2000);
+		open("http://10.77.129.80:8082/admin/apply/reportCreation?page=9&solutionCd=&status=&searchType=url&keyword=");
+		int a = 0;
+		int b = 10;
+		int c = 0;
+	    for(int i=0;i<=300;i++) {
+	    	//$(By.linkText("[생성신청]"), a).scrollTo();
+	    	$(By.linkText("[생성신청]"), a).click();
+	    	sleep(1000);
+	        $(By.id("btn-modal-alert-yes")).click();
+	        sleep(1000);
+	        $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='알림'])[2]/following::button[1]")).click();
+	        sleep(1000);
+	        if(c==19) {
+	        	c = 0;
+	        	$(By.linkText(b + "")).scrollTo();
+	        	$(By.linkText(b + "")).click();
+	        	b++;
+		        System.out.println("b 는 " + b + " 입니다.");
+	        }
+	        System.out.println("이번에 클릭한 버튼은 " + (c+1) + " 번째 버튼입니다.");
+	        c++;
+	    }
 	}
 	@AfterClass
 	public void afterTest() {

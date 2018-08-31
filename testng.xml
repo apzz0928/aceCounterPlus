@@ -5,14 +5,16 @@
   <parameter name="browser" value="firefox" />
   <classes>
 <!-- 	<class name="aceCounterPlus.backOffice"/> -->
-<class name="aceCounterPlus.temporarily"/>
+<!-- <class name="aceCounterPlus.temporarily"/> -->
 <!-- <class name="aceCounterPlus.testScript"/> -->
 <!-- <class name="aceCounterPlus.changePassword"/> -->
 <!-- <class name="aceCounterPlus.changeMemberInfo"/> -->
 <!-- <class name="aceCounterPlus.serviceInfo"/> -->
 <!-- <class name="aceCounterPlus.charge"/> -->
 <!-- <class name="aceCounterPlus.frontPage"/> -->
-<!-- 	<class name="aceCounterPlus.adminManage"/> -->
+<!-- <class name="aceCounterPlus.adminManage"/> -->
+<!-- <class name="aceCounterPlus.userSetting"/> -->
+<class name="aceCounterPlus.commercePrice"/>
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
