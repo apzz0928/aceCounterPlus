@@ -295,6 +295,7 @@ public class marketingInflowSetting {
 	@Test(priority = 3)
 	public void advertisingProductManage_add() {
 		System.out.println(" ! ----- advertisingProductManage_add Start ----- ! ");
+		sleep(1000);
 		$(".btn-dark", 0).click();
 		$("#addViewBtn").waitUntil(visible, 10000);
 		String pageLoadCheck = $("#addViewBtn").text();

@@ -38,8 +38,10 @@ public class temporarily {
 	Date number_date = new Date();
 	SimpleDateFormat number_format = new SimpleDateFormat("yyMMddHHmmss");
 	SimpleDateFormat number_format1 = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat number_format2 = new SimpleDateFormat("MMddhhmmss");
 	String date = number_format.format(number_date);
 	String date1 = number_format1.format(number_date);
+	String date2 = number_format2.format(number_date);
 
 	@Parameters("browser")
 	@BeforeClass
@@ -273,8 +275,8 @@ public class temporarily {
 		case "subManager_service_null":
 			checkMsg = "서비스를 추가해 주세요.";
 			break;
-		case "31":
-			checkMsg = "";
+		case "subManager_email_send":
+			checkMsg = "이메일이 발송되었습니다.발송된 이메일의 회원가입 링크 유효기간은 총 7일로7일 이내 미가입 시 유효기간이 종료됩니다.";
 			break;
 		case "41":
 			checkMsg = "";
@@ -429,12 +431,47 @@ public class temporarily {
 		$("#mail_to").setValue(date);
 		$(".btn-dark", 1).click();
 		valCheck(62, 4, "scriptList_email_validation");
-		$("#mail_to").setValue("apzz0928@nhnent.com");
+		$("#mail_to").setValue("apzz0928@naver.com");
 		$(".btn-dark", 1).click();
 		$(".btn-dark", 1).waitUntil(hidden, 10000);
 		valCheck(63, 5, "scriptList_email_send");
-		sleep(15000);
-		js("window.open('https://nhnent.dooray.com/mail/folders/2241107403578885832');");
+		//sleep(20000);
+		js("window.open('https://mail.naver.com/login?url=http%3A%2F%2Fmail.naver.com%2F');");
+		//네이버메일 탭으로 포커스 변경
+		switchTo().window(1);
+		pageLoadCheck = $(".btn_inner", 0).text();
+		if (pageLoadCheck.equals("NAVER 로그인")) {
+			System.out.println(" *** scriptList naver mail page load Success !! *** ");
+		} else {
+			System.out.println(" *** scriptList naver mail page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".btn_inner", 0).click();
+		$("#id").setValue("apzz0928");
+		$("#pw").setValue("qordlf!234");
+		$(".btn_global", 0).click();
+		//메일제목 체크 길어서 짜른다음에 url로 비교
+		pageLoadCheck = $(".mail_title", 0).text();
+		if (pageLoadCheck.substring(54, 66).equals("ap0426104716")) {
+			System.out.println(" *** scriptList send mail subject check Success !! *** ");
+		} else {
+			System.out.println(" *** scriptList send mail subject check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".mail_title", 0).click();
+		pageLoadCheck = $("h1", 1).text();
+		if (pageLoadCheck.equals("분석스크립트 설치 안내")) {
+			System.out.println(" *** scriptList install mail check Success !! *** ");
+		} else {
+			System.out.println(" *** scriptList install mail check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		//메일 삭제
+		$(".do_delete", 1).click();
+		$(".btn_clean", 1).click();
+		confirm("휴지통을 비우시면 지워진 메일(중요메일 포함)들은 복구할 수 없습니다.\n대량의 메일을 처리할 경우 시간이 오래 걸릴 수 있습니다.\n\n휴지통을 비우시겠습니까?");
+		
+		/*js("window.open('https://nhnent.dooray.com/mail/folders/2241107403578885832');");
 		switchTo().window(1);
 		pageLoadCheck = $("label", 0).text();
 		if (pageLoadCheck.equals("Username:")) {
@@ -472,7 +509,7 @@ public class temporarily {
 		sleep(1500);
 		$(".navi-item-content", 12).click();
 		sleep(1500);
-		System.out.println(" *** Testmail delete !! *** ");
+		System.out.println(" *** Testmail delete !! *** ");*/
 		switchTo().window(0);
 		pageLoadCheck = $("#scriptList").text();
 		if (pageLoadCheck.equals("분석스크립트")) {
@@ -496,7 +533,7 @@ public class temporarily {
 		System.out.println(" ! ----- scriptList End ----- ! ");
 	}
 
-	@Test(priority = 2)
+	//@Test(priority = 2)
 	public void installApply() {
 		System.out.println(" ! ----- installApply Start ----- ! ");
 		$(By.linkText("분석스크립트 설치신청")).click();
@@ -553,7 +590,7 @@ public class temporarily {
 		System.out.println(" ! ----- installApply End ----- ! ");
 	}
 
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
 		$(By.linkText("회원정보")).click();
@@ -680,7 +717,7 @@ public class temporarily {
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
 
-	@Test(priority = 5)
+	//@Test(priority = 5)
 	public void addService() {
 		System.out.println(" ! ----- addService Start ----- ! ");
 		$(By.linkText("서비스추가")).click();
@@ -746,7 +783,7 @@ public class temporarily {
 		System.out.println(" ! ----- addView End ----- ! ");
 	}
 
-	@Test(priority = 7)
+	//@Test(priority = 7)
 	public void addIntegralReport() {
 		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
 		$(By.linkText("통합리포트 생성")).click();
@@ -769,7 +806,7 @@ public class temporarily {
 		System.out.println(" ! ----- addIntegralReport End ----- ! ");
 	}
 
-	@Test(priority = 8)
+	//@Test(priority = 8)
 	public void editService() {
 		System.out.println(" ! ----- editService Start ----- ! ");
 		$(By.linkText("정보수정")).click();
@@ -845,15 +882,35 @@ public class temporarily {
 		$(".gui-input", 0).setValue("apzz0928@");
 		$("#btn-sendEmail").click();
 		valCheck(7, 6, "summaryReport_sendEmail_check");
-		$(".gui-input", 0).setValue("apzz0928@nhnent.com");
+		$(".gui-input", 0).setValue("apzz0928@naver.com");
 		$("#btn-sendEmail").click();
 		$(".sendEmail").waitUntil(visible, 10000);
 		$("#btn-sendMail").click();
 		$(".modal-center", 5).waitUntil(visible, 10000);
 		valCheck(8, 7, "summaryReport_sendEmail_send");
-		sleep(15000);
 		switchTo().window(1);
-		String subject = $(".subject", 0).text();
+		refresh();
+		String pageLoadCheck = $(".mail_title", 0).text();
+		System.out.println("mail_title, 0 is : " + pageLoadCheck);
+		System.out.println("mail_title, 0 substring(15,23) is : " + pageLoadCheck.substring(15, 23));
+		if (pageLoadCheck.substring(15, 23).equals("주간요약리포트")) {
+			System.out.println(" *** scriptList send mail subject check Success !! *** ");
+		} else {
+			System.out.println(" *** scriptList send mail subject check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".mail_title", 0).click();
+		pageLoadCheck = $("h1", 1).text();
+		if (pageLoadCheck.equals("주간요약 리포트입니다.")) {
+			System.out.println(" *** scriptList summaryReport mail check Success !! *** ");
+		} else {
+			System.out.println(" *** scriptList summaryReport mail check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".do_delete", 1).click();
+		$(".btn_clean", 1).click();
+		confirm("휴지통을 비우시면 지워진 메일(중요메일 포함)들은 복구할 수 없습니다.\n대량의 메일을 처리할 경우 시간이 오래 걸릴 수 있습니다.\n\n휴지통을 비우시겠습니까?");
+		/*String subject = $(".subject", 0).text();
 		System.out.println("sub0 is : " + subject);
 		subject = $(".subject", 1).text();
 		System.out.println("sub1 is : " + subject);
@@ -864,7 +921,7 @@ public class temporarily {
 		} else {
 			System.out.println(" *** summaryReport sendMail Check Fail ... !@#$%^&*() *** ");
 			close();
-		}
+		}*/
 		switchTo().window(0);
 		$("#btn-save").scrollTo();
 		$(".cross", 1).click();
@@ -892,9 +949,9 @@ public class temporarily {
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
 
-	//@Test(priority = 10)
+	@Test(priority = 10)
 	public void subManager() {
-		System.out.println(" ! ----- summaryReport Start ----- ! ");
+		System.out.println(" ! ----- subManager Start ----- ! ");
 		$(By.linkText("부관리자")).click();
 		$("#btn_mail").waitUntil(visible, 10000);
 		$("#btn_mail").click();
@@ -905,10 +962,59 @@ public class temporarily {
 		$("#submanager_email").setValue("apzz0928@");
 		$("#btn_mail").click();
 		valCheck(7, 9, "subManager_email_check");
-		$("#submanager_email").setValue("apzz0928@nhnent.net");
+		$("#submanager_email").setValue("apzz0928@naver.com");
 		$("#btn_mail").click();
 		valCheck(8, 10, "subManager_service_null");
-
+		$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::button[1]")).click();
+	    $("#treeDemo_2_check").click();
+	    $("#select_auth").click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='apzz0928888.org'])[1]/following::option[3]")).click();
+	    $("#btn_add_svc").click();
+		$("#btn_mail").click();
+		valCheck(9, 11, "subManager_email_send");
+		switchTo().window(1);
+		refresh();
+		String pageLoadCheck = $(".mail_title", 0).text();
+		System.out.println("mail_title ,0 is : " + pageLoadCheck);
+		System.out.println("mail_title ,0  substring 결과는 : " + pageLoadCheck.substring(23));
+		if(pageLoadCheck.substring(23).equals("부관리자 안내 메일입니다.")) {
+			System.out.println(" *** subManager guide mail title Check Success !! *** ");
+		} else {
+			System.out.println(" *** subManager guide mail title Check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".mail_title", 0).click();
+		pageLoadCheck = $("h1", 1).text();
+		if (pageLoadCheck.equals("부관리자 회원가입 안내")) {
+			System.out.println(" *** scriptList summaryReport mail check Success !! *** ");
+		} else {
+			System.out.println(" *** scriptList summaryReport mail check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.linkText("부관리자 회원가입 바로가기")).click();
+		$("h2", 1).waitUntil(visible, 10000);
+		$("label").click();
+		$("#userid").setValue(id + date2);
+		$("#recheck").click();
+		$("#userpw").setValue(pw);
+		$("#repeatpw").setValue(pw);
+		$(".btn_join").click();
+		$(".btn_pop_submit").click();
+		switchTo().window(1);
+		$(".do_delete", 1).click();
+		$(".btn_clean", 1).click();
+		confirm("휴지통을 비우시면 지워진 메일(중요메일 포함)들은 복구할 수 없습니다.\n대량의 메일을 처리할 경우 시간이 오래 걸릴 수 있습니다.\n\n휴지통을 비우시겠습니까?");
+		switchTo().window(0);
+		refresh();
+		pageLoadCheck = $(".text-dark", 3).text();
+		if(pageLoadCheck.substring(6, 18).equals(id + date2)) {
+			System.out.println(" *** subManager_signUp Check Success !! *** ");
+		} else {
+			System.out.println(" *** subManager_signUp Check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		
+		
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
 

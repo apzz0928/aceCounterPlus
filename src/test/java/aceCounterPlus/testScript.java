@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -26,11 +27,13 @@ import static com.codeborne.selenide.Condition.*;
 import com.codeborne.selenide.testng.ScreenShooter;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class testScript {
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
+	private static String baseUrl, hubUrl, hubPort, TestBrowser, id, pw, pw1, domain, checkMsg;
 	private static HttpURLConnection huc;
 	private static int respCode;
 	private WebDriver driver;
@@ -42,7 +45,7 @@ public class testScript {
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "http://new.acecounter.com/admin/login";
-		hubUrl = "http://10.77.129.79:5555/wd/hub";
+		hubUrl = "http://10.77.129.79:"; //포트번호 변수로 바꿔서 브라우저마다 허브의 포트번호 맞춰주기
 		domain = "apzz";
 		pw = "qordlf!@34";
 		
@@ -52,33 +55,49 @@ public class testScript {
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
-			/*ChromeOptions options = new ChromeOptions();
-			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
-			cap = DesiredCapabilities.chrome();
-			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
+			hubPort = "5556";
+			/*cap = DesiredCapabilities.chrome();
+			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);*/
+			//cap = DesiredCapabilities.chrome();
+			System.setProperty("webdriver.chrome.driver", "E:/000. Selenium/driver/chromedriver.exe");
+			ChromeOptions options = new ChromeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD + hubPort + "/wd/hub") , options);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 			//driver.manage().window().maximize();
 		} else if (browser.equals("firefox")) {
 			TestBrowser = "firefox";
+			hubPort = "5555";
 			//cap = DesiredCapabilities.firefox();
 			//RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
+			//cap = DesiredCapabilities.firefox();
 			FirefoxOptions options = new FirefoxOptions();
-			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD + hubPort + "/wd/hub") , options);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("edge")) {
 			TestBrowser = "edge";
-			/*EdgeOptions options = new EdgeOptions();
-			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
-			cap = DesiredCapabilities.edge();
-			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
+			hubPort = "5558";
+			EdgeOptions options = new EdgeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD + hubPort + "/wd/hub") , options);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("internetExplorer")) {
 			TestBrowser = "internetExplorer";
-			/*InternetExplorerOptions options = new InternetExplorerOptions();
-			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
+			hubPort = "5557";
+			cap = DesiredCapabilities.internetExplorer();
+			InternetExplorerOptions options = new InternetExplorerOptions();
+			options.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // 보안설정 변경
+			options.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false); // ie text 입력 속도 향상을 위한 부분
+			options.setCapability("requireWindowFocus", true); // ie text 입력 속도 향상을 위한 부분
+			options.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true); // ie 캐시 삭제를 위한 부분
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD + hubPort + "/wd/hub"), options);
+			WebDriverRunner.setWebDriver(driver);
+			driver.manage().window().setSize(new Dimension(1650, 1000));
+		} /*else if (browser.equals("internetExplorer")) {
+			TestBrowser = "internetExplorer";
+			InternetExplorerOptions options = new InternetExplorerOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);
 			cap = DesiredCapabilities.internetExplorer();
 			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // 보안설정 변경
 			cap.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false); // ie text 입력 속도 향상을 위한 부분
@@ -87,7 +106,7 @@ public class testScript {
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
-		}
+		}*/
 	}
 	private static void js(String javaScriptSource) {
 		Object obj = executeJavaScript(javaScriptSource);
@@ -117,7 +136,7 @@ public class testScript {
   		} catch (InterruptedException ex) {
   		}
   	}
-	//@Test(priority = 0)
+  	//@Test(priority = 0)
 	public void login() throws InterruptedException {
 		open(baseUrl);
 		$(".gui-input", 0).setValue("apzz0928");
@@ -1047,7 +1066,7 @@ public class testScript {
 	    	open("http://10.77.129.80:8082/setting/reportDown/add");	
 	    }
 	}
-	@Test(priority = 0)
+	//@Test(priority = 0)
 	public void 리포트생성신청_생성신청버튼클릭() {
 		open("http://10.77.129.80:8082/admin/login");
 		$("#username").setValue("apzz0928");
@@ -1076,6 +1095,112 @@ public class testScript {
 	        System.out.println("이번에 클릭한 버튼은 " + (c+1) + " 번째 버튼입니다.");
 	        c++;
 	    }
+	}
+	//@Test(priority = 0)
+	public void 전환수정_전환추가() {
+		open("http://new.acecounter.com");
+		$("#uid").setValue("apzz09288");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		$(".go_stat").click();
+		sleep(1000);
+		$(By.linkText("Web Trialgithub.com")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Web Free'])[2]/following::span[1]")).click();
+	    sleep(1000);
+	    open("http://10.77.129.80:8082/admin/apply/reportCreation?page=9&solutionCd=&status=&searchType=url&keyword=");
+		int a = 0;
+		int b = 10;
+		int c = 0;
+	    for(int i=0;i<=300;i++) {
+	    	//$(By.linkText("[생성신청]"), a).scrollTo();
+	    	$(By.linkText("[생성신청]"), a).click();
+	    	sleep(1000);
+	        $(By.id("btn-modal-alert-yes")).click();
+	        sleep(1000);
+	        $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='알림'])[2]/following::button[1]")).click();
+	        sleep(1000);
+	        if(c==19) {
+	        	c = 0;
+	        	$(By.linkText(b + "")).scrollTo();
+	        	$(By.linkText(b + "")).click();
+	        	b++;
+		        System.out.println("b 는 " + b + " 입니다.");
+	        }
+	        System.out.println("이번에 클릭한 버튼은 " + (c+1) + " 번째 버튼입니다.");
+	        c++;
+	    }
+	}
+	//@Test(priority = 0)
+	public void 고객센터_문의내역조회페이징처리확인() {
+		open("http://10.77.129.80:8081/common/front");
+		$("#uid").setValue("apzz09288");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		sleep(1000);
+		for(int i=0;i<=120;i++) {
+		    open("http://10.77.129.80:8081/common/front/svcCenter/inquiry");
+		    sleep(1000);
+			$("label", 0).click();
+			$("#emailAddress").setValue("test@test.com");
+			$("#tel_2").setValue("0000");
+			$("#tel_3").setValue("0000");
+			$(".btn_join").scrollTo();
+			$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='문의유형'])[1]/following::select[1]")).click();
+		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='문의유형'])[1]/following::option[2]")).click();
+		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='제목'])[1]/following::input[1]")).setValue("테스트제목" + i);
+		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='내용'])[1]/following::textarea[1]")).setValue("테스트내용" + i);
+			$(".btn_join").scrollTo();
+			$(".btn_join").click();
+			sleep(1000);
+	        System.out.println("1:1문의 " + (i+1) + "번째 작성");
+		    sleep(1500);
+		}	    
+	}
+	//@Test(priority = 0)
+	public void 협의요금개선_회원가입() {
+		for(int i = 1;i<=30;i++) {
+			open("http://10.77.129.80:8082/common/front/signUpStep");
+			$("label", 0).click();
+			$("label", 1).click();
+			$("#userid").setValue(domain + "a" + i);
+			$("#recheck").click();
+			$("#userpw").setValue("qordlf!@34");
+			$("#repeatpw").setValue("qordlf!@34");
+			$("#usernm").setValue("최영권");
+			$("#useremail").setValue("mail@mail.com");
+			$("#hp2").setValue("1234");
+			$("#hp3").setValue("1234");
+			$("#stepOneCompleted").click();
+			$(By.name("input-domain")).setValue(domain + "a" + i + ".com");
+			$(".ace-btn-add-domain").click();
+		    $(By.name("largeCategoryCd")).click();
+		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='웹사이트분류'])[1]/following::option[9]")).click();
+		    $(By.name("middleCategoryCd")).click();
+		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='웹사이트분류'])[1]/following::option[27]")).click();
+		    $("#stepTwoCompleted").click();
+		}
+	}
+	@Test(priority = 0)
+	public void 협의요금개선_서비스추가() {
+		open("http://10.77.129.80:8082/common/front");
+		for(int i = 1;i<=10;i++) {
+			$("#uid").setValue(domain + "a" + i);
+			$("#upw").setValue("qordlf!@34");
+			$(".btn_login").click();
+			sleep(1500);
+			open("http://10.77.129.80:8082/manage/serviceInfo/addService");
+			$(".gui-input", 0).setValue(domain + "aaa" + i);
+			$(".gui-input", 1).setValue(domain + "aaa" + i + ".com");
+			$(".ace-btn-add-domain").click();
+		    $(By.name("largeCategoryCd")).click();
+		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='대분류'])[1]/following::option[9]")).click();
+		    $(By.name("middleCategoryCd")).click();
+		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='중분류'])[1]/following::option[3]")).click();
+		    $("#btn_submit").click();
+		    sleep(1000);
+		    open("http://10.77.129.80:8082/auth/logout");
+		    sleep(1000);
+		}
 	}
 	@AfterClass
 	public void afterTest() {

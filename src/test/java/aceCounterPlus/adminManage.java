@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 import com.codeborne.selenide.WebDriverRunner;
 
@@ -25,7 +26,7 @@ public class adminManage {
 	@SuppressWarnings("unused")
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw1, pw2, name1, name2;
+	private static String baseUrl, hubUrl, hubPort, TestBrowser, id, pw1, pw2, name1, name2;
 	private static String number = "0001";
 	private static int number1 = 01;
 
@@ -33,7 +34,7 @@ public class adminManage {
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "http://new.acecounter.com";
-		hubUrl = "http://10.77.129.79:5555/wd/hub";
+		hubUrl = "http://10.77.129.79:5555";
 		id = "apzz0928888";
 		pw1 = "qordlf!@34";
 		pw2 = "qordlf12#$";
@@ -80,6 +81,15 @@ public class adminManage {
 		Object obj = executeJavaScript(javaScriptSource);
 	}
 
+	@Test(priority = 0)
+	public void logi1n() {
+		open(baseUrl);
+		$("#uid").setValue(id);
+		$("#upw").setValue(pw1);
+		$(".btn_login").click();
+		$(".go_setting").click();
+	}
+	
 	//@Test(priority = 0)
 	public void login() {
 		open(baseUrl);

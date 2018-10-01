@@ -174,7 +174,7 @@ public class memberInfo {
 	    $(".btn-lg", 1).click();
 	    String modalBody = $(".modal-body", 1).text();
 		$(".modal-backdrop").waitUntil(visible, 10000);
-		sleep(500);
+		sleep(1000);
 	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 5).click();
 			$(".modal-backdrop").waitUntil(hidden, 10000);
@@ -183,9 +183,9 @@ public class memberInfo {
 			System.out.println(" *** change memberInfo Fail ... !@#$%^&*() *** ");
 			close();
 		}
-	    sleep(1000);
-	    $("#s_name").waitUntil(visible, 10000);
-		sleep(500);
+	    sleep(2000);
+	    //$("#s_name").waitUntil(visible, 10000);
+		//sleep(500);
 	    $("#s_name").setValue("원래이름");
 		$("#s_company").setValue("원래회사명");
 		$(By.name("s_hp1")).click();
