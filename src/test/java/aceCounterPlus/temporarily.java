@@ -633,8 +633,8 @@ public class temporarily {
 	@Test(priority = 4)
 	public void myCoupon() {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
-		open("https://new.acecounter.com/manage/myCoupon");
-		sleep(2000);
+		sleep(1000);
+		$(By.linkText("ÄíÆù°ü¸®")).click();
 		$("#btn-save").waitUntil(visible, 15000);
 		String pageLoadCheck = $("#btn-save").text();
 		if (pageLoadCheck.equals("ÄíÆùµî·Ï")) {
