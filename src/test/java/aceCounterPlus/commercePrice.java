@@ -409,6 +409,7 @@ public class commercePrice {
 	    $(By.xpath("//option[@value='USD']")).click();
 		$("#modifyBtn").click(); 
 		valCheck(4, 4, "currencyUnit_modify_confirm");
+		sleep(1000);
 		valCheck(5, 6, "currencyUnit_modify_alert");
 		$("#mViewBtn").waitUntil(visible, 15000);
 		pageLoadCheck = $("#mViewBtn").text();
@@ -431,7 +432,9 @@ public class commercePrice {
 	    $(By.xpath("//option[@value='KRW']")).click();
 		$("#modifyBtn").click(); 
 		valCheck(3, 3, "currencyUnit_modify_confirm");
+		sleep(1000);
 		valCheck(4, 5, "currencyUnit_modify_alert");
+		sleep(1000);
 		$("#mViewBtn").waitUntil(visible, 15000);
 		pageLoadCheck = $("#mViewBtn").text();
 		if(pageLoadCheck.equals("¼öÁ¤")) {

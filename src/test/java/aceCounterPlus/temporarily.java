@@ -104,7 +104,7 @@ public class temporarily {
 	}
 
 	public static void valCheck(int pTagNum, int btnNum, String val) {
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		$(".modal-backdrop").waitUntil(visible, 15000);
 		String msgCheck = $("p", pTagNum).text();
 		switch (val) {
 		case "scriptList_email_null":
@@ -142,48 +142,6 @@ public class temporarily {
 			break;
 		case "installApply_agree_null":
 			checkMsg = "개인정보 수집 및 이용에 대한 안내를 동의해 주세요.";
-			break;
-		case "memberInfo_checkpage_pw_null":
-			checkMsg = "비밀번호를 입력하세요.";
-			break;
-		case "memberInfo_oldPw_null":
-			checkMsg = "현재 비밀번호를 입력하세요.";
-			break;
-		case "memberInfo_newPw_null":
-			checkMsg = "새 비밀번호를 입력하세요.";
-			break;
-		case "memberInfo_newPwCk_null":
-			checkMsg = "새 비밀번호 확인이 필요합니다.";
-			break;
-		case "memberInfo_newPw_validation":
-			checkMsg = "새 비밀번호가 일치하지 않습니다.";
-			break;
-		case "memberInfo_pw_confirm":
-			checkMsg = "비밀번호를 변경 하시겠습니까?";
-			break;
-		case "memberInfo_pw_alert":
-			checkMsg = "비밀번호 변경이 완료되었습니다.";
-			break;
-		case "memberInfo_pw1_confirm":
-			checkMsg = "비밀번호를 변경 하시겠습니까?";
-			break;
-		case "memberInfo_pw1_alert":
-			checkMsg = "비밀번호 변경이 완료되었습니다.";
-			break;
-		case "memberInfo_name_null":
-			checkMsg = "담당자 이름을 입력하세요.";
-			break;
-		case "memberInfo_email_null":
-			checkMsg = "이메일 주소를 입력하여 주세요.";
-			break;
-		case "memberInfo_email_validation":
-			checkMsg = "이메일 주소가 올바르지 않습니다.";
-			break;
-		case "memberInfo_change_ok":
-			checkMsg = "회원정보가 수정되었습니다.";
-			break;
-		case "memberInfo_change1_ok":
-			checkMsg = "회원정보가 수정되었습니다.";
 			break;
 		case "myCoupon_1_null":
 			checkMsg = "쿠폰번호를 입력해주세요.";
@@ -276,16 +234,56 @@ public class temporarily {
 			checkMsg = "서비스를 추가해 주세요.";
 			break;
 		case "subManager_email_send":
-			checkMsg = "이메일이 발송되었습니다.발송된 이메일의 회원가입 링크 유효기간은 총 7일로7일 이내 미가입 시 유효기간이 종료됩니다.";
+			checkMsg = "이메일이 발송되었습니다.\n" + "\n" + "발송된 이메일의 회원가입 링크 유효기간은 총 7일로\n" + "7일 이내 미가입 시 유효기간이 종료됩니다.";
 			break;
-		case "41":
-			checkMsg = "";
+		case "submanager_authority_modify_check":
+			checkMsg = "수정이 완료되었습니다.";
 			break;
-		case "7":
-			checkMsg = "";
+		case "subManager_pw_alert":
+			checkMsg = "비밀번호 변경이 완료되었습니다.";
 			break;
-		case "8":
-			checkMsg = "";
+		//회원정보 수정 주석처리 (추후 삭제)
+		/*case "memberInfo_checkpage_pw_null":
+			checkMsg = "비밀번호를 입력하세요.";
+			break;
+		case "memberInfo_oldPw_null":
+			checkMsg = "현재 비밀번호를 입력하세요.";
+			break;
+		case "memberInfo_newPw_null":
+			checkMsg = "새 비밀번호를 입력하세요.";
+			break;
+		case "memberInfo_newPwCk_null":
+			checkMsg = "새 비밀번호 확인이 필요합니다.";
+			break;
+		case "memberInfo_newPw_validation":
+			checkMsg = "새 비밀번호가 일치하지 않습니다.";
+			break;
+		case "memberInfo_pw_confirm":
+			checkMsg = "비밀번호를 변경 하시겠습니까?";
+			break;
+		case "memberInfo_pw1_confirm":
+			checkMsg = "비밀번호를 변경 하시겠습니까?";
+			break;
+		case "memberInfo_pw1_alert":
+			checkMsg = "비밀번호 변경이 완료되었습니다.";
+			break;
+		case "memberInfo_name_null":
+			checkMsg = "담당자 이름을 입력하세요.";
+			break;
+		case "memberInfo_email_null":
+			checkMsg = "이메일 주소를 입력하여 주세요.";
+			break;
+		case "memberInfo_email_validation":
+			checkMsg = "이메일 주소가 올바르지 않습니다.";
+			break;
+		case "memberInfo_change_ok":
+			checkMsg = "회원정보가 수정되었습니다.";
+			break;
+		case "memberInfo_change1_ok":
+			checkMsg = "회원정보가 수정되었습니다.";
+			break;*/
+		case "subManager_delete":
+			checkMsg = "삭제가 완료되었습니다.";
 			break;
 		case "69":
 			checkMsg = "";
@@ -330,8 +328,7 @@ public class temporarily {
 		}
 		Thread.onSpinWait();
 		if (msgCheck.equals(checkMsg)) {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val
-					+ " - check Success !! *** ");
+			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val + " - check Success !! *** ");
 			$(".btn-sm", btnNum).click();
 			if (!val.split("_")[0].equals("scriptList")) {
 				$(".modal-backdrop").waitUntil(hidden, 10000);
@@ -339,12 +336,10 @@ public class temporarily {
 
 			}
 		} else if (msgCheck.isEmpty()) {
-			System.out.println(" *** ☆★☆★☆★ pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val
-					+ " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+			System.out.println(" *** ☆★☆★☆★ pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val	+ " - msgCheck is Empty ... ☆★☆★☆★ *** ");
 			close();
 		} else {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val
-					+ " - check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val + " - check Fail ... !@#$%^&*() *** ");
 			System.out.println(msgCheck);
 			System.out.println("-------------------------------");
 			System.out.println(checkMsg);
@@ -388,7 +383,7 @@ public class temporarily {
 	public void serviceManage_main() {
 		System.out.println(" ! ----- serviceManage_main Start ----- ! ");
 		open(baseUrl);
-		$(".gnb").waitUntil(visible, 10000);
+		$(".gnb").waitUntil(visible, 15000);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
@@ -416,9 +411,9 @@ public class temporarily {
 	public void scriptList() {
 		System.out.println(" ! ----- scriptList Start ----- ! ");
 		$(By.linkText("분석스크립트")).click();
-		$("#items").waitUntil(visible, 10000);
+		$("#items").waitUntil(visible, 15000);
 		$(".br-dark").click();
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		$(".modal-backdrop").waitUntil(visible, 15000);
 		String pageLoadCheck = $(".modal-title").text();
 		if (pageLoadCheck.equals("분석스크립트 메일발송")) {
 			System.out.println(" *** scriptList layerPopup load Success !! *** ");
@@ -431,85 +426,42 @@ public class temporarily {
 		$("#mail_to").setValue(date);
 		$(".btn-dark", 1).click();
 		valCheck(62, 4, "scriptList_email_validation");
-		$("#mail_to").setValue("apzz0928@naver.com");
+		$("#mail_to").setValue("apzz092888@daum.net");
 		$(".btn-dark", 1).click();
 		$(".btn-dark", 1).waitUntil(hidden, 10000);
 		valCheck(63, 5, "scriptList_email_send");
-		//sleep(20000);
-		js("window.open('https://mail.naver.com/login?url=http%3A%2F%2Fmail.naver.com%2F');");
-		//네이버메일 탭으로 포커스 변경
+		js("window.open('https://logins.daum.net/accounts/loginform.do?url=https%3A%2F%2Fmail.daum.net%2F');");
+		//다음메일 탭으로 포커스 변경
 		switchTo().window(1);
-		pageLoadCheck = $(".btn_inner", 0).text();
-		if (pageLoadCheck.equals("NAVER 로그인")) {
-			System.out.println(" *** scriptList naver mail page load Success !! *** ");
+		$("#id").setValue("apzz092888");
+		$("#inputPwd").setValue(pw);
+		$("#loginBtn").click();
+		$(".link_check").waitUntil(visible, 15000);
+		refresh();
+		pageLoadCheck = $("h1").text();
+		if (pageLoadCheck.equals("Daum\n" + "메일")) {
+			System.out.println(" *** scriptList daum mail list page load Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList naver mail page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** scriptList daum mail list page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".btn_inner", 0).click();
-		$("#id").setValue("apzz0928");
-		$("#pw").setValue("qordlf!234");
-		$(".btn_global", 0).click();
-		//메일제목 체크 길어서 짜른다음에 url로 비교
-		pageLoadCheck = $(".mail_title", 0).text();
-		if (pageLoadCheck.substring(54, 66).equals("ap0426104716")) {
-			System.out.println(" *** scriptList send mail subject check Success !! *** ");
+		$(".tit_subject", 0).waitUntil(visible, 15000);
+		$(".tit_subject", 0).click();
+		$(".txt_filename").waitUntil(visible, 15000);
+		pageLoadCheck = $(".txt_filename").text();
+		if (pageLoadCheck.equals("script(ap0420121926.com).zip")) {
+			System.out.println(" *** scriptList send mail fileName check Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList send mail subject check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".mail_title", 0).click();
-		pageLoadCheck = $("h1", 1).text();
-		if (pageLoadCheck.equals("분석스크립트 설치 안내")) {
-			System.out.println(" *** scriptList install mail check Success !! *** ");
-		} else {
-			System.out.println(" *** scriptList install mail check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		//메일 삭제
-		$(".do_delete", 1).click();
-		$(".btn_clean", 1).click();
-		confirm("휴지통을 비우시면 지워진 메일(중요메일 포함)들은 복구할 수 없습니다.\n대량의 메일을 처리할 경우 시간이 오래 걸릴 수 있습니다.\n\n휴지통을 비우시겠습니까?");
-		
-		/*js("window.open('https://nhnent.dooray.com/mail/folders/2241107403578885832');");
-		switchTo().window(1);
-		pageLoadCheck = $("label", 0).text();
-		if (pageLoadCheck.equals("Username:")) {
-			System.out.println(" *** scriptList what's up login page load Success !! *** ");
-		} else {
-			System.out.println(" *** scriptList what's up login page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#username").setValue("apzz0928");
-		$("#password").setValue(pw);
-		$(".btn_red").click();
-		$(".subject", 0).waitUntil(visible, 10000);
-		sleep(5000);
-		$(".subject", 0).click();
-		pageLoadCheck = $(".subject", 50).text();
-		if (pageLoadCheck.substring(54, 66).equals("ap0426104716")) {
-			System.out.println(" *** scriptList install mail check Success !! *** ");
-		} else {
-			System.out.println(" *** scriptList install mail check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".d-toolbar-white-btn", 2).click();
-		sleep(1500);
-		$(".navi-item", 6).click();
-		sleep(1500);
-		$(".list-box-title").waitUntil(visible, 10000);
-		sleep(1500);
-		$(".subject", 0).click();
-		sleep(1500);
-		$(".d-toolbar-white-btn", 2).click();
-		sleep(1500);
-		$(".action-btn").waitUntil(visible, 10000);
-		sleep(1500);
-		$(".action-btn").click();
-		sleep(1500);
-		$(".navi-item-content", 12).click();
-		sleep(1500);
-		System.out.println(" *** Testmail delete !! *** ");*/
+		$(".link_mail", 2).click();
+		$(".ico_check", 0).click();
+		$(".wrap_bold > .btn_del", 0).click();
+		$(By.linkText("휴지통"), 0).hover();
+		$(".link_empty", 1).click();
+		$(".check_type2").waitUntil(visible, 15000);
+		$(".check_type2").click();
 		switchTo().window(0);
 		pageLoadCheck = $("#scriptList").text();
 		if (pageLoadCheck.equals("분석스크립트")) {
@@ -518,9 +470,9 @@ public class temporarily {
 			System.out.println(" *** scriptList aceCounter+ page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#scroll_target_121333").waitUntil(visible, 10000);
+		$("#scroll_target_121333").waitUntil(visible, 15000);
 		$("#scroll_target_121333").click();
-		$(".text-danger", 0).waitUntil(visible, 10000);
+		$(".text-danger", 0).waitUntil(visible, 15000);
 		pageLoadCheck = $(".text-danger", 0).text();
 		if (pageLoadCheck.equals("데이터 수집/분석중지")) {
 			System.out.println(" *** scriptList detailView check Success !! *** ");
@@ -533,7 +485,7 @@ public class temporarily {
 		System.out.println(" ! ----- scriptList End ----- ! ");
 	}
 
-	//@Test(priority = 2)
+	@Test(priority = 2)
 	public void installApply() {
 		System.out.println(" ! ----- installApply Start ----- ! ");
 		$(By.linkText("분석스크립트 설치신청")).click();
@@ -590,11 +542,11 @@ public class temporarily {
 		System.out.println(" ! ----- installApply End ----- ! ");
 	}
 
-	//@Test(priority = 3)
+	@Test(priority = 3)
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
 		$(By.linkText("회원정보")).click();
-		$("h3", 2).waitUntil(visible, 10000);
+		$("h3", 2).waitUntil(visible, 15000);
 		String pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("비밀번호 재확인")) {
 			System.out.println(" *** memberInfo Recongirming page load Success !! *** ");
@@ -603,15 +555,15 @@ public class temporarily {
 		}
 		$("#pwd").setValue(pw);
 		$("#btn-ok").click();
-		$("h3", 2).waitUntil(visible, 10000);
+		$("h3", 2).waitUntil(visible, 15000);
 		System.out.println(" *** Password change Page access Success !! *** ");
 		$("#prePwd").setValue(pw);
 		$("#changePwd").setValue(pw1);
 		$("#changePwdConfirm").setValue(pw1);
 		$("#modifyProc").click();
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		$(".modal-backdrop").waitUntil(visible, 15000);
 		$("#btn-modal-alert-yes").click();
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		$(".modal-backdrop").waitUntil(visible, 15000);
 		String mbn = $(".mbn").text();
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
 			System.out.println(" *** Change Password Success !! *** ");
@@ -625,9 +577,9 @@ public class temporarily {
 		$("#changePwd").setValue(pw);
 		$("#changePwdConfirm").setValue(pw);
 		$("#modifyProc").click();
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		$(".modal-backdrop").waitUntil(visible, 15000);
 		$("#btn-modal-alert-yes").click();
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		$(".modal-backdrop").waitUntil(visible, 15000);
 		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
 			System.out.println(" *** Restoration Password Success !! *** ");
 			$("#okButton").click();
@@ -645,7 +597,7 @@ public class temporarily {
 		$("#s_email").setValue("apzz0928@naver.com");
 	    $(".btn-lg", 1).click();
 	    String modalBody = $(".modal-body", 1).text();
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		$(".modal-backdrop").waitUntil(visible, 15000);
 		sleep(500);
 	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 5).click();
@@ -656,7 +608,7 @@ public class temporarily {
 			close();
 		}
 	    sleep(1000);
-	    $("#s_name").waitUntil(visible, 10000);
+	    $("#s_name").waitUntil(visible, 15000);
 		sleep(500);
 	    $("#s_name").setValue("원래이름");
 		$("#s_company").setValue("원래회사명");
@@ -666,7 +618,7 @@ public class temporarily {
 	    $("#s_hp3").setValue("0928");
 		$("#s_email").setValue("apzz0928@gmail.com");
 	    $(".btn-lg", 1).click();
-	    $(".modal-dialog").waitUntil(visible, 10000);
+	    $(".modal-dialog").waitUntil(visible, 15000);
 		if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 4).click();
 			$(".modal-backdrop").waitUntil(hidden, 10000);
@@ -678,12 +630,12 @@ public class temporarily {
 		System.out.println(" ! ----- memberInfo End ----- ! ");
 	}
 
-	//@Test(priority = 4)
+	@Test(priority = 4)
 	public void myCoupon() {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
 		open("https://new.acecounter.com/manage/myCoupon");
 		sleep(2000);
-		//$("#btn-save").waitUntil(visible, 10000);
+		$("#btn-save").waitUntil(visible, 15000);
 		String pageLoadCheck = $("#btn-save").text();
 		if (pageLoadCheck.equals("쿠폰등록")) {
 			System.out.println(" *** myCoupon page load Success !! *** ");
@@ -717,11 +669,11 @@ public class temporarily {
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
 
-	//@Test(priority = 5)
+	@Test(priority = 5)
 	public void addService() {
 		System.out.println(" ! ----- addService Start ----- ! ");
 		$(By.linkText("서비스추가")).click();
-		$("#btn_submit").waitUntil(visible, 10000);
+		$("#btn_submit").waitUntil(visible, 15000);
 		String pageLoadCheck = $("#btn_submit").text();
 		if (pageLoadCheck.equals("등록하기")) {
 			System.out.println(" *** addService page load Success !! *** ");
@@ -739,14 +691,14 @@ public class temporarily {
 		valCheck(12, 7, "addService_domain_validation");
 		$(".gui-input", 1).setValue(date + ".com");
 		$(".ace-btn-add-domain").click();
-		$(".cross").waitUntil(visible, 10000);
+		$(".cross").waitUntil(visible, 15000);
 		$(".gui-input", 1).setValue(date + ".com");
 		$(".ace-btn-add-domain").click();
 		valCheck(13, 8, "addService_domain_duplication");
 		$("#btn_submit").click();
 		valCheck(14, 9, "addService_siteGroup1_null");
 		$(".br-dark", 1).click();
-		$("h3", 3).waitUntil(visible, 10000);
+		$("h3", 3).waitUntil(visible, 15000);
 		pageLoadCheck = $("h3", 3).text();
 		if (pageLoadCheck.equals("분류전체보기")) {
 			System.out.println(" *** addService siteGroup layer load Success !! *** ");
@@ -772,7 +724,7 @@ public class temporarily {
 	public void addView() {
 		System.out.println(" ! ----- addView Start ----- ! ");
 		$(By.linkText("뷰필터 추가")).click();
-		$(".div_not_paid").waitUntil(visible, 10000);
+		$(".div_not_paid").waitUntil(visible, 15000);
 		String pageLoadCheck = $(".div_not_paid").text();
 		if (pageLoadCheck.equals("뷰필터는 유료 서비스 전환 후에 추가 하실 수 있습니다.")) {
 			System.out.println(" *** addView page load Success !! *** ");
@@ -783,11 +735,11 @@ public class temporarily {
 		System.out.println(" ! ----- addView End ----- ! ");
 	}
 
-	//@Test(priority = 7)
+	@Test(priority = 7)
 	public void addIntegralReport() {
 		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
 		$(By.linkText("통합리포트 생성")).click();
-		$(".nano-content", 2).waitUntil(visible, 10000);
+		$(".nano-content", 2).waitUntil(visible, 15000);
 		String pageLoadCheck = $(".nano-content", 2).text();
 		if (pageLoadCheck.equals("이용중인 서비스가 없습니다.")) {
 			System.out.println(" *** addIntegralReport page load Success !! *** ");
@@ -806,11 +758,11 @@ public class temporarily {
 		System.out.println(" ! ----- addIntegralReport End ----- ! ");
 	}
 
-	//@Test(priority = 8)
+	@Test(priority = 8)
 	public void editService() {
 		System.out.println(" ! ----- editService Start ----- ! ");
 		$(By.linkText("정보수정")).click();
-		$("#svc_nm_title_1").waitUntil(visible, 10000);
+		$("#svc_nm_title_1").waitUntil(visible, 15000);
 		String pageLoadCheck = $(".btn-info", 0).text();
 		if (pageLoadCheck.equals("서비스 추가")) {
 			System.out.println(" *** editService page load Success !! *** ");
@@ -819,7 +771,7 @@ public class temporarily {
 			close();
 		}
 		$("#svc_nm_title_1").click();
-		$(".btn-info", 2).waitUntil(visible, 10000);
+		$(".btn-info", 2).waitUntil(visible, 15000);
 		$(".btn-info", 2).click();
 		valCheck(120, 27, "editService_modify_check");
 		$(".input-sm", 1).setValue("");
@@ -834,11 +786,11 @@ public class temporarily {
 		valCheck(123, 30, "editService_domain_validation");
 		$(".gui-input", 5).setValue(date + ".com");
 		$(".br-dark", 1).click();
-		$(".cross", 2).waitUntil(visible, 10000);
+		$(".cross", 2).waitUntil(visible, 15000);
 		$(".btn-info", 2).click();
 		valCheck(124, 31, "editService_edit_alert");
 		$(".btn-info", 2).waitUntil(hidden, 10000);
-		$(".btn-info", 2).waitUntil(visible, 10000);
+		$(".btn-info", 2).waitUntil(visible, 15000);
 		pageLoadCheck = $("#svc_nm_title_1").text();
 		System.out.println("date is " + date);
 		System.out.println("svc_nm_title_1 is " + pageLoadCheck);
@@ -852,11 +804,11 @@ public class temporarily {
 		$(".cross", 2).click();
 		$(".gui-input", 5).setValue("ap0420121150.com");
 		$(".br-dark", 1).click();
-		$(".cross", 2).waitUntil(visible, 10000);
+		$(".cross", 2).waitUntil(visible, 15000);
 		$(".btn-info", 2).click();
 		valCheck(120, 27, "editService_restore_alert");
 		$(".btn-info", 2).waitUntil(hidden, 10000);
-		$(".btn-info", 2).waitUntil(visible, 10000);
+		$(".btn-info", 2).waitUntil(visible, 15000);
 		pageLoadCheck = $("#svc_nm_title_1").text();
 		System.out.println("date is " + date);
 		System.out.println("svc_nm_title_1 is " + pageLoadCheck);
@@ -874,95 +826,90 @@ public class temporarily {
 	public void summaryReport() {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
 		$(By.linkText("발송메일 설정")).click();
-		$("#btn-sendMail").waitUntil(visible, 10000);
+		$("#btn-sendMail").waitUntil(visible, 15000);
 		$(".cross", 0).click();
 		$(".sendEmail").waitUntil(hidden, 10000);
 		$("#btn-sendMail").click();
 		valCheck(6, 5, "summaryReport_sendEmail_null");
-		$(".gui-input", 0).setValue("apzz0928@");
+		$(".gui-input", 0).setValue("apzz092888@");
 		$("#btn-sendEmail").click();
 		valCheck(7, 6, "summaryReport_sendEmail_check");
-		$(".gui-input", 0).setValue("apzz0928@naver.com");
+		$(".gui-input", 0).setValue("apzz092888@daum.net");
 		$("#btn-sendEmail").click();
-		$(".sendEmail").waitUntil(visible, 10000);
+		$(".sendEmail").waitUntil(visible, 15000);
 		$("#btn-sendMail").click();
-		$(".modal-center", 5).waitUntil(visible, 10000);
+		$(".modal-center", 5).waitUntil(visible, 15000);
 		valCheck(8, 7, "summaryReport_sendEmail_send");
 		switchTo().window(1);
 		refresh();
-		String pageLoadCheck = $(".mail_title", 0).text();
-		System.out.println("mail_title, 0 is : " + pageLoadCheck);
-		System.out.println("mail_title, 0 substring(15,23) is : " + pageLoadCheck.substring(15, 23));
-		if (pageLoadCheck.substring(15, 23).equals("주간요약리포트")) {
-			System.out.println(" *** scriptList send mail subject check Success !! *** ");
+		String pageLoadCheck = $(".tit_subject", 0).text();
+		System.out.println("tit_subject, 0 is : " + pageLoadCheck);
+		System.out.println("tit_subject, 0 substring(15,23) is : " + pageLoadCheck.substring(15, 22));
+		if (pageLoadCheck.substring(15, 22).equals("주간요약리포트")) {
+			System.out.println(" *** scriptList weeklySummary Report mail subject check Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList send mail subject check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** scriptList weeklySummary Report mail subject check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".mail_title", 0).click();
+		$(".tit_subject", 0).click();
+		$("h1", 1).waitUntil(visible, 15000);
 		pageLoadCheck = $("h1", 1).text();
 		if (pageLoadCheck.equals("주간요약 리포트입니다.")) {
-			System.out.println(" *** scriptList summaryReport mail check Success !! *** ");
+			System.out.println(" *** scriptList weeklySummary Report mail detailView check Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList summaryReport mail check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** scriptList weeklySummary Report mail detailView check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".do_delete", 1).click();
-		$(".btn_clean", 1).click();
-		confirm("휴지통을 비우시면 지워진 메일(중요메일 포함)들은 복구할 수 없습니다.\n대량의 메일을 처리할 경우 시간이 오래 걸릴 수 있습니다.\n\n휴지통을 비우시겠습니까?");
-		/*String subject = $(".subject", 0).text();
-		System.out.println("sub0 is : " + subject);
-		subject = $(".subject", 1).text();
-		System.out.println("sub1 is : " + subject);
-		$(".subject", 0).click();
-		String pageLoadCheck = $("h1").text();
-		if (pageLoadCheck.equals("주간요약 리포트입니다.")) {
-			System.out.println(" *** summaryReport sendMail Check Success !! *** ");
-		} else {
-			System.out.println(" *** summaryReport sendMail Check Fail ... !@#$%^&*() *** ");
-			close();
-		}*/
+		//메일삭제
+		$(".link_mail", 2).click();
+		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".ico_check", 0).click();
+		$(".wrap_bold > .btn_del", 0).click();
+		$(By.linkText("휴지통"), 0).hover();
+		$(".link_empty", 1).click();
+		$(".check_type2").waitUntil(visible, 15000);
+		$(".check_type2").click();
 		switchTo().window(0);
 		$("#btn-save").scrollTo();
 		$(".cross", 1).click();
 		$(".reserveEmail").waitUntil(hidden, 10000);
 		$("#btn-save").click();
 		valCheck(6, 5, "summaryReport_reserveEmail_null");
-		$(".gui-input", 3).setValue("apzz0928@");
+		$(".gui-input", 3).setValue("apzz092888@");
 		$("#btn-reserveEmail").click();
 		valCheck(7, 6, "summaryReport_reserveEmail_check");
-		$(".gui-input", 3).setValue("apzz0928@nhnent.net");
+		$(".gui-input", 3).setValue("apzz092888@daum.net");
 		$("#btn-reserveEmail").click();
-		$(".reserveEmail").waitUntil(visible, 10000);
+		$(".reserveEmail").waitUntil(visible, 15000);
 		for (int i = 18; i <= 25; i++) {
 			$("label", i).click();
 		}
 		$("#btn-save").click();
 		valCheck(8, 7, "summaryReport_reserveEmail_send");
-		$("#btn-save").waitUntil(visible, 10000);
+		$("#btn-save").waitUntil(visible, 15000);
 		for (int i = 18; i <= 25; i++) {
 			$("label", i).click();
 		}
 		$("#btn-save").click();
 		valCheck(6, 5, "summaryReport_reserveEmail_send");
-		$("#btn-save").waitUntil(visible, 10000);
+		$("#btn-save").waitUntil(visible, 15000);
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
 
 	@Test(priority = 10)
-	public void subManager() {
-		System.out.println(" ! ----- subManager Start ----- ! ");
+	public void add_subManager() {
+		System.out.println(" ! ----- add_subManager Start ----- ! ");
 		$(By.linkText("부관리자")).click();
-		$("#btn_mail").waitUntil(visible, 10000);
+		$("#btn_mail").waitUntil(visible, 15000);
 		$("#btn_mail").click();
 		valCheck(5, 7, "subManager_name_null");
 		$("#submanager_nm").setValue("최영권");
 		$("#btn_mail").click();
 		valCheck(6, 8, "subManager_email_null");
-		$("#submanager_email").setValue("apzz0928@");
+		$("#submanager_email").setValue("apzz092888@");
 		$("#btn_mail").click();
 		valCheck(7, 9, "subManager_email_check");
-		$("#submanager_email").setValue("apzz0928@naver.com");
+		$("#submanager_email").setValue("apzz092888@daum.net");
 		$("#btn_mail").click();
 		valCheck(8, 10, "subManager_service_null");
 		$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::button[1]")).click();
@@ -974,26 +921,27 @@ public class temporarily {
 		valCheck(9, 11, "subManager_email_send");
 		switchTo().window(1);
 		refresh();
-		String pageLoadCheck = $(".mail_title", 0).text();
-		System.out.println("mail_title ,0 is : " + pageLoadCheck);
-		System.out.println("mail_title ,0  substring 결과는 : " + pageLoadCheck.substring(23));
-		if(pageLoadCheck.substring(23).equals("부관리자 안내 메일입니다.")) {
+		String pageLoadCheck = $(".tit_subject", 0).text();
+		System.out.println("tit_subject ,0 is : " + pageLoadCheck);
+		System.out.println("tit_subject ,0  substring 결과는 : " + pageLoadCheck.substring(22));
+		if(pageLoadCheck.substring(22).equals("부관리자 안내 메일입니다.")) {
 			System.out.println(" *** subManager guide mail title Check Success !! *** ");
 		} else {
 			System.out.println(" *** subManager guide mail title Check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".mail_title", 0).click();
+		$(".tit_subject", 0).click();
 		pageLoadCheck = $("h1", 1).text();
 		if (pageLoadCheck.equals("부관리자 회원가입 안내")) {
-			System.out.println(" *** scriptList summaryReport mail check Success !! *** ");
+			System.out.println(" *** subManager signin mail detailView check Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList summaryReport mail check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** subManager signin mail detailView check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(By.linkText("부관리자 회원가입 바로가기")).click();
-		$("h2", 1).waitUntil(visible, 10000);
-		$("label").click();
+		switchTo().window(2);
+		$("label", 0).waitUntil(visible, 15000);
+		$("label", 0).click();
 		$("#userid").setValue(id + date2);
 		$("#recheck").click();
 		$("#userpw").setValue(pw);
@@ -1001,23 +949,63 @@ public class temporarily {
 		$(".btn_join").click();
 		$(".btn_pop_submit").click();
 		switchTo().window(1);
-		$(".do_delete", 1).click();
-		$(".btn_clean", 1).click();
-		confirm("휴지통을 비우시면 지워진 메일(중요메일 포함)들은 복구할 수 없습니다.\n대량의 메일을 처리할 경우 시간이 오래 걸릴 수 있습니다.\n\n휴지통을 비우시겠습니까?");
+		$(".link_mail", 2).click();
+		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".ico_check", 0).click();
+		$(".wrap_bold > .btn_del", 0).click();
+		$(By.linkText("휴지통"), 0).hover();
+		$(".link_empty", 1).click();
+		$(".check_type2").waitUntil(visible, 15000);
+		$(".check_type2").click();
 		switchTo().window(0);
 		refresh();
 		pageLoadCheck = $(".text-dark", 3).text();
-		if(pageLoadCheck.substring(6, 18).equals(id + date2)) {
+		if(pageLoadCheck.substring(0, 4).equals("가입완료")) {
 			System.out.println(" *** subManager_signUp Check Success !! *** ");
 		} else {
 			System.out.println(" *** subManager_signUp Check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		
-		
-		System.out.println(" ! ----- summaryReport End ----- ! ");
+		$(".indicator").click();
+		$(".btn-info", 1).waitUntil(visible, 15000);
+	    $(By.id("select_added_auth_11000")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='[Web Free]'])[39]/following::option[1]")).click();
+	    $(".btn-info", 1).click();
+	    $("#btn-modal-alert-yes").waitUntil(visible, 15000);
+	    $("#btn-modal-alert-yes").click();
+		valCheck(6, 13, "submanager_authority_modify_check");
+		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
-
+	
+	@Test(priority = 11)
+	public void subManager_modifyInfoAndDel() {
+		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
+		open("https://new.acecounter.com/auth/logout");
+		$("#uid").waitUntil(visible, 15000);
+		$("#uid").setValue(id + date2);
+		$("#upw").setValue(pw);
+		$(".btn_login").click();
+		$(".go_setting").click();
+		$("#prePwd").setValue(pw);
+		$("#changePwd").setValue(pw1);
+		$("#changePwdConfirm").setValue(pw1);
+		$("#modifyProc").click();
+		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
+		$("#btn-modal-alert-yes").click();
+		$("p", 4).waitUntil(visible, 15000);
+		valCheck(4, 3, "subManager_pw_alert");
+		open("https://new.acecounter.com/auth/logout");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue(pw);
+		$(".btn_login").click();
+		open("https://new.acecounter.com/manage/serviceInfo/submanager");
+		$(".br-dark", 2).click();
+		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
+		$("#btn-modal-alert-yes").click();
+		valCheck(6, 13, "subManager_delete");
+		System.out.println(" ! ----- subManager_modifyInfoAndDel End ----- ! ");
+	}
+	
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();
