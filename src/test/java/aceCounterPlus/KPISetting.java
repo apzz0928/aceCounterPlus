@@ -183,10 +183,10 @@ public class KPISetting {
             huc.connect();
             respCode = huc.getResponseCode();
             if(respCode >= 400){
-            	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " *****");
+            	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " - check Fail ... !@#$%^&*() *** ");
             	close();
             } else {
-            	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " *****");
+            	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " - check Success !! *** ");
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();

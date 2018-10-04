@@ -245,53 +245,53 @@ public class temporarily {
 		case "subManager_delete":
 			checkMsg = "삭제가 완료되었습니다.";
 			break;
-		case "extendCharge_null_service":
+		case "extendCharge_extendCharge_null_service":
 			checkMsg = "서비스를 선택해 주세요.";
 			break;
-		case "consult_name_null":
+		case "extendCharge_consult_name_null":
 			checkMsg = "이름을 입력해 주세요.";
 			break;
-		case "consult_tel_null":
+		case "extendCharge_consult_tel_null":
 			checkMsg = "연락처와 휴대전화번호 중\n" + "하나는 반드시 입력해 주세요.";
 			break;
-		case "consult_email_null":
+		case "extendCharge_consult_email_null":
 			checkMsg = "이메일을 입력해주세요.";
 			break;
-		case "cashReceiptInfo_null":
+		case "extendCharge_cashReceiptInfo_null":
 			checkMsg = "현금영수증 신청정보를 입력해 주세요.";
 			break;
-		case "corporateRegistrationNumber_null":
+		case "extendCharge_corporateRegistrationNumber_null":
 			checkMsg = "사업자등록번호를 입력해 주세요.";
 			break;
-		case "companyName_null":
+		case "extendCharge_companyName_null":
 			checkMsg = "회사명을 입력해 주세요.";
 			break;
-		case "ceoName_null":
+		case "extendCharge_ceoName_null":
 			checkMsg = "대표자명을 입력해 주세요.";
 			break;
-		case "companyAddress_null":
+		case "extendCharge_companyAddress_null":
 			checkMsg = "회사주소를 입력해 주세요.";
 			break;
-		case "businessTypeDetailName_null":
+		case "extendCharge_businessTypeDetailName_null":
 			checkMsg = "업태를 입력해 주세요.";
 			break;
-		case "businessTypeSectionName_null":
+		case "extendCharge_businessTypeSectionName_null":
 			checkMsg = "종목을 입력해 주세요.";
 			break;
-		case "contactEmployeeName_null":
+		case "extendCharge_contactEmployeeName_null":
 			checkMsg = "담당자명을 입력해 주세요.";
 			break;
-		case "telPosNo_null":
+		case "extendCharge_telPosNo_null":
 			checkMsg = "연락처를 입력해 주세요.";
 			break;
-		case "emailAddress_null":
+		case "extendCharge_emailAddress_null":
 			checkMsg = "이메일을 입력해 주세요.";
 			break;
-		case "2":
-			checkMsg = "";
+		case "additionalCharge_service_null":
+			checkMsg = "서비스를 선택해주세요.";
 			break;
-		case "3":
-			checkMsg = "";
+		case "additionalCharge_service_check_null":
+			checkMsg = "서비스를 선택해주세요.";
 			break;
 		case "4":
 			checkMsg = "";
@@ -351,10 +351,10 @@ public class temporarily {
 			huc.connect();
 			respCode = huc.getResponseCode();
 			if (respCode >= 400) {
-				System.out.println("***** " + urlName + " : Link Status HTTP : " + respCode + " *****");
+				System.out.println("***** " + urlName + " : Link Status HTTP : " + respCode + " - check Fail ... !@#$%^&*() *** ");
 				close();
 			} else {
-				System.out.println("***** " + urlName + " : Link Status HTTP : " + respCode + " *****");
+				System.out.println("***** " + urlName + " : Link Status HTTP : " + respCode + " - check Success !! *** ");
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -1006,7 +1006,7 @@ public class temporarily {
 		$("#headingStep1").waitUntil(visible, 15000);
 		$("#btn_step1_next").scrollTo();
 		$("#btn_step1_next").click();
-		valCheck(20, 4, "extendCharge_null_service");
+		valCheck(20, 4, "extendCharge_extendCharge_null_service");
 		$("#select_all_svc").scrollTo();
 		$("#checkbox_step1_0").click();
 		$("#btn_step1_next").scrollTo();
@@ -1027,14 +1027,14 @@ public class temporarily {
 		$("#btn_consult").click();
 		$("#consult_svc_nm").waitUntil(visible, 10000);
 		$("#btn_consult_submit").click();
-		valCheck(31, 5, "consult_name_null");
+		valCheck(31, 5, "extendCharge_consult_name_null");
 		$(".gui-input", 0).setValue("이름");
 		$("#btn_consult_submit").click();
-		valCheck(32, 6, "consult_tel_null");
+		valCheck(32, 6, "extendCharge_consult_tel_null");
 		$(By.name("telM")).setValue("1234");
 		$(By.name("telE")).setValue("1234");
 		$("#btn_consult_submit").click();
-		valCheck(33, 7, "consult_email_null");
+		valCheck(33, 7, "extendCharge_consult_email_null");
 		$("#btn_consult").click();
 		//$("#consult_svc_nm").waitUntil(hidden, 10000);
 		sleep(1000);
@@ -1050,39 +1050,78 @@ public class temporarily {
 		$("label", 15).click();
 		$("#virtual-account-common").waitUntil(visible, 10000);
 		$(".btn-payment", 1).click();
-		valCheck(36, 8, "cashReceiptInfo_null");
+		valCheck(36, 8, "extendCharge_cashReceiptInfo_null");
 		$("label", 18).click();
 		$(".btn-payment", 1).scrollTo();
 		$(".btn-payment", 1).click();
-		valCheck(37, 9, "corporateRegistrationNumber_null");
+		valCheck(37, 9, "extendCharge_corporateRegistrationNumber_null");
 		$(By.name("businessRegistNoFirstPosNo")).setValue("111");
 		$(By.name("businessRegistNoMidPosNo")).setValue("11");
 		$(By.name("businessRegistNoEndPosNo")).setValue("11111");
 		$(".btn-payment", 1).click();
-		valCheck(38, 10, "companyName_null");
+		valCheck(38, 10, "extendCharge_companyName_null");
 		$(By.name("svcCompanyNm")).setValue("회사이름");
 		$(".btn-payment", 1).click();
-		valCheck(39, 11, "ceoName_null");
+		valCheck(39, 11, "extendCharge_ceoName_null");
 		$(By.name("ceoNm")).setValue("대표자이름");
 		$(".btn-payment", 1).click();
-		valCheck(40, 12, "companyAddress_null");
+		valCheck(40, 12, "extendCharge_companyAddress_null");
 		$(By.name("companyAddr")).setValue("회사주소");
 		$(".btn-payment", 1).click();
-		valCheck(41, 13, "businessTypeDetailName_null");
+		valCheck(41, 13, "extendCharge_businessTypeDetailName_null");
 		$(By.name("businessTypeDetailNm")).setValue("업태");
 		$(".btn-payment", 1).click();
-		valCheck(42, 14, "businessTypeSectionName_null");
+		valCheck(42, 14, "extendCharge_businessTypeSectionName_null");
 		$(By.name("businessTypeSectionNm")).setValue("종목");
 		$(".btn-payment", 1).click();
-		valCheck(43, 15, "contactEmployeeName_null");
+		valCheck(43, 15, "extendCharge_contactEmployeeName_null");
 		$(By.name("contactEmployeeNm")).setValue("담당자이름");
 		$(".btn-payment", 1).click();
-		valCheck(44, 16, "telPosNo_null");
+		valCheck(44, 16, "extendCharge_telPosNo_null");
 		$(By.name("telMidPosNo")).setValue("1234");
 		$(By.name("telEndPosNo")).setValue("1234");
 		$(".btn-payment", 1).click();
-		valCheck(45, 17, "emailAddress_null");
+		valCheck(45, 17, "extendCharge_emailAddress_null");
 		System.out.println(" ! ----- extendCharge End ----- ! ");
+	}
+	
+	@Test(priority = 13)
+	public void additionalCharge() {
+		System.out.println(" ! ----- additionalCharge Start ----- ! ");
+		sleep(1000);
+		$(By.linkText("추가요금")).click();
+		String pageLoadCheck = $("td", 0).text();
+		if(pageLoadCheck.equals("추가요금 미결제 내역이 없습니다.")) {
+			System.out.println(" *** additionalCharge pageLoad Success !! *** ");
+		} else {
+			System.out.println(" *** additionalCharge pageLoad Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#btn-next-step").click();
+		valCheck(15, 4, "additionalCharge_service_null");
+		System.out.println("additionalCharge_service 1st alert check Success");
+		$("#checkAll").click();
+		$("#btn-next-step").click();
+		valCheck(16, 5, "additionalCharge_service_check_null");
+		System.out.println("additionalCharge_service 2nd alert check Success");
+		System.out.println(" ! ----- additionalCharge End ----- ! ");
+	}
+	
+	@Test(priority = 14)
+	public void paymentHistory() {
+		System.out.println(" ! ----- paymentHistory Start ----- ! ");
+		sleep(1000);
+		$(By.linkText("결제내역조회")).click();
+		$("#btn-next-step").waitUntil(hidden, 25000);
+		$(".mt20").waitUntil(visible, 25000);
+		String pageLoadCheck = $(".notokr-bold", 0).text();
+		if(pageLoadCheck.equals("결제내역조회")) {
+			System.out.println(" *** paymentHistory pageLoad Success !! *** ");
+		} else {
+			System.out.println(" *** paymentHistory pageLoad Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- paymentHistory End ----- ! ");
 	}
 	
 	@AfterClass
