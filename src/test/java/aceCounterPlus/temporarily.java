@@ -293,23 +293,23 @@ public class temporarily {
 		case "additionalCharge_service_check_null":
 			checkMsg = "서비스를 선택해주세요.";
 			break;
-		case "4":
-			checkMsg = "";
+		case "paymentBill_businessRegistNoPosNo_null":
+			checkMsg = "사업자등록번호를 입력해 주세요.";
 			break;
-		case "5":
-			checkMsg = "";
+		case "paymentBill_svcCompanyNm_null":
+			checkMsg = "회사명을 입력해 주세요.";
 			break;
-		case "6":
-			checkMsg = "";
+		case "paymentBill_ceoNm_null":
+			checkMsg = "대표자명을 입력해 주세요.";
 			break;
-		case "7":
-			checkMsg = "";
+		case "paymentBill_companyAddr_null":
+			checkMsg = "회사주소를 입력해 주세요.";
 			break;
-		case "8":
-			checkMsg = "";
+		case "paymentBill_businessTypeDetailNm_null":
+			checkMsg = "업태를 입력해 주세요.";
 			break;
-		case "9":
-			checkMsg = "";
+		case "paymentBill_businessTypeSectionNm_null":
+			checkMsg = "종목을 입력해 주세요.";
 			break;
 		case "100":
 			checkMsg = "";
@@ -403,7 +403,7 @@ public class temporarily {
 		System.out.println(" ! ----- serviceManage_main End ----- ! ");
 	}
 
-	//@Test(priority = 1)
+	@Test(priority = 1)
 	public void scriptList() {
 		System.out.println(" ! ----- scriptList Start ----- ! ");
 		$(By.linkText("분석스크립트")).click();
@@ -418,14 +418,14 @@ public class temporarily {
 			close();
 		}
 		$(".btn-dark", 1).click();
-		valCheck(61, 3, "scriptList_email_null");
+		valCheck(12, 3, "scriptList_email_null");
 		$("#mail_to").setValue(date);
 		$(".btn-dark", 1).click();
-		valCheck(62, 4, "scriptList_email_validation");
+		valCheck(13, 4, "scriptList_email_validation");
 		$("#mail_to").setValue("apzz092888@daum.net");
 		$(".btn-dark", 1).click();
 		$(".btn-dark", 1).waitUntil(hidden, 10000);
-		valCheck(63, 5, "scriptList_email_send");
+		valCheck(14, 5, "scriptList_email_send");
 		js("window.open('https://logins.daum.net/accounts/loginform.do?url=https%3A%2F%2Fmail.daum.net%2F');");
 		//다음메일 탭으로 포커스 변경
 		switchTo().window(1);
@@ -445,7 +445,7 @@ public class temporarily {
 		$(".tit_subject", 0).click();
 		$(".txt_filename").waitUntil(visible, 15000);
 		pageLoadCheck = $(".txt_filename").text();
-		if (pageLoadCheck.equals("script(ap0420121926.com).zip")) {
+		if (pageLoadCheck.equals("script(ap0420121150.com).zip")) {
 			System.out.println(" *** scriptList send mail fileName check Success !! *** ");
 		} else {
 			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
@@ -466,8 +466,8 @@ public class temporarily {
 			System.out.println(" *** scriptList aceCounter+ page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#scroll_target_121333").waitUntil(visible, 15000);
-		$("#scroll_target_121333").click();
+		$("#scroll_target_121331").waitUntil(visible, 15000);
+		$("#scroll_target_121331").click();
 		$(".text-danger", 0).waitUntil(visible, 15000);
 		pageLoadCheck = $(".text-danger", 0).text();
 		if (pageLoadCheck.equals("데이터 수집/분석중지")) {
@@ -476,12 +476,12 @@ public class temporarily {
 			System.out.println(" *** scriptList detailView check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#scroll_target_121333").click();
+		$("#scroll_target_121331").click();
 		// $(".text-danger", 0).waitUntil(hidden, 10000);
 		System.out.println(" ! ----- scriptList End ----- ! ");
 	}
 
-	//@Test(priority = 2)
+	@Test(priority = 2)
 	public void installApply() {
 		System.out.println(" ! ----- installApply Start ----- ! ");
 		$(By.linkText("분석스크립트 설치신청")).click();
@@ -492,10 +492,9 @@ public class temporarily {
 			System.out.println(" *** installApply page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#btn_next_step1").scrollTo();
 		$("#btn_next_step1").click();
 		valCheck(20, 4, "installApply_null");
-		$("#checkbox_svc_46").click();
+		$("#checkbox_svc_0").click();
 		$("#btn_next_step1").click();
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
@@ -515,23 +514,23 @@ public class temporarily {
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
 		valCheck(25, 8, "installApply_FTP_null");
-		$("#host_46").scrollTo();
-		$("#host_46").setValue(date);
+		$("#host_0").scrollTo();
+		$("#host_0").setValue(date);
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
 		valCheck(26, 9, "installApply_port_null");
-		$("#port_46").scrollTo();
-		$("#port_46").setValue(date);
+		$("#port_0").scrollTo();
+		$("#port_0").setValue(date);
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
 		valCheck(27, 10, "installApply_id_null");
-		$("#id_46").scrollTo();
-		$("#id_46").setValue(date);
+		$("#id_0").scrollTo();
+		$("#id_0").setValue(date);
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
 		valCheck(28, 11, "installApply_pw_null");
-		$("#pwd_46").scrollTo();
-		$("#pwd_46").setValue(date);
+		$("#pwd_0").scrollTo();
+		$("#pwd_0").setValue(date);
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
 		valCheck(29, 12, "installApply_agree_null");
@@ -754,7 +753,7 @@ public class temporarily {
 		System.out.println(" ! ----- addIntegralReport End ----- ! ");
 	}
 
-	//@Test(priority = 8)
+	@Test(priority = 8)
 	public void editService() {
 		System.out.println(" ! ----- editService Start ----- ! ");
 		$(By.linkText("정보수정")).click();
@@ -766,49 +765,49 @@ public class temporarily {
 			System.out.println(" *** editService page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#svc_nm_title_1").click();
-		$(".btn-info", 2).waitUntil(visible, 15000);
-		$(".btn-info", 2).click();
-		valCheck(120, 27, "editService_modify_check");
-		$(".input-sm", 1).setValue("");
-		$(".cross", 2).click();
-		$(".btn-info", 2).click();
-		valCheck(121, 28, "editService_siteName_null");
-		$(".input-sm", 1).setValue(date);
-		$(".btn-info", 2).click();
-		valCheck(122, 29, "editService_domain_null");
-		$(".gui-input", 5).setValue(date);
-		$(".br-dark", 1).click();
-		valCheck(123, 30, "editService_domain_validation");
-		$(".gui-input", 5).setValue(date + ".com");
-		$(".br-dark", 1).click();
-		$(".cross", 2).waitUntil(visible, 15000);
-		$(".btn-info", 2).click();
-		valCheck(124, 31, "editService_edit_alert");
-		$(".btn-info", 2).waitUntil(hidden, 10000);
-		$(".btn-info", 2).waitUntil(visible, 15000);
-		pageLoadCheck = $("#svc_nm_title_1").text();
+		$("#svc_nm_title_0").click();
+		$(".btn-info", 1).waitUntil(visible, 15000);
+		$(".btn-info", 1).click();
+		valCheck(15, 5, "editService_modify_check");
+		$(".input-sm", 0).setValue("");
+		$(".cross", 0).click();
+		$(".btn-info", 1).click();
+		valCheck(16, 6, "editService_siteName_null");
+		$(".input-sm", 0).setValue(date);
+		$(".btn-info", 1).click();
+		valCheck(17, 7, "editService_domain_null");
+		$(".gui-input", 1).setValue(date);
+		$(".br-dark", 0).click();
+		valCheck(18, 8, "editService_domain_validation");
+		$(".gui-input", 1).setValue(date + ".com");
+		$(".br-dark", 0).click();
+		$(".cross", 0).waitUntil(visible, 15000);
+		$(".btn-info", 1).click();
+		valCheck(19, 9, "editService_edit_alert");
+		$(".btn-info", 1).waitUntil(hidden, 10000);
+		$(".btn-info", 1).waitUntil(visible, 15000);
+		pageLoadCheck = $("#svc_nm_title_0").text();
 		System.out.println("date is " + date);
-		System.out.println("svc_nm_title_1 is " + pageLoadCheck);
-		System.out.println("svc_nm_title_1 (substring 21, 33) is " + pageLoadCheck.substring(21, 33));
+		System.out.println("svc_nm_title_0 is " + pageLoadCheck);
+		System.out.println("svc_nm_title_0 (substring 21, 33) is " + pageLoadCheck.substring(21, 33));
 		if (pageLoadCheck.substring(21, 33).equals(date)) {
 			System.out.println(" *** editService edit Success !! *** ");
 		} else {
 			System.out.println(" *** editService edit Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".cross", 2).click();
-		$(".gui-input", 5).setValue("ap0420121150.com");
-		$(".br-dark", 1).click();
-		$(".cross", 2).waitUntil(visible, 15000);
-		$(".btn-info", 2).click();
-		valCheck(120, 27, "editService_restore_alert");
-		$(".btn-info", 2).waitUntil(hidden, 10000);
-		$(".btn-info", 2).waitUntil(visible, 15000);
-		pageLoadCheck = $("#svc_nm_title_1").text();
+		$(".cross", 0).click();
+		$(".gui-input", 1).setValue("ap0420121150.com");
+		$(".br-dark", 0).click();
+		$(".cross", 0).waitUntil(visible, 15000);
+		$(".btn-info", 1).click();
+		valCheck(15, 5, "editService_restore_alert");
+		$(".btn-info", 1).waitUntil(hidden, 10000);
+		$(".btn-info", 1).waitUntil(visible, 15000);
+		pageLoadCheck = $("#svc_nm_title_0").text();
 		System.out.println("date is " + date);
-		System.out.println("svc_nm_title_1 is " + pageLoadCheck);
-		System.out.println("svc_nm_title_1 (substring 21, 33) is " + pageLoadCheck.substring(21, 33));
+		System.out.println("svc_nm_title_0 is " + pageLoadCheck);
+		System.out.println("svc_nm_title_0 (substring 21, 33) is " + pageLoadCheck.substring(21, 33));
 		if (pageLoadCheck.substring(21, 33).equals("ap0420121150")) {
 			System.out.println(" *** editService restore Success !! *** ");
 		} else {
@@ -818,7 +817,7 @@ public class temporarily {
 		System.out.println(" ! ----- editService End ----- ! ");
 	}
 
-	//@Test(priority = 9)
+	@Test(priority = 9)
 	public void summaryReport() {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
 		$(By.linkText("발송메일 설정")).click();
@@ -890,7 +889,7 @@ public class temporarily {
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
 
-	//@Test(priority = 10)
+	@Test(priority = 10)
 	public void add_subManager() {
 		System.out.println(" ! ----- add_subManager Start ----- ! ");
 		$(By.linkText("부관리자")).click();
@@ -906,10 +905,10 @@ public class temporarily {
 		$("#submanager_email").setValue("apzz092888@daum.net");
 		$("#btn_mail").click();
 		valCheck(8, 10, "subManager_service_null");
-		$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::button[1]")).click();
-	    $("#treeDemo_2_check").click();
-	    $("#select_auth").click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='apzz0928888.org'])[1]/following::option[3]")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::button[1]")).click();
+	    $(By.id("treeDemo_2_check")).click();
+	    $(By.id("select_auth")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스추가해지테스트0001(test00011.org)'])[2]/following::option[3]")).click();
 	    $("#btn_add_svc").click();
 		$("#btn_mail").click();
 		valCheck(9, 11, "subManager_email_send");
@@ -961,7 +960,7 @@ public class temporarily {
 		$(".indicator").click();
 		$(".btn-info", 1).waitUntil(visible, 15000);
 	    $(By.id("select_added_auth_11000")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='[Web Free]'])[39]/following::option[1]")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='[Web Free]'])[5]/following::option[1]")).click();
 	    $(".btn-info", 1).click();
 	    $("#btn-modal-alert-yes").waitUntil(visible, 15000);
 	    $("#btn-modal-alert-yes").click();
@@ -969,7 +968,7 @@ public class temporarily {
 		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
 	
-	//@Test(priority = 11)
+	@Test(priority = 11)
 	public void subManager_modifyInfoAndDel() {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
@@ -1122,6 +1121,47 @@ public class temporarily {
 			close();
 		}
 		System.out.println(" ! ----- paymentHistory End ----- ! ");
+	}
+	
+	@Test(priority = 15)
+	public void paymentBill() {
+		System.out.println(" ! ----- paymentBill Start ----- ! ");
+		sleep(1000);
+		$(By.linkText("계산서")).click();
+		$(".material-icons-arrow").waitUntil(hidden, 10000);
+		$(".btn-info", 0).waitUntil(visible, 10000);
+		String pageLoadCheck = $(".notokr-bold", 0).text();
+		if(pageLoadCheck.equals("계산서")) {
+			System.out.println(" *** paymentHistory pageLoad Success !! *** ");
+		} else {
+			System.out.println(" *** paymentHistory pageLoad Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".btn-info", 0).click();
+		$(".mt20").waitUntil(visible, 10000);
+		$("#btn-submit").click();
+		valCheck(7, 3, "paymentBill_businessRegistNoPosNo_null");
+		$(By.name("businessRegistNoFirstPosNo")).setValue("111");
+		$(By.name("businessRegistNoMidPosNo")).setValue("11");
+		$(By.name("businessRegistNoEndPosNo")).setValue("11111");
+		$("#btn-submit").click();
+		valCheck(8, 4, "paymentBill_svcCompanyNm_null");
+		$(By.name("svcCompanyNm")).setValue("회사명");
+		$("#btn-submit").click();
+		valCheck(9, 5, "paymentBill_ceoNm_null");
+		$(By.name("ceoNm")).setValue("대표자명");
+		$("#btn-submit").click();
+		valCheck(10, 6, "paymentBill_companyAddr_null");
+		$(By.name("companyAddr")).setValue("회사주소");
+		$("#btn-submit").click();
+		valCheck(11, 7, "paymentBill_businessTypeDetailNm_null");
+		$(By.name("businessTypeDetailNm")).setValue("업태");
+		$("#btn-submit").click();
+		valCheck(12, 8, "paymentBill_businessTypeSectionNm_null");
+		$(By.name("businessTypeSectionNm")).setValue("종목");
+		$("#btn-cancel").click();
+		$(".mt20").waitUntil(hidden, 10000);
+		System.out.println(" ! ----- paymentBill End ----- ! ");
 	}
 	
 	@AfterClass
