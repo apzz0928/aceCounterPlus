@@ -396,6 +396,7 @@ public class serviceManagement {
 		$("#inputPwd").setValue(pw);
 		$("#loginBtn").click();
 		$(".link_check").waitUntil(visible, 15000);
+		sleep(1000);
 		refresh();
 		pageLoadCheck = $("h1").text();
 		if (pageLoadCheck.equals("Daum\n" + "메일")) {
@@ -415,6 +416,7 @@ public class serviceManagement {
 			close();
 		}
 		$(".link_mail", 2).click();
+		$(".ico_check", 0).waitUntil(visible, 10000);
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
 		$(By.linkText("휴지통"), 0).hover();
@@ -500,7 +502,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- installApply End ----- ! ");
 	}
 
-	//@Test(priority = 3)
+	@Test(priority = 3)
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
 		$(By.linkText("회원정보")).click();
@@ -588,7 +590,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- memberInfo End ----- ! ");
 	}
 
-	//@Test(priority = 4)
+	@Test(priority = 4)
 	public void myCoupon() {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
 		sleep(1000);
@@ -627,7 +629,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
 
-	//@Test(priority = 5)
+	@Test(priority = 5)
 	public void addService() {
 		System.out.println(" ! ----- addService Start ----- ! ");
 		$(By.linkText("서비스추가")).click();
@@ -678,7 +680,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addService End ----- ! ");
 	}
 
-	//@Test(priority = 6)
+	@Test(priority = 6)
 	public void addView() {
 		System.out.println(" ! ----- addView Start ----- ! ");
 		$(By.linkText("뷰필터 추가")).click();
@@ -693,7 +695,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addView End ----- ! ");
 	}
 
-	//@Test(priority = 7)
+	@Test(priority = 7)
 	public void addIntegralReport() {
 		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
 		$(By.linkText("통합리포트 생성")).click();
@@ -765,8 +767,8 @@ public class serviceManagement {
 		$(".cross", 0).waitUntil(visible, 15000);
 		$(".btn-info", 1).click();
 		valCheck(15, 5, "editService_restore_alert");
-		$(".btn-info", 1).waitUntil(hidden, 10000);
 		$(".btn-info", 1).waitUntil(visible, 15000);
+		sleep(1000);
 		pageLoadCheck = $("#svc_nm_title_0").text();
 		System.out.println("date is " + date);
 		System.out.println("svc_nm_title_0 is " + pageLoadCheck);
@@ -821,8 +823,12 @@ public class serviceManagement {
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
-		$(By.linkText("휴지통"), 0).hover();
-		$(".link_empty", 1).click();
+		/*$(By.linkText("휴지통"), 0).hover();
+		$(".link_empty", 1).click();*/
+		$(".link_basket").click();
+		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".ico_check", 0).click();
+		$(".btn_toolbar", 0).click();
 		$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
 		switchTo().window(0);
@@ -856,7 +862,6 @@ public class serviceManagement {
 	public void add_subManager() {
 		System.out.println(" ! ----- add_subManager Start ----- ! ");
 		$(By.linkText("부관리자")).click();
-		$("#btn_mail").waitUntil(visible, 15000);
 		$("#btn_mail").click();
 		valCheck(5, 7, "subManager_name_null");
 		$("#submanager_nm").setValue("최영권");
@@ -939,6 +944,7 @@ public class serviceManagement {
 		$("#uid").setValue(id + date2);
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
+		$(".go_setting").waitUntil(visible, 10000);
 		$(".go_setting").click();
 		$("#prePwd").setValue(pw);
 		$("#changePwd").setValue(pw1);
