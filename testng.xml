@@ -5,7 +5,8 @@
   <parameter name="browser" value="firefox" />
   <classes>
 <!-- 	<class name="aceCounterPlus.backOffice"/> -->
-<class name="aceCounterPlus.temporarily"/>
+<!-- <class name="aceCounterPlus.temporarily"/> -->
+<class name="aceCounterPlus.temporarily_2"/>
 <!-- <class name="aceCounterPlus.testScript"/> -->
 <!-- <class name="aceCounterPlus.changePassword"/> -->
 <!-- <class name="aceCounterPlus.changeMemberInfo"/> -->
@@ -16,6 +17,7 @@
 <!-- <class name="aceCounterPlus.userSetting"/> -->
 <!-- <class name="aceCounterPlus.commercePrice"/> -->
 <!-- <class name="aceCounterPlus.contentSetting"/> -->
+<!-- <class name="aceCounterPlus.marketingInflowSetting"/> -->
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

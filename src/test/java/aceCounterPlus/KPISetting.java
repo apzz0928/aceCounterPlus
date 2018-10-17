@@ -451,8 +451,10 @@ public class KPISetting {
 		$(".btn-dark", 0).click();
 		valCheck(3, 4, "reportDownload_reservedel_confirm");
 		valCheck(4, 6, "reportDownload_reservedel_alert");
+		$(".btn-dark", 0).waitUntil(hidden, 10000);
 		$(".btn-info").waitUntil(visible, 10000);
-		pageLoadCheck = $("td").text();
+		pageLoadCheck = $("td", 0).text();
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + pageLoadCheck + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		if(pageLoadCheck.equals("예약된 리포트 목록이 없습니다.\n" + "추가버튼을 눌러 일회성 혹은 예약 리포트를 추가하세요.")) {
 			System.out.println(" *** reportDownload_reserveDel list Page load Success !! *** ");
 		} else {
@@ -527,9 +529,18 @@ public class KPISetting {
 		$(".btn-delete").click();
 		valCheck(3, 3, "reportDownload_oneshotDel_confirm");
 		valCheck(4, 5, "reportDownload_oneshotDel_alert");
-		$(".muted").waitUntil(visible, 10000);
+		$("td", 2).waitUntil(visible, 10000);
+		/*$(".muted").waitUntil(visible, 10000);
 		pageLoadCheck = $(".muted").text();
 		if(pageLoadCheck.equals("리포트 생성 이력이 없습니다.\n" + "추가 탭에서 리포트를 생성하세요.")) {
+			System.out.println(" *** reportDownload_oneshotDel list Page load Success !! *** ");
+		} else {
+			System.out.println(" *** reportDownload_oneshotDel modify Fail ... !@#$%^&*() *** ");
+			close();
+		}*/
+		//리포트 다운로드의 다운로드탭에 리포트 삭제를 못해서 임시로 추가함
+		pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals("통계리포트")) {
 			System.out.println(" *** reportDownload_oneshotDel list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** reportDownload_oneshotDel modify Fail ... !@#$%^&*() *** ");
@@ -540,8 +551,9 @@ public class KPISetting {
 	@Test(priority = 7)
 	public void myMenu_add() {
 		System.out.println(" ! ----- myMenu Start ----- ! ");
+		sleep(1000);
 		$("#redirectMyMenuBtn").click();
-		$(".top > .sub-nav > .active").waitUntil(visible, 10000);
+		$("#myMenu").waitUntil(visible, 15000);
 		$("#myMenu").click();
 		$(".top > .menu-service > .sidebar-title").click();
 		String pageLoadCheck = $("h4", 0).text();

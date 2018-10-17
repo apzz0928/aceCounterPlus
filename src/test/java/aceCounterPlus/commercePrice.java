@@ -386,7 +386,8 @@ public class commercePrice {
 	public void commerce_currencyUnit() {
 		System.out.println(" ! ----- commerce_currencyUnit Start ----- ! ");
 		$(By.linkText("통화 단위")).click();
-		$("#mViewBtn").waitUntil(visible, 20000);
+		sleep(20000);
+		//$("#mViewBtn").waitUntil(visible, 20000);
 		String	pageLoadCheck = $("#mViewBtn").text();
 		if(pageLoadCheck.equals("수정")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
@@ -395,7 +396,7 @@ public class commercePrice {
 			close();
 		}
 		$("#mViewBtn").click();
-		$("h3", 2).waitUntil(visible, 20000);
+		$("#modifyBtn").waitUntil(visible, 20000);
 		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("수정하기")) {
 			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
@@ -407,11 +408,13 @@ public class commercePrice {
 		valCheck(3, 3, "currencyUnit_alert");
 	    $(By.name("nextIso")).click();
 	    $(By.xpath("//option[@value='USD']")).click();
-		$("#modifyBtn").click(); 
+		$("#modifyBtn").click();
+		sleep(1000);
 		valCheck(4, 4, "currencyUnit_modify_confirm");
 		sleep(1000);
 		valCheck(5, 6, "currencyUnit_modify_alert");
-		$("#mViewBtn").waitUntil(visible, 20000);
+		sleep(20000);
+		//$("#mViewBtn").waitUntil(visible, 20000);
 		pageLoadCheck = $("#mViewBtn").text();
 		if(pageLoadCheck.equals("수정")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");

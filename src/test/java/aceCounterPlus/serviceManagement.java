@@ -415,14 +415,18 @@ public class serviceManagement {
 			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		//메일삭제
 		$(".link_mail", 2).click();
-		$(".ico_check", 0).waitUntil(visible, 10000);
+		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
-		$(By.linkText("휴지통"), 0).hover();
-		$(".link_empty", 1).click();
+		$(".link_basket").click();
+		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".ico_check", 0).click();
+		$(".btn_toolbar", 0).click();
 		$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
+		$(".link_mail", 2).click();
 		switchTo().window(0);
 		pageLoadCheck = $("#scriptList").text();
 		if (pageLoadCheck.equals("분석스크립트")) {
@@ -831,6 +835,7 @@ public class serviceManagement {
 		$(".btn_toolbar", 0).click();
 		$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
+		$(".link_mail", 2).click();
 		switchTo().window(0);
 		$("#btn-save").scrollTo();
 		$(".cross", 1).click();
@@ -861,7 +866,10 @@ public class serviceManagement {
 	@Test(priority = 10)
 	public void add_subManager() {
 		System.out.println(" ! ----- add_subManager Start ----- ! ");
+		sleep(1000);
+		$(By.linkText("부관리자")).waitUntil(visible, 10000);
 		$(By.linkText("부관리자")).click();
+		$("#btn_mail").waitUntil(visible, 10000);
 		$("#btn_mail").click();
 		valCheck(5, 7, "subManager_name_null");
 		$("#submanager_nm").setValue("최영권");
@@ -882,6 +890,7 @@ public class serviceManagement {
 		valCheck(9, 11, "subManager_email_send");
 		switchTo().window(1);
 		refresh();
+		sleep(1500);
 		String pageLoadCheck = $(".tit_subject", 0).text();
 		if(pageLoadCheck.substring(22).equals("부관리자 안내 메일입니다.")) {
 			System.out.println(" *** subManager guide mail title Check Success !! *** ");
@@ -908,14 +917,18 @@ public class serviceManagement {
 		$(".btn_join").click();
 		$(".btn_pop_submit").click();
 		switchTo().window(1);
+		//메일삭제
 		$(".link_mail", 2).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
-		$(By.linkText("휴지통"), 0).hover();
-		$(".link_empty", 1).click();
+		$(".link_basket").click();
+		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".ico_check", 0).click();
+		$(".btn_toolbar", 0).click();
 		$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
+		$(".link_mail", 2).click();
 		switchTo().window(0);
 		refresh();
 		pageLoadCheck = $(".text-dark", 3).text();

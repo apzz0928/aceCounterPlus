@@ -174,7 +174,7 @@ public class memberInfo {
 	    $(".btn-lg", 1).click();
 	    String modalBody = $(".modal-body", 1).text();
 		$(".modal-backdrop").waitUntil(visible, 10000);
-		sleep(1000);
+		sleep(1500);
 	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
 			$(".btn-sm", 5).click();
 			$(".modal-backdrop").waitUntil(hidden, 10000);
