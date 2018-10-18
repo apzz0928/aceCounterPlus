@@ -424,7 +424,7 @@ public class serviceManagement {
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
-		$(".check_type2").waitUntil(visible, 15000);
+		//$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
 		$(".link_mail", 2).click();
 		switchTo().window(0);
@@ -834,7 +834,7 @@ public class serviceManagement {
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
-		$(".check_type2").waitUntil(visible, 15000);
+		//$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
 		$(".link_mail", 2).click();
 		switchTo().window(0);
@@ -928,7 +928,7 @@ public class serviceManagement {
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
 		sleep(500);
-		$(".check_type2").waitUntil(visible, 15000);
+		//$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
 		$(".link_mail", 2).click();
 		switchTo().window(0);

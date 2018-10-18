@@ -542,9 +542,9 @@ public class inhouseMarketingSetting {
 		$("td", 3).waitUntil(hidden, 10000);
 		String pageLoadCheck = $("td").text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
-			System.out.println(" *** viralSetting_del list Page load Success !! *** ");
+			System.out.println(" *** emailSetting_del list Page load Success !! *** ");
 		} else {
-			System.out.println(" *** viralSetting_del list Page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** emailSetting_del list Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- emailSetting_del End ----- ! ");
