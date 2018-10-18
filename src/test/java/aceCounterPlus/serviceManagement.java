@@ -753,7 +753,8 @@ public class serviceManagement {
 		$(".cross", 0).waitUntil(visible, 15000);
 		$(".btn-info", 1).click();
 		valCheck(19, 9, "editService_edit_alert");
-		$(".btn-info", 1).waitUntil(hidden, 10000);
+		sleep(500);
+		//$(".btn-info", 1).waitUntil(hidden, 10000);
 		$(".btn-info", 1).waitUntil(visible, 15000);
 		pageLoadCheck = $("#svc_nm_title_0").text();
 		System.out.println("date is " + date);
@@ -926,6 +927,7 @@ public class serviceManagement {
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
+		sleep(500);
 		$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
 		$(".link_mail", 2).click();
