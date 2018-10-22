@@ -420,7 +420,8 @@ public class serviceManagement {
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
-		$(".link_basket").click();
+		//$(".link_basket").click();
+		$(By.linkText("ÈŞÁöÅë")).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
@@ -830,7 +831,8 @@ public class serviceManagement {
 		$(".wrap_bold > .btn_del", 0).click();
 		/*$(By.linkText("ÈŞÁöÅë"), 0).hover();
 		$(".link_empty", 1).click();*/
-		$(".link_basket").click();
+		//$(".link_basket").click();
+		$(By.linkText("ÈŞÁöÅë")).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
@@ -923,7 +925,8 @@ public class serviceManagement {
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
-		$(".link_basket").click();
+		//$(".link_basket").click();
+		$(By.linkText("ÈŞÁöÅë")).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
