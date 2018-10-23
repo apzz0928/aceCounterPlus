@@ -155,7 +155,7 @@ public class commercePrice {
 		$("#inflowAddBtn").waitUntil(visible, 20000);
 		$(".accordion-toggle", 2).click();
   	}
-	  	//@Test(priority = 1)
+	  	@Test(priority = 1)
 		public void commercePrice_directAdd() {
 		System.out.println(" ! ----- commercePrice_directAdd Start ----- ! ");
 		sleep(1000);
@@ -209,7 +209,7 @@ public class commercePrice {
 		}
 		System.out.println(" ! ----- commercePrice_directAdd End ----- ! ");
 	}
-	//@Test(priority = 2)
+	@Test(priority = 2)
 	public void commercePrice_directAdd_modify() {
 		System.out.println(" ! ----- commercePrice_directAdd_modify Start ----- ! ");
 		$(".btn-xs", 0).waitUntil(visible, 20000);
@@ -253,7 +253,7 @@ public class commercePrice {
 		}
 		System.out.println(" ! ----- commercePrice_directAdd_modify End ----- ! ");
 	}
-	//@Test(priority = 3)
+	@Test(priority = 3)
 	public void commercePrice_directAdd_del() {
 		System.out.println(" ! ----- commercePrice_directAdd_del Start ----- ! ");
 		$(".btn-xs", 1).waitUntil(visible, 20000);
@@ -270,7 +270,7 @@ public class commercePrice {
 		}
 		System.out.println(" ! ----- commercePrice_directAdd_del End ----- ! ");
 	}
-	//@Test(priority = 4)
+	@Test(priority = 4)
 	public void commercePrice_autoAdd() {
 		System.out.println(" ! ----- commercePrice_autoAdd Start ----- ! ");
 		$(".btn-info").click();
@@ -320,7 +320,7 @@ public class commercePrice {
 		}
 		System.out.println(" ! ----- commercePrice_autoAdd End ----- ! ");
 	}
-	//@Test(priority = 5)
+	@Test(priority = 5)
 	public void commercePrice_autoAdd_modify() throws InterruptedException {
 		System.out.println(" ! ----- commercePrice_autoAdd_modify Start ----- ! ");
 		$(".btn-xs", 0).waitUntil(visible, 20000);
@@ -370,7 +370,7 @@ public class commercePrice {
 		}
 		System.out.println(" ! ----- commercePrice_autoAdd_modify End ----- ! ");
 	}
-	//@Test(priority = 6)
+	@Test(priority = 6)
 	public void commercePrice_autoAdd_del() {
 		System.out.println(" ! ----- commercePrice_autoAdd_del Start ----- ! ");
 		$(".btn-xs", 1).waitUntil(visible, 20000);

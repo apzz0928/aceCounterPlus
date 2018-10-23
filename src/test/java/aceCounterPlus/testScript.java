@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -1180,7 +1181,7 @@ public class testScript {
 		    $("#stepTwoCompleted").click();
 		}
 	}
-	@Test(priority = 0)
+	//@Test(priority = 0)
 	public void 협의요금개선_서비스추가() {
 		open("http://10.77.129.80:8082/common/front");
 		for(int i = 1;i<=10;i++) {
@@ -1200,6 +1201,64 @@ public class testScript {
 		    sleep(1000);
 		    open("http://10.77.129.80:8082/auth/logout");
 		    sleep(1000);
+		}
+	}
+	@Test(priority = 1)
+	public void 이동경로_open으로접근() {
+		String[] URL = {"http://apzz0928.blogspot.com/search/label/change-order","http://apzz0928.blogspot.com/search/label/change-signIn","http://apzz0928.blogspot.com/search/label/change-booking","http://apzz0928.blogspot.com/search/label/change-request",
+				"http://apzz0928.blogspot.com/search/label/change-other1","http://apzz0928.blogspot.com/search/label/change-other2","http://apzz0928.blogspot.com/search/label/change-other3",
+				"http://apzz0928.blogspot.com/search/label/change-step-1.0?nac_md=normal_mkt&nac_cpi=37&nac_sm=change-3step-0","http://apzz0928.blogspot.com/search/label/change-step-1.1","http://apzz0928.blogspot.com/search/label/change-step-1.2",
+				"http://apzz0928.blogspot.com/search/label/change-step-1.3","http://apzz0928.blogspot.com/search/label/change-step-2.0?nac_md=normal_mkt&nac_cpi=38&nac_sm=change-5step-0","http://apzz0928.blogspot.com/search/label/change-step-2.1",
+				"http://apzz0928.blogspot.com/search/label/change-step-2.2","http://apzz0928.blogspot.com/search/label/change-step-2.3","http://apzz0928.blogspot.com/search/label/change-step-2.4","http://apzz0928.blogspot.com/search/label/change-step-2.5",
+				"http://apzz0928.blogspot.com/search/label/marketing-normal?nac_md=normal_mkt&nac_cpi=28&nac_sm=marketing-normal","http://apzz0928.blogspot.com/search/label/marketing-naverBrand?nac_md=naver_br&nac_cpi=29&nac_kw=marketing-naverbrand",
+				"http://apzz0928.blogspot.com/search/label/marketing-daumBrand?nac_md=daum_br&nac_cpi=31&nac_kw=marketing-daumbrand","http://apzz0928.blogspot.com/search/label/marketing-kakaoTalk?nac_md=kakao_ta&nac_cpi=32&nac_sm=marketing-kakaotalk",
+				"http://apzz0928.blogspot.com/search/label/marketing-google?nac_md=google_ad&nac_cpi=33&nac_kw=marketing-google","http://apzz0928.egloos.com","https://new.acecounter.com/common/front","https://www.naver.com","https://www.daum.net"};
+		Random rnd = new Random();
+		int a = rnd.nextInt(25);
+		open("http://apzz0928.blogspot.com");
+		for(int i = 0;i<=500;i++) {
+			a = rnd.nextInt(25);
+			open(URL[a]);
+			if(a>21) {//블로그주소가 아닌곳으로 이동 시 다시 블로그메인부터 시작
+				open("http://apzz0928.blogspot.com");				
+			}
+			System.out.println(i + " 번째 페이지 접근, 접근한 페이지 번호:" + a);
+			if(i==0) {
+				
+			} else if(i%10==0) { //내부에서만 돌아다니기때문에 10페이지마다 외부 페이지에 다녀옴
+				open("http://apzz0928.egloos.com");
+				System.out.println("삭제 전 쿠키 정보 : \n" + driver.manage().getCookies());
+				driver.manage().deleteAllCookies();
+				System.out.println("삭제 후 쿠키 정보 : " + driver.manage().getCookies());
+				open("http://apzz0928.blogspot.com");
+			}
+			sleep(1500);
+		}
+	}
+	@Test(priority = 0)
+	public void 이동경로_클래스로접근() {
+		Random rnd = new Random();
+		int a;
+		open("http://apzz0928.blogspot.com");
+		for(int i = 0;i<=500;i++) {
+			a = rnd.nextInt(36)+1;
+			$(".sub"+a).scrollTo();
+			$(".sub"+a).click();
+			System.out.println(i + " 번째 페이지 접근, 접근한 클래스 번호:" + a);
+			sleep(1500);
+			if(a>=36) { //아웃링크배너 클릭하면 블로그 메인으로 복귀
+				open("http://apzz0928.blogspot.com");
+			}
+			if(i==0) {
+				
+			} else if(i%10==0) { //내부에서만 돌아다니기때문에 10페이지마다 외부 페이지에 다녀옴
+				open("http://apzz0928.egloos.com");
+				System.out.println("삭제 전 쿠키 정보 : \n" + driver.manage().getCookies());
+				System.out.println("쿠키 삭제");
+				driver.manage().deleteAllCookies();
+				System.out.println("삭제 후 쿠키 정보 : " + driver.manage().getCookies());
+				open("http://apzz0928.blogspot.com");
+			}
 		}
 	}
 	@AfterClass
