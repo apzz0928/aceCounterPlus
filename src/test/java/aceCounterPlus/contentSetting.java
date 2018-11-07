@@ -98,38 +98,36 @@ public class contentSetting {
 		$(".modal-backdrop").waitUntil(visible, 10000);
 		String msgCheck = $("p", pTagNum).text();
         switch(val){
-            case "URL_null": checkMsg = "동적페이지URL을 입력하세요.";
-            break;
-            case "URL_check": checkMsg = "입력하신 페이지URL은\n" + "동적페이지에 해당되지 않습니다.\n" + "다시 확인 후 입력해주세요.";
-            break;
-            case "URL_del_check": checkMsg = "삭제할 동적페이지를 선택하세요.";
-            break;
-            case "exceptChar_alert": checkMsg = "제외문자를 입력하세요.";
-            break;
-            case "exceptAdd_confirm": checkMsg = "선택한 제외 문자를 등록하시겠습니까?\n" + "확인을 클릭하면\n" + "URL에 선택한 문자 이후 값은\n" + "제외하여 분석합니다.";
-            break;
-            case "exceptAdd_alert": checkMsg = "등록이 완료되었습니다.";
-            break;
-            case "delExceptCharCheck_alert": checkMsg = "삭제할 URL 제외문자를 선택하세요.";
-            break;
-            case "delExceptChar_confirm": checkMsg = "선택한 URL 제외문자를 삭제하겠습니까?\n" + "URL 제외 문자에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
-            break;
-            case "delExceptChar_alert": checkMsg = "삭제가 완료되었습니다.";
-            break;
-            case "analysisURL_null": checkMsg = "분석할 URL을 입력하세요.";
-            break;
-            case "searchVar_null": checkMsg = "내부검색 결과 페이지에서 검색어 변수를 입력하세요.";
-            break;
-            case "innerSearch_add_alert": checkMsg = "등록이 완료되었습니다.";
-            break;
-            case "innerSearch_deplication_add_alert": checkMsg = "등록된 내부검색 페이지 URL이 있습니다.\n" + "다시 입력해주세요.";
-            break;
-            case "innerSearch_del_null": checkMsg = "삭제할 내부검색 URL을 입력하세요.";
-            break;
-            case "innerSearch_del_confirm": checkMsg = "선택한 내부검색 URL을 삭제하시겠습니까?\n" + "내부검색어 변수에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
-            break;
-            case "innerSearch_del_alert": checkMsg = "삭제가 완료되었습니다.";
-            break;
+	        case "dynamicPage_URL_null": checkMsg = "동적페이지URL을 입력하세요.";
+	        break;
+	        case "dynamicPage_URL_check": checkMsg = "입력하신 페이지URL은\n" + "동적페이지에 해당되지 않습니다.\n" + "다시 확인 후 입력해주세요.";
+	        break;
+	        case "dynamicPage_exclude_URL_char_check": checkMsg = "?, %, = 는 제외문자로 사용하실 수 없습니다.";
+	        break;
+	        case "dynamicPage_URL_add_success": checkMsg = "등록이 완료되었습니다.";
+	        break;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
             case "menuDel_confirm": checkMsg = "메뉴를 삭제하시겠습니까?\n" + "메뉴를 삭제하면, 메뉴에 대한 분석이 중지됩니다.";
             break;
             case "pageManage_selectNull": checkMsg = "삭제할 페이지를 선택하세요.";
@@ -239,9 +237,9 @@ public class contentSetting {
   		}
   	}
 
-	@Test(priority = 0)
-	public void URLSetting_URLInclusion() {
-		System.out.println(" ! ----- URLSetting_URLInclusion Start ----- ! ");
+  	@Test(priority = 0)
+	public void Login() {
+		System.out.println(" ! ----- Login Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
@@ -265,282 +263,66 @@ public class contentSetting {
 			close();
 		}
 		$("#redirectConfBtn").click();
-		$(".input-sm").waitUntil(visible, 10000);
+		$(".input-sm", 0).waitUntil(visible, 10000);
+		System.out.println(" ! ----- Login End ----- ! ");
+	}
+	@Test(priority = 1)
+	public void URLSetting_dynamicPage_add() {
+		System.out.println(" ! ----- URLSetting_dynamicPage_add Start ----- ! ");
 		$(".accordion-toggle", 3).click();
 		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
 		$(By.linkText("URL 설정")).click();
 		$(".col-xs-5").waitUntil(visible, 10000);
-		pageLoadCheck = $(".btn-info", 0).text();
+		String pageLoadCheck = $(".btn-info", 0).text();
 		if(pageLoadCheck.equals("추가")) {
-			System.out.println(" *** URLSetting_URLInclusion Page load Success !! *** ");
+			System.out.println(" *** URLSetting_dynamicPage_add Page load Success !! *** ");
 		} else {
-			System.out.println(" *** URLSetting_URLInclusion Page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** URLSetting_dynamicPage_add Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".btn-info", 0).click();
 		$("#page-url").waitUntil(visible, 10000);
 		pageLoadCheck = $("#btn-add").text();
 		if(pageLoadCheck.equals("등록")) {
-			System.out.println(" *** URLSetting_URLInclusion register UI load Success !! *** ");
+			System.out.println(" *** URLSetting_dynamicPage_add register UI load Success !! *** ");
 		} else {
-			System.out.println(" *** URLSetting_URLInclusion register UI load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** URLSetting_dynamicPage_add register UI load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#btn-add").click();
-		valCheck(9, 7, "URL_null");
-		$("#page-url").setValue("/test");
-		$("#btn-add").click();
-		valCheck(10, 8, "URL_check");
-		$("#btn-add-cancel").click();
-		$("#btn-add").waitUntil(hidden, 10000);
-		$("#btn-list-delete").click();
-		$("#btn-list-select-delete").waitUntil(visible, 10000);
-		$("#btn-list-select-delete").click();
-		valCheck(11, 9, "URL_del_check");
-		$("#btn-add").waitUntil(hidden, 10000);
-		System.out.println(" ! ----- URLSetting_URLInclusion End ----- ! ");
-	}
-	@Test(priority = 1)
-	public void URLSetting_URLExcept_Add() {
-		System.out.println(" ! ----- URLSetting_URLExcept_Add Start ----- ! ");
-		$(By.linkText("URL제외")).click();
-		$(".col-xs-9").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".col-xs-9", 0).text();
-		if(pageLoadCheck.equals("URL 제외 문자(패턴)")) {
-			System.out.println(" *** URLSetting_URLExcept Page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_URLExcept Page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".btn-info", 0).click();
-		$("th", 0).waitUntil(visible, 10000);
-		pageLoadCheck = $("th", 0).text();
-		if(pageLoadCheck.equals("제외 문자 선택")) {
-			System.out.println(" *** URLSetting_URLInclusion register UI load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_URLInclusion register UI load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#btn-add").click();
-		valCheck(5, 3, "exceptChar_alert");
-		$(By.xpath("//div[@id='addset']/div/table/tbody/tr/td/div/div/label[4]")).click();
-		$(".gui-input").waitUntil(visible, 10000);
-		$("#btn-add").click();
-		valCheck(6, 4, "exceptChar_alert");
-		$(".input-sm", 0).setValue(date);
-		$("#btn-add").click();
-		valCheck(7, 5, "exceptAdd_confirm");
-		valCheck(8, 7, "exceptAdd_alert");
-		$("th", 0).waitUntil(hidden, 10000);
-		$(".col-xs-9", 0).waitUntil(visible, 10000);
-		pageLoadCheck = $(".col-xs-9", 0).text();
-		if(pageLoadCheck.equals("URL 제외 문자(패턴)")) {
-			System.out.println(" *** URLSetting_URLExcept_Add Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_URLExcept_Add Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- URLSetting_URLExcept_Add End ----- ! ");
-	}
-	@Test(priority = 2)
-	public void URLSetting_URLExcept_search() {
-		System.out.println(" ! ----- URLSetting_URLExcept_search Start ----- ! ");
-	    $(By.name("use_yn")).click();
-	    $(By.xpath("//option[@value='n']")).click();
-	    $("td", 8).waitUntil(visible, 10000);
-	    String pageLoadCheck = $(".col-xs-9", 0).text();
-		if(pageLoadCheck.equals("URL 제외 문자(패턴)")) {
-			System.out.println(" *** URLSetting_URLExcept_selectbox del Page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_URLExcept_selectbox del Page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".br-l-n").setValue(date);
-		$("#btn-search").click();
-		$(".muted").waitUntil(visible, 10000);
-		pageLoadCheck = $(".muted").text();
-		if(pageLoadCheck.equals("목록이 없습니다.")) {
-			System.out.println(" *** URLSetting_URLExcept delList search Page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_URLExcept delList search Page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-	    $(By.name("use_yn")).click();
-	    $(By.xpath("//option[@value='y']")).click();
-	    $(".muted").waitUntil(hidden, 10000);
-	    pageLoadCheck = $(".col-xs-9", 0).text();
-		if(pageLoadCheck.equals("URL 제외 문자(패턴)")) {
-			System.out.println(" *** URLSetting_URLExcept_selectbox set Page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_URLExcept_selectbox set Page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".br-l-n").setValue(date);
-		$("#btn-search").click();
-		$("td", 3).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 3).text();
-		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** URLSetting_URLExcept setList search Page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_URLExcept setList search Page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- URLSetting_URLExcept_search End ----- ! ");
-	}
-	@Test(priority = 3)
-	public void URLSetting_URLExcept_del() {
-		System.out.println(" ! ----- URLSetting_URLExcept_del Start ----- ! ");
-	    $("#btn-list-delete").click();
-	    $("#btn-list-select-delete").waitUntil(visible, 10000);
-	    $("#btn-list-select-delete").click();
-	    valCheck(5, 3, "delExceptCharCheck_alert");
-	    $("#inlineCheckbox1").click();
-	    $("#btn-list-select-delete").click();
-	    valCheck(6, 4, "delExceptChar_confirm");
-	    valCheck(7, 6, "delExceptChar_alert");
-		$(".muted").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".muted").text();
-		if(pageLoadCheck.equals("목록이 없습니다.")) {
-			System.out.println(" *** URLSetting_URLExcept delList search Page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_URLExcept delList search Page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- URLSetting_URLExcept_del End ----- ! ");
-	}
-	@Test(priority = 4)
-	public void URLSetting_innerSearch_add() {
-		System.out.println(" ! ----- URLSetting_innerSearch_add Start ----- ! ");
-		$(By.linkText("내부검색")).click();
-		$(".col-xs-8").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".muted").text();
-		if(pageLoadCheck.equals("목록이 없습니다.")) {
-			System.out.println(" *** URLSetting_URLExcept delList search Page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_URLExcept delList search Page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".btn-info", 0).click();
-		$("h5", 1).waitUntil(visible, 10000);
-		pageLoadCheck = $("h5", 1).text();
-		if(pageLoadCheck.equals("* 분석하고자 하는 내부검색 결과 페이지 URL을 입력합니다.")) {
-			System.out.println(" *** URLSetting_innerSearch_add UI load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_innerSearch_add UI load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#btn-add").click();
-		valCheck(4, 3, "analysisURL_null");
+		//sleep(1500);
+		valCheck(10, 7, "dynamicPage_URL_null");
 		$("#page-url").setValue("/" + date);
 		$("#btn-add").click();
-		valCheck(5, 4, "searchVar_null");
-		$(".input-sm", 1).setValue(date);
+		valCheck(11, 8, "dynamicPage_URL_check");
+		$("#page-url").setValue("http://test00011.org/search?q=123");
+		$("#page-url").setValue("/" + date + "?q=123");
+		$(".w300").setValue("=");
 		$("#btn-add").click();
-		valCheck(6, 5, "innerSearch_add_alert");
-		$(".text-nowrap", 1).waitUntil(visible, 10000);
-		pageLoadCheck = $(".text-nowrap", 1).text();
-		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** URLSetting_innerSearch_add next page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_innerSearch_add next page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- URLSetting_innerSearch_add End ----- ! ");
-	}
-	@Test(priority = 5)
-	public void URLSetting_innerSearch_duplicationAdd() {
-		System.out.println(" ! ----- URLSetting_innerSearch_duplicationAdd Start ----- ! ");
-		$(".btn-info", 0).click();
-		$("h5", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h5", 1).text();
-		if(pageLoadCheck.equals("* 분석하고자 하는 내부검색 결과 페이지 URL을 입력합니다.")) {
-			System.out.println(" *** URLSetting_innerSearch_duplicationAdd UI load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_innerSearch_duplicationAdd UI load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#page-url").setValue("/" + date);
-		$(".input-sm", 1).setValue(date);
+		sleep(20000);
+		valCheck(12, 9, "dynamicPage_exclude_URL_char_check");
+		$(".w300").setValue("test");
 		$("#btn-add").click();
-		valCheck(4, 3, "innerSearch_deplication_add_alert");
-		$("#btn-add-cancel").click();
-		System.out.println(" ! ----- URLSetting_innerSearch_duplicationAdd End ----- ! ");
+		valCheck(13, 10, "dynamicPage_URL_add_success");
+		$(".text-nowrap").waitUntil(visible, 10000);
+		System.out.println(" ! ----- URLSetting_dynamicPage_add End ----- ! ");
 	}
-	@Test(priority = 6)
-	public void URLSetting_innerSearch_search() {
-		System.out.println(" ! ----- URLSetting_innerSearch_search Start ----- ! ");
-		$(By.linkText("내부검색")).click();
-		String pageLoadCheck = $(".text-nowrap", 1).text();
-		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** URLSetting_innerSearch_search_selectbox page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_innerSearch search_selectbox load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-	    $(By.name("use_yn")).click();
-	    $(By.xpath("//option[@value='n']")).click();
-	    $(".col-xs-8").waitUntil(visible, 10000);
-		pageLoadCheck = $(".col-xs-8").text();
-		if(pageLoadCheck.equals("페이지 URL")) {
-			System.out.println(" *** URLSetting_innerSearch_search_selectbox N select page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_innerSearch_search_selectbox N select page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-	    $(".br-l-n").setValue(date);
-		$("#btn-search").click();
-		$(".muted").waitUntil(visible, 10000);
-		pageLoadCheck = $(".muted").text();
-		if(pageLoadCheck.equals("목록이 없습니다.")) {
-			System.out.println(" *** URLSetting_URLExcept delList search Page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_URLExcept delList search Page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-	    $(By.name("use_yn")).click();
-	    $(By.xpath("//option[@value='y']")).click();
-	    $(".text-nowrap", 1).waitUntil(visible, 10000);
-		pageLoadCheck = $(".text-nowrap", 1).text();
-		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** URLSetting_innerSearch_search_selectbox Y select page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_innerSearch_search_selectbox Y select load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".br-l-n").setValue(date);
-		$("#btn-search").click();
-		$("td", 5).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 5).text();
-		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** URLSetting_innerSearch setList search Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_innerSearch setList page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- URLSetting_innerSearch_search End ----- ! ");
-	}
-	@Test(priority = 7)
-	public void URLSetting_innerSearch_del() {
-		System.out.println(" ! ----- URLSetting_innerSearch_del Start ----- ! ");
-	    $("#btn-list-delete").click();
-	    $("#btn-list-select-delete").waitUntil(visible, 10000);
-	    $("#btn-list-select-delete").click();
-	    valCheck(4, 3, "innerSearch_del_null");
-	    $("#inlineCheckbox1").click();
-	    $("#btn-list-select-delete").click();
-	    valCheck(5, 4, "innerSearch_del_confirm");
-	    valCheck(6, 6, "innerSearch_del_alert");
-		$(".muted").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".muted").text();
-		if(pageLoadCheck.equals("목록이 없습니다.")) {
-			System.out.println(" *** URLSetting_innerSearch_del Page load Success !! *** ");
-		} else {
-			System.out.println(" *** URLSetting_innerSearch_del Page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- URLSetting_innerSearch_del End ----- ! ");
-	}
-	@Test(priority = 8)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Test(priority = 11)
 	public void pageGroupSetting_menuAddDel() {
 		System.out.println(" ! ----- pageGroupSetting_menuAddDel Start ----- ! ");
 	    $(By.linkText("페이지그룹 설정")).click();
@@ -560,7 +342,7 @@ public class contentSetting {
 	    valCheck(5, 5, "menuDel_confirm");
 		System.out.println(" ! ----- pageGroupSetting_menuAddDel End ----- ! ");
 	}
-	@Test(priority = 9)
+	@Test(priority = 12)
 	public void pageGroupSetting_pageManage() {
 		System.out.println(" ! ----- pageGroupSetting_pageManage Start ----- ! ");
 		brokenLinkCheck("pageDownload", "https://new.acecounter.com/setting/contents/pageGroup/downloadPage?key=&match=false&query=&use_yn=y");
@@ -580,7 +362,7 @@ public class contentSetting {
 	    valCheck(6, 7, "pageManage_selectNull");
 	    System.out.println(" ! ----- pageGroupSetting_pageManage End ----- ! ");
 	}
-	@Test(priority = 10)
+	@Test(priority = 13)
 	public void pageGroupSetting_patternRegister() {
 		System.out.println(" ! ----- pageGroupSetting_patternRegister Start ----- ! ");
 		$(By.linkText("패턴등록")).click();
@@ -601,7 +383,7 @@ public class contentSetting {
 		valCheck(10, 10, "pattern_register");
 		System.out.println(" ! ----- pageGroupSetting_patternRegister End ----- ! ");
 	}
-	@Test(priority = 11)
+	@Test(priority = 14)
 	public void pageGroupSetting_patternManagement() {
 		System.out.println(" ! ----- pageGroupSetting_patternManagement Start ----- ! ");
 		sleep(1000);
@@ -626,7 +408,7 @@ public class contentSetting {
 		valCheck(13, 14, "pattern_del_alert");
 		System.out.println(" ! ----- pageGroupSetting_patternManagement End ----- ! ");
 	}
-	@Test(priority = 12)
+	@Test(priority = 15)
 	public void pageGroupSetting_pageUpload() {
 		System.out.println(" ! ----- pageGroupSetting_pageUpload Start ----- ! ");
 		$(By.linkText("페이지업로드")).click();
@@ -640,7 +422,7 @@ public class contentSetting {
 		}
 	    System.out.println(" ! ----- pageGroupSetting_pageUpload End ----- ! ");
 	}
-	@Test(priority = 13)
+	@Test(priority = 21)
 	public void innerBanner_add() {
 		System.out.println(" ! ----- innerBanner_add Start ----- ! ");
 	    $(By.linkText("내부배너 설정")).click();
@@ -684,7 +466,7 @@ public class contentSetting {
 		}
 		System.out.println(" ! ----- innerBanner_add End ----- ! ");
 	}
-	@Test(priority = 14)
+	@Test(priority = 22)
 	public void innerBanner_duplicationAdd() {
 		System.out.println(" ! ----- innerBanner_duplicationAdd Start ----- ! ");
 		$(".btn-info", 0).click();
@@ -711,7 +493,7 @@ public class contentSetting {
 		}
 		System.out.println(" ! ----- innerBanner_duplicationAdd End ----- ! ");
 	}
-	@Test(priority = 15)
+	@Test(priority = 23)
 	public void innerBanner_search() {
 		System.out.println(" ! ----- innerBanner_search Start ----- ! ");
 	    $("#s_key").setValue(date);
@@ -734,7 +516,7 @@ public class contentSetting {
 		}
 		System.out.println(" ! ----- innerBanner_search End ----- ! ");
 	}
-	@Test(priority = 16)
+	@Test(priority = 24)
 	public void innerBanner_linkURLdownload() {
 		System.out.println(" ! ----- innerBanner_linkURLdownload Start ----- ! ");
 	    $(".btn-dark", 0).click();
@@ -750,7 +532,7 @@ public class contentSetting {
 	    $(".close", 0).click();
 		System.out.println(" ! ----- innerBanner_linkURLdownload End ----- ! ");
 	}
-	@Test(priority = 17)
+	@Test(priority = 25)
 	public void innerBanner_del() {
 		System.out.println(" ! ----- innerBanner_del Start ----- ! ");
 	    $(".btn-gray", 0).click();
@@ -778,7 +560,7 @@ public class contentSetting {
 		}
 		System.out.println(" ! ----- innerBanner_del End ----- ! ");
 	}
-	@Test(priority = 18)
+	@Test(priority = 31)
 	public void fileDownload_add() {
 		System.out.println(" ! ----- fileDownload_add Start ----- ! ");
 	    $(By.linkText("파일다운로드")).click();
@@ -814,7 +596,7 @@ public class contentSetting {
 		}
 		System.out.println(" ! ----- innerBanner_add End ----- ! ");
 	}
-	@Test(priority = 19)
+	@Test(priority = 32)
 	public void fileDownload_duplicationAdd() {
 		System.out.println(" ! ----- fileDownload_duplicationAdd Start ----- ! ");
 	    $(".btn-info", 0).click();
@@ -833,7 +615,7 @@ public class contentSetting {
 	    
 		System.out.println(" ! ----- innerBanner_duplicationAdd End ----- ! ");
 	}
-	@Test(priority = 20)
+	@Test(priority = 33)
 	public void fileDownload_search() {
 		System.out.println(" ! ----- fileDownload_search Start ----- ! ");
 	    $(By.name("use_yn")).click();
@@ -878,7 +660,7 @@ public class contentSetting {
 		}
 		System.out.println(" ! ----- innerBanner_search End ----- ! ");
 	}
-	@Test(priority = 21)
+	@Test(priority = 34)
 	public void fileDownload_del() {
 		System.out.println(" ! ----- fileDownload_del Start ----- ! ");
 	    $("#btn-list-delete").click();
@@ -900,7 +682,7 @@ public class contentSetting {
 	    
 		System.out.println(" ! ----- innerBanner_del End ----- ! ");
 	}
-	@Test(priority = 22)
+	@Test(priority = 41)
 	public void outLinkBanner_add() {
 		System.out.println(" ! ----- outLinkBanner_add Start ----- ! ");
 	    $(By.linkText("아웃링크 배너")).click();
@@ -948,7 +730,7 @@ public class contentSetting {
 		}		
 		System.out.println(" ! ----- outLinkBanner_add End ----- ! ");
 	}
-	@Test(priority = 23)
+	@Test(priority = 42)
 	public void outLinkBanner_duplicationAdd() {
 		System.out.println(" ! ----- outLinkBanner_duplicationAdd Start ----- ! ");
 	    $(".btn-info", 0).click();
@@ -977,7 +759,7 @@ public class contentSetting {
 		}		
 		System.out.println(" ! ----- outLinkBanner_duplicationAdd End ----- ! ");
 	}
-	@Test(priority = 24)
+	@Test(priority = 43)
 	public void outLinkBanner_search() {
 		System.out.println(" ! ----- outLinkBanner_search Start ----- ! ");
 	    $(By.name("use_yn")).click();
@@ -1021,7 +803,7 @@ public class contentSetting {
 	    }
 	    System.out.println(" ! ----- outLinkBanner_search End ----- ! ");
 	}
-	@Test(priority = 25)
+	@Test(priority = 44)
 	public void outLinkBanner_modify() {
 		System.out.println(" ! ----- outLinkBanner_modify Start ----- ! ");
 	    $(".br-dark", 0).click();
@@ -1049,7 +831,7 @@ public class contentSetting {
 	    }
 	    System.out.println(" ! ----- outLinkBanner_modify End ----- ! ");
 	}
-	@Test(priority = 26)
+	@Test(priority = 45)
 	public void outLinkBanner_del() {
 		System.out.println(" ! ----- outLinkBanner_del Start ----- ! ");
 	    $("#btn-list-delete").click();

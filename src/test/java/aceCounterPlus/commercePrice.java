@@ -89,7 +89,7 @@ public class commercePrice {
 	}
 	
 	public static void valCheck(int pTagNum, int btnNum, String val) {
-		//$(".modal-backdrop").waitUntil(visible, 20000);
+		//$(".modal-backdrop").waitUntil(visible, 30000);
 		sleep(1000);
 		String msgCheck = $("p", pTagNum).text();
 		switch(val){
@@ -130,7 +130,7 @@ public class commercePrice {
 	public void commercePrice_login() {
 		System.out.println(" ! ----- commercePrice_directAdd Start ----- ! ");
 		open(baseUrl);
-		$(".gnb").waitUntil(visible, 20000);
+		$(".gnb").waitUntil(visible, 30000);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
@@ -143,7 +143,7 @@ public class commercePrice {
 			close();
 		}
 		$(".go_stat", 1).click();
-		$("h3", 2).waitUntil(visible, 20000);
+		$("h3", 2).waitUntil(visible, 30000);
 		String pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
@@ -152,16 +152,16 @@ public class commercePrice {
 			close();
 		}
 		$("#redirectConfBtn").click();
-		$("#inflowAddBtn").waitUntil(visible, 20000);
+		$("#inflowAddBtn").waitUntil(visible, 30000);
 		$(".accordion-toggle", 2).click();
   	}
 	  	@Test(priority = 1)
 		public void commercePrice_directAdd() {
 		System.out.println(" ! ----- commercePrice_directAdd Start ----- ! ");
 		sleep(1000);
-		$(By.linkText("제품가격대")).waitUntil(visible, 20000);
+		$(By.linkText("제품가격대")).waitUntil(visible, 30000);
 		$(By.linkText("제품가격대")).click();
-		$("h5", 1).waitUntil(visible, 20000);
+		$("h5", 1).waitUntil(visible, 30000);
 		String pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
 			System.out.println(" *** commercePrice Page load Success !! *** ");
@@ -170,7 +170,7 @@ public class commercePrice {
 			close();
 		}
 		$(".btn-info").click();
-		$("h3", 2).waitUntil(visible, 20000);
+		$("h3", 2).waitUntil(visible, 30000);
 		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
@@ -185,7 +185,7 @@ public class commercePrice {
 		//가격대 입력여부 유효성체크가 안되서 빼둠
 		$("#priceRangeInsert").click();
 		valCheck(3, 4, "priceSetup");
-		$(".btn-xs", 0).waitUntil(visible, 20000);
+		$(".btn-xs", 0).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("1,000원 ~ 10,000원")) {
 			System.out.println(" *** commercePrice directAdd check Success !! *** ");
@@ -212,9 +212,9 @@ public class commercePrice {
 	@Test(priority = 2)
 	public void commercePrice_directAdd_modify() {
 		System.out.println(" ! ----- commercePrice_directAdd_modify Start ----- ! ");
-		$(".btn-xs", 0).waitUntil(visible, 20000);
+		$(".btn-xs", 0).waitUntil(visible, 30000);
 		$(".btn-xs", 0).click();
-		$("h3", 2).waitUntil(visible, 20000);
+		$("h3", 2).waitUntil(visible, 30000);
 		String pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice directAdd_modify Page load Success !! *** ");
@@ -229,7 +229,7 @@ public class commercePrice {
 		$("#priceRangeInsert").click();
 		valCheck(3, 4, "modifyPrice_confirm");
 		valCheck(4, 6, "modifyPrice_alert");
-		$(".btn-xs", 0).waitUntil(visible, 20000);
+		$(".btn-xs", 0).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("2,000원 ~ 20,000원")) {
 			System.out.println(" *** commercePrice directAdd modify check Success !! *** ");
@@ -256,7 +256,7 @@ public class commercePrice {
 	@Test(priority = 3)
 	public void commercePrice_directAdd_del() {
 		System.out.println(" ! ----- commercePrice_directAdd_del Start ----- ! ");
-		$(".btn-xs", 1).waitUntil(visible, 20000);
+		$(".btn-xs", 1).waitUntil(visible, 30000);
 		$(".btn-xs", 1).click();
 		valCheck(3, 3, "priceDel_confirm");
 		valCheck(4, 5, "priceDel_alert");
@@ -296,7 +296,7 @@ public class commercePrice {
 		$("#rangeProc").click();
 		$("#priceRangeInsert").click();
 		valCheck(6, 7, "priceSetup");
-		$(".btn-xs", 0).waitUntil(visible, 20000);
+		$(".btn-xs", 0).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("1,000원 ~ 10,000원")) {
 			System.out.println(" *** commercePrice autoAdd check Success !! *** ");
@@ -323,9 +323,9 @@ public class commercePrice {
 	@Test(priority = 5)
 	public void commercePrice_autoAdd_modify() throws InterruptedException {
 		System.out.println(" ! ----- commercePrice_autoAdd_modify Start ----- ! ");
-		$(".btn-xs", 0).waitUntil(visible, 20000);
+		$(".btn-xs", 0).waitUntil(visible, 30000);
 		$(".btn-xs", 0).click();
-		$("h3", 2).waitUntil(visible, 20000);
+		$("h3", 2).waitUntil(visible, 30000);
 		String pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
@@ -346,7 +346,7 @@ public class commercePrice {
 		$("#priceRangeInsert").click();
 		valCheck(6, 7, "modifyPrice_confirm");
 		valCheck(7, 9, "modifyPrice_alert");
-		$(".btn-xs", 1).waitUntil(visible, 20000);
+		$(".btn-xs", 1).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("2,000원 ~ 20,000원")) {
 			System.out.println(" *** commercePrice autoAdd modify check Success !! *** ");
@@ -373,11 +373,11 @@ public class commercePrice {
 	@Test(priority = 6)
 	public void commercePrice_autoAdd_del() {
 		System.out.println(" ! ----- commercePrice_autoAdd_del Start ----- ! ");
-		$(".btn-xs", 1).waitUntil(visible, 20000);
+		$(".btn-xs", 1).waitUntil(visible, 30000);
 		$(".btn-xs", 1).click();
 		valCheck(3, 3, "priceDel_confirm");
 		valCheck(4, 5, "priceDel_alert");
-		$("h5", 1).waitUntil(visible, 20000);
+		$("h5", 1).waitUntil(visible, 30000);
 		String	pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
 			System.out.println(" *** commercePrice_autoAdd_del Page load Success !! *** ");
@@ -393,7 +393,7 @@ public class commercePrice {
 		sleep(1000);
 		$(By.linkText("통화 단위")).click();
 		sleep(20000);
-		//$("#mViewBtn").waitUntil(visible, 20000);
+		//$("#mViewBtn").waitUntil(visible, 30000);
 		String	pageLoadCheck = $("#mViewBtn").text();
 		if(pageLoadCheck.equals("수정")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
@@ -402,7 +402,7 @@ public class commercePrice {
 			close();
 		}
 		$("#mViewBtn").click();
-		$("#modifyBtn").waitUntil(visible, 20000);
+		$("#modifyBtn").waitUntil(visible, 30000);
 		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("수정하기")) {
 			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
@@ -415,12 +415,12 @@ public class commercePrice {
 	    $(By.name("nextIso")).click();
 	    $(By.xpath("//option[@value='USD']")).click();
 		$("#modifyBtn").click();
-		sleep(1000);
+		sleep(2000);
 		valCheck(4, 4, "currencyUnit_modify_confirm");
 		sleep(1000);
 		valCheck(5, 6, "currencyUnit_modify_alert");
-		sleep(20000);
-		//$("#mViewBtn").waitUntil(visible, 20000);
+		sleep(10000);
+		$("#mViewBtn").waitUntil(visible, 30000);
 		pageLoadCheck = $("#mViewBtn").text();
 		if(pageLoadCheck.equals("수정")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
@@ -429,7 +429,7 @@ public class commercePrice {
 			close();
 		}
 		$("#mViewBtn").click();
-		$("h3", 2).waitUntil(visible, 20000);
+		$("h3", 2).waitUntil(visible, 30000);
 		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("수정하기")) {
 			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
@@ -440,11 +440,12 @@ public class commercePrice {
 	    $(By.name("nextIso")).click();
 	    $(By.xpath("//option[@value='KRW']")).click();
 		$("#modifyBtn").click(); 
+		sleep(2000);
 		valCheck(3, 3, "currencyUnit_modify_confirm");
 		sleep(1000);
 		valCheck(4, 5, "currencyUnit_modify_alert");
 		sleep(1000);
-		$("#mViewBtn").waitUntil(visible, 20000);
+		$("#mViewBtn").waitUntil(visible, 30000);
 		pageLoadCheck = $("#mViewBtn").text();
 		if(pageLoadCheck.equals("수정")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");

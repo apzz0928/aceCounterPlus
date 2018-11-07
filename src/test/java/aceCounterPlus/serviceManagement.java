@@ -425,6 +425,7 @@ public class serviceManagement {
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
+		sleep(1500);
 		//$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
 		$(".link_mail", 2).click();
@@ -836,7 +837,7 @@ public class serviceManagement {
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
-		//$(".check_type2").waitUntil(visible, 15000);
+		$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
 		$(".link_mail", 2).click();
 		switchTo().window(0);
@@ -893,7 +894,7 @@ public class serviceManagement {
 		valCheck(9, 11, "subManager_email_send");
 		switchTo().window(1);
 		refresh();
-		sleep(1500);
+		sleep(2000);
 		String pageLoadCheck = $(".tit_subject", 0).text();
 		if(pageLoadCheck.substring(22).equals("부관리자 안내 메일입니다.")) {
 			System.out.println(" *** subManager guide mail title Check Success !! *** ");
@@ -930,7 +931,7 @@ public class serviceManagement {
 		$(".ico_check", 0).waitUntil(visible, 15000);
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
-		sleep(500);
+		sleep(1500);
 		//$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
 		$(".link_mail", 2).click();

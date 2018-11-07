@@ -95,7 +95,7 @@ public class temporarily_2 {
 	}
 	
 	public static void valCheck(int pTagNum, int btnNum, String val) {
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		$(".modal-backdrop").waitUntil(visible, 20000);
 		String msgCheck = $("p", pTagNum).text();
         switch(val){
             case "dynamicPage_URL_null": checkMsg = "동적페이지URL을 입력하세요.";
@@ -221,13 +221,19 @@ public class temporarily_2 {
 		Thread.onSpinWait();
 		if(msgCheck.equals(checkMsg)) {
 			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Success !! *** ");
+			System.out.println("msgCheck is : " + msgCheck);
+			System.out.println("checkMsg is : " + checkMsg);
 			$(".btn-sm", btnNum).click();
 		    $(".modal-backdrop").waitUntil(hidden, 10000);
 		} else if (msgCheck.isEmpty()) {
 			System.out.println(" *** ☆★☆★☆★ pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+			System.out.println("msgCheck is : " + msgCheck);
+			System.out.println("checkMsg is : " + checkMsg);
 			close();
 		} else {
 			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Fail ... !@#$%^&*() *** ");
+			System.out.println("msgCheck is : " + msgCheck);
+			System.out.println("checkMsg is : " + checkMsg);
 			close();
 		}
 	}
@@ -258,10 +264,9 @@ public class temporarily_2 {
   		} catch (InterruptedException ex) {
   		}
   	}
-
 	@Test(priority = 0)
-	public void URLSetting_dynamicPage_add() {
-		System.out.println(" ! ----- URLSetting_dynamicPage_add Start ----- ! ");
+	public void URLSetting_Login() {
+		System.out.println(" ! ----- URLSetting_Login Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
@@ -285,12 +290,17 @@ public class temporarily_2 {
 			close();
 		}
 		$("#redirectConfBtn").click();
-		$(".input-sm").waitUntil(visible, 10000);
+		$(".input-sm", 0).waitUntil(visible, 10000);
+		System.out.println(" ! ----- URLSetting_Login End ----- ! ");
+	}
+	@Test(priority = 1)
+	public void URLSetting_dynamicPage_add() {
+		System.out.println(" ! ----- URLSetting_dynamicPage_add Start ----- ! ");
 		$(".accordion-toggle", 3).click();
 		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
 		$(By.linkText("URL 설정")).click();
 		$(".col-xs-5").waitUntil(visible, 10000);
-		pageLoadCheck = $(".btn-info", 0).text();
+		String pageLoadCheck = $(".btn-info", 0).text();
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** URLSetting_dynamicPage_add Page load Success !! *** ");
 		} else {
@@ -307,28 +317,24 @@ public class temporarily_2 {
 			close();
 		}
 		$("#btn-add").click();
+		//sleep(1500);
 		valCheck(10, 7, "dynamicPage_URL_null");
-		$("#page-url").setValue("/test");
+		$("#page-url").setValue("/" + date);
 		$("#btn-add").click();
 		valCheck(11, 8, "dynamicPage_URL_check");
 		$("#page-url").setValue("http://test00011.org/search?q=123");
+		$("#page-url").setValue("/" + date + "?q=123");
 		$(".w300").setValue("=");
 		$("#btn-add").click();
+		sleep(20000);
 		valCheck(12, 9, "dynamicPage_exclude_URL_char_check");
 		$(".w300").setValue("test");
 		$("#btn-add").click();
 		valCheck(13, 10, "dynamicPage_URL_add_success");
 		$(".text-nowrap").waitUntil(visible, 10000);
-		
-		
-		
-		
-		
-		
-		
-		System.out.println(" ! ----- URLSetting_URLInclusion End ----- ! ");
+		System.out.println(" ! ----- URLSetting_dynamicPage_add End ----- ! ");
 	}
-	@Test(priority = 1)
+	@Test(priority = 2)
 	public void URLSetting_URLExcept_Add() {
 		System.out.println(" ! ----- URLSetting_URLExcept_Add Start ----- ! ");
 		$(By.linkText("URL제외")).click();
@@ -370,7 +376,7 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- URLSetting_URLExcept_Add End ----- ! ");
 	}
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public void URLSetting_URLExcept_search() {
 		System.out.println(" ! ----- URLSetting_URLExcept_search Start ----- ! ");
 	    $(By.name("use_yn")).click();
@@ -415,7 +421,7 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- URLSetting_URLExcept_search End ----- ! ");
 	}
-	@Test(priority = 3)
+	@Test(priority = 4)
 	public void URLSetting_URLExcept_del() {
 		System.out.println(" ! ----- URLSetting_URLExcept_del Start ----- ! ");
 	    $("#btn-list-delete").click();
@@ -436,7 +442,7 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- URLSetting_URLExcept_del End ----- ! ");
 	}
-	@Test(priority = 4)
+	@Test(priority = 5)
 	public void URLSetting_innerSearch_add() {
 		System.out.println(" ! ----- URLSetting_innerSearch_add Start ----- ! ");
 		$(By.linkText("내부검색")).click();
@@ -475,7 +481,7 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- URLSetting_innerSearch_add End ----- ! ");
 	}
-	@Test(priority = 5)
+	@Test(priority = 6)
 	public void URLSetting_innerSearch_duplicationAdd() {
 		System.out.println(" ! ----- URLSetting_innerSearch_duplicationAdd Start ----- ! ");
 		$(".btn-info", 0).click();
@@ -494,7 +500,7 @@ public class temporarily_2 {
 		$("#btn-add-cancel").click();
 		System.out.println(" ! ----- URLSetting_innerSearch_duplicationAdd End ----- ! ");
 	}
-	@Test(priority = 6)
+	@Test(priority = 7)
 	public void URLSetting_innerSearch_search() {
 		System.out.println(" ! ----- URLSetting_innerSearch_search Start ----- ! ");
 		$(By.linkText("내부검색")).click();
@@ -547,7 +553,7 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- URLSetting_innerSearch_search End ----- ! ");
 	}
-	@Test(priority = 7)
+	@Test(priority = 8)
 	public void URLSetting_innerSearch_del() {
 		System.out.println(" ! ----- URLSetting_innerSearch_del Start ----- ! ");
 	    $("#btn-list-delete").click();
