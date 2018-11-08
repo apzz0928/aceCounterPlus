@@ -90,6 +90,7 @@ public class userSetting {
 	
 	public static void valCheck(int pTagNum, int btnNum, String val) {
 	    $(".modal-backdrop").waitUntil(visible, 10000);
+		$("p", pTagNum).click();
 	    String msgCheck = $("p", pTagNum).text();
 	    switch(val){
 	      case "CheckIP": checkMsg = "IP를 입력하세요.";

@@ -95,8 +95,9 @@ public class inhouseMarketingSetting {
 	}
 	
 	public static void valCheck(int pTagNum, int btnNum, String val) {
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		String msgCheck = $("p", pTagNum).text();
+	    $(".modal-backdrop").waitUntil(visible, 10000);
+		$("p", pTagNum).click();
+	    String msgCheck = $("p", pTagNum).text();
         switch(val){
             case "viralAdd_cmpName_null": checkMsg = "캠페인명을 입력하세요.";
             break;

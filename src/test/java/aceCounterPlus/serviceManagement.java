@@ -104,8 +104,9 @@ public class serviceManagement {
 	}
 
 	public static void valCheck(int pTagNum, int btnNum, String val) {
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		String msgCheck = $("p", pTagNum).text();
+	    $(".modal-backdrop").waitUntil(visible, 10000);
+		$("p", pTagNum).click();
+	    String msgCheck = $("p", pTagNum).text();
 		switch (val) {
 		case "scriptList_email_null":
 			checkMsg = "수신 이메일을 입력해 주세요.";

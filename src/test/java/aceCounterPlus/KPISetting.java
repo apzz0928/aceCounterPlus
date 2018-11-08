@@ -95,8 +95,9 @@ public class KPISetting {
 	}
 	
 	public static void valCheck(int pTagNum, int btnNum, String val) {
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		String msgCheck = $("p", pTagNum).text();
+	    $(".modal-backdrop").waitUntil(visible, 10000);
+		$("p", pTagNum).click();
+	    String msgCheck = $("p", pTagNum).text();
         switch(val){
             case "KPIAdd_reporeName_null": checkMsg = "리포트명을 선택하세요.";
             break;

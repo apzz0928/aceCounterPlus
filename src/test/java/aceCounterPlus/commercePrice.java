@@ -89,9 +89,9 @@ public class commercePrice {
 	}
 	
 	public static void valCheck(int pTagNum, int btnNum, String val) {
-		//$(".modal-backdrop").waitUntil(visible, 30000);
-		sleep(1000);
-		String msgCheck = $("p", pTagNum).text();
+	    $(".modal-backdrop").waitUntil(visible, 10000);
+		$("p", pTagNum).click();
+	    String msgCheck = $("p", pTagNum).text();
 		switch(val){
 		    case "priceSetup": checkMsg = "등록이 완료되었습니다.";
 		    break;

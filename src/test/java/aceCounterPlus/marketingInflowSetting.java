@@ -93,6 +93,7 @@ public class marketingInflowSetting {
 	}
 	public static void valCheck(int pTagNum, int btnNum, String val) {
 	    $(".modal-backdrop").waitUntil(visible, 10000);
+		$("p", pTagNum).click();
 	    String msgCheck = $("p", pTagNum).text();
 	    switch(val){
 	      case "mktInflowSetting_add_cmpName_null": checkMsg = "캠페인명을 입력해주세요.";
