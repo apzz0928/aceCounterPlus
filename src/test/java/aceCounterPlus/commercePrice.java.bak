@@ -1,4 +1,4 @@
-package aceCounterPlus; //Ä¿¸Ó½º ¼³Á¤ > (Á¦Ç°°¡°Ý´ë, ÅëÈ­´ÜÀ§)
+package aceCounterPlus; //Ä¿ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½ > (ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ï¿½, ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½)
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -30,7 +30,7 @@ public class commercePrice {
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
 	
-	//½Å±Ô°¡ÀÔÇÒ¶§¸¶´Ù number¸¦ º¯°æÇØÁà¾ßÇØ¼­ id+¿ùÀÏ½ÃºÐÃÊ ·Î º¯°æ¾øÀÌ °¡ÀÔ °¡´ÉÇÏµµ·Ï Ãß°¡
+	//ï¿½Å±Ô°ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½ï¿½ numberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ id+ï¿½ï¿½ï¿½Ï½Ãºï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 	Date number_date = new Date();
     SimpleDateFormat number_format = new SimpleDateFormat("MMddhhmmss");
     String date = number_format.format(number_date);
@@ -78,10 +78,10 @@ public class commercePrice {
 			/*InternetExplorerOptions options = new InternetExplorerOptions();
 			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.internetExplorer();
-			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // º¸¾È¼³Á¤ º¯°æ
-			cap.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false); // ie text ÀÔ·Â ¼Óµµ Çâ»óÀ» À§ÇÑ ºÎºÐ
-			cap.setCapability("requireWindowFocus", true); // ie text ÀÔ·Â ¼Óµµ Çâ»óÀ» À§ÇÑ ºÎºÐ
-			cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true); // ie Ä³½Ã »èÁ¦¸¦ À§ÇÑ ºÎºÐ
+			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			cap.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false); // ie text ï¿½Ô·ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½
+			cap.setCapability("requireWindowFocus", true); // ie text ï¿½Ô·ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½
+			cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true); // ie Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
@@ -93,27 +93,27 @@ public class commercePrice {
 		sleep(1000);
 		String msgCheck = $("p", pTagNum).text();
 		switch(val){
-		    case "priceSetup": checkMsg = "µî·ÏÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+		    case "priceSetup": checkMsg = "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 		    break;
-		    case "modifyPrice_confirm": checkMsg = "¼öÁ¤ÇÏ½Ã°Ú½À´Ï±î?\n" + "Á¦Ç°°¡°Ý´ë¸¦ ¼öÁ¤ÇÏ½Ç °æ¿ì ±âÁ¸ µ¥ÀÌÅÍµµ ÇÔ²² º¯°æµË´Ï´Ù.";
+		    case "modifyPrice_confirm": checkMsg = "ï¿½ï¿½ï¿½ï¿½ï¿½Ï½Ã°Ú½ï¿½ï¿½Ï±ï¿½?\n" + "ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ë¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ ï¿½Ô²ï¿½ ï¿½ï¿½ï¿½ï¿½Ë´Ï´ï¿½.";
 		    break;
-		    case "modifyPrice_alert": checkMsg = "¼öÁ¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+		    case "modifyPrice_alert": checkMsg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 		    break;
-		    case "priceDel_confirm": checkMsg = "Ç×¸ñÀ» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?";
+		    case "priceDel_confirm": checkMsg = "ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï½Ã°Ú½ï¿½ï¿½Ï±ï¿½?";
 		    break;
-		    case "priceDel_alert": checkMsg = "»èÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+		    case "priceDel_alert": checkMsg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 		    break;
-		    case "minPrice_alert": checkMsg = "ÃÖÀú°¡°ÝÀ» ÀÔ·ÂÇÏ¼¼¿ä.";
+		    case "minPrice_alert": checkMsg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.";
 		    break;
-		    case "maxPrice_alert": checkMsg = "ÃÖ°í°¡°ÝÀ» ÀÔ·ÂÇÏ¼¼¿ä.";
+		    case "maxPrice_alert": checkMsg = "ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.";
 		    break;
-		    case "min>maxPrice_alert": checkMsg = "¿Ã¹Ù¸¥ °¡°Ý¼³Á¤ÀÌ ¾Æ´Õ´Ï´Ù.";
+		    case "min>maxPrice_alert": checkMsg = "ï¿½Ã¹Ù¸ï¿½ ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Õ´Ï´ï¿½.";
 		    break;
-		    case "currencyUnit_alert": checkMsg = "¼³Á¤µÈ ÅëÈ­ ´ÜÀ§°ª°ú µ¿ÀÏÇÕ´Ï´Ù.\n" + "´Ù½Ã ¼±ÅÃÇØÁÖ¼¼¿ä.";
+		    case "currencyUnit_alert": checkMsg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.\n" + "ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.";
 		    break;
-		    case "currencyUnit_modify_confirm": checkMsg = "Åë°è Ç¥±â ÅëÈ­ ´ÜÀ§¸¦ ¼öÁ¤ÇÏ½Ã°Ú½À´Ï±î?";
+		    case "currencyUnit_modify_confirm": checkMsg = "ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï½Ã°Ú½ï¿½ï¿½Ï±ï¿½?";
 		    break;
-		    case "currencyUnit_modify_alert": checkMsg = "¼öÁ¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+		    case "currencyUnit_modify_alert": checkMsg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 		    break;
 	    }
 		if(msgCheck.equals(checkMsg)) {
@@ -136,7 +136,7 @@ public class commercePrice {
 		$(".btn_login").click();
 		String loginCheck = $(".btn_logout").text();
 		$(".btn_logout").getValue();
-		if(loginCheck.equals("·Î±×¾Æ¿ô")) {
+		if(loginCheck.equals("ï¿½Î±×¾Æ¿ï¿½")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
 			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
@@ -145,7 +145,7 @@ public class commercePrice {
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 30000);
 		String pageLoadCheck = $("h3", 2).text();
-		if(pageLoadCheck.equals("¹æ¹®¼ö")) {
+		if(pageLoadCheck.equals("ï¿½æ¹®ï¿½ï¿½")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
 			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
@@ -159,11 +159,11 @@ public class commercePrice {
 		public void commercePrice_directAdd() {
 		System.out.println(" ! ----- commercePrice_directAdd Start ----- ! ");
 		sleep(1000);
-		$(By.linkText("Á¦Ç°°¡°Ý´ë")).waitUntil(visible, 30000);
-		$(By.linkText("Á¦Ç°°¡°Ý´ë")).click();
+		$(By.linkText("ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ï¿½")).waitUntil(visible, 30000);
+		$(By.linkText("ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ï¿½")).click();
 		$("h5", 1).waitUntil(visible, 30000);
 		String pageLoadCheck = $("h5", 1).text();
-		if(pageLoadCheck.equals("µî·ÏµÈ Á¦Ç°°¡°Ý´ë°¡ ¾ø½À´Ï´Ù.")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½Ïµï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ë°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.")) {
 			System.out.println(" *** commercePrice Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commercePrice Page load Fail ... !@#$%^&*() *** ");
@@ -172,7 +172,7 @@ public class commercePrice {
 		$(".btn-info").click();
 		$("h3", 2).waitUntil(visible, 30000);
 		pageLoadCheck = $("h3", 2).text();
-		if(pageLoadCheck.equals("Á¦Ç°°¡°Ý´ë ½Å±Ôµî·Ï")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ï¿½ ï¿½Å±Ôµï¿½ï¿½")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commercePrice add Page load Fail ... !@#$%^&*() *** ");
@@ -182,18 +182,18 @@ public class commercePrice {
 		$(".input-sm", 4).setValue("5000");
 		$(".input-sm", 5).setValue("5001");
 		$(".input-sm", 6).setValue("10000");
-		//°¡°Ý´ë ÀÔ·Â¿©ºÎ À¯È¿¼ºÃ¼Å©°¡ ¾ÈµÇ¼­ »©µÒ
+		//ï¿½ï¿½ï¿½Ý´ï¿½ ï¿½Ô·Â¿ï¿½ï¿½ï¿½ ï¿½ï¿½È¿ï¿½ï¿½Ã¼Å©ï¿½ï¿½ ï¿½ÈµÇ¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 		$("#priceRangeInsert").click();
 		valCheck(3, 4, "priceSetup");
 		$(".btn-xs", 0).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
-		if(pageLoadCheck.equals("1,000¿ø ~ 10,000¿ø")) {
+		if(pageLoadCheck.equals("1,000ï¿½ï¿½ ~ 10,000ï¿½ï¿½")) {
 			System.out.println(" *** commercePrice directAdd check Success !! *** ");
 			pageLoadCheck = $("td", 7).text();
-			if(pageLoadCheck.equals("1,000¿ø ~ 5,000¿ø")) {
+			if(pageLoadCheck.equals("1,000ï¿½ï¿½ ~ 5,000ï¿½ï¿½")) {
 				System.out.println(" *** commercePrice directAdd oneStepPrice check Success !! *** ");
 				pageLoadCheck = $("td", 9).text();
-				if(pageLoadCheck.equals("5,001¿ø ~ 10,000¿ø")) {
+				if(pageLoadCheck.equals("5,001ï¿½ï¿½ ~ 10,000ï¿½ï¿½")) {
 					System.out.println(" *** commercePrice directAdd twoStepPrice check Success !! *** ");
 				} else {
 					System.out.println(" *** commercePrice directAdd twoStepPrice check Fail ... !@#$%^&*() *** ");
@@ -216,7 +216,7 @@ public class commercePrice {
 		$(".btn-xs", 0).click();
 		$("h3", 2).waitUntil(visible, 30000);
 		String pageLoadCheck = $("h3", 2).text();
-		if(pageLoadCheck.equals("Á¦Ç°°¡°Ý´ë ½Å±Ôµî·Ï")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ï¿½ ï¿½Å±Ôµï¿½ï¿½")) {
 			System.out.println(" *** commercePrice directAdd_modify Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commercePrice directAdd_modify Page load Fail ... !@#$%^&*() *** ");
@@ -231,13 +231,13 @@ public class commercePrice {
 		valCheck(4, 6, "modifyPrice_alert");
 		$(".btn-xs", 0).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
-		if(pageLoadCheck.equals("2,000¿ø ~ 20,000¿ø")) {
+		if(pageLoadCheck.equals("2,000ï¿½ï¿½ ~ 20,000ï¿½ï¿½")) {
 			System.out.println(" *** commercePrice directAdd modify check Success !! *** ");
 			pageLoadCheck = $("td", 7).text();
-			if(pageLoadCheck.equals("2,000¿ø ~ 10,000¿ø")) {
+			if(pageLoadCheck.equals("2,000ï¿½ï¿½ ~ 10,000ï¿½ï¿½")) {
 				System.out.println(" *** commercePrice directAdd modify oneStepPrice check Success !! *** ");
 				pageLoadCheck = $("td", 9).text();
-				if(pageLoadCheck.equals("10,001¿ø ~ 20,000¿ø")) {
+				if(pageLoadCheck.equals("10,001ï¿½ï¿½ ~ 20,000ï¿½ï¿½")) {
 					System.out.println(" *** commercePrice directAdd modify twoStepPrice check Success !! *** ");
 				} else {
 					System.out.println(" *** commercePrice directAdd modify twoStepPrice check Fail ... !@#$%^&*() *** ");
@@ -262,7 +262,7 @@ public class commercePrice {
 		valCheck(4, 5, "priceDel_alert");
 		$(".btn-xs", 0).waitUntil(hidden, 10000);
 		String	pageLoadCheck = $("h5", 1).text();
-		if(pageLoadCheck.equals("µî·ÏµÈ Á¦Ç°°¡°Ý´ë°¡ ¾ø½À´Ï´Ù.")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½Ïµï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ë°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.")) {
 			System.out.println(" *** commercePrice_directAdd_del Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commercePrice_directAdd_del Page load Fail ... !@#$%^&*() *** ");
@@ -276,7 +276,7 @@ public class commercePrice {
 		$(".btn-info").click();
 		$("h3", 2).waitUntil(visible, 3000);
 		String pageLoadCheck = $("h3", 2).text();
-		if(pageLoadCheck.equals("Á¦Ç°°¡°Ý´ë ½Å±Ôµî·Ï")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ï¿½ ï¿½Å±Ôµï¿½ï¿½")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commercePrice add Page load Fail ... !@#$%^&*() *** ");
@@ -298,13 +298,13 @@ public class commercePrice {
 		valCheck(6, 7, "priceSetup");
 		$(".btn-xs", 0).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
-		if(pageLoadCheck.equals("1,000¿ø ~ 10,000¿ø")) {
+		if(pageLoadCheck.equals("1,000ï¿½ï¿½ ~ 10,000ï¿½ï¿½")) {
 			System.out.println(" *** commercePrice autoAdd check Success !! *** ");
 			pageLoadCheck = $("td", 7).text();
-			if(pageLoadCheck.equals("1,000¿ø ~ 5,500¿ø")) {
+			if(pageLoadCheck.equals("1,000ï¿½ï¿½ ~ 5,500ï¿½ï¿½")) {
 				System.out.println(" *** commercePrice autoAdd oneStepPrice check Success !! *** ");
 				pageLoadCheck = $("td", 9).text();
-				if(pageLoadCheck.equals("5,501¿ø ~ 10,000¿ø")) {
+				if(pageLoadCheck.equals("5,501ï¿½ï¿½ ~ 10,000ï¿½ï¿½")) {
 					System.out.println(" *** commercePrice autoAdd twoStepPrice check Success !! *** ");
 				} else {
 					System.out.println(" *** commercePrice autoAdd twoStepPrice check Fail ... !@#$%^&*() *** ");
@@ -327,7 +327,7 @@ public class commercePrice {
 		$(".btn-xs", 0).click();
 		$("h3", 2).waitUntil(visible, 30000);
 		String pageLoadCheck = $("h3", 2).text();
-		if(pageLoadCheck.equals("Á¦Ç°°¡°Ý´ë ½Å±Ôµî·Ï")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ï¿½ ï¿½Å±Ôµï¿½ï¿½")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commercePrice add Page load Fail ... !@#$%^&*() *** ");
@@ -348,13 +348,13 @@ public class commercePrice {
 		valCheck(7, 9, "modifyPrice_alert");
 		$(".btn-xs", 1).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
-		if(pageLoadCheck.equals("2,000¿ø ~ 20,000¿ø")) {
+		if(pageLoadCheck.equals("2,000ï¿½ï¿½ ~ 20,000ï¿½ï¿½")) {
 			System.out.println(" *** commercePrice autoAdd modify check Success !! *** ");
 			pageLoadCheck = $("td", 7).text();
-			if(pageLoadCheck.equals("2,000¿ø ~ 11,000¿ø")) {
+			if(pageLoadCheck.equals("2,000ï¿½ï¿½ ~ 11,000ï¿½ï¿½")) {
 				System.out.println(" *** commercePrice autoAdd oneStepPrice modify check Success !! *** ");
 				pageLoadCheck = $("td", 9).text();
-				if(pageLoadCheck.equals("11,001¿ø ~ 20,000¿ø")) {
+				if(pageLoadCheck.equals("11,001ï¿½ï¿½ ~ 20,000ï¿½ï¿½")) {
 					System.out.println(" *** commercePrice autoAdd twoStepPrice modify check Success !! *** ");
 				} else {
 					System.out.println(" *** commercePrice autoAdd twoStepPrice modify check Fail ... !@#$%^&*() *** ");
@@ -379,7 +379,7 @@ public class commercePrice {
 		valCheck(4, 5, "priceDel_alert");
 		$("h5", 1).waitUntil(visible, 30000);
 		String	pageLoadCheck = $("h5", 1).text();
-		if(pageLoadCheck.equals("µî·ÏµÈ Á¦Ç°°¡°Ý´ë°¡ ¾ø½À´Ï´Ù.")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½Ïµï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ý´ë°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.")) {
 			System.out.println(" *** commercePrice_autoAdd_del Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commercePrice_autoAdd_del Page load Fail ... !@#$%^&*() *** ");
@@ -391,11 +391,11 @@ public class commercePrice {
 	public void commerce_currencyUnit() {
 		System.out.println(" ! ----- commerce_currencyUnit Start ----- ! ");
 		sleep(1000);
-		$(By.linkText("ÅëÈ­ ´ÜÀ§")).click();
+		$(By.linkText("ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½")).click();
 		sleep(20000);
 		//$("#mViewBtn").waitUntil(visible, 30000);
 		String	pageLoadCheck = $("#mViewBtn").text();
-		if(pageLoadCheck.equals("¼öÁ¤")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½ï¿½ï¿½")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
@@ -404,7 +404,7 @@ public class commercePrice {
 		$("#mViewBtn").click();
 		$("#modifyBtn").waitUntil(visible, 30000);
 		pageLoadCheck = $("h3", 2).text();
-		if(pageLoadCheck.equals("¼öÁ¤ÇÏ±â")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½")) {
 			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commerce_currencyUnit_modify Page load Fail ... !@#$%^&*() *** ");
@@ -422,7 +422,7 @@ public class commercePrice {
 		sleep(10000);
 		$("#mViewBtn").waitUntil(visible, 30000);
 		pageLoadCheck = $("#mViewBtn").text();
-		if(pageLoadCheck.equals("¼öÁ¤")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½ï¿½ï¿½")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
@@ -431,7 +431,7 @@ public class commercePrice {
 		$("#mViewBtn").click();
 		$("h3", 2).waitUntil(visible, 30000);
 		pageLoadCheck = $("h3", 2).text();
-		if(pageLoadCheck.equals("¼öÁ¤ÇÏ±â")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½")) {
 			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commerce_currencyUnit_modify Page load Fail ... !@#$%^&*() *** ");
@@ -447,7 +447,7 @@ public class commercePrice {
 		sleep(1000);
 		$("#mViewBtn").waitUntil(visible, 30000);
 		pageLoadCheck = $("#mViewBtn").text();
-		if(pageLoadCheck.equals("¼öÁ¤")) {
+		if(pageLoadCheck.equals("ï¿½ï¿½ï¿½ï¿½")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
 		} else {
 			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");

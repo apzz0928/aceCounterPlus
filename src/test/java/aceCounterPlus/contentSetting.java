@@ -117,13 +117,13 @@ public class contentSetting {
 	        break;                 
 	        case "URL_Setting_dynamicPage_delete_alert": checkMsg = "삭제가 완료되었습니다.";
 	        break;                 
-	        case "6": checkMsg = " ";
+	        case "URL_Setting_pageChange_searchReq_null": checkMsg = "페이지 검색 조건을 입력하세요.";
 	        break;                 
-	        case "7": checkMsg = " ";
+	        case "URL_Setting_pageChange_URL_regexp": checkMsg = "페이지 검색 조건에 정규식이 포함되어 있지 않습니다.\n" + "다시 확인하세요.";
 	        break;                 
-	        case "": checkMsg = "" ;
+	        case "URL_Setting_pageChange_pageURL_null": checkMsg = "교체할 페이지URL을 입력하세요." ;
 	        break;                 
-	        case "8": checkMsg = " ";
+	        case "URL_Setting_pageChange_URL_add": checkMsg = "등록이 완료되었습니다.";
 	        break;                 
 	        case "9": checkMsg = " ";
 	        break;                 
@@ -294,12 +294,15 @@ public class contentSetting {
 		}
 		$("#redirectConfBtn").click();
 		$(".input-sm", 0).waitUntil(visible, 10000);
+		$(".accordion-toggle", 3).click();
+		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
+		$(By.linkText("URL 설정")).click();
+		$(".col-xs-5").waitUntil(visible, 10000);
 		System.out.println(" ! ----- Login End ----- ! ");
 	}
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void URLSetting_dynamicPage_add() {
 		System.out.println(" ! ----- URLSetting_dynamicPage_add Start ----- ! ");
-		$(".accordion-toggle", 3).click();
 		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
 		$(By.linkText("URL 설정")).click();
 		$(".col-xs-5").waitUntil(visible, 10000);
@@ -335,7 +338,7 @@ public class contentSetting {
 		$(".text-nowrap").waitUntil(visible, 10000);
 		System.out.println(" ! ----- URLSetting_dynamicPage_add End ----- ! ");
 	}
-	@Test(priority = 2)
+	//@Test(priority = 2)
 	public void URLSetting_dynamicPage_update() {
 		System.out.println(" ! ----- URLSetting_dynamicPage_update Start ----- ! ");
 		$(".btn-info", 0).waitUntil(visible, 10000);
@@ -356,7 +359,7 @@ public class contentSetting {
 		$(".text-nowrap").waitUntil(visible, 10000);
 		System.out.println(" ! ----- URLSetting_dynamicPage_update End ----- ! ");
 	}
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void URLSetting_dynamicPage_modify() {
 		System.out.println(" ! ----- URLSetting_dynamicPage_modify Start ----- ! ");
 		$("#btn-add").waitUntil(hidden, 10000);
@@ -376,7 +379,7 @@ public class contentSetting {
 		$(".text-nowrap").waitUntil(visible, 10000);
 		System.out.println(" ! ----- URLSetting_dynamicPage_modify End ----- ! ");
 	}
-	@Test(priority = 4)
+	//@Test(priority = 4)
 	public void URLSetting_dynamicPage_delete() {
 		System.out.println(" ! ----- URLSetting_dynamicPage_delete Start ----- ! ");
 		$("#btn-search", 0).waitUntil(visible, 10000);
@@ -419,10 +422,69 @@ public class contentSetting {
 	@Test(priority = 5)
 	public void URLSetting_pageChange_add() {
 		System.out.println(" ! ----- URLSetting_pageChange_add Start ----- ! ");
-		
+		$(By.linkText("페이지 교체")).click();
+		$("th", 5).waitUntil(visible, 10000);
+		String pageLoadCheck = $("th", 5).text();
+		if(pageLoadCheck.equals("페이지 검색 조건")) {
+			System.out.println(" *** URLSetting_pageChange_add Page load Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_pageChange_add Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".btn-info", 0).click();
+		$("#btn-add").waitUntil(visible, 10000);
+		$("#btn-add").click();
+		valCheck(4, 3, "URL_Setting_pageChange_searchReq_null");
+		$(By.name("targetPage")).setValue(date);
+		$("#btn-add").click();
+		valCheck(5, 4, "URL_Setting_pageChange_URL_regexp");
+		$(By.name("targetPage")).setValue("/" + date + "/[0-9]*");
+		$("#btn-add").click();
+		valCheck(6, 5, "URL_Setting_pageChange_pageURL_null");
+		$(By.name("replacementPage")).setValue("/" + date);
+		$("#btn-add").click();
+		valCheck(7, 6, "URL_Setting_pageChange_URL_add");
+		$("#list-page-param-0").waitUntil(visible, 10000);
+		pageLoadCheck = $("#list-page-param-0").text();
+		if(pageLoadCheck.equals("/" + date)) {
+			System.out.println(" *** URLSetting_pageChange_add Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_pageChange_add Fail ... !@#$%^&*() *** ");
+			close();
+		}
 		System.out.println(" ! ----- URLSetting_pageChange_add End ----- ! ");
 	}
-	
+	@Test(priority = 6)
+	public void URLSetting_pageChange_delete() {
+		System.out.println(" ! ----- URLSetting_pageChange_delete Start ----- ! ");
+		$(".br-l-n").setValue(date + "a");
+		$("#btn-search").click();
+		$("td", 5).waitUntil(hidden, 10000);
+		$("td", 3).waitUntil(visible, 10000);
+		String pageLoadCheck = $("td", 3).text();
+		if(pageLoadCheck.equals("등록된 페이지 교체가 없습니다.\n" + "추가를 클릭해 페이지 교체를 등록하세요.\n" + "* 동일한 패턴을 가진 페이지들에 대해 하나의 페이지로 교체하여 분석을 원하시는 경우 설정해주세요.")) {
+			System.out.println(" *** URLSetting_pageChange_No Search Result Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_pageChange_No Search Result Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".br-l-n").setValue(date);
+		$("#btn-search").click();
+		$("td", 5).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 5).text();
+		String[] pLC = pageLoadCheck.split("/");
+		if(pLC[1].equals(date)) {
+			System.out.println(" *** URLSetting_pageChange_Search Result Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_pageChange_Search Result Fail ... !@#$%^&*() *** ");
+		}
+		
+		
+		
+		
+		
+		System.out.println(" ! ----- URLSetting_pageChange_delete End ----- ! ");
+	}
 	
 	
 	
