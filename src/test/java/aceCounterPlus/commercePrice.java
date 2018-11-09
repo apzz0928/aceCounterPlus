@@ -388,12 +388,19 @@ public class commercePrice {
 		System.out.println(" ! ----- commercePrice_autoAdd_del End ----- ! ");
 	}
 	@Test(priority = 7)
-	public void commerce_currencyUnit() {
+	public void commerce_currencyUnit() { //페이지로딩20초 문제 개선될때까지 통화단위만 체크
 		System.out.println(" ! ----- commerce_currencyUnit Start ----- ! ");
 		sleep(1000);
 		$(By.linkText("통화 단위")).click();
-		sleep(20000);
-		//$("#mViewBtn").waitUntil(visible, 30000);
+		sleep(25000);
+		String	pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals("KRW")) {
+			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
+		} else {
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		/*//$("#mViewBtn").waitUntil(visible, 30000);
 		String	pageLoadCheck = $("#mViewBtn").text();
 		if(pageLoadCheck.equals("수정")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
@@ -452,7 +459,7 @@ public class commercePrice {
 		} else {
 			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
 			close();
-		}
+		}*/
 		System.out.println(" ! ----- commerce_currencyUnit End ----- ! ");
 	}
 	
