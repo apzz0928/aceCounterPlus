@@ -139,39 +139,43 @@ public class userSetting {
 			close();
 		}
 	}
-
 	@Test(priority = 0)
-	public void IPFilterring_add() {
-		System.out.println(" ! ----- IPFilterring_add Start ----- ! ");
+	public void Login() {
+		System.out.println(" ! ----- Login Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
-		String loginCheck = $(".btn_logout").text();
+		String loginCheck = $(".btn_logout").text().trim();
 		$(".btn_logout").getValue();
 		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
-			System.out.println(" *** Login Fail ... *** ");
+			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text();
+		String pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
-			System.out.println(" *** statsLiveDashboard Page access Fail ... *** ");
+			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		System.out.println(" ! ----- Login End ----- ! ");
+	}
+	@Test(priority = 1)
+	public void IPFilterring_add() {
+		System.out.println(" ! ----- IPFilterring_add Start ----- ! ");
 		$("#redirectConfBtn").click();
 		$(".input-sm").waitUntil(visible, 10000);
 		$(".accordion-toggle", 1).click();
 		$(By.linkText("IP필터링설정")).waitUntil(visible, 10000);
 		$(By.linkText("IP필터링설정")).click();
 		$("h5", 2).waitUntil(visible, 10000);
-		pageLoadCheck = $("h5", 2).text();
+		String pageLoadCheck = $("h5", 2).text();
 		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
 			System.out.println(" *** IP Filterring Page load Success !! *** ");
 		} else {
@@ -220,7 +224,7 @@ public class userSetting {
 		}
 		System.out.println(" ! ----- IPFilterring_add End ----- ! ");
 	}
-	@Test(priority = 1)
+	@Test(priority = 2)
 	public void IPFilterring_duplicationCheck() {
 		System.out.println(" ! ----- IPFilterring_duplicationCheck Start ----- ! ");
 		$(".btn-info", 0).click();
@@ -234,7 +238,7 @@ public class userSetting {
 		$(".btn-light", 0).click();
 		System.out.println(" ! ----- IPFilterring_duplicationCheck End ----- ! ");
 	}
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public void IPFilterring_search() {
 		System.out.println(" ! ----- IPFilterring_search Start ----- ! ");
 		$(".btn-default", 5).click();
@@ -260,7 +264,7 @@ public class userSetting {
 		}
 		System.out.println(" ! ----- IPFilterring_search End ----- ! ");
 	}
-	@Test(priority = 3)
+	@Test(priority = 4)
 	public void IPFilterring_del() {
 		System.out.println(" ! ----- IPFilterring_del Start ----- ! ");
 		$(".btn-gray", 0).click();
@@ -282,7 +286,7 @@ public class userSetting {
 		}
 		System.out.println(" ! ----- IPFilterring_del End ----- ! ");
 	}
-	@Test(priority = 4)
+	@Test(priority = 11)
 	public void userGroupSetting_add() {
 		$(By.linkText("회원그룹설정")).click();
 		$("h5", 1).waitUntil(visible, 10000);
@@ -323,7 +327,7 @@ public class userSetting {
 		}
 		System.out.println(" ! ----- userGroupSetting_add End ----- ! ");
 	}
-	@Test(priority = 5)
+	@Test(priority = 12)
 	public void userGroupSetting_search() {
 		System.out.println(" ! ----- userGroupSetting_search Start ----- ! ");
 		$("#frmBtn").click();
@@ -350,7 +354,7 @@ public class userSetting {
 		}
 		System.out.println(" ! ----- userGroupSetting_search End ----- ! ");
 	}
-	@Test(priority = 6)
+	@Test(priority = 13)
 	public void userGroupSetting_modify() {
 		System.out.println(" ! ----- userGroupSetting_modify Start ----- ! ");
 		$(".btn-xs").click();
@@ -378,7 +382,7 @@ public class userSetting {
 		}		
 		System.out.println(" ! ----- userGroupSetting_modify End ----- ! ");
 	}
-	@Test(priority = 7)
+	@Test(priority = 14)
 	public void userGroupSetting_del() {
 		System.out.println(" ! ----- userGroupSetting_del Start ----- ! ");
 		$(".btn-gray", 0).click();

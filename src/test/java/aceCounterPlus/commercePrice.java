@@ -89,8 +89,8 @@ public class commercePrice {
 	}
 	
 	public static void valCheck(int pTagNum, int btnNum, String val) {
-		//$(".modal-backdrop").waitUntil(visible, 30000);
-		sleep(1000);
+		$(".modal-backdrop").waitUntil(visible, 30000);
+		$("p", pTagNum).click();
 		String msgCheck = $("p", pTagNum).text();
 		switch(val){
 		    case "priceSetup": checkMsg = "등록이 완료되었습니다.";
@@ -126,15 +126,15 @@ public class commercePrice {
 	    }
 	}
 	
-  	@Test(priority = 0)
-	public void commercePrice_login() {
-		System.out.println(" ! ----- commercePrice_directAdd Start ----- ! ");
+	@Test(priority = 0)
+	public void Login() {
+		System.out.println(" ! ----- Login Start ----- ! ");
 		open(baseUrl);
-		$(".gnb").waitUntil(visible, 30000);
+		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
-		String loginCheck = $(".btn_logout").text();
+		String loginCheck = $(".btn_logout").text().trim();
 		$(".btn_logout").getValue();
 		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
@@ -143,22 +143,22 @@ public class commercePrice {
 			close();
 		}
 		$(".go_stat", 1).click();
-		$("h3", 2).waitUntil(visible, 30000);
-		String pageLoadCheck = $("h3", 2).text();
+		$("h3", 2).waitUntil(visible, 10000);
+		String pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
 			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		System.out.println(" ! ----- Login End ----- ! ");
+	}
+  	@Test(priority = 1)
+	public void commercePrice_directAdd() {
+		System.out.println(" ! ----- commercePrice_directAdd Start ----- ! ");
 		$("#redirectConfBtn").click();
 		$("#inflowAddBtn").waitUntil(visible, 30000);
 		$(".accordion-toggle", 2).click();
-  	}
-	  	@Test(priority = 1)
-		public void commercePrice_directAdd() {
-		System.out.println(" ! ----- commercePrice_directAdd Start ----- ! ");
-		sleep(1000);
 		$(By.linkText("제품가격대")).waitUntil(visible, 30000);
 		$(By.linkText("제품가격대")).click();
 		$("h5", 1).waitUntil(visible, 30000);
@@ -387,7 +387,7 @@ public class commercePrice {
 		}
 		System.out.println(" ! ----- commercePrice_autoAdd_del End ----- ! ");
 	}
-	@Test(priority = 7)
+	@Test(priority = 11)
 	public void commerce_currencyUnit() { //페이지로딩20초 문제 개선될때까지 통화단위만 체크
 		System.out.println(" ! ----- commerce_currencyUnit Start ----- ! ");
 		sleep(1000);

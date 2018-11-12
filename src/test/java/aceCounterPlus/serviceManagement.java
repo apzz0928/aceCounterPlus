@@ -246,45 +246,6 @@ public class serviceManagement {
 		case "subManager_delete":
 			checkMsg = "삭제가 완료되었습니다.";
 			break;
-		case "69":
-			checkMsg = "";
-			break;
-		case "1":
-			checkMsg = "";
-			break;
-		case "0":
-			checkMsg = "";
-			break;
-		case "2":
-			checkMsg = "";
-			break;
-		case "4":
-			checkMsg = "";
-			break;
-		case "5":
-			checkMsg = "";
-			break;
-		case "669":
-			checkMsg = "";
-			break;
-		case "37":
-			checkMsg = "";
-			break;
-		case "318":
-			checkMsg = "";
-			break;
-		case "419":
-			checkMsg = "";
-			break;
-		case "10":
-			checkMsg = "";
-			break;
-		case "11":
-			checkMsg = "";
-			break;
-		case "12":
-			checkMsg = "";
-			break;
 		}
 		Thread.onSpinWait();
 		if (msgCheck.equals(checkMsg)) {
@@ -419,11 +380,13 @@ public class serviceManagement {
 		//메일삭제
 		$(".link_mail", 2).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
 		//$(".link_basket").click();
 		$(By.linkText("휴지통")).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
 		sleep(1500);
@@ -453,7 +416,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- scriptList End ----- ! ");
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 11)
 	public void installApply() {
 		System.out.println(" ! ----- installApply Start ----- ! ");
 		$(By.linkText("분석스크립트 설치신청")).click();
@@ -509,7 +472,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- installApply End ----- ! ");
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 21)
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
 		$(By.linkText("회원정보")).click();
@@ -597,7 +560,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- memberInfo End ----- ! ");
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 31)
 	public void myCoupon() {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
 		sleep(1000);
@@ -636,7 +599,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 41)
 	public void addService() {
 		System.out.println(" ! ----- addService Start ----- ! ");
 		$(By.linkText("서비스추가")).click();
@@ -687,7 +650,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addService End ----- ! ");
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 51)
 	public void addView() {
 		System.out.println(" ! ----- addView Start ----- ! ");
 		$(By.linkText("뷰필터 추가")).click();
@@ -702,7 +665,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addView End ----- ! ");
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 61)
 	public void addIntegralReport() {
 		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
 		$(By.linkText("통합리포트 생성")).click();
@@ -725,7 +688,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addIntegralReport End ----- ! ");
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 71)
 	public void editService() {
 		System.out.println(" ! ----- editService Start ----- ! ");
 		$(By.linkText("정보수정")).click();
@@ -790,7 +753,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- editService End ----- ! ");
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 81)
 	public void summaryReport() {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
 		$(By.linkText("발송메일 설정")).click();
@@ -829,6 +792,7 @@ public class serviceManagement {
 		//메일삭제
 		$(".link_mail", 2).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
 		/*$(By.linkText("휴지통"), 0).hover();
@@ -836,6 +800,7 @@ public class serviceManagement {
 		//$(".link_basket").click();
 		$(By.linkText("휴지통")).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
 		$(".check_type2").waitUntil(visible, 15000);
@@ -868,7 +833,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 91)
 	public void add_subManager() {
 		System.out.println(" ! ----- add_subManager Start ----- ! ");
 		sleep(1000);
@@ -925,15 +890,15 @@ public class serviceManagement {
 		//메일삭제
 		$(".link_mail", 2).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
-		//$(".link_basket").click();
 		$(By.linkText("휴지통")).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
 		$(".ico_check", 0).click();
 		$(".btn_toolbar", 0).click();
 		sleep(1500);
-		//$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
 		$(".link_mail", 2).click();
 		switchTo().window(0);
@@ -956,7 +921,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
 	
-	@Test(priority = 11)
+	@Test(priority = 92)
 	public void subManager_modifyInfoAndDel() {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");

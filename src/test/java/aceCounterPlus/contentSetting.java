@@ -277,17 +277,14 @@ public class contentSetting {
 			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#redirectConfBtn").click();
-		$(".input-sm", 0).waitUntil(visible, 10000);
-		$(".accordion-toggle", 3).click();
-		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
-		$(By.linkText("URL 설정")).click();
-		$(".col-xs-5").waitUntil(visible, 10000);
 		System.out.println(" ! ----- Login End ----- ! ");
 	}
 	@Test(priority = 1)
 	public void URLSetting_dynamicPage_add() {
 		System.out.println(" ! ----- URLSetting_dynamicPage_add Start ----- ! ");
+		$("#redirectConfBtn").click();
+		$(".input-sm", 0).waitUntil(visible, 10000);
+		$(".accordion-toggle", 3).click();
 		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
 		$(By.linkText("URL 설정")).click();
 		$(".col-xs-5").waitUntil(visible, 10000);
@@ -569,14 +566,6 @@ public class contentSetting {
 		}
 		System.out.println(" ! ----- URLSetting_internalSearch_delete End ----- ! ");
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	@Test(priority = 11)
 	public void pageGroupSetting_menuAddDel() {
 		System.out.println(" ! ----- pageGroupSetting_menuAddDel Start ----- ! ");

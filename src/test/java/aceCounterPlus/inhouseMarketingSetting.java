@@ -213,15 +213,15 @@ public class inhouseMarketingSetting {
 		return false;
     }
 
-	@Test(priority = 0)
-	public void viralSetting_add() {
-		System.out.println(" ! ----- viralSetting_add Start ----- ! ");
+  	@Test(priority = 0)
+	public void Login() {
+		System.out.println(" ! ----- Login Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
-		String loginCheck = $(".btn_logout").text();
+		String loginCheck = $(".btn_logout").text().trim();
 		$(".btn_logout").getValue();
 		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
@@ -231,20 +231,25 @@ public class inhouseMarketingSetting {
 		}
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text();
+		String pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
 			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		System.out.println(" ! ----- Login End ----- ! ");
+	}
+	@Test(priority = 1)
+	public void viralSetting_add() {
+		System.out.println(" ! ----- viralSetting_add Start ----- ! ");
 		$("#redirectConfBtn").click();
 		$(".input-sm").waitUntil(visible, 10000);
 		$(".accordion-toggle", 4).click();
 		$(By.linkText("바이럴 설정")).waitUntil(visible, 10000);
 		$(By.linkText("바이럴 설정")).click();
 		$("td", 0).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 0).text();
+		String pageLoadCheck = $("td", 0).text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
 			System.out.println(" *** viralSetting_add list Page load Success !! *** ");
 		} else {
@@ -291,7 +296,7 @@ public class inhouseMarketingSetting {
 		}
 		System.out.println(" ! ----- viralSetting_add End ----- ! ");
 	}
-	@Test(priority = 1)
+	@Test(priority = 2)
 	public void viralSetting_duplicationAdd() {
 		System.out.println(" ! ----- viralSetting_duplicationAdd Start ----- ! ");
 		$(".btn-info", 0).click();
@@ -320,7 +325,7 @@ public class inhouseMarketingSetting {
 		}
 		System.out.println(" ! ----- viralSetting_duplicationAdd End ----- ! ");
 	}
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public void viralSetting_search() {
 		System.out.println(" ! ----- viralSetting_search Start ----- ! ");
 		$(By.name("use_yn")).click();
@@ -362,7 +367,7 @@ public class inhouseMarketingSetting {
 	    }
 		System.out.println(" ! ----- viralSetting_search End ----- ! ");
 	}
-	@Test(priority = 3)
+	@Test(priority = 4)
 	public void viralSetting_mktCodeDownload() {
 		System.out.println(" ! ----- viralSetting_search Start ----- ! ");
 		$(".btn-dark", 0).click();
@@ -379,7 +384,7 @@ public class inhouseMarketingSetting {
 		$(".modal-backdrop").waitUntil(hidden, 10000);
 		System.out.println(" ! ----- viralSetting_search End ----- ! ");
 	}
-	@Test(priority = 4)
+	@Test(priority = 5)
 	public void viralSetting_del() {
 		System.out.println(" ! ----- viralSetting_search Start ----- ! ");
 		$(".btn-gray", 0).click();
@@ -400,7 +405,7 @@ public class inhouseMarketingSetting {
 		}
 		System.out.println(" ! ----- viralSetting_search End ----- ! ");
 	}
-	@Test(priority = 5)
+	@Test(priority = 11)
 	public void emailSetting_add() {
 		System.out.println(" ! ----- emailSetting_add Start ----- ! ");
 		$(By.linkText("이메일 설정")).click();
@@ -456,7 +461,7 @@ public class inhouseMarketingSetting {
 		}
 		System.out.println(" ! ----- emailSetting_add End ----- ! ");
 	}
-	@Test(priority = 6)
+	@Test(priority = 12)
 	public void emailSetting_duplicationAdd() {
 		System.out.println(" ! ----- emailSetting_duplicationAdd Start ----- ! ");
 		$(".btn-info", 0).click();
@@ -485,7 +490,7 @@ public class inhouseMarketingSetting {
 		}
 		System.out.println(" ! ----- emailSetting_duplicationAdd End ----- ! ");
 	}
-	@Test(priority = 7)
+	@Test(priority = 13)
 	public void emailSetting_search() {
 		System.out.println(" ! ----- emailSetting_search Start ----- ! ");
 		$(By.name("use_yn")).click();
@@ -529,7 +534,7 @@ public class inhouseMarketingSetting {
 		}
 		System.out.println(" ! ----- emailSetting_search End ----- ! ");
 	}
-	@Test(priority = 8)
+	@Test(priority = 14)
 	public void emailSetting_del() {
 		System.out.println(" ! ----- emailSetting_del Start ----- ! ");
 		$(".btn-gray").click();
@@ -550,7 +555,7 @@ public class inhouseMarketingSetting {
 		}
 		System.out.println(" ! ----- emailSetting_del End ----- ! ");
 	}
-	@Test(priority = 9)
+	@Test(priority = 21)
 	public void talkSetting_add() {
 		System.out.println(" ! ----- talkSetting_add Start ----- ! ");
 		$(By.linkText("Talk 설정")).click();
@@ -605,7 +610,7 @@ public class inhouseMarketingSetting {
 		}
 		System.out.println(" ! ----- talkSetting_add End ----- ! ");
 	}
-	@Test(priority = 10)
+	@Test(priority = 22)
 	public void talkSetting_duplicationAdd() {
 		System.out.println(" ! ----- talkSetting_duplicationAdd Start ----- ! ");
 		$(".btn-info").click();
@@ -629,7 +634,7 @@ public class inhouseMarketingSetting {
 		}
 		System.out.println(" ! ----- talkSetting_duplicationAdd  End ----- ! ");
 	}
-	@Test(priority = 11)
+	@Test(priority = 23)
 	public void talkSetting_search() {
 		System.out.println(" ! ----- talkSetting_search Start ----- ! ");
 		$(By.name("use_yn")).click();
@@ -673,7 +678,7 @@ public class inhouseMarketingSetting {
 		}
 		System.out.println(" ! ----- talkSetting_search  End ----- ! ");
 	}
-	@Test(priority = 12)
+	@Test(priority = 24)
 	public void talkSetting_del() {
 		System.out.println(" ! ----- talkSetting_del Start ----- ! ");
 		$(".btn-gray").click();

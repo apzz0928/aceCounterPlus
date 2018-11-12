@@ -202,16 +202,15 @@ public class KPISetting {
   		} catch (InterruptedException ex) {
   		}
   	}
-
-	@Test(priority = 0)
-	public void KPISetting_add() {
-		System.out.println(" ! ----- KPISetting_add Start ----- ! ");
+  	@Test(priority = 0)
+	public void Login() {
+		System.out.println(" ! ----- Login Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
-		String loginCheck = $(".btn_logout").text();
+		String loginCheck = $(".btn_logout").text().trim();
 		$(".btn_logout").getValue();
 		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
@@ -221,18 +220,24 @@ public class KPISetting {
 		}
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text();
+		String pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
 			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		System.out.println(" ! ----- Login End ----- ! ");
+	}
+	@Test(priority = 1)
+	public void KPISetting_add() {
+		System.out.println(" ! ----- KPISetting_add Start ----- ! ");
+		
 		$("#redirectConfBtn").click();
 		$(".input-sm").waitUntil(visible, 10000);
 		$(".sidebar-title", 6).click();
 		$("td").waitUntil(visible, 10000);
-		pageLoadCheck = $("td").text();
+		String pageLoadCheck = $("td").text();
 		if(pageLoadCheck.equals("등록된 KPI설정이 없습니다.\n" + "[추가]를 클릭해 KPI설정을 등록하세요.")) {
 			System.out.println(" *** KPISetting_add list Page load Success !! *** ");
 		} else {
@@ -295,7 +300,7 @@ public class KPISetting {
 		}
 		System.out.println(" ! ----- KPISetting_add End ----- ! ");
 	}
-	@Test(priority = 1)
+	@Test(priority = 2)
 	public void KPISetting_modify() {
 		System.out.println(" ! ----- KPISetting_modify Start ----- ! ");
 		$(".btn-xs").click();
@@ -345,7 +350,7 @@ public class KPISetting {
 	    }
 		System.out.println(" ! ----- KPISetting_modify End ----- ! ");
 	}
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public void KPISetting_del() {
 		System.out.println(" ! ----- KPISetting_del Start ----- ! ");
 		$("#delControl").click();
@@ -366,7 +371,7 @@ public class KPISetting {
 		}
 		System.out.println(" ! ----- KPISetting_del End ----- ! ");
 	} 
-	@Test(priority = 3)
+	@Test(priority = 11)
 	public void reportDownload_reserveAdd() {
 		System.out.println(" ! ----- reportDownload_reserveAdd Start ----- ! ");
 		$(".sidebar-title", 7).click();
@@ -425,7 +430,7 @@ public class KPISetting {
 		}
 		System.out.println(" ! ----- reportDownload_reserveAdd End ----- ! ");
 	}
-	@Test(priority = 4)
+	@Test(priority = 12)
 	public void reportDownload_reserveDel() {
 		System.out.println(" ! ----- reportDownload_reserveDel Start ----- ! ");
 		$(By.linkText(date)).click();
@@ -463,7 +468,7 @@ public class KPISetting {
 		}
 		System.out.println(" ! ----- reportDownload_reserveDel End ----- ! ");
 	}
-	@Test(priority = 5)
+	@Test(priority = 13)
 	public void reportDownload_oneshotAdd() {
 		System.out.println(" ! ----- reportDownload_oneshotAdd Start ----- ! ");
 		sleep(1000);
@@ -514,7 +519,7 @@ public class KPISetting {
 		}
 		System.out.println(" ! ----- reportDownload_oneshotAdd End ----- ! ");
 	}
-	@Test(priority = 6)
+	@Test(priority = 14)
 	public void reportDownload_oneshotDel() {
 		System.out.println(" ! ----- reportDownload_oneshotDel Start ----- ! ");
 		$(".form-control", 1).setValue(date);
@@ -549,7 +554,7 @@ public class KPISetting {
 		}
 		System.out.println(" ! ----- reportDownload_oneshotDel End ----- ! ");
 	}
-	@Test(priority = 7)
+	@Test(priority = 21)
 	public void myMenu_add() {
 		System.out.println(" ! ----- myMenu Start ----- ! ");
 		sleep(1000);

@@ -132,12 +132,6 @@ public class marketingInflowSetting {
 	      break;
 	      case "advertisingProductManage_del_alert": checkMsg = "광고상품관리 설정 삭제가 완료되었습니다.";
 	      break;
-	      case "3": checkMsg = "";
-	      break;
-	      case "4": checkMsg = "";
-	      break;
-	      case "": checkMsg = "";
-	      break;
 	    }
 	    Thread.onSpinWait();
 		if(msgCheck.equals(checkMsg)) {
@@ -179,16 +173,15 @@ public class marketingInflowSetting {
   		} catch (InterruptedException ex) {
   		}
   	}
-	
-	@Test(priority = 0)
-	public void mktInflowSetting_add() {
-		System.out.println(" ! ----- mktInflowSetting_add Start ----- ! ");
+  	@Test(priority = 0)
+	public void Login() {
+		System.out.println(" ! ----- Login Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
-		String loginCheck = $(".btn_logout").text();
+		String loginCheck = $(".btn_logout").text().trim();
 		$(".btn_logout").getValue();
 		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
@@ -198,16 +191,21 @@ public class marketingInflowSetting {
 		}
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text();
+		String pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
-			System.out.println(" *** statsLiveDashboard Page load Success !! *** ");
+			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
-			System.out.println(" *** statsLiveDashboard Page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		System.out.println(" ! ----- Login End ----- ! ");
+	}
+	@Test(priority = 1)
+	public void mktInflowSetting_add() {
+		System.out.println(" ! ----- mktInflowSetting_add Start ----- ! ");
 		$("#redirectConfBtn").click();
 		$("#inflowAddBtn").waitUntil(visible, 10000);
-		pageLoadCheck = $("#inflowAddBtn").text();
+		String pageLoadCheck = $("#inflowAddBtn").text();
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** mktInflowSetting_add list page Success !! *** ");
 		} else {
@@ -254,7 +252,7 @@ public class marketingInflowSetting {
 		}
 		System.out.println(" ! ----- mktInflowSetting_add End ----- ! ");
 	}
-	@Test(priority = 1)
+	@Test(priority = 2)
 	public void mktInflowSetting_del() {
 		System.out.println(" ! ----- mktInflowSetting_del Start ----- ! ");
 		$("#deleteViewBtn").click();
@@ -275,7 +273,7 @@ public class marketingInflowSetting {
 		}
 		System.out.println(" ! ----- mktInflowSetting_del End ----- ! ");
 	}
-	@Test(priority = 2)
+	@Test(priority = 11)
 	public void advertisingCodeDownload() {
 		System.out.println(" ! ----- advertisingCodeDownload Start ----- ! ");
 		$("#inflowMrkCodeDown").waitUntil(visible, 10000);
@@ -293,7 +291,7 @@ public class marketingInflowSetting {
 		}
 		System.out.println(" ! ----- advertisingCodeDownload End ----- ! ");
 	}
-	@Test(priority = 3)
+	@Test(priority = 12)
 	public void advertisingProductManage_add() {
 		System.out.println(" ! ----- advertisingProductManage_add Start ----- ! ");
 		sleep(1000);
@@ -332,7 +330,7 @@ public class marketingInflowSetting {
 		}
 		System.out.println(" ! ----- advertisingProductManage_add End ----- ! ");
 	}
-	@Test(priority = 4)
+	@Test(priority = 13)
 	public void advertisingProductManage_del() {
 		System.out.println(" ! ----- advertisingProductManage_del Start ----- ! ");
 		$("#deleteViewBtn").click();
