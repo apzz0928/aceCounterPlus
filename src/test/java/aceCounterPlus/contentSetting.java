@@ -392,7 +392,6 @@ public class contentSetting {
 		$("#inlineCheckbox1").click();
 		$("#btn-list-select-delete").click();
 		valCheck(11, 7, "URLSetting_dynamicPage_delete_confirm");
-		//$("#btn-modal-alert-yes").waitUntil(hidden, 10000);
 		valCheck(12, 9, "URLSetting_dynamicPage_delete_alert");
 		$(".btn-xs").waitUntil(hidden, 10000);
 		pageLoadCheck = $("tr", 4).text().trim();
@@ -844,9 +843,9 @@ public class contentSetting {
 	public void fileDownload_duplicationAdd() {
 		System.out.println(" ! ----- fileDownload_duplicationAdd Start ----- ! ");
 	    $(".btn-info", 0).click();
-	    $("#btn-add").waitUntil(visible, 10000);
-	    String pageLoadCheck = $("#btn-add").text().trim();
-	    if(pageLoadCheck.equals("등록")) {
+	    $(".mv20").waitUntil(visible, 10000);
+	    String pageLoadCheck = $(".mv20").text().trim();
+	    if(pageLoadCheck.equals("'*'를 이용해 임의의 문자열을 패턴으로 등록합니다.(*.zip으로 등록할 경우 압축파일 다운로드 링크에 대해 분석합니다.)")) {
 			System.out.println(" *** fileDownload_add add UI Success !! *** ");	    	
 	    } else {
 			System.out.println(" *** fileDownload_add add UI Fail ... !@#$%^&*() *** ");

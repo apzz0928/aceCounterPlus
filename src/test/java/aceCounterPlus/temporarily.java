@@ -104,8 +104,9 @@ public class temporarily {
 	}
 
 	public static void valCheck(int pTagNum, int btnNum, String val) {
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		String msgCheck = $("p", pTagNum).text();
+	    $(".modal-backdrop").waitUntil(visible, 10000);
+		$("p", pTagNum).click();
+	    String msgCheck = $("p", pTagNum).text();
 		switch (val) {
 		case "scriptList_email_null":
 			checkMsg = "수신 이메일을 입력해 주세요.";
@@ -245,82 +246,6 @@ public class temporarily {
 		case "subManager_delete":
 			checkMsg = "삭제가 완료되었습니다.";
 			break;
-		case "extendCharge_extendCharge_null_service":
-			checkMsg = "서비스를 선택해 주세요.";
-			break;
-		case "extendCharge_consult_name_null":
-			checkMsg = "이름을 입력해 주세요.";
-			break;
-		case "extendCharge_consult_tel_null":
-			checkMsg = "연락처와 휴대전화번호 중\n" + "하나는 반드시 입력해 주세요.";
-			break;
-		case "extendCharge_consult_email_null":
-			checkMsg = "이메일을 입력해주세요.";
-			break;
-		case "extendCharge_cashReceiptInfo_null":
-			checkMsg = "현금영수증 신청정보를 입력해 주세요.";
-			break;
-		case "extendCharge_corporateRegistrationNumber_null":
-			checkMsg = "사업자등록번호를 입력해 주세요.";
-			break;
-		case "extendCharge_companyName_null":
-			checkMsg = "회사명을 입력해 주세요.";
-			break;
-		case "extendCharge_ceoName_null":
-			checkMsg = "대표자명을 입력해 주세요.";
-			break;
-		case "extendCharge_companyAddress_null":
-			checkMsg = "회사주소를 입력해 주세요.";
-			break;
-		case "extendCharge_businessTypeDetailName_null":
-			checkMsg = "업태를 입력해 주세요.";
-			break;
-		case "extendCharge_businessTypeSectionName_null":
-			checkMsg = "종목을 입력해 주세요.";
-			break;
-		case "extendCharge_contactEmployeeName_null":
-			checkMsg = "담당자명을 입력해 주세요.";
-			break;
-		case "extendCharge_telPosNo_null":
-			checkMsg = "연락처를 입력해 주세요.";
-			break;
-		case "extendCharge_emailAddress_null":
-			checkMsg = "이메일을 입력해 주세요.";
-			break;
-		case "additionalCharge_service_null":
-			checkMsg = "서비스를 선택해주세요.";
-			break;
-		case "additionalCharge_service_check_null":
-			checkMsg = "서비스를 선택해주세요.";
-			break;
-		case "paymentBill_businessRegistNoPosNo_null":
-			checkMsg = "사업자등록번호를 입력해 주세요.";
-			break;
-		case "paymentBill_svcCompanyNm_null":
-			checkMsg = "회사명을 입력해 주세요.";
-			break;
-		case "paymentBill_ceoNm_null":
-			checkMsg = "대표자명을 입력해 주세요.";
-			break;
-		case "paymentBill_companyAddr_null":
-			checkMsg = "회사주소를 입력해 주세요.";
-			break;
-		case "paymentBill_businessTypeDetailNm_null":
-			checkMsg = "업태를 입력해 주세요.";
-			break;
-		case "paymentBill_businessTypeSectionNm_null":
-			checkMsg = "종목을 입력해 주세요.";
-			break;
-		case "100":
-			checkMsg = "";
-			break;
-		case "110":
-			checkMsg = "";
-			break;
-		case "120":
-			checkMsg = "";
-			break;
-
 		}
 		Thread.onSpinWait();
 		if (msgCheck.equals(checkMsg)) {
@@ -433,6 +358,7 @@ public class temporarily {
 		$("#inputPwd").setValue(pw);
 		$("#loginBtn").click();
 		$(".link_check").waitUntil(visible, 15000);
+		sleep(1000);
 		refresh();
 		pageLoadCheck = $("h1").text();
 		if (pageLoadCheck.equals("Daum\n" + "메일")) {
@@ -451,13 +377,22 @@ public class temporarily {
 			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		//메일삭제
 		$(".link_mail", 2).click();
+		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
-		$(By.linkText("휴지통"), 0).hover();
-		$(".link_empty", 1).click();
-		$(".check_type2").waitUntil(visible, 15000);
+		//$(".link_basket").click();
+		$(By.linkText("휴지통")).click();
+		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
+		$(".ico_check", 0).click();
+		$(".btn_toolbar", 0).click();
+		sleep(1500);
+		//$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
+		$(".link_mail", 2).click();
 		switchTo().window(0);
 		pageLoadCheck = $("#scriptList").text();
 		if (pageLoadCheck.equals("분석스크립트")) {
@@ -481,7 +416,7 @@ public class temporarily {
 		System.out.println(" ! ----- scriptList End ----- ! ");
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 11)
 	public void installApply() {
 		System.out.println(" ! ----- installApply Start ----- ! ");
 		$(By.linkText("분석스크립트 설치신청")).click();
@@ -537,7 +472,7 @@ public class temporarily {
 		System.out.println(" ! ----- installApply End ----- ! ");
 	}
 
-	//@Test(priority = 3)
+	@Test(priority = 21)
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
 		$(By.linkText("회원정보")).click();
@@ -625,7 +560,7 @@ public class temporarily {
 		System.out.println(" ! ----- memberInfo End ----- ! ");
 	}
 
-	//@Test(priority = 4)
+	@Test(priority = 31)
 	public void myCoupon() {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
 		sleep(1000);
@@ -664,7 +599,7 @@ public class temporarily {
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
 
-	//@Test(priority = 5)
+	@Test(priority = 41)
 	public void addService() {
 		System.out.println(" ! ----- addService Start ----- ! ");
 		$(By.linkText("서비스추가")).click();
@@ -715,7 +650,7 @@ public class temporarily {
 		System.out.println(" ! ----- addService End ----- ! ");
 	}
 
-	//@Test(priority = 6)
+	@Test(priority = 51)
 	public void addView() {
 		System.out.println(" ! ----- addView Start ----- ! ");
 		$(By.linkText("뷰필터 추가")).click();
@@ -730,7 +665,7 @@ public class temporarily {
 		System.out.println(" ! ----- addView End ----- ! ");
 	}
 
-	//@Test(priority = 7)
+	@Test(priority = 61)
 	public void addIntegralReport() {
 		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
 		$(By.linkText("통합리포트 생성")).click();
@@ -753,7 +688,7 @@ public class temporarily {
 		System.out.println(" ! ----- addIntegralReport End ----- ! ");
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 71)
 	public void editService() {
 		System.out.println(" ! ----- editService Start ----- ! ");
 		$(By.linkText("정보수정")).click();
@@ -784,7 +719,8 @@ public class temporarily {
 		$(".cross", 0).waitUntil(visible, 15000);
 		$(".btn-info", 1).click();
 		valCheck(19, 9, "editService_edit_alert");
-		$(".btn-info", 1).waitUntil(hidden, 10000);
+		sleep(500);
+		//$(".btn-info", 1).waitUntil(hidden, 10000);
 		$(".btn-info", 1).waitUntil(visible, 15000);
 		pageLoadCheck = $("#svc_nm_title_0").text();
 		System.out.println("date is " + date);
@@ -802,8 +738,8 @@ public class temporarily {
 		$(".cross", 0).waitUntil(visible, 15000);
 		$(".btn-info", 1).click();
 		valCheck(15, 5, "editService_restore_alert");
-		$(".btn-info", 1).waitUntil(hidden, 10000);
 		$(".btn-info", 1).waitUntil(visible, 15000);
+		sleep(1000);
 		pageLoadCheck = $("#svc_nm_title_0").text();
 		System.out.println("date is " + date);
 		System.out.println("svc_nm_title_0 is " + pageLoadCheck);
@@ -817,7 +753,7 @@ public class temporarily {
 		System.out.println(" ! ----- editService End ----- ! ");
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 81)
 	public void summaryReport() {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
 		$(By.linkText("발송메일 설정")).click();
@@ -856,12 +792,20 @@ public class temporarily {
 		//메일삭제
 		$(".link_mail", 2).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
-		$(By.linkText("휴지통"), 0).hover();
-		$(".link_empty", 1).click();
+		/*$(By.linkText("휴지통"), 0).hover();
+		$(".link_empty", 1).click();*/
+		//$(".link_basket").click();
+		$(By.linkText("휴지통")).click();
+		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
+		$(".ico_check", 0).click();
+		$(".btn_toolbar", 0).click();
 		$(".check_type2").waitUntil(visible, 15000);
 		$(".check_type2").click();
+		$(".link_mail", 2).click();
 		switchTo().window(0);
 		$("#btn-save").scrollTo();
 		$(".cross", 1).click();
@@ -889,11 +833,13 @@ public class temporarily {
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 91)
 	public void add_subManager() {
 		System.out.println(" ! ----- add_subManager Start ----- ! ");
+		sleep(1000);
+		$(By.linkText("부관리자")).waitUntil(visible, 10000);
 		$(By.linkText("부관리자")).click();
-		$("#btn_mail").waitUntil(visible, 15000);
+		$("#btn_mail").waitUntil(visible, 10000);
 		$("#btn_mail").click();
 		valCheck(5, 7, "subManager_name_null");
 		$("#submanager_nm").setValue("최영권");
@@ -914,6 +860,7 @@ public class temporarily {
 		valCheck(9, 11, "subManager_email_send");
 		switchTo().window(1);
 		refresh();
+		sleep(2000);
 		String pageLoadCheck = $(".tit_subject", 0).text();
 		if(pageLoadCheck.substring(22).equals("부관리자 안내 메일입니다.")) {
 			System.out.println(" *** subManager guide mail title Check Success !! *** ");
@@ -940,14 +887,20 @@ public class temporarily {
 		$(".btn_join").click();
 		$(".btn_pop_submit").click();
 		switchTo().window(1);
+		//메일삭제
 		$(".link_mail", 2).click();
 		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
 		$(".ico_check", 0).click();
 		$(".wrap_bold > .btn_del", 0).click();
-		$(By.linkText("휴지통"), 0).hover();
-		$(".link_empty", 1).click();
-		$(".check_type2").waitUntil(visible, 15000);
+		$(By.linkText("휴지통")).click();
+		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
+		$(".ico_check", 0).click();
+		$(".btn_toolbar", 0).click();
+		sleep(1500);
 		$(".check_type2").click();
+		$(".link_mail", 2).click();
 		switchTo().window(0);
 		refresh();
 		pageLoadCheck = $(".text-dark", 3).text();
@@ -968,7 +921,7 @@ public class temporarily {
 		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
 	
-	@Test(priority = 11)
+	@Test(priority = 92)
 	public void subManager_modifyInfoAndDel() {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
@@ -976,6 +929,7 @@ public class temporarily {
 		$("#uid").setValue(id + date2);
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
+		$(".go_setting").waitUntil(visible, 10000);
 		$(".go_setting").click();
 		$("#prePwd").setValue(pw);
 		$("#changePwd").setValue(pw1);
@@ -994,174 +948,15 @@ public class temporarily {
 		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
 		$("#btn-modal-alert-yes").click();
 		valCheck(6, 13, "subManager_delete");
+		$(".br-dark", 2).waitUntil(hidden, 10000);
 		System.out.println(" ! ----- subManager_modifyInfoAndDel End ----- ! ");
 	}
-	
-	@Test(priority = 12)
-	public void extendCharge() {
-		System.out.println(" ! ----- extendCharge Start ----- ! ");
+	@Test(priority = 101)
+	public void add_subManagerd() {
+		System.out.println(" ! ----- add_subManager Start ----- ! ");
 		sleep(1000);
-		$(By.linkText("연장요금")).click();
-		$("#headingStep1").waitUntil(visible, 15000);
-		$("#btn_step1_next").scrollTo();
-		$("#btn_step1_next").click();
-		valCheck(20, 4, "extendCharge_extendCharge_null_service");
-		$("#select_all_svc").scrollTo();
-		$("#checkbox_step1_0").click();
-		$("#btn_step1_next").scrollTo();
-		$("#btn_step1_next").click();
-		$("#btnSkipScript").waitUntil(visible, 15000);
-		$("#btnSkipScript").click();
-		$(".mn", 0).waitUntil(visible, 10000);
-		String pageLoadCheck = $(".mn", 0).text();
-		if(pageLoadCheck.equals("월 서비스 요금(VAT 포함)")) {
-			System.out.println(" *** extendCharge Step2 Open Success !! *** ");
-		} else {
-			System.out.println(" *** extendCharge Step2 Open Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".br-dark").click();
-		$(".btn-info", 10).waitUntil(visible, 10000);
-		$(".btn-info", 10).click();
-		$("#btn_consult").click();
-		$("#consult_svc_nm").waitUntil(visible, 10000);
-		$("#btn_consult_submit").click();
-		valCheck(31, 5, "extendCharge_consult_name_null");
-		$(".gui-input", 0).setValue("이름");
-		$("#btn_consult_submit").click();
-		valCheck(32, 6, "extendCharge_consult_tel_null");
-		$(By.name("telM")).setValue("1234");
-		$(By.name("telE")).setValue("1234");
-		$("#btn_consult_submit").click();
-		valCheck(33, 7, "extendCharge_consult_email_null");
-		$("#btn_consult").click();
-		//$("#consult_svc_nm").waitUntil(hidden, 10000);
-		sleep(1000);
-		$("#btn_step2_next").click();
-		$(".ib", 2).waitUntil(visible, 10000);
-		pageLoadCheck = $(".ib", 2).text();
-		if(pageLoadCheck.equals("서비스 요금(VAT 포함)")) {
-			System.out.println(" *** extendCharge Step3 Open Success !! *** ");
-		} else {
-			System.out.println(" *** extendCharge Step3 Open Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("label", 15).click();
-		$("#virtual-account-common").waitUntil(visible, 10000);
-		$(".btn-payment", 1).click();
-		valCheck(36, 8, "extendCharge_cashReceiptInfo_null");
-		$("label", 18).click();
-		$(".btn-payment", 1).scrollTo();
-		$(".btn-payment", 1).click();
-		valCheck(37, 9, "extendCharge_corporateRegistrationNumber_null");
-		$(By.name("businessRegistNoFirstPosNo")).setValue("111");
-		$(By.name("businessRegistNoMidPosNo")).setValue("11");
-		$(By.name("businessRegistNoEndPosNo")).setValue("11111");
-		$(".btn-payment", 1).click();
-		valCheck(38, 10, "extendCharge_companyName_null");
-		$(By.name("svcCompanyNm")).setValue("회사이름");
-		$(".btn-payment", 1).click();
-		valCheck(39, 11, "extendCharge_ceoName_null");
-		$(By.name("ceoNm")).setValue("대표자이름");
-		$(".btn-payment", 1).click();
-		valCheck(40, 12, "extendCharge_companyAddress_null");
-		$(By.name("companyAddr")).setValue("회사주소");
-		$(".btn-payment", 1).click();
-		valCheck(41, 13, "extendCharge_businessTypeDetailName_null");
-		$(By.name("businessTypeDetailNm")).setValue("업태");
-		$(".btn-payment", 1).click();
-		valCheck(42, 14, "extendCharge_businessTypeSectionName_null");
-		$(By.name("businessTypeSectionNm")).setValue("종목");
-		$(".btn-payment", 1).click();
-		valCheck(43, 15, "extendCharge_contactEmployeeName_null");
-		$(By.name("contactEmployeeNm")).setValue("담당자이름");
-		$(".btn-payment", 1).click();
-		valCheck(44, 16, "extendCharge_telPosNo_null");
-		$(By.name("telMidPosNo")).setValue("1234");
-		$(By.name("telEndPosNo")).setValue("1234");
-		$(".btn-payment", 1).click();
-		valCheck(45, 17, "extendCharge_emailAddress_null");
-		System.out.println(" ! ----- extendCharge End ----- ! ");
-	}
-	
-	@Test(priority = 13)
-	public void additionalCharge() {
-		System.out.println(" ! ----- additionalCharge Start ----- ! ");
-		sleep(1000);
-		$(By.linkText("추가요금")).click();
-		String pageLoadCheck = $("td", 0).text();
-		if(pageLoadCheck.equals("추가요금 미결제 내역이 없습니다.")) {
-			System.out.println(" *** additionalCharge pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** additionalCharge pageLoad Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#btn-next-step").click();
-		valCheck(15, 4, "additionalCharge_service_null");
-		System.out.println("additionalCharge_service 1st alert check Success");
-		$("#checkAll").click();
-		$("#btn-next-step").click();
-		valCheck(16, 5, "additionalCharge_service_check_null");
-		System.out.println("additionalCharge_service 2nd alert check Success");
-		System.out.println(" ! ----- additionalCharge End ----- ! ");
-	}
-	
-	@Test(priority = 14)
-	public void paymentHistory() {
-		System.out.println(" ! ----- paymentHistory Start ----- ! ");
-		sleep(1000);
-		$(By.linkText("결제내역조회")).click();
-		$("#btn-next-step").waitUntil(hidden, 25000);
-		$(".mt20").waitUntil(visible, 25000);
-		String pageLoadCheck = $(".notokr-bold", 0).text();
-		if(pageLoadCheck.equals("결제내역조회")) {
-			System.out.println(" *** paymentHistory pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** paymentHistory pageLoad Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- paymentHistory End ----- ! ");
-	}
-	
-	@Test(priority = 15)
-	public void paymentBill() {
-		System.out.println(" ! ----- paymentBill Start ----- ! ");
-		sleep(1000);
-		$(By.linkText("계산서")).click();
-		$(".material-icons-arrow").waitUntil(hidden, 10000);
-		$(".btn-info", 0).waitUntil(visible, 10000);
-		String pageLoadCheck = $(".notokr-bold", 0).text();
-		if(pageLoadCheck.equals("계산서")) {
-			System.out.println(" *** paymentHistory pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** paymentHistory pageLoad Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".btn-info", 0).click();
-		$(".mt20").waitUntil(visible, 10000);
-		$("#btn-submit").click();
-		valCheck(7, 3, "paymentBill_businessRegistNoPosNo_null");
-		$(By.name("businessRegistNoFirstPosNo")).setValue("111");
-		$(By.name("businessRegistNoMidPosNo")).setValue("11");
-		$(By.name("businessRegistNoEndPosNo")).setValue("11111");
-		$("#btn-submit").click();
-		valCheck(8, 4, "paymentBill_svcCompanyNm_null");
-		$(By.name("svcCompanyNm")).setValue("회사명");
-		$("#btn-submit").click();
-		valCheck(9, 5, "paymentBill_ceoNm_null");
-		$(By.name("ceoNm")).setValue("대표자명");
-		$("#btn-submit").click();
-		valCheck(10, 6, "paymentBill_companyAddr_null");
-		$(By.name("companyAddr")).setValue("회사주소");
-		$("#btn-submit").click();
-		valCheck(11, 7, "paymentBill_businessTypeDetailNm_null");
-		$(By.name("businessTypeDetailNm")).setValue("업태");
-		$("#btn-submit").click();
-		valCheck(12, 8, "paymentBill_businessTypeSectionNm_null");
-		$(By.name("businessTypeSectionNm")).setValue("종목");
-		$("#btn-cancel").click();
-		$(".mt20").waitUntil(hidden, 10000);
-		System.out.println(" ! ----- paymentBill End ----- ! ");
+		$(By.linkText("서비스 해지")).waitUntil(visible, 10000);
+		$(By.linkText("서비스 해지")).click();
 	}
 	
 	@AfterClass
