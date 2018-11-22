@@ -222,7 +222,6 @@ public class temporarily_2 {
 		$("#mp2").setValue("0000");
 		$("#mp3").setValue("0000");
 		$("#stepOneCompleted").click(); //서비스 신청
-		System.out.println("서비스 신청 완료");
 		$("h3", 4).waitUntil(visible, 10000);
 		pageLoadCheck = $("h3", 4).text().trim();
 		pLC = pageLoadCheck.split("\\.");
@@ -299,19 +298,19 @@ public class temporarily_2 {
 		pageLoadCheck = $("h3", 0).text().trim();
 		String pLC[] = pageLoadCheck.split(" ");
 		if(pLC[2].trim().equals("완료되었습니다.")) {
-			System.out.println(" *** web_signUp complete Page load Success !! *** ");
+			System.out.println(" *** app_signUp complete Page load Success !! *** ");
 			pLC = null;
 		} else {
-			System.out.println(" *** web_signUp complete Page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** app_signUp complete Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".btn_join").click();
 		$(".ace-svc-name", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".ace-svc-name", 0).text().trim();
-		if(pageLoadCheck.equals(id + domain_date + ".com")) {
-			System.out.println(" *** web_signUp service add check Success !! *** ");			
+		if(pageLoadCheck.equals(domain + domain_date + ".com")) {
+			System.out.println(" *** app_signUp service add check Success !! *** ");			
 		} else {
-			System.out.println(" *** web_signUp service add check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** app_signUp service add check Fail ... !@#$%^&*() *** ");
 			close();
 		}		
 		System.out.println(" ! ----- app_signUp End ----- ! ");
