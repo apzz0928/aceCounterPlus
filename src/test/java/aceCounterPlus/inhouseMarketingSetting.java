@@ -94,10 +94,7 @@ public class inhouseMarketingSetting {
 		}
 	}
 	
-	public static void valCheck(int pTagNum, int btnNum, String val) {
-	    $(".modal-backdrop").waitUntil(visible, 10000);
-		$("p", pTagNum).click();
-	    String msgCheck = $("p", pTagNum).text();
+	public static void valCheck(String val) {
         switch(val){
             case "viralAdd_cmpName_null": checkMsg = "캠페인명을 입력하세요.";
             break;
@@ -178,16 +175,27 @@ public class inhouseMarketingSetting {
             case "talkSetting_del_alert": checkMsg = "TALK 설정 삭제가 완료되었습니다.";
             break;
         }
-		Thread.onSpinWait();
-		if(msgCheck.equals(checkMsg)) {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Success !! *** ");
-			$(".btn-sm", btnNum).click();
-		    $(".modal-backdrop").waitUntil(hidden, 10000);
-		} else if (msgCheck.isEmpty()) {
-			System.out.println(" *** ☆★☆★☆★ pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+		$(".modal-backdrop").waitUntil(visible, 10000);
+		$$("p").last().click();
+		String msgCheck = $$("p").last().text().trim();
+        Thread.onSpinWait();
+		if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
+			if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
+				System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
+				$$(".btn-info").last().click();
+			    $(".modal-backdrop").waitUntil(hidden, 10000);
+			} else { //confirm 아니면 .btn-sm클릭
+				System.out.println(" *** " + val +  " - check Success !! *** ");
+				$$(".btn-sm").last().click();
+			    $(".modal-backdrop").waitUntil(hidden, 10000);
+			}
+		} else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
+			System.out.println(" *** ☆★☆★☆★ " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+			System.out.println(checkMsg);
 			close();
-		} else {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Fail ... !@#$%^&*() *** ");
+		} else { // msgCheck=checkMsg여부, confirm&alert여부, 빈값 여부 체크 후 fail
+			System.out.println(" *** " + val +  " - check Fail ... !@#$%^&*() *** ");
+			System.out.println(checkMsg);
 			close();
 		}
 	}
@@ -266,26 +274,26 @@ public class inhouseMarketingSetting {
 			close();
 		}
 		$("#btn-save").click();
-		valCheck(4, 4, "viralAdd_cmpName_null");
+		valCheck("viralAdd_cmpName_null");
 		$(".input-sm", 0).setValue(date + "@");
 		$("#btn-save").click();
-		valCheck(5, 5, "viralAdd_cmpName_validation");
+		valCheck("viralAdd_cmpName_validation");
 		$(".input-sm", 0).setValue(date);
 		$("#btn-save").click();
-		valCheck(6, 6, "viralAdd_subjectMatter_null");
+		valCheck("viralAdd_subjectMatter_null");
 		$(".input-sm", 1).setValue(date + "@");
 		$("#btn-save").click();
-		valCheck(7, 7, "viralAdd_subjectMatter_validation");
+		valCheck("viralAdd_subjectMatter_validation");
 		$(".input-sm", 1).setValue(date);
 		$(".input-sm", 2).setValue("");
 		$("#btn-save").click();
-		valCheck(8, 8, "viralAdd_URL_null");
+		valCheck("viralAdd_URL_null");
 		$(".input-sm", 2).setValue(date);
 		$("#btn-save").click();
-		valCheck(9, 9, "viralAdd_URL_validation");
+		valCheck("viralAdd_URL_validation");
 		$(".input-sm", 2).setValue("http://" + date + ".com");
 		$("#btn-save").click();
-		valCheck(10, 10, "viralAdd_register");
+		valCheck("viralAdd_register");
 		$(".btn-fileDown").waitUntil(visible, 10000);
 		pageLoadCheck = $(".btn-fileDown").text();
 		if(pageLoadCheck.equals("다운로드")) {
@@ -312,8 +320,8 @@ public class inhouseMarketingSetting {
 		$(".input-sm", 1).setValue(date);
 		$(".input-sm", 2).setValue("http://" + date + ".com");
 		$("#btn-save").click();
-		valCheck(4, 4, "viraldupAdd_confirm");
-		valCheck(5, 6, "viraldupAdd_alert");
+		valCheck("viraldupAdd_confirm");
+		valCheck("viraldupAdd_alert");
 		$(".w100", 1).click();
 		$("td", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 2).text();
@@ -390,11 +398,11 @@ public class inhouseMarketingSetting {
 		$(".btn-gray", 0).click();
 		$("#btn-del").waitUntil(visible, 10000);
 		$("#btn-del").click();
-		valCheck(3, 4, "viralSetting_del_null");
+		valCheck("viralSetting_del_null");
 		$("#campaignAllChk").click();
 		$("#btn-del").click();
-		valCheck(4, 5, "viralSetting_del_confirm");
-		valCheck(5, 7, "viralSetting_del_alert");
+		valCheck("viralSetting_del_confirm");
+		valCheck("viralSetting_del_alert");
 		$("td", 3).waitUntil(hidden, 10000);
 		String pageLoadCheck = $("td", 0).text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
@@ -427,30 +435,30 @@ public class inhouseMarketingSetting {
 			close();
 		}
 		$("#btn-save").click();
-		valCheck(3, 3, "emailAdd_cmpName_null");
+		valCheck("emailAdd_cmpName_null");
 		$(".input-sm", 0).setValue(date + "@");
 		$("#btn-save").click();
-		valCheck(4, 4, "emailAdd_cmpName_validation");
+		valCheck("emailAdd_cmpName_validation");
 		$(".input-sm", 0).setValue(date);
 		$(".input-sm", 1).setValue("");
 		$("#btn-save").click();
-		valCheck(5, 5, "emailAdd_sendDay_null");
+		valCheck("emailAdd_sendDay_null");
 		$(".input-sm", 1).setValue(date1);
 		$("#btn-save").click();
-		valCheck(6, 6, "emailAdd_sendNumber_null");
+		valCheck("emailAdd_sendNumber_null");
 		$(".input-sm", 2).setValue("test");
 		$("#btn-save").click();
-		valCheck(7, 7, "emailAdd_sendNumber_validation");
+		valCheck("emailAdd_sendNumber_validation");
 		$(".input-sm", 2).setValue("1234");
 		$(".input-sm", 3).setValue("");
 		$("#btn-save").click();
-		valCheck(8, 8, "emailAdd_URL_null");
+		valCheck("emailAdd_URL_null");
 		$(".input-sm", 3).setValue(date);
 		$("#btn-save").click();
-		valCheck(9, 9, "emailAdd_URL_validation");
+		valCheck("emailAdd_URL_validation");
 		$(".input-sm", 3).setValue("http://" + date + ".com");
 		$("#btn-save").click();
-		valCheck(10, 10, "emailAdd_register");
+		valCheck("emailAdd_register");
 		$(".btn-gray").waitUntil(visible, 10000);
 		pageLoadCheck = $(".btn-gray").text();
 		if(pageLoadCheck.equals("삭제")) {
@@ -478,7 +486,7 @@ public class inhouseMarketingSetting {
 		$(".input-sm", 2).setValue("1234");
 		$(".input-sm", 3).setValue("http://" + date + ".com");
 		$("#btn-save").click();
-		valCheck(3, 3, "emailAdd_dupAdd_alert");
+		valCheck("emailAdd_dupAdd_alert");
 		$(".btn-light", 0).click();
 		$(".btn-gray").waitUntil(visible, 10000);
 		pageLoadCheck = $(".btn-gray").text();
@@ -540,11 +548,11 @@ public class inhouseMarketingSetting {
 		$(".btn-gray").click();
 		$("#btn-del").waitUntil(visible, 10000);
 		$("#btn-del").click();
-		valCheck(3, 3, "emailSetting_del_null");
+		valCheck("emailSetting_del_null");
 		$("#campaignAllChk").click();
 		$("#btn-del").click();
-		valCheck(4, 4, "emailSetting_del_confirm");
-		valCheck(5, 6, "emailSetting_del_alert");
+		valCheck("emailSetting_del_confirm");
+		valCheck("emailSetting_del_alert");
 		$("td", 3).waitUntil(hidden, 10000);
 		String pageLoadCheck = $("td").text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
@@ -570,36 +578,36 @@ public class inhouseMarketingSetting {
 		$(".btn-info").click();
 		$("#btn-save").waitUntil(visible, 10000);
 		$("#btn-save").click();
-		valCheck(3, 3, "talkAdd_cmpName_null");
+		valCheck("talkAdd_cmpName_null");
 		$(".input-sm", 0).setValue(date + "@");
 		$("#btn-save").click();
-		valCheck(4, 4, "talkAdd_cmpName_validation");
+		valCheck("talkAdd_cmpName_validation");
 		$(".input-sm", 0).setValue(date);
 		$(".input-sm", 1).setValue("");
 		$("#btn-save").click();
-		valCheck(5, 5, "talkAdd_sendDay_null");
+		valCheck("talkAdd_sendDay_null");
 		$(".input-sm", 1).setValue(date1);
 		$("#btn-save").click();
-		valCheck(6, 6, "talkAdd_subjectMatter_null");
+		valCheck("talkAdd_subjectMatter_null");
 		$(".input-sm", 2).setValue(date + "@");
 		$("#btn-save").click();
-		valCheck(7, 7, "talkAdd_subjectMatter_validation");
+		valCheck("talkAdd_subjectMatter_validation");
 		$(".input-sm", 2).setValue(date);
 		$("#btn-save").click();
-		valCheck(8, 8, "talkAdd_sendNumber_null");
+		valCheck("talkAdd_sendNumber_null");
 		$(".input-sm", 3).setValue("test");
 		$("#btn-save").click();
-		valCheck(9, 9, "talkAdd_sendNumber_validation");
+		valCheck("talkAdd_sendNumber_validation");
 		$(".input-sm", 3).setValue("1234");
 		$(".input-sm", 4).setValue("");
 		$("#btn-save").click();
-		valCheck(10, 10, "talkAdd_URL_null");
+		valCheck("talkAdd_URL_null");
 		$(".input-sm", 4).setValue(date);
 		$("#btn-save").click();
-		valCheck(11, 11, "talkAdd_URL_validation");
+		valCheck("talkAdd_URL_validation");
 		$(".input-sm", 4).setValue("http://" + date + ".com");
 		$("#btn-save").click();
-		valCheck(12, 12, "talkAdd_register");
+		valCheck("talkAdd_register");
 		$(".btn-gray").waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals(date)) {
@@ -621,8 +629,8 @@ public class inhouseMarketingSetting {
 		$(".input-sm", 3).setValue("1234");
 		$(".input-sm", 4).setValue("http://" + date + ".com");
 		$("#btn-save").click();
-		valCheck(3, 3, "talkdupAdd_confirm");
-		valCheck(4, 5, "talkdupAdd_alert");
+		valCheck("talkdupAdd_confirm");
+		valCheck("talkdupAdd_alert");
 		$(".btn-light", 0).click();
 		$(".btn-gray").waitUntil(visible, 10000);
 		String pageLoadCheck = $("td", 2).text();
@@ -684,11 +692,11 @@ public class inhouseMarketingSetting {
 		$(".btn-gray").click();
 		$("#btn-del").waitUntil(visible, 10000);
 		$("#btn-del").click();
-		valCheck(3, 3, "talkSetting_del_null");
+		valCheck("talkSetting_del_null");
 		$("#campaignAllChk").click();
 		$("#btn-del").click();
-		valCheck(4, 4, "talkSetting_del_confirm");
-		valCheck(5, 6, "talkSetting_del_alert");
+		valCheck("talkSetting_del_confirm");
+		valCheck("talkSetting_del_alert");
 		$("td", 3).waitUntil(hidden, 10000);
 		String pageLoadCheck = $("td").text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {

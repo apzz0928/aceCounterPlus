@@ -601,8 +601,7 @@ public class contentSetting {
 	    $(".br-l-n").setValue(date);
 	    $("#btn-search").click();
 	    String pageLoadCheck = $("td", 0).text().trim();
-	    if(pageLoadCheck.equals("등록된 페이지가 없습니다.\n" + 
-	    		"메뉴를 선택한 후 페이지를 등록하세요.")) {
+	    if(pageLoadCheck.equals("등록된 페이지가 없습니다.\n" + "메뉴를 선택한 후 페이지를 등록하세요.")) {
 	    	System.out.println(" *** pageGroupSetting_pageManage search Success !! *** ");
 	    } else {
 	    	System.out.println(" *** pageGroupSetting_pageManage search Fail ... !@#$%^&*() *** ");
@@ -827,7 +826,8 @@ public class contentSetting {
 	    $(".btn-info", 0).click();
 	    $(".mv20").waitUntil(visible, 10000);
 	    pageLoadCheck = $(".mv20").text().trim();
-	    if(pageLoadCheck.equals("'*'를 이용해 임의의 문자열을 패턴으로 등록합니다.(*.zip으로 등록할 경우 압축파일 다운로드 링크에 대해 분석합니다.)")) {
+	    String[] pLC = pageLoadCheck.split(" ");
+	    if(pLC[0].equals("'*'를")) {
 			System.out.println(" *** fileDownload_add add UI Success !! *** ");	    	
 	    } else {
 			System.out.println(" *** fileDownload_add add UI Fail ... !@#$%^&*() *** ");
@@ -854,7 +854,8 @@ public class contentSetting {
 	    $(".btn-info", 0).click();
 	    $(".mv20").waitUntil(visible, 10000);
 	    String pageLoadCheck = $(".mv20").text().trim();
-	    if(pageLoadCheck.equals("'*'를 이용해 임의의 문자열을 패턴으로 등록합니다.(*.zip으로 등록할 경우 압축파일 다운로드 링크에 대해 분석합니다.)")) {
+	    String[] pLC = pageLoadCheck.split(" ");
+	    if(pLC[0].equals("'*'를")) {
 			System.out.println(" *** fileDownload_add add UI Success !! *** ");	    	
 	    } else {
 			System.out.println(" *** fileDownload_add add UI Fail ... !@#$%^&*() *** ");

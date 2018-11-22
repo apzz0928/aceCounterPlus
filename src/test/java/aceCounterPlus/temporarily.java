@@ -33,16 +33,14 @@ public class temporarily {
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
 	private static HttpURLConnection huc;
 	private static int respCode;
-
-	// 신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
+	
+	//신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
 	Date number_date = new Date();
-	SimpleDateFormat number_format = new SimpleDateFormat("yyMMddHHmmss");
-	SimpleDateFormat number_format1 = new SimpleDateFormat("yyyy-MM-dd");
-	SimpleDateFormat number_format2 = new SimpleDateFormat("MMddhhmmss");
-	String date = number_format.format(number_date);
-	String date1 = number_format1.format(number_date);
-	String date2 = number_format2.format(number_date);
-
+    SimpleDateFormat number_format = new SimpleDateFormat("yyMMddHHmmss");
+    SimpleDateFormat number_format1 = new SimpleDateFormat("yyyy-MM-dd");
+    String date = number_format.format(number_date);
+    String date1 = number_format1.format(number_date);
+    
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
@@ -50,7 +48,6 @@ public class temporarily {
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
 		id = "ap";
 		pw = "qordlf!@34";
-		pw1 = "qordlf12#$";
 		domain = "apzz";
 
 		String urlToRemoteWD = hubUrl;
@@ -59,10 +56,8 @@ public class temporarily {
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
-			/*
-			 * ChromeOptions options = new ChromeOptions(); driver = new RemoteWebDriver(new
-			 * URL(urlToRemoteWD), options);
-			 */
+			/*ChromeOptions options = new ChromeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.chrome();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
@@ -70,28 +65,24 @@ public class temporarily {
 			driver.manage().window().maximize();
 		} else if (browser.equals("firefox")) {
 			TestBrowser = "firefox";
-			// cap = DesiredCapabilities.firefox();
-			// RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
+			//cap = DesiredCapabilities.firefox();
+			//RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			FirefoxOptions options = new FirefoxOptions();
 			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("edge")) {
 			TestBrowser = "edge";
-			/*
-			 * EdgeOptions options = new EdgeOptions(); driver = new RemoteWebDriver(new
-			 * URL(urlToRemoteWD), options);
-			 */
+			/*EdgeOptions options = new EdgeOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.edge();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL(urlToRemoteWD), cap);
 			WebDriverRunner.setWebDriver(driver);
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		} else if (browser.equals("internetExplorer")) {
 			TestBrowser = "internetExplorer";
-			/*
-			 * InternetExplorerOptions options = new InternetExplorerOptions(); driver = new
-			 * RemoteWebDriver(new URL(urlToRemoteWD), options);
-			 */
+			/*InternetExplorerOptions options = new InternetExplorerOptions();
+			driver = new RemoteWebDriver(new URL(urlToRemoteWD), options);*/
 			cap = DesiredCapabilities.internetExplorer();
 			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); // 보안설정 변경
 			cap.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false); // ie text 입력 속도 향상을 위한 부분
@@ -102,861 +93,1016 @@ public class temporarily {
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		}
 	}
-
-	public static void valCheck(int pTagNum, int btnNum, String val) {
-	    $(".modal-backdrop").waitUntil(visible, 10000);
-		$("p", pTagNum).click();
-	    String msgCheck = $("p", pTagNum).text();
-		switch (val) {
-		case "scriptList_email_null":
-			checkMsg = "수신 이메일을 입력해 주세요.";
-			break;
-		case "scriptList_email_validation":
-			checkMsg = "이메일 주소가 올바르지 않습니다.";
-			break;
-		case "scriptList_email_send":
-			checkMsg = "설치안내 메일이 발송되었습니다.";
-			break;
-		case "installApply_null":
-			checkMsg = "신청할 서비스를 선택해 주세요.";
-			break;
-		case "installApply_name_null":
-			checkMsg = "이름을 입력해 주세요.";
-			break;
-		case "installApply_email_null":
-			checkMsg = "이메일을 입력해 주세요.";
-			break;
-		case "installApply_email_validation":
-			checkMsg = "이메일 형식이 올바르지 않습니다.";
-			break;
-		case "installApply_FTP_null":
-			checkMsg = "FTP정보를 입력해 주세요.";
-			break;
-		case "installApply_port_null":
-			checkMsg = "포트번호를 입력해 주세요.";
-			break;
-		case "installApply_id_null":
-			checkMsg = "아이디를 입력해 주세요.";
-			break;
-		case "installApply_pw_null":
-			checkMsg = "비밀번호를 입력해 주세요.";
-			break;
-		case "installApply_agree_null":
-			checkMsg = "개인정보 수집 및 이용에 대한 안내를 동의해 주세요.";
-			break;
-		case "myCoupon_1_null":
-			checkMsg = "쿠폰번호를 입력해주세요.";
-			break;
-		case "myCoupon_2_null":
-			checkMsg = "쿠폰번호를 입력해주세요.";
-			break;
-		case "myCoupon_3_null":
-			checkMsg = "쿠폰번호를 입력해주세요.";
-			break;
-		case "myCoupon_4_null":
-			checkMsg = "쿠폰번호를 입력해주세요.";
-			break;
-		case "myCoupon_5_null":
-			checkMsg = "쿠폰번호가 맞지 않습니다.\n" + "다시 확인해 주세요.";
-			break;
-		case "editService_modify_check":
-			checkMsg = "변경된 정보가 없습니다.";
-			break;
-		case "addService_siteName_null":
-			checkMsg = "웹사이트 이름을 입력해주세요.";
-			break;
-		case "addService_domain_null":
-			checkMsg = "등록된 도메인이 없습니다.";
-			break;
-		case "addService_domain_validation":
-			checkMsg = "도메인 형식이 올바르지 않습니다.";
-			break;
-		case "addService_domain_duplication":
-			checkMsg = "이미 추가된 도메인입니다.";
-			break;
-		case "addService_siteGroup1_null":
-			checkMsg = "웹사이트 분류를 선택해주세요.";
-			break;
-		case "addService_siteGroup2_null":
-			checkMsg = "웹사이트 분류를 선택해주세요.";
-			break;
-		case "addService_coupon_null":
-			checkMsg = "쿠폰번호가 맞지 않습니다.\n" + "다시 확인해 주세요.";
-			break;
-		case "addIntegralReport_name_null":
-			checkMsg = "통합리포트 이름을 입력해 주세요.";
-			break;
-		case "addIntegralReport_service_null":
-			checkMsg = "2개 이상의 서비스를 선택해 주세요.";
-			break;
-		case "editService_siteName_null":
-			checkMsg = "웹사이트 이름을 입력해주세요.";
-			break;
-		case "editService_domain_null":
-			checkMsg = "등록된 도메인이 없습니다.";
-			break;
-		case "editService_domain_validation":
-			checkMsg = "도메인 형식이 올바르지 않습니다.";
-			break;
-		case "editService_edit_alert":
-			checkMsg = "수정이 완료되었습니다.";
-			break;
-		case "editService_restore_alert":
-			checkMsg = "수정이 완료되었습니다.";
-			break;
-		case "summaryReport_sendEmail_null":
-			checkMsg = "수신 이메일을 추가해 주세요.";
-			break;
-		case "summaryReport_sendEmail_check":
-			checkMsg = "올바른 이메일을 입력하세요.";
-			break;
-		case "summaryReport_sendEmail_send":
-			checkMsg = "요약리포트가 발송되었습니다.";
-			break;
-		case "summaryReport_reserveEmail_null":
-			checkMsg = "수신 이메일을 추가해 주세요.";
-			break;
-		case "summaryReport_reserveEmail_check":
-			checkMsg = "올바른 이메일을 입력하세요.";
-			break;
-		case "summaryReport_reserveEmail_send":
-			checkMsg = "설정하신 내용이 저장되었습니다.\n" + "설정내용은 익일부터 반영됩니다.";
-			break;
-		case "subManager_name_null":
-			checkMsg = "담당자 이름을 입력해 주세요.";
-			break;
-		case "subManager_email_null":
-			checkMsg = "담당자 이메일을 입력해 주세요.";
-			break;
-		case "subManager_email_check":
-			checkMsg = "이메일 형식이 올바르지 않습니다.";
-			break;
-		case "subManager_service_null":
-			checkMsg = "서비스를 추가해 주세요.";
-			break;
-		case "subManager_email_send":
-			checkMsg = "이메일이 발송되었습니다.\n" + "\n" + "발송된 이메일의 회원가입 링크 유효기간은 총 7일로\n" + "7일 이내 미가입 시 유효기간이 종료됩니다.";
-			break;
-		case "submanager_authority_modify_check":
-			checkMsg = "수정이 완료되었습니다.";
-			break;
-		case "subManager_pw_alert":
-			checkMsg = "비밀번호 변경이 완료되었습니다.";
-			break;
-		case "subManager_delete":
-			checkMsg = "삭제가 완료되었습니다.";
-			break;
-		}
-		Thread.onSpinWait();
-		if (msgCheck.equals(checkMsg)) {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val + " - check Success !! *** ");
-			$(".btn-sm", btnNum).click();
-			if (!val.split("_")[0].equals("scriptList")) {
-				$(".modal-backdrop").waitUntil(hidden, 10000);
-			} else {
-
+	
+	public static void valCheck(String val) {
+        switch(val){
+	        case "URLSetting_dynamicPage_URL_null": checkMsg = "동적페이지URL을 입력하세요.";
+	        break;
+	        case "URLSetting_dynamicPage_URL_check": checkMsg = "입력하신 페이지URL은\n" + "동적페이지에 해당되지 않습니다.\n" + "다시 확인 후 입력해주세요.";
+	        break;
+	        case "URLSetting_dynamicPage_exclude_URL_char_check": checkMsg = "?, %, = 는 제외문자로 사용하실 수 없습니다.";
+	        break;
+	        case "URLSetting_dynamicPage_URL_add_success": checkMsg = "등록이 완료되었습니다.";
+	        break;
+	        case "URLSetting_dynamicPage_update_confirm": checkMsg = "등록된 동적페이지입니다.\n" + "수정하시겠습니까?";
+	        break;
+	        case "URLSetting_dynamicPage_update_alert": checkMsg = "수정이 완료되었습니다.";
+	        break;                 
+	        case "URLSetting_dynamicPage_modify_alert": checkMsg = "수정이 완료되었습니다.";
+	        break;                 
+	        case "URLSetting_dynamicPage_delete_confirm": checkMsg = "동적페이지를 삭제하시겠습니까?\n" + "동적페이지 변수에 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+	        break;                 
+	        case "URLSetting_dynamicPage_delete_alert": checkMsg = "삭제가 완료되었습니다.";
+	        break;                 
+	        case "URLSetting_pageChange_searchReq_null": checkMsg = "페이지 검색 조건을 입력하세요.";
+	        break;                 
+	        case "URLSetting_pageChange_URL_regexp": checkMsg = "페이지 검색 조건에 정규식이 포함되어 있지 않습니다.\n" + "다시 확인하세요.";
+	        break;                 
+	        case "URLSetting_pageChange_pageURL_null": checkMsg = "교체할 페이지URL을 입력하세요." ;
+	        break;                 
+	        case "URLSetting_pageChange_URL_add": checkMsg = "등록이 완료되었습니다.";
+	        break;                 
+	        case "URLSetting_pageChange_delete_check_null": checkMsg = "삭제할 페이지 교체를 선택하세요.";
+	        break;                 
+	        case "URLSetting_pageChange_delete_confirm": checkMsg =  "페이지 교체를 삭제하시겠습니까?\n" + "페이지 교체에 대한 분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다";
+	        break;                 
+	        case "URLSetting_pageChange_delete_alert": checkMsg =  "삭제가 완료되었습니다.";
+	        break;                 
+	        case "URLSetting_internalSearch_add_URL_null": checkMsg =  "페이지URL을 입력하세요.";
+	        break;                 
+	        case "URLSetting_internalSearch_add_var_null": checkMsg =  "내부검색변수를 입력하세요.";
+	        break;                 
+	        case "URLSetting_internalSearch_add_alert": checkMsg =  "등록이 완료되었습니다.";
+	        break;
+	        case "URLSetting_internalSearch_delete_check_null": checkMsg =  "삭제할 페이지URL을 선택하세요.";
+	        break;        
+	        case "URLSetting_internalSearch_delete_confirm": checkMsg =  "내부검색에 대한 페이지URL을 삭제하시겠습니까?\n" + "내부검색에 대한 분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+	        break;
+	        case "URLSetting_internalSearch_delete_alert": checkMsg =  "삭제가 완료되었습니다.";
+	        break;
+            case "menuDel_confirm": checkMsg = "메뉴를 삭제하시겠습니까?\n" + "메뉴를 삭제하면, 메뉴에 대한 분석이 중지됩니다.";
+            break;
+            case "pageManage_selectNull": checkMsg = "삭제할 페이지를 선택하세요.";
+            break;
+            case "pattern_menu_null": checkMsg = "메뉴를 먼저 선택하세요.";
+            break;
+            case "pattern_null": checkMsg = "패턴을 입력하세요.";
+            break;
+            case "pattern_register": checkMsg = "등록이 완료되었습니다.";
+            break;
+            case "pattern_del_null": checkMsg = "삭제할 패턴을 선택하세요.";
+            break;
+            case "pattern_del_confirm": checkMsg = "선택한 패턴을 삭제하시겠습니까?\n" + "해당 패턴에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+            break;
+            case "pattern_del_alert": checkMsg = "삭제가 완료되었습니다.";
+            break;
+            case "campaignName_null": checkMsg = "캠페인명을 입력하세요.";
+            break;
+            case "bannerName_null": checkMsg = "소재를 입력하세요.";
+            break;
+            case "linkURL_null": checkMsg = "연결 URL을 입력하세요.";
+            break;
+            case "innerBanner_add_alert": checkMsg = "등록이 완료되었습니다.";
+            break;
+            case "innerBanner_duplicationAdd": checkMsg = "이미 사용한 캠페인명입니다.\n" + "다른 캠페인명을 사용해주세요.";
+            break;
+            case "innerBanner_del_null": checkMsg = "삭제할 내부배너 설정을 선택하세요.";
+            break;
+            case "innerBanner_del_confirm": checkMsg = "선택한 내부배너 설정을 삭제하시겠습니까?\n" + "내부배너 설정에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+            break;
+            case "innerBanner_del_alert": checkMsg = "내부배너 설정 삭제가 완료되었습니다.";
+            break;
+            case "downPattern_null": checkMsg = "다운로드 패턴을 입력하세요.";
+            break;
+            case "downPattern_add_alert": checkMsg = "등록이 완료되었습니다.";
+            break;
+            case "downPattern_duplicationAdd_alert": checkMsg = "다운로드 패턴값이 이미 등록되어 있습니다.";
+            break;
+            case "downPattern_del_null": checkMsg = "삭제할 다운로드 패턴을 선택하세요.";
+            break;
+            case "downPattern_del_confirm": checkMsg = "다운로드 패턴을 삭제하시겠습니까?\n" + "다운로드 패턴을 삭제하면,\n" + "파일다운로드 분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+            break;
+            case "downPattern_del_alert": checkMsg = "삭제가 완료되었습니다.";
+            break;
+            case "outLinkBanner_promotionName_null": checkMsg = "프로모션명을 입력하세요.";
+            break;
+            case "outLinkBanner_name_null": checkMsg = "아웃링크 배너명을 입력하세요.";
+            break;
+            case "filePath_null": checkMsg = "파일경로를 입력하세요.";
+            break;
+            case "outLinkBanner_linkURL_null": checkMsg = "연결URL을 입력하세요.";
+            break;
+            case "outLinkBanner_linkURL_badURL": checkMsg = "올바른 URL을 입력하세요.";
+            break;
+            case "outLinkBanner_add_alert": checkMsg = "등록이 완료되었습니다.";
+            break;
+            case "outLinkBanner_promotionName_duplication": checkMsg = "이미 사용한 프로모션명입니다.\n" + "다른 프로모션명을 사용해주세요.";
+            break;
+            case "outLinkBanner_modify_alert": checkMsg = "수정이 완료되었습니다.";
+            break;
+            case "outLinkBanner_del_null": checkMsg = "삭제할 아웃링크 배너를 선택하세요.";
+            break;
+            case "outLinkBanner_del_confirm": checkMsg = "프로모션을 삭제하시겠습니까?\n" + "등록된 배너도 함께 삭제 됩니다.\n" + "\n" + "아웃링크 배너에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.\n" + "\n" + "웹사이트에 적용된 페이지내 삽입코드를\n" + "삭제해 주시기 바랍니다.";
+            break;
+            case "outLinkBanner_del_alert": checkMsg = "삭제가 완료되었습니다.";
+            break;
+        }
+		$(".modal-backdrop").waitUntil(visible, 10000);
+		$$("p").last().click();
+		String msgCheck = $$("p").last().text().trim();
+        Thread.onSpinWait();
+		if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
+			if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
+				System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
+				$$(".btn-info").last().click();
+			    $(".modal-backdrop").waitUntil(hidden, 10000);
+			} else { //confirm 아니면 .btn-sm클릭
+				System.out.println(" *** " + val +  " - check Success !! *** ");
+				$$(".btn-sm").last().click();
+			    $(".modal-backdrop").waitUntil(hidden, 10000);
 			}
-		} else if (msgCheck.isEmpty()) {
-			System.out.println(" *** ☆★☆★☆★ pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val	+ " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+		} else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
+			System.out.println(" *** ☆★☆★☆★ " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+			System.out.println(checkMsg);
 			close();
-		} else {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val + " - check Fail ... !@#$%^&*() *** ");
-			System.out.println(msgCheck);
-			System.out.println("-------------------------------");
+		} else { // msgCheck=checkMsg여부, confirm&alert여부, 빈값 여부 체크 후 fail
+			System.out.println(" *** " + val +  " - check Fail ... !@#$%^&*() *** ");
 			System.out.println(checkMsg);
 			close();
 		}
 	}
-
-	// 입력된 URL 정상 여부 확인
-	public static boolean brokenLinkCheck(String urlName, String urlLink) {
-		try {
-			huc = (HttpURLConnection) (new URL(urlLink).openConnection());
-			huc.setRequestMethod("HEAD");
-			huc.connect();
-			respCode = huc.getResponseCode();
-			if (respCode >= 400) {
-				System.out.println("***** " + urlName + " : Link Status HTTP : " + respCode + " - check Fail ... !@#$%^&*() *** ");
-				close();
-			} else {
-				System.out.println("***** " + urlName + " : Link Status HTTP : " + respCode + " - check Success !! *** ");
-			}
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	
+  	//입력된 URL 정상 여부 확인
+  	public static boolean brokenLinkCheck (String urlName, String urlLink){
+        try {
+            huc = (HttpURLConnection)(new URL(urlLink).openConnection());
+            huc.setRequestMethod("HEAD");
+            huc.connect();
+            respCode = huc.getResponseCode();
+            if(respCode >= 400){
+            	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " - check Fail ... !@#$%^&*() *** ");
+            	close();
+            } else {
+            	System.out.println("***** " + urlName +" : Link Status HTTP : " + respCode + " - check Success !! *** ");
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 		return false;
-	}
+    }
+  	public static void sleep(long millis) {
+  		try {
+  			Thread.sleep(millis);
+  		} catch (InterruptedException ex) {
+  			
+  		}
+  	}
 
-	public static void sleep(long millis) {
-		try {
-			Thread.sleep(millis);
-		} catch (InterruptedException ex) {
-		}
-	}
-
-	private static void js(String javaScript) {
-		executeJavaScript(javaScript);
-	}
-
-	@Test(priority = 0)
-	public void serviceManage_main() {
-		System.out.println(" ! ----- serviceManage_main Start ----- ! ");
+  	@Test(priority = 0)
+	public void Login() {
+		System.out.println(" ! ----- Login Start ----- ! ");
 		open(baseUrl);
-		$(".gnb").waitUntil(visible, 15000);
+		$(".gnb").waitUntil(visible, 10000);
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
-		String loginCheck = $(".btn_logout").text();
+		String loginCheck = $(".btn_logout").text().trim();
 		$(".btn_logout").getValue();
-		if (loginCheck.equals("로그아웃")) {
+		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
 			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".go_setting").click();
-		$(".notokr-bold", 0).waitUntil(visible, 1000);
-		String pageLoadCheck = $(".notokr-bold", 0).text();
-		if (pageLoadCheck.equals("서비스 관리")) {
-			System.out.println(" *** serviceManage page load Success !! *** ");
+		$(".go_stat", 1).click();
+		$("h3", 2).waitUntil(visible, 10000);
+		String pageLoadCheck = $("h3", 2).text().trim();
+		if(pageLoadCheck.equals("방문수")) {
+			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
-			System.out.println(" *** serviceManage page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- serviceManage_main End ----- ! ");
+		System.out.println(" ! ----- Login End ----- ! ");
 	}
-
 	@Test(priority = 1)
-	public void scriptList() {
-		System.out.println(" ! ----- scriptList Start ----- ! ");
-		$(By.linkText("분석스크립트")).click();
-		$("#items").waitUntil(visible, 15000);
-		$(".br-dark").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		String pageLoadCheck = $(".modal-title").text();
-		if (pageLoadCheck.equals("분석스크립트 메일발송")) {
-			System.out.println(" *** scriptList layerPopup load Success !! *** ");
+	public void URLSetting_dynamicPage_add() {
+		System.out.println(" ! ----- URLSetting_dynamicPage_add Start ----- ! ");
+		$("#redirectConfBtn").click();
+		$(".input-sm", 0).waitUntil(visible, 10000);
+		$(".accordion-toggle", 3).click();
+		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
+		$(By.linkText("URL 설정")).click();
+		$(".col-xs-5").waitUntil(visible, 10000);
+		String pageLoadCheck = $(".btn-info", 0).text().trim();
+		if(pageLoadCheck.equals("추가")) {
+			System.out.println(" *** URLSetting_dynamicPage_add Page load Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList layerPopup load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** URLSetting_dynamicPage_add Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".btn-dark", 1).click();
-		valCheck(12, 3, "scriptList_email_null");
-		$("#mail_to").setValue(date);
-		$(".btn-dark", 1).click();
-		valCheck(13, 4, "scriptList_email_validation");
-		$("#mail_to").setValue("apzz092888@daum.net");
-		$(".btn-dark", 1).click();
-		$(".btn-dark", 1).waitUntil(hidden, 10000);
-		valCheck(14, 5, "scriptList_email_send");
-		js("window.open('https://logins.daum.net/accounts/loginform.do?url=https%3A%2F%2Fmail.daum.net%2F');");
-		//다음메일 탭으로 포커스 변경
-		switchTo().window(1);
-		$("#id").setValue("apzz092888");
-		$("#inputPwd").setValue(pw);
-		$("#loginBtn").click();
-		$(".link_check").waitUntil(visible, 15000);
-		sleep(1000);
-		refresh();
-		pageLoadCheck = $("h1").text();
-		if (pageLoadCheck.equals("Daum\n" + "메일")) {
-			System.out.println(" *** scriptList daum mail list page load Success !! *** ");
+		$(".btn-info", 0).click();
+		$("#page-url").waitUntil(visible, 10000);
+		pageLoadCheck = $("#btn-add").text().trim();
+		if(pageLoadCheck.equals("등록")) {
+			System.out.println(" *** URLSetting_dynamicPage_add register UI load Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList daum mail list page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** URLSetting_dynamicPage_add register UI load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".tit_subject", 0).waitUntil(visible, 15000);
-		$(".tit_subject", 0).click();
-		$(".txt_filename").waitUntil(visible, 15000);
-		pageLoadCheck = $(".txt_filename").text();
-		if (pageLoadCheck.equals("script(ap0420121150.com).zip")) {
-			System.out.println(" *** scriptList send mail fileName check Success !! *** ");
-		} else {
-			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		//메일삭제
-		$(".link_mail", 2).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
-		$(".wrap_bold > .btn_del", 0).click();
-		//$(".link_basket").click();
-		$(By.linkText("휴지통")).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
-		$(".btn_toolbar", 0).click();
-		sleep(1500);
-		//$(".check_type2").waitUntil(visible, 15000);
-		$(".check_type2").click();
-		$(".link_mail", 2).click();
-		switchTo().window(0);
-		pageLoadCheck = $("#scriptList").text();
-		if (pageLoadCheck.equals("분석스크립트")) {
-			System.out.println(" *** scriptList aceCounter+ page load Success !! *** ");
-		} else {
-			System.out.println(" *** scriptList aceCounter+ page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#scroll_target_121331").waitUntil(visible, 15000);
-		$("#scroll_target_121331").click();
-		$(".text-danger", 0).waitUntil(visible, 15000);
-		pageLoadCheck = $(".text-danger", 0).text();
-		if (pageLoadCheck.equals("데이터 수집/분석중지")) {
-			System.out.println(" *** scriptList detailView check Success !! *** ");
-		} else {
-			System.out.println(" *** scriptList detailView check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#scroll_target_121331").click();
-		// $(".text-danger", 0).waitUntil(hidden, 10000);
-		System.out.println(" ! ----- scriptList End ----- ! ");
+		$("#btn-add").click();
+		valCheck("URLSetting_dynamicPage_URL_null");
+		$("#page-url").setValue("/" + date);
+		$("#btn-add").click();
+		valCheck("URLSetting_dynamicPage_URL_check");
+		$("#page-url").click();
+		$("#page-url").setValue("/" + date + "?첫등록변수=123");
+		$(".w300").setValue("=");
+		$("#btn-add").click();
+		valCheck("URLSetting_dynamicPage_exclude_URL_char_check");
+		$(".w300").setValue("첫등록제외문자");
+		$("#btn-add").click();
+		valCheck("URLSetting_dynamicPage_URL_add_success");
+		$("#btn-add").waitUntil(hidden, 10000);
+		$(".text-nowrap").waitUntil(visible, 10000);
+		System.out.println(" ! ----- URLSetting_dynamicPage_add End ----- ! ");
 	}
-
+	@Test(priority = 2)
+	public void URLSetting_dynamicPage_update() {
+		System.out.println(" ! ----- URLSetting_dynamicPage_update Start ----- ! ");
+		$(".btn-info", 0).waitUntil(visible, 10000);
+		$(".btn-info", 0).click();
+		$("#page-url").waitUntil(visible, 10000);
+		String pageLoadCheck = $("#btn-add").text().trim();
+		if(pageLoadCheck.equals("등록")) {
+			System.out.println(" *** URLSetting_dynamicPage_update register UI load Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_dynamicPage_update register UI load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#page-url").setValue("/" + date + "?" + date + "=123");
+		$(".w300").setValue("test");
+		$("#btn-add").click();
+		valCheck("URLSetting_dynamicPage_update_confirm");
+		valCheck("URLSetting_dynamicPage_update_alert");
+		$(".text-nowrap").waitUntil(visible, 10000);
+		System.out.println(" ! ----- URLSetting_dynamicPage_update End ----- ! ");
+	}
+	@Test(priority = 3)
+	public void URLSetting_dynamicPage_modify() {
+		System.out.println(" ! ----- URLSetting_dynamicPage_modify Start ----- ! ");
+		$("#btn-add").waitUntil(hidden, 10000); 
+		$(".br-dark", 0).waitUntil(visible, 10000);
+		$(".br-dark", 0).click();
+		$(".btn-url-save", 0).waitUntil(visible, 10000);
+		String pageLoadCheck = $(".btn-url-save", 0).text().trim();
+		if(pageLoadCheck.equals("저장")) {
+			System.out.println(" *** URLSetting_dynamicPage_modify save UI load Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_dynamicPage_modify save UI load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#list-param-0").setValue(date);
+		$(".btn-url-save").click();
+		valCheck("URLSetting_dynamicPage_modify_alert");
+		$(".text-nowrap").waitUntil(visible, 10000);
+		System.out.println(" ! ----- URLSetting_dynamicPage_modify End ----- ! ");
+	}
+	@Test(priority = 4)
+	public void URLSetting_dynamicPage_delete() {
+		System.out.println(" ! ----- URLSetting_dynamicPage_delete Start ----- ! ");
+		$("#btn-search", 0).waitUntil(visible, 10000);
+		$(".br-l-n", 0).click();
+		$(".br-l-n", 0).setValue(date + "a");
+		$("#btn-search", 0).click();
+		$("#btn-search", 0).waitUntil(visible, 10000);
+		String pageLoadCheck = $("tr", 4).text().trim();
+		String[] pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("등록된")) {
+			System.out.println(" *** URLSetting_dynamicPage_delete No Search Result Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_dynamicPage_delete No Search Result Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".br-l-n", 0).setValue(date);
+		$("#btn-search", 0).click();
+		$("#btn-search", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 5).text().trim();
+		if(pageLoadCheck.equals("/" + date)) {
+			System.out.println(" *** URLSetting_dynamicPage_delete Search Result Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_dynamicPage_delete Search Result Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#btn-list-delete").click();
+		$("#btn-list-select-delete").waitUntil(visible, 10000);
+		$("#inlineCheckbox1").click();
+		$("#btn-list-select-delete").click();
+		valCheck("URLSetting_dynamicPage_delete_confirm");
+		valCheck("URLSetting_dynamicPage_delete_alert");
+		$(".btn-xs").waitUntil(hidden, 10000);
+		pageLoadCheck = $("tr", 4).text().trim();
+		pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("등록된")) {
+			System.out.println(" *** URLSetting_dynamicPage_delete Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_dynamicPage_delete Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- URLSetting_dynamicPage_delete End ----- ! ");
+	}
+	@Test(priority = 5)
+	public void URLSetting_pageChange_add() {
+		System.out.println(" ! ----- URLSetting_pageChange_add Start ----- ! ");
+		$(By.linkText("페이지 교체")).click();
+		$("th", 5).waitUntil(visible, 10000);
+		String pageLoadCheck = $("th", 5).text().trim();
+		if(pageLoadCheck.equals("페이지 검색 조건")) {
+			System.out.println(" *** URLSetting_pageChange_add Page load Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_pageChange_add Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".btn-info", 0).click();
+		$("#btn-add").waitUntil(visible, 10000);
+		$("#btn-add").click();
+		valCheck("URLSetting_pageChange_searchReq_null");
+		$(By.name("targetPage")).setValue(date);
+		$("#btn-add").click();
+		valCheck("URLSetting_pageChange_URL_regexp");
+		$(By.name("targetPage")).setValue("/" + date + "/[0-9]*");
+		$("#btn-add").click();
+		valCheck("URLSetting_pageChange_pageURL_null");
+		$(By.name("replacementPage")).setValue("/" + date);
+		$("#btn-add").click();
+		valCheck("URLSetting_pageChange_URL_add");
+		$("#list-page-param-0").waitUntil(visible, 10000);
+		pageLoadCheck = $("#list-page-param-0").text().trim();
+		if(pageLoadCheck.equals("/" + date)) {
+			System.out.println(" *** URLSetting_pageChange_add Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_pageChange_add Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- URLSetting_pageChange_add End ----- ! ");
+	}
+	@Test(priority = 6)
+	public void URLSetting_pageChange_delete() {
+		System.out.println(" ! ----- URLSetting_pageChange_delete Start ----- ! ");
+		$(".br-l-n").setValue(date + "a");
+		$("#btn-search").click();
+		$("td", 5).waitUntil(hidden, 10000);
+		$("td", 3).waitUntil(visible, 10000);
+		String pageLoadCheck = $("td", 3).text().trim();
+		String[] pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("등록된")) {
+			System.out.println(" *** URLSetting_pageChange_No Search Result Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_pageChange_No Search Result Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".br-l-n").setValue(date);
+		$("#btn-search").click();
+		$("td", 5).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 5).text().trim();
+		pLC = pageLoadCheck.split("/");
+		if(pLC[1].equals(date)) {
+			System.out.println(" *** URLSetting_pageChange_Search Result Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_pageChange_Search Result Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#btn-list-delete", 0).click();
+		$("#btn-list-select-delete").waitUntil(visible, 10000);
+		$("#btn-list-select-delete").click();
+		valCheck("URLSetting_pageChange_delete_check_null");
+		$("#inlineCheckbox1").click();
+		$("#btn-list-select-delete").click();
+		valCheck("URLSetting_pageChange_delete_confirm");
+		$("#btn-modal-alert-yes").waitUntil(hidden, 10000);
+		//$(".btn-sm", 6).waitUntil(visible, 10000);
+		valCheck("URLSetting_pageChange_delete_alert");
+		$("td", 7).waitUntil(hidden, 10000);
+		pageLoadCheck = $("td", 3).text().trim();
+		pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("등록된")) {
+			System.out.println(" *** URLSetting_pageChange_delete Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_pageChange_delete Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- URLSetting_pageChange_delete End ----- ! ");
+	}
+	@Test(priority = 7)
+	public void URLSetting_internalSearch_add() {
+		System.out.println(" ! ----- URLSetting_internalSearch_add Start ----- ! ");
+		$(By.linkText("내부검색")).click();
+		$("th", 5).waitUntil(visible, 10000);
+		String pageLoadCheck = $("th", 6).text().trim();
+		if(pageLoadCheck.equals("내부검색변수")) {
+			System.out.println(" *** URLSetting_internalSearch Page load Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_internalSearch Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#btn-add").click();
+		$("#btn-reg").waitUntil(visible, 10000);
+		$("#btn-reg").click();
+		valCheck("URLSetting_internalSearch_add_URL_null");
+		$(By.name("page_url")).setValue("/" + date);
+		$("#btn-reg").click();
+		valCheck("URLSetting_internalSearch_add_var_null");
+		$(By.name("internal_search_param")).setValue(date);
+		$("#btn-reg").click();	
+		valCheck("URLSetting_internalSearch_add_alert");
+		$("#btn-reg").waitUntil(hidden, 10000);
+		$("td", 6).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 6).text().trim();
+		if(pageLoadCheck.equals(date)) {
+			System.out.println(" *** URLSetting_internalSearch_add Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_internalSearch_add Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- URLSetting_internalSearch_add End ----- ! ");
+	}
+	@Test(priority = 8)
+	public void URLSetting_internalSearch_delete() {
+		System.out.println(" ! ----- URLSetting_internalSearch_delete Start ----- ! ");
+		$(".br-l-n").setValue(date + "a");
+		$("#btn-search").click();
+		$("td", 7).waitUntil(hidden, 10000);
+		$("td", 3).waitUntil(visible, 10000);
+		String pageLoadCheck = $("td", 3).text().trim();
+		String[] pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("등록된")) {
+			System.out.println(" *** URLSetting_internalSearch_No Search Result Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_internalSearch_No Search Result Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".br-l-n").setValue(date);
+		$("#btn-search").click();
+		$("td", 6).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 6).text().trim();
+		if(pageLoadCheck.equals(date)) {
+			System.out.println(" *** URLSetting_internalSearch_Search Result Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_internalSearch_Search Result Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#btn-list-delete", 0).click();
+		$("#btn-list-select-delete").waitUntil(visible, 10000);
+		$("#btn-list-select-delete").click();
+		valCheck("URLSetting_internalSearch_delete_check_null");
+		$("#inlineCheckbox1").click();
+		$("#btn-list-select-delete").click();
+		valCheck("URLSetting_internalSearch_delete_confirm");
+		$("#btn-modal-alert-yes").waitUntil(hidden, 10000);
+		//$(".btn-sm", 6).waitUntil(visible, 10000);
+		valCheck("URLSetting_internalSearch_delete_alert");
+		$("td", 6).waitUntil(hidden, 10000);
+		pageLoadCheck = $("td", 3).text().trim();
+		pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("등록된")) {
+			System.out.println(" *** URLSetting_internalSearch_delete Success !! *** ");
+		} else {
+			System.out.println(" *** URLSetting_internalSearch_delete Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- URLSetting_internalSearch_delete End ----- ! ");
+	}
 	@Test(priority = 11)
-	public void installApply() {
-		System.out.println(" ! ----- installApply Start ----- ! ");
-		$(By.linkText("분석스크립트 설치신청")).click();
-		String pageLoadCheck = $(".panel-title", 0).text();
-		if (pageLoadCheck.equals("1서비스 선택")) {
-			System.out.println(" *** installApply page load Success !! *** ");
+	public void pageGroupSetting_menuAddDel() {
+		System.out.println(" ! ----- pageGroupSetting_menuAddDel Start ----- ! ");
+	    $(By.linkText("페이지그룹 설정")).click();
+	    $("#btn-tree-add").waitUntil(visible, 10000);
+		String pageLoadCheck = $("#btn-tree-add").text().trim();
+		if(pageLoadCheck.equals("추가")) {
+			System.out.println(" *** pageGroupSetting_menuAdd Page load Success !! *** ");
 		} else {
-			System.out.println(" *** installApply page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" ***pageGroupSetting_menuAdd Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#btn_next_step1").click();
-		valCheck(20, 4, "installApply_null");
-		$("#checkbox_svc_0").click();
-		$("#btn_next_step1").click();
-		$("#btn_submit").scrollTo();
-		$("#btn_submit").click();
-		valCheck(22, 5, "installApply_name_null");
-		$("#applicant_nm").scrollTo();
-		$("#applicant_nm").setValue("name");
-		$("#btn_submit").scrollTo();
-		$("#btn_submit").click();
-		valCheck(23, 6, "installApply_email_null");
-		$("#applicant_email").scrollTo();
-		$("#applicant_email").setValue(date);
-		$("#btn_submit").scrollTo();
-		$("#btn_submit").click();
-		valCheck(24, 7, "installApply_email_validation");
-		$("#applicant_email").scrollTo();
-		$("#applicant_email").setValue(date + "@net.com");
-		$("#btn_submit").scrollTo();
-		$("#btn_submit").click();
-		valCheck(25, 8, "installApply_FTP_null");
-		$("#host_0").scrollTo();
-		$("#host_0").setValue(date);
-		$("#btn_submit").scrollTo();
-		$("#btn_submit").click();
-		valCheck(26, 9, "installApply_port_null");
-		$("#port_0").scrollTo();
-		$("#port_0").setValue(date);
-		$("#btn_submit").scrollTo();
-		$("#btn_submit").click();
-		valCheck(27, 10, "installApply_id_null");
-		$("#id_0").scrollTo();
-		$("#id_0").setValue(date);
-		$("#btn_submit").scrollTo();
-		$("#btn_submit").click();
-		valCheck(28, 11, "installApply_pw_null");
-		$("#pwd_0").scrollTo();
-		$("#pwd_0").setValue(date);
-		$("#btn_submit").scrollTo();
-		$("#btn_submit").click();
-		valCheck(29, 12, "installApply_agree_null");
-		System.out.println(" ! ----- installApply End ----- ! ");
+	    $("#btn-tree-add").click();
+	    $(By.xpath("(//input[@value=''])[2]")).setValue(date);
+	    $(By.id("ui-id-1")).click();
+	    $(".fancytree-lastsib").click();
+	    $("#btn-tree-delete").click();
+	    valCheck("menuDel_confirm");
+		System.out.println(" ! ----- pageGroupSetting_menuAddDel End ----- ! ");
 	}
-
+	@Test(priority = 12)
+	public void pageGroupSetting_pageManage() {
+		System.out.println(" ! ----- pageGroupSetting_pageManage Start ----- ! ");
+		brokenLinkCheck("pageDownload", "https://new.acecounter.com/setting/contents/pageGroup/downloadPage?key=&match=false&query=&use_yn=y");
+	    $(".br-l-n").setValue(date);
+	    $("#btn-search").click();
+	    String pageLoadCheck = $("td", 0).text().trim();
+	    if(pageLoadCheck.equals("등록된 페이지가 없습니다.\n" + 
+	    		"메뉴를 선택한 후 페이지를 등록하세요.")) {
+	    	System.out.println(" *** pageGroupSetting_pageManage search Success !! *** ");
+	    } else {
+	    	System.out.println(" *** pageGroupSetting_pageManage search Fail ... !@#$%^&*() *** ");
+	    	close();
+	    }
+	    $("#btn-list-delete").click();
+	    $("#btn-list-select-delete").waitUntil(visible, 5000);
+	    $("#btn-list-select-delete").click();
+	    valCheck("pageManage_selectNull");
+	    System.out.println(" ! ----- pageGroupSetting_pageManage End ----- ! ");
+	}
+	@Test(priority = 13)
+	public void pageGroupSetting_patternRegister() {
+		System.out.println(" ! ----- pageGroupSetting_patternRegister Start ----- ! ");
+		$(By.linkText("패턴등록")).click();
+		valCheck("pattern_menu_null");
+		$(".fancytree-title", 0).click();
+		$(By.linkText("패턴등록")).click();
+		String pageLoadCheck = $("h3", 2).text().trim();
+		if(pageLoadCheck.equals("패턴등록")) {
+			System.out.println(" *** pageGroupSetting_patternRegister page load Success !! *** ");
+		} else {
+			System.out.println(" *** pageGroupSetting_patternRegister page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#btn-pattern-add").click();
+		valCheck("pattern_null");
+		$(".input-sm").setValue(date);
+		$("#btn-pattern-add").click();
+		valCheck("pattern_register");
+		System.out.println(" ! ----- pageGroupSetting_patternRegister End ----- ! ");
+	}
+	@Test(priority = 14)
+	public void pageGroupSetting_patternManagement() {
+		System.out.println(" ! ----- pageGroupSetting_patternManagement Start ----- ! ");
+		sleep(1000);
+		$(By.linkText("패턴관리")).click();
+		$(".col-xs-5", 1).waitUntil(visible, 10000);
+		String pageLoadCheck = $(".col-xs-5", 1).text().trim();
+		if(pageLoadCheck.equals("패턴")) {
+			System.out.println(" *** pageGroupSetting_patternManagement page load Success !! *** ");
+		} else {
+			System.out.println(" *** pageGroupSetting_patternManagement page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    $(By.name("pattern_query")).sendKeys(date);
+	    $("#btn-pattern-search").click();
+		$("#btn-list-pattern-delete").click();
+		$("#btn-list-select-pattern-delete").waitUntil(visible, 10000);
+		$("#btn-list-select-pattern-delete").click();
+		valCheck("pattern_del_null");
+	    $(By.xpath("(//input[@id='inlineCheckbox1'])[2]")).click();
+		$("#btn-list-select-pattern-delete").click();
+		valCheck("pattern_del_confirm");
+		valCheck("pattern_del_alert");
+		System.out.println(" ! ----- pageGroupSetting_patternManagement End ----- ! ");
+	}
+	@Test(priority = 15)
+	public void pageGroupSetting_pageUpload() {
+		System.out.println(" ! ----- pageGroupSetting_pageUpload Start ----- ! ");
+		$(By.linkText("페이지업로드")).click();
+		$("h3", 3).waitUntil(visible, 10000);
+		String pageLoadCheck = $("h3", 3).text().trim();
+		if(pageLoadCheck.equals("페이지업로드")) {
+			System.out.println(" *** pageGroupSetting_pageUpload page load Success !! *** ");
+		} else {
+			System.out.println(" *** pageGroupSetting_pageUpload page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    System.out.println(" ! ----- pageGroupSetting_pageUpload End ----- ! ");
+	}
 	@Test(priority = 21)
-	public void memberInfo() {
-		System.out.println(" ! ----- memberInfo Start ----- ! ");
-		$(By.linkText("회원정보")).click();
-		$("h3", 2).waitUntil(visible, 15000);
-		String pageLoadCheck = $("h3", 2).text();
-		if(pageLoadCheck.equals("비밀번호 재확인")) {
-			System.out.println(" *** memberInfo Recongirming page load Success !! *** ");
+	public void innerBanner_add() {
+		System.out.println(" ! ----- innerBanner_add Start ----- ! ");
+	    $(By.linkText("내부배너 설정")).click();
+	    $(".no-records-found").waitUntil(visible, 10000);
+		String pageLoadCheck = $(".btn-dark", 0).text().trim();
+		if(pageLoadCheck.equals("링크URL 다운로드")) {
+			System.out.println(" *** innerBanner_add list Page load Success !! *** ");
 		} else {
-			System.out.println(" *** memberInfo Recongirming page load Fail ... !@#$%^&*() *** ");			
-		}
-		$("#pwd").setValue(pw);
-		$("#btn-ok").click();
-		$("h3", 2).waitUntil(visible, 15000);
-		System.out.println(" *** Password change Page access Success !! *** ");
-		$("#prePwd").setValue(pw);
-		$("#changePwd").setValue(pw1);
-		$("#changePwdConfirm").setValue(pw1);
-		$("#modifyProc").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		$("#btn-modal-alert-yes").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		String mbn = $(".mbn").text();
-		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-			System.out.println(" *** Change Password Success !! *** ");
-			$("#okButton").click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-		} else {
-			System.out.println(" *** Change Password Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** innerBanner_add list Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#prePwd").setValue(pw1);
-		$("#changePwd").setValue(pw);
-		$("#changePwdConfirm").setValue(pw);
-		$("#modifyProc").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		$("#btn-modal-alert-yes").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-			System.out.println(" *** Restoration Password Success !! *** ");
-			$("#okButton").click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
+	    $(".btn-info", 0).click();
+	    $(".notokr-medium").waitUntil(visible, 10000);
+	    pageLoadCheck = $(".notokr-medium").text().trim();
+		if(pageLoadCheck.equals("추가하기")) {
+			System.out.println(" *** innerBanner_add Page load Success !! *** ");
 		} else {
-			System.out.println(" *** Restoration Password Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** innerBanner_add Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#s_name").setValue("변경이름");
-		$("#s_company").setValue("변경회사명");
-		$(By.name("s_hp1")).click();
-	    $(By.xpath("//option[@value='011']")).click();
-	    $("#s_hp2").setValue("0928");
-	    $("#s_hp3").setValue("9743");
-		$("#s_email").setValue("apzz0928@naver.com");
-	    $(".btn-lg", 1).click();
-	    String modalBody = $(".modal-body", 1).text();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		sleep(500);
-	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
-			$(".btn-sm", 5).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-			System.out.println(" *** change memberInfo Success !! *** ");
-		} else {
-			System.out.println(" *** change memberInfo Fail ... !@#$%^&*() *** ");
-			close();
-		}
+	    $("#btn-save").click();
 	    sleep(1000);
-	    $("#s_name").waitUntil(visible, 15000);
-		sleep(500);
-	    $("#s_name").setValue("원래이름");
-		$("#s_company").setValue("원래회사명");
-		$(By.name("s_hp1")).click();
-	    $(By.xpath("//option[@value='010']")).click();
-	    $("#s_hp2").setValue("9743");
-	    $("#s_hp3").setValue("0928");
-		$("#s_email").setValue("apzz0928@gmail.com");
-	    $(".btn-lg", 1).click();
-	    $(".modal-dialog").waitUntil(visible, 15000);
-		if(modalBody.equals("회원정보가 수정되었습니다.")) {
-			$(".btn-sm", 4).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-			System.out.println(" *** Restoration memberInfo Success !! *** ");
+	    valCheck("campaignName_null");
+	    $(".input-sm", 0).setValue(date);
+	    $("#btn-save").click();
+	    valCheck("bannerName_null");
+	    $(".input-sm", 1).setValue(date);
+	    $(".input-sm", 2).setValue("");
+	    $("#btn-save").click();
+	    valCheck("linkURL_null");
+	    $(".input-sm", 2).setValue("http://" + date + ".com");
+	    $("#btn-save").click();
+	    valCheck("innerBanner_add_alert");
+	    $(".btn-dark", 0).waitUntil(visible, 10000);
+	    pageLoadCheck = $(".btn-dark", 0).text().trim();
+		if(pageLoadCheck.equals("링크URL 다운로드")) {
+			System.out.println(" *** innerBanner_add list Page load Success !! *** ");
 		} else {
-			System.out.println(" *** Restoration memberInfo Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** innerBanner_add list Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- memberInfo End ----- ! ");
+		System.out.println(" ! ----- innerBanner_add End ----- ! ");
 	}
-
+	@Test(priority = 22)
+	public void innerBanner_duplicationAdd() {
+		System.out.println(" ! ----- innerBanner_duplicationAdd Start ----- ! ");
+		$(".btn-info", 0).click();
+	    $(".notokr-medium").waitUntil(visible, 5000);
+	    String pageLoadCheck = $(".notokr-medium").text().trim();
+		if(pageLoadCheck.equals("추가하기")) {
+			System.out.println(" *** innerBanner_duplicationAdd Page load Success !! *** ");
+		} else {
+			System.out.println(" *** innerBanner_duplicationAdd Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    $(".input-sm", 0).setValue(date);
+	    $(".input-sm", 1).setValue(date);
+	    $("#btn-save").click();
+	    valCheck("innerBanner_duplicationAdd");
+	    $(".w100", 1).click();
+	    $(".panel-function", 0).waitUntil(visible, 10000);
+	    pageLoadCheck = $(".btn-dark", 0).text().trim();
+		if(pageLoadCheck.equals("링크URL 다운로드")) {
+			System.out.println(" *** innerBanner_duplicationAdd list Page load Success !! *** ");
+		} else {
+			System.out.println(" *** innerBanner_duplicationAdd list Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- innerBanner_duplicationAdd End ----- ! ");
+	}
+	@Test(priority = 23)
+	public void innerBanner_search() {
+		System.out.println(" ! ----- innerBanner_search Start ----- ! ");
+	    $("#s_key").setValue(date);
+	    $("#btn-search").click();
+		String pageLoadCheck = $(".btn-dark", 0).text().trim();
+		if(pageLoadCheck.equals("링크URL 다운로드")) {
+			System.out.println(" *** innerBanner_search list Page load Success !! *** ");
+		} else {
+			System.out.println(" *** innerBanner_search list Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".btn-detail-view").click();
+		$(".text-left", 1).waitUntil(visible, 10000);
+		pageLoadCheck = $(".text-left", 1).text().trim();
+		if(pageLoadCheck.equals(date)) {
+			System.out.println(" *** innerBanner_search show link load Success !! *** ");
+		} else {
+			System.out.println(" *** innerBanner_search show link load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- innerBanner_search End ----- ! ");
+	}
+	@Test(priority = 24)
+	public void innerBanner_linkURLdownload() {
+		System.out.println(" ! ----- innerBanner_linkURLdownload Start ----- ! ");
+	    $(".btn-dark", 0).click();
+	    $(".modal-backdrop").waitUntil(visible, 5000);
+	    String pageLoadCheck = $(".btn-fileDown").text().trim();
+	    if(pageLoadCheck.equals("다운로드")) {
+	    	System.out.println(" *** innerBanner_linkURLdownload popup load Success !! *** ");
+	    } else {
+	    	System.out.println(" *** innerBanner_linkURLdownload popup load Fail ... !@#$%^&*() *** ");	   
+	    	close();
+	    }
+	    brokenLinkCheck("linkURLdownload", "https://new.acecounter.com/setting/contents/inBanner/download?campaign_type=inlink&down_type=urlDown&down_key=" + date1 + "~" + date1);
+	    $(".close", 0).click();
+		System.out.println(" ! ----- innerBanner_linkURLdownload End ----- ! ");
+	}
+	@Test(priority = 25)
+	public void innerBanner_del() {
+		System.out.println(" ! ----- innerBanner_del Start ----- ! ");
+	    $(".btn-gray", 0).click();
+	    $("#btn-del").waitUntil(visible, 10000);
+	    String pageLoadCheck = $("#btn-del").text().trim();
+	    if(pageLoadCheck.equals("선택 항목 삭제")) {
+	    	System.out.println(" *** innerBanner_del UI load Success !! *** ");
+	    } else {
+	    	System.out.println(" *** innerBanner_del UI load Success !! *** ");
+	    	close();
+	    }
+	    $("#btn-del").click();
+	    valCheck("innerBanner_del_null");
+	    $("#campaignAllChk").click();
+	    $("#btn-del").click();
+	    valCheck("innerBanner_del_confirm");
+	    valCheck("innerBanner_del_alert");
+	    $(".btn-dark", 0).waitUntil(visible, 10000);
+	    pageLoadCheck = $(".btn-dark", 0).text().trim();
+		if(pageLoadCheck.equals("링크URL 다운로드")) {
+			System.out.println(" *** innerBanner_del Page load Success !! *** ");
+		} else {
+			System.out.println(" *** innerBanner_del list Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- innerBanner_del End ----- ! ");
+	}
 	@Test(priority = 31)
-	public void myCoupon() {
-		System.out.println(" ! ----- myCoupon Start ----- ! ");
-		sleep(1000);
-		$(By.linkText("쿠폰관리")).click();
-		$("#btn-save").waitUntil(visible, 15000);
-		String pageLoadCheck = $("#btn-save").text();
-		if (pageLoadCheck.equals("쿠폰등록")) {
-			System.out.println(" *** myCoupon page load Success !! *** ");
+	public void fileDownload_add() {
+		System.out.println(" ! ----- fileDownload_add Start ----- ! ");
+	    $(By.linkText("파일다운로드")).click();
+	    $(".col-xs-9").waitUntil(visible, 10000);
+		String pageLoadCheck = $(".col-xs-9").text().trim();
+		if(pageLoadCheck.equals("파일다운로드패턴")) {
+			System.out.println(" *** fileDownload_add list Page load Success !! *** ");
 		} else {
-			System.out.println(" *** myCoupon page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** fileDownload_add list Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#btn-save").click();
-		valCheck(4, 4, "myCoupon_1_null");
-		$(".coupon-input", 0).setValue("1234");
-		$("#btn-save").click();
-		valCheck(5, 5, "myCoupon_2_null");
-		$(".coupon-input", 0).click();
-		$(".coupon-input", 0).setValue("1234");
-		$(".coupon-input", 1).setValue("123456");
-		$("#btn-save").click();
-		valCheck(6, 6, "myCoupon_3_null");
-		$(".coupon-input", 0).click();
-		$(".coupon-input", 0).setValue("1234");
-		$(".coupon-input", 1).setValue("123456");
-		$(".coupon-input", 2).setValue("12345");
-		$("#btn-save").click();
-		valCheck(7, 7, "myCoupon_4_null");
-		$(".coupon-input", 0).click();
-		$(".coupon-input", 0).setValue("1234");
-		$(".coupon-input", 1).setValue("123456");
-		$(".coupon-input", 2).setValue("12345");
-		$(".coupon-input", 3).setValue("1234");
-		$("#btn-save").click();
-		valCheck(8, 8, "myCoupon_5_null");
-		System.out.println(" ! ----- myCoupon End ----- ! ");
+	    $(".btn-info", 0).click();
+	    $(".mv20").waitUntil(visible, 10000);
+	    pageLoadCheck = $(".mv20").text().trim();
+	    if(pageLoadCheck.equals("'*'를 이용해 임의의 문자열을 패턴으로 등록합니다.(*.zip으로 등록할 경우 압축파일 다운로드 링크에 대해 분석합니다.)")) {
+			System.out.println(" *** fileDownload_add add UI Success !! *** ");	    	
+	    } else {
+			System.out.println(" *** fileDownload_add add UI Fail ... !@#$%^&*() *** ");
+			close();	    	
+	    }
+	    $("#btn-add").click();
+	    valCheck("downPattern_null");
+	    $("#download-pattern").setValue(date);
+	    $("#btn-add").click();
+	    valCheck("downPattern_add_alert");
+	    $("#btn-add").waitUntil(hidden, 10000);
+	    pageLoadCheck = $(".col-xs-9").text().trim();
+		if(pageLoadCheck.equals("파일다운로드패턴")) {
+			System.out.println(" *** fileDownload_add refresh Page load Success !! *** ");
+		} else {
+			System.out.println(" *** fileDownload_add refresh Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- innerBanner_add End ----- ! ");
 	}
-
+	@Test(priority = 32)
+	public void fileDownload_duplicationAdd() {
+		System.out.println(" ! ----- fileDownload_duplicationAdd Start ----- ! ");
+	    $(".btn-info", 0).click();
+	    $(".mv20").waitUntil(visible, 10000);
+	    String pageLoadCheck = $(".mv20").text().trim();
+	    if(pageLoadCheck.equals("'*'를 이용해 임의의 문자열을 패턴으로 등록합니다.(*.zip으로 등록할 경우 압축파일 다운로드 링크에 대해 분석합니다.)")) {
+			System.out.println(" *** fileDownload_add add UI Success !! *** ");	    	
+	    } else {
+			System.out.println(" *** fileDownload_add add UI Fail ... !@#$%^&*() *** ");
+			close();	    	
+	    }
+	    $("#download-pattern").setValue(date);
+	    $("#btn-add").click();
+	    valCheck("downPattern_duplicationAdd_alert");
+	    $("#btn-add-cancel").click();
+	    
+		System.out.println(" ! ----- innerBanner_duplicationAdd End ----- ! ");
+	}
+	@Test(priority = 33)
+	public void fileDownload_search() {
+		System.out.println(" ! ----- fileDownload_search Start ----- ! ");
+	    $(By.name("use_yn")).click();
+	    $(By.xpath("//option[@value='n']")).click();
+	    $(".col-xs-9").waitUntil(visible, 10000);
+		String pageLoadCheck = $(".col-xs-9").text().trim();
+		if(pageLoadCheck.equals("파일다운로드패턴")) {
+			System.out.println(" *** fileDownload_search delList selectbox Success !! *** ");
+		} else {
+			System.out.println(" *** fileDownload_search delList selectbox Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    $(".br-l-n").setValue(date);
+	    $("#btn-search").click();
+	    $("td", 1).waitUntil(visible, 10000);
+	    pageLoadCheck = $("td", 1).text().trim();
+		if(pageLoadCheck.equals("목록이 없습니다.")) {
+			System.out.println(" *** fileDownload_search delList search Success !! *** ");
+		} else {
+			System.out.println(" *** fileDownload_search delList search Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    $(By.name("use_yn")).click();
+	    $(By.xpath("//option[@value='y']")).click();
+	    $(".col-xs-9").waitUntil(visible, 10000);
+	    pageLoadCheck = $(".col-xs-9").text().trim();
+		if(pageLoadCheck.equals("파일다운로드패턴")) {
+			System.out.println(" *** fileDownload_search setList selectbox Success !! *** ");
+		} else {
+			System.out.println(" *** fileDownload_search setList selectbox Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    $(".br-l-n").setValue(date);
+	    $("#btn-search").click();
+	    $("td", 3).waitUntil(visible, 10000);
+	    pageLoadCheck = $("td", 3).text().trim();
+	    if(pageLoadCheck.equals(date)) {
+			System.out.println(" *** fileDownload_search setList search Success !! *** ");
+		} else {
+			System.out.println(" *** fileDownload_search setList search Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- innerBanner_search End ----- ! ");
+	}
+	@Test(priority = 34)
+	public void fileDownload_del() {
+		System.out.println(" ! ----- fileDownload_del Start ----- ! ");
+	    $("#btn-list-delete").click();
+	    $("#btn-list-select-delete").waitUntil(visible, 10000);
+	    $("#btn-list-select-delete").click();
+	    valCheck("downPattern_del_null");
+	    $("#inlineCheckbox1").click();
+	    $("#btn-list-select-delete").click();
+	    valCheck("downPattern_del_confirm");
+	    valCheck("downPattern_del_alert");
+	    $("#inlineCheckbox1").waitUntil(hidden, 10000);
+		String pageLoadCheck = $("td", 1).text().trim();
+		if(pageLoadCheck.equals("목록이 없습니다.")) {
+			System.out.println(" *** fileDownload_del page load Success !! *** ");
+		} else {
+			System.out.println(" *** fileDownload_del page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    
+		System.out.println(" ! ----- innerBanner_del End ----- ! ");
+	}
 	@Test(priority = 41)
-	public void addService() {
-		System.out.println(" ! ----- addService Start ----- ! ");
-		$(By.linkText("서비스추가")).click();
-		$("#btn_submit").waitUntil(visible, 15000);
-		String pageLoadCheck = $("#btn_submit").text();
-		if (pageLoadCheck.equals("등록하기")) {
-			System.out.println(" *** addService page load Success !! *** ");
+	public void outLinkBanner_add() {
+		System.out.println(" ! ----- outLinkBanner_add Start ----- ! ");
+	    $(By.linkText("아웃링크 배너")).click();
+		String pageLoadCheck = $("td").text().trim();
+		if(pageLoadCheck.equals("목록이 없습니다.")) {
+			System.out.println(" *** outLinkBanner_add list page load Success !! *** ");
 		} else {
-			System.out.println(" *** addService page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** outLinkBanner_add list page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#btn_submit").click();
-		valCheck(10, 5, "addService_siteName_null");
-		$(".input-sm", 0).setValue(date);
-		$("#btn_submit").click();
-		valCheck(11, 6, "addService_domain_null");
-		$(".gui-input", 1).setValue(date);
-		$(".ace-btn-add-domain").click();
-		valCheck(12, 7, "addService_domain_validation");
-		$(".gui-input", 1).setValue(date + ".com");
-		$(".ace-btn-add-domain").click();
-		$(".cross").waitUntil(visible, 15000);
-		$(".gui-input", 1).setValue(date + ".com");
-		$(".ace-btn-add-domain").click();
-		valCheck(13, 8, "addService_domain_duplication");
-		$("#btn_submit").click();
-		valCheck(14, 9, "addService_siteGroup1_null");
-		$(".br-dark", 1).click();
-		$("h3", 3).waitUntil(visible, 15000);
-		pageLoadCheck = $("h3", 3).text();
-		if (pageLoadCheck.equals("분류전체보기")) {
-			System.out.println(" *** addService siteGroup layer load Success !! *** ");
-		} else {
-			System.out.println(" *** addService siteGroup layer load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".close", 0).click();
-		$(".modal-backdrop").waitUntil(hidden, 10000);
-		$(By.name("largeCategoryCd")).click();
-		$(By.xpath("//option[@value='22']")).click();
-		$("#btn_submit").click();
-		valCheck(15, 10, "addService_siteGroup2_null");
-		$(By.name("middleCategoryCd")).click();
-		$(By.xpath("//option[@value='188']")).click();
-		$("label", 12).click();
-		$("#btn_submit").click();
-		valCheck(16, 11, "addService_coupon_null");
-		System.out.println(" ! ----- addService End ----- ! ");
-	}
-
-	@Test(priority = 51)
-	public void addView() {
-		System.out.println(" ! ----- addView Start ----- ! ");
-		$(By.linkText("뷰필터 추가")).click();
-		$(".div_not_paid").waitUntil(visible, 15000);
-		String pageLoadCheck = $(".div_not_paid").text();
-		if (pageLoadCheck.equals("뷰필터는 유료 서비스 전환 후에 추가 하실 수 있습니다.")) {
-			System.out.println(" *** addView page load Success !! *** ");
-		} else {
-			System.out.println(" *** addView page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- addView End ----- ! ");
-	}
-
-	@Test(priority = 61)
-	public void addIntegralReport() {
-		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
-		$(By.linkText("통합리포트 생성")).click();
-		$(".nano-content", 2).waitUntil(visible, 15000);
-		String pageLoadCheck = $(".nano-content", 2).text();
-		if (pageLoadCheck.equals("이용중인 서비스가 없습니다.")) {
-			System.out.println(" *** addIntegralReport page load Success !! *** ");
-		} else {
-			System.out.println(" *** addIntegralReport page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".btn-info", 0).scrollTo();
 		$(".btn-info", 0).click();
-		valCheck(5, 5, "addIntegralReport_name_null");
-		$("#report_nm").scrollTo();
-		$("#report_nm").setValue(date);
-		$(".btn-info", 0).scrollTo();
-		$(".btn-info", 0).click();
-		valCheck(6, 6, "addIntegralReport_service_null");
-		System.out.println(" ! ----- addIntegralReport End ----- ! ");
-	}
-
-	@Test(priority = 71)
-	public void editService() {
-		System.out.println(" ! ----- editService Start ----- ! ");
-		$(By.linkText("정보수정")).click();
-		$("#svc_nm_title_1").waitUntil(visible, 15000);
-		String pageLoadCheck = $(".btn-info", 0).text();
-		if (pageLoadCheck.equals("서비스 추가")) {
-			System.out.println(" *** editService page load Success !! *** ");
+		$("h3", 2).waitUntil(visible, 10000);
+		pageLoadCheck = $("h3", 2).text().trim();
+		if(pageLoadCheck.equals("추가하기")) {
+			System.out.println(" *** outLinkBanner_add register page load Success !! *** ");
 		} else {
-			System.out.println(" *** editService page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** outLinkBanner_add register page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#svc_nm_title_0").click();
-		$(".btn-info", 1).waitUntil(visible, 15000);
-		$(".btn-info", 1).click();
-		valCheck(15, 5, "editService_modify_check");
-		$(".input-sm", 0).setValue("");
-		$(".cross", 0).click();
-		$(".btn-info", 1).click();
-		valCheck(16, 6, "editService_siteName_null");
-		$(".input-sm", 0).setValue(date);
-		$(".btn-info", 1).click();
-		valCheck(17, 7, "editService_domain_null");
-		$(".gui-input", 1).setValue(date);
-		$(".br-dark", 0).click();
-		valCheck(18, 8, "editService_domain_validation");
-		$(".gui-input", 1).setValue(date + ".com");
-		$(".br-dark", 0).click();
-		$(".cross", 0).waitUntil(visible, 15000);
-		$(".btn-info", 1).click();
-		valCheck(19, 9, "editService_edit_alert");
-		sleep(500);
-		//$(".btn-info", 1).waitUntil(hidden, 10000);
-		$(".btn-info", 1).waitUntil(visible, 15000);
-		pageLoadCheck = $("#svc_nm_title_0").text();
-		System.out.println("date is " + date);
-		System.out.println("svc_nm_title_0 is " + pageLoadCheck);
-		System.out.println("svc_nm_title_0 (substring 21, 33) is " + pageLoadCheck.substring(21, 33));
-		if (pageLoadCheck.substring(21, 33).equals(date)) {
-			System.out.println(" *** editService edit Success !! *** ");
-		} else {
-			System.out.println(" *** editService edit Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".cross", 0).click();
-		$(".gui-input", 1).setValue("ap0420121150.com");
-		$(".br-dark", 0).click();
-		$(".cross", 0).waitUntil(visible, 15000);
-		$(".btn-info", 1).click();
-		valCheck(15, 5, "editService_restore_alert");
-		$(".btn-info", 1).waitUntil(visible, 15000);
+		$(".btn-info").click();
+		valCheck("outLinkBanner_promotionName_null");
+		$("#promotion-name").setValue(date);
+		$(".btn-info").click();
+		valCheck("outLinkBanner_name_null");
+		$(".input-sm", 2).setValue(date);
+		$(".btn-info").click();
+		valCheck("filePath_null");
+		$(".input-sm", 3).setValue(date);
+		$(".btn-info").click();
+		valCheck("outLinkBanner_linkURL_null");
+		$(".input-sm", 4).setValue(date);
+		$(".btn-info").click();
+		valCheck("outLinkBanner_linkURL_badURL");
+		$(".input-sm", 4).setValue("http://" + date + ".com");
+		$(".btn-info").click();
 		sleep(1000);
-		pageLoadCheck = $("#svc_nm_title_0").text();
-		System.out.println("date is " + date);
-		System.out.println("svc_nm_title_0 is " + pageLoadCheck);
-		System.out.println("svc_nm_title_0 (substring 21, 33) is " + pageLoadCheck.substring(21, 33));
-		if (pageLoadCheck.substring(21, 33).equals("ap0420121150")) {
-			System.out.println(" *** editService restore Success !! *** ");
+		valCheck("outLinkBanner_add_alert");
+		$("#btn-search").waitUntil(appears, 10000);
+		pageLoadCheck = $("td", 2).text().trim();
+		if(pageLoadCheck.equals(date)) {
+			System.out.println(" *** outLinkBanner_add register Success !! *** ");
 		} else {
-			System.out.println(" *** editService restore Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** outLinkBanner_add register Fail ... !@#$%^&*() *** ");
 			close();
-		}
-		System.out.println(" ! ----- editService End ----- ! ");
+		}		
+		System.out.println(" ! ----- outLinkBanner_add End ----- ! ");
 	}
-
-	@Test(priority = 81)
-	public void summaryReport() {
-		System.out.println(" ! ----- summaryReport Start ----- ! ");
-		$(By.linkText("발송메일 설정")).click();
-		$("#btn-sendMail").waitUntil(visible, 15000);
-		$(".cross", 0).click();
-		$(".sendEmail").waitUntil(hidden, 10000);
-		$("#btn-sendMail").click();
-		valCheck(6, 5, "summaryReport_sendEmail_null");
-		$(".gui-input", 0).setValue("apzz092888@");
-		$("#btn-sendEmail").click();
-		valCheck(7, 6, "summaryReport_sendEmail_check");
-		$(".gui-input", 0).setValue("apzz092888@daum.net");
-		$("#btn-sendEmail").click();
-		$(".sendEmail").waitUntil(visible, 15000);
-		$("#btn-sendMail").click();
-		$(".modal-center", 5).waitUntil(visible, 15000);
-		valCheck(8, 7, "summaryReport_sendEmail_send");
-		switchTo().window(1);
-		refresh();
-		String pageLoadCheck = $(".tit_subject", 0).text();
-		if (pageLoadCheck.substring(15, 22).equals("주간요약리포트")) {
-			System.out.println(" *** scriptList weeklySummary Report mail subject check Success !! *** ");
+	@Test(priority = 42)
+	public void outLinkBanner_duplicationAdd() {
+		System.out.println(" ! ----- outLinkBanner_duplicationAdd Start ----- ! ");
+	    $(".btn-info", 0).click();
+		$("h3", 2).waitUntil(visible, 10000);
+		String pageLoadCheck = $("h3", 2).text().trim();
+		if(pageLoadCheck.equals("추가하기")) {
+			System.out.println(" *** outLinkBanner_add register page load Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList weeklySummary Report mail subject check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** outLinkBanner_add register page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".tit_subject", 0).click();
-		$("h1", 1).waitUntil(visible, 15000);
-		pageLoadCheck = $("h1", 1).text();
-		if (pageLoadCheck.equals("주간요약 리포트입니다.")) {
-			System.out.println(" *** scriptList weeklySummary Report mail detailView check Success !! *** ");
+		$("#promotion-name").setValue(date);
+		$(".input-sm", 2).setValue(date);
+		$(".input-sm", 3).setValue(date);
+		$(".input-sm", 4).setValue("http://" + date + ".com");
+		$(".btn-info").click();
+		valCheck("outLinkBanner_promotionName_duplication");		
+		$(".btn-light").click();
+		$("#btn-search").waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 2).text().trim();
+		if(pageLoadCheck.equals(date)) {
+			System.out.println(" *** outLinkBanner_duplicationAdd check Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList weeklySummary Report mail detailView check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** outLinkBanner_duplicationAdd check Fail ... !@#$%^&*() *** ");
 			close();
-		}
-		//메일삭제
-		$(".link_mail", 2).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
-		$(".wrap_bold > .btn_del", 0).click();
-		/*$(By.linkText("휴지통"), 0).hover();
-		$(".link_empty", 1).click();*/
-		//$(".link_basket").click();
-		$(By.linkText("휴지통")).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
-		$(".btn_toolbar", 0).click();
-		$(".check_type2").waitUntil(visible, 15000);
-		$(".check_type2").click();
-		$(".link_mail", 2).click();
-		switchTo().window(0);
-		$("#btn-save").scrollTo();
-		$(".cross", 1).click();
-		$(".reserveEmail").waitUntil(hidden, 10000);
-		$("#btn-save").click();
-		valCheck(6, 5, "summaryReport_reserveEmail_null");
-		$(".gui-input", 3).setValue("apzz092888@");
-		$("#btn-reserveEmail").click();
-		valCheck(7, 6, "summaryReport_reserveEmail_check");
-		$(".gui-input", 3).setValue("apzz092888@daum.net");
-		$("#btn-reserveEmail").click();
-		$(".reserveEmail").waitUntil(visible, 15000);
-		for (int i = 18; i <= 25; i++) {
-			$("label", i).click();
-		}
-		$("#btn-save").click();
-		valCheck(8, 7, "summaryReport_reserveEmail_send");
-		$("#btn-save").waitUntil(visible, 15000);
-		for (int i = 18; i <= 25; i++) {
-			$("label", i).click();
-		}
-		$("#btn-save").click();
-		valCheck(6, 5, "summaryReport_reserveEmail_send");
-		$("#btn-save").waitUntil(visible, 15000);
-		System.out.println(" ! ----- summaryReport End ----- ! ");
+		}		
+		System.out.println(" ! ----- outLinkBanner_duplicationAdd End ----- ! ");
 	}
-
-	@Test(priority = 91)
-	public void add_subManager() {
-		System.out.println(" ! ----- add_subManager Start ----- ! ");
-		sleep(1000);
-		$(By.linkText("부관리자")).waitUntil(visible, 10000);
-		$(By.linkText("부관리자")).click();
-		$("#btn_mail").waitUntil(visible, 10000);
-		$("#btn_mail").click();
-		valCheck(5, 7, "subManager_name_null");
-		$("#submanager_nm").setValue("최영권");
-		$("#btn_mail").click();
-		valCheck(6, 8, "subManager_email_null");
-		$("#submanager_email").setValue("apzz092888@");
-		$("#btn_mail").click();
-		valCheck(7, 9, "subManager_email_check");
-		$("#submanager_email").setValue("apzz092888@daum.net");
-		$("#btn_mail").click();
-		valCheck(8, 10, "subManager_service_null");
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::button[1]")).click();
-	    $(By.id("treeDemo_2_check")).click();
-	    $(By.id("select_auth")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스추가해지테스트0001(test00011.org)'])[2]/following::option[3]")).click();
-	    $("#btn_add_svc").click();
-		$("#btn_mail").click();
-		valCheck(9, 11, "subManager_email_send");
-		switchTo().window(1);
-		refresh();
-		sleep(2000);
-		String pageLoadCheck = $(".tit_subject", 0).text();
-		if(pageLoadCheck.substring(22).equals("부관리자 안내 메일입니다.")) {
-			System.out.println(" *** subManager guide mail title Check Success !! *** ");
+	@Test(priority = 43)
+	public void outLinkBanner_search() {
+		System.out.println(" ! ----- outLinkBanner_search Start ----- ! ");
+	    $(By.name("use_yn")).click();
+	    $(By.xpath("//option[@value='n']")).click();
+	    $("th", 5).waitUntil(visible, 10000);
+	    String pageLoadCheck = $("th", 5).text().trim();
+	    if(pageLoadCheck.equals("삭제일")) {
+	    	System.out.println(" *** outLinkBanner_search delList Selectbox Success !! *** ");
+	    } else {
+			System.out.println(" *** outLinkBanner_search delList Selectboxt Fail ... !@#$%^&*() *** ");
+			close();
+	    }
+	    $(".br-l-n").setValue(date);
+		$("#btn-search").click();
+		$("td").waitUntil(visible, 10000);
+		pageLoadCheck = $("td").text().trim();
+		if(pageLoadCheck.equals("목록이 없습니다.")) {
+			System.out.println(" *** outLinkBanner_search delList search Success !! *** ");
 		} else {
-			System.out.println(" *** subManager guide mail title Check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** outLinkBanner_search delList search Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".tit_subject", 0).click();
-		pageLoadCheck = $("h1", 1).text();
-		if (pageLoadCheck.equals("부관리자 회원가입 안내")) {
-			System.out.println(" *** subManager signin mail detailView check Success !! *** ");
-		} else {
-			System.out.println(" *** subManager signin mail detailView check Fail ... !@#$%^&*() *** ");
+	    $(By.name("use_yn")).click();
+	    $(By.xpath("//option[@value='y']")).click();
+	    pageLoadCheck = $("th", 5).text().trim();
+	    if(pageLoadCheck.equals("수정일")) {
+	    	System.out.println(" *** outLinkBanner_search setList Selectbox Success !! *** ");
+	    } else {
+			System.out.println(" *** outLinkBanner_search setList Selectboxt Fail ... !@#$%^&*() *** ");
 			close();
-		}
-		$(By.linkText("부관리자 회원가입 바로가기")).click();
-		switchTo().window(2);
-		$("label", 0).waitUntil(visible, 15000);
-		$("label", 0).click();
-		$("#userid").setValue(id + date2);
-		$("#recheck").click();
-		$("#userpw").setValue(pw);
-		$("#repeatpw").setValue(pw);
-		$(".btn_join").click();
-		$(".btn_pop_submit").click();
-		switchTo().window(1);
-		//메일삭제
-		$(".link_mail", 2).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
-		$(".wrap_bold > .btn_del", 0).click();
-		$(By.linkText("휴지통")).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
-		$(".btn_toolbar", 0).click();
-		sleep(1500);
-		$(".check_type2").click();
-		$(".link_mail", 2).click();
-		switchTo().window(0);
-		refresh();
-		pageLoadCheck = $(".text-dark", 3).text();
-		if(pageLoadCheck.substring(0, 4).equals("가입완료")) {
-			System.out.println(" *** subManager_signUp Check Success !! *** ");
-		} else {
-			System.out.println(" *** subManager_signUp Check Fail ... !@#$%^&*() *** ");
+	    }
+	    $(".br-l-n").setValue(date);
+		$("#btn-search").click();
+		$("td", 2).waitUntil(visible, 10000);
+	    pageLoadCheck = $("td", 2).text().trim();
+	    if(pageLoadCheck.equals(date)) {
+	    	System.out.println(" *** outLinkBanner_search setList search Success !! *** ");
+	    } else {
+			System.out.println(" *** outLinkBanner_search setList search Fail ... !@#$%^&*() *** ");
 			close();
-		}
-		$(".indicator").click();
-		$(".btn-info", 1).waitUntil(visible, 15000);
-	    $(By.id("select_added_auth_11000")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='[Web Free]'])[5]/following::option[1]")).click();
-	    $(".btn-info", 1).click();
-	    $("#btn-modal-alert-yes").waitUntil(visible, 15000);
-	    $("#btn-modal-alert-yes").click();
-		valCheck(6, 13, "submanager_authority_modify_check");
-		System.out.println(" ! ----- add_subManager End ----- ! ");
+	    }
+	    System.out.println(" ! ----- outLinkBanner_search End ----- ! ");
 	}
-	
-	@Test(priority = 92)
-	public void subManager_modifyInfoAndDel() {
-		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
-		open("https://new.acecounter.com/auth/logout");
-		$("#uid").waitUntil(visible, 15000);
-		$("#uid").setValue(id + date2);
-		$("#upw").setValue(pw);
-		$(".btn_login").click();
-		$(".go_setting").waitUntil(visible, 10000);
-		$(".go_setting").click();
-		$("#prePwd").setValue(pw);
-		$("#changePwd").setValue(pw1);
-		$("#changePwdConfirm").setValue(pw1);
-		$("#modifyProc").click();
-		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
-		$("#btn-modal-alert-yes").click();
-		$("p", 4).waitUntil(visible, 15000);
-		valCheck(4, 3, "subManager_pw_alert");
-		open("https://new.acecounter.com/auth/logout");
-		$("#uid").setValue("apzz0928888");
-		$("#upw").setValue(pw);
-		$(".btn_login").click();
-		open("https://new.acecounter.com/manage/serviceInfo/submanager");
-		$(".br-dark", 2).click();
-		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
-		$("#btn-modal-alert-yes").click();
-		valCheck(6, 13, "subManager_delete");
-		$(".br-dark", 2).waitUntil(hidden, 10000);
-		System.out.println(" ! ----- subManager_modifyInfoAndDel End ----- ! ");
+	@Test(priority = 44)
+	public void outLinkBanner_modify() {
+		System.out.println(" ! ----- outLinkBanner_modify Start ----- ! ");
+	    $(".br-dark", 0).click();
+	    $("h3", 2).waitUntil(visible, 10000);
+		String pageLoadCheck = $("h3", 2).text().trim();
+		if(pageLoadCheck.equals("수정하기")) {
+			System.out.println(" *** outLinkBanner_modify page load Success !! *** ");
+		} else {
+			System.out.println(" *** outLinkBanner_modify page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#promotion-name").setValue(date + "수정");
+		$(".input-sm", 2).setValue(date + "수정");
+		$(".input-sm", 3).setValue(date + "수정");
+		$(".btn-info").click();
+		valCheck("outLinkBanner_modify_alert");
+		$(".btn-promotion-detail-view").waitUntil(visible, 10000);
+	    pageLoadCheck = $("td", 2).text().trim();
+	    if(pageLoadCheck.equals(date + "수정")) {
+	    	System.out.println(" *** outLinkBanner_modify Success !! *** ");
+	    } else {
+			System.out.println(" *** outLinkBanner_modify Fail ... !@#$%^&*() *** ");
+			close();
+	    }
+	    System.out.println(" ! ----- outLinkBanner_modify End ----- ! ");
 	}
-	@Test(priority = 101)
-	public void add_subManagerd() {
-		System.out.println(" ! ----- add_subManager Start ----- ! ");
-		sleep(1000);
-		$(By.linkText("서비스 해지")).waitUntil(visible, 10000);
-		$(By.linkText("서비스 해지")).click();
+	@Test(priority = 45)
+	public void outLinkBanner_del() {
+		System.out.println(" ! ----- outLinkBanner_del Start ----- ! ");
+	    $("#btn-list-delete").click();
+	    $("#btn-list-select-delete").waitUntil(visible, 10000);
+	    $("#btn-list-select-delete").click();
+	    valCheck("outLinkBanner_del_null");
+	    $("#inlineCheckbox1").click();
+	    $("#btn-list-select-delete").click();
+	    valCheck("outLinkBanner_del_confirm");
+	    valCheck("outLinkBanner_del_alert");
+	    $("td").waitUntil(visible, 10000);
+	    sleep(1000);
+	    String pageLoadCheck = $("td").text().trim();
+	    if(pageLoadCheck.equals("목록이 없습니다.")) {
+	    	System.out.println(" *** outLinkBanner_del delete Success !! *** ");
+	    } else {
+			System.out.println(" *** outLinkBanner_del delete Fail ... !@#$%^&*() *** ");
+			close();
+	    }
+	    System.out.println(" ! ----- outLinkBanner_del End ----- ! ");
 	}
 	
 	@AfterClass

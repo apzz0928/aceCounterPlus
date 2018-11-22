@@ -94,10 +94,7 @@ public class KPISetting {
 		}
 	}
 	
-	public static void valCheck(int pTagNum, int btnNum, String val) {
-	    $(".modal-backdrop").waitUntil(visible, 10000);
-		$("p", pTagNum).click();
-	    String msgCheck = $("p", pTagNum).text();
+	public static void valCheck(String val) {
         switch(val){
             case "KPIAdd_reporeName_null": checkMsg = "리포트명을 선택하세요.";
             break;
@@ -162,16 +159,27 @@ public class KPISetting {
 			case "myMenu_save": checkMsg = "저장이 완료되었습니다.";
 			break;
         }
-		Thread.onSpinWait();
-		if(msgCheck.equals(checkMsg)) {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Success !! *** ");
-			$(".btn-sm", btnNum).click();
-		    $(".modal-backdrop").waitUntil(hidden, 10000);
-		} else if (msgCheck.isEmpty()) {
-			System.out.println(" *** ☆★☆★☆★ pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+		$(".modal-backdrop").waitUntil(visible, 10000);
+		$$("p").last().click();
+		String msgCheck = $$("p").last().text().trim();
+        Thread.onSpinWait();
+		if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
+			if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
+				System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
+				$$(".btn-info").last().click();
+			    $(".modal-backdrop").waitUntil(hidden, 10000);
+			} else { //confirm 아니면 .btn-sm클릭
+				System.out.println(" *** " + val +  " - check Success !! *** ");
+				$$(".btn-sm").last().click();
+			    $(".modal-backdrop").waitUntil(hidden, 10000);
+			}
+		} else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
+			System.out.println(" *** ☆★☆★☆★ " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+			System.out.println(checkMsg);
 			close();
-		} else {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Fail ... !@#$%^&*() *** ");
+		} else { // msgCheck=checkMsg여부, confirm&alert여부, 빈값 여부 체크 후 fail
+			System.out.println(" *** " + val +  " - check Fail ... !@#$%^&*() *** ");
+			System.out.println(checkMsg);
 			close();
 		}
 	}
@@ -232,13 +240,13 @@ public class KPISetting {
 	@Test(priority = 1)
 	public void KPISetting_add() {
 		System.out.println(" ! ----- KPISetting_add Start ----- ! ");
-		
 		$("#redirectConfBtn").click();
 		$(".input-sm").waitUntil(visible, 10000);
 		$(".sidebar-title", 6).click();
 		$("td").waitUntil(visible, 10000);
-		String pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("등록된 KPI설정이 없습니다.\n" + "[추가]를 클릭해 KPI설정을 등록하세요.")) {
+		String pageLoadCheck = $("td").text().trim();
+	    String[] pLC = pageLoadCheck.split(" ");
+	    if(pLC[0].equals("등록된")) {
 			System.out.println(" *** KPISetting_add list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** KPISetting_add list Page load Fail ... !@#$%^&*() *** ");
@@ -255,29 +263,29 @@ public class KPISetting {
 		}
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(4, 818, "KPIAdd_reporeName_null");
+		valCheck("KPIAdd_reporeName_null");
 		$("h3", 1).scrollTo();
 		$(".input-sm").setValue(date);
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(5, 819, "KPIAdd_indicator_null");
+		valCheck("KPIAdd_indicator_null");
 		$("h3", 1).scrollTo();
 		$(".btn-sm", 11).click();
 		$(".btn-sm", 11).click();
-		valCheck(6, 820, "KPIAdd_indicator_duplication");
+		valCheck("KPIAdd_indicator_duplication");
 		$(".bad").setValue("");
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(7, 821, "KPIAdd_indicator_badStandard");
+		valCheck("KPIAdd_indicator_badStandard");
 		$("h3", 1).scrollTo();
 		$(".bad").setValue("5");
 		$(".good").setValue("ㅇ");
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(8, 822, "KPIAdd_indicator_goodStandard");
+		valCheck("KPIAdd_indicator_goodStandard");
 		$("h3", 1).scrollTo();
 		$(".cross").click();
-		for(int i=11;i<=17;i++) {
+		for(int i=11;i<=17;i++) { //KPI 지표 추가
 			$(".btn-sm", i).click();
 			System.out.println("indicatorStatdard add number is " + i);
 		}
@@ -286,10 +294,10 @@ public class KPISetting {
 			$(".btn-sm", i).click();
 			System.out.println("indicatorStatdard add number is " + i);
 		}
-		valCheck(9, 823, "KPIAdd_indicator_full");
+		valCheck("KPIAdd_indicator_full");
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(10, 824, "KPIAdd_register");		
+		valCheck("KPIAdd_register");		
 		$("td", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals(date)) {
@@ -312,14 +320,14 @@ public class KPISetting {
 			close();
 		}
 		$(".input-sm").setValue(date + " 수정");
-		for(int i=13;i>=0;i--) {
+		for(int i=13;i>=0;i--) { // KPI설정 지표 삭제
 			$(".cross", i).click();
 			System.out.println("indicatorStatdard modify number is " + i);
 		}
 		$("#registBtn").scrollTo();
 		$("#registBtn").click();
-		valCheck(4, 818, "KPISetting_modify_confirm");
-		valCheck(5, 820, "KPISetting_modify_alert");
+		valCheck("KPISetting_modify_confirm");
+		valCheck("KPISetting_modify_alert");
 		$(By.name("useYn")).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals(date + " 수정")) {
@@ -356,14 +364,15 @@ public class KPISetting {
 		$("#delControl").click();
 		$("#delProcess").waitUntil(visible, 10000);
 		$("#delProcess").click();
-		valCheck(3, 3, "KPISetting_del_null");
+		valCheck("KPISetting_del_null");
 		$("#mainDelCheck").click();
 		$("#delProcess").click();
-		valCheck(4, 4, "KPISetting_del_confirm");
-		valCheck(5, 6, "KPISetting_del_alert");
+		valCheck("KPISetting_del_confirm");
+		valCheck("KPISetting_del_alert");
 		$("#delProcess").waitUntil(hidden, 10000);
-		String pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("등록된 KPI설정이 없습니다.\n" + "[추가]를 클릭해 KPI설정을 등록하세요.")) {
+		String pageLoadCheck = $("td").text().trim();
+	    String[] pLC = pageLoadCheck.split(" ");
+	    if(pLC[0].equals("등록된")) {
 			System.out.println(" *** KPISetting_add list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** KPISetting_add list Page load Fail ... !@#$%^&*() *** ");
@@ -377,7 +386,8 @@ public class KPISetting {
 		$(".sidebar-title", 7).click();
 		$("td").waitUntil(visible, 10000);
 		String pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("예약된 리포트 목록이 없습니다.\n" + "추가버튼을 눌러 일회성 혹은 예약 리포트를 추가하세요.")) {
+		String[] pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("예약된")) {
 			System.out.println(" *** reportDownload_reserveAdd list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** reportDownload_reserveAdd list Page load Fail ... !@#$%^&*() *** ");
@@ -393,25 +403,25 @@ public class KPISetting {
 		}
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(3, 5, "reportDownload_reserveAdd_reportName_null");
+		valCheck("reportDownload_reserveAdd_reportName_null");
 		$(".form-control", 0).scrollTo();
 		$(".form-control", 0).setValue(date + "@");
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(4, 6, "reportDownload_reserveAdd_reportName_validation");
+		valCheck("reportDownload_reserveAdd_reportName_validation");
 		$(".form-control", 0).scrollTo();
 		$(".form-control", 0).setValue(date);
 		$(".form-control", 1).setValue(date);
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(5, 7, "reportDownload_reserveAdd_email_validation");
+		valCheck("reportDownload_reserveAdd_email_validation");
 		$(".form-control", 0).scrollTo();
 		$(".form-control", 1).setValue(date + "@test.com");
 		$("#btn-select-report-all").click();
 		$("#btn-select-report-cancle").click();
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(6, 8, "reportDownload_reserveAdd_reportCheck_null");
+		valCheck("reportDownload_reserveAdd_reportCheck_null");
 		$(".form-control", 0).scrollTo();
 		$("label", 1).click();
 		for(int i=2;i<=8;i++) {
@@ -419,7 +429,7 @@ public class KPISetting {
 		}
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(7, 9, "reportDownload_reserveAdd_register");
+		valCheck("reportDownload_reserveAdd_register");
 		$(".text-underline").waitUntil(visible, 10000);
 		pageLoadCheck = $(".text-underline").text();
 		if(pageLoadCheck.equals(date)) {
@@ -445,7 +455,7 @@ public class KPISetting {
 		$(".form-control", 0).setValue(date + "수정");
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(3, 5, "reportDownload_reserveDel_register");
+		valCheck("reportDownload_reserveDel_register");
 		$(".text-underline").waitUntil(visible, 10000);
 		pageLoadCheck = $(".text-underline").text();
 		if(pageLoadCheck.equals(date + "수정")) {
@@ -455,13 +465,13 @@ public class KPISetting {
 			close();
 		}
 		$(".btn-dark", 0).click();
-		valCheck(3, 4, "reportDownload_reservedel_confirm");
-		valCheck(4, 6, "reportDownload_reservedel_alert");
+		valCheck("reportDownload_reservedel_confirm");
+		valCheck("reportDownload_reservedel_alert");
 		$(".btn-dark", 0).waitUntil(hidden, 10000);
 		$(".btn-info").waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 0).text();
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + pageLoadCheck + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		if(pageLoadCheck.equals("예약된 리포트 목록이 없습니다.\n" + "추가버튼을 눌러 일회성 혹은 예약 리포트를 추가하세요.")) {
+		pageLoadCheck = $("td", 0).text().trim();
+		String[] pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("예약된")) {
 			System.out.println(" *** reportDownload_reserveDel list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** reportDownload_reserveDel list Page load Fail ... !@#$%^&*() *** ");
@@ -483,32 +493,32 @@ public class KPISetting {
 		}
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(3, 5, "reportDownload_oneshotAdd_reportName_null");
+		valCheck("reportDownload_oneshotAdd_reportName_null");
 		$(".form-control", 0).scrollTo();
 		$(".form-control", 0).setValue(date + "@");
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(4, 6, "reportDownload_oneshotAdd_reportName_validation");
+		valCheck("reportDownload_oneshotAdd_reportName_validation");
 		$(".form-control", 0).scrollTo();
 		$(".form-control", 0).setValue(date);
 		$(".form-control", 1).setValue(date);
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(5, 7, "reportDownload_oneshotAdd_email_validation");
+		valCheck("reportDownload_oneshotAdd_email_validation");
 		$(".form-control", 0).scrollTo();
 		$(".form-control", 1).setValue(date + "@test.com");
 		$("#btn-select-report-all").click();
 		$("#btn-select-report-cancle").click();
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(6, 8, "reportDownload_oneshotAdd_reportCheck_null");
+		valCheck("reportDownload_oneshotAdd_reportCheck_null");
 		$(".form-control", 0).scrollTo();
 		for(int i=2;i<=8;i++) {
 			$("#report-menu-"+i).click();
 		}
 		$("#btn-add-report").scrollTo();
 		$("#btn-add-report").click();
-		valCheck(7, 9, "reportDownload_oneshotAdd_register");
+		valCheck("reportDownload_oneshotAdd_register");
 		$(".col-sm-2").waitUntil(visible, 10000);
 		pageLoadCheck = $(".col-sm-2").text();
 		if(pageLoadCheck.equals("* 리포트 생성 현황")) {
@@ -533,8 +543,8 @@ public class KPISetting {
 			close();
 		}
 		$(".btn-delete").click();
-		valCheck(3, 3, "reportDownload_oneshotDel_confirm");
-		valCheck(4, 5, "reportDownload_oneshotDel_alert");
+		valCheck("reportDownload_oneshotDel_confirm");
+		valCheck("reportDownload_oneshotDel_alert");
 		$("td", 2).waitUntil(visible, 10000);
 		/*$(".muted").waitUntil(visible, 10000);
 		pageLoadCheck = $(".muted").text();
@@ -579,11 +589,11 @@ public class KPISetting {
 			close();
 		}
 		$("#saveBtn").click();
-		valCheck(3, 51, "myMenu_add_menu_null");
+		valCheck("myMenu_add_menu_null");
 		$(".btn-sm", 2).click();
 		$(".btn-sm", 2).click();
-		valCheck(4, 52, "myMenu_add_menu_duplication");
-		for(int i=3,x=1;i<=22;i++) {
+		valCheck("myMenu_add_menu_duplication");
+		for(int i=3,x=1;i<=22;i++) { //나의 메뉴 추가 
 			$(".btn-sm", i).click();
 			System.out.println("myMenu add btn number is " + i);
 			if(i==7) {
@@ -600,9 +610,9 @@ public class KPISetting {
 				x++;
 			}
 		}
-		valCheck(5, 53, "myMenu_add_menu_max");
+		valCheck("myMenu_add_menu_max");
 		$("#saveBtn").click();
-		valCheck(6, 54, "myMenu_save");
+		valCheck("myMenu_save");
 		pageLoadCheck = $("h4", 0).text();
 		if(pageLoadCheck.equals("Step1. 통계선택")) {
 			System.out.println(" *** myMenu_add register Success !! *** ");
@@ -612,12 +622,12 @@ public class KPISetting {
 		}
 		$(".cross", 19).scrollTo();
 		$(".cross", 19).waitUntil(visible, 10000);
-		for(int i=19;i>=1;i--) {
+		for(int i=19;i>=1;i--) { //나의 메뉴 삭제
 			$(".cross", i).click();
 			System.out.println("myMenu del btn number is " + i);
 		}
 		$("#saveBtn").click();
-		valCheck(3, 51, "myMenu_save");
+		valCheck("myMenu_save");
 		System.out.println(" ! ----- myMenu End ----- ! ");
 	}
 	
