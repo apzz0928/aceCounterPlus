@@ -131,7 +131,8 @@ public class temporarily_2 {
 	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
 	            System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
 	            if(val.equals("userGroupSetting_del_confirm")) { //회원그룹설정 페이지 삭제 confirm만 UI가 달라서 따로 처리
-	            	$("#okButton").click();
+	            	System.out.println(" *** val : " + val +  " - userGroupSetting_del_confirm check Success !! *** ");
+	            	$(".btn-sm", 5).click();
 	            } else {
 		            $$(".btn-info").last().click();
 	            }

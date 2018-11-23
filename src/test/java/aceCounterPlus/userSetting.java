@@ -88,56 +88,67 @@ public class userSetting {
 		}
 	}
 	
-	public static void valCheck(int pTagNum, int btnNum, String val) {
-	    $(".modal-backdrop").waitUntil(visible, 10000);
-		$("p", pTagNum).click();
-	    String msgCheck = $("p", pTagNum).text();
+	public static void valCheck(String val) {
 	    switch(val){
-	      case "CheckIP": checkMsg = "IP를 입력하세요.";
+	      case "IPFilterring_Check": checkMsg = "IP를 입력하세요.";
 	      break;
-	      case "IPvalCheck": checkMsg = "시스템 오류가 발생되었습니다. 다시 시도해주세요.";
+	      case "IPFilterring_valCheck": checkMsg = "시스템 오류가 발생되었습니다. 다시 시도해주세요.";
 	      break;
-	      case "IPregister": checkMsg = "IP가 등록되었습니다.";
+	      case "IPFilterring_register": checkMsg = "IP가 등록되었습니다.";
 	      break;
-	      case "IPduplication": checkMsg = "등록된 IP 입니다. 다시 입력해주세요.";
+	      case "IPFilterring_duplication": checkMsg = "등록된 IP 입니다. 다시 입력해주세요.";
 	      break;
-	      case "searchInputCheck": checkMsg = "검색어를 입력해 주세요";
+	      case "IPFilterring_searchInputCheck": checkMsg = "검색어를 입력해 주세요";
 	      break;
-	      case "delCheck": checkMsg = "삭제할 IP를 선택하세요.";
+	      case "IPFilterring_delCheck": checkMsg = "삭제할 IP를 선택하세요.";
 	      break;
-	      case "delIP": checkMsg = "IP가 삭제되었습니다.";
+	      case "IPFilterring_del": checkMsg = "IP가 삭제되었습니다.";
 	      break;
-	      case "groupName_null": checkMsg = "회원 그룹명을 입력하세요.";
+	      case "userGroupSetting_Name_null": checkMsg = "회원 그룹명을 입력하세요.";
 	      break;
-	      case "groupVariable": checkMsg = "회원 변수값을 입력하세요.";
+	      case "userGroupSetting_Variable": checkMsg = "회원 변수값을 입력하세요.";
 	      break;
-	      case "groupRegister": checkMsg = "등록이 완료되었습니다.";
+	      case "userGroupSetting_Register": checkMsg = "등록이 완료되었습니다.";
 	      break;
-	      case "groupSearch_null": checkMsg = "검색어를 입력하세요.";
+	      case "userGroupSetting_searchNull": checkMsg = "검색어를 입력하세요.";
 	      break;
-	      case "groupModify": checkMsg = "수정이 완료되었습니다.";
+	      case "userGroupSetting_Modify": checkMsg = "수정이 완료되었습니다.";
 	      break;
-	      case "delGroup_check": checkMsg = "삭제할 회원그룹을 선택하세요.";
+	      case "userGroupSetting_selectCheck": checkMsg = "삭제할 회원그룹을 선택하세요.";
 	      break;
-	      case "delGroup_confirm": checkMsg = "전체 회원그룹을 삭제하시겠습니까?";
+	      case "userGroupSetting_del_confirm": checkMsg = "전체 회원그룹을 삭제하시겠습니까?";
 	      break;
-	      case "delGroup_alert": checkMsg = "회원 그룹이 삭제 되었습니다.";
+	      case "userGroupSetting__alert": checkMsg = "회원 그룹이 삭제 되었습니다.";
 	      break;
 	    }
+	    $(".modal-backdrop").waitUntil(visible, 10000);
+	    $$("p").last().click();
+	    String msgCheck = $$("p").last().text().trim();
 	    Thread.onSpinWait();
-		if(msgCheck.equals(checkMsg)) {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Success !! *** ");
-			$(".btn-sm", btnNum).click();
-			if(!val.equals("delGroup_confirm")) {
-				$(".modal-backdrop").waitUntil(hidden, 10000);				
-			}
-		} else if (msgCheck.isEmpty()) {
-			System.out.println(" *** ☆★☆★☆★ pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
-			close();
-		} else {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val +  " - check Fail ... !@#$%^&*() *** ");
-			close();
-		}
+	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
+	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
+	            System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
+	            if(val.equals("userGroupSetting_del_confirm")) { //회원그룹설정 페이지 삭제 confirm만 UI가 달라서 따로 처리
+	            	System.out.println(" *** val : " + val +  " - userGroupSetting_del_confirm check Success !! *** ");
+	            	$(".btn-sm", 5).click(); //id로 체크하려했더니 prevObject 라는 것 때문인지 class로만 체크가됨
+	            } else {
+		            $$(".btn-info").last().click();
+	            }
+	            $(".modal-backdrop").waitUntil(hidden, 10000);
+	        } else { //confirm 아니면 .btn-sm클릭
+	            System.out.println(" *** " + val +  " - check Success !! *** ");
+	            $$(".btn-sm").last().click();
+	            $(".modal-backdrop").waitUntil(hidden, 10000);
+	        }
+	    } else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
+	        System.out.println(" *** ☆★☆★☆★ " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+	        System.out.println(checkMsg);
+	        close();
+	    } else { // msgCheck=checkMsg여부, confirm&alert여부, 빈값 여부 체크 후 fail
+	        System.out.println(" *** " + val +  " - check Fail ... !@#$%^&*() *** ");
+	        System.out.println(checkMsg);
+	        close();
+	    }
 	}
 	@Test(priority = 0)
 	public void Login() {
@@ -148,7 +159,6 @@ public class userSetting {
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
 		String loginCheck = $(".btn_logout").text().trim();
-		$(".btn_logout").getValue();
 		if(loginCheck.equals("로그아웃")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
@@ -168,7 +178,7 @@ public class userSetting {
 	}
 	@Test(priority = 1)
 	public void IPFilterring_add() {
-		System.out.println(" ! ----- IPFilterring_add Start ----- ! ");
+		System.out.println(" ! ----- IP Filterring_add Start ----- ! ");
 		$("#redirectConfBtn").click();
 		$(".input-sm").waitUntil(visible, 10000);
 		$(".accordion-toggle", 1).click();
@@ -185,19 +195,19 @@ public class userSetting {
 		$(".btn-info", 0).click();
 		$(".btn-info", 2).waitUntil(visible, 10000);
 		$(".btn-info", 2).click();
-		valCheck(4, 3, "CheckIP");
+		valCheck("IPFilterring_Check");
 		$("#filter-ipa").setValue("127");
 		$(".btn-info", 2).click();
-		valCheck(5, 4, "CheckIP");
+		valCheck("IPFilterring_Check");
 		$("#filter-ipb").setValue("0");
 		$(".btn-info", 2).click();
-		valCheck(6, 5, "CheckIP");
+		valCheck("IPFilterring_Check");
 		$("#filter-ipc").setValue("0");
 		$(".btn-info", 2).click();
-		valCheck(7, 6, "CheckIP");
+		valCheck("IPFilterring_Check");
 		$("#filter-ipd").setValue("ㅇ");
 		$(".btn-info", 2).click();
-		valCheck(8, 7, "IPvalCheck");
+		valCheck("IPFilterring_valCheck");
 		$(".btn-info", 2).waitUntil(hidden, 10000);
 		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
 			System.out.println(" *** IP Filterring Page val check Reload Success !! *** ");
@@ -214,7 +224,7 @@ public class userSetting {
 		$("#filter-ipd").setValue("1");
 		$(".btn-info", 2).click();
 		$(".btn-info", 2).waitUntil(hidden, 10000);
-		valCheck(3, 3, "IPregister");
+		valCheck("IPFilterring_register");
 		pageLoadCheck = $("td", 3).text();
 		if(pageLoadCheck.equals("127.0.0.1")) {
 			System.out.println(" *** IP Filterring Page register check Reload Success !! *** ");
@@ -234,7 +244,7 @@ public class userSetting {
 		$("#filter-ipc").setValue("0");
 		$("#filter-ipd").setValue("1");
 		$(".btn-info", 2).click();
-		valCheck(4, 4, "IPduplication");
+		valCheck("IPFilterring_duplication");
 		$(".btn-light", 0).click();
 		System.out.println(" ! ----- IPFilterring_duplicationCheck End ----- ! ");
 	}
@@ -242,7 +252,7 @@ public class userSetting {
 	public void IPFilterring_search() {
 		System.out.println(" ! ----- IPFilterring_search Start ----- ! ");
 		$(".btn-default", 5).click();
-		valCheck(5, 5, "searchInputCheck");
+		valCheck("IPFilterring_searchInputCheck");
 		$("#searchIp").setValue("03");
 		$(".btn-default", 5).click();
 		String pageLoadCheck = $("h5", 2).text();
@@ -270,12 +280,12 @@ public class userSetting {
 		$(".btn-gray", 0).click();
 		$(".btn-info", 1).waitUntil(visible, 10000);
 		$(".btn-info", 1).click();
-		valCheck(3, 3, "delCheck");
+		valCheck("IPFilterring_delCheck");
 		$("#chkAll").click();
 		$(".btn-info", 1).click();
 		$(".btn-info", 1).waitUntil(hidden, 10000);
 		sleep(1000);
-		valCheck(4, 3, "delIP");
+		valCheck("IPFilterring_del");
 		$("h5", 2).waitUntil(visible, 10000);
 		String pageLoadCheck = $("h5", 2).text();
 		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
@@ -292,9 +302,9 @@ public class userSetting {
 		$("h5", 1).waitUntil(visible, 10000);
 		String pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 회원그룹이 없습니다.")) {
-			System.out.println(" *** userGroupSetting Page load Success !! *** ");
+			System.out.println(" *** userGroupSetting list Page load Success !! *** ");
 		} else {
-			System.out.println(" *** userGroupSetting Page load Fail ... *** ");
+			System.out.println(" *** userGroupSetting list Page load Fail ... *** ");
 			close();
 		}
 		$("#memgrpAdd").click();
@@ -307,16 +317,16 @@ public class userSetting {
 			close();
 		}
 		$("#add_group_regist").click();
-		valCheck(3, 3, "groupName_null");
+		valCheck("userGroupSetting_Name_null");
 		$("#md_p_name").setValue(date);
 		$("#add_group_regist").click();
-		valCheck(4, 4, "groupVariable");
+		valCheck("userGroupSetting_Variable");
 		$("#md_name_1").setValue(date);
 		$("#add_group_regist").click();
-		valCheck(5, 5, "groupVariable");
+		valCheck("userGroupSetting_Variable");
 		$("#md_name_2").setValue(date);
 		$("#add_group_regist").click();
-		valCheck(3, 3, "groupRegister");
+		valCheck("userGroupSetting_Register");
 		$("#memgrpAdd").waitUntil(visible, 10000);
 		pageLoadCheck = $("#memgrpAdd").text();
 		if(pageLoadCheck.equals("추가")) {
@@ -330,8 +340,9 @@ public class userSetting {
 	@Test(priority = 12)
 	public void userGroupSetting_search() {
 		System.out.println(" ! ----- userGroupSetting_search Start ----- ! ");
+		$("#frmBtn").waitUntil(visible, 10000);
 		$("#frmBtn").click();
-		valCheck(4, 4, "groupSearch_null");
+		valCheck("userGroupSetting_searchNull");
 		$("#searchNm").setValue("qwer");
 		$("#frmBtn").click();
 		$("h5", 1).waitUntil(visible, 10000);
@@ -371,7 +382,7 @@ public class userSetting {
 		$("#md_name_2").setValue(date + "수정");
 		$("#add_group_regist").click();
 		confirm("수정하시겠습니까?");
-		valCheck(3, 3, "groupModify");
+		valCheck("userGroupSetting_Modify");
 		$("#memgrpAdd").waitUntil(visible, 10000);
 		pageLoadCheck = $("#memgrpAdd").text();
 		if(pageLoadCheck.equals("추가")) {
@@ -399,13 +410,13 @@ public class userSetting {
 		$(".btn-gray", 0).click();
 		$(".btn-gray", 1).waitUntil(visible, 10000);
 		$(".btn-info", 1).click();
-		valCheck(4, 4, "delGroup_check");
+		valCheck("userGroupSetting_selectCheck");
 		$("#chkAll").click();
 		$(".btn-info", 1).click();
-		valCheck(5, 5, "delGroup_confirm");
+		valCheck("userGroupSetting_del_confirm");
 		$(".btn-info", 1).waitUntil(hidden, 10000);
 		$("#memgrpAdd").waitUntil(visible, 10000);
-		valCheck(4, 3, "delGroup_alert");
+		valCheck("userGroupSetting__alert");
 		$("h5", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 회원그룹이 없습니다.")) {
