@@ -230,7 +230,6 @@ public class inhouseMarketingSetting {
 		$("#upw").setValue(pw);
 		$(".btn_login").click();
 		String loginCheck = $(".btn_logout").text().trim();
-		$(".btn_logout").getValue();
 		if(loginCheck.equals("·Î±×¾Æ¿ô")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
