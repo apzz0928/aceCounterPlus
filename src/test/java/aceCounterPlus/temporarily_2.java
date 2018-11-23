@@ -91,51 +91,38 @@ public class temporarily_2 {
 	}
 	
 	public static void valCheck(String val) {
-	    switch(val){
-	      case "IPFilterring_Check": checkMsg = "IP를 입력하세요.";
-	      break;
-	      case "IPFilterring_valCheck": checkMsg = "시스템 오류가 발생되었습니다. 다시 시도해주세요.";
-	      break;
-	      case "IPFilterring_register": checkMsg = "IP가 등록되었습니다.";
-	      break;
-	      case "IPFilterring_duplication": checkMsg = "등록된 IP 입니다. 다시 입력해주세요.";
-	      break;
-	      case "IPFilterring_searchInputCheck": checkMsg = "검색어를 입력해 주세요";
-	      break;
-	      case "IPFilterring_delCheck": checkMsg = "삭제할 IP를 선택하세요.";
-	      break;
-	      case "IPFilterring_del": checkMsg = "IP가 삭제되었습니다.";
-	      break;
-	      case "userGroupSetting_Name_null": checkMsg = "회원 그룹명을 입력하세요.";
-	      break;
-	      case "userGroupSetting_Variable": checkMsg = "회원 변수값을 입력하세요.";
-	      break;
-	      case "userGroupSetting_Register": checkMsg = "등록이 완료되었습니다.";
-	      break;
-	      case "userGroupSetting_searchNull": checkMsg = "검색어를 입력하세요.";
-	      break;
-	      case "userGroupSetting_Modify": checkMsg = "수정이 완료되었습니다.";
-	      break;
-	      case "userGroupSetting_selectCheck": checkMsg = "삭제할 회원그룹을 선택하세요.";
-	      break;
-	      case "userGroupSetting_del_confirm": checkMsg = "전체 회원그룹을 삭제하시겠습니까?";
-	      break;
-	      case "userGroupSetting__alert": checkMsg = "회원 그룹이 삭제 되었습니다.";
-	      break;
+		switch(val){
+		    case "commercePrice_Setup": checkMsg = "등록이 완료되었습니다.";
+		    break;
+		    case "commercePrice_modify_confirm": checkMsg = "수정하시겠습니까?\n" + "제품가격대를 수정하실 경우 기존 데이터도 함께 변경됩니다.";
+		    break;
+		    case "commercePrice_modify_alert": checkMsg = "수정이 완료되었습니다.";
+		    break;
+		    case "commercePrice_del_confirm": checkMsg = "항목을 삭제하시겠습니까?";
+		    break;
+		    case "commercePrice_del_alert": checkMsg = "삭제가 완료되었습니다.";
+		    break;
+		    case "commercePrice_min_alert": checkMsg = "최저가격을 입력하세요.";
+		    break;
+		    case "commercePrice_max_alert": checkMsg = "최고가격을 입력하세요.";
+		    break;
+		    case "commercePrice_min>max_alert": checkMsg = "올바른 가격설정이 아닙니다.";
+		    break;
+		    case "currencyUnit_alert": checkMsg = "설정된 통화 단위값과 동일합니다.\n" + "다시 선택해주세요.";
+		    break;
+		    case "currencyUnit_modify_confirm": checkMsg = "통계 표기 통화 단위를 수정하시겠습니까?";
+		    break;
+		    case "currencyUnit_modify_alert": checkMsg = "수정이 완료되었습니다.";
+		    break;
 	    }
-	    $(".modal-backdrop").waitUntil(visible, 10000);
+		$(".modal-backdrop").waitUntil(visible, 10000);
 	    $$("p").last().click();
 	    String msgCheck = $$("p").last().text().trim();
 	    Thread.onSpinWait();
 	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
 	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
 	            System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
-	            if(val.equals("userGroupSetting_del_confirm")) { //회원그룹설정 페이지 삭제 confirm만 UI가 달라서 따로 처리
-	            	System.out.println(" *** val : " + val +  " - userGroupSetting_del_confirm check Success !! *** ");
-	            	$(".btn-sm", 5).click();
-	            } else {
-		            $$(".btn-info").last().click();
-	            }
+	            $$(".btn-info").last().click();
 	            $(".modal-backdrop").waitUntil(hidden, 10000);
 	        } else { //confirm 아니면 .btn-sm클릭
 	            System.out.println(" *** " + val +  " - check Success !! *** ");
@@ -152,6 +139,7 @@ public class temporarily_2 {
 	        close();
 	    }
 	}
+	
 	@Test(priority = 0)
 	public void Login() {
 		System.out.println(" ! ----- Login Start ----- ! ");
@@ -178,256 +166,314 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- Login End ----- ! ");
 	}
-	@Test(priority = 1)
-	public void IPFilterring_add() {
-		System.out.println(" ! ----- IP Filterring_add Start ----- ! ");
+  	@Test(priority = 1)
+	public void commercePrice_directAdd() {
+		System.out.println(" ! ----- commercePrice_directAdd Start ----- ! ");
 		$("#redirectConfBtn").click();
-		$(".input-sm").waitUntil(visible, 10000);
-		$(".accordion-toggle", 1).click();
-		$(By.linkText("IP필터링설정")).waitUntil(visible, 10000);
-		$(By.linkText("IP필터링설정")).click();
-		$("h5", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h5", 2).text();
-		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
-			System.out.println(" *** IP Filterring Page load Success !! *** ");
+		$("#inflowAddBtn").waitUntil(visible, 30000);
+		$(".accordion-toggle", 2).click();
+		$(By.linkText("제품가격대")).waitUntil(visible, 30000);
+		$(By.linkText("제품가격대")).click();
+		$("h5", 1).waitUntil(visible, 30000);
+		String pageLoadCheck = $("h5", 1).text();
+		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
+			System.out.println(" *** commercePrice Page load Success !! *** ");
 		} else {
-			System.out.println(" *** IP Filterring Page load Fail ... *** ");
+			System.out.println(" *** commercePrice Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".btn-info", 0).click();
-		$(".btn-info", 2).waitUntil(visible, 10000);
-		$(".btn-info", 2).click();
-		valCheck("IPFilterring_Check");
-		$("#filter-ipa").setValue("127");
-		$(".btn-info", 2).click();
-		valCheck("IPFilterring_Check");
-		$("#filter-ipb").setValue("0");
-		$(".btn-info", 2).click();
-		valCheck("IPFilterring_Check");
-		$("#filter-ipc").setValue("0");
-		$(".btn-info", 2).click();
-		valCheck("IPFilterring_Check");
-		$("#filter-ipd").setValue("ㅇ");
-		$(".btn-info", 2).click();
-		valCheck("IPFilterring_valCheck");
-		$(".btn-info", 2).waitUntil(hidden, 10000);
-		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
-			System.out.println(" *** IP Filterring Page val check Reload Success !! *** ");
+		$(".btn-info").click();
+		$("h3", 2).waitUntil(visible, 30000);
+		pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("제품가격대 신규등록")) {
+			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {
-			System.out.println(" *** IP Filterring Page val check Reload Fail ... *** ");
+			System.out.println(" *** commercePrice add Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".btn-info", 0).waitUntil(visible, 10000);
-		$(".btn-info", 0).click();
-		$(".btn-info", 2).waitUntil(visible, 10000);
-		$("#filter-ipa").setValue("127");
-		$("#filter-ipb").setValue("0");
-		$("#filter-ipc").setValue("0");
-		$("#filter-ipd").setValue("1");
-		$(".btn-info", 2).click();
-		$(".btn-info", 2).waitUntil(hidden, 10000);
-		valCheck("IPFilterring_register");
-		pageLoadCheck = $("td", 3).text();
-		if(pageLoadCheck.equals("127.0.0.1")) {
-			System.out.println(" *** IP Filterring Page register check Reload Success !! *** ");
+		$(".input-sm", 3).setValue("1000");
+		$(".input-sm", 4).setValue("5000");
+		$(".input-sm", 5).setValue("5001");
+		$(".input-sm", 6).setValue("10000");
+		//가격대 입력여부 유효성체크가 안되서 빼둠
+		$("#priceRangeInsert").click();
+		valCheck("commercePrice_Setup");
+		$(".btn-xs", 0).waitUntil(visible, 30000);
+		pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals("1,000원 ~ 10,000원")) {
+			System.out.println(" *** commercePrice directAdd check Success !! *** ");
+			pageLoadCheck = $("td", 7).text();
+			if(pageLoadCheck.equals("1,000원 ~ 5,000원")) {
+				System.out.println(" *** commercePrice directAdd oneStepPrice check Success !! *** ");
+				pageLoadCheck = $("td", 9).text();
+				if(pageLoadCheck.equals("5,001원 ~ 10,000원")) {
+					System.out.println(" *** commercePrice directAdd twoStepPrice check Success !! *** ");
+				} else {
+					System.out.println(" *** commercePrice directAdd twoStepPrice check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			} else {
+				System.out.println(" *** commercePrice directAdd oneStepPrice check Fail ... !@#$%^&*() *** ");
+				close();
+			}
 		} else {
-			System.out.println(" *** IP Filterring Page register check Reload Fail ... *** ");
+			System.out.println(" *** commercePrice directAdd check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- IPFilterring_add End ----- ! ");
+		System.out.println(" ! ----- commercePrice_directAdd End ----- ! ");
 	}
 	@Test(priority = 2)
-	public void IPFilterring_duplicationCheck() {
-		System.out.println(" ! ----- IPFilterring_duplicationCheck Start ----- ! ");
-		$(".btn-info", 0).click();
-		$(".btn-info", 2).waitUntil(visible, 10000);
-		$("#filter-ipa").setValue("127");
-		$("#filter-ipb").setValue("0");
-		$("#filter-ipc").setValue("0");
-		$("#filter-ipd").setValue("1");
-		$(".btn-info", 2).click();
-		valCheck("IPFilterring_duplication");
-		$(".btn-light", 0).click();
-		System.out.println(" ! ----- IPFilterring_duplicationCheck End ----- ! ");
+	public void commercePrice_directAdd_modify() {
+		System.out.println(" ! ----- commercePrice_directAdd_modify Start ----- ! ");
+		$(".btn-xs", 0).waitUntil(visible, 30000);
+		$(".btn-xs", 0).click();
+		$("h3", 2).waitUntil(visible, 30000);
+		String pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("제품가격대 신규등록")) {
+			System.out.println(" *** commercePrice directAdd_modify Page load Success !! *** ");
+		} else {
+			System.out.println(" *** commercePrice directAdd_modify Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".input-sm", 3).setValue("2000");
+		$(".input-sm", 4).setValue("10000");
+		$(".input-sm", 5).setValue("10001");
+		$(".input-sm", 6).setValue("20000");
+		$("#priceRangeInsert").click();
+		valCheck("commercePrice_modify_confirm");
+		valCheck("commercePrice_modify_alert");
+		$(".btn-xs", 0).waitUntil(visible, 30000);
+		pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals("2,000원 ~ 20,000원")) {
+			System.out.println(" *** commercePrice directAdd modify check Success !! *** ");
+			pageLoadCheck = $("td", 7).text();
+			if(pageLoadCheck.equals("2,000원 ~ 10,000원")) {
+				System.out.println(" *** commercePrice directAdd modify oneStepPrice check Success !! *** ");
+				pageLoadCheck = $("td", 9).text();
+				if(pageLoadCheck.equals("10,001원 ~ 20,000원")) {
+					System.out.println(" *** commercePrice directAdd modify twoStepPrice check Success !! *** ");
+				} else {
+					System.out.println(" *** commercePrice directAdd modify twoStepPrice check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			} else {
+				System.out.println(" *** commercePrice directAdd modify oneStepPrice check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		} else {
+			System.out.println(" *** commercePrice directAdd modify check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- commercePrice_directAdd_modify End ----- ! ");
 	}
 	@Test(priority = 3)
-	public void IPFilterring_search() {
-		System.out.println(" ! ----- IPFilterring_search Start ----- ! ");
-		$(".btn-default", 5).click();
-		valCheck("IPFilterring_searchInputCheck");
-		$("#searchIp").setValue("03");
-		$(".btn-default", 5).click();
-		String pageLoadCheck = $("h5", 2).text();
-		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
-			System.out.println(" *** IP Filterring don`t input search check Success !! *** ");
+	public void commercePrice_directAdd_del() {
+		System.out.println(" ! ----- commercePrice_directAdd_del Start ----- ! ");
+		$(".btn-xs", 1).waitUntil(visible, 30000);
+		$(".btn-xs", 1).click();
+		valCheck("commercePrice_del_confirm");
+		valCheck("commercePrice_del_alert");
+		$(".btn-xs", 0).waitUntil(hidden, 10000);
+		String	pageLoadCheck = $("h5", 1).text();
+		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
+			System.out.println(" *** commercePrice_directAdd_del Page load Success !! *** ");
 		} else {
-			System.out.println(" *** IP Filterring don`t input search check Fail ... *** ");
+			System.out.println(" *** commercePrice_directAdd_del Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#searchIp").setValue("127");
-		$(".btn-default", 5).click();
-		$("td", 3).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 3).text();
-		if(pageLoadCheck.equals("127.0.0.1")) {
-			System.out.println(" *** IP Filterring input search check Success !! *** ");
-		} else {
-			System.out.println(" *** IP Filterring input search check Fail ... *** ");
-			close();
-		}
-		System.out.println(" ! ----- IPFilterring_search End ----- ! ");
+		System.out.println(" ! ----- commercePrice_directAdd_del End ----- ! ");
 	}
 	@Test(priority = 4)
-	public void IPFilterring_del() {
-		System.out.println(" ! ----- IPFilterring_del Start ----- ! ");
-		$(".btn-gray", 0).click();
-		$(".btn-info", 1).waitUntil(visible, 10000);
-		$(".btn-info", 1).click();
-		valCheck("IPFilterring_delCheck");
-		$("#chkAll").click();
-		$(".btn-info", 1).click();
-		$(".btn-info", 1).waitUntil(hidden, 10000);
-		sleep(1000);
-		valCheck("IPFilterring_del");
-		$("h5", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h5", 2).text();
-		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
-			System.out.println(" *** IP Filterring Page load Success !! *** ");
+	public void commercePrice_autoAdd() {
+		System.out.println(" ! ----- commercePrice_autoAdd Start ----- ! ");
+		$(".btn-info").click();
+		$("h3", 2).waitUntil(visible, 3000);
+		String pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("제품가격대 신규등록")) {
+			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {
-			System.out.println(" *** IP Filterring Page load Fail ... *** ");
+			System.out.println(" *** commercePrice add Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- IPFilterring_del End ----- ! ");
+		$("label", 2).click();
+		$(".input-sm", 1).waitUntil(enabled, 10000);
+		$("#rangeProc").click();
+		valCheck("commercePrice_min_alert");
+		$(".input-sm", 1).setValue("1000");
+		$("#rangeProc").click();
+		valCheck("commercePrice_max_alert");
+		$(".input-sm", 2).setValue("100");
+		$("#rangeProc").click();
+		valCheck("commercePrice_min>max_alert");
+		$(".input-sm", 2).setValue("10000");
+		$("#rangeProc").click();
+		$("#priceRangeInsert").click();
+		valCheck("commercePrice_Setup");
+		$(".btn-xs", 0).waitUntil(visible, 30000);
+		pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals("1,000원 ~ 10,000원")) {
+			System.out.println(" *** commercePrice autoAdd check Success !! *** ");
+			pageLoadCheck = $("td", 7).text();
+			if(pageLoadCheck.equals("1,000원 ~ 5,500원")) {
+				System.out.println(" *** commercePrice autoAdd oneStepPrice check Success !! *** ");
+				pageLoadCheck = $("td", 9).text();
+				if(pageLoadCheck.equals("5,501원 ~ 10,000원")) {
+					System.out.println(" *** commercePrice autoAdd twoStepPrice check Success !! *** ");
+				} else {
+					System.out.println(" *** commercePrice autoAdd twoStepPrice check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			} else {
+				System.out.println(" *** commercePrice autoAdd oneStepPrice check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		} else {
+			System.out.println(" *** commercePrice autoAdd check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- commercePrice_autoAdd End ----- ! ");
+	}
+	@Test(priority = 5)
+	public void commercePrice_autoAdd_modify() throws InterruptedException {
+		System.out.println(" ! ----- commercePrice_autoAdd_modify Start ----- ! ");
+		$(".btn-xs", 0).waitUntil(visible, 30000);
+		$(".btn-xs", 0).click();
+		$("h3", 2).waitUntil(visible, 30000);
+		String pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("제품가격대 신규등록")) {
+			System.out.println(" *** commercePrice add Page load Success !! *** ");
+		} else {
+			System.out.println(" *** commercePrice add Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#rangeProc").click();
+		valCheck("commercePrice_min_alert");
+		$(".input-sm", 1).setValue("2000");
+		$("#rangeProc").click();
+		valCheck("commercePrice_max_alert");
+		$(".input-sm", 2).setValue("100");
+		$("#rangeProc").click();
+		valCheck("commercePrice_min>max_alert");
+		$(".input-sm", 2).setValue("20000");
+		$("#rangeProc").click();
+		$("#priceRangeInsert").click();
+		valCheck("commercePrice_modify_confirm");
+		valCheck("commercePrice_modify_alert");
+		$(".btn-xs", 1).waitUntil(visible, 30000);
+		pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals("2,000원 ~ 20,000원")) {
+			System.out.println(" *** commercePrice autoAdd modify check Success !! *** ");
+			pageLoadCheck = $("td", 7).text();
+			if(pageLoadCheck.equals("2,000원 ~ 11,000원")) {
+				System.out.println(" *** commercePrice autoAdd oneStepPrice modify check Success !! *** ");
+				pageLoadCheck = $("td", 9).text();
+				if(pageLoadCheck.equals("11,001원 ~ 20,000원")) {
+					System.out.println(" *** commercePrice autoAdd twoStepPrice modify check Success !! *** ");
+				} else {
+					System.out.println(" *** commercePrice autoAdd twoStepPrice modify check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			} else {
+				System.out.println(" *** commercePrice autoAdd oneStepPrice modify check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		} else {
+			System.out.println(" *** commercePrice autoAdd modify check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- commercePrice_autoAdd_modify End ----- ! ");
+	}
+	@Test(priority = 6)
+	public void commercePrice_autoAdd_del() {
+		System.out.println(" ! ----- commercePrice_autoAdd_del Start ----- ! ");
+		$(".btn-xs", 1).waitUntil(visible, 30000);
+		$(".btn-xs", 1).click();
+		valCheck("commercePrice_del_confirm");
+		valCheck("commercePrice_del_alert");
+		$("h5", 1).waitUntil(visible, 30000);
+		String	pageLoadCheck = $("h5", 1).text();
+		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
+			System.out.println(" *** commercePrice_autoAdd_del Page load Success !! *** ");
+		} else {
+			System.out.println(" *** commercePrice_autoAdd_del Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- commercePrice_autoAdd_del End ----- ! ");
 	}
 	@Test(priority = 11)
-	public void userGroupSetting_add() {
-		$(By.linkText("회원그룹설정")).click();
-		$("h5", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h5", 1).text();
-		if(pageLoadCheck.equals("등록된 회원그룹이 없습니다.")) {
-			System.out.println(" *** userGroupSetting list Page load Success !! *** ");
+	public void commerce_currencyUnit() { //페이지로딩20초 문제 개선될때까지 통화단위만 체크
+		System.out.println(" ! ----- commerce_currencyUnit Start ----- ! ");
+		sleep(1000);
+		$(By.linkText("통화 단위")).click();
+		sleep(25000);
+		String	pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals("KRW")) {
+			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
 		} else {
-			System.out.println(" *** userGroupSetting list Page load Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#memgrpAdd").click();
-		$(".notokr-medium").waitUntil(visible, 10000);
-		pageLoadCheck = $(".notokr-medium").text();
-		if(pageLoadCheck.equals("회원그룹 추가하기")) {
-			System.out.println(" *** userGroupSetting add Page load Success !! *** ");
+		/*//$("#mViewBtn").waitUntil(visible, 30000);
+		String	pageLoadCheck = $("#mViewBtn").text();
+		if(pageLoadCheck.equals("수정")) {
+			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
 		} else {
-			System.out.println(" *** userGroupSetting add Page load Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#add_group_regist").click();
-		valCheck("userGroupSetting_Name_null");
-		$("#md_p_name").setValue(date);
-		$("#add_group_regist").click();
-		valCheck("userGroupSetting_Variable");
-		$("#md_name_1").setValue(date);
-		$("#add_group_regist").click();
-		valCheck("userGroupSetting_Variable");
-		$("#md_name_2").setValue(date);
-		$("#add_group_regist").click();
-		valCheck("userGroupSetting_Register");
-		$("#memgrpAdd").waitUntil(visible, 10000);
-		pageLoadCheck = $("#memgrpAdd").text();
-		if(pageLoadCheck.equals("추가")) {
-			System.out.println(" *** userGroup Register Page load Success !! *** ");
+		$("#mViewBtn").click();
+		$("#modifyBtn").waitUntil(visible, 30000);
+		pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("수정하기")) {
+			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
 		} else {
-			System.out.println(" *** userGroup Register Page load Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit_modify Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- userGroupSetting_add End ----- ! ");
-	}
-	@Test(priority = 12)
-	public void userGroupSetting_search() {
-		System.out.println(" ! ----- userGroupSetting_search Start ----- ! ");
-		$("#frmBtn").waitUntil(visible, 10000);
-		$("#frmBtn").click();
-		valCheck("userGroupSetting_searchNull");
-		$("#searchNm").setValue("qwer");
-		$("#frmBtn").click();
-		$("h5", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h5", 1).text();
-		if(pageLoadCheck.equals("등록된 회원그룹이 없습니다.")) {
-			System.out.println(" *** userGroupSetting Page load Success !! *** ");
+		$("#modifyBtn").click();
+		valCheck(3, 3, "currencyUnit_alert");
+	    $(By.name("nextIso")).click();
+	    $(By.xpath("//option[@value='USD']")).click();
+		$("#modifyBtn").click();
+		sleep(2000);
+		valCheck(4, 4, "currencyUnit_modify_confirm");
+		sleep(1000);
+		valCheck(5, 6, "currencyUnit_modify_alert");
+		sleep(10000);
+		$("#mViewBtn").waitUntil(visible, 30000);
+		pageLoadCheck = $("#mViewBtn").text();
+		if(pageLoadCheck.equals("수정")) {
+			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
 		} else {
-			System.out.println(" *** userGroupSetting Page load Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#searchNm").setValue(date);
-		$("#frmBtn").click();
-		$("td", 2).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 2).text();
-		if(pageLoadCheck.equals(date)) {
-			System.out.println(" *** userGroupSetting Date search Success !! *** ");
+		$("#mViewBtn").click();
+		$("h3", 2).waitUntil(visible, 30000);
+		pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("수정하기")) {
+			System.out.println(" *** commerce_currencyUnit_modify Page load Success !! *** ");
 		} else {
-			System.out.println(" *** userGroupSetting Date search Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit_modify Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- userGroupSetting_search End ----- ! ");
-	}
-	@Test(priority = 13)
-	public void userGroupSetting_modify() {
-		System.out.println(" ! ----- userGroupSetting_modify Start ----- ! ");
-		$(".btn-xs").click();
-		$(".notokr-medium").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".notokr-medium").text();
-		if(pageLoadCheck.equals("회원그룹 추가하기")) {
-			System.out.println(" *** userGroupSetting add Page load Success !! *** ");
+	    $(By.name("nextIso")).click();
+	    $(By.xpath("//option[@value='KRW']")).click();
+		$("#modifyBtn").click(); 
+		sleep(2000);
+		valCheck(3, 3, "currencyUnit_modify_confirm");
+		sleep(1000);
+		valCheck(4, 5, "currencyUnit_modify_alert");
+		sleep(1000);
+		$("#mViewBtn").waitUntil(visible, 30000);
+		pageLoadCheck = $("#mViewBtn").text();
+		if(pageLoadCheck.equals("수정")) {
+			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
 		} else {
-			System.out.println(" *** userGroupSetting add Page load Fail ... *** ");
+			System.out.println(" *** commerce_currencyUnit Page load Fail ... !@#$%^&*() *** ");
 			close();
-		}
-		$("#md_p_name").setValue(date + "수정");
-		$("#md_name_1").setValue(date + "수정");
-		$("#md_name_2").setValue(date + "수정");
-		$("#add_group_regist").click();
-		confirm("수정하시겠습니까?");
-		valCheck("userGroupSetting_Modify");
-		$("#memgrpAdd").waitUntil(visible, 10000);
-		pageLoadCheck = $("#memgrpAdd").text();
-		if(pageLoadCheck.equals("추가")) {
-			System.out.println(" *** userGroup Register Page load Success !! *** ");
-		} else {
-			System.out.println(" *** userGroup Register Page load Fail ... *** ");
-			close();
-		}		
-		System.out.println(" ! ----- userGroupSetting_modify End ----- ! ");
-	}
-	@Test(priority = 14)
-	public void userGroupSetting_del() {
-		System.out.println(" ! ----- userGroupSetting_del Start ----- ! ");
-		$(".btn-gray", 0).click();
-		$(".btn-gray", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $(".btn-gray", 1).text();
-		if(pageLoadCheck.equals("취소")) {
-			System.out.println(" *** userGroupSetting delete UI load Success !! *** ");
-		} else {
-			System.out.println(" *** userGroupSetting delete UI load Fail ... *** ");
-			close();
-		}
-		$(".btn-gray", 1).click();
-		$(".btn-gray", 0).waitUntil(visible, 10000);
-		$(".btn-gray", 0).click();
-		$(".btn-gray", 1).waitUntil(visible, 10000);
-		$(".btn-info", 1).click();
-		valCheck("userGroupSetting_selectCheck");
-		$("#chkAll").click();
-		$(".btn-info", 1).click();
-		valCheck("userGroupSetting_del_confirm");
-		$(".btn-info", 1).waitUntil(hidden, 10000);
-		$("#memgrpAdd").waitUntil(visible, 10000);
-		valCheck("userGroupSetting__alert");
-		$("h5", 1).waitUntil(visible, 10000);
-		pageLoadCheck = $("h5", 1).text();
-		if(pageLoadCheck.equals("등록된 회원그룹이 없습니다.")) {
-			System.out.println(" *** userGroupSetting Page load Success !! *** ");
-		} else {
-			System.out.println(" *** userGroupSetting Page load Fail ... *** ");
-			close();
-		}
-		System.out.println(" ! ----- userGroupSetting_del End ----- ! ");
+		}*/
+		System.out.println(" ! ----- commerce_currencyUnit End ----- ! ");
 	}
 	
 	@AfterClass

@@ -88,26 +88,23 @@ public class commercePrice {
 		}
 	}
 	
-	public static void valCheck(int pTagNum, int btnNum, String val) {
-		$(".modal-backdrop").waitUntil(visible, 30000);
-		$("p", pTagNum).click();
-		String msgCheck = $("p", pTagNum).text();
+	public static void valCheck(String val) {
 		switch(val){
-		    case "priceSetup": checkMsg = "등록이 완료되었습니다.";
+		    case "commercePrice_Setup": checkMsg = "등록이 완료되었습니다.";
 		    break;
-		    case "modifyPrice_confirm": checkMsg = "수정하시겠습니까?\n" + "제품가격대를 수정하실 경우 기존 데이터도 함께 변경됩니다.";
+		    case "commercePrice_modify_confirm": checkMsg = "수정하시겠습니까?\n" + "제품가격대를 수정하실 경우 기존 데이터도 함께 변경됩니다.";
 		    break;
-		    case "modifyPrice_alert": checkMsg = "수정이 완료되었습니다.";
+		    case "commercePrice_modify_alert": checkMsg = "수정이 완료되었습니다.";
 		    break;
-		    case "priceDel_confirm": checkMsg = "항목을 삭제하시겠습니까?";
+		    case "commercePrice_del_confirm": checkMsg = "항목을 삭제하시겠습니까?";
 		    break;
-		    case "priceDel_alert": checkMsg = "삭제가 완료되었습니다.";
+		    case "commercePrice_del_alert": checkMsg = "삭제가 완료되었습니다.";
 		    break;
-		    case "minPrice_alert": checkMsg = "최저가격을 입력하세요.";
+		    case "commercePrice_min_alert": checkMsg = "최저가격을 입력하세요.";
 		    break;
-		    case "maxPrice_alert": checkMsg = "최고가격을 입력하세요.";
+		    case "commercePrice_max_alert": checkMsg = "최고가격을 입력하세요.";
 		    break;
-		    case "min>maxPrice_alert": checkMsg = "올바른 가격설정이 아닙니다.";
+		    case "commercePrice_min>max_alert": checkMsg = "올바른 가격설정이 아닙니다.";
 		    break;
 		    case "currencyUnit_alert": checkMsg = "설정된 통화 단위값과 동일합니다.\n" + "다시 선택해주세요.";
 		    break;
@@ -116,13 +113,28 @@ public class commercePrice {
 		    case "currencyUnit_modify_alert": checkMsg = "수정이 완료되었습니다.";
 		    break;
 	    }
-		if(msgCheck.equals(checkMsg)) {
-			System.out.println(" *** " + val + " - check Success !! *** ");
-		    $(".btn-sm", btnNum).click();
-		    $(".modal-backdrop").waitUntil(hidden, 10000);
-		} else {
-		    System.out.println(" *** " + val + " - check Fail ... !@#$%^&*() *** ");
-		    close();
+		$(".modal-backdrop").waitUntil(visible, 10000);
+	    $$("p").last().click();
+	    String msgCheck = $$("p").last().text().trim();
+	    Thread.onSpinWait();
+	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
+	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
+	            System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
+	            $$(".btn-info").last().click();
+	            $(".modal-backdrop").waitUntil(hidden, 10000);
+	        } else { //confirm 아니면 .btn-sm클릭
+	            System.out.println(" *** " + val +  " - check Success !! *** ");
+	            $$(".btn-sm").last().click();
+	            $(".modal-backdrop").waitUntil(hidden, 10000);
+	        }
+	    } else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
+	        System.out.println(" *** ☆★☆★☆★ " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+	        System.out.println(checkMsg);
+	        close();
+	    } else { // msgCheck=checkMsg여부, confirm&alert여부, 빈값 여부 체크 후 fail
+	        System.out.println(" *** " + val +  " - check Fail ... !@#$%^&*() *** ");
+	        System.out.println(checkMsg);
+	        close();
 	    }
 	}
 	
@@ -183,7 +195,7 @@ public class commercePrice {
 		$(".input-sm", 6).setValue("10000");
 		//가격대 입력여부 유효성체크가 안되서 빼둠
 		$("#priceRangeInsert").click();
-		valCheck(3, 4, "priceSetup");
+		valCheck("commercePrice_Setup");
 		$(".btn-xs", 0).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("1,000원 ~ 10,000원")) {
@@ -226,8 +238,8 @@ public class commercePrice {
 		$(".input-sm", 5).setValue("10001");
 		$(".input-sm", 6).setValue("20000");
 		$("#priceRangeInsert").click();
-		valCheck(3, 4, "modifyPrice_confirm");
-		valCheck(4, 6, "modifyPrice_alert");
+		valCheck("commercePrice_modify_confirm");
+		valCheck("commercePrice_modify_alert");
 		$(".btn-xs", 0).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("2,000원 ~ 20,000원")) {
@@ -257,8 +269,8 @@ public class commercePrice {
 		System.out.println(" ! ----- commercePrice_directAdd_del Start ----- ! ");
 		$(".btn-xs", 1).waitUntil(visible, 30000);
 		$(".btn-xs", 1).click();
-		valCheck(3, 3, "priceDel_confirm");
-		valCheck(4, 5, "priceDel_alert");
+		valCheck("commercePrice_del_confirm");
+		valCheck("commercePrice_del_alert");
 		$(".btn-xs", 0).waitUntil(hidden, 10000);
 		String	pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
@@ -284,17 +296,17 @@ public class commercePrice {
 		$("label", 2).click();
 		$(".input-sm", 1).waitUntil(enabled, 10000);
 		$("#rangeProc").click();
-		valCheck(3, 4, "minPrice_alert");
+		valCheck("commercePrice_min_alert");
 		$(".input-sm", 1).setValue("1000");
 		$("#rangeProc").click();
-		valCheck(4, 5, "maxPrice_alert");
+		valCheck("commercePrice_max_alert");
 		$(".input-sm", 2).setValue("100");
 		$("#rangeProc").click();
-		valCheck(5, 6, "min>maxPrice_alert");
+		valCheck("commercePrice_min>max_alert");
 		$(".input-sm", 2).setValue("10000");
 		$("#rangeProc").click();
 		$("#priceRangeInsert").click();
-		valCheck(6, 7, "priceSetup");
+		valCheck("commercePrice_Setup");
 		$(".btn-xs", 0).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("1,000원 ~ 10,000원")) {
@@ -333,18 +345,18 @@ public class commercePrice {
 			close();
 		}
 		$("#rangeProc").click();
-		valCheck(3, 4, "minPrice_alert");
+		valCheck("commercePrice_min_alert");
 		$(".input-sm", 1).setValue("2000");
 		$("#rangeProc").click();
-		valCheck(4, 5, "maxPrice_alert");
+		valCheck("commercePrice_max_alert");
 		$(".input-sm", 2).setValue("100");
 		$("#rangeProc").click();
-		valCheck(5, 6, "min>maxPrice_alert");
+		valCheck("commercePrice_min>max_alert");
 		$(".input-sm", 2).setValue("20000");
 		$("#rangeProc").click();
 		$("#priceRangeInsert").click();
-		valCheck(6, 7, "modifyPrice_confirm");
-		valCheck(7, 9, "modifyPrice_alert");
+		valCheck("commercePrice_modify_confirm");
+		valCheck("commercePrice_modify_alert");
 		$(".btn-xs", 1).waitUntil(visible, 30000);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("2,000원 ~ 20,000원")) {
@@ -374,8 +386,8 @@ public class commercePrice {
 		System.out.println(" ! ----- commercePrice_autoAdd_del Start ----- ! ");
 		$(".btn-xs", 1).waitUntil(visible, 30000);
 		$(".btn-xs", 1).click();
-		valCheck(3, 3, "priceDel_confirm");
-		valCheck(4, 5, "priceDel_alert");
+		valCheck("commercePrice_del_confirm");
+		valCheck("commercePrice_del_alert");
 		$("h5", 1).waitUntil(visible, 30000);
 		String	pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
