@@ -103,10 +103,7 @@ public class serviceManagement {
 		}
 	}
 
-	public static void valCheck(int pTagNum, int btnNum, String val) {
-	    $(".modal-backdrop").waitUntil(visible, 10000);
-		$("p", pTagNum).click();
-	    String msgCheck = $("p", pTagNum).text();
+	public static void valCheck(String val) {
 		switch (val) {
 		case "scriptList_email_null":
 			checkMsg = "수신 이메일을 입력해 주세요.";
@@ -247,25 +244,29 @@ public class serviceManagement {
 			checkMsg = "삭제가 완료되었습니다.";
 			break;
 		}
-		Thread.onSpinWait();
-		if (msgCheck.equals(checkMsg)) {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val + " - check Success !! *** ");
-			$(".btn-sm", btnNum).click();
-			if (!val.split("_")[0].equals("scriptList")) {
-				$(".modal-backdrop").waitUntil(hidden, 10000);
-			} else {
-
-			}
-		} else if (msgCheck.isEmpty()) {
-			System.out.println(" *** ☆★☆★☆★ pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val	+ " - msgCheck is Empty ... ☆★☆★☆★ *** ");
-			close();
-		} else {
-			System.out.println(" *** pTagNum : " + pTagNum + " / btnNum : " + btnNum + " / val : " + val + " - check Fail ... !@#$%^&*() *** ");
-			System.out.println(msgCheck);
-			System.out.println("-------------------------------");
-			System.out.println(checkMsg);
-			close();
-		}
+		$(".modal-backdrop").waitUntil(visible, 10000);
+	    $$("p").last().click();
+	    String msgCheck = $$("p").last().text().trim();
+	    Thread.onSpinWait();
+	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
+	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
+	            System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
+	            $$(".btn-info").last().click();
+	            $(".modal-backdrop").waitUntil(hidden, 10000);
+	        } else { //confirm 아니면 .btn-sm클릭
+	            System.out.println(" *** " + val +  " - check Success !! *** ");
+	            $$(".btn-sm").last().click();
+	            $(".modal-backdrop").waitUntil(hidden, 10000);
+	        }
+	    } else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
+	        System.out.println(" *** ☆★☆★☆★ " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+	        System.out.println(checkMsg);
+	        close();
+	    } else { // msgCheck=checkMsg여부, confirm&alert여부, 빈값 여부 체크 후 fail
+	        System.out.println(" *** " + val +  " - check Fail ... !@#$%^&*() *** ");
+	        System.out.println(checkMsg);
+	        close();
+	    }
 	}
 
 	// 입력된 URL 정상 여부 확인
@@ -293,6 +294,7 @@ public class serviceManagement {
 		try {
 			Thread.sleep(millis);
 		} catch (InterruptedException ex) {
+			ex.printStackTrace();
 		}
 	}
 
@@ -343,14 +345,14 @@ public class serviceManagement {
 			close();
 		}
 		$(".btn-dark", 1).click();
-		valCheck(12, 3, "scriptList_email_null");
+		valCheck("scriptList_email_null");
 		$("#mail_to").setValue(date);
 		$(".btn-dark", 1).click();
-		valCheck(13, 4, "scriptList_email_validation");
+		valCheck("scriptList_email_validation");
 		$("#mail_to").setValue("apzz092888@daum.net");
 		$(".btn-dark", 1).click();
 		$(".btn-dark", 1).waitUntil(hidden, 10000);
-		valCheck(14, 5, "scriptList_email_send");
+		valCheck("scriptList_email_send");
 		js("window.open('https://logins.daum.net/accounts/loginform.do?url=https%3A%2F%2Fmail.daum.net%2F');");
 		//다음메일 탭으로 포커스 변경
 		switchTo().window(1);
@@ -428,47 +430,47 @@ public class serviceManagement {
 			close();
 		}
 		$("#btn_next_step1").click();
-		valCheck(20, 4, "installApply_null");
+		valCheck("installApply_null");
 		$("#checkbox_svc_0").click();
 		$("#btn_next_step1").click();
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
-		valCheck(22, 5, "installApply_name_null");
+		valCheck("installApply_name_null");
 		$("#applicant_nm").scrollTo();
 		$("#applicant_nm").setValue("name");
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
-		valCheck(23, 6, "installApply_email_null");
+		valCheck("installApply_email_null");
 		$("#applicant_email").scrollTo();
 		$("#applicant_email").setValue(date);
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
-		valCheck(24, 7, "installApply_email_validation");
+		valCheck("installApply_email_validation");
 		$("#applicant_email").scrollTo();
 		$("#applicant_email").setValue(date + "@net.com");
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
-		valCheck(25, 8, "installApply_FTP_null");
+		valCheck("installApply_FTP_null");
 		$("#host_0").scrollTo();
 		$("#host_0").setValue(date);
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
-		valCheck(26, 9, "installApply_port_null");
+		valCheck("installApply_port_null");
 		$("#port_0").scrollTo();
 		$("#port_0").setValue(date);
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
-		valCheck(27, 10, "installApply_id_null");
+		valCheck("installApply_id_null");
 		$("#id_0").scrollTo();
 		$("#id_0").setValue(date);
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
-		valCheck(28, 11, "installApply_pw_null");
+		valCheck("installApply_pw_null");
 		$("#pwd_0").scrollTo();
 		$("#pwd_0").setValue(date);
 		$("#btn_submit").scrollTo();
 		$("#btn_submit").click();
-		valCheck(29, 12, "installApply_agree_null");
+		valCheck("installApply_agree_null");
 		System.out.println(" ! ----- installApply End ----- ! ");
 	}
 
@@ -574,28 +576,28 @@ public class serviceManagement {
 			close();
 		}
 		$("#btn-save").click();
-		valCheck(4, 4, "myCoupon_1_null");
+		valCheck("myCoupon_1_null");
 		$(".coupon-input", 0).setValue("1234");
 		$("#btn-save").click();
-		valCheck(5, 5, "myCoupon_2_null");
+		valCheck("myCoupon_2_null");
 		$(".coupon-input", 0).click();
 		$(".coupon-input", 0).setValue("1234");
 		$(".coupon-input", 1).setValue("123456");
 		$("#btn-save").click();
-		valCheck(6, 6, "myCoupon_3_null");
+		valCheck("myCoupon_3_null");
 		$(".coupon-input", 0).click();
 		$(".coupon-input", 0).setValue("1234");
 		$(".coupon-input", 1).setValue("123456");
 		$(".coupon-input", 2).setValue("12345");
 		$("#btn-save").click();
-		valCheck(7, 7, "myCoupon_4_null");
+		valCheck("myCoupon_4_null");
 		$(".coupon-input", 0).click();
 		$(".coupon-input", 0).setValue("1234");
 		$(".coupon-input", 1).setValue("123456");
 		$(".coupon-input", 2).setValue("12345");
 		$(".coupon-input", 3).setValue("1234");
 		$("#btn-save").click();
-		valCheck(8, 8, "myCoupon_5_null");
+		valCheck("myCoupon_5_null");
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
 
@@ -612,21 +614,21 @@ public class serviceManagement {
 			close();
 		}
 		$("#btn_submit").click();
-		valCheck(10, 5, "addService_siteName_null");
+		valCheck("addService_siteName_null");
 		$(".input-sm", 0).setValue(date);
 		$("#btn_submit").click();
-		valCheck(11, 6, "addService_domain_null");
+		valCheck("addService_domain_null");
 		$(".gui-input", 1).setValue(date);
 		$(".ace-btn-add-domain").click();
-		valCheck(12, 7, "addService_domain_validation");
+		valCheck("addService_domain_validation");
 		$(".gui-input", 1).setValue(date + ".com");
 		$(".ace-btn-add-domain").click();
 		$(".cross").waitUntil(visible, 15000);
 		$(".gui-input", 1).setValue(date + ".com");
 		$(".ace-btn-add-domain").click();
-		valCheck(13, 8, "addService_domain_duplication");
+		valCheck("addService_domain_duplication");
 		$("#btn_submit").click();
-		valCheck(14, 9, "addService_siteGroup1_null");
+		valCheck("addService_siteGroup1_null");
 		$(".br-dark", 1).click();
 		$("h3", 3).waitUntil(visible, 15000);
 		pageLoadCheck = $("h3", 3).text();
@@ -641,12 +643,12 @@ public class serviceManagement {
 		$(By.name("largeCategoryCd")).click();
 		$(By.xpath("//option[@value='22']")).click();
 		$("#btn_submit").click();
-		valCheck(15, 10, "addService_siteGroup2_null");
+		valCheck("addService_siteGroup2_null");
 		$(By.name("middleCategoryCd")).click();
 		$(By.xpath("//option[@value='188']")).click();
 		$("label", 12).click();
 		$("#btn_submit").click();
-		valCheck(16, 11, "addService_coupon_null");
+		valCheck("addService_coupon_null");
 		System.out.println(" ! ----- addService End ----- ! ");
 	}
 
@@ -679,12 +681,12 @@ public class serviceManagement {
 		}
 		$(".btn-info", 0).scrollTo();
 		$(".btn-info", 0).click();
-		valCheck(5, 5, "addIntegralReport_name_null");
+		valCheck("addIntegralReport_name_null");
 		$("#report_nm").scrollTo();
 		$("#report_nm").setValue(date);
 		$(".btn-info", 0).scrollTo();
 		$(".btn-info", 0).click();
-		valCheck(6, 6, "addIntegralReport_service_null");
+		valCheck("addIntegralReport_service_null");
 		System.out.println(" ! ----- addIntegralReport End ----- ! ");
 	}
 
@@ -703,22 +705,22 @@ public class serviceManagement {
 		$("#svc_nm_title_0").click();
 		$(".btn-info", 1).waitUntil(visible, 15000);
 		$(".btn-info", 1).click();
-		valCheck(15, 5, "editService_modify_check");
+		valCheck("editService_modify_check");
 		$(".input-sm", 0).setValue("");
 		$(".cross", 0).click();
 		$(".btn-info", 1).click();
-		valCheck(16, 6, "editService_siteName_null");
+		valCheck("editService_siteName_null");
 		$(".input-sm", 0).setValue(date);
 		$(".btn-info", 1).click();
-		valCheck(17, 7, "editService_domain_null");
+		valCheck("editService_domain_null");
 		$(".gui-input", 1).setValue(date);
 		$(".br-dark", 0).click();
-		valCheck(18, 8, "editService_domain_validation");
+		valCheck("editService_domain_validation");
 		$(".gui-input", 1).setValue(date + ".com");
 		$(".br-dark", 0).click();
 		$(".cross", 0).waitUntil(visible, 15000);
 		$(".btn-info", 1).click();
-		valCheck(19, 9, "editService_edit_alert");
+		valCheck("editService_edit_alert");
 		sleep(500);
 		//$(".btn-info", 1).waitUntil(hidden, 10000);
 		$(".btn-info", 1).waitUntil(visible, 15000);
@@ -737,7 +739,7 @@ public class serviceManagement {
 		$(".br-dark", 0).click();
 		$(".cross", 0).waitUntil(visible, 15000);
 		$(".btn-info", 1).click();
-		valCheck(15, 5, "editService_restore_alert");
+		valCheck("editService_restore_alert");
 		$(".btn-info", 1).waitUntil(visible, 15000);
 		sleep(1000);
 		pageLoadCheck = $("#svc_nm_title_0").text();
@@ -761,16 +763,16 @@ public class serviceManagement {
 		$(".cross", 0).click();
 		$(".sendEmail").waitUntil(hidden, 10000);
 		$("#btn-sendMail").click();
-		valCheck(6, 5, "summaryReport_sendEmail_null");
+		valCheck("summaryReport_sendEmail_null");
 		$(".gui-input", 0).setValue("apzz092888@");
 		$("#btn-sendEmail").click();
-		valCheck(7, 6, "summaryReport_sendEmail_check");
+		valCheck("summaryReport_sendEmail_check");
 		$(".gui-input", 0).setValue("apzz092888@daum.net");
 		$("#btn-sendEmail").click();
 		$(".sendEmail").waitUntil(visible, 15000);
 		$("#btn-sendMail").click();
 		$(".modal-center", 5).waitUntil(visible, 15000);
-		valCheck(8, 7, "summaryReport_sendEmail_send");
+		valCheck("summaryReport_sendEmail_send");
 		switchTo().window(1);
 		refresh();
 		String pageLoadCheck = $(".tit_subject", 0).text();
@@ -811,10 +813,10 @@ public class serviceManagement {
 		$(".cross", 1).click();
 		$(".reserveEmail").waitUntil(hidden, 10000);
 		$("#btn-save").click();
-		valCheck(6, 5, "summaryReport_reserveEmail_null");
+		valCheck("summaryReport_reserveEmail_null");
 		$(".gui-input", 3).setValue("apzz092888@");
 		$("#btn-reserveEmail").click();
-		valCheck(7, 6, "summaryReport_reserveEmail_check");
+		valCheck("summaryReport_reserveEmail_check");
 		$(".gui-input", 3).setValue("apzz092888@daum.net");
 		$("#btn-reserveEmail").click();
 		$(".reserveEmail").waitUntil(visible, 15000);
@@ -822,13 +824,13 @@ public class serviceManagement {
 			$("label", i).click();
 		}
 		$("#btn-save").click();
-		valCheck(8, 7, "summaryReport_reserveEmail_send");
+		valCheck("summaryReport_reserveEmail_send");
 		$("#btn-save").waitUntil(visible, 15000);
 		for (int i = 18; i <= 25; i++) {
 			$("label", i).click();
 		}
 		$("#btn-save").click();
-		valCheck(6, 5, "summaryReport_reserveEmail_send");
+		valCheck("summaryReport_reserveEmail_send");
 		$("#btn-save").waitUntil(visible, 15000);
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
@@ -841,23 +843,23 @@ public class serviceManagement {
 		$(By.linkText("부관리자")).click();
 		$("#btn_mail").waitUntil(visible, 10000);
 		$("#btn_mail").click();
-		valCheck(5, 7, "subManager_name_null");
+		valCheck("subManager_name_null");
 		$("#submanager_nm").setValue("최영권");
 		$("#btn_mail").click();
-		valCheck(6, 8, "subManager_email_null");
+		valCheck("subManager_email_null");
 		$("#submanager_email").setValue("apzz092888@");
 		$("#btn_mail").click();
-		valCheck(7, 9, "subManager_email_check");
+		valCheck("subManager_email_check");
 		$("#submanager_email").setValue("apzz092888@daum.net");
 		$("#btn_mail").click();
-		valCheck(8, 10, "subManager_service_null");
+		valCheck("subManager_service_null");
 	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::button[1]")).click();
 	    $(By.id("treeDemo_2_check")).click();
 	    $(By.id("select_auth")).click();
 	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스추가해지테스트0001(test00011.org)'])[2]/following::option[3]")).click();
 	    $("#btn_add_svc").click();
 		$("#btn_mail").click();
-		valCheck(9, 11, "subManager_email_send");
+		valCheck("subManager_email_send");
 		switchTo().window(1);
 		refresh();
 		sleep(2000);
@@ -917,7 +919,7 @@ public class serviceManagement {
 	    $(".btn-info", 1).click();
 	    $("#btn-modal-alert-yes").waitUntil(visible, 15000);
 	    $("#btn-modal-alert-yes").click();
-		valCheck(6, 13, "submanager_authority_modify_check");
+		valCheck("submanager_authority_modify_check");
 		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
 	
@@ -938,7 +940,7 @@ public class serviceManagement {
 		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
 		$("#btn-modal-alert-yes").click();
 		$("p", 4).waitUntil(visible, 15000);
-		valCheck(4, 3, "subManager_pw_alert");
+		valCheck("subManager_pw_alert");
 		open("https://new.acecounter.com/auth/logout");
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw);
@@ -947,10 +949,9 @@ public class serviceManagement {
 		$(".br-dark", 2).click();
 		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
 		$("#btn-modal-alert-yes").click();
-		valCheck(6, 13, "subManager_delete");
+		valCheck("subManager_delete");
 		System.out.println(" ! ----- subManager_modifyInfoAndDel End ----- ! ");
 	}
-	
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();
