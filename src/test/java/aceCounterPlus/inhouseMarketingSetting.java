@@ -52,7 +52,7 @@ public class inhouseMarketingSetting {
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
-		ScreenShooter.captureSuccessfulTests = true;
+		ScreenShooter.captureSuccessfulTests = false;
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";

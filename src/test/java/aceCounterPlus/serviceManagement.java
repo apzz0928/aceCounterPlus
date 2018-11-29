@@ -58,7 +58,7 @@ public class serviceManagement {
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
-		ScreenShooter.captureSuccessfulTests = true;
+		ScreenShooter.captureSuccessfulTests = false;
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
@@ -909,16 +909,10 @@ public class serviceManagement {
 	    $("#btn-modal-alert-yes").waitUntil(visible, 15000);
 	    $("#btn-modal-alert-yes").click();
 		valCheck("submanager_authority_modify_check");
-		//비번변경 에러나서 잠깐 삭제 처리
-		open("https://new.acecounter.com/manage/serviceInfo/submanager");
-		$(".br-dark", 2).click();
-		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
-		$("#btn-modal-alert-yes").click();
-		valCheck("subManager_delete");
 		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
 	
-	//@Test(priority = 92) 에러나서 잠깐 예외처리
+	@Test(priority = 92)
 	public void subManager_modifyInfoAndDel() {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
