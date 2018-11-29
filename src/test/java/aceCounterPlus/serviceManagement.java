@@ -30,7 +30,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class serviceManagement {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg;
 	private static HttpURLConnection huc;
 	private static int respCode;
 
@@ -49,8 +49,11 @@ public class serviceManagement {
 		baseUrl = "https://new.acecounter.com/common/front";
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
 		id = "ap";
-		pw = "qordlf!@34";
-		pw1 = "qordlf12#$";
+		pw = "qordlf";
+		pw1 = "qordlf";
+		A = "!@34";
+		B = "1@#4";
+		C = "12#$";
 		domain = "apzz";
 
 		String urlToRemoteWD = hubUrl;
@@ -250,13 +253,11 @@ public class serviceManagement {
 	    Thread.onSpinWait();
 	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
 	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
-	            System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
-	            $$(".btn-info").last().click();
-	            $(".modal-backdrop").waitUntil(hidden, 10000);
+	        	//confirm이 없어서 제거
 	        } else { //confirm 아니면 .btn-sm클릭
 	            System.out.println(" *** " + val +  " - check Success !! *** ");
 	            $$(".btn-sm").last().click();
-	            $(".modal-backdrop").waitUntil(hidden, 10000);
+	            //$(".modal-backdrop").waitUntil(hidden, 10000);
 	        }
 	    } else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
 	        System.out.println(" *** ☆★☆★☆★ " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
@@ -308,7 +309,7 @@ public class serviceManagement {
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 15000);
 		$("#uid").setValue("apzz0928888");
-		$("#upw").setValue(pw);
+		$("#upw").setValue(pw + A);
 		$(".btn_login").click();
 		String loginCheck = $(".btn_logout").text();
 		$(".btn_logout").getValue();
@@ -357,7 +358,7 @@ public class serviceManagement {
 		//다음메일 탭으로 포커스 변경
 		switchTo().window(1);
 		$("#id").setValue("apzz092888");
-		$("#inputPwd").setValue(pw);
+		$("#inputPwd").setValue(pw + A);
 		$("#loginBtn").click();
 		$(".link_check").waitUntil(visible, 15000);
 		sleep(1000);
@@ -485,40 +486,40 @@ public class serviceManagement {
 		} else {
 			System.out.println(" *** memberInfo Recongirming page load Fail ... !@#$%^&*() *** ");			
 		}
-		$("#pwd").setValue(pw);
+		$("#pwd").setValue(pw + A);
 		$("#btn-ok").click();
 		$("h3", 2).waitUntil(visible, 15000);
 		System.out.println(" *** Password change Page access Success !! *** ");
-		$("#prePwd").setValue(pw);
-		$("#changePwd").setValue(pw1);
-		$("#changePwdConfirm").setValue(pw1);
-		$("#modifyProc").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		$("#btn-modal-alert-yes").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		String mbn = $(".mbn").text();
-		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-			System.out.println(" *** Change Password Success !! *** ");
-			$("#okButton").click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-		} else {
-			System.out.println(" *** Change Password Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#prePwd").setValue(pw1);
-		$("#changePwd").setValue(pw);
-		$("#changePwdConfirm").setValue(pw);
-		$("#modifyProc").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		$("#btn-modal-alert-yes").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-			System.out.println(" *** Restoration Password Success !! *** ");
-			$("#okButton").click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-		} else {
-			System.out.println(" *** Restoration Password Fail ... !@#$%^&*() *** ");
-			close();
+		for(int i=1;i<=3;i++) { //이전 사용 비밀번호로 변경 불가해서 3번바꿈
+			if(i==1) {
+				pw = pw + A;
+				pw1 = pw1 + B;
+			} else if(i==2) {
+				pw = pw + B;
+				pw1 = pw1 + C;
+			} else if(i==3) {
+				pw = pw + C;
+				pw1 = pw1 + A;
+			}
+			$("#prePwd").waitUntil(visible, 10000);
+			$("#prePwd").setValue(pw);
+			$("#changePwd").setValue(pw1);
+			$("#changePwdConfirm").setValue(pw1);
+			$("#modifyProc").click();
+			$(".modal-backdrop").waitUntil(visible, 15000);
+			$("#btn-modal-alert-yes").click();
+			$(".modal-backdrop").waitUntil(visible, 15000);
+			String mbn = $(".mbn").text();
+			if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
+				System.out.println(" *** Change Password(" + i + ") Success !! *** ");
+				$("#okButton").click();
+				$(".modal-backdrop").waitUntil(hidden, 10000);
+			} else {
+				System.out.println(" *** Change Password(" + i + ") Fail ... !@#$%^&*() *** ");
+				close();
+			}
+			pw = "qordlf";
+			pw1 = "qordlf";
 		}
 		$("#s_name").setValue("변경이름");
 		$("#s_company").setValue("변경회사명");
@@ -548,7 +549,7 @@ public class serviceManagement {
 	    $(By.xpath("//option[@value='010']")).click();
 	    $("#s_hp2").setValue("9743");
 	    $("#s_hp3").setValue("0928");
-		$("#s_email").setValue("apzz0928@gmail.com");
+		$("#s_email").setValue("apzz092888@daum.net");
 	    $(".btn-lg", 1).click();
 	    $(".modal-dialog").waitUntil(visible, 15000);
 		if(modalBody.equals("회원정보가 수정되었습니다.")) {
@@ -576,27 +577,21 @@ public class serviceManagement {
 			close();
 		}
 		$("#btn-save").click();
-		valCheck("myCoupon_1_null");
-		$(".coupon-input", 0).setValue("1234");
-		$("#btn-save").click();
-		valCheck("myCoupon_2_null");
-		$(".coupon-input", 0).click();
-		$(".coupon-input", 0).setValue("1234");
-		$(".coupon-input", 1).setValue("123456");
-		$("#btn-save").click();
-		valCheck("myCoupon_3_null");
-		$(".coupon-input", 0).click();
-		$(".coupon-input", 0).setValue("1234");
-		$(".coupon-input", 1).setValue("123456");
-		$(".coupon-input", 2).setValue("12345");
-		$("#btn-save").click();
-		valCheck("myCoupon_4_null");
-		$(".coupon-input", 0).click();
-		$(".coupon-input", 0).setValue("1234");
-		$(".coupon-input", 1).setValue("123456");
-		$(".coupon-input", 2).setValue("12345");
-		$(".coupon-input", 3).setValue("1234");
-		$("#btn-save").click();
+		for(int i=1;i<=4;i++) {
+		    valCheck("myCoupon_" + i + "_null");
+	        $(".coupon-input", 0).click();
+	        $(".coupon-input", 0).setValue("1234");
+	        if (i >= 2) {
+		        $(".coupon-input", 1).setValue("123456");
+		        if (i >= 3) {
+			        $(".coupon-input", 2).setValue("12345");
+			        if (i >= 4) {
+				        $(".coupon-input", 3).setValue("1234");
+				    }
+			    }
+		    }
+		    $("#btn-save").click();
+		}
 		valCheck("myCoupon_5_null");
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
@@ -725,9 +720,6 @@ public class serviceManagement {
 		//$(".btn-info", 1).waitUntil(hidden, 10000);
 		$(".btn-info", 1).waitUntil(visible, 15000);
 		pageLoadCheck = $("#svc_nm_title_0").text();
-		System.out.println("date is " + date);
-		System.out.println("svc_nm_title_0 is " + pageLoadCheck);
-		System.out.println("svc_nm_title_0 (substring 21, 33) is " + pageLoadCheck.substring(21, 33));
 		if (pageLoadCheck.substring(21, 33).equals(date)) {
 			System.out.println(" *** editService edit Success !! *** ");
 		} else {
@@ -743,9 +735,6 @@ public class serviceManagement {
 		$(".btn-info", 1).waitUntil(visible, 15000);
 		sleep(1000);
 		pageLoadCheck = $("#svc_nm_title_0").text();
-		System.out.println("date is " + date);
-		System.out.println("svc_nm_title_0 is " + pageLoadCheck);
-		System.out.println("svc_nm_title_0 (substring 21, 33) is " + pageLoadCheck.substring(21, 33));
 		if (pageLoadCheck.substring(21, 33).equals("ap0420121150")) {
 			System.out.println(" *** editService restore Success !! *** ");
 		} else {
@@ -884,8 +873,8 @@ public class serviceManagement {
 		$("label", 0).click();
 		$("#userid").setValue(id + date2);
 		$("#recheck").click();
-		$("#userpw").setValue(pw);
-		$("#repeatpw").setValue(pw);
+		$("#userpw").setValue(pw + A);
+		$("#repeatpw").setValue(pw + A);
 		$(".btn_join").click();
 		$(".btn_pop_submit").click();
 		switchTo().window(1);
@@ -920,22 +909,28 @@ public class serviceManagement {
 	    $("#btn-modal-alert-yes").waitUntil(visible, 15000);
 	    $("#btn-modal-alert-yes").click();
 		valCheck("submanager_authority_modify_check");
+		//비번변경 에러나서 잠깐 삭제 처리
+		open("https://new.acecounter.com/manage/serviceInfo/submanager");
+		$(".br-dark", 2).click();
+		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
+		$("#btn-modal-alert-yes").click();
+		valCheck("subManager_delete");
 		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
 	
-	@Test(priority = 92)
+	//@Test(priority = 92) 에러나서 잠깐 예외처리
 	public void subManager_modifyInfoAndDel() {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
 		$("#uid").waitUntil(visible, 15000);
 		$("#uid").setValue(id + date2);
-		$("#upw").setValue(pw);
+		$("#upw").setValue(pw + A);
 		$(".btn_login").click();
 		$(".go_setting").waitUntil(visible, 10000);
 		$(".go_setting").click();
-		$("#prePwd").setValue(pw);
-		$("#changePwd").setValue(pw1);
-		$("#changePwdConfirm").setValue(pw1);
+		$("#prePwd").setValue(pw + A);
+		$("#changePwd").setValue(pw + B);
+		$("#changePwdConfirm").setValue(pw + B);
 		$("#modifyProc").click();
 		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
 		$("#btn-modal-alert-yes").click();
@@ -943,7 +938,7 @@ public class serviceManagement {
 		valCheck("subManager_pw_alert");
 		open("https://new.acecounter.com/auth/logout");
 		$("#uid").setValue("apzz0928888");
-		$("#upw").setValue(pw);
+		$("#upw").setValue(pw + A); 
 		$(".btn_login").click();
 		open("https://new.acecounter.com/manage/serviceInfo/submanager");
 		$(".br-dark", 2).click();

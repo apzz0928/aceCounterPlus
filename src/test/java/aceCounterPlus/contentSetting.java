@@ -484,6 +484,7 @@ public class contentSetting {
 		//$(".btn-sm", 6).waitUntil(visible, 10000);
 		valCheck("URLSetting_pageChange_delete_alert");
 		$("td", 7).waitUntil(hidden, 10000);
+		$("td", 3).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 3).text().trim();
 		pLC = pageLoadCheck.split(" ");
 		if(pLC[0].equals("등록된")) {
@@ -597,7 +598,8 @@ public class contentSetting {
 	public void pageGroupSetting_pageManage() {
 		System.out.println(" ! ----- pageGroupSetting_pageManage Start ----- ! ");
 		brokenLinkCheck("pageDownload", "https://new.acecounter.com/setting/contents/pageGroup/downloadPage?key=&match=false&query=&use_yn=y");
-	    $(".br-l-n").setValue(date);
+		$(".br-l-n").waitUntil(visible, 10000);
+		$(".br-l-n").setValue(date);
 	    $("#btn-search").click();
 	    String pageLoadCheck = $("td", 0).text().trim();
 	    if(pageLoadCheck.equals("등록된 페이지가 없습니다.\n" + "메뉴를 선택한 후 페이지를 등록하세요.")) {
