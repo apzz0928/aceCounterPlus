@@ -30,7 +30,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class temporarily_2 {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, findDate;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, temp_pw, A, B;
 	private static HttpURLConnection huc;
 	private static int respCode;
     
@@ -45,11 +45,14 @@ public class temporarily_2 {
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
 		id = "ap";
 		pw = "qordlf!@34";
+		pw1 = "qordlf";
+		A = "!@34";
+		B = "14@#";
 		domain = "apzz";
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
-		ScreenShooter.captureSuccessfulTests = true;
+		ScreenShooter.captureSuccessfulTests = false;
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
@@ -162,8 +165,8 @@ public class temporarily_2 {
   	}
 	private static void js(String javaScript) {
 		executeJavaScript(javaScript);
-	}
-  	//@Test(priority = 0)
+	}	
+  	@Test(priority = 0)
   	public void page_open() {
   		System.out.println(" ! ----- page_open Start ----- ! ");
 		open(baseUrl);
@@ -208,7 +211,6 @@ public class temporarily_2 {
 		Date date = new Date(); //web 회원가입과 app 회원가입 id가 안겹치게 입력 직전에 새로 정의
 	    SimpleDateFormat number_format = new SimpleDateFormat("MMddHHmmss");
 	    String id_date = number_format.format(date);
-	    findDate = id_date;
 		$("#userid").setValue(id + id_date); //회원정보 입력
 		$("#recheck").click();
 		pageLoadCheck = $("#checkresult").text().trim();
@@ -218,8 +220,8 @@ public class temporarily_2 {
 			System.out.println(" *** common_signUp ID check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#userpw").setValue(pw);
-		$("#repeatpw").setValue(pw);
+		$("#userpw").setValue(pw + A);
+		$("#repeatpw").setValue(pw + A);
 		$("#usernm").setValue("회원가입테스트");
 		$("#useremail").setValue("apzz092888@daum.net");
 		$("#mp2").setValue("0000");
@@ -238,7 +240,7 @@ public class temporarily_2 {
 		System.out.println(" ! ----- common_signUp End ----- ! ");
 	}
 
-  	//@Test(priority = 1)
+  	@Test(priority = 1)
 	public void web_signUp() {
 		System.out.println(" ! ----- web_signUp Start ----- ! ");
   		common_signUp();
@@ -270,7 +272,7 @@ public class temporarily_2 {
 		System.out.println(" ! ----- web_signUp End ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
   	}
-  	//@Test(priority = 2)
+  	@Test(priority = 2)
 	public void app_signUp() {
 		System.out.println(" ! ----- app_signUp Start ----- ! ");
   		common_signUp();
@@ -318,10 +320,10 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- app_signUp End ----- ! ");
   	}
-  	@Test(priority = 3) //잠시 보류
+  	@Test(priority = 3) 
 	public void findAccount() {
 		System.out.println(" ! ----- findAccount Start ----- ! ");
-		/*open("https://new.acecounter.com/auth/logout");
+		open("https://new.acecounter.com/auth/logout");
 		$(".go_find_account").waitUntil(visible, 10000);
 		$(".go_find_account").click();
 		String pageLoadCheck = $("h2", 0).text().trim();
@@ -351,38 +353,107 @@ public class temporarily_2 {
 			System.out.println(" *** findAccount page load check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#find_pw_uid").setValue("apzz092888");
+		$("#find_pw_uid").setValue("apzz0928888");
 		$("#find_pw_umail").setValue("apzz092888@daum.net");
 		$(".btn_send_mail").click();
 		$("#span_find_pw").waitUntil(visible, 10000);
-		//$(".btn_pop_submit").click();
-		js("window.open('https://mail.daum.net/login?url=http%3A%2F%2Fmail.daum.net%2F');"); //자바스크립트로 새탭 띄움
+		pageLoadCheck = $("#span_find_pw").text().trim();
+		if(pageLoadCheck.equals("apzz092888@daum.net")) {
+			System.out.println(" *** find web PW check Success !! *** ");			
+		} else {
+			System.out.println(" *** find web PW check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".btn_pop_submit", 1).click();
+		//sleep(1500);
+		js("window.open('https://logins.daum.net/accounts/loginform.do?url=https%3A%2F%2Fmail.daum.net%2F');"); //자바스크립트로 메일 확인용 주소 띄움
 		switchTo().window(1); //브라우저 새탭으로 이동
-		refresh();*/
-		open("https://mail.daum.net/login?url=http%3A%2F%2Fmail.daum.net%2F");
-		$(".btn_login").waitUntil(visible, 10000);
-		$("#ID").setValue("apzz0928");
-		$("#PASSWD").setValue("qordlf!@34");
-		$(".btn_login").click();
-		$(".title", 0).waitUntil(visible, 10000);
-		$(".title", 0).click();
-		sleep(3000);
-		/*String temp_test = $(".ace-horizone-table").text();
-		System.out.println(temp_test);*/
-		String temp_id = $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='아이디'])[1]/following::td[1]")).text().trim();
-		String temp_pw = $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='임시 비밀번호'])[1]/following::td[1]")).text().trim();
-		
-		System.out.println(temp_id);
-		System.out.println(temp_pw);
-		
-		/*switchTo().window(0);
+		//refresh();
+		$("#loginBtn").waitUntil(visible, 10000);
+		$("#id").setValue("apzz092888");
+		$("#inputPwd").setValue("qordlf!@34");
+		$("#loginBtn").click();
+		$(".info_subject", 1).waitUntil(visible, 10000);
+		pageLoadCheck = $(".info_subject", 1).text().trim();
+		String[] pLC = pageLoadCheck.split(" ");
+		if(pLC[2].equals("임시비밀번호를")) {
+			System.out.println(" *** daum mail list page load check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** daum mail list page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".info_subject", 1).click();
+		$("h1", 1).waitUntil(visible, 10000);
+		String temp_id = $("td", 10).text().trim();
+		temp_pw = $("td", 11).text().trim(); //비번 원복할때 써야해서 전역으로 변경
+		$(".link_mail", 2).click(); //메일삭제
+		$(".ico_check", 0).waitUntil(visible, 15000);
+		$(".link_page", 0).click();
+		$(".ico_check", 0).click();
+		$(".wrap_bold > .btn_del", 0).click();
+		switchTo().window(0); //원래 탭으로 이동
 		open("https://new.acecounter.com/common/front");
 		$("#uid").waitUntil(visible, 10000);
 		$("#uid").setValue(temp_id);
 		$("#upw").setValue(temp_pw);
-		$(".btn_login").click();*/
-		
+		$(".btn_login").click();
+		pageLoadCheck = $(".personal_info").text().trim();
+		pLC = pageLoadCheck.split("님");
+		if(pLC[0].equals("원래이름")) {
+			System.out.println(" *** findAccount page load check Success !! *** ");			
+		} else {
+			System.out.println(" *** findAccount page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
 		System.out.println(" ! ----- findAccount End ----- ! ");
+  	}
+  	@Test(priority = 4)
+	public void restorationPassword() {
+		System.out.println(" ! ----- restorationPassword Start ----- ! ");
+		$(".go_setting").click();
+		$("#member_info").waitUntil(visible, 10000);
+		$("#member_info").click();
+		$("h3", 2).waitUntil(visible, 15000);
+		String pageLoadCheck = $("h3", 2).text();
+		if(pageLoadCheck.equals("비밀번호 재확인")) {
+			System.out.println(" *** memberInfo Recongirming page load Success !! *** ");
+		} else {
+			System.out.println(" *** memberInfo Recongirming page load Fail ... !@#$%^&*() *** ");			
+		}
+		$("#pwd").setValue(temp_pw);
+		$("#btn-ok").click();
+		$("h3", 2).waitUntil(visible, 15000);
+		System.out.println(" *** Password change Page access Success !! *** ");
+		for(int i=1;i<=2;i++) { //이전 사용 비밀번호로 변경 불가해서 2번바꿈
+			if(i==1) {
+				pw = temp_pw;
+				pw1 = pw1 + B;
+			} else if(i==2) {
+				pw = pw + B;
+				pw1 = pw1 + A;
+			}
+			$("#prePwd").waitUntil(visible, 10000);
+			$("#prePwd").setValue(pw);
+			$("#changePwd").setValue(pw1);
+			$("#changePwdConfirm").setValue(pw1);
+			$("#modifyProc").click();
+			$(".modal-backdrop").waitUntil(visible, 15000);
+			$("#btn-modal-alert-yes").click();
+			$(".modal-backdrop").waitUntil(visible, 15000);
+			String mbn = $(".mbn").text();
+			if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
+				System.out.println(" *** restoration Password(" + i + ") Success !! *** ");
+				$("#okButton").click();
+				$(".modal-backdrop").waitUntil(hidden, 10000);
+			} else {
+				System.out.println(" *** restoration Password(" + i + ") Fail ... !@#$%^&*() *** ");
+				close();
+			}
+			pw = "qordlf";
+			pw1 = "qordlf";
+		}
+		System.out.println(" ! ----- restorationPassword End ----- ! ");
   	}
 	@AfterClass
 	public void afterTest() {
