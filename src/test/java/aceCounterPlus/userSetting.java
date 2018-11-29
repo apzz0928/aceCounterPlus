@@ -28,7 +28,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class userSetting {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, pageLoadCheck;
 	
 	//신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
 	Date number_date = new Date();
@@ -167,7 +167,7 @@ public class userSetting {
 		}
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text().trim();
+		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
@@ -185,7 +185,7 @@ public class userSetting {
 		$(By.linkText("IP필터링설정")).waitUntil(visible, 10000);
 		$(By.linkText("IP필터링설정")).click();
 		$("h5", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h5", 2).text();
+		pageLoadCheck = $("h5", 2).text();
 		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
 			System.out.println(" *** IP Filterring Page load Success !! *** ");
 		} else {
@@ -255,7 +255,7 @@ public class userSetting {
 		valCheck("IPFilterring_searchInputCheck");
 		$("#searchIp").setValue("03");
 		$(".btn-default", 5).click();
-		String pageLoadCheck = $("h5", 2).text();
+		pageLoadCheck = $("h5", 2).text();
 		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
 			System.out.println(" *** IP Filterring don`t input search check Success !! *** ");
 		} else {
@@ -287,7 +287,7 @@ public class userSetting {
 		sleep(1000);
 		valCheck("IPFilterring_del");
 		$("h5", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h5", 2).text();
+		pageLoadCheck = $("h5", 2).text();
 		if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
 			System.out.println(" *** IP Filterring Page load Success !! *** ");
 		} else {
@@ -300,7 +300,7 @@ public class userSetting {
 	public void userGroupSetting_add() {
 		$(By.linkText("회원그룹설정")).click();
 		$("h5", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h5", 1).text();
+		pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 회원그룹이 없습니다.")) {
 			System.out.println(" *** userGroupSetting list Page load Success !! *** ");
 		} else {
@@ -346,7 +346,7 @@ public class userSetting {
 		$("#searchNm").setValue("qwer");
 		$("#frmBtn").click();
 		$("h5", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h5", 1).text();
+		pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 회원그룹이 없습니다.")) {
 			System.out.println(" *** userGroupSetting Page load Success !! *** ");
 		} else {
@@ -370,7 +370,7 @@ public class userSetting {
 		System.out.println(" ! ----- userGroupSetting_modify Start ----- ! ");
 		$(".btn-xs").click();
 		$(".notokr-medium").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".notokr-medium").text();
+		pageLoadCheck = $(".notokr-medium").text();
 		if(pageLoadCheck.equals("회원그룹 추가하기")) {
 			System.out.println(" *** userGroupSetting add Page load Success !! *** ");
 		} else {
@@ -398,7 +398,7 @@ public class userSetting {
 		System.out.println(" ! ----- userGroupSetting_del Start ----- ! ");
 		$(".btn-gray", 0).click();
 		$(".btn-gray", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $(".btn-gray", 1).text();
+		pageLoadCheck = $(".btn-gray", 1).text();
 		if(pageLoadCheck.equals("취소")) {
 			System.out.println(" *** userGroupSetting delete UI load Success !! *** ");
 		} else {

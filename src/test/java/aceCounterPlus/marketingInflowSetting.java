@@ -30,7 +30,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class marketingInflowSetting {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, pageLoadCheck;
 	private static HttpURLConnection huc;
 	private static int respCode;
 	
@@ -190,7 +190,7 @@ public class marketingInflowSetting {
 		}
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text().trim();
+		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
@@ -204,7 +204,7 @@ public class marketingInflowSetting {
 		System.out.println(" ! ----- mktInflowSetting_add Start ----- ! ");
 		$("#redirectConfBtn").click();
 		$("#inflowAddBtn").waitUntil(visible, 10000);
-		String pageLoadCheck = $("#inflowAddBtn").text();
+		pageLoadCheck = $("#inflowAddBtn").text();
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** mktInflowSetting_add list page Success !! *** ");
 		} else {
@@ -263,7 +263,7 @@ public class marketingInflowSetting {
 		valCheck(4, 5, "mktInflowSetting_del_confirm");
 		valCheck(5, 7, "mktInflowSetting_del_alert");
 		$(".no-records-found").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".no-records-found").text();
+		pageLoadCheck = $(".no-records-found").text();
 		if(pageLoadCheck.equals("마케팅 유입설정이 존재하지 않습니다.")) {
 			System.out.println(" *** mktInflowSetting_del del Success !! *** ");
 		} else {
@@ -278,7 +278,7 @@ public class marketingInflowSetting {
 		$("#inflowMrkCodeDown").waitUntil(visible, 10000);
 		$("#inflowMrkCodeDown").click();
 		sleep(1000);
-		String pageLoadCheck = $("h4", 0).text();
+		pageLoadCheck = $("h4", 0).text();
 		if(pageLoadCheck.equals("광고코드 다운로드")) {
 			brokenLinkCheck("advCodeDown", "https://new.acecounter.com/setting/appmarketing/codedown?inflow_media_cd=&inflow_mrkt_channel_dcd=10&down_term_cate=ALL&create_dt_st=&create_dt_ed=&original_url_yn=n&use_yn=y");
 			System.out.println(" *** advCodeDownload layer check Sueecss !! *** ");
@@ -296,7 +296,7 @@ public class marketingInflowSetting {
 		sleep(1000);
 		$(".btn-dark", 0).click();
 		$("#addViewBtn").waitUntil(visible, 10000);
-		String pageLoadCheck = $("#addViewBtn").text();
+		pageLoadCheck = $("#addViewBtn").text();
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** advProductManage_add list page load Success !! *** ");
 		} else {
@@ -341,7 +341,7 @@ public class marketingInflowSetting {
 		valCheck(4, 4, "advertisingProductManage_del_confirm");
 		valCheck(5, 6, "advertisingProductManage_del_alert");
 		$("h5", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h5", 1).text();
+		pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 사용자정의 정보가 없습니다.")) {
 			System.out.println(" *** advertisingProductManage_del del Success !! *** ");
 		} else {

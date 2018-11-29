@@ -30,7 +30,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class contentSetting {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, pageLoadCheck;
 	private static HttpURLConnection huc;
 	private static int respCode;
 	
@@ -277,7 +277,7 @@ public class contentSetting {
 		}
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text().trim();
+		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
@@ -295,7 +295,7 @@ public class contentSetting {
 		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
 		$(By.linkText("URL 설정")).click();
 		$(".col-xs-5").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".btn-info", 0).text().trim();
+		pageLoadCheck = $(".btn-info", 0).text().trim();
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** URLSetting_dynamicPage_add Page load Success !! *** ");
 		} else {
@@ -334,7 +334,7 @@ public class contentSetting {
 		$(".btn-info", 0).waitUntil(visible, 10000);
 		$(".btn-info", 0).click();
 		$("#page-url").waitUntil(visible, 10000);
-		String pageLoadCheck = $("#btn-add").text().trim();
+		pageLoadCheck = $("#btn-add").text().trim();
 		if(pageLoadCheck.equals("등록")) {
 			System.out.println(" *** URLSetting_dynamicPage_update register UI load Success !! *** ");
 		} else {
@@ -356,7 +356,7 @@ public class contentSetting {
 		$(".br-dark", 0).waitUntil(visible, 10000);
 		$(".br-dark", 0).click();
 		$(".btn-url-save", 0).waitUntil(visible, 10000);
-		String pageLoadCheck = $(".btn-url-save", 0).text().trim();
+		pageLoadCheck = $(".btn-url-save", 0).text().trim();
 		if(pageLoadCheck.equals("저장")) {
 			System.out.println(" *** URLSetting_dynamicPage_modify save UI load Success !! *** ");
 		} else {
@@ -377,7 +377,7 @@ public class contentSetting {
 		$(".br-l-n", 0).setValue(date + "a");
 		$("#btn-search", 0).click();
 		$("#btn-search", 0).waitUntil(visible, 10000);
-		String pageLoadCheck = $("tr", 4).text().trim();
+		pageLoadCheck = $("tr", 4).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
 		if(pLC[0].equals("등록된")) {
 			System.out.println(" *** URLSetting_dynamicPage_delete No Search Result Success !! *** ");
@@ -417,7 +417,7 @@ public class contentSetting {
 		System.out.println(" ! ----- URLSetting_pageChange_add Start ----- ! ");
 		$(By.linkText("페이지 교체")).click();
 		$("th", 5).waitUntil(visible, 10000);
-		String pageLoadCheck = $("th", 5).text().trim();
+		pageLoadCheck = $("th", 5).text().trim();
 		if(pageLoadCheck.equals("페이지 검색 조건")) {
 			System.out.println(" *** URLSetting_pageChange_add Page load Success !! *** ");
 		} else {
@@ -454,7 +454,7 @@ public class contentSetting {
 		$("#btn-search").click();
 		$("td", 5).waitUntil(hidden, 10000);
 		$("td", 3).waitUntil(visible, 10000);
-		String pageLoadCheck = $("td", 3).text().trim();
+		pageLoadCheck = $("td", 3).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
 		if(pLC[0].equals("등록된")) {
 			System.out.println(" *** URLSetting_pageChange_No Search Result Success !! *** ");
@@ -500,7 +500,7 @@ public class contentSetting {
 		System.out.println(" ! ----- URLSetting_internalSearch_add Start ----- ! ");
 		$(By.linkText("내부검색")).click();
 		$("th", 5).waitUntil(visible, 10000);
-		String pageLoadCheck = $("th", 6).text().trim();
+		pageLoadCheck = $("th", 6).text().trim();
 		if(pageLoadCheck.equals("내부검색변수")) {
 			System.out.println(" *** URLSetting_internalSearch Page load Success !! *** ");
 		} else {
@@ -535,7 +535,7 @@ public class contentSetting {
 		$("#btn-search").click();
 		$("td", 7).waitUntil(hidden, 10000);
 		$("td", 3).waitUntil(visible, 10000);
-		String pageLoadCheck = $("td", 3).text().trim();
+		pageLoadCheck = $("td", 3).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
 		if(pLC[0].equals("등록된")) {
 			System.out.println(" *** URLSetting_internalSearch_No Search Result Success !! *** ");
@@ -579,7 +579,7 @@ public class contentSetting {
 		System.out.println(" ! ----- pageGroupSetting_menuAddDel Start ----- ! ");
 	    $(By.linkText("페이지그룹 설정")).click();
 	    $("#btn-tree-add").waitUntil(visible, 10000);
-		String pageLoadCheck = $("#btn-tree-add").text().trim();
+		pageLoadCheck = $("#btn-tree-add").text().trim();
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** pageGroupSetting_menuAdd Page load Success !! *** ");
 		} else {
@@ -601,7 +601,7 @@ public class contentSetting {
 		$(".br-l-n").waitUntil(visible, 10000);
 		$(".br-l-n").setValue(date);
 	    $("#btn-search").click();
-	    String pageLoadCheck = $("td", 0).text().trim();
+	    pageLoadCheck = $("td", 0).text().trim();
 	    if(pageLoadCheck.equals("등록된 페이지가 없습니다.\n" + "메뉴를 선택한 후 페이지를 등록하세요.")) {
 	    	System.out.println(" *** pageGroupSetting_pageManage search Success !! *** ");
 	    } else {
@@ -621,7 +621,7 @@ public class contentSetting {
 		valCheck("pattern_menu_null");
 		$(".fancytree-title", 0).click();
 		$(By.linkText("패턴등록")).click();
-		String pageLoadCheck = $("h3", 2).text().trim();
+		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("패턴등록")) {
 			System.out.println(" *** pageGroupSetting_patternRegister page load Success !! *** ");
 		} else {
@@ -641,7 +641,7 @@ public class contentSetting {
 		sleep(1000);
 		$(By.linkText("패턴관리")).click();
 		$(".col-xs-5", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $(".col-xs-5", 1).text().trim();
+		pageLoadCheck = $(".col-xs-5", 1).text().trim();
 		if(pageLoadCheck.equals("패턴")) {
 			System.out.println(" *** pageGroupSetting_patternManagement page load Success !! *** ");
 		} else {
@@ -665,7 +665,7 @@ public class contentSetting {
 		System.out.println(" ! ----- pageGroupSetting_pageUpload Start ----- ! ");
 		$(By.linkText("페이지업로드")).click();
 		$("h3", 3).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 3).text().trim();
+		pageLoadCheck = $("h3", 3).text().trim();
 		if(pageLoadCheck.equals("페이지업로드")) {
 			System.out.println(" *** pageGroupSetting_pageUpload page load Success !! *** ");
 		} else {
@@ -679,7 +679,7 @@ public class contentSetting {
 		System.out.println(" ! ----- innerBanner_add Start ----- ! ");
 	    $(By.linkText("내부배너 설정")).click();
 	    $(".no-records-found").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".btn-dark", 0).text().trim();
+		pageLoadCheck = $(".btn-dark", 0).text().trim();
 		if(pageLoadCheck.equals("링크URL 다운로드")) {
 			System.out.println(" *** innerBanner_add list Page load Success !! *** ");
 		} else {
@@ -723,7 +723,7 @@ public class contentSetting {
 		System.out.println(" ! ----- innerBanner_duplicationAdd Start ----- ! ");
 		$(".btn-info", 0).click();
 	    $(".notokr-medium").waitUntil(visible, 5000);
-	    String pageLoadCheck = $(".notokr-medium").text().trim();
+	    pageLoadCheck = $(".notokr-medium").text().trim();
 		if(pageLoadCheck.equals("추가하기")) {
 			System.out.println(" *** innerBanner_duplicationAdd Page load Success !! *** ");
 		} else {
@@ -750,7 +750,7 @@ public class contentSetting {
 		System.out.println(" ! ----- innerBanner_search Start ----- ! ");
 	    $("#s_key").setValue(date);
 	    $("#btn-search").click();
-		String pageLoadCheck = $(".btn-dark", 0).text().trim();
+		pageLoadCheck = $(".btn-dark", 0).text().trim();
 		if(pageLoadCheck.equals("링크URL 다운로드")) {
 			System.out.println(" *** innerBanner_search list Page load Success !! *** ");
 		} else {
@@ -773,7 +773,7 @@ public class contentSetting {
 		System.out.println(" ! ----- innerBanner_linkURLdownload Start ----- ! ");
 	    $(".btn-dark", 0).click();
 	    $(".modal-backdrop").waitUntil(visible, 5000);
-	    String pageLoadCheck = $(".btn-fileDown").text().trim();
+	    pageLoadCheck = $(".btn-fileDown").text().trim();
 	    if(pageLoadCheck.equals("다운로드")) {
 	    	System.out.println(" *** innerBanner_linkURLdownload popup load Success !! *** ");
 	    } else {
@@ -789,7 +789,7 @@ public class contentSetting {
 		System.out.println(" ! ----- innerBanner_del Start ----- ! ");
 	    $(".btn-gray", 0).click();
 	    $("#btn-del").waitUntil(visible, 10000);
-	    String pageLoadCheck = $("#btn-del").text().trim();
+	    pageLoadCheck = $("#btn-del").text().trim();
 	    if(pageLoadCheck.equals("선택 항목 삭제")) {
 	    	System.out.println(" *** innerBanner_del UI load Success !! *** ");
 	    } else {
@@ -817,7 +817,7 @@ public class contentSetting {
 		System.out.println(" ! ----- fileDownload_add Start ----- ! ");
 	    $(By.linkText("파일다운로드")).click();
 	    $(".col-xs-9").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".col-xs-9").text().trim();
+		pageLoadCheck = $(".col-xs-9").text().trim();
 		if(pageLoadCheck.equals("파일다운로드패턴")) {
 			System.out.println(" *** fileDownload_add list Page load Success !! *** ");
 		} else {
@@ -854,7 +854,7 @@ public class contentSetting {
 		System.out.println(" ! ----- fileDownload_duplicationAdd Start ----- ! ");
 	    $(".btn-info", 0).click();
 	    $(".mv20").waitUntil(visible, 10000);
-	    String pageLoadCheck = $(".mv20").text().trim();
+	    pageLoadCheck = $(".mv20").text().trim();
 	    String[] pLC = pageLoadCheck.split(" ");
 	    if(pLC[0].equals("'*'를")) {
 			System.out.println(" *** fileDownload_add add UI Success !! *** ");	    	
@@ -875,7 +875,7 @@ public class contentSetting {
 	    $(By.name("use_yn")).click();
 	    $(By.xpath("//option[@value='n']")).click();
 	    $(".col-xs-9").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".col-xs-9").text().trim();
+		pageLoadCheck = $(".col-xs-9").text().trim();
 		if(pageLoadCheck.equals("파일다운로드패턴")) {
 			System.out.println(" *** fileDownload_search delList selectbox Success !! *** ");
 		} else {
@@ -926,7 +926,7 @@ public class contentSetting {
 	    valCheck("downPattern_del_confirm");
 	    valCheck("downPattern_del_alert");
 	    $("#inlineCheckbox1").waitUntil(hidden, 10000);
-		String pageLoadCheck = $("td", 1).text().trim();
+		pageLoadCheck = $("td", 1).text().trim();
 		if(pageLoadCheck.equals("목록이 없습니다.")) {
 			System.out.println(" *** fileDownload_del page load Success !! *** ");
 		} else {
@@ -940,7 +940,7 @@ public class contentSetting {
 	public void outLinkBanner_add() {
 		System.out.println(" ! ----- outLinkBanner_add Start ----- ! ");
 	    $(By.linkText("아웃링크 배너")).click();
-		String pageLoadCheck = $("td").text().trim();
+		pageLoadCheck = $("td").text().trim();
 		if(pageLoadCheck.equals("목록이 없습니다.")) {
 			System.out.println(" *** outLinkBanner_add list page load Success !! *** ");
 		} else {
@@ -989,7 +989,7 @@ public class contentSetting {
 		System.out.println(" ! ----- outLinkBanner_duplicationAdd Start ----- ! ");
 	    $(".btn-info", 0).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text().trim();
+		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("추가하기")) {
 			System.out.println(" *** outLinkBanner_add register page load Success !! *** ");
 		} else {
@@ -1019,7 +1019,7 @@ public class contentSetting {
 	    $(By.name("use_yn")).click();
 	    $(By.xpath("//option[@value='n']")).click();
 	    $("th", 5).waitUntil(visible, 10000);
-	    String pageLoadCheck = $("th", 5).text().trim();
+	    pageLoadCheck = $("th", 5).text().trim();
 	    if(pageLoadCheck.equals("삭제일")) {
 	    	System.out.println(" *** outLinkBanner_search delList Selectbox Success !! *** ");
 	    } else {
@@ -1062,7 +1062,7 @@ public class contentSetting {
 		System.out.println(" ! ----- outLinkBanner_modify Start ----- ! ");
 	    $(".br-dark", 0).click();
 	    $("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text().trim();
+		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("수정하기")) {
 			System.out.println(" *** outLinkBanner_modify page load Success !! *** ");
 		} else {
@@ -1097,7 +1097,7 @@ public class contentSetting {
 	    valCheck("outLinkBanner_del_alert");
 	    $("td").waitUntil(visible, 10000);
 	    sleep(1000);
-	    String pageLoadCheck = $("td").text().trim();
+	    pageLoadCheck = $("td").text().trim();
 	    if(pageLoadCheck.equals("목록이 없습니다.")) {
 	    	System.out.println(" *** outLinkBanner_del delete Success !! *** ");
 	    } else {

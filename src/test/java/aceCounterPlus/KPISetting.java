@@ -30,7 +30,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class KPISetting {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, pageLoadCheck;
 	private static HttpURLConnection huc;
 	private static int respCode;
 	
@@ -227,7 +227,7 @@ public class KPISetting {
 		}
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text().trim();
+		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
@@ -243,7 +243,7 @@ public class KPISetting {
 		$(".input-sm").waitUntil(visible, 10000);
 		$(".sidebar-title", 6).click();
 		$("td").waitUntil(visible, 10000);
-		String pageLoadCheck = $("td").text().trim();
+		pageLoadCheck = $("td").text().trim();
 	    String[] pLC = pageLoadCheck.split(" ");
 	    if(pLC[0].equals("등록된")) {
 			System.out.println(" *** KPISetting_add list Page load Success !! *** ");
@@ -311,7 +311,7 @@ public class KPISetting {
 	public void KPISetting_modify() {
 		System.out.println(" ! ----- KPISetting_modify Start ----- ! ");
 		$(".btn-xs").click();
-		String pageLoadCheck = $("h4", 0).text();
+		pageLoadCheck = $("h4", 0).text();
 		if(pageLoadCheck.equals("Step1. 지표선택")) {
 			System.out.println(" *** KPISetting_modify modify Page load Success !! *** ");
 		} else {
@@ -369,7 +369,7 @@ public class KPISetting {
 		valCheck("KPISetting_del_confirm");
 		valCheck("KPISetting_del_alert");
 		$("#delProcess").waitUntil(hidden, 10000);
-		String pageLoadCheck = $("td").text().trim();
+		pageLoadCheck = $("td").text().trim();
 	    String[] pLC = pageLoadCheck.split(" ");
 	    if(pLC[0].equals("등록된")) {
 			System.out.println(" *** KPISetting_add list Page load Success !! *** ");
@@ -384,7 +384,7 @@ public class KPISetting {
 		System.out.println(" ! ----- reportDownload_reserveAdd Start ----- ! ");
 		$(".sidebar-title", 7).click();
 		$("td").waitUntil(visible, 10000);
-		String pageLoadCheck = $("td").text();
+		pageLoadCheck = $("td").text();
 		String[] pLC = pageLoadCheck.split(" ");
 		if(pLC[0].equals("예약된")) {
 			System.out.println(" *** reportDownload_reserveAdd list Page load Success !! *** ");
@@ -444,7 +444,7 @@ public class KPISetting {
 		System.out.println(" ! ----- reportDownload_reserveDel Start ----- ! ");
 		$(By.linkText(date)).click();
 		$(".form-control", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $("th", 0).text();
+		pageLoadCheck = $("th", 0).text();
 		if(pageLoadCheck.equals("리포트명")) {
 			System.out.println(" *** reportDownload_reserveDel modify Page load Success !! *** ");
 		} else {
@@ -483,7 +483,7 @@ public class KPISetting {
 		sleep(1000);
 		$(".btn-info").click();
 		$("#btn-select-report-all").waitUntil(visible, 10000);
-		String pageLoadCheck = $("#btn-select-report-all").text();
+		pageLoadCheck = $("#btn-select-report-all").text();
 		if(pageLoadCheck.equals("전체선택")) {
 			System.out.println(" *** reportDownload_oneshotAdd add Page load Success !! *** ");
 		} else {
@@ -534,7 +534,7 @@ public class KPISetting {
 		$(".form-control", 1).setValue(date);
 		$("#btn-search").click();
 		$(".btn-delete").waitUntil(visible, 10000);
-		String pageLoadCheck = $(".text-left").text();
+		pageLoadCheck = $(".text-left").text();
 		if(pageLoadCheck.equals(date)) {
 			System.out.println(" *** reportDownload_oneshotDel search Success !! *** ");	
 		} else {
@@ -571,7 +571,7 @@ public class KPISetting {
 		$("#myMenu").waitUntil(visible, 15000);
 		$("#myMenu").click();
 		$(".top > .menu-service > .sidebar-title").click();
-		String pageLoadCheck = $("h4", 0).text();
+		pageLoadCheck = $("h4", 0).text();
 		if(pageLoadCheck.equals("Step1. 통계선택")) {
 			System.out.println(" *** myMenu_add list Page access Success !! *** ");
 		} else {

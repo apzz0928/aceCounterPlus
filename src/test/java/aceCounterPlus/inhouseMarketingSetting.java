@@ -30,7 +30,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class inhouseMarketingSetting {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, pageLoadCheck;
 	private static HttpURLConnection huc;
 	private static int respCode;
 	
@@ -238,7 +238,7 @@ public class inhouseMarketingSetting {
 		}
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text().trim();
+		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
@@ -256,7 +256,7 @@ public class inhouseMarketingSetting {
 		$(By.linkText("바이럴 설정")).waitUntil(visible, 10000);
 		$(By.linkText("바이럴 설정")).click();
 		$("td", 0).waitUntil(visible, 10000);
-		String pageLoadCheck = $("td", 0).text();
+		pageLoadCheck = $("td", 0).text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
 			System.out.println(" *** viralSetting_add list Page load Success !! *** ");
 		} else {
@@ -308,7 +308,7 @@ public class inhouseMarketingSetting {
 		System.out.println(" ! ----- viralSetting_duplicationAdd Start ----- ! ");
 		$(".btn-info", 0).click();
 		$("#btn-save").waitUntil(visible, 10000);
-		String pageLoadCheck = $("#btn-save").text();
+		pageLoadCheck = $("#btn-save").text();
 		if(pageLoadCheck.equals("등록")) {
 			System.out.println(" *** viralSetting_duplicationAdd add page load Success !! *** ");
 		} else {
@@ -338,7 +338,7 @@ public class inhouseMarketingSetting {
 		$(By.name("use_yn")).click();
 	    $(By.xpath("//option[@value='n']")).click();
 	    $(".btn-gray", 0).waitUntil(hidden, 10000);
-		String pageLoadCheck = $(".btn-dark", 0).text();
+		pageLoadCheck = $(".btn-dark", 0).text();
 		if(pageLoadCheck.equals("광고코드 다운로드")) {
 			System.out.println(" *** viralSetting_search del selectBox page load Success !! *** ");
 		} else {
@@ -379,7 +379,7 @@ public class inhouseMarketingSetting {
 		System.out.println(" ! ----- viralSetting_search Start ----- ! ");
 		$(".btn-dark", 0).click();
 		$(".modal-backdrop").waitUntil(visible, 10000);
-		String pageLoadCheck = $("h4", 0).text();
+		pageLoadCheck = $("h4", 0).text();
 		if(pageLoadCheck.equals("광고코드 다운로드")) {
 			System.out.println(" *** viralSetting_mktCodeDownload popup load Success !! *** ");  	
 		} else {
@@ -403,7 +403,7 @@ public class inhouseMarketingSetting {
 		valCheck("viralSetting_del_confirm");
 		valCheck("viralSetting_del_alert");
 		$("td", 3).waitUntil(hidden, 10000);
-		String pageLoadCheck = $("td", 0).text();
+		pageLoadCheck = $("td", 0).text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
 			System.out.println(" *** viralSetting_del list Page load Success !! *** ");
 		} else {
@@ -417,7 +417,7 @@ public class inhouseMarketingSetting {
 		System.out.println(" ! ----- emailSetting_add Start ----- ! ");
 		$(By.linkText("이메일 설정")).click();
 		$("td").waitUntil(visible, 10000);
-		String pageLoadCheck = $("td").text();
+		pageLoadCheck = $("td").text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
 			System.out.println(" *** emailSetting_add list Page load Success !! *** ");
 		} else {
@@ -473,7 +473,7 @@ public class inhouseMarketingSetting {
 		System.out.println(" ! ----- emailSetting_duplicationAdd Start ----- ! ");
 		$(".btn-info", 0).click();
 		$("#btn-save").waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text();
+		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("추가하기")) {
 			System.out.println(" *** emailSetting_add add Page load Success !! *** ");
 		} else {
@@ -503,7 +503,7 @@ public class inhouseMarketingSetting {
 		$(By.name("use_yn")).click();
 	    $(By.xpath("//option[@value='n']")).click();
 		$(".btn-gray").waitUntil(hidden, 10000);
-		String pageLoadCheck = $(".btn-info").text();
+		pageLoadCheck = $(".btn-info").text();
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** emailSetting_search del selectBox page load Success !! *** ");
 		} else {
@@ -553,7 +553,7 @@ public class inhouseMarketingSetting {
 		valCheck("emailSetting_del_confirm");
 		valCheck("emailSetting_del_alert");
 		$("td", 3).waitUntil(hidden, 10000);
-		String pageLoadCheck = $("td").text();
+		pageLoadCheck = $("td").text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
 			System.out.println(" *** emailSetting_del list Page load Success !! *** ");
 		} else {
@@ -567,7 +567,7 @@ public class inhouseMarketingSetting {
 		System.out.println(" ! ----- talkSetting_add Start ----- ! ");
 		$(By.linkText("Talk 설정")).click();
 		$("td").waitUntil(visible, 10000);
-		String pageLoadCheck = $("td").text();
+		pageLoadCheck = $("td").text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
 			System.out.println(" *** talkSetting_add list Page load Success !! *** ");
 		} else {
@@ -632,7 +632,7 @@ public class inhouseMarketingSetting {
 		valCheck("talkdupAdd_alert");
 		$(".btn-light", 0).click();
 		$(".btn-gray").waitUntil(visible, 10000);
-		String pageLoadCheck = $("td", 2).text();
+		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals(date)) {
 			System.out.println(" *** talkSetting_add register Success !! *** ");
 		} else {
@@ -647,7 +647,7 @@ public class inhouseMarketingSetting {
 		$(By.name("use_yn")).click();
 	    $(By.xpath("//option[@value='n']")).click();
 		$(".btn-gray").waitUntil(hidden, 10000);
-		String pageLoadCheck = $(".btn-material-list").text();
+		pageLoadCheck = $(".btn-material-list").text();
 		if(pageLoadCheck.equals("보기")) {
 			System.out.println(" *** talkSetting_search del selectBox page load Success !! *** ");
 		} else {
@@ -697,7 +697,7 @@ public class inhouseMarketingSetting {
 		valCheck("talkSetting_del_confirm");
 		valCheck("talkSetting_del_alert");
 		$("td", 3).waitUntil(hidden, 10000);
-		String pageLoadCheck = $("td").text();
+		pageLoadCheck = $("td").text();
 		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
 			System.out.println(" *** talkSetting_del list Page load Success !! *** ");
 		} else {

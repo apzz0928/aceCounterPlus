@@ -28,7 +28,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class commercePrice {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, pageLoadCheck;
 	
 	//신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
 	Date number_date = new Date();
@@ -155,7 +155,7 @@ public class commercePrice {
 		}
 		$(".go_stat", 1).click();
 		$("h3", 2).waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 2).text().trim();
+		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("방문수")) {
 			System.out.println(" *** statsLiveDashboard Page access Success !! *** ");
 		} else {
@@ -173,7 +173,7 @@ public class commercePrice {
 		$(By.linkText("제품가격대")).waitUntil(visible, 30000);
 		$(By.linkText("제품가격대")).click();
 		$("h5", 1).waitUntil(visible, 30000);
-		String pageLoadCheck = $("h5", 1).text();
+		pageLoadCheck = $("h5", 1).text();
 		if(pageLoadCheck.equals("등록된 제품가격대가 없습니다.")) {
 			System.out.println(" *** commercePrice Page load Success !! *** ");
 		} else {
@@ -226,7 +226,7 @@ public class commercePrice {
 		$(".btn-xs", 0).waitUntil(visible, 30000);
 		$(".btn-xs", 0).click();
 		$("h3", 2).waitUntil(visible, 30000);
-		String pageLoadCheck = $("h3", 2).text();
+		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice directAdd_modify Page load Success !! *** ");
 		} else {
@@ -286,7 +286,7 @@ public class commercePrice {
 		System.out.println(" ! ----- commercePrice_autoAdd Start ----- ! ");
 		$(".btn-info").click();
 		$("h3", 2).waitUntil(visible, 3000);
-		String pageLoadCheck = $("h3", 2).text();
+		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {
@@ -337,7 +337,7 @@ public class commercePrice {
 		$(".btn-xs", 0).waitUntil(visible, 30000);
 		$(".btn-xs", 0).click();
 		$("h3", 2).waitUntil(visible, 30000);
-		String pageLoadCheck = $("h3", 2).text();
+		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("제품가격대 신규등록")) {
 			System.out.println(" *** commercePrice add Page load Success !! *** ");
 		} else {

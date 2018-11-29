@@ -30,7 +30,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class signUp {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, temp_pw, A, B;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, temp_pw, A, B, pageLoadCheck;
 	private static HttpURLConnection huc;
 	private static int respCode;
     
@@ -171,7 +171,7 @@ public class signUp {
   		System.out.println(" ! ----- page_open Start ----- ! ");
 		open(baseUrl);
 		$(".go_signup", 1).waitUntil(visible, 10000);
-		String pageLoadCheck = $(".go_signup", 1).text().trim();
+		pageLoadCheck = $(".go_signup", 1).text().trim();
 		if(pageLoadCheck.equals("회원가입")) {
 			System.out.println(" *** main Page load Success !! *** ");
 		} else {
@@ -184,7 +184,7 @@ public class signUp {
 		System.out.println(" ! ----- common_signUp Start ----- ! ");
 		$(".go_signup", 1).click();
 		$("#member_exist").waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 1).text().trim();
+		pageLoadCheck = $("h3", 1).text().trim();
 		String pLC[] = pageLoadCheck.split("에");
 		if(pLC[0].trim().equals("신규회원")) {
 			System.out.println(" *** common_signUp main Page load Success !! *** ");
@@ -251,7 +251,7 @@ public class signUp {
 		$(By.name("middleCategoryCd")).selectOptionByValue("188");
 		$("#stepTwoCompleted").click();
 		$("#scriptBtn").waitUntil(visible, 10000);
-		String pageLoadCheck = $("h3", 0).text().trim();
+		pageLoadCheck = $("h3", 0).text().trim();
 		String pLC[] = pageLoadCheck.split(" ");
 		if(pLC[2].trim().equals("완료되었습니다.")) {
 			System.out.println(" *** web_signUp complete Page load Success !! *** ");
@@ -279,7 +279,7 @@ public class signUp {
   		$("#app").click();
   		$(".ace-btn-add-package").waitUntil(visible, 10000);
 		$(By.name("svcNm")).setValue(domain + domain_date + ".com");
-		String pageLoadCheck = "";
+		pageLoadCheck = "";
 		for(int i=0,stores=10;i<=2;i++) {
 			$(By.name("stores")).selectOptionByValue(stores + "");
 			$(By.name("input-package")).setValue(domain+domain_date + ".com");
@@ -320,13 +320,13 @@ public class signUp {
 		}
 		System.out.println(" ! ----- app_signUp End ----- ! ");
   	}
-  	@Test(priority = 3) 
+  	@Test(priority = 11) 
 	public void findAccount() {
 		System.out.println(" ! ----- findAccount Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
 		$(".go_find_account").waitUntil(visible, 10000);
 		$(".go_find_account").click();
-		String pageLoadCheck = $("h2", 0).text().trim();
+		pageLoadCheck = $("h2", 0).text().trim();
 		if(pageLoadCheck.equals("아이디찾기")) {
 			System.out.println(" *** findAccount page load check Success !! *** ");			
 		} else {
@@ -408,14 +408,14 @@ public class signUp {
 		}
 		System.out.println(" ! ----- findAccount End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 12)
 	public void restorationPassword() {
 		System.out.println(" ! ----- restorationPassword Start ----- ! ");
 		$(".go_setting").click();
 		$("#member_info").waitUntil(visible, 10000);
 		$("#member_info").click();
 		$("h3", 2).waitUntil(visible, 15000);
-		String pageLoadCheck = $("h3", 2).text();
+		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("비밀번호 재확인")) {
 			System.out.println(" *** memberInfo Recongirming page load Success !! *** ");
 		} else {

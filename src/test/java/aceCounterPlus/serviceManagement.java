@@ -30,7 +30,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class serviceManagement {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg, pageLoadCheck;
 	private static HttpURLConnection huc;
 	private static int respCode;
 
@@ -321,7 +321,7 @@ public class serviceManagement {
 		}
 		$(".go_setting").click();
 		$(".notokr-bold", 0).waitUntil(visible, 1000);
-		String pageLoadCheck = $(".notokr-bold", 0).text();
+		pageLoadCheck = $(".notokr-bold", 0).text();
 		if (pageLoadCheck.equals("서비스 관리")) {
 			System.out.println(" *** serviceManage page load Success !! *** ");
 		} else {
@@ -338,7 +338,7 @@ public class serviceManagement {
 		$("#items").waitUntil(visible, 15000);
 		$(".br-dark").click();
 		$(".modal-backdrop").waitUntil(visible, 15000);
-		String pageLoadCheck = $(".modal-title").text();
+		pageLoadCheck = $(".modal-title").text();
 		if (pageLoadCheck.equals("분석스크립트 메일발송")) {
 			System.out.println(" *** scriptList layerPopup load Success !! *** ");
 		} else {
@@ -423,7 +423,7 @@ public class serviceManagement {
 	public void installApply() {
 		System.out.println(" ! ----- installApply Start ----- ! ");
 		$(By.linkText("분석스크립트 설치신청")).click();
-		String pageLoadCheck = $(".panel-title", 0).text();
+		pageLoadCheck = $(".panel-title", 0).text();
 		if (pageLoadCheck.equals("1서비스 선택")) {
 			System.out.println(" *** installApply page load Success !! *** ");
 		} else {
@@ -480,7 +480,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
 		$(By.linkText("회원정보")).click();
 		$("h3", 2).waitUntil(visible, 15000);
-		String pageLoadCheck = $("h3", 2).text();
+		pageLoadCheck = $("h3", 2).text();
 		if(pageLoadCheck.equals("비밀번호 재확인")) {
 			System.out.println(" *** memberInfo Recongirming page load Success !! *** ");
 		} else {
@@ -569,7 +569,7 @@ public class serviceManagement {
 		sleep(1000);
 		$(By.linkText("쿠폰관리")).click();
 		$("#btn-save").waitUntil(visible, 15000);
-		String pageLoadCheck = $("#btn-save").text();
+		pageLoadCheck = $("#btn-save").text();
 		if (pageLoadCheck.equals("쿠폰등록")) {
 			System.out.println(" *** myCoupon page load Success !! *** ");
 		} else {
@@ -601,7 +601,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addService Start ----- ! ");
 		$(By.linkText("서비스추가")).click();
 		$("#btn_submit").waitUntil(visible, 15000);
-		String pageLoadCheck = $("#btn_submit").text();
+		pageLoadCheck = $("#btn_submit").text();
 		if (pageLoadCheck.equals("등록하기")) {
 			System.out.println(" *** addService page load Success !! *** ");
 		} else {
@@ -652,7 +652,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addView Start ----- ! ");
 		$(By.linkText("뷰필터 추가")).click();
 		$(".div_not_paid").waitUntil(visible, 15000);
-		String pageLoadCheck = $(".div_not_paid").text();
+		pageLoadCheck = $(".div_not_paid").text();
 		if (pageLoadCheck.equals("뷰필터는 유료 서비스 전환 후에 추가 하실 수 있습니다.")) {
 			System.out.println(" *** addView page load Success !! *** ");
 		} else {
@@ -667,7 +667,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
 		$(By.linkText("통합리포트 생성")).click();
 		$(".nano-content", 2).waitUntil(visible, 15000);
-		String pageLoadCheck = $(".nano-content", 2).text();
+		pageLoadCheck = $(".nano-content", 2).text();
 		if (pageLoadCheck.equals("이용중인 서비스가 없습니다.")) {
 			System.out.println(" *** addIntegralReport page load Success !! *** ");
 		} else {
@@ -690,7 +690,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- editService Start ----- ! ");
 		$(By.linkText("정보수정")).click();
 		$("#svc_nm_title_1").waitUntil(visible, 15000);
-		String pageLoadCheck = $(".btn-info", 0).text();
+		pageLoadCheck = $(".btn-info", 0).text();
 		if (pageLoadCheck.equals("서비스 추가")) {
 			System.out.println(" *** editService page load Success !! *** ");
 		} else {
@@ -764,7 +764,7 @@ public class serviceManagement {
 		valCheck("summaryReport_sendEmail_send");
 		switchTo().window(1);
 		refresh();
-		String pageLoadCheck = $(".tit_subject", 0).text();
+		pageLoadCheck = $(".tit_subject", 0).text();
 		if (pageLoadCheck.substring(15, 22).equals("주간요약리포트")) {
 			System.out.println(" *** scriptList weeklySummary Report mail subject check Success !! *** ");
 		} else {
@@ -852,7 +852,7 @@ public class serviceManagement {
 		switchTo().window(1);
 		refresh();
 		sleep(2000);
-		String pageLoadCheck = $(".tit_subject", 0).text();
+		pageLoadCheck = $(".tit_subject", 0).text();
 		if(pageLoadCheck.substring(22).equals("부관리자 안내 메일입니다.")) {
 			System.out.println(" *** subManager guide mail title Check Success !! *** ");
 		} else {
@@ -937,7 +937,7 @@ public class serviceManagement {
 		open("https://new.acecounter.com/manage/serviceInfo/submanager");
 		$(".br-dark", 2).click();
 		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
-		$("#btn-modal-alert-yes").click();
+		//$("#btn-modal-alert-yes").click();
 		valCheck("subManager_delete");
 		System.out.println(" ! ----- subManager_modifyInfoAndDel End ----- ! ");
 	}
