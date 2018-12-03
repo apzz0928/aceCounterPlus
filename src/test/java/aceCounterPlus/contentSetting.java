@@ -222,12 +222,12 @@ public class contentSetting {
 			    $(".modal-backdrop").waitUntil(hidden, 10000);
 			}
 		} else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
-			System.out.println(" *** ☆★☆★☆★ " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
-			System.out.println(checkMsg);
+	        System.out.println(" *** ☆★☆★☆★ val : " + val + " // pTag text is : " + msgCheck +  " // - msgCheck is Empty ... ☆★☆★☆★ *** ");
+			System.out.println("checkMsg is : " + checkMsg);
 			close();
 		} else { // msgCheck=checkMsg여부, confirm&alert여부, 빈값 여부 체크 후 fail
-			System.out.println(" *** " + val +  " - check Fail ... !@#$%^&*() *** ");
-			System.out.println(checkMsg);
+	        System.out.println(" *** // val : " + val + " // pTag text is : " + msgCheck +  " // - check Fail ... !@#$%^&*() *** ");
+			System.out.println("checkMsg is : " + checkMsg);
 			close();
 		}
 	}
@@ -284,19 +284,19 @@ public class contentSetting {
 			System.out.println(" *** statsLiveDashboard Page access Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		$("#redirectConfBtn").click();
+		$(".input-sm", 0).waitUntil(visible, 10000);
+		$(".accordion-toggle", 3).click();
 		System.out.println(" ! ----- Login End ----- ! ");
 	}
 	@Test(priority = 1)
 	public void URLSetting_dynamicPage_add() {
 		System.out.println(" ! ----- URLSetting_dynamicPage_add Start ----- ! ");
-		$("#redirectConfBtn").click();
-		$(".input-sm", 0).waitUntil(visible, 10000);
-		$(".accordion-toggle", 3).click();
 		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
 		$(By.linkText("URL 설정")).click();
-		$(".col-xs-5").waitUntil(visible, 10000);
-		pageLoadCheck = $(".btn-info", 0).text().trim();
-		if(pageLoadCheck.equals("추가")) {
+		$("td", 5).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 5).text().trim();
+		if(pageLoadCheck.equals("/search")) {
 			System.out.println(" *** URLSetting_dynamicPage_add Page load Success !! *** ");
 		} else {
 			System.out.println(" *** URLSetting_dynamicPage_add Page load Fail ... !@#$%^&*() *** ");
@@ -397,7 +397,7 @@ public class contentSetting {
 		}
 		$("#btn-list-delete").click();
 		$("#btn-list-select-delete").waitUntil(visible, 10000);
-		$("#inlineCheckbox1").click();
+		$("#list-checkbox-0").click();
 		$("#btn-list-select-delete").click();
 		valCheck("URLSetting_dynamicPage_delete_confirm");
 		valCheck("URLSetting_dynamicPage_delete_alert");
@@ -417,8 +417,8 @@ public class contentSetting {
 		System.out.println(" ! ----- URLSetting_pageChange_add Start ----- ! ");
 		$(By.linkText("페이지 교체")).click();
 		$("th", 5).waitUntil(visible, 10000);
-		pageLoadCheck = $("th", 5).text().trim();
-		if(pageLoadCheck.equals("페이지 검색 조건")) {
+		pageLoadCheck = $("td", 5).text().trim();
+		if(pageLoadCheck.equals("/search/label/missing/[0-9A-Za-z]*")) {
 			System.out.println(" *** URLSetting_pageChange_add Page load Success !! *** ");
 		} else {
 			System.out.println(" *** URLSetting_pageChange_add Page load Fail ... !@#$%^&*() *** ");
@@ -438,6 +438,7 @@ public class contentSetting {
 		$("#btn-add").click();
 		valCheck("URLSetting_pageChange_URL_add");
 		$("#list-page-param-0").waitUntil(visible, 10000);
+		sleep(1000);
 		pageLoadCheck = $("#list-page-param-0").text().trim();
 		if(pageLoadCheck.equals("/" + date)) {
 			System.out.println(" *** URLSetting_pageChange_add Success !! *** ");
@@ -477,7 +478,7 @@ public class contentSetting {
 		$("#btn-list-select-delete").waitUntil(visible, 10000);
 		$("#btn-list-select-delete").click();
 		valCheck("URLSetting_pageChange_delete_check_null");
-		$("#inlineCheckbox1").click();
+		$("#list-checkbox-0").click();
 		$("#btn-list-select-delete").click();
 		valCheck("URLSetting_pageChange_delete_confirm");
 		$("#btn-modal-alert-yes").waitUntil(hidden, 10000);
@@ -499,9 +500,9 @@ public class contentSetting {
 	public void URLSetting_internalSearch_add() {
 		System.out.println(" ! ----- URLSetting_internalSearch_add Start ----- ! ");
 		$(By.linkText("내부검색")).click();
-		$("th", 5).waitUntil(visible, 10000);
-		pageLoadCheck = $("th", 6).text().trim();
-		if(pageLoadCheck.equals("내부검색변수")) {
+		$("td", 5).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 5).text().trim();
+		if(pageLoadCheck.equals("/search")) {
 			System.out.println(" *** URLSetting_internalSearch Page load Success !! *** ");
 		} else {
 			System.out.println(" *** URLSetting_internalSearch Page load Fail ... !@#$%^&*() *** ");
@@ -557,7 +558,7 @@ public class contentSetting {
 		$("#btn-list-select-delete").waitUntil(visible, 10000);
 		$("#btn-list-select-delete").click();
 		valCheck("URLSetting_internalSearch_delete_check_null");
-		$("#inlineCheckbox1").click();
+		$("#list-checkbox-0").click();
 		$("#btn-list-select-delete").click();
 		valCheck("URLSetting_internalSearch_delete_confirm");
 		$("#btn-modal-alert-yes").waitUntil(hidden, 10000);
@@ -654,7 +655,7 @@ public class contentSetting {
 		$("#btn-list-select-pattern-delete").waitUntil(visible, 10000);
 		$("#btn-list-select-pattern-delete").click();
 		valCheck("pattern_del_null");
-	    $(By.xpath("(//input[@id='inlineCheckbox1'])[2]")).click();
+	    $("#pattern-list-checkbox-0").click();
 		$("#btn-list-select-pattern-delete").click();
 		valCheck("pattern_del_confirm");
 		valCheck("pattern_del_alert");
@@ -678,9 +679,10 @@ public class contentSetting {
 	public void innerBanner_add() {
 		System.out.println(" ! ----- innerBanner_add Start ----- ! ");
 	    $(By.linkText("내부배너 설정")).click();
-	    $(".no-records-found").waitUntil(visible, 10000);
-		pageLoadCheck = $(".btn-dark", 0).text().trim();
-		if(pageLoadCheck.equals("링크URL 다운로드")) {
+	    $(".btn-info", 0).waitUntil(visible, 10000);
+	    pageLoadCheck = $(".btn-info", 0).text().trim();
+	    System.out.println("pageLoadCheck is : " + pageLoadCheck);
+		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** innerBanner_add list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** innerBanner_add list Page load Fail ... !@#$%^&*() *** ");
@@ -798,7 +800,7 @@ public class contentSetting {
 	    }
 	    $("#btn-del").click();
 	    valCheck("innerBanner_del_null");
-	    $("#campaignAllChk").click();
+	    $(".campaignChk", 0).click();
 	    $("#btn-del").click();
 	    valCheck("innerBanner_del_confirm");
 	    valCheck("innerBanner_del_alert");
@@ -817,8 +819,8 @@ public class contentSetting {
 		System.out.println(" ! ----- fileDownload_add Start ----- ! ");
 	    $(By.linkText("파일다운로드")).click();
 	    $(".col-xs-9").waitUntil(visible, 10000);
-		pageLoadCheck = $(".col-xs-9").text().trim();
-		if(pageLoadCheck.equals("파일다운로드패턴")) {
+		pageLoadCheck = $("td", 3).text().trim();
+		if(pageLoadCheck.equals("*.zip")) {
 			System.out.println(" *** fileDownload_add list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** fileDownload_add list Page load Fail ... !@#$%^&*() *** ");
@@ -921,11 +923,11 @@ public class contentSetting {
 	    $("#btn-list-select-delete").waitUntil(visible, 10000);
 	    $("#btn-list-select-delete").click();
 	    valCheck("downPattern_del_null");
-	    $("#inlineCheckbox1").click();
+	    $("#list-checkbox-0").click();
 	    $("#btn-list-select-delete").click();
 	    valCheck("downPattern_del_confirm");
 	    valCheck("downPattern_del_alert");
-	    $("#inlineCheckbox1").waitUntil(hidden, 10000);
+	    $("#list-checkbox-0").waitUntil(hidden, 10000);
 		pageLoadCheck = $("td", 1).text().trim();
 		if(pageLoadCheck.equals("목록이 없습니다.")) {
 			System.out.println(" *** fileDownload_del page load Success !! *** ");
@@ -940,8 +942,9 @@ public class contentSetting {
 	public void outLinkBanner_add() {
 		System.out.println(" ! ----- outLinkBanner_add Start ----- ! ");
 	    $(By.linkText("아웃링크 배너")).click();
-		pageLoadCheck = $("td").text().trim();
-		if(pageLoadCheck.equals("목록이 없습니다.")) {
+	    $("td", 2).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 2).text().trim();
+		if(pageLoadCheck.equals("아웃링크배너.")) {
 			System.out.println(" *** outLinkBanner_add list page load Success !! *** ");
 		} else {
 			System.out.println(" *** outLinkBanner_add list page load Fail ... !@#$%^&*() *** ");
@@ -1091,14 +1094,14 @@ public class contentSetting {
 	    $("#btn-list-select-delete").waitUntil(visible, 10000);
 	    $("#btn-list-select-delete").click();
 	    valCheck("outLinkBanner_del_null");
-	    $("#inlineCheckbox1").click();
+	    $("#list-checkbox-0").click();
 	    $("#btn-list-select-delete").click();
 	    valCheck("outLinkBanner_del_confirm");
 	    valCheck("outLinkBanner_del_alert");
-	    $("td").waitUntil(visible, 10000);
+	    $("td", 2).waitUntil(visible, 10000);
 	    sleep(1000);
-	    pageLoadCheck = $("td").text().trim();
-	    if(pageLoadCheck.equals("목록이 없습니다.")) {
+	    pageLoadCheck = $("td", 2).text().trim();
+		if(pageLoadCheck.equals("아웃링크배너.")) {
 	    	System.out.println(" *** outLinkBanner_del delete Success !! *** ");
 	    } else {
 			System.out.println(" *** outLinkBanner_del delete Fail ... !@#$%^&*() *** ");

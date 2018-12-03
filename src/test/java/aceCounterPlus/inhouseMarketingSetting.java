@@ -190,11 +190,11 @@ public class inhouseMarketingSetting {
 			    $(".modal-backdrop").waitUntil(hidden, 10000);
 			}
 		} else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
-			System.out.println(" *** ☆★☆★☆★ " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+	        System.out.println(" *** ☆★☆★☆★ val : " + val + " // pTag text is : " + msgCheck +  " // - msgCheck is Empty ... ☆★☆★☆★ *** ");
 			System.out.println(checkMsg);
 			close();
 		} else { // msgCheck=checkMsg여부, confirm&alert여부, 빈값 여부 체크 후 fail
-			System.out.println(" *** " + val +  " - check Fail ... !@#$%^&*() *** ");
+	        System.out.println(" *** // val : " + val + " // pTag text is : " + msgCheck +  " // - check Fail ... !@#$%^&*() *** ");
 			System.out.println(checkMsg);
 			close();
 		}
@@ -255,9 +255,9 @@ public class inhouseMarketingSetting {
 		$(".accordion-toggle", 4).click();
 		$(By.linkText("바이럴 설정")).waitUntil(visible, 10000);
 		$(By.linkText("바이럴 설정")).click();
-		$("td", 0).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 0).text();
-		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
+		$("td", 1).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals("디코딩-인하우스마케팅-바이럴")) {
 			System.out.println(" *** viralSetting_add list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** viralSetting_add list Page load Fail ... !@#$%^&*() *** ");
@@ -398,13 +398,14 @@ public class inhouseMarketingSetting {
 		$("#btn-del").waitUntil(visible, 10000);
 		$("#btn-del").click();
 		valCheck("viralSetting_del_null");
-		$("#campaignAllChk").click();
+		$(".campaignChk", 0).click();
 		$("#btn-del").click();
 		valCheck("viralSetting_del_confirm");
 		valCheck("viralSetting_del_alert");
 		$("td", 3).waitUntil(hidden, 10000);
-		pageLoadCheck = $("td", 0).text();
-		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
+		pageLoadCheck = $("td", 0).text().trim();
+		String[] pLC = pageLoadCheck.split("\n");
+		if(pLC[0].equals("등록된 캠페인이 없습니다.")) {
 			System.out.println(" *** viralSetting_del list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** viralSetting_del list Page load Fail ... !@#$%^&*() *** ");
@@ -416,9 +417,9 @@ public class inhouseMarketingSetting {
 	public void emailSetting_add() {
 		System.out.println(" ! ----- emailSetting_add Start ----- ! ");
 		$(By.linkText("이메일 설정")).click();
-		$("td").waitUntil(visible, 10000);
-		pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
+		$("td", 1).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals("직접입력")) {
 			System.out.println(" *** emailSetting_add list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** emailSetting_add list Page load Fail ... !@#$%^&*() *** ");
@@ -548,13 +549,14 @@ public class inhouseMarketingSetting {
 		$("#btn-del").waitUntil(visible, 10000);
 		$("#btn-del").click();
 		valCheck("emailSetting_del_null");
-		$("#campaignAllChk").click();
+		$(".campaignChk", 0).click();
 		$("#btn-del").click();
 		valCheck("emailSetting_del_confirm");
 		valCheck("emailSetting_del_alert");
 		$("td", 3).waitUntil(hidden, 10000);
-		pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
+		pageLoadCheck = $("td", 0).text().trim();
+		String[] pLC = pageLoadCheck.split("\n");
+		if(pLC[0].equals("등록된 캠페인이 없습니다.")) {
 			System.out.println(" *** emailSetting_del list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** emailSetting_del list Page load Fail ... !@#$%^&*() *** ");
@@ -566,9 +568,9 @@ public class inhouseMarketingSetting {
 	public void talkSetting_add() {
 		System.out.println(" ! ----- talkSetting_add Start ----- ! ");
 		$(By.linkText("Talk 설정")).click();
-		$("td").waitUntil(visible, 10000);
-		pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
+		$("td", 1).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 2).text();
+		if(pageLoadCheck.equals("인하우스 - talk.")) {
 			System.out.println(" *** talkSetting_add list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** talkSetting_add list Page load Fail ... !@#$%^&*() *** ");
@@ -692,13 +694,14 @@ public class inhouseMarketingSetting {
 		$("#btn-del").waitUntil(visible, 10000);
 		$("#btn-del").click();
 		valCheck("talkSetting_del_null");
-		$("#campaignAllChk").click();
+		$(".campaignChk", 0).click();
 		$("#btn-del").click();
 		valCheck("talkSetting_del_confirm");
 		valCheck("talkSetting_del_alert");
 		$("td", 3).waitUntil(hidden, 10000);
-		pageLoadCheck = $("td").text();
-		if(pageLoadCheck.equals("등록된 캠페인이 없습니다.\n" + "추가를 클릭해 캠페인을 등록하세요.")) {
+		pageLoadCheck = $("td", 0).text().trim();
+		String[] pLC = pageLoadCheck.split("\n");
+		if(pLC[0].equals("등록된 캠페인이 없습니다.")) {
 			System.out.println(" *** talkSetting_del list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** talkSetting_del list Page load Fail ... !@#$%^&*() *** ");
