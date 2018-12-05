@@ -478,8 +478,8 @@ public class serviceManagement {
 		$(".select_all").waitUntil(visible, 15000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_permanent").click();
-		$(".inner_btn > .check_type2").waitUntil(visible, 15000);
-		$(".inner_btn > .check_type2").click();
+		sleep(1000);
+		$(".check_type2").click();
 		$(By.linkText("받은메일함")).click();
 		switchTo().window(0);
 		pageLoadCheck = $("#scriptList").text().trim();
@@ -889,8 +889,8 @@ public class serviceManagement {
 		$(".select_all").waitUntil(visible, 15000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_permanent").click();
-		$(".inner_btn > .check_type2").waitUntil(visible, 15000);
-		$(".inner_btn > .check_type2").click();
+		sleep(1000);
+		$(".check_type2").click();
 		$(By.linkText("받은메일함")).click();
 		switchTo().window(0);
 		$("#btn-save").scrollIntoView(false);
@@ -1042,8 +1042,8 @@ public class serviceManagement {
 		$(".select_all").waitUntil(visible, 15000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_permanent").click();
-		$(".inner_btn > .check_type2").waitUntil(visible, 15000);
-		$(".inner_btn > .check_type2").click();
+		sleep(1000);
+		$(".check_type2").click();
 		$(By.linkText("받은메일함")).click();
 		switchTo().window(0);
 		refresh();
