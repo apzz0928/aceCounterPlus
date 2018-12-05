@@ -365,16 +365,15 @@ public class signUp {
 			close();
 		}
 		$(".btn_pop_submit", 1).click();
-		//sleep(1500);
 		js("window.open('https://logins.daum.net/accounts/loginform.do?url=https%3A%2F%2Fmail.daum.net%2F');"); //자바스크립트로 메일 확인용 주소 띄움
 		switchTo().window(1); //브라우저 새탭으로 이동
-		//refresh();
 		$("#loginBtn").waitUntil(visible, 10000);
 		$("#id").setValue("apzz092888");
 		$("#inputPwd").setValue("qordlf!@34");
 		$("#loginBtn").click();
-		$(".info_subject", 1).waitUntil(visible, 10000);
-		pageLoadCheck = $(".info_subject", 1).text().trim();
+		refresh();
+		$(".tit_subject", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $(".tit_subject", 0).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
 		if(pLC[2].equals("임시비밀번호를")) {
 			System.out.println(" *** daum mail list page load check Success !! *** ");
@@ -384,7 +383,7 @@ public class signUp {
 			
 			close();
 		}
-		$(".info_subject", 1).click();
+		$(".tit_subject", 0).click();
 		$("h1", 1).waitUntil(visible, 10000);
 		String temp_id = $("td", 10).text().trim();
 		temp_pw = $("td", 11).text().trim(); //비번 원복할때 써야해서 전역으로 변경
