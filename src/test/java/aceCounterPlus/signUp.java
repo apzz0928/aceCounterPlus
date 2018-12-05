@@ -223,7 +223,7 @@ public class signUp {
 		$("#userpw").setValue(pw + A);
 		$("#repeatpw").setValue(pw + A);
 		$("#usernm").setValue("회원가입테스트");
-		$("#useremail").setValue("apzz092888@daum.net");
+		$("#useremail").setValue("apzz0928@nate.com");
 		$("#mp2").setValue("0000");
 		$("#mp3").setValue("0000");
 		$("#stepOneCompleted").click(); //서비스 신청
@@ -381,6 +381,7 @@ public class signUp {
 			pLC = null;
 		} else {
 			System.out.println(" *** daum mail list page load check Fail ... !@#$%^&*() *** ");
+			
 			close();
 		}
 		$(".info_subject", 1).click();
