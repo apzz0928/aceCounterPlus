@@ -416,6 +416,7 @@ public class userSetting {
 		valCheck("userGroupSetting_del_confirm");
 		$(".btn-info", 1).waitUntil(hidden, 10000);
 		$("#memgrpAdd").waitUntil(visible, 10000);
+		$("#modify_1").waitUntil(hidden, 10000);
 		valCheck("userGroupSetting__alert");
 		$("h5", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $("h5", 1).text();

@@ -681,7 +681,6 @@ public class contentSetting {
 	    $(By.linkText("내부배너 설정")).click();
 	    $(".btn-info", 0).waitUntil(visible, 10000);
 	    pageLoadCheck = $(".btn-info", 0).text().trim();
-	    System.out.println("pageLoadCheck is : " + pageLoadCheck);
 		if(pageLoadCheck.equals("추가")) {
 			System.out.println(" *** innerBanner_add list Page load Success !! *** ");
 		} else {

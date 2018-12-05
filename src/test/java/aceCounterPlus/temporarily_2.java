@@ -156,7 +156,7 @@ public class temporarily_2 {
 		case "myCoupon_4_null":
 			checkMsg = "쿠폰번호를 입력해주세요.";
 			break;
-		case "myCoupon_5_null":
+		case "myCoupon_number_check":
 			checkMsg = "쿠폰번호가 맞지 않습니다.\n" + "다시 확인해 주세요.";
 			break;
 		case "editService_modify_check":
@@ -222,6 +222,24 @@ public class temporarily_2 {
 		case "summaryReport_reserveEmail_send":
 			checkMsg = "설정하신 내용이 저장되었습니다.\n" + "설정내용은 익일부터 반영됩니다.";
 			break;
+		case "notifyReport_save_confirm!":
+			checkMsg = "선택하신 알림 내용이 없습니다.\n" + "트래픽 알림을 중지 하시겠습니까?";
+			break;
+		case "notifyReport_save_check":
+			checkMsg = "설정하신 내용이 저장되었습니다.\n" + "설정내용은 익일부터 반영됩니다.";
+			break;
+		case "notifyReport_modify_confirm":
+			checkMsg = "선택하신 알림 내용이 없습니다.\n" + "트래픽 알림을 중지 하시겠습니까?";
+			break;
+		case "editS4ervice_restore_alert":
+			checkMsg = "";
+			break;
+		case "editSer5vice_restore_alert":
+			checkMsg = "";
+			break;
+		case "editSer6vice_restore_alert":
+			checkMsg = "";
+			break;
 		case "subManager_name_null":
 			checkMsg = "담당자 이름을 입력해 주세요.";
 			break;
@@ -243,7 +261,10 @@ public class temporarily_2 {
 		case "subManager_pw_alert":
 			checkMsg = "비밀번호 변경이 완료되었습니다.";
 			break;
-		case "subManager_delete":
+		case "subManager_delete_confirm":
+			checkMsg = "부관리자 권한을 삭제하시겠습니까?";
+			break;
+		case "subManager_delete_check":
 			checkMsg = "삭제가 완료되었습니다.";
 			break;
 		case "leaveService_service_null":
@@ -312,9 +333,6 @@ public class temporarily_2 {
 		case "paymentBill_check":
 			checkMsg = "저장되었습니다.";
 			break;
-		case "6":
-			checkMsg = "";
-			break;
 		}
 		$(".modal-backdrop").waitUntil(visible, 10000);
 	    $$("p").last().click();
@@ -322,7 +340,9 @@ public class temporarily_2 {
 	    Thread.onSpinWait();
 	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
 	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
-	        	//confirm이 없어서 제거
+	        	System.out.println(" *** " + val +  " - confirm check Success !! *** ");
+				$$(".btn-info").last().click();
+			    $(".modal-backdrop").waitUntil(hidden, 10000);
 	        } else { //confirm 아니면 .btn-sm클릭
 	            System.out.println(" *** " + val +  " - check Success !! *** ");
 	            $$(".btn-sm").last().click();
@@ -661,7 +681,7 @@ public class temporarily_2 {
 		    }
 		    $("#btn-save").click();
 		}
-		valCheck("myCoupon_5_null");
+		valCheck("myCoupon_number_check");
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
 
@@ -812,6 +832,21 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- editService End ----- ! ");
 	}
+	
+	@Test(priority = 72)
+	public void changeService() { //페이지 로딩만 체크
+		System.out.println(" ! ----- changeService Start ----- ! ");
+		$(By.linkText("서비스변경")).click();
+		$("#wrapper_step1").waitUntil(visible, 15000);
+		pageLoadCheck = $(".active", 1).text().trim();
+		if (pageLoadCheck.equals("서비스변경")) {
+			System.out.println(" *** changeService page load Success !! *** ");
+		} else {
+			System.out.println(" *** changeService page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- changeService End ----- ! ");
+	}
 
 	@Test(priority = 81)
 	public void summaryReport() {
@@ -883,6 +918,7 @@ public class temporarily_2 {
 		}
 		$("#btn-save").click();
 		valCheck("summaryReport_reserveEmail_send");
+		refresh();
 		$("#btn-save").waitUntil(visible, 15000);
 		for (int i = 18; i <= 25; i++) {
 			$("label", i).click();
@@ -891,6 +927,63 @@ public class temporarily_2 {
 		valCheck("summaryReport_reserveEmail_send");
 		$("#btn-save").waitUntil(visible, 15000);
 		System.out.println(" ! ----- summaryReport End ----- ! ");
+	}
+	
+	@Test(priority = 82)
+	public void notifyReport() {
+		System.out.println(" ! ----- notifyReport Start ----- ! ");
+		$(By.linkText("알림메일 발송")).click();
+		$("#btn-save").waitUntil(visible, 10000);
+		pageLoadCheck = $(".active", 1).text();
+		System.out.println(pageLoadCheck);
+		if (pageLoadCheck.equals("알림메일 발송")) {
+			System.out.println(" *** notifyReport page load check Success !! *** ");
+		} else {
+			System.out.println(" *** notifyReport page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".switch-info").click();
+		$("#reserveEmail_0").waitUntil(visible, 10000);
+		$("#btn-save").click();
+		valCheck("notifyReport_save_check");
+		refresh();
+		for(int i=0;i<=5;i++) {
+			if(i<=2) {
+				$("label[for=inc_" + (i+1) + "_chk]").click();
+			} else {
+				$("label[for=dec_" + (i-2) + "_chk]").click();
+			}
+			if(i<=2) {
+				$(".set-value", i).setValue("1000");
+			} else {
+				$(".set-value", i).setValue("100");
+			}
+			$(".set-compare", i).selectOptionByValue("20");
+		}
+		$("#btn-save").click();
+		valCheck("notifyReport_save_check");
+		refresh();
+		for(int i=0;i<=5;i++) {
+			if(i<=2) {
+				$("label[for=inc_" + (i+1) + "_chk]").click();
+			} else {
+				$("label[for=dec_" + (i-2) + "_chk]").click();
+			}
+			$(".set-compare", i).selectOptionByValue("10");
+			if(i==5) {
+				$(".set-value", i).setValue("1");
+			} else {
+				$(".set-value", i).setValue("");
+			}
+		}
+		$("#btn-save").click();
+		valCheck("notifyReport_save_check");
+		refresh();
+		$(".switch-info").click();
+		$("#reserveEmail_0").waitUntil(hidden, 10000);
+		$("#btn-save").click();
+		valCheck("notifyReport_save_check");
+		System.out.println(" ! ----- notifyReport End ----- ! ");
 	}
 
 	@Test(priority = 91)
@@ -1005,9 +1098,8 @@ public class temporarily_2 {
 		$(".btn_login").click();
 		open("https://new.acecounter.com/manage/serviceInfo/submanager");
 		$(".br-dark", 2).click();
-		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
-		//$("#btn-modal-alert-yes").click();
-		valCheck("subManager_delete");
+		valCheck("subManager_delete_confirm");
+		valCheck("subManager_delete_check");
 		System.out.println(" ! ----- subManager_modifyInfoAndDel End ----- ! ");
 	}
 	
@@ -1017,6 +1109,12 @@ public class temporarily_2 {
 		$(By.linkText("서비스 해지")).click();
 		$(".notokr-bold", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".notokr-bold", 0).text().trim();
+		if(pageLoadCheck.equals("서비스해지")) {
+			System.out.println(" *** extendCharge step1 page load check Success !! *** ");
+		} else {
+			System.out.println(" *** extendCharge step1 page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
 		$("#pwd").setValue(pw + A);
 		$("#btn-ok").click();
 		$("#btnIng").waitUntil(visible, 10000);
@@ -1078,7 +1176,6 @@ public class temporarily_2 {
 				break;
 			}
 			inputCheck = $(".gui-input", i).getValue().trim();
-			System.out.println(inputCheck);
 			if(inputCheck.equals(userInfoCheck)) {
 				System.out.println(" *** leaveService input value(" + i +") check Success !! *** ");
 			} else {
@@ -1196,7 +1293,6 @@ public class temporarily_2 {
 				break;
 			}
 			inputCheck = $(".gui-input", i).getValue().trim();
-			System.out.println(inputCheck);
 			if(inputCheck.equals(userInfoCheck)) {
 				System.out.println(" *** extendCharge input value(" + i +") check Success !! *** ");
 			} else {
@@ -1378,9 +1474,10 @@ public class temporarily_2 {
 				if(i<=7){
 					$(".gui-input", i).setValue(paymentBill_value);
 				}
-				System.out.println("check는 : " + paymentBill_check + " // i는 : "  + i + " // 입력값은 : " + paymentBill_value);
 			}
 		}
+		$("#btn-submit").click();
+		valCheck("paymentBill_check");
 		$("#btn-submit").waitUntil(hidden, 10000);
 		System.out.println(" ! ----- paymentBill End ----- ! ");
 	}
@@ -1474,10 +1571,10 @@ public class temporarily_2 {
 		$(By.name("s_key")).setValue("");
 		$("#btn-search").click();
 		$(".text-left", 0).click();
-		$("#detailview_35457").waitUntil(visible, 10000);
-		pageLoadCheck = $("#detailview_35457").text().trim();
+		$(".mh20", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $(".mh20", 0).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
-		if(pLC[30].subSequence(15, 31).equals("www.test0001.org")) {
+		if(pLC[13].substring(0, 10).equals("2018-12-03")) {
 			System.out.println(" *** myAllimList detailView check Success !! *** ");
 		} else {
 			System.out.println(" *** myAllimList detailView check Fail ... !@#$%^&*() *** ");

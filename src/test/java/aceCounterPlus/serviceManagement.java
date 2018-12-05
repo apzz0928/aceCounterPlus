@@ -156,7 +156,7 @@ public class serviceManagement {
 		case "myCoupon_4_null":
 			checkMsg = "쿠폰번호를 입력해주세요.";
 			break;
-		case "myCoupon_5_null":
+		case "myCoupon_number_check":
 			checkMsg = "쿠폰번호가 맞지 않습니다.\n" + "다시 확인해 주세요.";
 			break;
 		case "editService_modify_check":
@@ -222,6 +222,24 @@ public class serviceManagement {
 		case "summaryReport_reserveEmail_send":
 			checkMsg = "설정하신 내용이 저장되었습니다.\n" + "설정내용은 익일부터 반영됩니다.";
 			break;
+		case "notifyReport_save_confirm!":
+			checkMsg = "선택하신 알림 내용이 없습니다.\n" + "트래픽 알림을 중지 하시겠습니까?";
+			break;
+		case "notifyReport_save_check":
+			checkMsg = "설정하신 내용이 저장되었습니다.\n" + "설정내용은 익일부터 반영됩니다.";
+			break;
+		case "notifyReport_modify_confirm":
+			checkMsg = "선택하신 알림 내용이 없습니다.\n" + "트래픽 알림을 중지 하시겠습니까?";
+			break;
+		case "editS4ervice_restore_alert":
+			checkMsg = "";
+			break;
+		case "editSer5vice_restore_alert":
+			checkMsg = "";
+			break;
+		case "editSer6vice_restore_alert":
+			checkMsg = "";
+			break;
 		case "subManager_name_null":
 			checkMsg = "담당자 이름을 입력해 주세요.";
 			break;
@@ -243,8 +261,77 @@ public class serviceManagement {
 		case "subManager_pw_alert":
 			checkMsg = "비밀번호 변경이 완료되었습니다.";
 			break;
-		case "subManager_delete":
+		case "subManager_delete_confirm":
+			checkMsg = "부관리자 권한을 삭제하시겠습니까?";
+			break;
+		case "subManager_delete_check":
 			checkMsg = "삭제가 완료되었습니다.";
+			break;
+		case "leaveService_service_null":
+			checkMsg = "해지하실 서비스를 선택하여 주세요.";
+			break;
+		case "leaveService_name_null":
+			checkMsg = "이름을 입력해주세요.";
+			break;
+		case "leaveService_number_null":
+			checkMsg = "연락처와 휴대전화번호 중\n" + "하나는 반드시 입력해 주세요";
+			break;
+		case "leaveService_email_null":
+			checkMsg = "이메일을 입력해주세요.";
+			break;
+		case "leaveService_email_check":
+			checkMsg = "이메일 주소가 올바르지 않습니다.";
+			break;
+		case "leaveService_casue_null":
+			checkMsg = "해지사유를 선택해주세요.";
+			break;
+		case "extendCharge_service_null":
+			checkMsg = "서비스를 선택해 주세요.";
+			break;
+		case "extendCharge_name_null":
+			checkMsg = "이름을 입력해 주세요.";
+			break;
+		case "extendCharge_number_null":
+			checkMsg = "연락처와 휴대전화번호 중\n" + "하나는 반드시 입력해 주세요.";
+			break;
+		case "extendCharge_email_null":
+			checkMsg = "이메일을 입력해주세요.";
+			break;
+		case "extendCharge_email_check":
+			checkMsg = "이메일 주소가 올바르지 않습니다.";
+			break;
+		case "additionalCharge_service_null":
+			checkMsg = "서비스를 선택해주세요.";
+			break;
+		case "paymentBill_number_null":
+			checkMsg = "사업자등록번호를 입력해 주세요.";
+			break;
+		case "paymentBill_number_only":
+			checkMsg = "숫자만 입력할 수 있습니다.";
+			break;
+		case "paymentBill_char_only":
+			checkMsg = "문자만 입력할 수 있습니다.";
+			break;
+		case "paymentBill_numberOrchar_only":
+			checkMsg = "숫자 또는 문자만 입력할 수 있습니다.";
+			break;
+		case "paymentBill_company_null":
+			checkMsg = "회사명을 입력해 주세요.";
+			break;
+		case "paymentBill_ceoname_null":
+			checkMsg = "대표자명을 입력해 주세요.";
+			break;
+		case "paymentBill_address_null":
+			checkMsg = "회사주소를 입력해 주세요.";
+			break;
+		case "paymentBill_businessType_null":
+			checkMsg = "업태를 입력해 주세요.";
+			break;
+		case "paymentBill_businessTypeSection_null":
+			checkMsg = "종목을 입력해 주세요.";
+			break;
+		case "paymentBill_check":
+			checkMsg = "저장되었습니다.";
 			break;
 		}
 		$(".modal-backdrop").waitUntil(visible, 10000);
@@ -253,18 +340,20 @@ public class serviceManagement {
 	    Thread.onSpinWait();
 	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
 	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
-	        	//confirm이 없어서 제거
+	        	System.out.println(" *** " + val +  " - confirm check Success !! *** ");
+				$$(".btn-info").last().click();
+			    $(".modal-backdrop").waitUntil(hidden, 10000);
 	        } else { //confirm 아니면 .btn-sm클릭
 	            System.out.println(" *** " + val +  " - check Success !! *** ");
 	            $$(".btn-sm").last().click();
 	            //$(".modal-backdrop").waitUntil(hidden, 10000);
 	        }
 	    } else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
-	        System.out.println(" *** ☆★☆★☆★ " + val +  " - msgCheck is Empty ... ☆★☆★☆★ *** ");
+	        System.out.println(" *** ☆★☆★☆★ val : " + val + " // pTag text is : " + msgCheck +  " // - msgCheck is Empty ... ☆★☆★☆★ *** ");
 	        System.out.println(checkMsg);
 	        close();
 	    } else { // msgCheck=checkMsg여부, confirm&alert여부, 빈값 여부 체크 후 fail
-	        System.out.println(" *** " + val +  " - check Fail ... !@#$%^&*() *** ");
+	        System.out.println(" *** // val : " + val + " // pTag text is : " + msgCheck +  " // - check Fail ... !@#$%^&*() *** ");
 	        System.out.println(checkMsg);
 	        close();
 	    }
@@ -434,42 +523,42 @@ public class serviceManagement {
 		valCheck("installApply_null");
 		$("#checkbox_svc_0").click();
 		$("#btn_next_step1").click();
-		$("#btn_submit").scrollTo();
+		$("#btn_submit").scrollIntoView(false);
 		$("#btn_submit").click();
 		valCheck("installApply_name_null");
-		$("#applicant_nm").scrollTo();
+		$("#applicant_nm").scrollIntoView(false);
 		$("#applicant_nm").setValue("name");
-		$("#btn_submit").scrollTo();
+		$("#btn_submit").scrollIntoView(false);
 		$("#btn_submit").click();
 		valCheck("installApply_email_null");
-		$("#applicant_email").scrollTo();
+		$("#applicant_email").scrollIntoView(false);
 		$("#applicant_email").setValue(date);
-		$("#btn_submit").scrollTo();
+		$("#btn_submit").scrollIntoView(false);
 		$("#btn_submit").click();
 		valCheck("installApply_email_validation");
-		$("#applicant_email").scrollTo();
+		$("#applicant_email").scrollIntoView(false);
 		$("#applicant_email").setValue(date + "@net.com");
-		$("#btn_submit").scrollTo();
+		$("#btn_submit").scrollIntoView(false);
 		$("#btn_submit").click();
 		valCheck("installApply_FTP_null");
-		$("#host_0").scrollTo();
+		$("#host_0").scrollIntoView(false);
 		$("#host_0").setValue(date);
-		$("#btn_submit").scrollTo();
+		$("#btn_submit").scrollIntoView(false);
 		$("#btn_submit").click();
 		valCheck("installApply_port_null");
-		$("#port_0").scrollTo();
+		$("#port_0").scrollIntoView(false);
 		$("#port_0").setValue(date);
-		$("#btn_submit").scrollTo();
+		$("#btn_submit").scrollIntoView(false);
 		$("#btn_submit").click();
 		valCheck("installApply_id_null");
-		$("#id_0").scrollTo();
+		$("#id_0").scrollIntoView(false);
 		$("#id_0").setValue(date);
-		$("#btn_submit").scrollTo();
+		$("#btn_submit").scrollIntoView(false);
 		$("#btn_submit").click();
 		valCheck("installApply_pw_null");
-		$("#pwd_0").scrollTo();
+		$("#pwd_0").scrollIntoView(false);
 		$("#pwd_0").setValue(date);
-		$("#btn_submit").scrollTo();
+		$("#btn_submit").scrollIntoView(false);
 		$("#btn_submit").click();
 		valCheck("installApply_agree_null");
 		System.out.println(" ! ----- installApply End ----- ! ");
@@ -592,7 +681,7 @@ public class serviceManagement {
 		    }
 		    $("#btn-save").click();
 		}
-		valCheck("myCoupon_5_null");
+		valCheck("myCoupon_number_check");
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
 
@@ -674,12 +763,12 @@ public class serviceManagement {
 			System.out.println(" *** addIntegralReport page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".btn-info", 0).scrollTo();
+		$(".btn-info", 0).scrollIntoView(false);
 		$(".btn-info", 0).click();
 		valCheck("addIntegralReport_name_null");
-		$("#report_nm").scrollTo();
+		$("#report_nm").scrollIntoView(false);
 		$("#report_nm").setValue(date);
-		$(".btn-info", 0).scrollTo();
+		$(".btn-info", 0).scrollIntoView(false);
 		$(".btn-info", 0).click();
 		valCheck("addIntegralReport_service_null");
 		System.out.println(" ! ----- addIntegralReport End ----- ! ");
@@ -743,6 +832,21 @@ public class serviceManagement {
 		}
 		System.out.println(" ! ----- editService End ----- ! ");
 	}
+	
+	@Test(priority = 72)
+	public void changeService() { //페이지 로딩만 체크
+		System.out.println(" ! ----- changeService Start ----- ! ");
+		$(By.linkText("서비스변경")).click();
+		$("#wrapper_step1").waitUntil(visible, 15000);
+		pageLoadCheck = $(".active", 1).text().trim();
+		if (pageLoadCheck.equals("서비스변경")) {
+			System.out.println(" *** changeService page load Success !! *** ");
+		} else {
+			System.out.println(" *** changeService page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- changeService End ----- ! ");
+	}
 
 	@Test(priority = 81)
 	public void summaryReport() {
@@ -798,7 +902,7 @@ public class serviceManagement {
 		$(".check_type2").click();
 		$(".link_mail", 2).click();
 		switchTo().window(0);
-		$("#btn-save").scrollTo();
+		$("#btn-save").scrollIntoView(false);
 		$(".cross", 1).click();
 		$(".reserveEmail").waitUntil(hidden, 10000);
 		$("#btn-save").click();
@@ -814,6 +918,7 @@ public class serviceManagement {
 		}
 		$("#btn-save").click();
 		valCheck("summaryReport_reserveEmail_send");
+		refresh();
 		$("#btn-save").waitUntil(visible, 15000);
 		for (int i = 18; i <= 25; i++) {
 			$("label", i).click();
@@ -822,6 +927,63 @@ public class serviceManagement {
 		valCheck("summaryReport_reserveEmail_send");
 		$("#btn-save").waitUntil(visible, 15000);
 		System.out.println(" ! ----- summaryReport End ----- ! ");
+	}
+	
+	@Test(priority = 82)
+	public void notifyReport() {
+		System.out.println(" ! ----- notifyReport Start ----- ! ");
+		$(By.linkText("알림메일 발송")).click();
+		$("#btn-save").waitUntil(visible, 10000);
+		pageLoadCheck = $(".active", 1).text();
+		System.out.println(pageLoadCheck);
+		if (pageLoadCheck.equals("알림메일 발송")) {
+			System.out.println(" *** notifyReport page load check Success !! *** ");
+		} else {
+			System.out.println(" *** notifyReport page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".switch-info").click();
+		$("#reserveEmail_0").waitUntil(visible, 10000);
+		$("#btn-save").click();
+		valCheck("notifyReport_save_check");
+		refresh();
+		for(int i=0;i<=5;i++) {
+			if(i<=2) {
+				$("label[for=inc_" + (i+1) + "_chk]").click();
+			} else {
+				$("label[for=dec_" + (i-2) + "_chk]").click();
+			}
+			if(i<=2) {
+				$(".set-value", i).setValue("1000");
+			} else {
+				$(".set-value", i).setValue("100");
+			}
+			$(".set-compare", i).selectOptionByValue("20");
+		}
+		$("#btn-save").click();
+		valCheck("notifyReport_save_check");
+		refresh();
+		for(int i=0;i<=5;i++) {
+			if(i<=2) {
+				$("label[for=inc_" + (i+1) + "_chk]").click();
+			} else {
+				$("label[for=dec_" + (i-2) + "_chk]").click();
+			}
+			$(".set-compare", i).selectOptionByValue("10");
+			if(i==5) {
+				$(".set-value", i).setValue("1");
+			} else {
+				$(".set-value", i).setValue("");
+			}
+		}
+		$("#btn-save").click();
+		valCheck("notifyReport_save_check");
+		refresh();
+		$(".switch-info").click();
+		$("#reserveEmail_0").waitUntil(hidden, 10000);
+		$("#btn-save").click();
+		valCheck("notifyReport_save_check");
+		System.out.println(" ! ----- notifyReport End ----- ! ");
 	}
 
 	@Test(priority = 91)
@@ -936,10 +1098,508 @@ public class serviceManagement {
 		$(".btn_login").click();
 		open("https://new.acecounter.com/manage/serviceInfo/submanager");
 		$(".br-dark", 2).click();
-		$("#btn-modal-alert-yes").waitUntil(visible, 15000);
-		//$("#btn-modal-alert-yes").click();
-		valCheck("subManager_delete");
+		valCheck("subManager_delete_confirm");
+		valCheck("subManager_delete_check");
 		System.out.println(" ! ----- subManager_modifyInfoAndDel End ----- ! ");
+	}
+	
+	@Test(priority = 101)
+	public void leaveService() {
+		System.out.println(" ! ----- leaveService Start ----- ! ");
+		$(By.linkText("서비스 해지")).click();
+		$(".notokr-bold", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $(".notokr-bold", 0).text().trim();
+		if(pageLoadCheck.equals("서비스해지")) {
+			System.out.println(" *** extendCharge step1 page load check Success !! *** ");
+		} else {
+			System.out.println(" *** extendCharge step1 page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#pwd").setValue(pw + A);
+		$("#btn-ok").click();
+		$("#btnIng").waitUntil(visible, 10000);
+		$("#btnIng").click();
+		valCheck("leaveService_service_null");
+		$(".ckBoxSvc", 0).click();
+		$("#btnIng").click();
+		$(".control-label", 0).waitUntil(visible, 10000);
+		String leaveService_check = "";
+		String leaveService_value = "";
+		for(int i=0, x=0;i<=5;i++){
+		    if(i == 0){
+		        leaveService_check = "leaveService_name_null";
+		    } else if (i == 1) {
+		        leaveService_check = "leaveService_number_null";
+		        leaveService_value = "이름";
+		    } else if (i == 2) {
+		        leaveService_value = "1234";
+		        x = ++x;
+		    } else if (i == 3) {
+		        leaveService_check = "leaveService_email_null";
+		        leaveService_value = "5678";
+		        x = ++x;
+		    } else if (i == 4) {
+		        leaveService_check = "leaveService_email_check";
+		        leaveService_value = "mail.com";
+		        x = 5;
+		    } else if (i == 5) {
+		        leaveService_check = "leaveService_casue_null";
+		        leaveService_value = "test@mail.com";
+		    }
+		    if(i > 0){
+		    	$(".gui-input", x).scrollIntoView(false);
+		        $(".gui-input", x).setValue(leaveService_value);
+		    }
+		    $("#btnApply").click();
+			//테스트 확인용 System.out.println("입력창 번호 : " + x + " // 입력값 : " + leaveService_value + " // 체크값 : " + leaveService_check);
+		    valCheck(leaveService_check);
+		}
+		$("label", 5).click();
+		String inputCheck = "";
+		String userInfoCheck = "";
+		for(int i=0;i<=5;i++) {
+			switch(i) {
+			case 0:
+				userInfoCheck = "원래이름";
+				break;
+			case 1:
+				userInfoCheck = "";
+				break;
+			case 3:
+				userInfoCheck = "9743";
+				break;
+			case 4:
+				userInfoCheck = "0928";
+				break;
+			case 5:
+				userInfoCheck = "apzz092888@daum.net";
+				break;
+			}
+			inputCheck = $(".gui-input", i).getValue().trim();
+			if(inputCheck.equals(userInfoCheck)) {
+				System.out.println(" *** leaveService input value(" + i +") check Success !! *** ");
+			} else {
+				System.out.println(" *** leaveService input value(" + i +") check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		System.out.println(" ! ----- leaveService End ----- ! ");
+	}
+	@Test(priority = 111)
+	public void extendCharge() {
+		System.out.println(" ! ----- extendCharge Start ----- ! ");
+		$(By.linkText("연장요금")).click();
+		$("#btn_step1_next").waitUntil(visible, 10000);
+		pageLoadCheck = $("#headingStep1.panel-heading.active").text().trim();
+		String[] pLC = pageLoadCheck.split("수정하기");
+		if(pLC[0].equals("1서비스선택")) {
+			System.out.println(" *** extendCharge step1 page load check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** extendCharge step1 page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#btn_step1_next").click();
+		valCheck("extendCharge_service_null");
+		$("#checkbox_step1_0").click();
+		$("#btn_step1_next").click();
+		$("#btnSkipScript").waitUntil(visible, 10000);
+		$("#btnSkipScript").click();
+		$("#headingStep2.panel-heading.active").waitUntil(visible, 10000);
+		pageLoadCheck = $("#headingStep2.panel-heading.active").text().trim();
+		pLC = pageLoadCheck.split(" 확인 및 계약기간 선택");
+		if(pLC[0].equals("2요금")) {
+			System.out.println(" *** extendCharge step2 page load check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** extendCharge step2 page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.id("select_chargelist_0")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스요금표'])[1]/following::option[2]")).click();
+	    pageLoadCheck = $(".text-danger").text().trim();
+		$(By.id("select_chargelist_0")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스요금표'])[1]/following::option[1]")).click();
+		pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("49,500")) { //월 서비스 요금 확인
+			System.out.println(" *** extendCharge month service charge check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** extendCharge month service charge check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".br-dark").click();
+		$(".btn-info", 10).waitUntil(visible, 10000);
+		pageLoadCheck = $(".text-center", 18).text().trim();
+		pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("적용")) { //쿠폰보기 팝업 확인
+			System.out.println(" *** extendCharge coupon popup load check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** extendCharge coupon popup load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".btn-info", 10).click();
+		$(".btn-info", 10).waitUntil(hidden, 10000);
+		$("#btn_consult").click();
+		$("#btn_consult_submit").waitUntil(visible, 10000);
+		$("#btn_consult_submit").scrollIntoView(false);
+		String extendCharge_check = "";
+		String extendCharge_value = "";
+		for(int i=0, x=0;i<=4;i++){
+			if(i == 0){
+				extendCharge_check = "extendCharge_name_null";
+			} else if (i == 1) {
+				extendCharge_check = "extendCharge_number_null";
+				extendCharge_value = "이름";
+			} else if (i == 2) {
+				extendCharge_value = "1234";
+				x = 1;
+			} else if (i == 3) {
+				extendCharge_check = "extendCharge_email_null";
+				extendCharge_value = "5678";
+				x = 2;
+			} else if (i == 4) {
+				extendCharge_check = "extendCharge_email_check";
+				extendCharge_value = "mail.com";
+				x = 5;
+			}
+			if(i > 0){
+				$(".gui-input", x).setValue(extendCharge_value);
+			}
+			//테스트 확인용 System.out.println("입력창 번호 : " + x + " // 입력값 : " + extendCharge_value + " // 체크값 : " + extendCharge_check);
+			$("#btn_consult_submit").click();
+			valCheck(extendCharge_check);
+		}
+		$("label", 10).click();
+		String inputCheck = "";
+		String userInfoCheck = "";
+		for(int i=0;i<=5;i++) {
+			switch(i) {
+			case 0:
+				userInfoCheck = "원래이름";
+				break;
+			case 1:
+				userInfoCheck = "";
+				break;
+			case 3:
+				userInfoCheck = "9743";
+				break;
+			case 4:
+				userInfoCheck = "0928";
+				break;
+			case 5:
+				userInfoCheck = "apzz092888@daum.net";
+				break;
+			}
+			inputCheck = $(".gui-input", i).getValue().trim();
+			if(inputCheck.equals(userInfoCheck)) {
+				System.out.println(" *** extendCharge input value(" + i +") check Success !! *** ");
+			} else {
+				System.out.println(" *** extendCharge input value(" + i +") check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		$("#btn_consult").click();
+		$("#btn_consult_submit").waitUntil(hidden, 10000);
+		$("#btn_step2_next").click();
+		$("#headingStep3.panel-heading.active").waitUntil(visible, 10000);
+		pageLoadCheck = $("#headingStep3.panel-heading.active").text().trim();
+		pLC = pageLoadCheck.split(" 방법 선택 및 요금 결제");
+		if(pLC[0].equals("3결제")) {
+			System.out.println(" *** extendCharge step3 page load check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** extendCharge step3 page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		pageLoadCheck = $("#credit-card").text().trim();
+		pLC = pageLoadCheck.split("\n결제하실 금액\n");
+		if(pLC[0].equals("신용카드") && pLC[1].substring(0, 7).equals("99,000원")) {
+			System.out.println(" *** extendCharge step3 credit-card payment check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** extendCharge step3 credit-card payment check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("label", 15).click();
+		pageLoadCheck = $("#virtual-account").text().trim();
+		pLC = pageLoadCheck.split(" 발급 신청\n결제하실 금액\n");
+		if(pLC[0].equals("가상계좌") && pLC[1].substring(0, 7).equals("99,000원")) {
+			System.out.println(" *** extendCharge step3 virtual-account payment check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** extendCharge step3 virtual-account payment check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("label", 16).click();
+		pageLoadCheck = $("#payco").text().trim();
+		pLC = pageLoadCheck.split(" 간편결제\n결제하실 금액\n");
+		if(pLC[0].equals("페이코") && pLC[1].substring(0, 8).equals("99,000 원")) {
+			System.out.println(" *** extendCharge step3 payco payment check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** extendCharge step3 payco payment check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		
+		System.out.println(" ! ----- extendCharge End ----- ! ");
+	}
+	@Test(priority = 121)
+	public void additionalCharge() {
+		System.out.println(" ! ----- additionalCharge Start ----- ! ");
+		$(By.linkText("추가요금")).click();
+		$("#btn-next-step").waitUntil(visible, 10000);
+		pageLoadCheck = $("td").text().trim();
+		String[] pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("추가요금")) {
+			System.out.println(" *** additionalCharge page load check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** additionalCharge page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#btn-next-step").click();
+		valCheck("additionalCharge_service_null");
+		System.out.println(" ! ----- additionalCharge End ----- ! ");
+	}
+	@Test(priority = 131)
+	public void paymentHistory() {
+		System.out.println(" ! ----- paymentHistory Start ----- ! ");
+		$(By.linkText("결제내역조회")).click();
+		$("#topbar").waitUntil(visible, 10000);
+		pageLoadCheck = $("#topbar").text().trim();
+		if(pageLoadCheck.equals("결제내역조회")) {
+			System.out.println(" *** paymentHistory page load check Success !! *** ");
+		} else {
+			System.out.println(" *** paymentHistory page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		pageLoadCheck = $(".opened", 0).text().trim();
+		String[] pLC = pageLoadCheck.split("\\(");
+		if(pLC[1].substring(0, 13).equals("test00011.org")) {
+			System.out.println(" *** paymentHistory 1st site url check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** paymentHistory 1st site url check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		pageLoadCheck = $(".opened", 1).text().trim();
+		pLC = pageLoadCheck.split("\\(");
+		if(pLC[1].substring(0, 16).equals("ap0420121150.com")) {
+			System.out.println(" *** paymentHistory 2nd site url check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** paymentHistory 2nd site url check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- paymentHistory End ----- ! ");
+	}
+	@Test(priority = 141)
+	public void paymentBill() {
+		System.out.println(" ! ----- paymentBill Start ----- ! ");
+		$(By.linkText("계산서")).click();
+		$("#topbar").waitUntil(visible, 10000);
+		pageLoadCheck = $("#topbar").text().trim();
+		if(pageLoadCheck.equals("계산서")) {
+			System.out.println(" *** paymentBill page load check Success !! *** ");
+		} else {
+			System.out.println(" *** paymentBill page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".w200").click();
+		$("#btn-submit").waitUntil(visible, 10000);
+		$("#btn-submit").scrollIntoView(false);
+		for(int i=0;i<=7;i++) {
+			$(".gui-input", i).setValue("");
+		}
+		String paymentBill_check = "";
+		String paymentBill_value = "";
+		for(int i=0;i<=2;i++) { //사업자등록번호 유효성체크
+			for(int x=0;x<=1;x++) {
+				if(x==0) {
+					paymentBill_check = "paymentBill_number_null";
+					paymentBill_value = "문자";
+				} else {
+					paymentBill_check = "paymentBill_number_only";
+					paymentBill_value = Integer.toString(i) + Integer.toString(i);				
+				}
+				$("#btn-submit").click();
+				valCheck(paymentBill_check);
+				$(".gui-input", i).setValue(paymentBill_value);
+			}
+			paymentBill_check = "";
+			paymentBill_value = "";
+		}
+		String typeA = "paymentBill_char_only";
+		String typeB = "paymentBill_numberOrchar_only";
+		for(int i=3;i<=8;i++) { //사업자정보 입력 유효성체크 부분 작성해야함
+			for(int x=0;x<=1;x++) {
+				if(i==3 && x==0) {
+					paymentBill_check = "paymentBill_company_null";
+					paymentBill_value = "ㅇ";
+				} else if (i==3 && x==1){
+					paymentBill_check = typeB;
+					paymentBill_value = "회사명";
+				} else if (i==4 && x==0) {
+					paymentBill_check = "paymentBill_ceoname_null";
+					paymentBill_value = "ㅇ";
+				} else if (i==4 && x==1) {
+					paymentBill_check = typeA;
+					paymentBill_value = "대표자명";
+				} else if (i==5 && x==0) {
+					paymentBill_check = "paymentBill_address_null";
+					paymentBill_value = "ㅇ";
+				} else if (i==5 && x==1) {
+					paymentBill_check = typeB;
+					paymentBill_value = "회사주소";
+				} else if (i==6 && x==0) {
+					paymentBill_check = "paymentBill_businessType_null";
+					paymentBill_value = "ㅇ";
+				} else if (i==6 && x==1) {
+					paymentBill_check = typeB;
+					paymentBill_value = "업태";
+				} else if (i==7 && x==0) {
+					paymentBill_check = "paymentBill_businessTypeSection_null";
+					paymentBill_value = "ㅇ";
+				} else if (i==7 && x==1) {
+					paymentBill_check = typeB;
+					paymentBill_value = "종목";
+				} else if (i==8) {
+					paymentBill_check = "paymentBill_check";
+					break;
+				}
+				$("#btn-submit").click();
+				valCheck(paymentBill_check);
+				if(i<=7){
+					$(".gui-input", i).setValue(paymentBill_value);
+				}
+			}
+		}
+		$("#btn-submit").click();
+		valCheck("paymentBill_check");
+		$("#btn-submit").waitUntil(hidden, 10000);
+		System.out.println(" ! ----- paymentBill End ----- ! ");
+	}
+	@Test(priority = 151)
+	public void myNoticeList() {
+		System.out.println(" ! ----- myNoticeList Start ----- ! ");
+		$(By.linkText("서비스 공지사항")).click();
+		$("#btn-search").waitUntil(visible, 10000);
+		pageLoadCheck = $(".notokr-bold").text().trim();
+		if(pageLoadCheck.equals("서비스 공지사항")) {
+			System.out.println(" *** myNoticeList page load check Success !! *** ");
+		} else {
+			System.out.println(" *** myNoticeList page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.name("s_key")).setValue(date);
+		$("#btn-search").click();
+		pageLoadCheck = $("td").text().trim();
+		if(pageLoadCheck.equals("데이터가 없습니다.")) {
+			System.out.println(" *** myNoticeList search check Success !! *** ");
+		} else {
+			System.out.println(" *** myNoticeList search check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.name("s_key")).setValue("");
+		$("#btn-search").click();
+		$(".post-title", 0).click();
+		$("#list").waitUntil(visible, 10000);
+		pageLoadCheck = $("#list").text().trim();
+		if(pageLoadCheck.equals("목록")) {
+			System.out.println(" *** myNoticeList detailView page load check Success !! *** ");
+		} else {
+			System.out.println(" *** myNoticeList detailView page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#list").click();
+		$("#btn-search").waitUntil(visible, 10000);
+		$(By.linkText("개선안내")).click();
+		$("#btn-search").waitUntil(visible, 10000);
+		pageLoadCheck = $(".active", 1).text().trim();
+		if(pageLoadCheck.equals("개선안내")) {
+			System.out.println(" *** myImproveList page load check Success !! *** ");
+		} else {
+			System.out.println(" *** myImproveList page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.name("s_key")).setValue(date);
+		$("#btn-search").click();
+		pageLoadCheck = $("td").text().trim();
+		if(pageLoadCheck.equals("데이터가 없습니다.")) {
+			System.out.println(" *** myImproveList search check Success !! *** ");
+		} else {
+			System.out.println(" *** myImproveList search check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.name("s_key")).setValue("");
+		$("#btn-search").click();
+		$(".post-title", 0).click();
+		$("#list").waitUntil(visible, 10000);
+		pageLoadCheck = $("#list").text().trim();
+		if(pageLoadCheck.equals("목록")) {
+			System.out.println(" *** myImproveList detailView page load check Success !! *** ");
+		} else {
+			System.out.println(" *** myImproveList detailView page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#list").click();
+		$("#btn-search").waitUntil(visible, 10000);
+		System.out.println(" ! ----- myNoticeList End ----- ! ");
+	}
+	@Test(priority = 161)
+	public void myAllimList() {
+		System.out.println(" ! ----- myAllimList Start ----- ! ");
+		$(By.linkText("서비스 알림내역")).click();
+		pageLoadCheck = $(".notokr-bold").text().trim();
+		if(pageLoadCheck.equals("서비스 알림내역")) {
+			System.out.println(" *** myAllimList page load check Success !! *** ");
+		} else {
+			System.out.println(" *** myAllimList page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.name("s_key")).setValue(date);
+		$("#btn-search").click();
+		pageLoadCheck = $("td").text().trim();
+		if(pageLoadCheck.equals("데이터가 없습니다.")) {
+			System.out.println(" *** myAllimList search check Success !! *** ");
+		} else {
+			System.out.println(" *** myAllimList search check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.name("s_key")).setValue("");
+		$("#btn-search").click();
+		$(".text-left", 0).click();
+		$(".mh20", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $(".mh20", 0).text().trim();
+		String[] pLC = pageLoadCheck.split(" ");
+		if(pLC[13].substring(0, 10).equals("2018-12-03")) {
+			System.out.println(" *** myAllimList detailView check Success !! *** ");
+		} else {
+			System.out.println(" *** myAllimList detailView check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.linkText("모니터링내역")).click();
+		pageLoadCheck = $(".active", 1).text().trim();
+		if(pageLoadCheck.equals("모니터링내역")) {
+			System.out.println(" *** myMonitoringList page load check Success !! *** ");
+		} else {
+			System.out.println(" *** myMonitoringList page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.name("s_key")).setValue(date);
+		$("#btn-search").click();
+		pageLoadCheck = $("td").text().trim();
+		if(pageLoadCheck.equals("데이터가 없습니다.")) {
+			System.out.println(" *** myMonitoringList search check Success !! *** ");
+		} else {
+			System.out.println(" *** myMonitoringList search check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(By.name("s_key")).setValue("");
+		$("#btn-search").click();
+		System.out.println(" ! ----- myAllimList End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {
