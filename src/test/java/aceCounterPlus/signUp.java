@@ -387,11 +387,18 @@ public class signUp {
 		$("h1", 1).waitUntil(visible, 10000);
 		String temp_id = $("td", 10).text().trim();
 		temp_pw = $("td", 11).text().trim(); //비번 원복할때 써야해서 전역으로 변경
-		$(".link_mail", 2).click(); //메일삭제
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
+		//메일삭제 완전삭제
+		$(By.linkText("받은메일함")).click();
+		$(".select_all").waitUntil(visible, 15000);
+		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
+		$(By.linkText("휴지통")).click();
+		$(".select_all").waitUntil(visible, 15000);
+		$(".select_all").click();
+		$(".wrap_bold > .btn_permanent").click();
+		$(".inner_btn > .check_type2").waitUntil(visible, 15000);
+		$(".inner_btn > .check_type2").click();
+		$(By.linkText("받은메일함")).click();
 		switchTo().window(0); //원래 탭으로 이동
 		open("https://new.acecounter.com/common/front");
 		$("#uid").waitUntil(visible, 10000);

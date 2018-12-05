@@ -121,7 +121,12 @@ public class userSetting {
 	      case "userGroupSetting__alert": checkMsg = "회원 그룹이 삭제 되었습니다.";
 	      break;
 	    }
-	    $(".modal-backdrop").waitUntil(visible, 10000);
+	    if(val.equals("userGroupSetting_del_confirm")) {
+	    	// 회원그룹 삭제 confirm만 modal-backdrop로 element 체크시 간헐적 에러나서 체크 제외
+	    	$(".btn-sm", 5).waitUntil(visible, 10000);
+	    } else {
+		    $(".modal-backdrop").waitUntil(visible, 10000);	    	
+	    }
 	    $$("p").last().click();
 	    String msgCheck = $$("p").last().text().trim();
 	    Thread.onSpinWait();

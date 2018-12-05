@@ -470,21 +470,17 @@ public class serviceManagement {
 			close();
 		}
 		//메일삭제
-		$(".link_mail", 2).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
+		$(By.linkText("받은메일함")).click();
+		$(".select_all").waitUntil(visible, 15000);
+		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
-		//$(".link_basket").click();
 		$(By.linkText("휴지통")).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
-		$(".btn_toolbar", 0).click();
-		sleep(1500);
-		//$(".check_type2").waitUntil(visible, 15000);
-		$(".check_type2").click();
-		$(".link_mail", 2).click();
+		$(".select_all").waitUntil(visible, 15000);
+		$(".select_all").click();
+		$(".wrap_bold > .btn_permanent").click();
+		$(".inner_btn > .check_type2").waitUntil(visible, 15000);
+		$(".inner_btn > .check_type2").click();
+		$(By.linkText("받은메일함")).click();
 		switchTo().window(0);
 		pageLoadCheck = $("#scriptList").text().trim();
 		if (pageLoadCheck.equals("분석스크립트")) {
@@ -885,22 +881,17 @@ public class serviceManagement {
 			close();
 		}
 		//메일삭제
-		$(".link_mail", 2).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
+		$(By.linkText("받은메일함")).click();
+		$(".select_all").waitUntil(visible, 15000);
+		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
-		/*$(By.linkText("휴지통"), 0).hover();
-		$(".link_empty", 1).click();*/
-		//$(".link_basket").click();
 		$(By.linkText("휴지통")).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
-		$(".btn_toolbar", 0).click();
-		$(".check_type2").waitUntil(visible, 15000);
-		$(".check_type2").click();
-		$(".link_mail", 2).click();
+		$(".select_all").waitUntil(visible, 15000);
+		$(".select_all").click();
+		$(".wrap_bold > .btn_permanent").click();
+		$(".inner_btn > .check_type2").waitUntil(visible, 15000);
+		$(".inner_btn > .check_type2").click();
+		$(By.linkText("받은메일함")).click();
 		switchTo().window(0);
 		$("#btn-save").scrollIntoView(false);
 		$(".cross", 1).click();
@@ -912,14 +903,16 @@ public class serviceManagement {
 		valCheck("summaryReport_reserveEmail_check");
 		$(".gui-input", 3).setValue("apzz092888@daum.net");
 		$("#btn-reserveEmail").click();
-		$(".reserveEmail").waitUntil(visible, 15000);
+		$(".reserveEmail").waitUntil(visible, 10000);
+		$("label", 18).waitUntil(visible, 10000);
 		for (int i = 18; i <= 25; i++) {
 			$("label", i).click();
 		}
 		$("#btn-save").click();
 		valCheck("summaryReport_reserveEmail_send");
 		refresh();
-		$("#btn-save").waitUntil(visible, 15000);
+		$("#btn-save").waitUntil(visible, 10000);
+		$("label", 18).waitUntil(visible, 10000);
 		for (int i = 18; i <= 25; i++) {
 			$("label", i).click();
 		}
@@ -1041,19 +1034,17 @@ public class serviceManagement {
 		$(".btn_pop_submit").click();
 		switchTo().window(1);
 		//메일삭제
-		$(".link_mail", 2).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
+		$(By.linkText("받은메일함")).click();
+		$(".select_all").waitUntil(visible, 15000);
+		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
 		$(By.linkText("휴지통")).click();
-		$(".ico_check", 0).waitUntil(visible, 15000);
-		$(".link_page", 0).click();
-		$(".ico_check", 0).click();
-		$(".btn_toolbar", 0).click();
-		sleep(1500);
-		$(".check_type2").click();
-		$(".link_mail", 2).click();
+		$(".select_all").waitUntil(visible, 15000);
+		$(".select_all").click();
+		$(".wrap_bold > .btn_permanent").click();
+		$(".inner_btn > .check_type2").waitUntil(visible, 15000);
+		$(".inner_btn > .check_type2").click();
+		$(By.linkText("받은메일함")).click();
 		switchTo().window(0);
 		refresh();
 		pageLoadCheck = $(".text-dark", 3).text().trim();
