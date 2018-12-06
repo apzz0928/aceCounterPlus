@@ -396,7 +396,7 @@ public class signUp {
 		$(".select_all").waitUntil(visible, 15000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_permanent").click();
-		$(".inner_btn > .check_type2").waitUntil(visible, 15000);
+		sleep(2000);
 		$(".inner_btn > .check_type2").click();
 		$(By.linkText("받은메일함")).click();
 		switchTo().window(0); //원래 탭으로 이동

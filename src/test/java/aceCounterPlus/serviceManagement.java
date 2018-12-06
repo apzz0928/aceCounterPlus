@@ -144,6 +144,30 @@ public class serviceManagement {
 		case "installApply_agree_null":
 			checkMsg = "개인정보 수집 및 이용에 대한 안내를 동의해 주세요.";
 			break;
+		case "memberInfo_change_alert":
+			checkMsg = "회원정보가 수정되었습니다.";
+			break;
+		case "memberInfo_password_null":
+			checkMsg = "비밀번호를 입력하세요.";
+			break;
+		case "memberInfo_now_password_null":
+			checkMsg = "현재 비밀번호를 입력하세요.";
+			break;
+		case "memberInfo_new_password_null":
+			checkMsg = "새 비밀번호를 입력하세요.";
+			break;
+		case "memberInfo_new_password_check":
+			checkMsg = "새 비밀번호 확인이 필요합니다.";
+			break;
+		case "memberInfo_new_password_fail":
+			checkMsg = "새 비밀번호가 일치하지 않습니다.";
+			break;
+		case "memberInfo_change_password_confirm":
+			checkMsg = "비밀번호를 변경 하시겠습니까?";
+			break;
+		case "memberInfo_change_password_check":
+			checkMsg = "비밀번호 변경이 완료되었습니다.";
+			break;
 		case "myCoupon_1_null":
 			checkMsg = "쿠폰번호를 입력해주세요.";
 			break;
@@ -471,14 +495,16 @@ public class serviceManagement {
 		}
 		//메일삭제
 		$(By.linkText("받은메일함")).click();
-		$(".select_all").waitUntil(visible, 15000);
+		sleep(1000);
+		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
 		$(By.linkText("휴지통")).click();
-		$(".select_all").waitUntil(visible, 15000);
+		sleep(1000);
+		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_permanent").click();
-		sleep(1000);
+		sleep(2000);
 		$(".check_type2").click();
 		$(By.linkText("받은메일함")).click();
 		switchTo().window(0);
@@ -563,18 +589,48 @@ public class serviceManagement {
 	@Test(priority = 21)
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
-		$(By.linkText("회원정보")).click();
+		//테스트
+		open("https://new.acecounter.com");
+		$("#uid").setValue("apzz0928888");
+		$("#upw").setValue("qordlf!@34");
+		$(".btn_login").click();
+		open("https://new.acecounter.com/manage/my_member_modify");
+		//테스트
+		//$(By.linkText("회원정보")).click();
 		$("h3", 2).waitUntil(visible, 15000);
 		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("비밀번호 재확인")) {
-			System.out.println(" *** memberInfo Recongirming page load Success !! *** ");
+			System.out.println(" *** memberInfo PW reCheck page load Success !! *** ");
 		} else {
-			System.out.println(" *** memberInfo Recongirming page load Fail ... !@#$%^&*() *** ");			
+			System.out.println(" *** memberInfo PW reCheck load Fail ... !@#$%^&*() *** ");	
+			close();
 		}
+		$("#btn-ok").click();
+		valCheck("memberInfo_password_null");
 		$("#pwd").setValue(pw + A);
 		$("#btn-ok").click();
-		$("h3", 2).waitUntil(visible, 15000);
-		System.out.println(" *** Password change Page access Success !! *** ");
+		$(".text-muted", 0).waitUntil(visible, 15000);
+		pageLoadCheck = $(".text-muted", 0).text().trim();
+		if(pageLoadCheck.equals("apzz0928888")) {
+			System.out.println(" *** memberInfo change Page load Success !! *** ");
+		} else {
+			System.out.println(" *** memberInfo change Page load Fail ... !@#$%^&*() *** ");		
+			close();
+		}
+		$("#modifyProc").click();
+		valCheck("memberInfo_now_password_null");
+		$("#prePwd").setValue(pw + A);
+		$("#modifyProc").click();
+		valCheck("memberInfo_new_password_null");
+		$("#changePwd").setValue(pw + B);
+		$("#modifyProc").click();
+		valCheck("memberInfo_new_password_check");
+		$("#changePwdConfirm").setValue(pw + C);
+		$("#modifyProc").click();
+		valCheck("memberInfo_new_password_fail");
+		$("#prePwd").setValue("");
+		$("#changePwd").setValue("");
+		$("#changePwdConfirm").setValue("");
 		for(int i=1;i<=3;i++) { //이전 사용 비밀번호로 변경 불가해서 3번바꿈
 			if(i==1) {
 				pw = pw + A;
@@ -591,18 +647,8 @@ public class serviceManagement {
 			$("#changePwd").setValue(pw1);
 			$("#changePwdConfirm").setValue(pw1);
 			$("#modifyProc").click();
-			$(".modal-backdrop").waitUntil(visible, 15000);
-			$("#btn-modal-alert-yes").click();
-			$(".modal-backdrop").waitUntil(visible, 15000);
-			String mbn = $(".mbn").text().trim();
-			if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-				System.out.println(" *** Change Password(" + i + ") Success !! *** ");
-				$("#okButton").click();
-				$(".modal-backdrop").waitUntil(hidden, 10000);
-			} else {
-				System.out.println(" *** Change Password(" + i + ") Fail ... !@#$%^&*() *** ");
-				close();
-			}
+			valCheck("memberInfo_change_password_confirm");
+			valCheck("memberInfo_change_password_check");
 			pw = "qordlf";
 			pw1 = "qordlf";
 		}
@@ -614,17 +660,7 @@ public class serviceManagement {
 	    $("#s_hp3").setValue("9743");
 		$("#s_email").setValue("apzz0928@naver.com");
 	    $(".btn-lg", 1).click();
-	    String modalBody = $(".modal-body", 1).text().trim();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		sleep(500);
-	    if(modalBody.equals("회원정보가 수정되었습니다.")) {
-			$(".btn-sm", 5).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-			System.out.println(" *** change memberInfo Success !! *** ");
-		} else {
-			System.out.println(" *** change memberInfo Fail ... !@#$%^&*() *** ");
-			close();
-		}
+	    valCheck("memberInfo_change_alert");
 	    sleep(1000);
 	    $("#s_name").waitUntil(visible, 15000);
 		sleep(500);
@@ -636,15 +672,7 @@ public class serviceManagement {
 	    $("#s_hp3").setValue("0928");
 		$("#s_email").setValue("apzz092888@daum.net");
 	    $(".btn-lg", 1).click();
-	    $(".modal-dialog").waitUntil(visible, 15000);
-		if(modalBody.equals("회원정보가 수정되었습니다.")) {
-			$(".btn-sm", 4).click();
-			$(".modal-backdrop").waitUntil(hidden, 10000);
-			System.out.println(" *** Restoration memberInfo Success !! *** ");
-		} else {
-			System.out.println(" *** Restoration memberInfo Fail ... !@#$%^&*() *** ");
-			close();
-		}
+	    valCheck("memberInfo_change_alert");
 		System.out.println(" ! ----- memberInfo End ----- ! ");
 	}
 
@@ -882,16 +910,19 @@ public class serviceManagement {
 		}
 		//메일삭제
 		$(By.linkText("받은메일함")).click();
-		$(".select_all").waitUntil(visible, 15000);
+		sleep(1000);
+		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
 		$(By.linkText("휴지통")).click();
-		$(".select_all").waitUntil(visible, 15000);
+		sleep(1000);
+		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_permanent").click();
-		sleep(1000);
+		sleep(2000);
 		$(".check_type2").click();
 		$(By.linkText("받은메일함")).click();
+		switchTo().window(0);
 		switchTo().window(0);
 		$("#btn-save").scrollIntoView(false);
 		$(".cross", 1).click();
@@ -1035,16 +1066,19 @@ public class serviceManagement {
 		switchTo().window(1);
 		//메일삭제
 		$(By.linkText("받은메일함")).click();
-		$(".select_all").waitUntil(visible, 15000);
+		sleep(1000);
+		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
 		$(By.linkText("휴지통")).click();
-		$(".select_all").waitUntil(visible, 15000);
+		sleep(1000);
+		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_permanent").click();
-		sleep(1000);
+		sleep(2000);
 		$(".check_type2").click();
 		$(By.linkText("받은메일함")).click();
+		switchTo().window(0);
 		switchTo().window(0);
 		refresh();
 		pageLoadCheck = $(".text-dark", 3).text().trim();
