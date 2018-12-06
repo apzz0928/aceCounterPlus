@@ -589,14 +589,7 @@ public class serviceManagement {
 	@Test(priority = 21)
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
-		//테스트
-		open("https://new.acecounter.com");
-		$("#uid").setValue("apzz0928888");
-		$("#upw").setValue("qordlf!@34");
-		$(".btn_login").click();
-		open("https://new.acecounter.com/manage/my_member_modify");
-		//테스트
-		//$(By.linkText("회원정보")).click();
+		$(By.linkText("회원정보")).click();
 		$("h3", 2).waitUntil(visible, 15000);
 		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("비밀번호 재확인")) {

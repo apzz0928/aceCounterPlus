@@ -389,15 +389,17 @@ public class signUp {
 		temp_pw = $("td", 11).text().trim(); //비번 원복할때 써야해서 전역으로 변경
 		//메일삭제 완전삭제
 		$(By.linkText("받은메일함")).click();
-		$(".select_all").waitUntil(visible, 15000);
+		sleep(1000);
+		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
 		$(By.linkText("휴지통")).click();
-		$(".select_all").waitUntil(visible, 15000);
+		sleep(1000);
+		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_permanent").click();
 		sleep(2000);
-		$(".inner_btn > .check_type2").click();
+		$(".check_type2").click();
 		$(By.linkText("받은메일함")).click();
 		switchTo().window(0); //원래 탭으로 이동
 		open("https://new.acecounter.com/common/front");
