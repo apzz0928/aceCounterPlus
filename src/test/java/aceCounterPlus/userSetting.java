@@ -139,7 +139,11 @@ public class userSetting {
 	            } else {
 		            $$(".btn-info").last().click();
 	            }
-	            $(".modal-backdrop").waitUntil(hidden, 10000);
+	            if(val.equals("userGroupSetting_del_confirm")) {
+	            	// 회원그룹 삭제 confirm만 modal-backdrop로 element 체크시 간헐적 에러나서 체크 제외
+	            } else {
+		            $(".modal-backdrop").waitUntil(hidden, 10000);
+	            }
 	        } else { //confirm 아니면 .btn-sm클릭
 	            System.out.println(" *** " + val +  " - check Success !! *** ");
 	            $$(".btn-sm").last().click();

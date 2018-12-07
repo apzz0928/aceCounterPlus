@@ -27,7 +27,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-public class temporarily_2 {
+public class getInflow {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg, pageLoadCheck;
@@ -109,43 +109,253 @@ public class temporarily_2 {
 	public static void valCheck(String val) {
 		switch (val) {
 		case "scriptList_email_null":
-			checkMsg = "";
+			checkMsg = "수신 이메일을 입력해 주세요.";
 			break;
 		case "scriptList_email_validation":
-			checkMsg = "";
+			checkMsg = "이메일 주소가 올바르지 않습니다.";
 			break;
 		case "scriptList_email_send":
-			checkMsg = "";
+			checkMsg = "설치안내 메일이 발송되었습니다.";
 			break;
 		case "installApply_null":
-			checkMsg = "";
+			checkMsg = "신청할 서비스를 선택해 주세요.";
 			break;
 		case "installApply_name_null":
-			checkMsg = "";
+			checkMsg = "이름을 입력해 주세요.";
 			break;
 		case "installApply_email_null":
-			checkMsg = "";
+			checkMsg = "이메일을 입력해 주세요.";
 			break;
 		case "installApply_email_validation":
-			checkMsg = "";
+			checkMsg = "이메일 형식이 올바르지 않습니다.";
 			break;
 		case "installApply_FTP_null":
-			checkMsg = "";
+			checkMsg = "FTP정보를 입력해 주세요.";
 			break;
 		case "installApply_port_null":
-			checkMsg = "";
+			checkMsg = "포트번호를 입력해 주세요.";
 			break;
 		case "installApply_id_null":
-			checkMsg = "";
+			checkMsg = "아이디를 입력해 주세요.";
 			break;
 		case "installApply_pw_null":
-			checkMsg = "";
+			checkMsg = "비밀번호를 입력해 주세요.";
 			break;
 		case "installApply_agree_null":
-			checkMsg = "";
+			checkMsg = "개인정보 수집 및 이용에 대한 안내를 동의해 주세요.";
 			break;
 		case "memberInfo_change_alert":
+			checkMsg = "회원정보가 수정되었습니다.";
+			break;
+		case "memberInfo_password_null":
+			checkMsg = "비밀번호를 입력하세요.";
+			break;
+		case "memberInfo_now_password_null":
+			checkMsg = "현재 비밀번호를 입력하세요.";
+			break;
+		case "memberInfo_new_password_null":
+			checkMsg = "새 비밀번호를 입력하세요.";
+			break;
+		case "memberInfo_new_password_check":
+			checkMsg = "새 비밀번호 확인이 필요합니다.";
+			break;
+		case "memberInfo_new_password_fail":
+			checkMsg = "새 비밀번호가 일치하지 않습니다.";
+			break;
+		case "memberInfo_change_password_confirm":
+			checkMsg = "비밀번호를 변경 하시겠습니까?";
+			break;
+		case "memberInfo_change_password_check":
+			checkMsg = "비밀번호 변경이 완료되었습니다.";
+			break;
+		case "myCoupon_1_null":
+			checkMsg = "쿠폰번호를 입력해주세요.";
+			break;
+		case "myCoupon_2_null":
+			checkMsg = "쿠폰번호를 입력해주세요.";
+			break;
+		case "myCoupon_3_null":
+			checkMsg = "쿠폰번호를 입력해주세요.";
+			break;
+		case "myCoupon_4_null":
+			checkMsg = "쿠폰번호를 입력해주세요.";
+			break;
+		case "myCoupon_number_check":
+			checkMsg = "쿠폰번호가 맞지 않습니다.\n" + "다시 확인해 주세요.";
+			break;
+		case "editService_modify_check":
+			checkMsg = "변경된 정보가 없습니다.";
+			break;
+		case "addService_siteName_null":
+			checkMsg = "웹사이트 이름을 입력해주세요.";
+			break;
+		case "addService_domain_null":
+			checkMsg = "등록된 도메인이 없습니다.";
+			break;
+		case "addService_domain_validation":
+			checkMsg = "도메인 형식이 올바르지 않습니다.";
+			break;
+		case "addService_domain_duplication":
+			checkMsg = "이미 추가된 도메인입니다.";
+			break;
+		case "addService_siteGroup1_null":
+			checkMsg = "웹사이트 분류를 선택해주세요.";
+			break;
+		case "addService_siteGroup2_null":
+			checkMsg = "웹사이트 분류를 선택해주세요.";
+			break;
+		case "addService_coupon_null":
+			checkMsg = "쿠폰번호가 맞지 않습니다.\n" + "다시 확인해 주세요.";
+			break;
+		case "addIntegralReport_name_null":
+			checkMsg = "통합리포트 이름을 입력해 주세요.";
+			break;
+		case "addIntegralReport_service_null":
+			checkMsg = "2개 이상의 서비스를 선택해 주세요.";
+			break;
+		case "editService_siteName_null":
+			checkMsg = "웹사이트 이름을 입력해주세요.";
+			break;
+		case "editService_domain_null":
+			checkMsg = "등록된 도메인이 없습니다.";
+			break;
+		case "editService_domain_validation":
+			checkMsg = "도메인 형식이 올바르지 않습니다.";
+			break;
+		case "editService_edit_alert":
+			checkMsg = "수정이 완료되었습니다.";
+			break;
+		case "editService_restore_alert":
+			checkMsg = "수정이 완료되었습니다.";
+			break;
+		case "summaryReport_sendEmail_null":
+			checkMsg = "수신 이메일을 추가해 주세요.";
+			break;
+		case "summaryReport_sendEmail_check":
+			checkMsg = "올바른 이메일을 입력하세요.";
+			break;
+		case "summaryReport_sendEmail_send":
+			checkMsg = "요약리포트가 발송되었습니다.";
+			break;
+		case "summaryReport_reserveEmail_null":
+			checkMsg = "수신 이메일을 추가해 주세요.";
+			break;
+		case "summaryReport_reserveEmail_check":
+			checkMsg = "올바른 이메일을 입력하세요.";
+			break;
+		case "summaryReport_reserveEmail_send":
+			checkMsg = "설정하신 내용이 저장되었습니다.\n" + "설정내용은 익일부터 반영됩니다.";
+			break;
+		case "notifyReport_save_confirm!":
+			checkMsg = "선택하신 알림 내용이 없습니다.\n" + "트래픽 알림을 중지 하시겠습니까?";
+			break;
+		case "notifyReport_save_check":
+			checkMsg = "설정하신 내용이 저장되었습니다.\n" + "설정내용은 익일부터 반영됩니다.";
+			break;
+		case "notifyReport_modify_confirm":
+			checkMsg = "선택하신 알림 내용이 없습니다.\n" + "트래픽 알림을 중지 하시겠습니까?";
+			break;
+		case "editS4ervice_restore_alert":
 			checkMsg = "";
+			break;
+		case "editSer5vice_restore_alert":
+			checkMsg = "";
+			break;
+		case "editSer6vice_restore_alert":
+			checkMsg = "";
+			break;
+		case "subManager_name_null":
+			checkMsg = "담당자 이름을 입력해 주세요.";
+			break;
+		case "subManager_email_null":
+			checkMsg = "담당자 이메일을 입력해 주세요.";
+			break;
+		case "subManager_email_check":
+			checkMsg = "이메일 형식이 올바르지 않습니다.";
+			break;
+		case "subManager_service_null":
+			checkMsg = "서비스를 추가해 주세요.";
+			break;
+		case "subManager_email_send":
+			checkMsg = "이메일이 발송되었습니다.\n" + "\n" + "발송된 이메일의 회원가입 링크 유효기간은 총 7일로\n" + "7일 이내 미가입 시 유효기간이 종료됩니다.";
+			break;
+		case "submanager_authority_modify_check":
+			checkMsg = "수정이 완료되었습니다.";
+			break;
+		case "subManager_pw_alert":
+			checkMsg = "비밀번호 변경이 완료되었습니다.";
+			break;
+		case "subManager_delete_confirm":
+			checkMsg = "부관리자 권한을 삭제하시겠습니까?";
+			break;
+		case "subManager_delete_check":
+			checkMsg = "삭제가 완료되었습니다.";
+			break;
+		case "leaveService_service_null":
+			checkMsg = "해지하실 서비스를 선택하여 주세요.";
+			break;
+		case "leaveService_name_null":
+			checkMsg = "이름을 입력해주세요.";
+			break;
+		case "leaveService_number_null":
+			checkMsg = "연락처와 휴대전화번호 중\n" + "하나는 반드시 입력해 주세요";
+			break;
+		case "leaveService_email_null":
+			checkMsg = "이메일을 입력해주세요.";
+			break;
+		case "leaveService_email_check":
+			checkMsg = "이메일 주소가 올바르지 않습니다.";
+			break;
+		case "leaveService_casue_null":
+			checkMsg = "해지사유를 선택해주세요.";
+			break;
+		case "extendCharge_service_null":
+			checkMsg = "서비스를 선택해 주세요.";
+			break;
+		case "extendCharge_name_null":
+			checkMsg = "이름을 입력해 주세요.";
+			break;
+		case "extendCharge_number_null":
+			checkMsg = "연락처와 휴대전화번호 중\n" + "하나는 반드시 입력해 주세요.";
+			break;
+		case "extendCharge_email_null":
+			checkMsg = "이메일을 입력해주세요.";
+			break;
+		case "extendCharge_email_check":
+			checkMsg = "이메일 주소가 올바르지 않습니다.";
+			break;
+		case "additionalCharge_service_null":
+			checkMsg = "서비스를 선택해주세요.";
+			break;
+		case "paymentBill_number_null":
+			checkMsg = "사업자등록번호를 입력해 주세요.";
+			break;
+		case "paymentBill_number_only":
+			checkMsg = "숫자만 입력할 수 있습니다.";
+			break;
+		case "paymentBill_char_only":
+			checkMsg = "문자만 입력할 수 있습니다.";
+			break;
+		case "paymentBill_numberOrchar_only":
+			checkMsg = "숫자 또는 문자만 입력할 수 있습니다.";
+			break;
+		case "paymentBill_company_null":
+			checkMsg = "회사명을 입력해 주세요.";
+			break;
+		case "paymentBill_ceoname_null":
+			checkMsg = "대표자명을 입력해 주세요.";
+			break;
+		case "paymentBill_address_null":
+			checkMsg = "회사주소를 입력해 주세요.";
+			break;
+		case "paymentBill_businessType_null":
+			checkMsg = "업태를 입력해 주세요.";
+			break;
+		case "paymentBill_businessTypeSection_null":
+			checkMsg = "종목을 입력해 주세요.";
+			break;
+		case "paymentBill_check":
+			checkMsg = "저장되었습니다.";
 			break;
 		}
 		$(".modal-backdrop").waitUntil(visible, 10000);
@@ -206,9 +416,9 @@ public class temporarily_2 {
 		executeJavaScript(javaScript);
 	}
 
-	@Test(priority = 0)
-	public void login() {
-		System.out.println(" ! ----- login Start ----- ! ");
+	//@Test(priority = 0)
+	public void serviceManage_main() {
+		System.out.println(" ! ----- serviceManage_main Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 15000);
 		$("#uid").setValue("apzz0928888");
@@ -222,21 +432,16 @@ public class temporarily_2 {
 			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".go_stat").click();
-		$("#top-menu-name").waitUntil(visible, 10000);
-		pageLoadCheck = $("#top-menu-name").text().trim();
-		/*System.out.println(pageLoadCheck);
-		String[] pLC = pageLoadCheck.split("\n");
-		for(int i=0;i<=pLC.length-1;i++) {
-			System.out.println(i + "번 인덱스 값은 : " + pLC[i]);
-		}*/
-		if (pageLoadCheck.equals("Live 대시보드")) {
-			System.out.println(" *** stats getInflow login Success !! *** ");
+		$(".go_setting").click();
+		$(".notokr-bold", 0).waitUntil(visible, 1000);
+		pageLoadCheck = $(".notokr-bold", 0).text().trim();
+		if (pageLoadCheck.equals("서비스 관리")) {
+			System.out.println(" *** serviceManage page load Success !! *** ");
 		} else {
-			System.out.println(" *** stats getInflow login Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** serviceManage page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- login End ----- ! ");
+		System.out.println(" ! ----- serviceManage_main End ----- ! ");
 	}
 
 	//@Test(priority = 1)
@@ -322,6 +527,7 @@ public class temporarily_2 {
 		// $(".text-danger", 0).waitUntil(hidden, 10000);
 		System.out.println(" ! ----- scriptList End ----- ! ");
 	}
+
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();

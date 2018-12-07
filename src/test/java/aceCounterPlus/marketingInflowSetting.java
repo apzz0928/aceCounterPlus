@@ -252,27 +252,55 @@ public class marketingInflowSetting {
 		System.out.println(" ! ----- mktInflowSetting_add End ----- ! ");
 	}
 	@Test(priority = 2)
-	public void mktInflowSetting_del() {
-		System.out.println(" ! ----- mktInflowSetting_del Start ----- ! ");
+	public void mktInflowSetting_searchAndDel() {
+		System.out.println(" ! ----- mktInflowSetting_searchAndDel Start ----- ! ");
+		$(".br-l-n").setValue("99999");
+		$("#searchBtn").click();
+		$("td", 1).waitUntil(hidden, 10000);
+		$("td", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 0).text().trim();
+		String[] pLC = pageLoadCheck.split(" ");
+		if(pLC[3].equals("않습니다.")) {
+			System.out.println(" *** mktInflowSetting_del no search result Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** mktInflowSetting_del no search result Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".br-l-n").setValue(date);
+		$("#searchBtn").click();
+		$("td", 0).waitUntil(hidden, 10000);
+		$("td", 1).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 5).text().trim();
+		pLC = pageLoadCheck.split("apzz");
+		if(pLC[1].equals(date)) {
+			System.out.println(" *** mktInflowSetting_del search result Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** mktInflowSetting_del search result Fail ... !@#$%^&*() *** ");
+			close();
+		}
 		$("#deleteViewBtn").click();
 		$("#deleteBtn").waitUntil(visible, 10000);
 		$("#deleteBtn").click();
 		valCheck(3, 4, "mktInflowSetting_del_null");
-		$("#checkAllCamp").click();
+		$(".clsDelbox", 0).click();
 		$("#deleteBtn").click();
 		valCheck(4, 5, "mktInflowSetting_del_confirm");
 		valCheck(5, 7, "mktInflowSetting_del_alert");
 		$(".no-records-found").waitUntil(visible, 10000);
 		pageLoadCheck = $(".no-records-found").text();
-		if(pageLoadCheck.equals("마케팅 유입설정이 존재하지 않습니다.")) {
+		pLC = pageLoadCheck.split(" ");
+		if(pLC[3].equals("않습니다.")) {
 			System.out.println(" *** mktInflowSetting_del del Success !! *** ");
+			pLC = null;
 		} else {
 			System.out.println(" *** mktInflowSetting_del del Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- mktInflowSetting_del End ----- ! ");
+		System.out.println(" ! ----- mktInflowSetting_searchAndDel End ----- ! ");
 	}
-	@Test(priority = 11)
+	//@Test(priority = 11)
 	public void advertisingCodeDownload() {
 		System.out.println(" ! ----- advertisingCodeDownload Start ----- ! ");
 		$("#inflowMrkCodeDown").waitUntil(visible, 10000);
@@ -290,7 +318,7 @@ public class marketingInflowSetting {
 		}
 		System.out.println(" ! ----- advertisingCodeDownload End ----- ! ");
 	}
-	@Test(priority = 12)
+	//@Test(priority = 12)
 	public void advertisingProductManage_add() {
 		System.out.println(" ! ----- advertisingProductManage_add Start ----- ! ");
 		sleep(1000);
@@ -329,7 +357,7 @@ public class marketingInflowSetting {
 		}
 		System.out.println(" ! ----- advertisingProductManage_add End ----- ! ");
 	}
-	@Test(priority = 13)
+	//@Test(priority = 13)
 	public void advertisingProductManage_del() {
 		System.out.println(" ! ----- advertisingProductManage_del Start ----- ! ");
 		$("#deleteViewBtn").click();

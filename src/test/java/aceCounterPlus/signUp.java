@@ -96,22 +96,12 @@ public class signUp {
 	
 	public static void valCheck(String val) {
         switch(val){
-            case "reportDownload_oneshotAdd_reportCheck_null": checkMsg = "리포트를 선택하세요.";
-            break;
-            case "reportDownload_oneshotAdd_register": checkMsg = "리포트를 생성하였습니다.";
-            break;
-            case "reportDownload_oneshotDel_confirm": checkMsg = "선택하신 일회성 리포트 설정을 삭제하시겠습니까?";
-            break;            
-            case "reportDownload_oneshotDel_alert": checkMsg = "설정 내역이 삭제되었습니다.";
-            break;
-			case "myMenu_add_menu_null": checkMsg = "통계를 선택하세요.";
-			break;
-			case "myMenu_add_menu_duplication": checkMsg = "이미 추가한 통계입니다.";
-			break;
-			case "myMenu_add_menu_max": checkMsg = "최대 20개까지 등록할 수 있습니다.";
-			break;
-			case "myMenu_save": checkMsg = "저장이 완료되었습니다.";
-			break;
+            case "restorationPassword_change_password_confirm": 
+            	checkMsg = "비밀번호를 변경 하시겠습니까?";
+            	break;
+            case "restorationPassword_change_password_check": 
+            	checkMsg = "비밀번호 변경이 완료되었습니다.";
+            	break;
         }
 		$(".modal-backdrop").waitUntil(visible, 10000);
 		$$("p").last().click();
@@ -447,18 +437,8 @@ public class signUp {
 			$("#changePwd").setValue(pw1);
 			$("#changePwdConfirm").setValue(pw1);
 			$("#modifyProc").click();
-			$(".modal-backdrop").waitUntil(visible, 15000);
-			$("#btn-modal-alert-yes").click();
-			$(".modal-backdrop").waitUntil(visible, 15000);
-			String mbn = $(".mbn").text();
-			if(mbn.equals("비밀번호 변경이 완료되었습니다.")) {
-				System.out.println(" *** restoration Password(" + i + ") Success !! *** ");
-				$("#okButton").click();
-				$(".modal-backdrop").waitUntil(hidden, 10000);
-			} else {
-				System.out.println(" *** restoration Password(" + i + ") Fail ... !@#$%^&*() *** ");
-				close();
-			}
+			valCheck("restorationPassword_change_password_confirm"); 
+			valCheck("restorationPassword_change_password_check");
 			pw = "qordlf";
 			pw1 = "qordlf";
 		}
