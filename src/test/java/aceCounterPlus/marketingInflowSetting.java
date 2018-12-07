@@ -288,7 +288,7 @@ public class marketingInflowSetting {
 			System.out.println(" *** mktInflowSetting_del search result Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".br-l-n").setValue("");
+		$(".br-l-n").setValue(date);
 		$("#searchBtn").click();
 		$("td", 0).waitUntil(hidden, 10000);
 		$("td", 1).waitUntil(visible, 10000);
@@ -308,10 +308,8 @@ public class marketingInflowSetting {
 		$(".clsDelbox", 0).click();
 		$("#deleteBtn").click();
 		valCheck("mktInflowSetting_del_confirm");
-		sleep(3000);
 		valCheck("mktInflowSetting_del_alert");
-		sleep(3000);
-		refresh();
+		confirm("현재 페이지를 표시하려면, Firefox가 이전에 수행했던 정보가 필요합니다. 이전에 수행했던 작업(검색 혹은 입력 양식 제출)을 다시 반복 합니다.");
 		$("td", 1).waitUntil(hidden, 10000);
 		$("td", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 0).text().trim();
