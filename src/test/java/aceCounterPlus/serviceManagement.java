@@ -642,6 +642,7 @@ public class serviceManagement {
 			$("#modifyProc").click();
 			valCheck("memberInfo_change_password_confirm");
 			valCheck("memberInfo_change_password_check");
+			System.out.println("i is : " + i + "********");
 			pw = "qordlf";
 			pw1 = "qordlf";
 		}

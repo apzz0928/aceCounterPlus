@@ -6,7 +6,7 @@
   <classes>
 <!-- 	<class name="aceCounterPlus.backOffice"/> -->
 <!-- <class name="aceCounterPlus.temporarily"/> -->
-<!-- <class name="aceCounterPlus.temporarily_2"/> -->
+<class name="aceCounterPlus.temporarily_2"/>
 <!-- <class name="aceCounterPlus.inhouseMarketingSetting"/> -->
 <!-- <class name="aceCounterPlus.testScript"/> -->
 <!-- <class name="aceCounterPlus.changePassword"/> -->
@@ -19,7 +19,7 @@
 <!-- <class name="aceCounterPlus.userSetting"/> -->
 <!-- <class name="aceCounterPlus.commercePrice"/> -->
 <!-- <class name="aceCounterPlus.contentSetting"/> -->
-<class name="aceCounterPlus.marketingInflowSetting"/>
+<!-- <class name="aceCounterPlus.marketingInflowSetting"/> -->
 <!-- <class name="aceCounterPlus.serviceManagement"/> -->
   </classes>
   </test> <!-- Test -->

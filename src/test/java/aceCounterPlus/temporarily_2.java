@@ -30,7 +30,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class temporarily_2 {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg, pageLoadCheck;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg, pageLoadCheck, dateCheck;
 	private static HttpURLConnection huc;
 	private static int respCode;
 
@@ -225,11 +225,6 @@ public class temporarily_2 {
 		$(".go_stat").click();
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
-		/*System.out.println(pageLoadCheck);
-		String[] pLC = pageLoadCheck.split("\n");
-		for(int i=0;i<=pLC.length-1;i++) {
-			System.out.println(i + "번 인덱스 값은 : " + pLC[i]);
-		}*/
 		if (pageLoadCheck.equals("Live 대시보드")) {
 			System.out.println(" *** stats getInflow login Success !! *** ");
 		} else {
@@ -239,88 +234,71 @@ public class temporarily_2 {
 		System.out.println(" ! ----- login End ----- ! ");
 	}
 
-	//@Test(priority = 1)
-	public void scriptList() {
-		System.out.println(" ! ----- scriptList Start ----- ! ");
-		$(By.linkText("분석스크립트")).click();
-		$("#items").waitUntil(visible, 15000);
-		$(".br-dark").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		pageLoadCheck = $(".modal-title").text().trim();
-		if (pageLoadCheck.equals("분석스크립트 메일발송")) {
-			System.out.println(" *** scriptList layerPopup load Success !! *** ");
+	@Test(priority = 1)
+	public void getInflowSummary() {
+		System.out.println(" ! ----- getInflowSummary Start ----- ! ");
+		$("#uip").click();
+		$(By.linkText("유입출처")).waitUntil(visible, 10000);
+		$(By.linkText("유입출처")).click();
+		$("#top-menu-name").waitUntil(visible, 10000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		/*System.out.println(pageLoadCheck);
+		String[] pLC = pageLoadCheck.split("\n");
+		for(int i=0;i<=pLC.length-1;i++) {
+			System.out.println(i + "번 인덱스 값은 : " + pLC[i] + ".");
+		}*/
+		if (pageLoadCheck.equals("유입출처")) {
+			System.out.println(" *** getInflowSummary page load Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList layerPopup load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** getInflowSummary page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".btn-dark", 1).click();
-		valCheck("scriptList_email_null");
-		$("#mail_to").setValue(date);
-		$(".btn-dark", 1).click();
-		valCheck("scriptList_email_validation");
-		$("#mail_to").setValue("apzz092888@daum.net");
-		$(".btn-dark", 1).click();
-		$(".btn-dark", 1).waitUntil(hidden, 10000);
-		valCheck("scriptList_email_send");
-		js("window.open('https://logins.daum.net/accounts/loginform.do?url=https%3A%2F%2Fmail.daum.net%2F');");
-		//다음메일 탭으로 포커스 변경
-		switchTo().window(1);
-		$("#id").setValue("apzz092888");
-		$("#inputPwd").setValue(pw + A);
-		$("#loginBtn").click();
-		$(".link_check").waitUntil(visible, 15000);
-		sleep(1000);
+		sleep(20000);
+		$("#daterangepicker2").click();
+		$(".month", 0).waitUntil(visible, 10000);
+		//날짜선택
+		dateCheck = $(".month", 1).text().trim(); //1번째 달력 월 확인
+		
+		for(int i=1;i>=0;i--) {
+			if(i==0) {
+				System.out.println("start calender date selecting..");	
+			} else {
+				System.out.println("end calender date selecting..");				
+				dateCheck = $(".month", 0).text().trim(); //2번째 달력 월 확인
+			}
+			for(int x=0;x<=100;x++) { //2018.12가 될때까지 >> 클릭
+				if(dateCheck.equals("2018.12")) {
+					$("td[data-title=r1c1]", i).click(); //3일 선택
+					break;
+				} else {
+					System.out.println("no"+ (i+1) + ". calender month is  : " + dateCheck + " // need nextBtn(" + x + ") click");
+					$(".next", i).click();
+					dateCheck = $(".month", i).text().trim();
+				}
+			}
+			if(i==0) {
+				System.out.println("start calender date select!");	
+			} else {
+				System.out.println("end calender date select!");				
+			}
+		}
+		$(".btn-apply").click();
 		refresh();
-		pageLoadCheck = $("h1").text().trim();
-		if (pageLoadCheck.equals("Daum\n" + "메일")) {
-			System.out.println(" *** scriptList daum mail list page load Success !! *** ");
+		dateCheck = $("#compareTermText").text();
+		String[] pLC = dateCheck.split(" ");
+		if (pLC[0].equals("2018.12.02") && pLC[2].equals("2018.12.02")) {
+			System.out.println(" *** getInflowSummary date range pick Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList daum mail list page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** getInflowSummary date range pick Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".tit_subject", 0).waitUntil(visible, 15000);
-		$(".tit_subject", 0).click();
-		$(".txt_filename").waitUntil(visible, 15000);
-		pageLoadCheck = $(".txt_filename").text().trim();
-		if (pageLoadCheck.equals("script(ap0420121150.com).zip")) {
-			System.out.println(" *** scriptList send mail fileName check Success !! *** ");
-		} else {
-			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		//메일삭제
-		$(By.linkText("받은메일함")).click();
-		$(".select_all").waitUntil(visible, 15000);
-		$(".select_all").click();
-		$(".wrap_bold > .btn_del", 0).click();
-		$(By.linkText("휴지통")).click();
-		$(".select_all").waitUntil(visible, 15000);
-		$(".select_all").click();
-		$(".wrap_bold > .btn_permanent").click();
-		sleep(2000);
-		$(".check_type2").click();
-		$(By.linkText("받은메일함")).click();
-		switchTo().window(0);
-		pageLoadCheck = $("#scriptList").text().trim();
-		if (pageLoadCheck.equals("분석스크립트")) {
-			System.out.println(" *** scriptList aceCounter+ page load Success !! *** ");
-		} else {
-			System.out.println(" *** scriptList aceCounter+ page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#scroll_target_121331").waitUntil(visible, 15000);
-		$("#scroll_target_121331").click();
-		$(".text-danger", 0).waitUntil(visible, 15000);
-		pageLoadCheck = $(".text-danger", 0).text().trim();
-		if (pageLoadCheck.equals("데이터 수집/분석중지")) {
-			System.out.println(" *** scriptList detailView check Success !! *** ");
-		} else {
-			System.out.println(" *** scriptList detailView check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#scroll_target_121331").click();
-		// $(".text-danger", 0).waitUntil(hidden, 10000);
-		System.out.println(" ! ----- scriptList End ----- ! ");
+		sleep(100000);
+		
+		
+		
+		
+		
+		System.out.println(" ! ----- getInflowSummary End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {
