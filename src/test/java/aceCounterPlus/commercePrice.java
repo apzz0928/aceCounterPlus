@@ -401,7 +401,7 @@ public class commercePrice {
 	@Test(priority = 11)
 	public void commerce_currencyUnit() { //페이지로딩20초 문제 개선될때까지 통화단위만 체크
 		System.out.println(" ! ----- commerce_currencyUnit Start ----- ! ");
-		sleep(1000);
+		$(By.linkText("통화 단위")).waitUntil(visible, 10000);
 		$(By.linkText("통화 단위")).click();
 		sleep(25000);
 		String	pageLoadCheck = $("td", 2).text();

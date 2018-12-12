@@ -307,6 +307,7 @@ public class userSetting {
 	}
 	@Test(priority = 11)
 	public void userGroupSetting_add() {
+		$(By.linkText("회원그룹설정")).waitUntil(visible, 10000);
 		$(By.linkText("회원그룹설정")).click();
 		$("h5", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $("h5", 1).text();

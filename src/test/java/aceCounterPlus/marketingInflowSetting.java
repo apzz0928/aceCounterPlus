@@ -109,7 +109,7 @@ public class marketingInflowSetting {
 	      break;
 	      case "mktInflowSetting_del_null": checkMsg = "삭제할 마케팅 유입 설정을 선택하세요.";
 	      break;
-	      case "mktInflowSetting_del_confirm": checkMsg = "선택한 마케팅 유입 설정을 삭제하시겠습니까?\n" + "마케팅 유입설정 변수에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.\n" + "(삭제한 캠페인명과 동일한 캠페인명은 추가 불가합니다.)";
+	      case "mktInflowSetting_del_confirm": checkMsg = "선택한 마케팅 유입 설정을 삭제하시겠습니까?\n" + "삭제 후 복구가 불가능합니다.\n" + "(삭제한 캠페인명과 동일한 캠페인명은 추가 불가합니다.)";
 	      break;
 	      case "mktInflowSetting_del_alert": checkMsg = "마케팅 유입 설정 삭제가 완료되었습니다.";
 	      break;

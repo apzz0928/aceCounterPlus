@@ -116,7 +116,7 @@ public class inhouseMarketingSetting {
             break;
             case "viralSetting_del_null": checkMsg = "삭제할 바이럴 설정을 선택하세요.";
             break;
-            case "viralSetting_del_confirm": checkMsg = "선택한 바이럴 설정을 삭제하시겠습니까?\n" + "바이럴 설정에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+            case "viralSetting_del_confirm": checkMsg = "선택한 바이럴 설정을 삭제하시겠습니까?\n" + "삭제 후 복구가 불가능합니다.\n" + "(삭제한 캠페인명과 동일한 캠페인명은 추가 불가합니다.)";
             break;
             case "viralSetting_del_alert": checkMsg = "바이럴 설정 삭제가 완료되었습니다.";
             break;
@@ -140,7 +140,7 @@ public class inhouseMarketingSetting {
             break;
             case "emailSetting_del_null": checkMsg = "삭제할 이메일 설정을 선택하세요.";
             break;
-            case "emailSetting_del_confirm": checkMsg = "선택한 이메일 설정을 삭제하시겠습니까?\n" + "이메일 설정에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+            case "emailSetting_del_confirm": checkMsg = "선택한 이메일 설정을 삭제하시겠습니까?\n" + "삭제 후 복구가 불가능합니다.\n" + "(삭제한 캠페인명과 동일한 캠페인명은 추가 불가합니다.)";
             break;
             case "emailSetting_del_alert": checkMsg = "이메일 설정 삭제가 완료되었습니다.";
             break;
@@ -170,7 +170,7 @@ public class inhouseMarketingSetting {
             break;
             case "talkSetting_del_null": checkMsg = "삭제할 TALK 설정을 선택하세요.";
             break;
-            case "talkSetting_del_confirm": checkMsg = "선택한 TALK 설정을 삭제하시겠습니까?\n" + "TALK 설정에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+            case "talkSetting_del_confirm": checkMsg = "선택한 TALK 설정을 삭제하시겠습니까?\n" + "삭제 후 복구가 불가능합니다.\n" + "(삭제한 캠페인명과 동일한 캠페인명은 추가 불가합니다.)";
             break;
             case "talkSetting_del_alert": checkMsg = "TALK 설정 삭제가 완료되었습니다.";
             break;
@@ -416,6 +416,7 @@ public class inhouseMarketingSetting {
 	@Test(priority = 11)
 	public void emailSetting_add() {
 		System.out.println(" ! ----- emailSetting_add Start ----- ! ");
+		$(By.linkText("이메일 설정")).waitUntil(visible, 10000);
 		$(By.linkText("이메일 설정")).click();
 		$("td", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 2).text();
@@ -567,6 +568,7 @@ public class inhouseMarketingSetting {
 	@Test(priority = 21)
 	public void talkSetting_add() {
 		System.out.println(" ! ----- talkSetting_add Start ----- ! ");
+		$(By.linkText("Talk 설정")).waitUntil(visible, 10000);
 		$(By.linkText("Talk 설정")).click();
 		$("td", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 2).text();

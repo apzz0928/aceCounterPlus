@@ -447,6 +447,7 @@ public class serviceManagement {
 	@Test(priority = 1)
 	public void scriptList() {
 		System.out.println(" ! ----- scriptList Start ----- ! ");
+		$(By.linkText("분석스크립트")).waitUntil(visible, 10000);
 		$(By.linkText("분석스크립트")).click();
 		$("#items").waitUntil(visible, 15000);
 		$(".br-dark").click();
@@ -533,6 +534,7 @@ public class serviceManagement {
 	@Test(priority = 11)
 	public void installApply() {
 		System.out.println(" ! ----- installApply Start ----- ! ");
+		$(By.linkText("분석스크립트 설치신청")).waitUntil(visible, 10000);
 		$(By.linkText("분석스크립트 설치신청")).click();
 		pageLoadCheck = $(".panel-title", 0).text().trim();
 		if (pageLoadCheck.equals("1서비스 선택")) {
@@ -589,6 +591,7 @@ public class serviceManagement {
 	@Test(priority = 21)
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
+		$(By.linkText("회원정보")).waitUntil(visible, 10000);
 		$(By.linkText("회원정보")).click();
 		$("h3", 2).waitUntil(visible, 15000);
 		pageLoadCheck = $("h3", 2).text().trim();
@@ -672,7 +675,7 @@ public class serviceManagement {
 	@Test(priority = 31)
 	public void myCoupon() {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
-		sleep(1000);
+		$(By.linkText("쿠폰관리")).waitUntil(visible, 10000);
 		$(By.linkText("쿠폰관리")).click();
 		$("#btn-save").waitUntil(visible, 15000);
 		pageLoadCheck = $("#btn-save").text().trim();
@@ -705,6 +708,7 @@ public class serviceManagement {
 	@Test(priority = 41)
 	public void addService() {
 		System.out.println(" ! ----- addService Start ----- ! ");
+		$(By.linkText("서비스추가")).waitUntil(visible, 10000);
 		$(By.linkText("서비스추가")).click();
 		$("#btn_submit").waitUntil(visible, 15000);
 		pageLoadCheck = $("#btn_submit").text().trim();
@@ -771,6 +775,7 @@ public class serviceManagement {
 	@Test(priority = 61)
 	public void addIntegralReport() {
 		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
+		$(By.linkText("통합리포트 생성")).waitUntil(visible, 10000);
 		$(By.linkText("통합리포트 생성")).click();
 		$(".nano-content", 2).waitUntil(visible, 15000);
 		pageLoadCheck = $(".nano-content", 2).text().trim();
@@ -794,6 +799,7 @@ public class serviceManagement {
 	@Test(priority = 71)
 	public void editService() {
 		System.out.println(" ! ----- editService Start ----- ! ");
+		$(By.linkText("정보수정")).waitUntil(visible, 10000);
 		$(By.linkText("정보수정")).click();
 		$("#svc_nm_title_1").waitUntil(visible, 15000);
 		pageLoadCheck = $(".btn-info", 0).text().trim();
@@ -853,6 +859,7 @@ public class serviceManagement {
 	@Test(priority = 72)
 	public void changeService() { //페이지 로딩만 체크
 		System.out.println(" ! ----- changeService Start ----- ! ");
+		$(By.linkText("서비스변경")).waitUntil(visible, 10000);
 		$(By.linkText("서비스변경")).click();
 		$("#wrapper_step1").waitUntil(visible, 15000);
 		pageLoadCheck = $(".active", 1).text().trim();
@@ -868,6 +875,7 @@ public class serviceManagement {
 	@Test(priority = 81)
 	public void summaryReport() {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
+		$(By.linkText("발송메일 설정")).waitUntil(visible, 10000);
 		$(By.linkText("발송메일 설정")).click();
 		$("#btn-sendMail").waitUntil(visible, 15000);
 		$(".cross", 0).click();
@@ -949,6 +957,7 @@ public class serviceManagement {
 	@Test(priority = 82)
 	public void notifyReport() {
 		System.out.println(" ! ----- notifyReport Start ----- ! ");
+		$(By.linkText("알림메일 발송")).waitUntil(visible, 10000);
 		$(By.linkText("알림메일 발송")).click();
 		$("#btn-save").waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 1).text().trim();
@@ -1124,6 +1133,7 @@ public class serviceManagement {
 	@Test(priority = 101)
 	public void leaveService() {
 		System.out.println(" ! ----- leaveService Start ----- ! ");
+		$(By.linkText("서비스 해지")).waitUntil(visible, 10000);
 		$(By.linkText("서비스 해지")).click();
 		$(".notokr-bold", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".notokr-bold", 0).text().trim();
@@ -1206,6 +1216,7 @@ public class serviceManagement {
 	@Test(priority = 111)
 	public void extendCharge() {
 		System.out.println(" ! ----- extendCharge Start ----- ! ");
+		$(By.linkText("연장요금")).waitUntil(visible, 10000);
 		$(By.linkText("연장요금")).click();
 		$("#btn_step1_next").waitUntil(visible, 10000);
 		pageLoadCheck = $("#headingStep1.panel-heading.active").text().trim();
@@ -1366,6 +1377,7 @@ public class serviceManagement {
 	@Test(priority = 121)
 	public void additionalCharge() {
 		System.out.println(" ! ----- additionalCharge Start ----- ! ");
+		$(By.linkText("추가요금")).waitUntil(visible, 10000);
 		$(By.linkText("추가요금")).click();
 		$("#btn-next-step").waitUntil(visible, 10000);
 		pageLoadCheck = $("td").text().trim();
@@ -1384,6 +1396,7 @@ public class serviceManagement {
 	@Test(priority = 131)
 	public void paymentHistory() {
 		System.out.println(" ! ----- paymentHistory Start ----- ! ");
+		$(By.linkText("결제내역조회")).waitUntil(visible, 10000);
 		$(By.linkText("결제내역조회")).click();
 		$("#topbar").waitUntil(visible, 10000);
 		pageLoadCheck = $("#topbar").text().trim();
@@ -1416,6 +1429,7 @@ public class serviceManagement {
 	@Test(priority = 141)
 	public void paymentBill() {
 		System.out.println(" ! ----- paymentBill Start ----- ! ");
+		$(By.linkText("계산서")).waitUntil(visible, 10000);
 		$(By.linkText("계산서")).click();
 		$("#topbar").waitUntil(visible, 10000);
 		pageLoadCheck = $("#topbar").text().trim();
@@ -1502,6 +1516,7 @@ public class serviceManagement {
 	@Test(priority = 151)
 	public void myNoticeList() {
 		System.out.println(" ! ----- myNoticeList Start ----- ! ");
+		$(By.linkText("서비스 공지사항")).waitUntil(visible, 10000);
 		$(By.linkText("서비스 공지사항")).click();
 		$("#btn-search").waitUntil(visible, 10000);
 		pageLoadCheck = $(".notokr-bold").text().trim();
@@ -1533,6 +1548,7 @@ public class serviceManagement {
 		}
 		$("#list").click();
 		$("#btn-search").waitUntil(visible, 10000);
+		$(By.linkText("개선안내")).waitUntil(visible, 10000);
 		$(By.linkText("개선안내")).click();
 		$("#btn-search").waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 1).text().trim();
@@ -1569,6 +1585,7 @@ public class serviceManagement {
 	@Test(priority = 161)
 	public void myAllimList() {
 		System.out.println(" ! ----- myAllimList Start ----- ! ");
+		$(By.linkText("서비스 알림내역")).waitUntil(visible, 10000);
 		$(By.linkText("서비스 알림내역")).click();
 		pageLoadCheck = $(".notokr-bold").text().trim();
 		if(pageLoadCheck.equals("서비스 알림내역")) {
@@ -1598,6 +1615,7 @@ public class serviceManagement {
 			System.out.println(" *** myAllimList detailView check Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		$(By.linkText("모니터링내역")).waitUntil(visible, 10000);
 		$(By.linkText("모니터링내역")).click();
 		pageLoadCheck = $(".active", 1).text().trim();
 		if(pageLoadCheck.equals("모니터링내역")) {

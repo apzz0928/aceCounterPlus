@@ -168,7 +168,7 @@ public class contentSetting {
             break;
             case "innerBanner_del_null": checkMsg = "삭제할 내부배너 설정을 선택하세요.";
             break;
-            case "innerBanner_del_confirm": checkMsg = "선택한 내부배너 설정을 삭제하시겠습니까?\n" + "내부배너 설정에 대해 수집/분석이 중지되며,\n" + "삭제 후 복구가 불가능합니다.";
+            case "innerBanner_del_confirm": checkMsg = "선택한 내부배너 설정을 삭제하시겠습니까?\n" + "삭제 후 복구가 불가능합니다.\n" + "(삭제한 캠페인명과 동일한 캠페인명은 추가 불가합니다.)";
             break;
             case "innerBanner_del_alert": checkMsg = "내부배너 설정 삭제가 완료되었습니다.";
             break;
@@ -579,6 +579,7 @@ public class contentSetting {
 	@Test(priority = 11)
 	public void pageGroupSetting_menuAddDel() {
 		System.out.println(" ! ----- pageGroupSetting_menuAddDel Start ----- ! ");
+		$(By.linkText("페이지그룹 설정")).waitUntil(visible, 10000);
 	    $(By.linkText("페이지그룹 설정")).click();
 	    $("#btn-tree-add").waitUntil(visible, 10000);
 		pageLoadCheck = $("#btn-tree-add").text().trim();
@@ -679,6 +680,7 @@ public class contentSetting {
 	@Test(priority = 21)
 	public void innerBanner_add() {
 		System.out.println(" ! ----- innerBanner_add Start ----- ! ");
+		$(By.linkText("내부배너 설정")).waitUntil(visible, 10000);
 	    $(By.linkText("내부배너 설정")).click();
 	    $(".btn-info", 0).waitUntil(visible, 10000);
 	    pageLoadCheck = $(".btn-info", 0).text().trim();
@@ -817,6 +819,7 @@ public class contentSetting {
 	@Test(priority = 31)
 	public void fileDownload_add() {
 		System.out.println(" ! ----- fileDownload_add Start ----- ! ");
+		$(By.linkText("파일다운로드")).waitUntil(visible, 10000);
 	    $(By.linkText("파일다운로드")).click();
 	    $(".col-xs-9").waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 3).text().trim();
@@ -939,6 +942,7 @@ public class contentSetting {
 	@Test(priority = 41)
 	public void outLinkBanner_add() {
 		System.out.println(" ! ----- outLinkBanner_add Start ----- ! ");
+		$(By.linkText("아웃링크 배너")).waitUntil(visible, 10000);
 	    $(By.linkText("아웃링크 배너")).click();
 	    $("td", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 2).text().trim();
