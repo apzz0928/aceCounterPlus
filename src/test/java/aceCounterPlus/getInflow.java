@@ -30,7 +30,7 @@ import com.codeborne.selenide.testng.ScreenShooter;
 public class getInflow {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg, pageLoadCheck;
+	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg, pageLoadCheck, dateCheck;
 	private static HttpURLConnection huc;
 	private static int respCode;
 
@@ -109,253 +109,43 @@ public class getInflow {
 	public static void valCheck(String val) {
 		switch (val) {
 		case "scriptList_email_null":
-			checkMsg = "수신 이메일을 입력해 주세요.";
+			checkMsg = "";
 			break;
 		case "scriptList_email_validation":
-			checkMsg = "이메일 주소가 올바르지 않습니다.";
+			checkMsg = "";
 			break;
 		case "scriptList_email_send":
-			checkMsg = "설치안내 메일이 발송되었습니다.";
+			checkMsg = "";
 			break;
 		case "installApply_null":
-			checkMsg = "신청할 서비스를 선택해 주세요.";
+			checkMsg = "";
 			break;
 		case "installApply_name_null":
-			checkMsg = "이름을 입력해 주세요.";
+			checkMsg = "";
 			break;
 		case "installApply_email_null":
-			checkMsg = "이메일을 입력해 주세요.";
+			checkMsg = "";
 			break;
 		case "installApply_email_validation":
-			checkMsg = "이메일 형식이 올바르지 않습니다.";
+			checkMsg = "";
 			break;
 		case "installApply_FTP_null":
-			checkMsg = "FTP정보를 입력해 주세요.";
+			checkMsg = "";
 			break;
 		case "installApply_port_null":
-			checkMsg = "포트번호를 입력해 주세요.";
+			checkMsg = "";
 			break;
 		case "installApply_id_null":
-			checkMsg = "아이디를 입력해 주세요.";
+			checkMsg = "";
 			break;
 		case "installApply_pw_null":
-			checkMsg = "비밀번호를 입력해 주세요.";
+			checkMsg = "";
 			break;
 		case "installApply_agree_null":
-			checkMsg = "개인정보 수집 및 이용에 대한 안내를 동의해 주세요.";
+			checkMsg = "";
 			break;
 		case "memberInfo_change_alert":
-			checkMsg = "회원정보가 수정되었습니다.";
-			break;
-		case "memberInfo_password_null":
-			checkMsg = "비밀번호를 입력하세요.";
-			break;
-		case "memberInfo_now_password_null":
-			checkMsg = "현재 비밀번호를 입력하세요.";
-			break;
-		case "memberInfo_new_password_null":
-			checkMsg = "새 비밀번호를 입력하세요.";
-			break;
-		case "memberInfo_new_password_check":
-			checkMsg = "새 비밀번호 확인이 필요합니다.";
-			break;
-		case "memberInfo_new_password_fail":
-			checkMsg = "새 비밀번호가 일치하지 않습니다.";
-			break;
-		case "memberInfo_change_password_confirm":
-			checkMsg = "비밀번호를 변경 하시겠습니까?";
-			break;
-		case "memberInfo_change_password_check":
-			checkMsg = "비밀번호 변경이 완료되었습니다.";
-			break;
-		case "myCoupon_1_null":
-			checkMsg = "쿠폰번호를 입력해주세요.";
-			break;
-		case "myCoupon_2_null":
-			checkMsg = "쿠폰번호를 입력해주세요.";
-			break;
-		case "myCoupon_3_null":
-			checkMsg = "쿠폰번호를 입력해주세요.";
-			break;
-		case "myCoupon_4_null":
-			checkMsg = "쿠폰번호를 입력해주세요.";
-			break;
-		case "myCoupon_number_check":
-			checkMsg = "쿠폰번호가 맞지 않습니다.\n" + "다시 확인해 주세요.";
-			break;
-		case "editService_modify_check":
-			checkMsg = "변경된 정보가 없습니다.";
-			break;
-		case "addService_siteName_null":
-			checkMsg = "웹사이트 이름을 입력해주세요.";
-			break;
-		case "addService_domain_null":
-			checkMsg = "등록된 도메인이 없습니다.";
-			break;
-		case "addService_domain_validation":
-			checkMsg = "도메인 형식이 올바르지 않습니다.";
-			break;
-		case "addService_domain_duplication":
-			checkMsg = "이미 추가된 도메인입니다.";
-			break;
-		case "addService_siteGroup1_null":
-			checkMsg = "웹사이트 분류를 선택해주세요.";
-			break;
-		case "addService_siteGroup2_null":
-			checkMsg = "웹사이트 분류를 선택해주세요.";
-			break;
-		case "addService_coupon_null":
-			checkMsg = "쿠폰번호가 맞지 않습니다.\n" + "다시 확인해 주세요.";
-			break;
-		case "addIntegralReport_name_null":
-			checkMsg = "통합리포트 이름을 입력해 주세요.";
-			break;
-		case "addIntegralReport_service_null":
-			checkMsg = "2개 이상의 서비스를 선택해 주세요.";
-			break;
-		case "editService_siteName_null":
-			checkMsg = "웹사이트 이름을 입력해주세요.";
-			break;
-		case "editService_domain_null":
-			checkMsg = "등록된 도메인이 없습니다.";
-			break;
-		case "editService_domain_validation":
-			checkMsg = "도메인 형식이 올바르지 않습니다.";
-			break;
-		case "editService_edit_alert":
-			checkMsg = "수정이 완료되었습니다.";
-			break;
-		case "editService_restore_alert":
-			checkMsg = "수정이 완료되었습니다.";
-			break;
-		case "summaryReport_sendEmail_null":
-			checkMsg = "수신 이메일을 추가해 주세요.";
-			break;
-		case "summaryReport_sendEmail_check":
-			checkMsg = "올바른 이메일을 입력하세요.";
-			break;
-		case "summaryReport_sendEmail_send":
-			checkMsg = "요약리포트가 발송되었습니다.";
-			break;
-		case "summaryReport_reserveEmail_null":
-			checkMsg = "수신 이메일을 추가해 주세요.";
-			break;
-		case "summaryReport_reserveEmail_check":
-			checkMsg = "올바른 이메일을 입력하세요.";
-			break;
-		case "summaryReport_reserveEmail_send":
-			checkMsg = "설정하신 내용이 저장되었습니다.\n" + "설정내용은 익일부터 반영됩니다.";
-			break;
-		case "notifyReport_save_confirm!":
-			checkMsg = "선택하신 알림 내용이 없습니다.\n" + "트래픽 알림을 중지 하시겠습니까?";
-			break;
-		case "notifyReport_save_check":
-			checkMsg = "설정하신 내용이 저장되었습니다.\n" + "설정내용은 익일부터 반영됩니다.";
-			break;
-		case "notifyReport_modify_confirm":
-			checkMsg = "선택하신 알림 내용이 없습니다.\n" + "트래픽 알림을 중지 하시겠습니까?";
-			break;
-		case "editS4ervice_restore_alert":
 			checkMsg = "";
-			break;
-		case "editSer5vice_restore_alert":
-			checkMsg = "";
-			break;
-		case "editSer6vice_restore_alert":
-			checkMsg = "";
-			break;
-		case "subManager_name_null":
-			checkMsg = "담당자 이름을 입력해 주세요.";
-			break;
-		case "subManager_email_null":
-			checkMsg = "담당자 이메일을 입력해 주세요.";
-			break;
-		case "subManager_email_check":
-			checkMsg = "이메일 형식이 올바르지 않습니다.";
-			break;
-		case "subManager_service_null":
-			checkMsg = "서비스를 추가해 주세요.";
-			break;
-		case "subManager_email_send":
-			checkMsg = "이메일이 발송되었습니다.\n" + "\n" + "발송된 이메일의 회원가입 링크 유효기간은 총 7일로\n" + "7일 이내 미가입 시 유효기간이 종료됩니다.";
-			break;
-		case "submanager_authority_modify_check":
-			checkMsg = "수정이 완료되었습니다.";
-			break;
-		case "subManager_pw_alert":
-			checkMsg = "비밀번호 변경이 완료되었습니다.";
-			break;
-		case "subManager_delete_confirm":
-			checkMsg = "부관리자 권한을 삭제하시겠습니까?";
-			break;
-		case "subManager_delete_check":
-			checkMsg = "삭제가 완료되었습니다.";
-			break;
-		case "leaveService_service_null":
-			checkMsg = "해지하실 서비스를 선택하여 주세요.";
-			break;
-		case "leaveService_name_null":
-			checkMsg = "이름을 입력해주세요.";
-			break;
-		case "leaveService_number_null":
-			checkMsg = "연락처와 휴대전화번호 중\n" + "하나는 반드시 입력해 주세요";
-			break;
-		case "leaveService_email_null":
-			checkMsg = "이메일을 입력해주세요.";
-			break;
-		case "leaveService_email_check":
-			checkMsg = "이메일 주소가 올바르지 않습니다.";
-			break;
-		case "leaveService_casue_null":
-			checkMsg = "해지사유를 선택해주세요.";
-			break;
-		case "extendCharge_service_null":
-			checkMsg = "서비스를 선택해 주세요.";
-			break;
-		case "extendCharge_name_null":
-			checkMsg = "이름을 입력해 주세요.";
-			break;
-		case "extendCharge_number_null":
-			checkMsg = "연락처와 휴대전화번호 중\n" + "하나는 반드시 입력해 주세요.";
-			break;
-		case "extendCharge_email_null":
-			checkMsg = "이메일을 입력해주세요.";
-			break;
-		case "extendCharge_email_check":
-			checkMsg = "이메일 주소가 올바르지 않습니다.";
-			break;
-		case "additionalCharge_service_null":
-			checkMsg = "서비스를 선택해주세요.";
-			break;
-		case "paymentBill_number_null":
-			checkMsg = "사업자등록번호를 입력해 주세요.";
-			break;
-		case "paymentBill_number_only":
-			checkMsg = "숫자만 입력할 수 있습니다.";
-			break;
-		case "paymentBill_char_only":
-			checkMsg = "문자만 입력할 수 있습니다.";
-			break;
-		case "paymentBill_numberOrchar_only":
-			checkMsg = "숫자 또는 문자만 입력할 수 있습니다.";
-			break;
-		case "paymentBill_company_null":
-			checkMsg = "회사명을 입력해 주세요.";
-			break;
-		case "paymentBill_ceoname_null":
-			checkMsg = "대표자명을 입력해 주세요.";
-			break;
-		case "paymentBill_address_null":
-			checkMsg = "회사주소를 입력해 주세요.";
-			break;
-		case "paymentBill_businessType_null":
-			checkMsg = "업태를 입력해 주세요.";
-			break;
-		case "paymentBill_businessTypeSection_null":
-			checkMsg = "종목을 입력해 주세요.";
-			break;
-		case "paymentBill_check":
-			checkMsg = "저장되었습니다.";
 			break;
 		}
 		$(".modal-backdrop").waitUntil(visible, 10000);
@@ -412,13 +202,9 @@ public class getInflow {
 		}
 	}
 
-	private static void js(String javaScript) {
-		executeJavaScript(javaScript);
-	}
-
-	//@Test(priority = 0)
-	public void serviceManage_main() {
-		System.out.println(" ! ----- serviceManage_main Start ----- ! ");
+	@Test(priority = 0)
+	public void login() {
+		System.out.println(" ! ----- login Start ----- ! ");
 		open(baseUrl);
 		$(".gnb").waitUntil(visible, 15000);
 		$("#uid").setValue("apzz0928888");
@@ -432,102 +218,228 @@ public class getInflow {
 			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".go_setting").click();
-		$(".notokr-bold", 0).waitUntil(visible, 1000);
-		pageLoadCheck = $(".notokr-bold", 0).text().trim();
-		if (pageLoadCheck.equals("서비스 관리")) {
-			System.out.println(" *** serviceManage page load Success !! *** ");
+		$(".go_stat").click();
+		$("#top-menu-name").waitUntil(visible, 10000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		if (pageLoadCheck.equals("Live 대시보드")) {
+			System.out.println(" *** stats getInflow login Success !! *** ");
 		} else {
-			System.out.println(" *** serviceManage page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** stats getInflow login Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- serviceManage_main End ----- ! ");
+		System.out.println(" ! ----- login End ----- ! ");
 	}
 
-	//@Test(priority = 1)
-	public void scriptList() {
-		System.out.println(" ! ----- scriptList Start ----- ! ");
-		$(By.linkText("분석스크립트")).click();
-		$("#items").waitUntil(visible, 15000);
-		$(".br-dark").click();
-		$(".modal-backdrop").waitUntil(visible, 15000);
-		pageLoadCheck = $(".modal-title").text().trim();
-		if (pageLoadCheck.equals("분석스크립트 메일발송")) {
-			System.out.println(" *** scriptList layerPopup load Success !! *** ");
+	@Test(priority = 1)
+	public void getInflowSummary() {
+		System.out.println(" ! ----- getInflowSummary Start ----- ! ");
+		$("#uip").click();
+		$(By.linkText("유입출처")).waitUntil(visible, 10000);
+		$(By.linkText("유입출처")).click();
+		$("#top-menu-name").waitUntil(visible, 10000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		/*System.out.println(pageLoadCheck);
+		String[] pLC = pageLoadCheck.split("\n");
+		for(int i=0;i<=pLC.length-1;i++) {
+			System.out.println(i + "번 인덱스 값은 : " + pLC[i] + ".");
+		}*/
+		if (pageLoadCheck.equals("유입출처")) {
+			System.out.println(" *** getInflowSummary page load Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList layerPopup load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** getInflowSummary page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".btn-dark", 1).click();
-		valCheck("scriptList_email_null");
-		$("#mail_to").setValue(date);
-		$(".btn-dark", 1).click();
-		valCheck("scriptList_email_validation");
-		$("#mail_to").setValue("apzz092888@daum.net");
-		$(".btn-dark", 1).click();
-		$(".btn-dark", 1).waitUntil(hidden, 10000);
-		valCheck("scriptList_email_send");
-		js("window.open('https://logins.daum.net/accounts/loginform.do?url=https%3A%2F%2Fmail.daum.net%2F');");
-		//다음메일 탭으로 포커스 변경
-		switchTo().window(1);
-		$("#id").setValue("apzz092888");
-		$("#inputPwd").setValue(pw + A);
-		$("#loginBtn").click();
-		$(".link_check").waitUntil(visible, 15000);
-		sleep(1000);
+		sleep(1500);
+		$("#daterangepicker2").waitUntil(visible, 10000);
+		$("#daterangepicker2").click();
+		$(".month", 0).waitUntil(visible, 10000);
+		//날짜선택
+		dateCheck = $(".month", 1).text().trim(); //1번째 달력 월 확인
+		for(int i=0;i<=1;i++) {
+			if(i==0) {
+				System.out.println("start calender date selecting..");	
+			} else {
+				System.out.println("end calender date selecting..");				
+				dateCheck = $(".month", 0).text().trim(); //2번째 달력 월 확인
+			}
+			for(int x=0;x<=100;x++) { //2018.12가 될때까지 >> 클릭
+				if(dateCheck.equals("2018.12")) {
+					$("td[data-title=r1c5]", i).click(); //3일 선택
+					break;
+				} else {
+					System.out.println("no"+ (i+1) + ". calender month is  : " + dateCheck + " // need nextBtn(" + x + ") click");
+					$(".next", i).click();
+					dateCheck = $(".month", i).text().trim();
+				}
+			}
+			if(i==0) {
+				System.out.println("start calender date select!");	
+			} else {
+				System.out.println("end calender date select!");				
+			}
+		}
+		$(".btn-apply").click();
 		refresh();
-		pageLoadCheck = $("h1").text().trim();
-		if (pageLoadCheck.equals("Daum\n" + "메일")) {
-			System.out.println(" *** scriptList daum mail list page load Success !! *** ");
+		dateCheck = $("#compareTermText").text();
+		String[] pLC = dateCheck.split(" ");
+		if (pLC[0].equals("2018.12.06") && pLC[2].equals("2018.12.06")) {
+			System.out.println(" *** getInflowSummary date range pick Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList daum mail list page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** getInflowSummary date range pick Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".tit_subject", 0).waitUntil(visible, 15000);
-		$(".tit_subject", 0).click();
-		$(".txt_filename").waitUntil(visible, 15000);
-		pageLoadCheck = $(".txt_filename").text().trim();
-		if (pageLoadCheck.equals("script(ap0420121150.com).zip")) {
-			System.out.println(" *** scriptList send mail fileName check Success !! *** ");
+		$("td", 16).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 16).text().trim();
+		if (pageLoadCheck.equals("300")) {
+			System.out.println(" *** getInflowSummary data check Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** getInflowSummary data check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		//메일삭제
-		$(By.linkText("받은메일함")).click();
-		$(".select_all").waitUntil(visible, 15000);
-		$(".select_all").click();
-		$(".wrap_bold > .btn_del", 0).click();
-		$(By.linkText("휴지통")).click();
-		$(".select_all").waitUntil(visible, 15000);
-		$(".select_all").click();
-		$(".wrap_bold > .btn_permanent").click();
-		sleep(2000);
-		$(".check_type2").click();
-		$(By.linkText("받은메일함")).click();
-		switchTo().window(0);
-		pageLoadCheck = $("#scriptList").text().trim();
-		if (pageLoadCheck.equals("분석스크립트")) {
-			System.out.println(" *** scriptList aceCounter+ page load Success !! *** ");
+		$(By.linkText("상세")).click();
+		pageLoadCheck = $(".active", 2).text();
+		if (pageLoadCheck.equals("상세")) {
+			System.out.println(" *** getInflowDetail page load Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList aceCounter+ page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** getInflowDetail page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#scroll_target_121331").waitUntil(visible, 15000);
-		$("#scroll_target_121331").click();
-		$(".text-danger", 0).waitUntil(visible, 15000);
-		pageLoadCheck = $(".text-danger", 0).text().trim();
-		if (pageLoadCheck.equals("데이터 수집/분석중지")) {
-			System.out.println(" *** scriptList detailView check Success !! *** ");
+		$("#select_inflow_options_0").click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='트리맵'])[1]/following::option[4]")).click();
+	    $("#btn_inflow_options_search").click();
+	    $("td", 39).waitUntil(visible, 10000);
+	    pageLoadCheck = $("td", 39).text().trim();
+		if (pageLoadCheck.equals("127")) {
+			System.out.println(" *** getInflowDetail data check Success !! *** ");
 		} else {
-			System.out.println(" *** scriptList detailView check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** getInflowDetail data check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#scroll_target_121331").click();
-		// $(".text-danger", 0).waitUntil(hidden, 10000);
-		System.out.println(" ! ----- scriptList End ----- ! ");
+		$(By.linkText("트리맵")).click();
+		$("tspan", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $(".active", 2).text();
+		if (pageLoadCheck.equals("트리맵")) {
+			System.out.println(" *** getInflowTreeMap page load Success !! *** ");
+		} else {
+			System.out.println(" *** getInflowTreeMap page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("tspan", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $("tspan", 0).text().trim();
+		if (pageLoadCheck.equals("자연유입")) {
+			System.out.println(" *** getInflowTreeMap data check Success !! *** ");
+		} else {
+			System.out.println(" *** getInflowTreeMap data check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    System.out.println(" ! ----- getInflowSummary End ----- ! ");
 	}
-
+	@Test(priority = 11)
+	public void getInflowSearch() {
+		System.out.println(" ! ----- getInflowSearch Start ----- ! ");
+		$(By.linkText("검색엔진")).waitUntil(visible, 10000);
+		$(By.linkText("검색엔진")).click();
+		$("#top-menu-name").waitUntil(visible, 10000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		if (pageLoadCheck.equals("검색엔진")) {
+			System.out.println(" *** getInflowSearch page load Success !! *** ");
+		} else {
+			System.out.println(" *** getInflowSearch page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		pageLoadCheck = $("svg", 0).text().trim();
+		String[] pLC = pageLoadCheck.split("Created with Highcharts 4.2.5");
+		if (pLC[0].equals("구글")) {
+			System.out.println(" *** highcharts-0 text check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** highcharts-0 text check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		pageLoadCheck = $("svg", 1).text().trim();
+		pLC = pageLoadCheck.split("Created with Highcharts 4.2.5");
+		if (pLC[0].equals("무료")) {
+			System.out.println(" *** highcharts-3 text check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** highcharts-3 text check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		pageLoadCheck = $("svg", 2).text().trim();
+		pLC = pageLoadCheck.split("Created with Highcharts 4.2.5");
+		if (pLC[0].equals("조회된 데이터가 없습니다.")) {
+			System.out.println(" *** highcharts-6 text check Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** highcharts-6 text check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("td", 20).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 20).text().trim();
+		if (pageLoadCheck.equals("검색어없음")) {
+			System.out.println(" *** table text check Success !! *** ");
+		} else {
+			System.out.println(" *** table text check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    System.out.println(" ! ----- getInflowSearch End ----- ! ");
+	}
+	@Test(priority = 21)
+	public void getInflowDomain() {
+		System.out.println(" ! ----- getInflowDomain Start ----- ! ");
+		$(By.linkText("유입도메인")).waitUntil(visible, 10000);
+		$(By.linkText("유입도메인")).click();
+		$("#top-menu-name").waitUntil(visible, 10000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		if (pageLoadCheck.equals("유입 도메인")) {
+			System.out.println(" *** getInflowDomain page load Success !! *** ");
+		} else {
+			System.out.println(" *** getInflowDomain page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".panel-body", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $(".panel-body", 0).text().trim();
+		if (pageLoadCheck.equals("방문수\n" + "89\n" + 	"89(0.00%)")) {
+			System.out.println(" *** getInflowDomain panel text check Success !! *** ");
+		} else {
+			System.out.println(" *** getInflowDomain panel text check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("td", 28).waitUntil(visible, 10000);
+		$("td", 28).click();
+		$("td", 40).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 40).text().trim();
+		if (pageLoadCheck.equals("└ www.google.com")) {
+			System.out.println(" *** getInflowDomain table text check Success !! *** ");
+		} else {
+			System.out.println(" *** getInflowDomain table text check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- getInflowDomain End ----- ! ");
+	}
+	@Test(priority = 31)
+	public void getInflowOver() {
+		System.out.println(" ! ----- getInflowOver Start ----- ! ");
+		$(By.linkText("중복유입")).waitUntil(visible, 10000);
+		$(By.linkText("중복유입")).click();
+		$("#top-menu-name").waitUntil(visible, 10000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		if (pageLoadCheck.equals("중복유입")) {
+			System.out.println(" *** getInflowOver page load Success !! *** ");
+		} else {
+			System.out.println(" *** getInflowOver page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("tr", 5).waitUntil(visible, 10000);
+		pageLoadCheck = $("tr", 5).text().trim();
+		if (pageLoadCheck.equals("조회된 데이터가 없습니다.")) {
+			System.out.println(" *** getInflowOver data check Success !! *** ");
+		} else {
+			System.out.println(" *** getInflowOver data check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- getInflowOver End ----- ! ");
+	}
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();
