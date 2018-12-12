@@ -103,8 +103,9 @@ public class signUp {
             	checkMsg = "비밀번호 변경이 완료되었습니다.";
             	break;
         }
-		$(".modal-backdrop").waitUntil(visible, 10000);
-		$$("p").last().click();
+		//$(".modal-backdrop").waitUntil(visible, 10000);
+		sleep(800);
+        $$("p").last().click();
 		String msgCheck = $$("p").last().text().trim();
         Thread.onSpinWait();
 		if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면

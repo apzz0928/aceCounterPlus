@@ -402,6 +402,7 @@ public class temporarily_2 {
 			System.out.println(" *** user_visit_frequency page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		$("rect", 4).hover();
 		String[] tableDataCheck = {"방문수", "방문당 페이지뷰", "당일", "2~7일", "당일", "1일", "2~7일", "8~15일", "16~30일", "1개월~3개월", "3개월 이후"};
 		for(int i=0;i<=10;i++) {
 			$(".highcharts-legend-item", i).waitUntil(visible, 10000);

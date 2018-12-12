@@ -827,10 +827,9 @@ public class contentSetting {
 			close();
 		}
 	    $(".btn-info", 0).click();
-	    $(".mv20").waitUntil(visible, 10000);
-	    pageLoadCheck = $(".mv20").text().trim();
-	    String[] pLC = pageLoadCheck.split(" ");
-	    if(pLC[0].equals("'*'를")) {
+	    $("th", 0).waitUntil(visible, 10000);
+	    pageLoadCheck = $("th", 0).text().trim();
+	    if(pageLoadCheck.equals("다운로드 패턴")) {
 			System.out.println(" *** fileDownload_add add UI Success !! *** ");	    	
 	    } else {
 			System.out.println(" *** fileDownload_add add UI Fail ... !@#$%^&*() *** ");
@@ -855,10 +854,9 @@ public class contentSetting {
 	public void fileDownload_duplicationAdd() {
 		System.out.println(" ! ----- fileDownload_duplicationAdd Start ----- ! ");
 	    $(".btn-info", 0).click();
-	    $(".mv20").waitUntil(visible, 10000);
-	    pageLoadCheck = $(".mv20").text().trim();
-	    String[] pLC = pageLoadCheck.split(" ");
-	    if(pLC[0].equals("'*'를")) {
+	    $("th", 0).waitUntil(visible, 10000);
+	    pageLoadCheck = $("th", 0).text().trim();
+	    if(pageLoadCheck.equals("다운로드 패턴")) {
 			System.out.println(" *** fileDownload_add add UI Success !! *** ");	    	
 	    } else {
 			System.out.println(" *** fileDownload_add add UI Fail ... !@#$%^&*() *** ");
