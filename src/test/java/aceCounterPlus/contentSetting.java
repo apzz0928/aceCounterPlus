@@ -565,6 +565,7 @@ public class contentSetting {
 		//$(".btn-sm", 6).waitUntil(visible, 10000);
 		valCheck("URLSetting_internalSearch_delete_alert");
 		$("td", 6).waitUntil(hidden, 10000);
+		$("td", 3).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 3).text().trim();
 		pLC = pageLoadCheck.split(" ");
 		if(pLC[0].equals("µî·ÏµÈ")) {
