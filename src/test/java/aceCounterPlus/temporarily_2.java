@@ -290,36 +290,37 @@ public class temporarily_2 {
 			close();
 		}
 		$(".summary-data", 0).waitUntil(visible, 10000);
-		String[] panelDataCheck = {"127", "2", "0", "1,178", "9.28", "visit number", "unique visit", "new visit", "page view", "visit page view"};
+		String[] panelDataCheck = {"127", "2", "0", "1,178", "9.28", "((visit number))", "((unique visit))", "((new visit))", "((page view))", "((visit page view))"};
 		for(int i=0;i<=4;i++) {
 			pageLoadCheck = $(".summary-data", i).text().trim();
 			if (pageLoadCheck.equals(panelDataCheck[i])) {
-				System.out.println(" *** user_stats panel summary data " + panelDataCheck[i+5] + " check Success !! *** ");
+				System.out.println(" *** user_stats panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_stats panel summary data " + panelDataCheck[i+5] + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** user_stats panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}			
 		}
-		String[] chartDataCheck = {"2018.12.07(금)", "방문수: 127", "순방문수: 2", "신규방문수: 0", "페이지뷰: 1,178", "daily publication", "visit number", "unique visit", "new visit", "page view"};
+		String[] chartDataCheck = {"2018.12.07(금)", "방문수: 127", "순방문수: 2", "신규방문수: 0", "페이지뷰: 1,178", "((daily publication))", "((visit number))", "((unique visit))", "((new visit))", "((page view))"};
 		$(".highcharts-series-group").hover();
+		$(".highcharts-tooltip").waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=4;i++) {
 			if (pLC[i].equals(chartDataCheck[i])) {
-				System.out.println(" *** user_stats chart tooltip data " + chartDataCheck[i+5] + " check Success !! *** ");
+				System.out.println(" *** user_stats chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_stats chart tooltip data " + chartDataCheck[i+5] + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** user_stats chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}			
 		}
-		String[] tableDataCheck = {"2018.12.07(금)", "127", "100%", "2", "1,178", "9.28", "00:24:51", "00:00:11", "daily publication", "visit number", "visit percent", "unique visit", "page view", "visit page view", "stay time", "visit stay time"};
+		String[] tableDataCheck = {"2018.12.07(금)", "127", "100%", "2", "1,178", "9.28", "00:24:51", "00:00:11", "((daily publication))", "((visit number))", "((visit percent))", "((unique visit))", "((page view))", "((visit page view))", "((stay time))", "((visit stay time))"};
 		$("td", 15).waitUntil(visible, 10000);
 		for(int i=0, x=15; i<=7; i++, x++) {
 			pageLoadCheck = $("td", x).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** user_stats table data " + tableDataCheck[i+8] + " check Success !! *** ");
+				System.out.println(" *** user_stats table data " + tableDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_stats table data " + tableDataCheck[i+8] + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** user_stats table data " + tableDataCheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -339,28 +340,30 @@ public class temporarily_2 {
 			System.out.println(" *** user_active_stats page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		String[] chartDataCheck = {"2018.12.07(금)", "1일 사용자: 2", "7일 사용자: 2", "14일 사용자: 2", "30일 사용자: 2", "daily publication", "1day visit", "7day visit", "14day visit", "30day visit"};
+		String[] chartDataCheck = {"2018.12.07(금)", "1일 사용자: 2", "7일 사용자: 2", "14일 사용자: 2", "30일 사용자: 2", "((daily publication))", "((1day visit))", "((7day visit))", "((14day visit))", "((30day visit))"};
 		$(".highcharts-series-group", 0).hover();
+		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=4;i++) {
 			if (pLC[i].equals(chartDataCheck[i])) {
-				System.out.println(" *** user_active_stats accrue active user chart tooltip data " + chartDataCheck[i+5] + " check Success !! *** ");
+				System.out.println(" *** user_active_stats accrue active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_active_stats accrue active user chart tooltip data " + chartDataCheck[i+5] + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** user_active_stats accrue active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 		pLC = null;
 		chartDataCheck[1] = "1일 사용자: 0";
 		$(".highcharts-series-group", 1).hover();
+		$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=4;i++) {
 			if (pLC[i].equals(chartDataCheck[i])) {
-				System.out.println(" *** user_active_stats new active user chart tooltip data " + chartDataCheck[i+5] + " check Success !! *** ");
+				System.out.println(" *** user_active_stats new active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_active_stats new active user chart tooltip data " + chartDataCheck[i+5] + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** user_active_stats new active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -402,28 +405,95 @@ public class temporarily_2 {
 			System.out.println(" *** user_visit_frequency page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("rect", 4).hover();
-		String[] tableDataCheck = {"방문수", "방문당 페이지뷰", "당일", "2~7일", "당일", "1일", "2~7일", "8~15일", "16~30일", "1개월~3개월", "3개월 이후"};
-		for(int i=0;i<=10;i++) {
-			$(".highcharts-legend-item", i).waitUntil(visible, 10000);
-			pageLoadCheck = $(".highcharts-legend-item", i).text().trim();
-			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** user_visit_frequency Chart a legend(" + i + ") check Success !! *** ");
+		String[] barChartDataCheck = {"당일", "방문수: 125", "방문당 페이지뷰: 9", "2~7일", "방문수: 2", "방문당 페이지뷰: 18", "((daily publication))", "((visit number))", "((visit pageview number))"};
+		for(int y=1;y>=0;y--){
+			$(".highcharts-series-1.highcharts-tracker > path", y).waitUntil(visible, 10000);
+			$(".highcharts-series-1.highcharts-tracker > path", y).hover();
+			$(".highcharts-tooltip").waitUntil(visible, 10000);
+			pageLoadCheck = $(".highcharts-tooltip").text().trim();
+			String[] pLC = pageLoadCheck.split("● ");
+			for(int i=0;i<=2;i++) {
+				if(y==1){
+					if (pLC[i].equals(barChartDataCheck[i])) {
+						System.out.println(" *** user_visit_frequency bar chart today tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+					} else {
+						System.out.println(" *** user_visit_frequency bar chart today tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+						close();
+					}
+				} else {
+					if (pLC[i].equals(barChartDataCheck[i+3])) {
+						System.out.println(" *** user_visit_frequency bar chart 2~7day tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+					} else {
+						System.out.println(" *** user_visit_frequency bar chart 2~7day tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+						close();
+					}
+			    }
+			}
+			pLC = null;
+	    }	
+		$("#btnChartPie").click();
+		String[] pieChartDataCheck = {"당일방문수: 98.4%", "2~7일방문수: 1.6%", "((today visit number))", "((2~7day visit number))", "((today convert number))", "((2~7day convert number))"};
+		$(".highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
+		for(int x=0;x<=1;x++) {
+			if(x==0) {
+				$(".highcharts-series-" + x + ".highcharts-tracker > path", 0).hover();	
 			} else {
-				System.out.println(" *** user_visit_frequency Chart a legend(" + i + ") check Fail ... !@#$%^&*() *** ");
-				close();
+				$(".highcharts-series-" + x + ".highcharts-tracker > path", 2).hover();
+				$(".highcharts-series-" + x + ".highcharts-tracker > path", 4).hover();
 			}
-			if(i==1) {
-				$("#btnChartPie").click();
-				$(".highcharts-legend-item", i).waitUntil(visible, 10000);
-			} else if (i==3) {
-				$("#btnChartLine").click();
-				$(".highcharts-legend-item", i).waitUntil(visible, 10000);
+			$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
+			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
+			for(int i=0;i<=1;i++) {
+				if (pageLoadCheck.equals(pieChartDataCheck[i])) {
+					if(x==0) {
+						System.out.println(" *** user_visit_frequency pie chart visit number tooltip data " + pieChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
+					} else {
+						System.out.println(" *** user_visit_frequency pie chart convert number tooltip data " + pieChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
+					}
+
+				} else {
+					if(x==0) {
+						System.out.println(" *** user_visit_frequency pie chart visit number tooltip data " + pieChartDataCheck[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+						close();						
+					} else {
+						System.out.println(" *** user_visit_frequency pie chart convert number tooltip data " + pieChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+						System.out.println("." + pieChartDataCheck[i] + ".");
+						System.out.println("." + pageLoadCheck + ".");
+						close();
+					}
+				}
+				if(x==0 && i==0) {
+					$(".highcharts-series-" + x + ".highcharts-tracker > path", 3).waitUntil(visible, 10000);
+					$(".highcharts-series-" + x + ".highcharts-tracker > path", 3).hover();
+					$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
+					pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
+				} else if(x==1 && i==0) {
+					$(".highcharts-series-" + x + ".highcharts-tracker > path", 5).waitUntil(visible, 10000);
+					$(".highcharts-series-" + x + ".highcharts-tracker > path", 5).hover();
+					$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
+					pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();					
+				}
 			}
+			pieChartDataCheck[0] = "당일전환수: 96.7%";
+			pieChartDataCheck[1] = "2~7일전환수: 3.3%";
 		}
+
+		
+
+		
+		
+		
+		
+		
+		
+
+		/*System.out.println("pageLoadCheck is : " + pageLoadCheck + ".");
+		for(int i=0;i<=pLC.length;i++) {
+			System.out.println(pLC[i]);
+		}*/
 	    System.out.println(" ! ----- user_visit_frequency End ----- ! ");
 	}
-	@Test(priority = 11)
+	//@Test(priority = 11)
 	public void user_system_web() {
 		System.out.println(" ! ----- user_system_web Start ----- ! ");
 		$(By.linkText("시스템")).waitUntil(visible, 10000);
@@ -451,7 +521,7 @@ public class temporarily_2 {
 		}
 	    System.out.println(" ! ----- user_system_web End ----- ! ");
 	}
-	@Test(priority = 21)
+	//@Test(priority = 21)
 	public void user_region() {
 		System.out.println(" ! ----- user_region Start ----- ! ");
 		$(By.linkText("지역")).waitUntil(visible, 10000);
@@ -469,9 +539,9 @@ public class temporarily_2 {
 		for(int i=0,x=13;i<=5;i++,x++) {
 			pageLoadCheck = $("td", x).text().trim();
 			if (pageLoadCheck.equals(user_region_check[i])) {
-				System.out.println(" *** user_region table data " + user_region_check[i+6] + " check Success !! *** ");
+				System.out.println(" *** user_region table data " + user_region_check[i+6] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_region table data " + user_region_check[i+6] + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** user_region table data " + user_region_check[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}

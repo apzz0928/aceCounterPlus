@@ -644,6 +644,7 @@ public class serviceManagement {
 			$("#changePwdConfirm").setValue(pw1);
 			$("#modifyProc").click();
 			valCheck("memberInfo_change_password_confirm");
+			sleep(500);
 			valCheck("memberInfo_change_password_check");
 			pw = "qordlf";
 			pw1 = "qordlf";
@@ -961,7 +962,6 @@ public class serviceManagement {
 		$(By.linkText("알림메일 발송")).click();
 		$("#btn-save").waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 1).text().trim();
-		System.out.println(pageLoadCheck);
 		if (pageLoadCheck.equals("알림메일 발송")) {
 			System.out.println(" *** notifyReport page load check Success !! *** ");
 		} else {
@@ -1143,6 +1143,7 @@ public class serviceManagement {
 			System.out.println(" *** extendCharge step1 page load check Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		$("#pwd").waitUntil(visible, 10000);
 		$("#pwd").setValue(pw + A);
 		$("#btn-ok").click();
 		$("#btnIng").waitUntil(visible, 10000);
