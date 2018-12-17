@@ -626,9 +626,16 @@ public class temporarily_2 {
 				close();
 			}
 		}
-		//19~30
 		String[] tableDataCheck = {"2018.12.07(±Ý)", "127", "0", "127", "0", "0%", "0", "0", "0", "0%", "0", "0", "((daily publication))", "((visit number))", "((member))", "((nonmember))", "((signin number))", "((signin percent))", "((login number))", "((cancel number))", "((member convert number))", "((member convert percent))", "((member convert sales))", "((visit sales))"};
-		
+		for(int i=19;i<=30;i++) {
+			pageLoadCheck = $("td", i).text().trim();
+			if(pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** user_member_status table data " + tableDataCheck[i+12] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** user_member_status table data " + tableDataCheck[i+12] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
 		
 	    System.out.println(" ! ----- user_member_status End ----- ! ");
 	}

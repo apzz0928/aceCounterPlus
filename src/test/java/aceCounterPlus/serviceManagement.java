@@ -52,7 +52,7 @@ public class serviceManagement {
 		pw = "qordlf";
 		pw1 = "qordlf";
 		A = "!@34";
-		B = "1@#4 14@#";
+		B = "14@#";
 		C = "12#$";
 		domain = "apzz";
 
@@ -615,12 +615,16 @@ public class serviceManagement {
 		}
 		$("#modifyProc").click();
 		valCheck("memberInfo_now_password_null");
+		System.out.println(pw + A);	
 		$("#prePwd").setValue(pw + A);
 		$("#modifyProc").click();
 		valCheck("memberInfo_new_password_null");
+		System.out.println(pw + B);
 		$("#changePwd").setValue(pw + B);
 		$("#modifyProc").click();
 		valCheck("memberInfo_new_password_check");
+		$("#changePwdConfirm").waitUntil(visible, 10000);
+		System.out.println(pw + C);
 		$("#changePwdConfirm").setValue(pw + C);
 		$("#modifyProc").click();
 		valCheck("memberInfo_new_password_fail");
