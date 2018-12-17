@@ -451,6 +451,7 @@ public class contentSetting {
 	@Test(priority = 6)
 	public void URLSetting_pageChange_delete() {
 		System.out.println(" ! ----- URLSetting_pageChange_delete Start ----- ! ");
+		$(".br-l-n").waitUntil(visible, 10000);
 		$(".br-l-n").setValue(date + "a");
 		$("#btn-search").click();
 		$("td", 5).waitUntil(hidden, 10000);
