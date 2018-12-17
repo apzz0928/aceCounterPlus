@@ -355,7 +355,7 @@ public class contentSetting {
 		$("#btn-add").waitUntil(hidden, 10000); 
 		$(".br-dark", 0).waitUntil(visible, 10000);
 		$(".br-dark", 0).click();
-		$(".btn-url-save", 0).waitUntil(visible, 10000);
+		sleep(1000);
 		pageLoadCheck = $(".btn-url-save", 0).text().trim();
 		if(pageLoadCheck.equals("¿˙¿Â")) {
 			System.out.println(" *** URLSetting_dynamicPage_modify save UI load Success !! *** ");

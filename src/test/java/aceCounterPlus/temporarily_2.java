@@ -615,7 +615,9 @@ public class temporarily_2 {
 		$("#btnChartLine").click();
 		String[] lineChartDataCheck = {"2018.12.07(금)", "회원: 0", "비회원: 127", "방문수: 127", "((daily publication))", "((member))", "((nonmember))", "((visit number))"};
 		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
+		$(".highcharts-tracker", 8).hover();
 		$(".highcharts-tracker", 6).hover();
+		$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip", 1).text();
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
@@ -629,15 +631,47 @@ public class temporarily_2 {
 		String[] tableDataCheck = {"2018.12.07(금)", "127", "0", "127", "0", "0%", "0", "0", "0", "0%", "0", "0", "((daily publication))", "((visit number))", "((member))", "((nonmember))", "((signin number))", "((signin percent))", "((login number))", "((cancel number))", "((member convert number))", "((member convert percent))", "((member convert sales))", "((visit sales))"};
 		for(int i=19;i<=30;i++) {
 			pageLoadCheck = $("td", i).text().trim();
-			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** user_member_status table data " + tableDataCheck[i+12] + "((" + i + "))" + " check Success !! *** ");
+			if(pageLoadCheck.equals(tableDataCheck[i-19])) {
+				System.out.println(" *** user_member_status table data " + tableDataCheck[i-7] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_member_status table data " + tableDataCheck[i+12] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** user_member_status table data " + tableDataCheck[i-7] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		
+		$(By.linkText("회원 인기 페이지")).click();
+		$("#btnTopCond").waitUntil(visible, 10000);
+		pageLoadCheck = $(".active", 2).text().trim();
+		if(pageLoadCheck.equals("회원 인기 페이지")) {
+			System.out.println(" *** user_member_favorite page load check Success !! *** ");
+		} else {
+			System.out.println(" *** user_member_favorite page load check Fail ... !@#$%^&*() *** ");
+			close();
+		}
 	    System.out.println(" ! ----- user_member_status End ----- ! ");
+	}
+	@Test(priority = 41)
+	public void user_list() {
+		System.out.println(" ! ----- user_list Start ----- ! ");
+		$(By.linkText("사용자리스트")).waitUntil(visible, 10000);
+		$(By.linkText("사용자리스트")).click();
+		$(".notokr-bold", 0).waitUntil(visible, 10000);
+		$("td", 100).waitUntil(visible, 10000);
+		pageLoadCheck = $(".notokr-bold", 0).text().trim();
+		if (pageLoadCheck.equals("사용자리스트")) {
+			System.out.println(" *** user_list page load Success !! *** ");
+		} else {
+			System.out.println(" *** user_list page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		pageLoadCheck = $("td", 12).text().trim();
+		System.out.println("pageLoadCheck is : " + pageLoadCheck);
+		if (pageLoadCheck.equals("127")) {
+			System.out.println(" *** user_list table data check Success !! *** ");
+		} else {
+			System.out.println(" *** user_list table data check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    System.out.println(" ! ----- user_list End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {

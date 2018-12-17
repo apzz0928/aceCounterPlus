@@ -648,7 +648,7 @@ public class serviceManagement {
 			$("#changePwdConfirm").setValue(pw1);
 			$("#modifyProc").click();
 			valCheck("memberInfo_change_password_confirm");
-			sleep(500);
+			sleep(1500);
 			valCheck("memberInfo_change_password_check");
 			pw = "qordlf";
 			pw1 = "qordlf";
