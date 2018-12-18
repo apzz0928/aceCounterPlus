@@ -52,7 +52,7 @@ public class serviceManagement {
 		pw = "qordlf";
 		pw1 = "qordlf";
 		A = "!@34";
-		B = "14@#";
+		B = "@#14";
 		C = "12#$";
 		domain = "apzz";
 

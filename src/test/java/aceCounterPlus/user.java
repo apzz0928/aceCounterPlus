@@ -27,7 +27,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 import com.codeborne.selenide.testng.ScreenShooter;
 
-public class temporarily_2 {
+public class user {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg, pageLoadCheck, dateCheck;
@@ -202,6 +202,7 @@ public class temporarily_2 {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void js(String javaScript) {
 		executeJavaScript(javaScript);
 	}
