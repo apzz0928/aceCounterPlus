@@ -201,6 +201,10 @@ public class getInflow {
 			ex.printStackTrace();
 		}
 	}
+	
+	private static void js(String javaScript) {
+		executeJavaScript(javaScript);
+	}
 
 	@Test(priority = 0)
 	public void login() {
@@ -230,7 +234,7 @@ public class getInflow {
 		System.out.println(" ! ----- login End ----- ! ");
 	}
 
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void getInflow_Summary() {
 		System.out.println(" ! ----- getInflow_Summary Start ----- ! ");
 		$("#uip").click();
@@ -244,11 +248,11 @@ public class getInflow {
 			System.out.println(" *** getInflow_Summary page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		//날짜선택
 		sleep(1500);
 		$("#daterangepicker2").waitUntil(visible, 10000);
 		$("#daterangepicker2").click();
 		$(".month", 0).waitUntil(visible, 10000);
-		//날짜선택
 		dateCheck = $(".month", 1).text().trim(); //1번째 달력 월 확인
 		for(int i=0;i<=1;i++) {
 			if(i==0) {
@@ -392,9 +396,9 @@ public class getInflow {
 		String[] barChartData = {"2018.12.07(금)", "신규방문: 0", "재방문: 127", "방문수: 127", "((daily publication))", "((new visit))", "((re visit))", "((visit number))"};
 		for(int i=0;i<=3;i++) {
 			if(pLC[i].equals(barChartData[i])) {
-				System.out.println(" *** user_member_status bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Detail bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_member_status bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Detail bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -408,16 +412,16 @@ public class getInflow {
 		String[] lineChartData = {"2018.12.07(금)", "검색엔진: 89", "다이렉트: 38", "((daily publication))", "((search engine))", "((direct))"};
 		for(int i=0;i<=4;i++) {
 			if(pLC[i].equals(lineChartData[i])) {
-				System.out.println(" *** user_member_status line chart data " + lineChartData[i+3] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Detail line chart data " + lineChartData[i+3] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_member_status line chart data " + lineChartData[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Detail line chart data " + lineChartData[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 		pLC = null;
 	    System.out.println(" ! ----- getInflow_Detail End ----- ! ");
 	}
-	@Test(priority = 3) //트리맵 하던중이었음
+	//@Test(priority = 3)
 	public void getInflow_TreeMap() {
 		System.out.println(" ! ----- getInflow_TreeMap Start ----- ! ");
 		$(By.linkText("트리맵")).waitUntil(visible, 10000);
@@ -431,14 +435,17 @@ public class getInflow {
 		}
 		String[] treeMapdataCheck = {"자연유입 : 127", "검색엔진 : 89", "Google USA : 89", "구글 검색어 없음 : 89"};
 		for(int i=0;i<=3;i++) {
-			if(i>1) {
+			if(i>0) {
 				$("tspan", 0).click();
+				$(".treemap_nav", i).waitUntil(visible, 10000);
+				$(".treemap_nav", i).hover();
+				$("tspan", 0).hover();
 			}
 			$(".highcharts-tracker", 1).waitUntil(visible, 10000);
 			$(".highcharts-tracker", 1).hover();
 			pageLoadCheck = $(".highcharts-tooltip").text().trim();
 			if(pageLoadCheck.equals(treeMapdataCheck[i])) {
-				System.out.println(" *** getInflow_TreeMap treeMap data ((" + i + ")) check Success !! *** ");		
+				System.out.println(" *** getInflow_TreeMap treeMap data ((" + i + ")) check Success !! *** ");
 			} else {
 				System.out.println(" *** getInflow_TreeMap treeMap data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
@@ -446,55 +453,117 @@ public class getInflow {
 		}
 	    System.out.println(" ! ----- getInflow_TreeMap End ----- ! ");
 	}
-	//@Test(priority = 11)
-	public void getInflowSearch() {
-		System.out.println(" ! ----- getInflowSearch Start ----- ! ");
+	@Test(priority = 11)
+	public void getInflow_Search() {
+		System.out.println(" ! ----- getInflow_Search Start ----- ! ");
+		open("https://new.acecounter.com/stats/getInflowSearch");
 		$(By.linkText("검색엔진")).waitUntil(visible, 10000);
 		$(By.linkText("검색엔진")).click();
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("검색엔진")) {
-			System.out.println(" *** getInflowSearch page load Success !! *** ");
+			System.out.println(" *** getInflow_Search page load Success !! *** ");
 		} else {
-			System.out.println(" *** getInflowSearch page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** getInflow_Search page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		pageLoadCheck = $("svg", 0).text().trim();
-		String[] pLC = pageLoadCheck.split("Created with Highcharts 4.2.5");
-		if (pLC[0].equals("구글")) {
-			System.out.println(" *** highcharts-0 text check Success !! *** ");
-			pLC = null;
-		} else {
-			System.out.println(" *** highcharts-0 text check Fail ... !@#$%^&*() *** ");
-			close();
+		//날짜선택 (검색엔진 데이터가 많지 않아서 많은날로 변경)
+		sleep(1500);
+		$("#daterangepicker2").waitUntil(visible, 10000);
+		$("#daterangepicker2").click();
+		$(".month", 0).waitUntil(visible, 10000);
+		dateCheck = $(".month", 1).text().trim(); //1번째 달력 월 확인
+		for(int i=1;i>=0;i--) { //종료일 캘린더부터 선택
+			if(i==0) {
+				System.out.println("start calender date selecting..");	
+			} else {
+				System.out.println("end calender date selecting..");				
+				dateCheck = $(".month", 0).text().trim(); //2번째 달력 월 확인
+			}
+			for(int x=0;x<=100;x++) { //2018.12가 될때까지 << 클릭
+				if(dateCheck.equals("2018.12")) {
+					$("td[data-title=r3c3]", i).click(); //19일 선택
+					break;
+				} else {
+					System.out.println("no"+ (i+1) + ". calender month is  : " + dateCheck + " // need nextBtn(" + x + ") click");
+					$(".prev", i).click();
+					dateCheck = $(".month", i).text().trim();
+				}
+			}
+			if(i==0) {
+				System.out.println("start calender date select!");	
+			} else {
+				System.out.println("end calender date select!");				
+			}
 		}
-		pageLoadCheck = $("svg", 1).text().trim();
-		pLC = pageLoadCheck.split("Created with Highcharts 4.2.5");
-		if (pLC[0].equals("무료")) {
-			System.out.println(" *** highcharts-3 text check Success !! *** ");
-			pLC = null;
-		} else {
-			System.out.println(" *** highcharts-3 text check Fail ... !@#$%^&*() *** ");
-			close();
+		$(".btn-apply").click();
+		refresh();
+		$("td", 16).waitUntil(visible, 10000); 		//여기하던중 네이버랑 다음이랑 수치가 같아서 순서가 바뀔때도 있으므로 다음 데이터 더 채움
+		String[] pieChartData = {"다음: 34.2%", "네이버: 34.2%", "구글: 31.6%", "유료: 100.0%", "PC: 100.0%", "((search engine))", "((search engine))", "((search engine))", "((charge VS no charge))", "((device))"};
+		for(int i=0;i<=4;i++) {
+			sleep(1000);
+			js("$('.highcharts-tracker > path').eq(" + i + ").mouseover()");
+			sleep(1000);
+			if(i<3) {
+				js("ace.alert($('.highcharts-tooltip').eq(0).text())");
+			} else {
+				js("ace.alert($('.highcharts-tooltip').eq(" + (i-2) + ").text())");
+			}
+			sleep(1000);
+			pageLoadCheck = $$("p").last().text().trim();
+			sleep(1000);
+			$$(".btn-sm").last().click();
+			sleep(1000);
+			System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
+			if(pageLoadCheck.equals(pieChartData[i])) {
+				System.out.println(" *** getInflow_Search pie chart data " + pieChartData[i+5] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** getInflow_Search pie chart data " + pieChartData[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
 		}
-		pageLoadCheck = $("svg", 2).text().trim();
-		pLC = pageLoadCheck.split("Created with Highcharts 4.2.5");
-		if (pLC[0].equals("조회된 데이터가 없습니다.")) {
-			System.out.println(" *** highcharts-6 text check Success !! *** ");
-			pLC = null;
-		} else {
-			System.out.println(" *** highcharts-6 text check Fail ... !@#$%^&*() *** ");
-			close();
+
+		
+		/*for(int i=0,x=0;i<=4;i++) {
+			if(i>=2) {
+				x++;
+			}
+			js("$('.highcharts-tracker > path').eq(" + i + ").mouseover()");
+			pageLoadCheck = $(".highcharts-tooltip", x).text().trim();
+			if(pageLoadCheck.equals(pieChartData[i])) {
+				System.out.println(" *** getInflow_Search pie chart data " + pieChartData[i+5] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** getInflow_Search pie chart data " + pieChartData[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+
+		}*/
+		String[] barChartData = {"2018.12.19(수)", "유료: 38", "무료: 0", "합계: 38", "((daily publication))", "((charge))", "((no charge))", "((total))"};
+		$(".highcharts-tracker > path", 5).hover();
+		$(".highcharts-tracker > path", 4).hover();
+		$(".highcharts-tracker > path", 5).hover();
+		pageLoadCheck = $(".highcharts-tooltip", 3).text().trim();
+		String[] pLC = pageLoadCheck.split("● ");
+		for(int i=0;i<=3;i++) {
+			if(pLC[i].equals(barChartData[i])) {
+				System.out.println(" *** getInflow_Search bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** getInflow_Search bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
 		}
-		$("td", 20).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 20).text().trim();
-		if (pageLoadCheck.equals("검색어없음")) {
-			System.out.println(" *** table text check Success !! *** ");
-		} else {
-			System.out.println(" *** table text check Fail ... !@#$%^&*() *** ");
-			close();
+		pLC = null;
+		String[] tableDataCheck = {"합계", "34.2%34.2%31.6%38", "100%", "92.31%", "100%", "((total))", "((visit number))", "((return percent daum))", "((return percent naver))", "((return percent google))"};
+		for(int i=0;i<=4;i++) {
+			pageLoadCheck = $("td", (i+16)).text().trim().replace(" ", "");
+			if(pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
 		}
-	    System.out.println(" ! ----- getInflowSearch End ----- ! ");
+	    System.out.println(" ! ----- getInflow_Search End ----- ! ");
 	}
 	//@Test(priority = 21)
 	public void getInflowDomain() {

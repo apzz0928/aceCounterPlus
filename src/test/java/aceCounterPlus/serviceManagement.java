@@ -366,7 +366,9 @@ public class serviceManagement {
 	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
 	        	System.out.println(" *** " + val +  " - confirm check Success !! *** ");
 				$$(".btn-info").last().click();
-			    $(".modal-backdrop").waitUntil(hidden, 10000);
+				if(!val.equals("memberInfo_change_password_confirm")) {
+				    $(".modal-backdrop").waitUntil(hidden, 10000); //비번변경 confirm 에러나서 sleep으로 대체 	
+				}
 	        } else { //confirm 아니면 .btn-sm클릭
 	            System.out.println(" *** " + val +  " - check Success !! *** ");
 	            $$(".btn-sm").last().click();
@@ -647,6 +649,7 @@ public class serviceManagement {
 			$("#changePwd").setValue(pw1);
 			$("#changePwdConfirm").setValue(pw1);
 			$("#modifyProc").click();
+			sleep(1000);
 			valCheck("memberInfo_change_password_confirm");
 			sleep(1500);
 			valCheck("memberInfo_change_password_check");
