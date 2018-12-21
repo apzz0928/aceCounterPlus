@@ -499,21 +499,23 @@ public class getInflow {
 		$(".btn-apply").click();
 		refresh();
 		$("td", 16).waitUntil(visible, 10000); 		//여기하던중 네이버랑 다음이랑 수치가 같아서 순서가 바뀔때도 있으므로 다음 데이터 더 채움
-		String[] pieChartData = {"다음: 34.2%", "네이버: 34.2%", "구글: 31.6%", "유료: 100.0%", "PC: 100.0%", "((search engine))", "((search engine))", "((search engine))", "((charge VS no charge))", "((device))"};
+		String[] pieChartData = {"다음: 43.2%", "네이버: 29.5%", "구글: 27.3%", "유료: 100.0%", "PC: 100.0%", "((search engine))", "((search engine))", "((search engine))", "((charge VS no charge))", "((device))"};
 		for(int i=0;i<=4;i++) {
-			sleep(1000);
+			sleep(2000);
 			js("$('.highcharts-tracker > path').eq(" + i + ").mouseover()");
-			sleep(1000);
+			sleep(2000);
 			if(i<3) {
 				js("ace.alert($('.highcharts-tooltip').eq(0).text())");
 			} else {
 				js("ace.alert($('.highcharts-tooltip').eq(" + (i-2) + ").text())");
 			}
-			sleep(1000);
-			pageLoadCheck = $$("p").last().text().trim();
-			sleep(1000);
+			sleep(3000);
+			$(".modal-body").click();
+			pageLoadCheck = $(".modal-body").text().trim();
+			sleep(2000);
 			$$(".btn-sm").last().click();
-			sleep(1000);
+			//$(".btn-sm", (i+22)).click();
+			sleep(2000);
 			System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
 			if(pageLoadCheck.equals(pieChartData[i])) {
 				System.out.println(" *** getInflow_Search pie chart data " + pieChartData[i+5] + "((" + i + "))" + " check Success !! *** ");
@@ -538,7 +540,7 @@ public class getInflow {
 			}
 
 		}*/
-		String[] barChartData = {"2018.12.19(수)", "유료: 38", "무료: 0", "합계: 38", "((daily publication))", "((charge))", "((no charge))", "((total))"};
+		String[] barChartData = {"2018.12.19(수)", "유료: 44", "무료: 0", "합계: 44", "((daily publication))", "((charge))", "((no charge))", "((total))"};
 		$(".highcharts-tracker > path", 5).hover();
 		$(".highcharts-tracker > path", 4).hover();
 		$(".highcharts-tracker > path", 5).hover();
@@ -553,7 +555,11 @@ public class getInflow {
 			}
 		}
 		pLC = null;
-		String[] tableDataCheck = {"합계", "34.2%34.2%31.6%38", "100%", "92.31%", "100%", "((total))", "((visit number))", "((return percent daum))", "((return percent naver))", "((return percent google))"};
+		String[] tableDataCheck = {"합계", "          43.2%       29.5%       27.3%          44", "100%", "92.31%", "100%", "((total))", "((visit number))", "((return percent daum))", "((return percent naver))", "((return percent google))"};
+		pageLoadCheck = $("td", 17).text().trim().replace(" ", "");
+		System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
+		System.out.println("tableDataCheck is :" + tableDataCheck[1].trim().replace(" ", "") + ".");
+		
 		for(int i=0;i<=4;i++) {
 			pageLoadCheck = $("td", (i+16)).text().trim().replace(" ", "");
 			if(pageLoadCheck.equals(tableDataCheck[i])) {
