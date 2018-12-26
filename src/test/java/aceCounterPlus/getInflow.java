@@ -468,48 +468,28 @@ public class getInflow {
 			System.out.println(" *** getInflow_Search page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		//날짜선택 (검색엔진 데이터가 많지 않아서 많은날로 변경)
-		sleep(1500);
-		$("#daterangepicker2").waitUntil(visible, 10000);
-		$("#daterangepicker2").click();
-		$(".month", 0).waitUntil(visible, 10000);
-		dateCheck = $(".month", 1).text().trim(); //1번째 달력 월 확인
-		for(int i=1;i>=0;i--) { //종료일 캘린더부터 선택
-			if(i==0) {
-				System.out.println("start calender date selecting..");	
+		$("td", 22).waitUntil(visible, 10000);
+		String[] tableDataCheck = {"합계", "100.0%\n89", "100%", "((search word))", "((visit number))", "((return percent google))"};
+		for(int i=0;i<=2;i++) {
+			pageLoadCheck = $("td", (i+16)).text().trim().replace(" ", "");
+			System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
+			if(pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println("end calender date selecting..");				
-				dateCheck = $(".month", 0).text().trim(); //2번째 달력 월 확인
-			}
-			for(int x=0;x<=100;x++) { //2018.12가 될때까지 << 클릭
-				if(dateCheck.equals("2018.12")) {
-					$("td[data-title=r3c3]", i).click(); //12월 19일 선택
-					break;
-				} else {
-					System.out.println("no"+ (i+1) + ". calender month is  : " + dateCheck + " // need nextBtn(" + x + ") click");
-					$(".prev", i).click();
-					dateCheck = $(".month", i).text().trim();
-				}
-			}
-			if(i==0) {
-				System.out.println("start calender date select!");	
-			} else {
-				System.out.println("end calender date select!");				
+				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
 			}
 		}
-		$(".btn-apply").click();
-		refresh();
-		$("td", 38).waitUntil(visible, 10000);
-		String[] barChartData = {"2018.12.19(수)", "유료: 44", "무료: 0", "합계: 44", "((daily publication))", "((charge))", "((no charge))", "((total))"};
-		$(".highcharts-tracker > path", 5).waitUntil(visible, 10000);
+		String[] barChartData = {"2018.12.07(금)", "무료: 89", "유료: 0", "합계: 89", "((daily publication))", "((no charge))", "((charge))", "((total))"};
+		$(".highcharts-tracker > path", 2).waitUntil(visible, 10000);
 		sleep(1000);
-		js("$('rect').eq(14).mouseover()");
-		js("$('.highcharts-tracker > path').eq(5).mouseover()");
-		$("rect", 14).waitUntil(visible, 10000);
-		$("rect", 14).hover();
-		$(".highcharts-tracker > path", 5).hover();
-		$(".highcharts-tracker > path", 4).hover();
-		$(".highcharts-tracker > path", 5).hover();
+		js("$('rect').eq(11).mouseover()");
+		js("$('.highcharts-tracker > path').eq(2).mouseover()");
+		$("rect", 11).waitUntil(visible, 10000);
+		$("rect", 11).hover();
+		$(".highcharts-tracker > path", 2).hover();
+		$("#highcharts-6", 0).hover();
+		$(".highcharts-tracker > path", 2).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 3).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
@@ -521,58 +501,16 @@ public class getInflow {
 			}
 		}
 		pLC = null;
-		String[] tableDataCheck = {"합계", "43.2%\n29.5%\n27.3%\n44", "100%", "92.31%", "100%", "((search word))", "((visit number))", "((return percent daum))", "((return percent naver))", "((return percent google))"};
-		for(int i=0;i<=4;i++) {
-			pageLoadCheck = $("td", (i+16)).text().trim().replace(" ", "");
-			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
-			} else {
-				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		$("#daterangepicker2").waitUntil(visible, 10000);
-		$("#daterangepicker2").click();
-		$(".month", 0).waitUntil(visible, 10000);
-		dateCheck = $(".month", 1).text().trim(); //1번째 달력 월 확인
-		for(int i=0;i<=1;i++) { //시작일 캘린더부터 선택
-			if(i==0) {
-				System.out.println("start calender date selecting..");	
-			} else {
-				System.out.println("end calender date selecting..");				
-				dateCheck = $(".month", 0).text().trim(); //2번째 달력 월 확인
-			}
-			for(int x=0;x<=100;x++) { //2018.12가 될때까지 << 클릭
-				if(dateCheck.equals("2018.12")) {
-					$("td[data-title=r1c5]", i).click(); //12월 7일 선택
-					break;
-				} else {
-					System.out.println("no"+ (i+1) + ". calender month is  : " + dateCheck + " // need nextBtn(" + x + ") click");
-					$(".prev", i).click();
-					dateCheck = $(".month", i).text().trim();
-				}
-			}
-			if(i==0) {
-				System.out.println("start calender date select!");	
-			} else {
-				System.out.println("end calender date select!");				
-			}
-		} //날짜 변경하고 페이지 로딩하는 부분 확인중
-		$(".btn-apply").click();
-		refresh();
-		sleep(1000);
-		$("td", 23).waitUntil(hidden, 10000);
-		$("td", 32).waitUntil(hidden, 10000);
-		$("td", 22).waitUntil(visible, 10000);
+		$(By.linkText("유입도메인")).waitUntil(visible, 10000);
 	    System.out.println(" ! ----- getInflow_Search End ----- ! ");
 	}
 	@Test(priority = 21)
 	public void getInflow_Domain() {
 		System.out.println(" ! ----- getInflow_Domain Start ----- ! ");
-		/*$(By.linkText("유입도메인")).waitUntil(visible, 10000);
-		$(By.linkText("유입도메인")).click();*/
-		$("a", 43).waitUntil(visible, 10000);
-		$("a", 43).click();
+		$(By.linkText("유입도메인")).waitUntil(visible, 10000);
+		$(By.linkText("유입도메인")).click();
+		/*$("a", 43).waitUntil(visible, 10000);
+		$("a", 43).click();*/
 		$("td", 38).waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("유입 도메인")) {
@@ -625,9 +563,6 @@ public class getInflow {
 		$(".highcharts-tracker", 4).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
-		for(int i=0;i<=pLC.length-1;i++) {
-			System.out.println("pLC is :" + pLC[i] + ".");
-		}
 		String[] lineChartData = {"2018.12.07(금)", "google.com: 89", "((daily publication))", "((inflow domain))"};
 		for(int i=0;i<=1;i++) {
 			if (pLC[i].equals(lineChartData[i])) {
