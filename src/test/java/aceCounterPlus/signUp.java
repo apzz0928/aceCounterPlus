@@ -44,7 +44,7 @@ public class signUp {
 		baseUrl = "https://new.acecounter.com/common/front";
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
 		id = "ap";
-		pw = "qordlf!@34";
+		pw = "qordlf";
 		pw1 = "qordlf";
 		A = "!@34";
 		B = "14@#";
@@ -103,7 +103,6 @@ public class signUp {
             	checkMsg = "비밀번호 변경이 완료되었습니다.";
             	break;
         }
-		//$(".modal-backdrop").waitUntil(visible, 10000);
 		sleep(800);
         $$("p").last().click();
 		String msgCheck = $$("p").last().text().trim();

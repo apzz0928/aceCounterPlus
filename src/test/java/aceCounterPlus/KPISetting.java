@@ -242,8 +242,8 @@ public class KPISetting {
 		$("#redirectConfBtn").click();
 		$(".input-sm").waitUntil(visible, 10000);
 		$(".sidebar-title", 6).click();
-		$("td").waitUntil(visible, 10000);
-		pageLoadCheck = $("td").text().trim();
+		$("td", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 0).text().trim();
 	    String[] pLC = pageLoadCheck.split(" ");
 	    if(pLC[0].equals("µî·ÏµÈ")) {
 			System.out.println(" *** KPISetting_add list Page load Success !! *** ");

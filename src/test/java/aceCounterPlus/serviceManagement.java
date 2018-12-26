@@ -1142,7 +1142,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- leaveService Start ----- ! ");
 		$(By.linkText("서비스 해지")).waitUntil(visible, 10000);
 		$(By.linkText("서비스 해지")).click();
-		$("#btn-ok", 0).waitUntil(visible, 10000);
+		$("#btn-ok").waitUntil(visible, 10000);
 		pageLoadCheck = $(".notokr-bold", 0).text().trim();
 		if(pageLoadCheck.equals("서비스해지")) {
 			System.out.println(" *** extendCharge step1 page load check Success !! *** ");
@@ -1593,8 +1593,9 @@ public class serviceManagement {
 	@Test(priority = 161)
 	public void myAllimList() {
 		System.out.println(" ! ----- myAllimList Start ----- ! ");
-		$(By.linkText("서비스 알림내역")).waitUntil(visible, 10000);
-		$(By.linkText("서비스 알림내역")).click();
+		/*$(By.linkText("서비스 알림내역")).waitUntil(visible, 10000);
+		$(By.linkText("서비스 알림내역")).click();*/
+		open("https://new.acecounter.com/manage/news/myAllimList");
 		pageLoadCheck = $(".notokr-bold").text().trim();
 		if(pageLoadCheck.equals("서비스 알림내역")) {
 			System.out.println(" *** myAllimList page load check Success !! *** ");
@@ -1617,7 +1618,7 @@ public class serviceManagement {
 		$(".mh20", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".mh20", 0).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
-		if(pLC[13].substring(0, 10).equals("2018-12-03")) {
+		if(pLC[12].substring(0, 10).equals("2019-01-19")) {
 			System.out.println(" *** myAllimList detailView check Success !! *** ");
 		} else {
 			System.out.println(" *** myAllimList detailView check Fail ... !@#$%^&*() *** ");
@@ -1634,7 +1635,7 @@ public class serviceManagement {
 		}
 		$(By.name("s_key")).setValue(date);
 		$("#btn-search").click();
-		pageLoadCheck = $("td").text().trim();
+		pageLoadCheck = $("td", 0).text().trim();
 		if(pageLoadCheck.equals("데이터가 없습니다.")) {
 			System.out.println(" *** myMonitoringList search check Success !! *** ");
 		} else {
