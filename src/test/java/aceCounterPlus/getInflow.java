@@ -25,7 +25,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
-import com.codeborne.selenide.testng.ScreenShooter;
+/*import com.codeborne.selenide.testng.ScreenShooter;*/
 
 public class getInflow {
 	private static WebDriver driver;
@@ -58,7 +58,7 @@ public class getInflow {
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
-		ScreenShooter.captureSuccessfulTests = false;
+		/*ScreenShooter.captureSuccessfulTests = false;*/
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
@@ -351,7 +351,7 @@ public class getInflow {
 		}
 	    System.out.println(" ! ----- getInflow_Summary End ----- ! ");
 	}
-	//@Test(priority = 2)
+	@Test(priority = 2)
 	public void getInflow_Detail() {
 		System.out.println(" ! ----- getInflow_Detail Start ----- ! ");
 		$(By.linkText("상세")).waitUntil(visible, 10000);
@@ -410,7 +410,7 @@ public class getInflow {
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
 		String[] lineChartData = {"2018.12.07(금)", "검색엔진: 89", "다이렉트: 38", "((daily publication))", "((search engine))", "((direct))"};
-		for(int i=0;i<=4;i++) {
+		for(int i=0;i<=2;i++) {
 			if(pLC[i].equals(lineChartData[i])) {
 				System.out.println(" *** getInflow_Detail line chart data " + lineChartData[i+3] + "((" + i + "))" + " check Success !! *** ");
 			} else {
@@ -421,7 +421,7 @@ public class getInflow {
 		pLC = null;
 	    System.out.println(" ! ----- getInflow_Detail End ----- ! ");
 	}
-	//@Test(priority = 3)
+	@Test(priority = 3)
 	public void getInflow_TreeMap() {
 		System.out.println(" ! ----- getInflow_TreeMap Start ----- ! ");
 		$(By.linkText("트리맵")).waitUntil(visible, 10000);
@@ -433,7 +433,7 @@ public class getInflow {
 			System.out.println(" *** getInflow_TreeMap page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		String[] treeMapdataCheck = {"자연유입 : 127", "검색엔진 : 89", "Google USA : 89", "구글 검색어 없음 : 89"};
+		String[] treeMapdataCheck = {"자연유입 : 127", "검색엔진 : 89", "Google USA : 89", "구글 검색어없음 : 89"};
 		for(int i=0;i<=3;i++) {
 			if(i>0) {
 				$("tspan", 0).click();

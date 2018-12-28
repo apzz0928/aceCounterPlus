@@ -25,7 +25,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
-import com.codeborne.selenide.testng.ScreenShooter;
+/*import com.codeborne.selenide.testng.ScreenShooter;*/
 
 public class serviceManagement {
 	private static WebDriver driver;
@@ -58,7 +58,7 @@ public class serviceManagement {
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
-		ScreenShooter.captureSuccessfulTests = false;
+		/*ScreenShooter.captureSuccessfulTests = false;*/
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";

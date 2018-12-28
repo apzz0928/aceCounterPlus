@@ -23,7 +23,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
-import com.codeborne.selenide.testng.ScreenShooter;
+/*import com.codeborne.selenide.testng.ScreenShooter;*/
 
 public class memberInfo {
 	private static WebDriver driver;
@@ -50,7 +50,7 @@ public class memberInfo {
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
-		ScreenShooter.captureSuccessfulTests = true;
+		/*ScreenShooter.captureSuccessfulTests = true;*/
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
