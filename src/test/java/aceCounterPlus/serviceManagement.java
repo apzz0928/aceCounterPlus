@@ -685,7 +685,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
 		$(By.linkText("쿠폰관리")).waitUntil(visible, 10000);
 		$(By.linkText("쿠폰관리")).click();
-		$("#btn-save").waitUntil(visible, 15000);
+		$(".coupon-input", 0).waitUntil(visible, 15000);
 		pageLoadCheck = $("#btn-save").text().trim();
 		if (pageLoadCheck.equals("쿠폰등록")) {
 			System.out.println(" *** myCoupon page load Success !! *** ");
@@ -1142,7 +1142,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- leaveService Start ----- ! ");
 		$(By.linkText("서비스 해지")).waitUntil(visible, 10000);
 		$(By.linkText("서비스 해지")).click();
-		//$("#btn-ok").waitUntil(visible, 10000);
+		$("#pwd").waitUntil(visible, 10000);
 		pageLoadCheck = $(".notokr-bold", 0).text().trim();
 		if(pageLoadCheck.equals("서비스해지")) {
 			System.out.println(" *** extendCharge step1 page load check Success !! *** ");
