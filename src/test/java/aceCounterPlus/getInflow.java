@@ -509,8 +509,6 @@ public class getInflow {
 		System.out.println(" ! ----- getInflow_Domain Start ----- ! ");
 		$(By.linkText("유입도메인")).waitUntil(visible, 10000);
 		$(By.linkText("유입도메인")).click();
-		/*$("a", 43).waitUntil(visible, 10000);
-		$("a", 43).click();*/
 		$("td", 38).waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("유입 도메인")) {
