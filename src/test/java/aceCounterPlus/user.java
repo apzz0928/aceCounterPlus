@@ -25,7 +25,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
-import com.codeborne.selenide.testng.ScreenShooter;
+/*import com.codeborne.selenide.testng.ScreenShooter;*/
 
 public class user {
 	private static WebDriver driver;
@@ -58,7 +58,7 @@ public class user {
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
-		ScreenShooter.captureSuccessfulTests = false;
+		/*ScreenShooter.captureSuccessfulTests = false;*/
 
 		if (browser.equals("chrome")) {
 			TestBrowser = "chrome";
@@ -202,7 +202,6 @@ public class user {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	private static void js(String javaScript) {
 		executeJavaScript(javaScript);
 	}
@@ -264,7 +263,7 @@ public class user {
 			}
 			for(int x=0;x<=100;x++) { //2018.12가 될때까지 >> 클릭
 				if(dateCheck.equals("2018.12")) {
-					$("td[data-title=r1c5]", i).click(); //3일 선택
+					$("td[data-title=r1c5]", i).click(); //7일 선택
 					break;
 				} else {
 					System.out.println("no"+ (i+1) + ". calender month is  : " + dateCheck + " // need nextBtn(" + x + ") click");
@@ -301,7 +300,7 @@ public class user {
 				close();
 			}			
 		}
-		String[] chartDataCheck = {"2018.12.07(금)", "방문수: 127", "순방문수: 2", "신규방문수: 0", "페이지뷰: 1,178", "((daily publication))", "((visit number))", "((unique visit))", "((new visit))", "((page view))"};
+		String[] chartDataCheck = {"2018.12.07(금)", "방문수: 127", "순방문수: 2", "신규방문수: 0", "페이지뷰: 1,178", "((date))", "((visit number))", "((unique visit))", "((new visit))", "((page view))"};
 		$(".highcharts-series-group").hover();
 		$(".highcharts-tooltip").waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
@@ -314,7 +313,7 @@ public class user {
 				close();
 			}			
 		}
-		String[] tableDataCheck = {"2018.12.07(금)", "127", "100%", "2", "1,178", "9.28", "00:24:51", "00:00:11", "((daily publication))", "((visit number))", "((visit percent))", "((unique visit))", "((page view))", "((visit page view))", "((stay time))", "((visit stay time))"};
+		String[] tableDataCheck = {"2018.12.07(금)", "127", "100%", "2", "1,178", "9.28", "00:24:51", "00:00:11", "((date))", "((visit number))", "((visit percent))", "((unique visit))", "((page view))", "((visit page view))", "((stay time))", "((visit stay time))"};
 		$("td", 15).waitUntil(visible, 10000);
 		for(int i=0, x=15; i<=7; i++, x++) {
 			pageLoadCheck = $("td", x).text().trim();
@@ -341,7 +340,7 @@ public class user {
 			System.out.println(" *** user_active_stats page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		String[] chartDataCheck = {"2018.12.07(금)", "1일 사용자: 2", "7일 사용자: 2", "14일 사용자: 2", "30일 사용자: 2", "((daily publication))", "((1day visit))", "((7day visit))", "((14day visit))", "((30day visit))"};
+		String[] chartDataCheck = {"2018.12.07(금)", "1일 사용자: 2", "7일 사용자: 2", "14일 사용자: 2", "30일 사용자: 2", "((date))", "((1day visit))", "((7day visit))", "((14day visit))", "((30day visit))"};
 		$(".highcharts-series-group", 0).hover();
 		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
@@ -406,7 +405,7 @@ public class user {
 			System.out.println(" *** user_visit_frequency page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		String[] barChartDataCheck = {"당일", "방문수: 125", "방문당 페이지뷰: 9", "2~7일", "방문수: 2", "방문당 페이지뷰: 18", "((daily publication))", "((visit number))", "((visit pageview number))"};
+		String[] barChartDataCheck = {"당일", "방문수: 125", "방문당 페이지뷰: 9", "2~7일", "방문수: 2", "방문당 페이지뷰: 18", "((date))", "((visit number))", "((visit pageview number))"};
 		for(int y=1;y>=0;y--){
 			$(".highcharts-series-1.highcharts-tracker > path", y).waitUntil(visible, 10000);
 			$(".highcharts-series-1.highcharts-tracker > path", y).hover();
@@ -483,7 +482,7 @@ public class user {
 		$("#btnChartLine").click();
 		$(".highcharts-series-0.highcharts-tracker", 3).waitUntil(visible, 10000);
 		$(".highcharts-series-0.highcharts-tracker", 3).hover();
-		String[] lineChartDataCheck = {"2018.12.07(금)", "당일: 125", "1일: 0", "2~7일: 2", "8~15일: 0", "16~30일: 0", "1개월~3개월: 0", "3개월 이후: 0", "((daily publication))", "((today))", "((1day))", "((2~7days))", "((8~15days))", "((16~30days))", "((1month~3month))", "((3month after this))"};
+		String[] lineChartDataCheck = {"2018.12.07(금)", "당일: 125", "1일: 0", "2~7일: 2", "8~15일: 0", "16~30일: 0", "1개월~3개월: 0", "3개월 이후: 0", "((date))", "((today))", "((1day))", "((2~7days))", "((8~15days))", "((16~30days))", "((1month~3month))", "((3month after this))"};
 		$(".highcharts-tooltip", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip", 2).text();
 		String[] pLC = pageLoadCheck.split("● ");
@@ -521,12 +520,12 @@ public class user {
 			System.out.println(" *** user_system_web page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		String[] tableDataCheck = {"기기타입PC", "웹브라우저firefox 62.0chrome 70.0", "운영체제windows 10"};
+		String[] pieChartDataCheck = {"기기타입PC", "웹브라우저firefox 62.0chrome 70.0", "운영체제windows 10"};
 		$("svg", 0).waitUntil(visible, 10000);
 		for(int i=0;i<=2;i++) {
 			pageLoadCheck = $("svg", i).text().trim();
 			String[] pLC = pageLoadCheck.split("Created with Highcharts 4.2.5");
-			if (pLC[0].equals(tableDataCheck[i])) {
+			if (pLC[0].equals(pieChartDataCheck[i])) {
 				System.out.println(" *** user_visit_frequency Chart a legend(" + i + ") check Success !! *** ");
 				pLC = null;
 			} else {
@@ -534,7 +533,7 @@ public class user {
 				close();
 			}
 		}
-		String[] barChartDataCheck = {"2018.12.07(금)", "방문수: 127", "방문당 페이지뷰: 9", "((daily publication))", "((visit number))", "((visit pageview))"};
+		String[] barChartDataCheck = {"2018.12.07(금)", "방문수: 127", "방문당 페이지뷰: 9", "((date))", "((visit number))", "((visit pageview))"};
 		$(".highcharts-tracker", 3).hover();
 		$(".highcharts-tracker", 4).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 3).text();
@@ -551,7 +550,7 @@ public class user {
 		$("#btnChartLine").click();
 		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
 		$(".highcharts-tracker", 6).hover();
-		String[] lineChartDataCheck = {"2018.12.07(금)", "PC: 127", "((daily publication))", "((system type))"};
+		String[] lineChartDataCheck = {"2018.12.07(금)", "PC: 127", "((date))", "((system type))"};
 		pageLoadCheck = $(".highcharts-tooltip", 4).text();
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=1;i++) {
@@ -559,6 +558,17 @@ public class user {
 				System.out.println(" *** user_system_web line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
 			} else {
 				System.out.println(" *** user_system_web line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		pLC = null;
+		String[] tableDataCheck = {"PC", "127", "100%", "2", "9.28", "00:00:12", "((equipment type))", "((visit number))", "((visit percent))", "((unique visit))", "((visit pageview))", "((visit stay time))"};
+		for(int i=0;i<=5;i++) {
+			pageLoadCheck = $("td", (i+17)).text().trim();
+			if(pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** user_system_web table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** user_system_web table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -603,7 +613,7 @@ public class user {
 			System.out.println(" *** user_member_status page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		String[] barChartDataCheck = {"2018.12.07(금)", "회원: 0", "비회원: 127", "방문수: 127", "((daily publication))", "((member))", "((nonmember))", "((visit number))"};
+		String[] barChartDataCheck = {"2018.12.07(금)", "회원: 0", "비회원: 127", "방문수: 127", "((date))", "((member))", "((nonmember))", "((visit number))"};
 		$(".highcharts-tracker", 2).hover();
 		pageLoadCheck = $(".highcharts-tooltip").text();
 		String[] pLC = pageLoadCheck.split("● ");
@@ -617,7 +627,7 @@ public class user {
 		}
 		pLC = null;
 		$("#btnChartLine").click();
-		String[] lineChartDataCheck = {"2018.12.07(금)", "회원: 0", "비회원: 127", "방문수: 127", "((daily publication))", "((member))", "((nonmember))", "((visit number))"};
+		String[] lineChartDataCheck = {"2018.12.07(금)", "회원: 0", "비회원: 127", "방문수: 127", "((date))", "((member))", "((nonmember))", "((visit number))"};
 		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
 		$(".highcharts-tracker", 8).hover();
 		$(".highcharts-tracker", 6).hover();
@@ -632,7 +642,7 @@ public class user {
 				close();
 			}
 		}
-		String[] tableDataCheck = {"2018.12.07(금)", "127", "0", "127", "0", "0%", "0", "0", "0", "0%", "0", "0", "((daily publication))", "((visit number))", "((member))", "((nonmember))", "((signin number))", "((signin percent))", "((login number))", "((cancel number))", "((member convert number))", "((member convert percent))", "((member convert sales))", "((visit sales))"};
+		String[] tableDataCheck = {"2018.12.07(금)", "127", "0", "127", "0", "0%", "0", "0", "0", "0%", "0", "0", "((date))", "((visit number))", "((member))", "((nonmember))", "((signin number))", "((signin percent))", "((login number))", "((cancel number))", "((member convert number))", "((member convert percent))", "((member convert sales))", "((visit sales))"};
 		for(int i=19;i<=30;i++) {
 			pageLoadCheck = $("td", i).text().trim();
 			if(pageLoadCheck.equals(tableDataCheck[i-19])) {
@@ -667,13 +677,15 @@ public class user {
 			System.out.println(" *** user_list page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		pageLoadCheck = $("td", 12).text().trim();
-		System.out.println("pageLoadCheck is : " + pageLoadCheck);
-		if (pageLoadCheck.equals("127")) {
-			System.out.println(" *** user_list table data check Success !! *** ");
-		} else {
-			System.out.println(" *** user_list table data check Fail ... !@#$%^&*() *** ");
-			close();
+		String[] tableDataCheck = {"127", "10.77.129.79", "[검색엔진] Google USA", "/", "재방문", "1", "-", "2018-12-07 16:38:18", "Windows 10", "Firefox 62.0", "((number))", "((IP))", "((getInflow))", "((rending page))", "((visit division))", "((page view))", "((user ID))", "((visit time))", "((OS))", "((browser))"};
+		for(int i=0;i<=9;i++) {
+			pageLoadCheck = $("td", (i+12)).text().trim();
+			if (pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** user_member_status table data " + tableDataCheck[i+10] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** user_member_status table data " + tableDataCheck[i+10] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
 		}
 	    System.out.println(" ! ----- user_list End ----- ! ");
 	}

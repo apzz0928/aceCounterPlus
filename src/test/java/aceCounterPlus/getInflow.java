@@ -313,12 +313,12 @@ public class getInflow {
 		$(".highcharts-tracker", 4).hover();
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
 		pLC = pageLoadCheck.split("● ");
-		String[] barChartData = {"2018.12.07(금)", "유료마케팅: 0", "일반마케팅: 0", "인하우스마케팅: 0", "자연유입: 127", "합계: 127", "((daily publication))", "((charge marketing))", "((no charge marketing))", "((inhouse marketing))", "((nature inflow))", "((total))"};
+		String[] barChartDataCheck = {"2018.12.07(금)", "유료마케팅: 0", "일반마케팅: 0", "인하우스마케팅: 0", "자연유입: 127", "합계: 127", "((date))", "((charge marketing))", "((no charge marketing))", "((inhouse marketing))", "((nature inflow))", "((total))"};
 		for(int i=0;i<=5;i++) {
-			if(pLC[i].equals(barChartData[i])) {
-				System.out.println(" *** getInflow_Summary bar chart data " + barChartData[i+6] + "((" + i + "))" + " check Success !! *** ");
+			if(pLC[i].equals(barChartDataCheck[i])) {
+				System.out.println(" *** getInflow_Summary bar chart data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Summary bar chart data " + barChartData[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Summary bar chart data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -340,12 +340,12 @@ public class getInflow {
 		$(".highcharts-tracker", 12).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
-		String[] lineChartData = {"2018.12.07(금)", "유료마케팅: 0", "일반마케팅: 0", "인하우스마케팅: 0", "자연유입: 127", "((daily publication))", "((charge marketing))", "((no charge marketing))", "((inhouse marketing))", "((nature inflow))"};
+		String[] lineChartDataCheck = {"2018.12.07(금)", "유료마케팅: 0", "일반마케팅: 0", "인하우스마케팅: 0", "자연유입: 127", "((date))", "((charge marketing))", "((no charge marketing))", "((inhouse marketing))", "((nature inflow))"};
 		for(int i=0;i<=4;i++) {
-			if(pLC[i].equals(lineChartData[i])) {
-				System.out.println(" *** getInflow_Summary line chart data " + lineChartData[i+5] + "((" + i + "))" + " check Success !! *** ");
+			if(pLC[i].equals(lineChartDataCheck[i])) {
+				System.out.println(" *** getInflow_Summary line chart data " + lineChartDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Summary line chart data " + lineChartData[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Summary line chart data " + lineChartDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -393,12 +393,12 @@ public class getInflow {
 		$(".highcharts-tracker", 2).hover();
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
-		String[] barChartData = {"2018.12.07(금)", "신규방문: 0", "재방문: 127", "방문수: 127", "((daily publication))", "((new visit))", "((re visit))", "((visit number))"};
+		String[] barChartDataCheck = {"2018.12.07(금)", "신규방문: 0", "재방문: 127", "방문수: 127", "((date))", "((new visit))", "((re visit))", "((visit number))"};
 		for(int i=0;i<=3;i++) {
-			if(pLC[i].equals(barChartData[i])) {
-				System.out.println(" *** getInflow_Detail bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Success !! *** ");
+			if(pLC[i].equals(barChartDataCheck[i])) {
+				System.out.println(" *** getInflow_Detail bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Detail bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Detail bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -409,12 +409,12 @@ public class getInflow {
 		$(".highcharts-tracker", 4).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
-		String[] lineChartData = {"2018.12.07(금)", "검색엔진: 89", "다이렉트: 38", "((daily publication))", "((search engine))", "((direct))"};
+		String[] lineChartDataCheck = {"2018.12.07(금)", "검색엔진: 89", "다이렉트: 38", "((date))", "((search engine))", "((direct))"};
 		for(int i=0;i<=2;i++) {
-			if(pLC[i].equals(lineChartData[i])) {
-				System.out.println(" *** getInflow_Detail line chart data " + lineChartData[i+3] + "((" + i + "))" + " check Success !! *** ");
+			if(pLC[i].equals(lineChartDataCheck[i])) {
+				System.out.println(" *** getInflow_Detail line chart data " + lineChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Detail line chart data " + lineChartData[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Detail line chart data " + lineChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -471,7 +471,6 @@ public class getInflow {
 		String[] tableDataCheck = {"합계", "100.0%\n89", "100%", "((search word))", "((visit number))", "((return percent google))"};
 		for(int i=0;i<=2;i++) {
 			pageLoadCheck = $("td", (i+16)).text().trim().replace(" ", "");
-			System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
 			if(pageLoadCheck.equals(tableDataCheck[i])) {
 				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
 			} else {
@@ -479,7 +478,7 @@ public class getInflow {
 				close();
 			}
 		}
-		String[] barChartData = {"2018.12.07(금)", "무료: 89", "유료: 0", "합계: 89", "((daily publication))", "((no charge))", "((charge))", "((total))"};
+		String[] barChartDataCheck = {"2018.12.07(금)", "무료: 89", "유료: 0", "합계: 89", "((date))", "((no charge))", "((charge))", "((total))"};
 		$(".highcharts-tracker > path", 2).waitUntil(visible, 10000);
 		sleep(1000);
 		js("$('rect').eq(11).mouseover()");
@@ -492,10 +491,10 @@ public class getInflow {
 		pageLoadCheck = $(".highcharts-tooltip", 3).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
-			if(pLC[i].equals(barChartData[i])) {
-				System.out.println(" *** getInflow_Search bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Success !! *** ");
+			if(pLC[i].equals(barChartDataCheck[i])) {
+				System.out.println(" *** getInflow_Search bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Search bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Search bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -537,17 +536,17 @@ public class getInflow {
 				close();
 			}
 		}
-		String[] barChartData = {"2018.12.07(금)", "신규방문: 0", "재방문: 89", "방문수: 89", "((daily publication))", "((new visit))", "((return visit))", "((visit number))"};
+		String[] barChartDataCheck = {"2018.12.07(금)", "신규방문: 0", "재방문: 89", "방문수: 89", "((date))", "((new visit))", "((return visit))", "((visit number))"};
 		$(".highcharts-tracker", 2).hover();
 		$(".highcharts-tracker", 1).hover();
 		$(".highcharts-tracker", 2).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
-			if (pLC[i].equals(barChartData[i])) {
-				System.out.println(" *** getInflow_Domain bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Success !! *** ");
+			if (pLC[i].equals(barChartDataCheck[i])) {
+				System.out.println(" *** getInflow_Domain bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Domain bar chart data " + barChartData[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Domain bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -560,12 +559,12 @@ public class getInflow {
 		$(".highcharts-tracker", 4).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
-		String[] lineChartData = {"2018.12.07(금)", "google.com: 89", "((daily publication))", "((inflow domain))"};
+		String[] lineChartDataCheck = {"2018.12.07(금)", "google.com: 89", "((date))", "((inflow domain))"};
 		for(int i=0;i<=1;i++) {
-			if (pLC[i].equals(lineChartData[i])) {
-				System.out.println(" *** getInflow_Domain line chart data " + lineChartData[i+2] + "((" + i + "))" + " check Success !! *** ");
+			if (pLC[i].equals(lineChartDataCheck[i])) {
+				System.out.println(" *** getInflow_Domain line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Domain line chart data " + lineChartData[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Domain line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
