@@ -253,21 +253,20 @@ public class user {
 		$("#daterangepicker2").click();
 		$(".month", 0).waitUntil(visible, 10000);
 		//날짜선택
-		dateCheck = $(".month", 1).text().trim(); //1번째 달력 월 확인
-		for(int i=0;i<=1;i++) {
+		for(int i=0;i<=1;i++) { //과거 날짜 : 시작캘린더부터 선택(0과 1 변경, 부등호 변경, ++와 --변경)
 			if(i==0) {
 				System.out.println("start calender date selecting..");	
 			} else {
 				System.out.println("end calender date selecting..");				
-				dateCheck = $(".month", 0).text().trim(); //2번째 달력 월 확인
 			}
-			for(int x=0;x<=100;x++) { //2018.12가 될때까지 >> 클릭
+			dateCheck = $(".month", i).text().trim(); //2번째 달력 월 확인
+			for(int x=0;x<=100;x++) { //2018.12가 될때까지 << 클릭
 				if(dateCheck.equals("2018.12")) {
 					$("td[data-title=r1c5]", i).click(); //7일 선택
 					break;
 				} else {
 					System.out.println("no"+ (i+1) + ". calender month is  : " + dateCheck + " // need nextBtn(" + x + ") click");
-					$(".next", i).click();
+					$(".prev", i).click();
 					dateCheck = $(".month", i).text().trim();
 				}
 			}
