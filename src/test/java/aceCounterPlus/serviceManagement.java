@@ -159,7 +159,7 @@ public class serviceManagement {
 		case "memberInfo_new_password_check":
 			checkMsg = "새 비밀번호 확인이 필요합니다.";
 			break;
-		case "memberInfo_new_password_fail":
+		case "memberInfo_new_password_notconsensus":
 			checkMsg = "새 비밀번호가 일치하지 않습니다.";
 			break;
 		case "memberInfo_change_password_confirm":
@@ -446,7 +446,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- serviceManage_main End ----- ! ");
 	}
 
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void scriptList() {
 		System.out.println(" ! ----- scriptList Start ----- ! ");
 		$(By.linkText("분석스크립트")).waitUntil(visible, 10000);
@@ -533,7 +533,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- scriptList End ----- ! ");
 	}
 
-	@Test(priority = 11)
+	//@Test(priority = 11)
 	public void installApply() {
 		System.out.println(" ! ----- installApply Start ----- ! ");
 		$(By.linkText("분석스크립트 설치신청")).waitUntil(visible, 10000);
@@ -590,7 +590,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- installApply End ----- ! ");
 	}
 
-	@Test(priority = 21)
+	//@Test(priority = 21)
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
 		$(By.linkText("회원정보")).waitUntil(visible, 10000);
@@ -617,19 +617,16 @@ public class serviceManagement {
 		}
 		$("#modifyProc").click();
 		valCheck("memberInfo_now_password_null");
-		System.out.println(pw + A);	
 		$("#prePwd").setValue(pw + A);
 		$("#modifyProc").click();
 		valCheck("memberInfo_new_password_null");
-		System.out.println(pw + B);
 		$("#changePwd").setValue(pw + B);
 		$("#modifyProc").click();
 		valCheck("memberInfo_new_password_check");
 		$("#changePwdConfirm").waitUntil(visible, 10000);
-		System.out.println(pw + C);
 		$("#changePwdConfirm").setValue(pw + C);
 		$("#modifyProc").click();
-		valCheck("memberInfo_new_password_fail");
+		valCheck("memberInfo_new_password_notconsensus");
 		$("#prePwd").setValue("");
 		$("#changePwd").setValue("");
 		$("#changePwdConfirm").setValue("");
@@ -680,7 +677,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- memberInfo End ----- ! ");
 	}
 
-	@Test(priority = 31)
+	//@Test(priority = 31)
 	public void myCoupon() {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
 		$(By.linkText("쿠폰관리")).waitUntil(visible, 10000);
@@ -713,7 +710,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
 
-	@Test(priority = 41)
+	//@Test(priority = 41)
 	public void addService() {
 		System.out.println(" ! ----- addService Start ----- ! ");
 		$(By.linkText("서비스추가")).waitUntil(visible, 10000);
@@ -765,7 +762,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addService End ----- ! ");
 	}
 
-	@Test(priority = 51)
+	//@Test(priority = 51)
 	public void addView() {
 		System.out.println(" ! ----- addView Start ----- ! ");
 		$(By.linkText("뷰필터 추가")).click();
@@ -780,7 +777,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addView End ----- ! ");
 	}
 
-	@Test(priority = 61)
+	////@Test(priority = 61)
 	public void addIntegralReport() {
 		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
 		$(By.linkText("통합리포트 생성")).waitUntil(visible, 10000);
@@ -804,7 +801,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addIntegralReport End ----- ! ");
 	}
 
-	@Test(priority = 71)
+	//@Test(priority = 71)
 	public void editService() {
 		System.out.println(" ! ----- editService Start ----- ! ");
 		$(By.linkText("정보수정")).waitUntil(visible, 10000);
@@ -864,23 +861,25 @@ public class serviceManagement {
 		System.out.println(" ! ----- editService End ----- ! ");
 	}
 	
-	@Test(priority = 72)
-	public void changeService() { //페이지 로딩만 체크
-		System.out.println(" ! ----- changeService Start ----- ! ");
-		$(By.linkText("서비스변경")).waitUntil(visible, 10000);
-		$(By.linkText("서비스변경")).click();
-		$("#wrapper_step1").waitUntil(visible, 15000);
-		pageLoadCheck = $(".active", 1).text().trim();
-		if (pageLoadCheck.equals("서비스변경")) {
-			System.out.println(" *** changeService page load Success !! *** ");
+	//@Test(priority = 72)
+	public void changeService() { //페이지 로딩만 체크 //탭 숨김처리되고 메뉴이름 변경되서 변경된 내용으로 변경
+		System.out.println(" ! ----- editService Start ----- ! ");
+		$(By.linkText("정보수정")).waitUntil(visible, 10000);
+		$(By.linkText("정보수정")).click();
+		$(".ace-svc-name", 1).waitUntil(visible, 15000);
+		pageLoadCheck = $(".ace-svc-name", 1).text().trim();
+		String[] pLC = pageLoadCheck.split("(");
+		if (pLC[1].equals("ap0420121150.com)")) {
+			System.out.println(" *** editService page load Success !! *** ");
 		} else {
-			System.out.println(" *** changeService page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** editService page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- changeService End ----- ! ");
+		pLC = null;
+		System.out.println(" ! ----- editService End ----- ! ");
 	}
 
-	@Test(priority = 81)
+	//@Test(priority = 81)
 	public void summaryReport() {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
 		$(By.linkText("발송메일 설정")).waitUntil(visible, 10000);
@@ -962,7 +961,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
 	
-	@Test(priority = 82)
+	//@Test(priority = 82)
 	public void notifyReport() {
 		System.out.println(" ! ----- notifyReport Start ----- ! ");
 		$(By.linkText("알림메일 발송")).waitUntil(visible, 10000);
@@ -1019,7 +1018,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- notifyReport End ----- ! ");
 	}
 
-	@Test(priority = 91)
+	//@Test(priority = 91)
 	public void add_subManager() {
 		System.out.println(" ! ----- add_subManager Start ----- ! ");
 		sleep(1000);
@@ -1108,7 +1107,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
 	
-	@Test(priority = 92)
+	//@Test(priority = 92)
 	public void subManager_modifyInfoAndDel() {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
@@ -1137,7 +1136,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel End ----- ! ");
 	}
 	
-	@Test(priority = 101)
+	//@Test(priority = 101)
 	public void leaveService() {
 		System.out.println(" ! ----- leaveService Start ----- ! ");
 		$(By.linkText("서비스 해지")).waitUntil(visible, 10000);
@@ -1224,8 +1223,9 @@ public class serviceManagement {
 	@Test(priority = 111)
 	public void extendCharge() {
 		System.out.println(" ! ----- extendCharge Start ----- ! ");
-		$(By.linkText("연장요금")).waitUntil(visible, 10000);
-		$(By.linkText("연장요금")).click();
+		/*$(By.linkText("연장요금")).waitUntil(visible, 10000);
+		$(By.linkText("연장요금")).click();*/
+		open("https://new.acecounter.com/manage/charge/extendCharge");
 		$("#btn_step1_next").waitUntil(visible, 10000);
 		pageLoadCheck = $("#headingStep1.panel-heading.active").text().trim();
 		String[] pLC = pageLoadCheck.split("수정하기");
@@ -1258,7 +1258,7 @@ public class serviceManagement {
 		$(By.id("select_chargelist_0")).click();
 	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스요금표'])[1]/following::option[1]")).click();
 		pLC = pageLoadCheck.split(" ");
-		if(pLC[0].equals("49,500")) { //월 서비스 요금 확인
+		if(pLC[0].equals("44,000")) { //월 서비스 요금 확인
 			System.out.println(" *** extendCharge month service charge check Success !! *** ");
 			pLC = null;
 		} else {
@@ -1352,7 +1352,7 @@ public class serviceManagement {
 		}
 		pageLoadCheck = $("#credit-card").text().trim();
 		pLC = pageLoadCheck.split("\n결제하실 금액\n");
-		if(pLC[0].equals("신용카드") && pLC[1].substring(0, 7).equals("99,000원")) {
+		if(pLC[0].equals("신용카드") && pLC[1].substring(0, 7).equals("66,000원")) {
 			System.out.println(" *** extendCharge step3 credit-card payment check Success !! *** ");
 			pLC = null;
 		} else {
@@ -1362,7 +1362,7 @@ public class serviceManagement {
 		$("label", 15).click();
 		pageLoadCheck = $("#virtual-account").text().trim();
 		pLC = pageLoadCheck.split(" 발급 신청\n결제하실 금액\n");
-		if(pLC[0].equals("가상계좌") && pLC[1].substring(0, 7).equals("99,000원")) {
+		if(pLC[0].equals("가상계좌") && pLC[1].substring(0, 7).equals("66,000원")) {
 			System.out.println(" *** extendCharge step3 virtual-account payment check Success !! *** ");
 			pLC = null;
 		} else {
@@ -1372,7 +1372,7 @@ public class serviceManagement {
 		$("label", 16).click();
 		pageLoadCheck = $("#payco").text().trim();
 		pLC = pageLoadCheck.split(" 간편결제\n결제하실 금액\n");
-		if(pLC[0].equals("페이코") && pLC[1].substring(0, 8).equals("99,000 원")) {
+		if(pLC[0].equals("페이코") && pLC[1].substring(0, 8).equals("66,000 원")) {
 			System.out.println(" *** extendCharge step3 payco payment check Success !! *** ");
 			pLC = null;
 		} else {
@@ -1382,7 +1382,7 @@ public class serviceManagement {
 		
 		System.out.println(" ! ----- extendCharge End ----- ! ");
 	}
-	@Test(priority = 121)
+	//@Test(priority = 121)
 	public void additionalCharge() {
 		System.out.println(" ! ----- additionalCharge Start ----- ! ");
 		$(By.linkText("추가요금")).waitUntil(visible, 10000);
@@ -1401,7 +1401,7 @@ public class serviceManagement {
 		valCheck("additionalCharge_service_null");
 		System.out.println(" ! ----- additionalCharge End ----- ! ");
 	}
-	@Test(priority = 131)
+	//@Test(priority = 131)
 	public void paymentHistory() {
 		System.out.println(" ! ----- paymentHistory Start ----- ! ");
 		$(By.linkText("결제내역조회")).waitUntil(visible, 10000);
@@ -1434,7 +1434,7 @@ public class serviceManagement {
 		}
 		System.out.println(" ! ----- paymentHistory End ----- ! ");
 	}
-	@Test(priority = 141)
+	//@Test(priority = 141)
 	public void paymentBill() {
 		System.out.println(" ! ----- paymentBill Start ----- ! ");
 		$(By.linkText("계산서")).waitUntil(visible, 10000);
@@ -1521,7 +1521,7 @@ public class serviceManagement {
 		$("#btn-submit").waitUntil(hidden, 10000);
 		System.out.println(" ! ----- paymentBill End ----- ! ");
 	}
-	@Test(priority = 151)
+	//@Test(priority = 151)
 	public void myNoticeList() {
 		System.out.println(" ! ----- myNoticeList Start ----- ! ");
 		$(By.linkText("서비스 공지사항")).waitUntil(visible, 10000);
@@ -1590,7 +1590,7 @@ public class serviceManagement {
 		$("#btn-search").waitUntil(visible, 10000);
 		System.out.println(" ! ----- myNoticeList End ----- ! ");
 	}
-	@Test(priority = 161)
+	//@Test(priority = 161)
 	public void myAllimList() {
 		System.out.println(" ! ----- myAllimList Start ----- ! ");
 		/*$(By.linkText("서비스 알림내역")).waitUntil(visible, 10000);
