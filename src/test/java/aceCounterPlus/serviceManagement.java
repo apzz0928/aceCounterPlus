@@ -207,6 +207,19 @@ public class serviceManagement {
 		case "addService_coupon_null":
 			checkMsg = "쿠폰번호가 맞지 않습니다.\n" + "다시 확인해 주세요.";
 			break;
+		case "addIntegralReport_00":
+			checkMsg = "";
+		case "addIntegralReport_01":
+			checkMsg = "";
+		case "addIntegralReport_02":
+			checkMsg = "";
+		case "addIntegralReport_03":
+			checkMsg = "";
+		case "addIntegralReport_04":
+			checkMsg = "";
+		case "addIntegralReport_05":
+			checkMsg = "";
+			break;
 		case "addIntegralReport_name_null":
 			checkMsg = "통합리포트 이름을 입력해 주세요.";
 			break;
@@ -446,7 +459,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- serviceManage_main End ----- ! ");
 	}
 
-	//@Test(priority = 1)
+	@Test(priority = 1)
 	public void scriptList() {
 		System.out.println(" ! ----- scriptList Start ----- ! ");
 		$(By.linkText("분석스크립트")).waitUntil(visible, 10000);
@@ -533,7 +546,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- scriptList End ----- ! ");
 	}
 
-	//@Test(priority = 11)
+	@Test(priority = 11)
 	public void installApply() {
 		System.out.println(" ! ----- installApply Start ----- ! ");
 		$(By.linkText("분석스크립트 설치신청")).waitUntil(visible, 10000);
@@ -590,7 +603,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- installApply End ----- ! ");
 	}
 
-	//@Test(priority = 21)
+	@Test(priority = 21)
 	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
 		$(By.linkText("회원정보")).waitUntil(visible, 10000);
@@ -677,7 +690,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- memberInfo End ----- ! ");
 	}
 
-	//@Test(priority = 31)
+	@Test(priority = 31)
 	public void myCoupon() {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
 		$(By.linkText("쿠폰관리")).waitUntil(visible, 10000);
@@ -710,7 +723,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- myCoupon End ----- ! ");
 	}
 
-	//@Test(priority = 41)
+	@Test(priority = 41)
 	public void addService() {
 		System.out.println(" ! ----- addService Start ----- ! ");
 		$(By.linkText("서비스추가")).waitUntil(visible, 10000);
@@ -762,13 +775,13 @@ public class serviceManagement {
 		System.out.println(" ! ----- addService End ----- ! ");
 	}
 
-	//@Test(priority = 51)
+	@Test(priority = 51)
 	public void addView() {
 		System.out.println(" ! ----- addView Start ----- ! ");
 		$(By.linkText("뷰필터 추가")).click();
 		$(".div_not_paid").waitUntil(visible, 15000);
 		pageLoadCheck = $(".div_not_paid").text().trim();
-		if (pageLoadCheck.equals("뷰필터는 유료 서비스 전환 후에 추가 하실 수 있습니다.")) {
+		if (pageLoadCheck.equals("뷰필터는 종속된 서비스에 분석 이력이 있는 경우만 신청 가능 합니다.")) {
 			System.out.println(" *** addView page load Success !! *** ");
 		} else {
 			System.out.println(" *** addView page load Fail ... !@#$%^&*() *** ");
@@ -777,11 +790,12 @@ public class serviceManagement {
 		System.out.println(" ! ----- addView End ----- ! ");
 	}
 
-	////@Test(priority = 61)
+	//@Test(priority = 61)
 	public void addIntegralReport() {
 		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
-		$(By.linkText("통합리포트 생성")).waitUntil(visible, 10000);
-		$(By.linkText("통합리포트 생성")).click();
+		/*$(By.linkText("통합리포트 생성")).waitUntil(visible, 10000);
+		$(By.linkText("통합리포트 생성")).click();*/
+		open("https://new.acecounter.com/manage/serviceInfo/addIntegralReport");
 		$(".nano-content", 2).waitUntil(visible, 15000);
 		pageLoadCheck = $(".nano-content", 2).text().trim();
 		if (pageLoadCheck.equals("이용중인 서비스가 없습니다.")) {
@@ -801,7 +815,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addIntegralReport End ----- ! ");
 	}
 
-	//@Test(priority = 71)
+	@Test(priority = 71)
 	public void editService() {
 		System.out.println(" ! ----- editService Start ----- ! ");
 		$(By.linkText("정보수정")).waitUntil(visible, 10000);
@@ -837,7 +851,7 @@ public class serviceManagement {
 		//$(".btn-info", 1).waitUntil(hidden, 10000);
 		$(".btn-info", 1).waitUntil(visible, 15000);
 		pageLoadCheck = $("#svc_nm_title_0").text().trim();
-		if (pageLoadCheck.substring(21, 33).equals(date)) {
+		if (pageLoadCheck.substring(20, 32).equals(date)) {
 			System.out.println(" *** editService edit Success !! *** ");
 		} else {
 			System.out.println(" *** editService edit Fail ... !@#$%^&*() *** ");
@@ -852,7 +866,7 @@ public class serviceManagement {
 		$(".btn-info", 1).waitUntil(visible, 15000);
 		sleep(1000);
 		pageLoadCheck = $("#svc_nm_title_0").text().trim();
-		if (pageLoadCheck.substring(21, 33).equals("ap0420121150")) {
+		if (pageLoadCheck.substring(20, 32).equals("ap0420121150")) {
 			System.out.println(" *** editService restore Success !! *** ");
 		} else {
 			System.out.println(" *** editService restore Fail ... !@#$%^&*() *** ");
@@ -861,14 +875,14 @@ public class serviceManagement {
 		System.out.println(" ! ----- editService End ----- ! ");
 	}
 	
-	//@Test(priority = 72)
+	@Test(priority = 72)
 	public void changeService() { //페이지 로딩만 체크 //탭 숨김처리되고 메뉴이름 변경되서 변경된 내용으로 변경
 		System.out.println(" ! ----- editService Start ----- ! ");
 		$(By.linkText("정보수정")).waitUntil(visible, 10000);
 		$(By.linkText("정보수정")).click();
 		$(".ace-svc-name", 1).waitUntil(visible, 15000);
 		pageLoadCheck = $(".ace-svc-name", 1).text().trim();
-		String[] pLC = pageLoadCheck.split("(");
+		String[] pLC = pageLoadCheck.split("\\(");
 		if (pLC[1].equals("ap0420121150.com)")) {
 			System.out.println(" *** editService page load Success !! *** ");
 		} else {
@@ -879,7 +893,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- editService End ----- ! ");
 	}
 
-	//@Test(priority = 81)
+	@Test(priority = 81)
 	public void summaryReport() {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
 		$(By.linkText("발송메일 설정")).waitUntil(visible, 10000);
@@ -897,8 +911,7 @@ public class serviceManagement {
 		$(".sendEmail").waitUntil(visible, 15000);
 		$("#btn-sendMail").click();
 		$(".modal-center", 5).waitUntil(visible, 15000);
-		valCheck("summaryReport_sendEmail_send");
-		switchTo().window(1);
+		valCheck("summaryReport_sendEmail_send");switchTo().window(1);
 		refresh();
 		pageLoadCheck = $(".tit_subject", 0).text().trim();
 		if (pageLoadCheck.substring(15, 22).equals("주간요약리포트")) {
@@ -961,7 +974,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- summaryReport End ----- ! ");
 	}
 	
-	//@Test(priority = 82)
+	@Test(priority = 82)
 	public void notifyReport() {
 		System.out.println(" ! ----- notifyReport Start ----- ! ");
 		$(By.linkText("알림메일 발송")).waitUntil(visible, 10000);
@@ -1018,7 +1031,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- notifyReport End ----- ! ");
 	}
 
-	//@Test(priority = 91)
+	@Test(priority = 91)
 	public void add_subManager() {
 		System.out.println(" ! ----- add_subManager Start ----- ! ");
 		sleep(1000);
@@ -1099,7 +1112,7 @@ public class serviceManagement {
 		$(".indicator").click();
 		$(".btn-info", 1).waitUntil(visible, 15000);
 	    $(By.id("select_added_auth_11000")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='[Web Free]'])[5]/following::option[1]")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='[Web Pre]'])[5]/following::option[1]")).click();
 	    $(".btn-info", 1).click();
 	    $("#btn-modal-alert-yes").waitUntil(visible, 15000);
 	    $("#btn-modal-alert-yes").click();
@@ -1107,7 +1120,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
 	
-	//@Test(priority = 92)
+	@Test(priority = 92)
 	public void subManager_modifyInfoAndDel() {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
@@ -1136,7 +1149,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel End ----- ! ");
 	}
 	
-	//@Test(priority = 101)
+	@Test(priority = 101)
 	public void leaveService() {
 		System.out.println(" ! ----- leaveService Start ----- ! ");
 		$(By.linkText("서비스 해지")).waitUntil(visible, 10000);
@@ -1223,9 +1236,8 @@ public class serviceManagement {
 	@Test(priority = 111)
 	public void extendCharge() {
 		System.out.println(" ! ----- extendCharge Start ----- ! ");
-		/*$(By.linkText("연장요금")).waitUntil(visible, 10000);
-		$(By.linkText("연장요금")).click();*/
-		open("https://new.acecounter.com/manage/charge/extendCharge");
+		$(By.linkText("연장요금")).waitUntil(visible, 10000);
+		$(By.linkText("연장요금")).click();
 		$("#btn_step1_next").waitUntil(visible, 10000);
 		pageLoadCheck = $("#headingStep1.panel-heading.active").text().trim();
 		String[] pLC = pageLoadCheck.split("수정하기");
@@ -1240,8 +1252,8 @@ public class serviceManagement {
 		valCheck("extendCharge_service_null");
 		$("#checkbox_step1_0").click();
 		$("#btn_step1_next").click();
-		$("#btnSkipScript").waitUntil(visible, 10000);
-		$("#btnSkipScript").click();
+		/*$("#btnSkipScript").waitUntil(visible, 10000);
+		$("#btnSkipScript").click();*/
 		$("#headingStep2.panel-heading.active").waitUntil(visible, 10000);
 		pageLoadCheck = $("#headingStep2.panel-heading.active").text().trim();
 		pLC = pageLoadCheck.split(" 확인 및 계약기간 선택");
@@ -1254,7 +1266,7 @@ public class serviceManagement {
 		}
 		$(By.id("select_chargelist_0")).click();
 	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스요금표'])[1]/following::option[2]")).click();
-	    pageLoadCheck = $(".text-danger").text().trim();
+	    pageLoadCheck = $(".text-danger", 0).text().trim();
 		$(By.id("select_chargelist_0")).click();
 	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스요금표'])[1]/following::option[1]")).click();
 		pLC = pageLoadCheck.split(" ");
@@ -1265,7 +1277,8 @@ public class serviceManagement {
 			System.out.println(" *** extendCharge month service charge check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".br-dark").click();
+		$(".br-dark", 0).waitUntil(visible, 10000);
+		$(".br-dark", 0).click();
 		$(".btn-info", 10).waitUntil(visible, 10000);
 		pageLoadCheck = $(".text-center", 18).text().trim();
 		pLC = pageLoadCheck.split(" ");
@@ -1382,7 +1395,7 @@ public class serviceManagement {
 		
 		System.out.println(" ! ----- extendCharge End ----- ! ");
 	}
-	//@Test(priority = 121)
+	@Test(priority = 121)
 	public void additionalCharge() {
 		System.out.println(" ! ----- additionalCharge Start ----- ! ");
 		$(By.linkText("추가요금")).waitUntil(visible, 10000);
@@ -1401,7 +1414,7 @@ public class serviceManagement {
 		valCheck("additionalCharge_service_null");
 		System.out.println(" ! ----- additionalCharge End ----- ! ");
 	}
-	//@Test(priority = 131)
+	@Test(priority = 131)
 	public void paymentHistory() {
 		System.out.println(" ! ----- paymentHistory Start ----- ! ");
 		$(By.linkText("결제내역조회")).waitUntil(visible, 10000);
@@ -1434,7 +1447,7 @@ public class serviceManagement {
 		}
 		System.out.println(" ! ----- paymentHistory End ----- ! ");
 	}
-	//@Test(priority = 141)
+	@Test(priority = 141)
 	public void paymentBill() {
 		System.out.println(" ! ----- paymentBill Start ----- ! ");
 		$(By.linkText("계산서")).waitUntil(visible, 10000);
@@ -1521,7 +1534,7 @@ public class serviceManagement {
 		$("#btn-submit").waitUntil(hidden, 10000);
 		System.out.println(" ! ----- paymentBill End ----- ! ");
 	}
-	//@Test(priority = 151)
+	@Test(priority = 151)
 	public void myNoticeList() {
 		System.out.println(" ! ----- myNoticeList Start ----- ! ");
 		$(By.linkText("서비스 공지사항")).waitUntil(visible, 10000);
@@ -1590,12 +1603,11 @@ public class serviceManagement {
 		$("#btn-search").waitUntil(visible, 10000);
 		System.out.println(" ! ----- myNoticeList End ----- ! ");
 	}
-	//@Test(priority = 161)
+	@Test(priority = 161)
 	public void myAllimList() {
 		System.out.println(" ! ----- myAllimList Start ----- ! ");
-		/*$(By.linkText("서비스 알림내역")).waitUntil(visible, 10000);
-		$(By.linkText("서비스 알림내역")).click();*/
-		open("https://new.acecounter.com/manage/news/myAllimList");
+		$(By.linkText("서비스 알림내역")).waitUntil(visible, 10000);
+		$(By.linkText("서비스 알림내역")).click();
 		pageLoadCheck = $(".notokr-bold").text().trim();
 		if(pageLoadCheck.equals("서비스 알림내역")) {
 			System.out.println(" *** myAllimList page load check Success !! *** ");
