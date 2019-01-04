@@ -112,6 +112,9 @@ public class signUp {
 				System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
 				$$(".btn-info").last().click();
 			    $(".modal-backdrop").waitUntil(hidden, 10000);
+			}else if(val.equals("restorationPassword_change_password_confirm")) {
+				System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
+				$$(".btn-info").last().click();
 			} else { //confirm 아니면 .btn-sm클릭
 				System.out.println(" *** " + val +  " - check Success !! *** ");
 				$$(".btn-sm").last().click();
