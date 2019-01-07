@@ -1,7 +1,5 @@
 package aceCounterPlus;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -27,21 +25,14 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 /*import com.codeborne.selenide.testng.ScreenShooter;*/
 
-public class temporarily_2 {
+public class termination {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg, pageLoadCheck, dateCheck;
-	private static HttpURLConnection huc;
-	private static int respCode;
 
-	// 신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
 	Date number_date = new Date();
-	SimpleDateFormat number_format = new SimpleDateFormat("yyMMddHHmmss");
-	SimpleDateFormat number_format1 = new SimpleDateFormat("yyyy-MM-dd");
-	SimpleDateFormat number_format2 = new SimpleDateFormat("MMddhhmmss");
+	SimpleDateFormat number_format = new SimpleDateFormat("yyyy-MM-dd");
 	String date = number_format.format(number_date);
-	String date1 = number_format1.format(number_date);
-	String date2 = number_format2.format(number_date);
 
 	@Parameters("browser")
 	@BeforeClass
@@ -116,34 +107,96 @@ public class temporarily_2 {
 	private static void js(String javaScript) {
 		executeJavaScript(javaScript);
 	}
-
 	@Test(priority = 0)
-	public void login() {
-		System.out.println(" ! ----- login Start ----- ! ");
-		open(baseUrl);
-		$(".gnb").waitUntil(visible, 15000);
-		$("#uid").setValue("apzz0928888");
-		$("#upw").setValue(pw + A);
-		$(".btn_login").click();
-		String loginCheck = $(".btn_logout").text().trim();
-		$(".btn_logout").getValue();
-		if (loginCheck.equals("로그아웃")) {
-			System.out.println(" *** Login Success !! *** ");
-		} else {
-			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");
-			close();
+	public void testAccount_terminationApply() {
+		open("https://new-admin.acecounter.com/admin/login");
+		sleep(1500);
+		$("#username").setValue("apzz0928");
+		$("#password").setValue("qordlf!@34");
+		$(".btn-primary").click();
+		sleep(1500);
+		open("https://new-admin.acecounter.com/admin/regCustomer/userList");
+		sleep(1000);
+	    $("#__BVID__4_").click(); //상태 : 트라이얼(정상) 선택
+	    sleep(500);
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[33]")).click();
+	    sleep(500);
+	    $(".input-sm", 5).setValue("apz");		
+		$(".btn-dark").click();
+		sleep(3000);
+		for(int i=0, x=99;i<=3;i++) {
+			$("a", x).click();
+			sleep(1000);
+			switchTo().window(1);
+			open("https://new-admin.acecounter.com/manage/serviceInfo/leaveService");
+			sleep(1000);
+			$("#pwd").setValue("qordlf!@34!@34");
+			$("#btn-ok").click();
+			$("#btnIng").waitUntil(visible, 10000);
+			sleep(800);
+			$("#checkAll").click();
+			$("#btnIng").click();
+			sleep(1000);
+			$("#btn-modal-alert-yes").click();
+			sleep(500);
+			$("label", 5).click();
+			$("label", 9).click();
+			$(".form-control", 3).setValue(date + " 테스트계정 삭제");
+			$("#btnApply").scrollIntoView(false);
+			$("#btnApply").click();
+			sleep(1000);
+			$(".btn-info", 3).click();
+			sleep(800);
+			$(".btn-primary").click();
+			switchTo().window(0);
+			x = x+10;
 		}
-		$(".go_stat").click();
-		$("#top-menu-name").waitUntil(visible, 10000);
-		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("Live 대시보드")) {
-			System.out.println(" *** stats getInflow login Success !! *** ");
-		} else {
-			System.out.println(" *** stats getInflow login Fail ... !@#$%^&*() *** ");
-			close();
+  	}
+  	@Test(priority = 1)
+	public void testAccount_termination() {
+		open("https://new-admin.acecounter.com/admin/login");
+		sleep(1500);
+		$("#username").setValue("apzz0928");
+		$("#password").setValue("qordlf!@34");
+		$(".btn-primary").click();
+		sleep(1500);
+		open("https://new-admin.acecounter.com/admin/comApply/termination");
+		$(By.id("__BVID__2_")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[19]")).click();
+	    sleep(1500);
+	    $(".input-sm", 4).setValue("apz");
+		$(".btn-dark").click();
+		sleep(3000);
+		String[] terminationNumber = {"", "", "", ""};
+		for(int i=0, x=0;i<=3;i++) {
+			terminationNumber[i] = $("td", x).text();
+			x = x+17;
 		}
-		System.out.println(" ! ----- login End ----- ! ");
-	}
+		for(int i=0;i<=terminationNumber.length-1;i++) {
+			System.out.println(terminationNumber[i]);
+		}
+		js("window.open('');");
+		sleep(1000);
+		switchTo().window(1);
+		open("https://new-admin.acecounter.com/admin/comApply/termination/form/" + terminationNumber[0]);
+		for(int i=1;i<=4;i++) {
+			sleep(500);
+		    $("#__BVID__2_").click();
+		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='담당자'])[1]/following::option[47]")).click();
+		    sleep(500);
+		    $("#__BVID__3_").click();
+		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='처리상태'])[1]/following::option[3]")).click();
+		    sleep(500);
+		    $(".btn-primary").click();
+		    sleep(500);
+		    $("#btn-modal-alert-yes").click();
+		    sleep(1000);
+		    if(i < 4) {
+				open("https://new-admin.acecounter.com/admin/comApply/termination/form/" + terminationNumber[i]);
+			    sleep(1000);	
+		    }
+		}
+  	}
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();

@@ -1,11 +1,7 @@
 package aceCounterPlus;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -30,31 +26,15 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 public class user {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg, pageLoadCheck, dateCheck;
-	private static HttpURLConnection huc;
-	private static int respCode;
-
-	// 신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
-	Date number_date = new Date();
-	SimpleDateFormat number_format = new SimpleDateFormat("yyMMddHHmmss");
-	SimpleDateFormat number_format1 = new SimpleDateFormat("yyyy-MM-dd");
-	SimpleDateFormat number_format2 = new SimpleDateFormat("MMddhhmmss");
-	String date = number_format.format(number_date);
-	String date1 = number_format1.format(number_date);
-	String date2 = number_format2.format(number_date);
+	private static String baseUrl, hubUrl, TestBrowser, pw, A, pageLoadCheck, dateCheck;
 
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "https://new.acecounter.com/common/front";
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
-		id = "ap";
 		pw = "qordlf";
-		pw1 = "qordlf";
 		A = "!@34";
-		B = "1@#4";
-		C = "12#$";
-		domain = "apzz";
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
@@ -105,95 +85,6 @@ public class user {
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		}
 	}
-
-	public static void valCheck(String val) {
-		switch (val) {
-		case "scriptList_email_null":
-			checkMsg = "";
-			break;
-		case "scriptList_email_validation":
-			checkMsg = "";
-			break;
-		case "scriptList_email_send":
-			checkMsg = "";
-			break;
-		case "installApply_null":
-			checkMsg = "";
-			break;
-		case "installApply_name_null":
-			checkMsg = "";
-			break;
-		case "installApply_email_null":
-			checkMsg = "";
-			break;
-		case "installApply_email_validation":
-			checkMsg = "";
-			break;
-		case "installApply_FTP_null":
-			checkMsg = "";
-			break;
-		case "installApply_port_null":
-			checkMsg = "";
-			break;
-		case "installApply_id_null":
-			checkMsg = "";
-			break;
-		case "installApply_pw_null":
-			checkMsg = "";
-			break;
-		case "installApply_agree_null":
-			checkMsg = "";
-			break;
-		case "memberInfo_change_alert":
-			checkMsg = "";
-			break;
-		}
-		$(".modal-backdrop").waitUntil(visible, 10000);
-	    $$("p").last().click();
-	    String msgCheck = $$("p").last().text().trim();
-	    Thread.onSpinWait();
-	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
-	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
-	        	System.out.println(" *** " + val +  " - confirm check Success !! *** ");
-				$$(".btn-info").last().click();
-			    $(".modal-backdrop").waitUntil(hidden, 10000);
-	        } else { //confirm 아니면 .btn-sm클릭
-	            System.out.println(" *** " + val +  " - check Success !! *** ");
-	            $$(".btn-sm").last().click();
-	            //$(".modal-backdrop").waitUntil(hidden, 10000);
-	        }
-	    } else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
-	        System.out.println(" *** ☆★☆★☆★ val : " + val + " // pTag text is : " + msgCheck +  " // - msgCheck is Empty ... ☆★☆★☆★ *** ");
-	        System.out.println(checkMsg);
-	        close();
-	    } else { // msgCheck=checkMsg여부, confirm&alert여부, 빈값 여부 체크 후 fail
-	        System.out.println(" *** // val : " + val + " // pTag text is : " + msgCheck +  " // - check Fail ... !@#$%^&*() *** ");
-	        System.out.println(checkMsg);
-	        close();
-	    }
-	}
-
-	// 입력된 URL 정상 여부 확인
-	public static boolean brokenLinkCheck(String urlName, String urlLink) {
-		try {
-			huc = (HttpURLConnection) (new URL(urlLink).openConnection());
-			huc.setRequestMethod("HEAD");
-			huc.connect();
-			respCode = huc.getResponseCode();
-			if (respCode >= 400) {
-				System.out.println("***** " + urlName + " : Link Status HTTP : " + respCode + " - check Fail ... !@#$%^&*() *** ");
-				close();
-			} else {
-				System.out.println("***** " + urlName + " : Link Status HTTP : " + respCode + " - check Success !! *** ");
-			}
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
 	public static void sleep(long millis) {
 		try {
 			Thread.sleep(millis);
@@ -202,6 +93,7 @@ public class user {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void js(String javaScript) {
 		executeJavaScript(javaScript);
 	}

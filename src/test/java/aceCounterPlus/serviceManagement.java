@@ -1162,7 +1162,6 @@ public class serviceManagement {
 			System.out.println(" *** extendCharge step1 page load check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#pwd").waitUntil(visible, 10000);
 		$("#pwd").setValue(pw + A);
 		$("#btn-ok").click();
 		$("#btnIng").waitUntil(visible, 10000);
