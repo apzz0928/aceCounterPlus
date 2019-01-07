@@ -259,7 +259,7 @@ public class getInflow {
 	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='트리맵'])[1]/following::option[4]")).click();
 	    $("#btn_inflow_options_search").click();
 		String[] tableDataCheck = {"이렉트", "38", "29.92%", "7", "18.42%", "28.66", "00:00:39", "30", "78.95%", "300", "7.89", "((sort))", "((visit number))", "((visit percent))", "((return number))", "((return percent))", "((visit pageview))", "((visit stay time))", "((convert number))", "((convert percent))", "((convert sales))", "((visit sales))"};
-	    $("td", 62).waitUntil(visible, 10000);
+	    //$("td", 62).waitUntil(visible, 10000);
 		for(int i=0;i<=10;i++) {
 			pageLoadCheck = $("td", (i+62)).text().trim();
 			if(i==0) { //드릴다운때문에 구분만 따로체크

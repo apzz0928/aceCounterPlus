@@ -1152,14 +1152,16 @@ public class serviceManagement {
 	@Test(priority = 101)
 	public void leaveService() {
 		System.out.println(" ! ----- leaveService Start ----- ! ");
-		$(By.linkText("서비스 해지")).waitUntil(visible, 10000);
-		$(By.linkText("서비스 해지")).click();
-		$(".notokr-bold", 0).waitUntil(visible, 10000);
-		pageLoadCheck = $(".notokr-bold", 0).text().trim();
-		if(pageLoadCheck.equals("서비스해지")) {
-			System.out.println(" *** extendCharge step1 page load check Success !! *** ");
+		/*$(By.linkText("서비스 해지")).waitUntil(visible, 10000);
+		$(By.linkText("서비스 해지")).click();*/
+		open("https://new.acecounter.com/manage/serviceInfo/leaveService");
+		$(".m10", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $(".m10", 0).text().trim();
+		String[] pLC = pageLoadCheck.split(" ");
+		if(pLC[0].equals("회원님의")) {
+			System.out.println(" *** leaveService pw check page load check Success !! *** ");
 		} else {
-			System.out.println(" *** extendCharge step1 page load check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** leaveService pw check page load check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		sleep(1000);

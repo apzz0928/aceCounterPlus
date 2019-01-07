@@ -181,7 +181,7 @@ public class temporarily_2 {
 			close();
 		}
 		$(".summary-data", 0).waitUntil(visible, 10000);
-		String[] panelDataCheck = {"0", "0", "0", "12", "12", "((Number of purchases))", "((sales))", "((Number of member registrations))", "((convert-signup))", "((convert-apply))"};
+		String[] panelDataCheck = {"0", "0", "0", "21", "21", "((Number of purchases))", "((sales))", "((Number of member registrations))", "((convert-signup))", "((convert-apply))"};
 		for(int i=0;i<=4;i++) {
 			pageLoadCheck = $(".summary-data", i).text().trim();
 			if (pageLoadCheck.equals(panelDataCheck[i])) {
@@ -191,48 +191,76 @@ public class temporarily_2 {
 				close();
 			}			
 		}
-		String[] tableDataCheck = {"/search/label/marketing-naverBrand", "13", "92.31%", "0", "0%", "0", "0", "((landingpage-URL))", "((visit number))", "((return pernect))", "((Number of purchases))", "((purchases percent))", "((sales))", "((Sales per purchase))"};
-		$("td", 54).waitUntil(visible, 10000);
-		//54~60
+		String[] tableDataCheck1 = {"/", "78", "87.18%", "9", "11.54%", "90", "1", "((landingpage-URL))", "((visit number))", "((return percent))", "((convert number))", "((convert percent))", "((convert sales))", "((visit sales))"};
+		$("td", 46).waitUntil(visible, 10000);
+		//46~52
 		for(int i=0; i<=6; i++) {
-			pageLoadCheck = $("td", (i+54)).text().trim();
-			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** get_convert_status table data " + tableDataCheck[i+7] + "((" + i + "))" + " check Success !! *** ");
+			pageLoadCheck = $("td", (i+46)).text().trim();
+			if (pageLoadCheck.equals(tableDataCheck1[i])) {
+				System.out.println(" *** get_convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status table data " + tableDataCheck[i+7] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** get_convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		String[] picChartDataCheck = {"/62.8%", "21 페이지 이상62.8%", "1 페이지37.2%", "당일93.0%", "2일7.0%", "((landingPage))", "((visit path depth))", "((convert time required))"};
+		String[] tableDataCheck2 = {"1 페이지", "356", "12", "3.37%", "120", "0", "((visit depth))", "((visit number))", "((convert number))", "((convert percent))", "((conversion sales))", "((visit sales))"};
+		$("td", 505).waitUntil(visible, 10000);
+		//505~510
+		for(int i=0; i<=5; i++) {
+			pageLoadCheck = $("td", (i+505)).text().trim();
+			if (pageLoadCheck.equals(tableDataCheck2[i])) {
+				System.out.println(" *** get_convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** get_convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		String[] tableDataCheck3 = {"당일", "20", "95.24%", "200", "0", "((convert time required))", "((convert number))", "((convert percent))", "((conversion sales))", "((visit sales))"};
+		$("td", 649).waitUntil(visible, 10000);
+		//649~653
+		for(int i=0; i<=4; i++) {
+			pageLoadCheck = $("td", (i+649)).text().trim();
+			if (pageLoadCheck.equals(tableDataCheck3[i])) {
+				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		String[] pieChartDataCheck = {"/62.8%", "21 페이지 이상62.8%", "1 페이지37.2%", "당일93.0%", "2일7.0%", "((landingPage))", "((visit path depth))", "((convert time required))"};
 		//0, 10 ,11, 14, 15
 		$(".highcharts-series-0 > path", 0).hover();
 		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
-		if (pageLoadCheck.equals(picChartDataCheck[0])) {
-			System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[5] + "((0))" + " check Success !! *** ");
+		if (pageLoadCheck.equals(pieChartDataCheck[0])) {
+			System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[5] + "((0))" + " check Success !! *** ");
 		} else {
-			System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[5] + "((0))" + " check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[5] + "((0))" + " check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		for(int i=0;i<=1;i++) {
 			$(".highcharts-series-0 > path", (i+10)).hover();
-			$(".highcharts-tooltip", (i+1)).waitUntil(visible, 10000);
-			pageLoadCheck = $(".highcharts-tooltip").text().trim();
-			if (pageLoadCheck.equals(picChartDataCheck[(i+1)])) {
-				System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[6] + "((" + (i+1) + "))" + " check Success !! *** ");
+			$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
+			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
+			System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
+			if (pageLoadCheck.equals(pieChartDataCheck[(i+1)])) {
+				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[6] + "((" + (i+1) + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[6] + "((" + (i+1) + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[6] + "((" + (i+1) + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 		for(int i=0;i<=1;i++) {
 			$(".highcharts-series-0 > path", (i+14)).hover();
-			$(".highcharts-tooltip", (i+2)).waitUntil(visible, 10000);
-			pageLoadCheck = $(".highcharts-tooltip").text().trim();
-			if (pageLoadCheck.equals(picChartDataCheck[(i+3)])) {
-				System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[7] + "((" + (i+3) + "))" + " check Success !! *** ");
+			$(".highcharts-series-0 > path", (i+16)).hover();
+			$(".highcharts-tooltip", 2).waitUntil(visible, 10000);
+			pageLoadCheck = $(".highcharts-tooltip", 2).text().trim();
+			System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
+			sleep(5000);
+			if (pageLoadCheck.equals(pieChartDataCheck[(i+3)])) {
+				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[7] + "((" + (i+3) + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[7] + "((" + (i+3) + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[7] + "((" + (i+3) + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
