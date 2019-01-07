@@ -1,11 +1,7 @@
 package aceCounterPlus;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -30,31 +26,15 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 public class temporarily_2 {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, A, B, C, domain, checkMsg, pageLoadCheck, dateCheck;
-	private static HttpURLConnection huc;
-	private static int respCode;
-
-	// 신규가입할때마다 number를 변경해줘야해서 id+월일시분초 로 변경없이 가입 가능하도록 추가
-	Date number_date = new Date();
-	SimpleDateFormat number_format = new SimpleDateFormat("yyMMddHHmmss");
-	SimpleDateFormat number_format1 = new SimpleDateFormat("yyyy-MM-dd");
-	SimpleDateFormat number_format2 = new SimpleDateFormat("MMddhhmmss");
-	String date = number_format.format(number_date);
-	String date1 = number_format1.format(number_date);
-	String date2 = number_format2.format(number_date);
+	private static String baseUrl, hubUrl, TestBrowser, pw, A, pageLoadCheck, dateCheck;
 
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "https://new.acecounter.com/common/front";
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
-		id = "ap";
 		pw = "qordlf";
-		pw1 = "qordlf";
 		A = "!@34";
-		B = "1@#4";
-		C = "12#$";
-		domain = "apzz";
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
@@ -113,6 +93,7 @@ public class temporarily_2 {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void js(String javaScript) {
 		executeJavaScript(javaScript);
 	}
@@ -137,12 +118,127 @@ public class temporarily_2 {
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("Live 대시보드")) {
-			System.out.println(" *** stats getInflow login Success !! *** ");
+			System.out.println(" *** stats convert login Success !! *** ");
 		} else {
-			System.out.println(" *** stats getInflow login Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** stats convert login Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- login End ----- ! ");
+	}
+
+	@Test(priority = 1)
+	public void get_Convert_Status() {
+		System.out.println(" ! ----- get_convert_status Start ----- ! ");
+		$("#conv").click();
+		$(By.linkText("전환")).waitUntil(visible, 10000);
+		$(By.linkText("전환")).click();
+		$("#top-menu-name").waitUntil(visible, 10000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		if (pageLoadCheck.equals("전환")) {
+			System.out.println(" *** get_convert_status page load Success !! *** ");
+		} else {
+			System.out.println(" *** get_convert_status page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		sleep(1500);
+		$("#daterangepicker2").waitUntil(visible, 10000);
+		$("#daterangepicker2").click();
+		$(".month", 0).waitUntil(visible, 10000);
+		//날짜선택
+		for(int i=0;i<=1;i++) { //과거 날짜 : 시작캘린더부터 선택(0과 1 변경, 부등호 변경, ++와 --변경)
+			if(i==0) {
+				System.out.println("start calender date selecting..");	
+			} else {
+				System.out.println("end calender date selecting..");				
+			}
+			dateCheck = $(".month", i).text().trim(); //2번째 달력 월 확인
+			for(int x=0;x<=100;x++) { //2018.12가 될때까지 << 클릭
+				if(dateCheck.equals("2018.12")) {
+					$("td[data-title=r3c5]", i).click(); //21일 선택
+					break;
+				} else {
+					System.out.println("no"+ (i+1) + ". calender month is  : " + dateCheck + " // need nextBtn(" + x + ") click");
+					$(".prev", i).click();
+					dateCheck = $(".month", i).text().trim();
+				}
+			}
+			if(i==0) {
+				System.out.println("start calender date select!");	
+			} else {
+				System.out.println("end calender date select!");				
+			}
+		}
+		$(".btn-apply").click();
+		refresh();
+		$("#compareTermText").waitUntil(visible, 10000);
+		dateCheck = $("#compareTermText").text();
+		String[] pLC = dateCheck.split(" ");
+		if (pLC[0].equals("2018.12.20") && pLC[2].equals("2018.12.20")) {
+			System.out.println(" *** get_convert_status date range pick Success !! *** ");
+			pLC = null;
+		} else {
+			System.out.println(" *** get_convert_status date range pick Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".summary-data", 0).waitUntil(visible, 10000);
+		String[] panelDataCheck = {"0", "0", "0", "12", "12", "((Number of purchases))", "((sales))", "((Number of member registrations))", "((convert-signup))", "((convert-apply))"};
+		for(int i=0;i<=4;i++) {
+			pageLoadCheck = $(".summary-data", i).text().trim();
+			if (pageLoadCheck.equals(panelDataCheck[i])) {
+				System.out.println(" *** get_convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** get_convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}			
+		}
+		String[] tableDataCheck = {"/search/label/marketing-naverBrand", "13", "92.31%", "0", "0%", "0", "0", "((landingpage-URL))", "((visit number))", "((return pernect))", "((Number of purchases))", "((purchases percent))", "((sales))", "((Sales per purchase))"};
+		$("td", 54).waitUntil(visible, 10000);
+		//54~60
+		for(int i=0; i<=6; i++) {
+			pageLoadCheck = $("td", (i+54)).text().trim();
+			if (pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** get_convert_status table data " + tableDataCheck[i+7] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** get_convert_status table data " + tableDataCheck[i+7] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		String[] picChartDataCheck = {"/62.8%", "21 페이지 이상62.8%", "1 페이지37.2%", "당일93.0%", "2일7.0%", "((landingPage))", "((visit path depth))", "((convert time required))"};
+		//0, 10 ,11, 14, 15
+		$(".highcharts-series-0 > path", 0).hover();
+		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $(".highcharts-tooltip").text().trim();
+		if (pageLoadCheck.equals(picChartDataCheck[0])) {
+			System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[5] + "((0))" + " check Success !! *** ");
+		} else {
+			System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[5] + "((0))" + " check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		for(int i=0;i<=1;i++) {
+			$(".highcharts-series-0 > path", (i+10)).hover();
+			$(".highcharts-tooltip", (i+1)).waitUntil(visible, 10000);
+			pageLoadCheck = $(".highcharts-tooltip").text().trim();
+			if (pageLoadCheck.equals(picChartDataCheck[(i+1)])) {
+				System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[6] + "((" + (i+1) + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[6] + "((" + (i+1) + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		for(int i=0;i<=1;i++) {
+			$(".highcharts-series-0 > path", (i+14)).hover();
+			$(".highcharts-tooltip", (i+2)).waitUntil(visible, 10000);
+			pageLoadCheck = $(".highcharts-tooltip").text().trim();
+			if (pageLoadCheck.equals(picChartDataCheck[(i+3)])) {
+				System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[7] + "((" + (i+3) + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** get_convert_status chart tooltip data " + picChartDataCheck[7] + "((" + (i+3) + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+
+
+	    System.out.println(" ! ----- get_convert_status End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {

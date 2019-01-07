@@ -116,9 +116,9 @@ public class marketing {
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("Live 대시보드")) {
-			System.out.println(" *** stats getInflow login Success !! *** ");
+			System.out.println(" *** stats marketing login Success !! *** ");
 		} else {
-			System.out.println(" *** stats getInflow login Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** stats marketing login Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- login End ----- ! ");

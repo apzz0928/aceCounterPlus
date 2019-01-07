@@ -118,9 +118,9 @@ public class user {
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("Live 대시보드")) {
-			System.out.println(" *** stats getInflow login Success !! *** ");
+			System.out.println(" *** stats user login Success !! *** ");
 		} else {
-			System.out.println(" *** stats getInflow login Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** stats user login Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		System.out.println(" ! ----- login End ----- ! ");
