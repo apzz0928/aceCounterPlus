@@ -6,7 +6,7 @@
   <classes>
 <!-- 	<class name="aceCounterPlus.backOffice"/> -->
 <!-- <class name="aceCounterPlus.temporarily"/> -->
-<class name="aceCounterPlus.temporarily_2"/>
+<!-- <class name="aceCounterPlus.temporarily_2"/> -->
 <!-- <class name="aceCounterPlus.getInflow"/> -->
 <!-- <class name="aceCounterPlus.inhouseMarketingSetting"/> -->
 <!-- <class name="aceCounterPlus.testScript"/> -->
@@ -24,6 +24,7 @@
 <!-- <class name="aceCounterPlus.serviceManagement"/> -->
 <!-- <class name="aceCounterPlus.user"/> -->
 <!-- <class name="aceCounterPlus.marketing"/> -->
+<class name="aceCounterPlus.termination"/>
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

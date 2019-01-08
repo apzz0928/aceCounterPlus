@@ -119,9 +119,13 @@ public class termination {
 		sleep(1000);
 	    $("#__BVID__4_").click(); //상태 : 트라이얼(정상) 선택
 	    sleep(500);
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[33]")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[31]")).click();
 	    sleep(500);
-	    $(".input-sm", 5).setValue("apz");		
+	    $("#__BVID__5_").click();
+	    sleep(500);
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[50]")).click();
+	    sleep(1500);
+	    $(".input-sm", 5).setValue("apzz0928@nate.com");		
 		$(".btn-dark").click();
 		sleep(3000);
 		for(int i=0, x=99;i<=3;i++) {
@@ -130,7 +134,7 @@ public class termination {
 			switchTo().window(1);
 			open("https://new-admin.acecounter.com/manage/serviceInfo/leaveService");
 			sleep(1000);
-			$("#pwd").setValue("qordlf!@34!@34");
+			$("#pwd").setValue("qordlf!@34");
 			$("#btn-ok").click();
 			$("#btnIng").waitUntil(visible, 10000);
 			sleep(800);
