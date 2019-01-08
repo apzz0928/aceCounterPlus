@@ -560,7 +560,7 @@ public class user {
 		$(By.linkText("사용자리스트")).waitUntil(visible, 10000);
 		$(By.linkText("사용자리스트")).click();
 		$(".notokr-bold", 0).waitUntil(visible, 10000);
-		$("td", 100).waitUntil(visible, 10000);
+		$("td", 12).waitUntil(visible, 10000);
 		pageLoadCheck = $(".notokr-bold", 0).text().trim();
 		if (pageLoadCheck.equals("사용자리스트")) {
 			System.out.println(" *** user_list page load Success !! *** ");
@@ -568,15 +568,12 @@ public class user {
 			System.out.println(" *** user_list page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		String[] tableDataCheck = {"127", "10.77.129.79", "[검색엔진] Google USA", "/", "재방문", "1", "-", "2018-12-07 16:38:18", "Windows 10", "Firefox 62.0", "((number))", "((IP))", "((getInflow))", "((rending page))", "((visit division))", "((page view))", "((user ID))", "((visit time))", "((OS))", "((browser))"};
-		for(int i=0;i<=9;i++) {
-			pageLoadCheck = $("td", (i+12)).text().trim();
-			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** user_member_status table data " + tableDataCheck[i+10] + "((" + i + "))" + " check Success !! *** ");
-			} else {
-				System.out.println(" *** user_member_status table data " + tableDataCheck[i+10] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-				close();
-			}
+		pageLoadCheck = $("td", 12).text().trim();
+		if (pageLoadCheck.equals("조회된 데이터가 없습니다.")) {
+			System.out.println(" *** user_member_status table data check Success !! *** ");
+		} else {
+			System.out.println(" *** user_member_status table data check Fail ... !@#$%^&*() *** ");
+			close();
 		}
 	    System.out.println(" ! ----- user_list End ----- ! ");
 	}
