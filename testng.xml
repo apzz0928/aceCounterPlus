@@ -8,7 +8,7 @@
 <!-- <class name="aceCounterPlus.temporarily"/> -->
 <!-- <class name="aceCounterPlus.temporarily_2"/> -->
 <!-- <class name="aceCounterPlus.getInflow"/> -->
-<!-- <class name="aceCounterPlus.inhouseMarketingSetting"/> -->
+<class name="aceCounterPlus.inhouseMarketingSetting"/>
 <!-- <class name="aceCounterPlus.testScript"/> -->
 <!-- <class name="aceCounterPlus.changePassword"/> -->
 <!-- <class name="aceCounterPlus.changeMemberInfo"/> -->
@@ -21,7 +21,7 @@
 <!-- <class name="aceCounterPlus.commercePrice"/> -->
 <!-- <class name="aceCounterPlus.contentSetting"/> -->
 <!-- <class name="aceCounterPlus.marketingInflowSetting"/> -->
-<class name="aceCounterPlus.serviceManagement"/>
+<!-- <class name="aceCounterPlus.serviceManagement"/> -->
 <!-- <class name="aceCounterPlus.user"/> -->
 <!-- <class name="aceCounterPlus.marketing"/> -->
   </classes>

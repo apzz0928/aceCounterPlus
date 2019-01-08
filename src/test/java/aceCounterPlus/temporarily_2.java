@@ -193,7 +193,6 @@ public class temporarily_2 {
 		}
 		String[] tableDataCheck1 = {"/", "78", "87.18%", "9", "11.54%", "90", "1", "((landingpage-URL))", "((visit number))", "((return percent))", "((convert number))", "((convert percent))", "((convert sales))", "((visit sales))"};
 		$("td", 46).waitUntil(visible, 10000);
-		//46~52
 		for(int i=0; i<=6; i++) {
 			pageLoadCheck = $("td", (i+46)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck1[i])) {
@@ -205,7 +204,6 @@ public class temporarily_2 {
 		}
 		String[] tableDataCheck2 = {"1 페이지", "356", "12", "3.37%", "120", "0", "((visit depth))", "((visit number))", "((convert number))", "((convert percent))", "((conversion sales))", "((visit sales))"};
 		$("td", 505).waitUntil(visible, 10000);
-		//505~510
 		for(int i=0; i<=5; i++) {
 			pageLoadCheck = $("td", (i+505)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck2[i])) {
@@ -215,20 +213,7 @@ public class temporarily_2 {
 				close();
 			}
 		}
-		String[] tableDataCheck3 = {"당일", "20", "95.24%", "200", "0", "((convert time required))", "((convert number))", "((convert percent))", "((conversion sales))", "((visit sales))"};
-		$("td", 649).waitUntil(visible, 10000);
-		//649~653
-		for(int i=0; i<=4; i++) {
-			pageLoadCheck = $("td", (i+649)).text().trim();
-			if (pageLoadCheck.equals(tableDataCheck3[i])) {
-				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + "))" + " check Success !! *** ");
-			} else {
-				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
 		String[] pieChartDataCheck = {"/62.8%", "21 페이지 이상62.8%", "1 페이지37.2%", "당일93.0%", "2일7.0%", "((landingPage))", "((visit path depth))", "((convert time required))"};
-		//0, 10 ,11, 14, 15
 		$(".highcharts-series-0 > path", 0).hover();
 		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
@@ -242,7 +227,6 @@ public class temporarily_2 {
 			$(".highcharts-series-0 > path", (i+10)).hover();
 			$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
 			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
-			System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
 			if (pageLoadCheck.equals(pieChartDataCheck[(i+1)])) {
 				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[6] + "((" + (i+1) + "))" + " check Success !! *** ");
 			} else {
@@ -255,8 +239,6 @@ public class temporarily_2 {
 			$(".highcharts-series-0 > path", (i+16)).hover();
 			$(".highcharts-tooltip", 2).waitUntil(visible, 10000);
 			pageLoadCheck = $(".highcharts-tooltip", 2).text().trim();
-			System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
-			sleep(5000);
 			if (pageLoadCheck.equals(pieChartDataCheck[(i+3)])) {
 				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[7] + "((" + (i+3) + "))" + " check Success !! *** ");
 			} else {
@@ -264,9 +246,170 @@ public class temporarily_2 {
 				close();
 			}
 		}
-
-
+		$("#btnChartBar").click();
+		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
+		$(".highcharts-tracker", 7).hover();
+		$(".highcharts-tracker", 6).hover();
+		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
+		pLC = pageLoadCheck.split("● ");
+		String[] barChartDataCheck = {"2018.12.21(금)", "전환-주문: 21", "전환-가입: 21", "전환-예약: 21", "전환-신청: 21", "전환-기타1: 9", "기타: 36", "합계: 129", "((date))", "((conv-order))", "((conv-signup))", "((conv-booking))", "((conv-apply))", "((conv-other))", "((other))", "((total))"};
+		for(int i=0;i<=7;i++) {
+			if(i>=1 && i<=4) {
+				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(barChartDataCheck[i].substring(barChartDataCheck[i].length()-2, barChartDataCheck[i].length()))) {
+					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			} else {
+				/*System.out.println("bar chart pLC[" + i + "] is :" + pLC[i]);
+				System.out.println("bar chart barChartDataCheck[" + i + "] is :" + barChartDataCheck[i]);*/
+				if(pLC[i].equals(barChartDataCheck[i])) {
+					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			}
+		}
+		pLC = null;	
+		$("#btnChartLine").click();
+		String[] tableDataCheck3 = {"당일", "20", "95.24%", "200", "0", "((convert time required))", "((convert number))", "((convert percent))", "((conversion sales))", "((visit sales))"};
+		$("td", 661).waitUntil(visible, 10000);
+		for(int i=0; i<=4; i++) {
+			pageLoadCheck = $("td", (i+661)).text().trim();
+			if (pageLoadCheck.equals(tableDataCheck3[i])) {
+				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		$(".highcharts-tracker", 8).waitUntil(visible, 10000);
+		$(".highcharts-tracker", 10).hover();
+		$(".highcharts-tracker", 8).hover();
+		$(".highcharts-tracker", 10).hover();
+		$(".highcharts-tracker", 8).hover();
+		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
+		pLC = pageLoadCheck.split("● ");
+		String[] lineChartDataCheck = {"2018.12.21(금)", "전환-주문: 21", "전환-가입: 21", "전환-예약: 21", "전환-신청: 21", "전환-기타1: 9", "((date))", "((conv-order))", "((conv-signup))", "((conv-booking))", "((conv-apply))", "((conv-other))"};
+		for(int i=0;i<=4;i++) {
+			if(i>=1 && i<=5) {
+				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(lineChartDataCheck[i].substring(lineChartDataCheck[i].length()-2, lineChartDataCheck[i].length()))) {
+					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}	
+			} else {
+				if(pLC[i].equals(lineChartDataCheck[i])) {
+					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			}
+		}
+		pLC = null;
 	    System.out.println(" ! ----- get_convert_status End ----- ! ");
+	}
+	@Test(priority = 2)
+	public void get_Convert_Step() {
+		System.out.println(" ! ----- get_convert_step Start ----- ! ");
+		$(By.linkText("전환단계")).waitUntil(visible, 10000);
+		$(By.linkText("전환단계")).click();
+		pageLoadCheck = $(".active", 2).text().trim();
+		if (pageLoadCheck.equals("전환단계")) {
+			System.out.println(" *** get_convert_step page load Success !! *** ");
+		} else {
+			System.out.println(" *** get_convert_step page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		String[] tableDataCheck = {"자연유입", "270", "0", "270", "260", "96.30%", "0", "0", "0", "0", "0", "21", "21", "((inflow source))", "((visit number))", "((new visit number))", "((re visit number))", "((return number))", "((return percent))", 
+				"((1step))", "((1~2stpe))", "((1~3step))", "((1~4step))", "((1~5step))", "((other))", "((total))"};
+		$("td", 51).waitUntil(visible, 10000);
+		for(int i=0; i<=12; i++) {
+			pageLoadCheck = $("td", (i+51)).text().trim();
+			if (pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** get_convert_step table data " + tableDataCheck[i+13] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** get_convert_step table data " + tableDataCheck[i+13] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		$(".highcharts-tracker", 5).hover();
+		$(".highcharts-tracker", 7).hover();
+		$(".highcharts-tracker", 6).hover();
+		String[] barChartDatacheck = {"2018.12.21(금)", "1단계: 0", "1~2단계: 0", "1~3단계: 0", "1~4단계: 0", "1~5단계: 0", "기타: 21", "합계: 21", "((date))", "((1step))", "((1~2step))", "((1~3step))", "((1~4step))", "((1~5step))", "((other))", "((total))"};
+		pageLoadCheck = $(".highcharts-tooltip").text().trim();
+		String[] pLC = pageLoadCheck.split("● ");
+		for(int i=0;i<=7;i++) {
+			if (pLC[i].equals(barChartDatacheck[i])) {
+				System.out.println(" *** get_convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** get_convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		pLC = null;
+	    System.out.println(" ! ----- get_convert_step End ----- ! ");
+	}
+	@Test(priority = 11)
+	public void indirect_conversion() {
+		System.out.println(" ! ----- indirect_conversion Start ----- ! ");
+		$(By.linkText("멀티채널 전환")).waitUntil(visible, 10000);
+		$(By.linkText("멀티채널 전환")).click();
+		$("#top-menu-name").waitUntil(visible, 10000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		if (pageLoadCheck.equals("멀티채널 전환")) {
+			System.out.println(" *** indirect_conversion page load Success !! *** ");
+		} else {
+			System.out.println(" *** indirect_conversion page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		String[] tableDataCheck = {"합계", "48", "100%", "48", "100%", "((advertisement product))", "((visit number))", "((visit percent))", "((re visit number))", "((re visit percent))"};
+		$("td", 51).waitUntil(visible, 10000);
+		//17 ~ 21
+		//조건문 만들차례
+		for(int i=0; i<=4; i++) {
+			pageLoadCheck = $("td", (i+17)).text().trim();
+			if (pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** indirect_conversion table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** indirect_conversion table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		/*$(".path", 0).hover();
+		$(".path", 1).hover();
+		$(".path", 2).hover();
+		String[] barChartDatacheck = {"2018-12-21(금)", "직접전환 구매건수: 0", "간접전환 구매건수: 0", "((date))", "((directly convert))", "((indirect convert))"};
+		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
+		String[] pLC = pageLoadCheck.split("● ");
+		for(int i=0;i<=2;i++) {
+			if (pLC[i].equals(barChartDatacheck[i])) {
+				System.out.println(" *** indirect_conversion bar chart data " + barChartDatacheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** indirect_conversion bar chart data " + barChartDatacheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		pLC = null;*/
+		$("#btnChartLine").click();
+		$("tspan", 1).waitUntil(hidden, 10000);
+		$("tspan", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $("tspan", 0).text();
+		String[] pLC = pageLoadCheck.split("\\.");
+		if(pLC[0].equals("조회된 데이터가 없습니다")) {
+			System.out.println(" *** indirect_conversion line chart data check Success !! *** ");
+		} else {
+			System.out.println(" *** indirect_conversion line chart data check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		
+		
+	    System.out.println(" ! ----- indirect_conversion End ----- ! ");
+	    
 	}
 	@AfterClass
 	public void afterTest() {
