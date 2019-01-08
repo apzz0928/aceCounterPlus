@@ -930,6 +930,7 @@ public class contentSetting {
 	    valCheck("downPattern_del_confirm");
 	    valCheck("downPattern_del_alert");
 	    $("#list-checkbox-0").waitUntil(hidden, 10000);
+	    $("td", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 1).text().trim();
 		if(pageLoadCheck.equals("목록이 없습니다.")) {
 			System.out.println(" *** fileDownload_del page load Success !! *** ");
