@@ -835,7 +835,7 @@ public class serviceManagement {
 		$(".input-sm", 0).setValue("");
 		$(".cross", 0).click();
 		$(".btn-info", 1).click();
-		valCheck("editService_siteName_null");
+		valCheck("editService_siteName_null"); 
 		$(".input-sm", 0).setValue(date);
 		$(".btn-info", 1).click();
 		valCheck("editService_domain_null");
@@ -872,24 +872,6 @@ public class serviceManagement {
 			System.out.println(" *** editService restore Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		System.out.println(" ! ----- editService End ----- ! ");
-	}
-	
-	@Test(priority = 72)
-	public void changeService() { //페이지 로딩만 체크 //탭 숨김처리되고 메뉴이름 변경되서 변경된 내용으로 변경
-		System.out.println(" ! ----- editService Start ----- ! ");
-		$(By.linkText("정보수정")).waitUntil(visible, 10000);
-		$(By.linkText("정보수정")).click();
-		$(".ace-svc-name", 1).waitUntil(visible, 15000);
-		pageLoadCheck = $(".ace-svc-name", 1).text().trim();
-		String[] pLC = pageLoadCheck.split("\\(");
-		if (pLC[1].equals("ap0420121150.com)")) {
-			System.out.println(" *** editService page load Success !! *** ");
-		} else {
-			System.out.println(" *** editService page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		pLC = null;
 		System.out.println(" ! ----- editService End ----- ! ");
 	}
 

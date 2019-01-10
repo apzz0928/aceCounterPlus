@@ -119,11 +119,11 @@ public class termination {
 		sleep(1000);
 	    $("#__BVID__4_").click(); //상태 : 트라이얼(정상) 선택
 	    sleep(500);
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[31]")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[32]")).click();
 	    sleep(500);
 	    $("#__BVID__5_").click();
 	    sleep(500);
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[50]")).click();
+	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[51]")).click();
 	    sleep(1500);
 	    $(".input-sm", 5).setValue("apzz0928@nate.com");		
 		$(".btn-dark").click();
