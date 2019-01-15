@@ -206,6 +206,7 @@ public class signUp {
 	    String id_date = number_format.format(date);
 		$("#userid").setValue(id + id_date); //회원정보 입력
 		$("#recheck").click();
+		sleep(1000);
 		pageLoadCheck = $("#checkresult").text().trim();
 		if(pageLoadCheck.trim().equals("등록가능한 ID입니다.")) {
 			System.out.println(" *** common_signUp ID check Success !! *** ");
