@@ -184,9 +184,9 @@ public class termination {
 		switchTo().window(1);
 		open("https://new-admin.acecounter.com/admin/comApply/termination/form/" + terminationNumber[0]);
 		for(int i=1;i<=4;i++) {
-			sleep(500);
+			/*sleep(500); //담당자 로그인 사용자 자동선택 업데이트로 인해 주석처리
 		    $("#__BVID__2_").click();
-		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='담당자'])[1]/following::option[47]")).click();
+		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='담당자'])[1]/following::option[47]")).click();*/
 		    sleep(500);
 		    $("#__BVID__3_").click();
 		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='처리상태'])[1]/following::option[3]")).click();
