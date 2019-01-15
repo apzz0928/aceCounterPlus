@@ -258,11 +258,11 @@ public class signUp {
 		$(".ace-svc-name", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".ace-svc-name", 0).text().trim();
 		if(pageLoadCheck.equals(domain + domain_date + ".com")) {
-			System.out.println(" *** web_signUp service add check Success !! *** ");		
+			System.out.println(" *** web_signUp service add check Success !! *** ");
 		} else {
 			System.out.println(" *** web_signUp service add check Fail ... !@#$%^&*() *** ");
 			close();
-		}		
+		}
 		System.out.println(" ! ----- web_signUp End ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
   	}
@@ -441,7 +441,8 @@ public class signUp {
 			$("#changePwd").setValue(pw1);
 			$("#changePwdConfirm").setValue(pw1);
 			$("#modifyProc").click();
-			valCheck("restorationPassword_change_password_confirm"); 
+			valCheck("restorationPassword_change_password_confirm");
+			sleep(1000);
 			valCheck("restorationPassword_change_password_check");
 			pw = "qordlf";
 			pw1 = "qordlf";
