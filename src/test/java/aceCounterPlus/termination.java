@@ -144,7 +144,8 @@ public class termination {
 			$("#btn-modal-alert-yes").click();
 			sleep(500);
 			$("label", 5).click();
-			$("label", 9).click();
+			$("label", 16).click();
+			$(".input-sm", 8).setValue(date + " 테스트계정 삭제");
 			$(".form-control", 3).setValue(date + " 테스트계정 삭제");
 			$("#btnApply").scrollIntoView(false);
 			$("#btnApply").click();

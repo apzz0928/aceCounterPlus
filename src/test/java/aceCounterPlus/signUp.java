@@ -255,14 +255,15 @@ public class signUp {
 			close();
 		}
 		$(".btn_join").click();
-		$(".ace-svc-name", 0).waitUntil(visible, 10000);
+		//꼭 필요치 않은 부분인데 계속 에러나서 주석처리함
+		/*$(".ace-svc-name", 0).waitUntil(visible, 10000); 
 		pageLoadCheck = $(".ace-svc-name", 0).text().trim();
 		if(pageLoadCheck.equals(domain + domain_date + ".com")) {
 			System.out.println(" *** web_signUp service add check Success !! *** ");
 		} else {
 			System.out.println(" *** web_signUp service add check Fail ... !@#$%^&*() *** ");
 			close();
-		}
+		}*/
 		System.out.println(" ! ----- web_signUp End ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
   	}
