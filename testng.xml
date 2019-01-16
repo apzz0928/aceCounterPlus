@@ -14,7 +14,7 @@
 <!-- <class name="aceCounterPlus.changeMemberInfo"/> -->
 <!-- <class name="aceCounterPlus.serviceInfo"/> -->
 <!-- <class name="aceCounterPlus.charge"/> -->
-<class name="aceCounterPlus.signUp"/>
+<!-- <class name="aceCounterPlus.signUp"/> -->
 <!-- <class name="aceCounterPlus.frontPage"/> -->
 <!-- <class name="aceCounterPlus.adminManage"/> -->
 <!-- <class name="aceCounterPlus.userSetting"/> -->
@@ -24,7 +24,7 @@
 <!-- <class name="aceCounterPlus.serviceManagement"/> -->
 <!-- <class name="aceCounterPlus.user"/> -->
 <!-- <class name="aceCounterPlus.marketing"/> -->
-<!-- <class name="aceCounterPlus.termination"/> -->
+<class name="aceCounterPlus.termination"/>
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

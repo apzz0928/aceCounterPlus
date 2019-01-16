@@ -320,7 +320,7 @@ public class serviceManagement {
 			checkMsg = "이메일 주소가 올바르지 않습니다.";
 			break;
 		case "leaveService_casue_null":
-			checkMsg = "해지사유를 선택해주세요.";
+			checkMsg = "해지사유를 선택해주세요.\n(하나 이상의 해지 사유 선택)";
 			break;
 		case "extendCharge_service_null":
 			checkMsg = "서비스를 선택해 주세요.";

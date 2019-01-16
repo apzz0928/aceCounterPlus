@@ -119,16 +119,20 @@ public class termination {
 		sleep(1000);
 	    $("#__BVID__4_").click(); //상태 : 트라이얼(정상) 선택
 	    sleep(500);
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[32]")).click();
+	    $("#__BVID__4_").selectOptionByValue("t1");
+	    //$("option[value=t1]").click();
+	    //$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[32]")).click();
 	    sleep(500);
 	    $("#__BVID__5_").click();
 	    sleep(500);
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[51]")).click();
+	    $("#__BVID__5_").selectOptionByValue("u.email_addr");
+	    //$("option[value=u.email_addr]").click();
+	    //$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[51]")).click();
 	    sleep(1500);
 	    $(".input-sm", 5).setValue("apzz0928@nate.com");		
 		$(".btn-dark").click();
 		sleep(3000);
-		for(int i=0, x=99;i<=3;i++) {
+		for(int i=0, x=100;i<=3;i++) {
 			$("a", x).click();
 			sleep(1000);
 			switchTo().window(1);
@@ -165,10 +169,18 @@ public class termination {
 		$(".btn-primary").click();
 		sleep(1500);
 		open("https://new-admin.acecounter.com/admin/comApply/termination");
-		$(By.id("__BVID__2_")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[19]")).click();
-	    sleep(1500);
-	    $(".input-sm", 4).setValue("apz");
+		$("#__BVID__2_").click();
+		sleep(500);
+		$("#__BVID__2_").selectOptionByValue("10");
+		//$("option[value=10]").click();
+	    //$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[19]")).click();
+	    sleep(500);
+		$("#__BVID__4_").click();
+		sleep(500);
+		$("#__BVID__4_").selectOptionByValue("ia.applicant_email_addr");
+		//$("option[value=ia.applicant_email_addr]").click();
+		sleep(500);
+	    $(".input-sm", 4).setValue("apzz0928@nate.com");
 		$(".btn-dark").click();
 		sleep(3000);
 		String[] terminationNumber = {"", "", "", ""};
@@ -189,6 +201,7 @@ public class termination {
 		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='담당자'])[1]/following::option[47]")).click();*/
 		    sleep(500);
 		    $("#__BVID__3_").click();
+		    sleep(500);
 		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='처리상태'])[1]/following::option[3]")).click();
 		    sleep(500);
 		    $(".btn-primary").click();
