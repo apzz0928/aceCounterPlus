@@ -120,14 +120,10 @@ public class termination {
 	    $("#__BVID__4_").click(); //상태 : 트라이얼(정상) 선택
 	    sleep(500);
 	    $("#__BVID__4_").selectOptionByValue("t1");
-	    //$("option[value=t1]").click();
-	    //$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[32]")).click();
 	    sleep(500);
-	    $("#__BVID__5_").click();
+	    $("#__BVID__5_").click(); //이메일 선택
 	    sleep(500);
 	    $("#__BVID__5_").selectOptionByValue("u.email_addr");
-	    //$("option[value=u.email_addr]").click();
-	    //$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[51]")).click();
 	    sleep(1500);
 	    $(".input-sm", 5).setValue("apzz0928@nate.com");		
 		$(".btn-dark").click();
@@ -171,14 +167,11 @@ public class termination {
 		open("https://new-admin.acecounter.com/admin/comApply/termination");
 		$("#__BVID__2_").click();
 		sleep(500);
-		$("#__BVID__2_").selectOptionByValue("10");
-		//$("option[value=10]").click();
-	    //$(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='정보변경'])[1]/following::option[19]")).click();
+		$("#__BVID__2_").selectOptionByValue("10"); //상태 : 대기중 선택
 	    sleep(500);
 		$("#__BVID__4_").click();
 		sleep(500);
 		$("#__BVID__4_").selectOptionByValue("ia.applicant_email_addr");
-		//$("option[value=ia.applicant_email_addr]").click();
 		sleep(500);
 	    $(".input-sm", 4).setValue("apzz0928@nate.com");
 		$(".btn-dark").click();
@@ -202,7 +195,7 @@ public class termination {
 		    sleep(500);
 		    $("#__BVID__3_").click();
 		    sleep(500);
-		    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='처리상태'])[1]/following::option[3]")).click();
+		    $("#__BVID__3_").selectOptionByValue("30");
 		    sleep(500);
 		    $(".btn-primary").click();
 		    sleep(500);
