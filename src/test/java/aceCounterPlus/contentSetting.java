@@ -858,7 +858,8 @@ public class contentSetting {
 	public void fileDownload_duplicationAdd() {
 		System.out.println(" ! ----- fileDownload_duplicationAdd Start ----- ! ");
 	    $(".btn-info", 0).click();
-	    $("#btn-add").waitUntil(visible, 10000);
+	    sleep(1000);
+	    //$(".mv20").waitUntil(visible, 10000);
 	    pageLoadCheck = $("th", 0).text().trim();
 	    if(pageLoadCheck.equals("다운로드 패턴")) {
 			System.out.println(" *** fileDownload_add add UI Success !! *** ");	    	
