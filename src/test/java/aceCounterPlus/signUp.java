@@ -93,7 +93,7 @@ public class signUp {
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		}
 	}
-	
+	/*
 	public static void valCheck(String val) {
         switch(val){
             case "restorationPassword_change_password_confirm": 
@@ -129,7 +129,7 @@ public class signUp {
 			System.out.println(checkMsg);
 			close();
 		}
-	}	
+	}	*/
   	//입력된 URL 정상 여부 확인
   	public static boolean brokenLinkCheck (String urlName, String urlLink){
         try {
@@ -446,7 +446,7 @@ public class signUp {
 			$$(".btn-info").last().click();
 			sleep(1500);
 			$$(".btn-sm").last().click();
-			/*valCheck("restorationPassword_change_password_confirmm"); //confirm 안타려고 mm
+			/*valCheck("restorationPassword_change_password_confirmm");
 			sleep(1000);
 			valCheck("restorationPassword_change_password_check");*/
 			pw = "qordlf";
