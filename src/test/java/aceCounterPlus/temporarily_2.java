@@ -126,20 +126,21 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- login End ----- ! ");
 	}
-	@Test(priority = 1)
-	public void get_Convert_Status() {
-		System.out.println(" ! ----- get_convert_status Start ----- ! ");
-		$("#conv").click();
-		$(By.linkText("전환")).waitUntil(visible, 10000);
-		$(By.linkText("전환")).click();
-		$("#top-menu-name").waitUntil(visible, 10000);
+	//@Test(priority = 1)
+	public void contents_popularPage() {
+		System.out.println(" ! ----- contents_popularPage Start ----- ! ");
+		$("#contents").click();
+		$(By.linkText("페이지")).waitUntil(visible, 10000);
+		$(By.linkText("페이지")).click();
+		$("#top-menu-name").waitUntil(visible, 15000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("전환")) {
-			System.out.println(" *** get_convert_status page load Success !! *** ");
+		if (pageLoadCheck.equals("페이지")) {
+			System.out.println(" *** contents_popularPage page load Success !! *** ");
 		} else {
-			System.out.println(" *** get_convert_status page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** contents_popularPage page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		$("td", 125).waitUntil(visible, 30000);
 		sleep(1500);
 		$("#daterangepicker2").waitUntil(visible, 10000);
 		$("#daterangepicker2").click();
@@ -170,247 +171,325 @@ public class temporarily_2 {
 		}
 		$(".btn-apply").click();
 		refresh();
-		$("#compareTermText").waitUntil(visible, 10000);
-		dateCheck = $("#compareTermText").text();
-		String[] pLC = dateCheck.split(" ");
-		if (pLC[0].equals("2018.12.20") && pLC[2].equals("2018.12.20")) {
-			System.out.println(" *** get_convert_status date range pick Success !! *** ");
+		$(".pull-right", 3).waitUntil(visible, 10000);
+		dateCheck = $(".pull-right", 3).text().trim();
+		String[] pLC = dateCheck.split(" 어제");
+		if (pLC[0].equals("오늘 순위를")) {
+			System.out.println(" *** contents_popularPage date range pick Success !! *** ");
 			pLC = null;
 		} else {
-			System.out.println(" *** get_convert_status date range pick Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** contents_popularPage date range pick Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".summary-data", 0).waitUntil(visible, 10000);
-		String[] panelDataCheck = {"0", "0", "0", "21", "21", "((Number of purchases))", "((sales))", "((Number of member registrations))", "((convert-signup))", "((convert-apply))"};
-		for(int i=0;i<=4;i++) {
-			pageLoadCheck = $(".summary-data", i).text().trim();
-			if (pageLoadCheck.equals(panelDataCheck[i])) {
-				System.out.println(" *** get_convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+		String[] tableDataCheck = {"/", "79", "11.50%", "00:00:15", "00:00:00", "78", "78", "69", "68", "((page name))", "((page view))", "((percentage))", "((stay time))", "((visit stay time))", "((page visit number))", "((start number))", "((end number))", "((return number))"};
+	    $("td", 36).waitUntil(visible, 10000);
+		//td 36
+		for(int i=0;i<=8;i++) {
+			pageLoadCheck = $("td", (i+36)).text().trim();
+			if(pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** contents_popularPage table data " + tableDataCheck[i+9] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-				close();
-			}			
-		}
-		String[] tableDataCheck1 = {"/", "78", "87.18%", "9", "11.54%", "90", "1", "((landingpage-URL))", "((visit number))", "((return percent))", "((convert number))", "((convert percent))", "((convert sales))", "((visit sales))"};
-		$("td", 46).waitUntil(visible, 10000);
-		for(int i=0; i<=6; i++) {
-			pageLoadCheck = $("td", (i+46)).text().trim();
-			if (pageLoadCheck.equals(tableDataCheck1[i])) {
-				System.out.println(" *** get_convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + "))" + " check Success !! *** ");
-			} else {
-				System.out.println(" *** get_convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** contents_popularPage table data " + tableDataCheck[i+9] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		String[] tableDataCheck2 = {"1 페이지", "356", "12", "3.37%", "120", "0", "((visit depth))", "((visit number))", "((convert number))", "((convert percent))", "((conversion sales))", "((visit sales))"};
-		$("td", 505).waitUntil(visible, 10000);
-		for(int i=0; i<=5; i++) {
-			pageLoadCheck = $("td", (i+505)).text().trim();
-			if (pageLoadCheck.equals(tableDataCheck2[i])) {
-				System.out.println(" *** get_convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + "))" + " check Success !! *** ");
-			} else {
-				System.out.println(" *** get_convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		String[] pieChartDataCheck = {"/62.8%", "21 페이지 이상62.8%", "1 페이지37.2%", "당일93.0%", "2일7.0%", "((landingPage))", "((visit path depth))", "((convert time required))"};
-		$(".highcharts-series-0 > path", 0).hover();
-		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
+		$(".highcharts-tracker", 0).hover();
+		$(".highcharts-tracker", 1).hover();
+		$(".highcharts-tracker", 2).hover();
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
-		if (pageLoadCheck.equals(pieChartDataCheck[0])) {
-			System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[5] + "((0))" + " check Success !! *** ");
-		} else {
-			System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[5] + "((0))" + " check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		for(int i=0;i<=1;i++) {
-			$(".highcharts-series-0 > path", (i+10)).hover();
-			$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
-			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
-			if (pageLoadCheck.equals(pieChartDataCheck[(i+1)])) {
-				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[6] + "((" + (i+1) + "))" + " check Success !! *** ");
-			} else {
-				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[6] + "((" + (i+1) + "))" + " check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		for(int i=0;i<=1;i++) {
-			$(".highcharts-series-0 > path", (i+14)).hover();
-			$(".highcharts-series-0 > path", (i+16)).hover();
-			$(".highcharts-tooltip", 2).waitUntil(visible, 10000);
-			pageLoadCheck = $(".highcharts-tooltip", 2).text().trim();
-			if (pageLoadCheck.equals(pieChartDataCheck[(i+3)])) {
-				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[7] + "((" + (i+3) + "))" + " check Success !! *** ");
-			} else {
-				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[7] + "((" + (i+3) + "))" + " check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		$("#btnChartBar").click();
-		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
-		$(".highcharts-tracker", 7).hover();
-		$(".highcharts-tracker", 6).hover();
-		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
-		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		pLC = pageLoadCheck.split("● ");
-		/*for(int a=0;a<=pLC.length-1;a++) {
-			System.out.println("pLC is :" + pLC[a] + ".");
-		}*/
-		String[] barChartDataCheck = {"2018.12.21(금)", "전환-주문: 21", "전환-가입: 21", "전환-예약: 21", "전환-신청: 21", "전환-기타1: 9", "기타: 36", "합계: 129", "((date))", "((conv-order))", "((conv-signup))", "((conv-booking))", "((conv-apply))", "((conv-other))", "((other))", "((total))"};
-		for(int i=0;i<=7;i++) {
-			if(i>=1 && i<=5) {
-				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(barChartDataCheck[i].substring(barChartDataCheck[i].length()-2, barChartDataCheck[i].length()))) {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
-				} else {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-					close();
-				}
-			} /*else if (i==5) {
-				
-			}*/ else {
-				/*System.out.println("bar chart pLC[" + i + "] is :" + pLC[i]);
-				System.out.println("bar chart barChartDataCheck[" + i + "] is :" + barChartDataCheck[i]);*/
-				if(pLC[i].equals(barChartDataCheck[i])) {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
-				} else {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-					close();
-				}
-			}
-		}
-		pLC = null;	
-		$("#btnChartLine").click();
-		String[] tableDataCheck3 = {"당일", "20", "95.24%", "200", "0", "((convert time required))", "((convert number))", "((convert percent))", "((conversion sales))", "((visit sales))"};
-		$("td", 661).waitUntil(visible, 10000);
-		for(int i=0; i<=4; i++) {
-			pageLoadCheck = $("td", (i+661)).text().trim();
-			if (pageLoadCheck.equals(tableDataCheck3[i])) {
-				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + "))" + " check Success !! *** ");
+		String[] barChartDataCheck = {"2018.12.21(금)", "페이지뷰: 687", "페이지 방문수: 665", "((date))", "((page view))", "((page visit number))"};
+		for(int i=0;i<=2;i++) {
+			if(pLC[i].equals(barChartDataCheck[i])) {
+				System.out.println(" *** contents_popularPage bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** contents_popularPage bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
-			}
-		}
-		$(".highcharts-tracker", 8).waitUntil(visible, 10000);
-		$(".highcharts-tracker", 10).hover();
-		$(".highcharts-tracker", 8).hover();
-		$(".highcharts-tracker", 10).hover();
-		$(".highcharts-tracker", 8).hover();
-		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
-		pLC = pageLoadCheck.split("● ");
-		String[] lineChartDataCheck = {"2018.12.21(금)", "전환-주문: 21", "전환-가입: 21", "전환-예약: 21", "전환-신청: 21", "전환-기타1: 9", "((date))", "((conv-order))", "((conv-signup))", "((conv-booking))", "((conv-apply))", "((conv-other))"};
-		for(int i=0;i<=4;i++) {
-			if(i>=1 && i<=5) {
-				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(lineChartDataCheck[i].substring(lineChartDataCheck[i].length()-2, lineChartDataCheck[i].length()))) {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
-				} else {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-					close();
-				}	
-			} else {
-				if(pLC[i].equals(lineChartDataCheck[i])) {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
-				} else {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-					close();
-				}
 			}
 		}
 		pLC = null;
-	    System.out.println(" ! ----- get_convert_status End ----- ! ");
-	}
-	@Test(priority = 2)
-	public void get_Convert_Step() {
-		System.out.println(" ! ----- get_convert_step Start ----- ! ");
-		$(By.linkText("전환단계")).waitUntil(visible, 10000);
-		$(By.linkText("전환단계")).click();
-		pageLoadCheck = $(".active", 2).text().trim();
-		if (pageLoadCheck.equals("전환단계")) {
-			System.out.println(" *** get_convert_step page load Success !! *** ");
-		} else {
-			System.out.println(" *** get_convert_step page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		String[] tableDataCheck = {"자연유입", "270", "0", "270", "260", "96.30%", "0", "0", "0", "0", "0", "21", "21", "((inflow source))", "((visit number))", "((new visit number))", "((re visit number))", "((return number))", "((return percent))", 
-				"((1step))", "((1~2stpe))", "((1~3step))", "((1~4step))", "((1~5step))", "((other))", "((total))"};
-		$("td", 51).waitUntil(visible, 10000);
-		for(int i=0; i<=12; i++) {
-			pageLoadCheck = $("td", (i+51)).text().trim();
-			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** get_convert_step table data " + tableDataCheck[i+13] + "((" + i + "))" + " check Success !! *** ");
-			} else {
-				System.out.println(" *** get_convert_step table data " + tableDataCheck[i+13] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
+		$("#btnChartLine").click();
+		$(".highcharts-tracker", 9).waitUntil(visible, 10000);
+		$(".highcharts-tracker", 3).hover();
 		$(".highcharts-tracker", 5).hover();
 		$(".highcharts-tracker", 7).hover();
-		$(".highcharts-tracker", 6).hover();
-		String[] barChartDatacheck = {"2018.12.21(금)", "1단계: 0", "1~2단계: 0", "1~3단계: 0", "1~4단계: 0", "1~5단계: 0", "기타: 21", "합계: 21", "((date))", "((1step))", "((1~2step))", "((1~3step))", "((1~4step))", "((1~5step))", "((other))", "((total))"};
-		pageLoadCheck = $(".highcharts-tooltip").text().trim();
-		String[] pLC = pageLoadCheck.split("● ");
-		for(int i=0;i<=7;i++) {
-			if (pLC[i].equals(barChartDatacheck[i])) {
-				System.out.println(" *** get_convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + "))" + " check Success !! *** ");
+		$(".highcharts-tracker", 9).hover();
+		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();		
+		pLC = pageLoadCheck.split("● ");
+		String[] lineChartDataCheck = {"2018.12.21(금)", "/: 79", "/search/label/missing/missingPage: 27", "/search/label/marketing-normal: 21", "/search/label/change-order: 21", "/search/label/inHouse-Talk/: 21", "((date))", "((page name : /))", "((page name : missingPage))", "((page name : marketing-normal))", "((page name : change-order))", "((page name : inHouse-Talk))"};
+		for(int i=0;i<=5;i++) {
+			if(pLC[i].equals(lineChartDataCheck[i])) {
+				System.out.println(" *** contents_popularPage line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** contents_popularPage line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		pLC = null;
-	    System.out.println(" ! ----- get_convert_step End ----- ! ");
+		System.out.println(" ! ----- contents_popularPage End ----- ! ");
 	}
-	@Test(priority = 11)
-	public void indirect_conversion() {
-		System.out.println(" ! ----- indirect_conversion Start ----- ! ");
-		$(By.linkText("멀티채널 전환")).waitUntil(visible, 10000);
-		$(By.linkText("멀티채널 전환")).click();
-		$("#top-menu-name").waitUntil(visible, 10000);
-		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("멀티채널 전환")) {
-			System.out.println(" *** indirect_conversion page load Success !! *** ");
+	//@Test(priority = 2)
+	public void contents_groupPage() {
+		System.out.println(" ! ----- contents_groupPage Start ----- ! ");
+		$(By.linkText("페이지그룹")).waitUntil(visible, 10000);
+		$(By.linkText("페이지그룹")).click();
+		pageLoadCheck = $(".active", 2).text().trim();
+		if (pageLoadCheck.equals("페이지그룹")) {
+			System.out.println(" *** contents_groupPage page load Success !! *** ");
 		} else {
-			System.out.println(" *** indirect_conversion page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** contents_groupPage page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		String[] tableDataCheck = {"합계", "48", "100%", "48", "100%", "((advertisement product))", "((visit number))", "((visit percent))", "((re visit number))", "((re visit percent))"};
-		$("td", 51).waitUntil(visible, 10000);
-		//17 ~ 21
-		for(int i=0; i<=4; i++) {
-			pageLoadCheck = $("td", (i+17)).text().trim();
-			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** indirect_conversion table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+		String[] tableDataCheck = {"미등록페이지", "687", "100%", "366", "1.88", "((page group name))", "((page view))", "((percentage))", "((page group visit number))", "((visit page view))"};
+		$("td", 14).waitUntil(visible, 10000);
+		for(int i=0;i<=4;i++) {
+			pageLoadCheck = $("td", (i+14)).text().trim();
+			if(pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** contents_groupPage table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** indirect_conversion table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** contents_groupPage table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		$("#divChartBar").hover();
-		$("#divChartBar").hover();
-		String[] barChartDatacheck = {"2018-12-21(금)", "직접전환 구매건수: 0", "간접전환 구매건수: 0", "((date))", "((directly convert))", "((indirect convert))"};
+		pageLoadCheck = $("tspan", 0).text().trim();
+		if(pageLoadCheck.equals("조회된 데이터가 없습니다.")) {
+			System.out.println(" *** contents_groupPage line chart data check Success !! *** ");
+		} else {
+			System.out.println(" *** contents_groupPage line chart data check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("#btnChartPie").click();
+		$("tspan", 1).waitUntil(visible, 10000);
+		for(int i=0;i<=1;i++) {
+			pageLoadCheck = $("tspan", i).text().trim();
+			if(pageLoadCheck.equals("조회된 데이터가 없습니다.")) {
+				System.out.println(" *** contents_groupPage pie chart data ((" + i + ")) check Success !! *** ");
+			} else {
+				System.out.println(" *** contents_groupPage pie chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				close();
+			}	
+		}
+		System.out.println(" ! ----- contents_groupPage End ----- ! ");
+	}
+	//@Test(priority = 3)
+	public void contents_InlinkPage() {
+		System.out.println(" ! ----- contents_InlinkPage Start ----- ! ");
+		$(By.linkText("내부배너")).waitUntil(visible, 10000);
+		$(By.linkText("내부배너")).click();
+		pageLoadCheck = $(".active", 2).text().trim();
+		if (pageLoadCheck.equals("내부배너")) {
+			System.out.println(" *** contents_InlinkPage page load Success !! *** ");
+		} else {
+			System.out.println(" *** contents_InlinkPage page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		String[] panelDataCheck = {"내부배너( banner-inner )\n9", "내부배너( banner-inner )\n0%", "-\n0", "((TOP page view))", "((TOP purchase rate))", "((TOP sales))"};
+		$(".top-component", 0).waitUntil(visible, 10000);
+		for(int i=0;i<=2;i++) {
+			pageLoadCheck = $(".top-component", (i)).text().trim();
+			if(pageLoadCheck.equals(panelDataCheck[i])) {
+				System.out.println(" *** contents_groupPage panel data " + panelDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** contents_groupPage panel data " + panelDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		$("td", 21).click();
+		$("td", 30).waitUntil(visible, 10000);
+		String[] tableDataCheck = {"└ banner-inner", "9", "9", "100%", "((campaign))", "((page view))", "((page visit number))", "((percentage))"};
+		for(int i=0;i<=3;i++) {
+			pageLoadCheck = $("td", (i+30)).text().trim();
+			if(pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** contents_groupPage table data " + tableDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** contents_groupPage table data " + tableDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		$(".highcharts-tracker", 0).hover();
+		$(".highcharts-tracker", 1).hover();
+		$(".highcharts-tracker", 2).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
+		String[] barChartDataCheck = {"2018.12.21(금)", "내부배너: 9", "합계: 9", "((date))", "((inner banner))", "((total))"};
 		for(int i=0;i<=2;i++) {
-			if (pLC[i].equals(barChartDatacheck[i])) {
-				System.out.println(" *** indirect_conversion bar chart data " + barChartDatacheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+			if(pLC[i].equals(barChartDataCheck[i])) {
+				System.out.println(" *** contents_groupPage bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** indirect_conversion bar chart data " + barChartDatacheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** contents_groupPage bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 		pLC = null;
 		$("#btnChartLine").click();
-		$("tspan", 1).waitUntil(hidden, 10000);
-		$("tspan", 0).waitUntil(visible, 10000);
-		pageLoadCheck = $("tspan", 0).text();
-		pLC = pageLoadCheck.split("\\.");
-		if(pLC[0].equals("조회된 데이터가 없습니다")) {
-			System.out.println(" *** indirect_conversion line chart data check Success !! *** ");
+		$(".highcharts-tracker", 3).waitUntil(visible, 10000);
+		$(".highcharts-tracker", 3).hover();		
+		$(".highcharts-tracker", 4).hover();
+		$(".highcharts-tracker", 3).hover();
+		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
+		pLC = pageLoadCheck.split("● ");
+		String[] lineChartDataCheck = {"2018.12.21(금)", "내부배너: 9", "((date))", "((inner banner))"};
+		for(int i=0;i<=1;i++) {
+			if(pLC[i].equals(lineChartDataCheck[i])) {
+				System.out.println(" *** contents_groupPage line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** contents_groupPage line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		System.out.println(" ! ----- contents_InlinkPage End ----- ! ");
+	}
+	//@Test(priority = 4)
+	public void contents_InternalPage() {
+		System.out.println(" ! ----- contents_InternalPage Start ----- ! ");
+		$(By.linkText("내부검색")).waitUntil(visible, 10000);
+		$(By.linkText("내부검색")).click();
+		pageLoadCheck = $(".active", 2).text().trim();
+		if (pageLoadCheck.equals("내부검색")) {
+			System.out.println(" *** contents_InternalPage page load Success !! *** ");
 		} else {
-			System.out.println(" *** indirect_conversion line chart data check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** contents_InternalPage page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-	    System.out.println(" ! ----- indirect_conversion End ----- ! ");
+		$("td", 29).waitUntil(visible, 10000);
+		String[] tableDataCheck = {"합계", "149", "100%", "144", "((inner search word))", "((number of searches))", "((percentage))", "((number of leave after a search))"};
+		for(int i=0;i<=3;i++) {
+			pageLoadCheck = $("td", (i+29)).text().trim();
+			if(pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** contents_InternalPage table data " + tableDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** contents_InternalPage table data " + tableDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		$(".highcharts-tracker", 0).hover();
+		$(".highcharts-tracker", 1).hover();
+		$(".highcharts-tracker", 2).hover();
+		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
+		String[] pLC = pageLoadCheck.split("● ");
+		String[] barChartDataCheck = {"2018.12.21 (금)", "검색횟수: 149", "구매건수: 0", "((date))", "((number of searches))", "((number of purchases))"};
+		for(int i=0;i<=2;i++) {
+			if(pLC[i].equals(barChartDataCheck[i])) {
+				System.out.println(" *** contents_InternalPage bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+			} else {
+				System.out.println(" *** contents_InternalPage bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		pLC = null;
+		$("#btnChartPie").click();
+		$(".highcharts-tracker > path", 6).waitUntil(visible, 10000);
+		String[] pieChartDataCheck = {"8.1%", "8.1%", "8.1%", "8.1%", "8.1%", "기타검색횟수: 59.7%", "((naverbrand))", "((daumbrand))", "((change-order))", "((marketing-normal))", "((inhouse-email))", "(())"};
+		for(int i=0;i<=5;i++) {
+			$(".highcharts-tracker > path", (i+1)).hover();
+			$(".highcharts-tracker > path", (i+1)).hover();
+			$(".highcharts-tracker > path", (i+1)).hover();
+			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
+			if(i<5) {
+				if(pageLoadCheck.substring(pageLoadCheck.length()-4, pageLoadCheck.length()).equals(pieChartDataCheck[i])) {
+					System.out.println(" *** contents_InternalPage pie chart data " + pieChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println(" *** contents_InternalPage pie chart data " + pieChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			} else {
+				if(pageLoadCheck.equals(pieChartDataCheck[i])) {
+					System.out.println(" *** contents_InternalPage pie chart data " + pieChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println(" *** contents_InternalPage pie chart data " + pieChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			}	
+		}
+		pLC = null;
+		$("#btnChartLine").click();
+		$(".highcharts-tracker", 11).waitUntil(visible, 10000);
+		$(".highcharts-tracker", 9).hover();		
+		$(".highcharts-tracker", 7).hover();
+		$(".highcharts-tracker", 11).hover();
+		pageLoadCheck = $(".highcharts-tooltip", 2).text().trim();
+		pLC = pageLoadCheck.split("● ");
+		String[] lineChartDataCheck = {"2018.12.21 (금)", "12", "12", "12", "12", "12", "((date))", "((chart index1))", "((chart index2))", "((chart index3))", "((chart index4))", "((chart index5))"};
+		for(int i=0;i<=5;i++) {
+			if(i == 0) {
+				if(pLC[i].equals(lineChartDataCheck[i])) {
+					System.out.println(" *** contents_InternalPage pie chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println(" *** contents_InternalPage pie chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			} else {
+				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(lineChartDataCheck[i].substring(lineChartDataCheck[i].length()-2, lineChartDataCheck[i].length()))) {
+					System.out.println(" *** contents_InternalPage pie chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println(" *** contents_InternalPage pie chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			}
+		}
+		System.out.println(" ! ----- contents_InternalPage End ----- ! ");
+	}
+	@Test(priority = 11)
+	public void contents_MoveRoute() {
+		System.out.println(" ! ----- contents_MoveRoute Start ----- ! ");
+		$("#contents").click();
+		$(By.linkText("경로")).waitUntil(visible, 10000);
+		$(By.linkText("경로")).click();
+		$("#top-menu-name").waitUntil(visible, 15000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		if (pageLoadCheck.equals("경로")) {
+			System.out.println(" *** contents_popularPage page load Success !! *** ");
+		} else {
+			System.out.println(" *** contents_popularPage page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		/*String aa = "/페이지 방문수  78 (21.31%)/search?q=/search/lab...페이지 방문수  12 (3.28%)/search/label/marketi...페이지 방문수  12 (3.28%)/search/label/marketi...페이지 방문수  12 (3.28%)/search?q=/search/lab...페이지 방문수  12 (3.28%)기타페이지 방문수  240 (65.57%)/search/label/marketi...페이지 방문수  9 (2.46%)/search?q=1234페이지 방문수  1 (0.27%)/search/label/marketi...페이지 방문수  9 (2.46%)/search?q=%2Fsearch%2...페이지 방문수  1 (0.27%)/search/label/marketi...페이지 방문수  9 (2.46%)/search?q=1234페이지 방문수  1 (0.27%)시작페이지시작페이지 방문수 : 366시작페이지 종료수 : 356경로 1단계경로 1단계 페이지 방문수 : 10경로 1단계 페이지 종료수 : 0경로 2단계경로 2단계 페이지 방문수 : 10경로 2단계 페이지 종료수 : 0경로 3단계경로 3단계 페이지 방문수 : 10경로 3단계 페이지 종료수 : 0";
+		String[] text = aa.split(" : ");
+		for(int i=0;i<=text.length-1;i++) {
+			System.out.println("text[" + i + "] is :" + text[i] + ".");
+		}*/
+		String[] depthLevDataCheck = {"", "366", "356", "10", "0", "10", "0", "10", "0", "", "((start page visit number))", "((start page end number))", "((1step page visit number))", "((1step page end number))", "((2step page visit number))", "((2step page end number))", "((3step page visit number))", "((3step page end number))"};
+		pageLoadCheck = $("text").text().trim();
+		String[] pLC = pageLoadCheck.split(" : ");
+		for(int i=0;i<=8;i++) {
+			if(i==0) {
+				
+			} else if ( i==1 || i==2) {
+				if(pLC[i].substring(0, 3).equals(depthLevDataCheck[i])) {
+					System.out.println("pLC[" + i + "] is :" + pLC[i]);
+					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println("pLC[" + i + "] is :" + pLC[i]);
+					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			} else if (i % 2 == 1) {
+				if(pLC[i].substring(0, 2).equals(depthLevDataCheck[i])) {
+					System.out.println("pLC[" + i + "] is :" + pLC[i]);
+					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println("pLC[" + i + "] is :" + pLC[i]);
+					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			} else if (i % 2 == 0) {
+				if(pLC[i].substring(0, 1).equals(depthLevDataCheck[i])) {
+					System.out.println("pLC[" + i + "] is :" + pLC[i]);
+					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Success !! *** ");
+				} else {
+					System.out.println("pLC[" + i + "] is :" + pLC[i]);
+					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			}
+		}
+		/*
+		pageLoadCheck = $(".depthLev", i).text().trim();
+		String[] pLC;
+		for(int i=0;i<=0;i++) {
+			
+			pLC = pageLoadCheck.split(" : ");
+		}*/
+		System.out.println(" ! ----- contents_MoveRoute End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {

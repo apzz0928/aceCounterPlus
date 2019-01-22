@@ -112,7 +112,7 @@ public class signUp {
 				System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
 				$$(".btn-info").last().click();
 			    $(".modal-backdrop").waitUntil(hidden, 10000);
-			}else if(val.equals("restorationPassword_change_password_confirm")) {
+			} else if(val.equals("restorationPassword_change_password_confirmm")) {
 				System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
 				$$(".btn-info").last().click();
 			} else { //confirm 아니면 .btn-sm클릭
@@ -442,9 +442,13 @@ public class signUp {
 			$("#changePwd").setValue(pw1);
 			$("#changePwdConfirm").setValue(pw1);
 			$("#modifyProc").click();
-			valCheck("restorationPassword_change_password_confirm");
+			sleep(1500);
+			$$(".btn-info").last().click();
+			sleep(1500);
+			$$(".btn-sm").last().click();
+			/*valCheck("restorationPassword_change_password_confirmm"); //confirm 안타려고 mm
 			sleep(1000);
-			valCheck("restorationPassword_change_password_check");
+			valCheck("restorationPassword_change_password_check");*/
 			pw = "qordlf";
 			pw1 = "qordlf";
 		}

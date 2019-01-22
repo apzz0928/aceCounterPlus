@@ -253,9 +253,6 @@ public class convert {
 		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		pLC = pageLoadCheck.split("● ");
-		/*for(int a=0;a<=pLC.length-1;a++) {
-			System.out.println("pLC is :" + pLC[a] + ".");
-		}*/
 		String[] barChartDataCheck = {"2018.12.21(금)", "전환-주문: 21", "전환-가입: 21", "전환-예약: 21", "전환-신청: 21", "전환-기타1: 9", "기타: 36", "합계: 129", "((date))", "((conv-order))", "((conv-signup))", "((conv-booking))", "((conv-apply))", "((conv-other))", "((other))", "((total))"};
 		for(int i=0;i<=7;i++) {
 			if(i>=1 && i<=5) {
@@ -265,11 +262,7 @@ public class convert {
 					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 					close();
 				}
-			} /*else if (i==5) {
-				
-			}*/ else {
-				/*System.out.println("bar chart pLC[" + i + "] is :" + pLC[i]);
-				System.out.println("bar chart barChartDataCheck[" + i + "] is :" + barChartDataCheck[i]);*/
+			} else {
 				if(pLC[i].equals(barChartDataCheck[i])) {
 					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
 				} else {
