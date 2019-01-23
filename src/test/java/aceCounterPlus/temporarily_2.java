@@ -126,7 +126,7 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- login End ----- ! ");
 	}
-	//@Test(priority = 1)
+	@Test(priority = 1)
 	public void contents_popularPage() {
 		System.out.println(" ! ----- contents_popularPage Start ----- ! ");
 		$("#contents").click();
@@ -431,7 +431,6 @@ public class temporarily_2 {
 	@Test(priority = 11)
 	public void contents_MoveRoute() {
 		System.out.println(" ! ----- contents_MoveRoute Start ----- ! ");
-		$("#contents").click();
 		$(By.linkText("경로")).waitUntil(visible, 10000);
 		$(By.linkText("경로")).click();
 		$("#top-menu-name").waitUntil(visible, 15000);
@@ -442,53 +441,34 @@ public class temporarily_2 {
 			System.out.println(" *** contents_popularPage page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		/*String aa = "/페이지 방문수  78 (21.31%)/search?q=/search/lab...페이지 방문수  12 (3.28%)/search/label/marketi...페이지 방문수  12 (3.28%)/search/label/marketi...페이지 방문수  12 (3.28%)/search?q=/search/lab...페이지 방문수  12 (3.28%)기타페이지 방문수  240 (65.57%)/search/label/marketi...페이지 방문수  9 (2.46%)/search?q=1234페이지 방문수  1 (0.27%)/search/label/marketi...페이지 방문수  9 (2.46%)/search?q=%2Fsearch%2...페이지 방문수  1 (0.27%)/search/label/marketi...페이지 방문수  9 (2.46%)/search?q=1234페이지 방문수  1 (0.27%)시작페이지시작페이지 방문수 : 366시작페이지 종료수 : 356경로 1단계경로 1단계 페이지 방문수 : 10경로 1단계 페이지 종료수 : 0경로 2단계경로 2단계 페이지 방문수 : 10경로 2단계 페이지 종료수 : 0경로 3단계경로 3단계 페이지 방문수 : 10경로 3단계 페이지 종료수 : 0";
-		String[] text = aa.split(" : ");
-		for(int i=0;i<=text.length-1;i++) {
-			System.out.println("text[" + i + "] is :" + text[i] + ".");
-		}*/
-		String[] depthLevDataCheck = {"", "366", "356", "10", "0", "10", "0", "10", "0", "", "((start page visit number))", "((start page end number))", "((1step page visit number))", "((1step page end number))", "((2step page visit number))", "((2step page end number))", "((3step page visit number))", "((3step page end number))"};
-		pageLoadCheck = $("text").text().trim();
-		String[] pLC = pageLoadCheck.split(" : ");
-		for(int i=0;i<=8;i++) {
-			if(i==0) {
-				
-			} else if ( i==1 || i==2) {
-				if(pLC[i].substring(0, 3).equals(depthLevDataCheck[i])) {
-					System.out.println("pLC[" + i + "] is :" + pLC[i]);
-					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Success !! *** ");
+		$(".blockUI", 2).waitUntil(hidden, 10000);
+		String[] depthLevDataCheck = {"366", "356", "", "10", "0", "", "10", "0", "", "10", "0", "((start page visit number))", "((start page end number))", "", "((1step page visit number))", "((1step page end number))", "", "((2step page visit number))", "((2step page end number))", "", "((3step page visit number))", "((3step page end number))"};
+		for(int i=0;i<=10;i++) {
+			if((i+25)%3 > 0) {
+				pageLoadCheck = $("text", (i+25)).text().trim();
+				String[] pLC = pageLoadCheck.split(" : ");
+				if(pLC[1].equals(depthLevDataCheck[i])) {
+					System.out.println(" *** contents_InternalPage depth level data " + depthLevDataCheck[i+11] + "((" + i + "))" + " check Success !! *** ");
 				} else {
-					System.out.println("pLC[" + i + "] is :" + pLC[i]);
-					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** contents_InternalPage depth level data " + depthLevDataCheck[i+11] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 					close();
 				}
-			} else if (i % 2 == 1) {
-				if(pLC[i].substring(0, 2).equals(depthLevDataCheck[i])) {
-					System.out.println("pLC[" + i + "] is :" + pLC[i]);
-					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Success !! *** ");
+				pLC = null;
+			}
+		}
+		String[] nodeVisitDataCheck = {"78 (21.31%)", "12 (3.28%)", "12 (3.28%)", "12 (3.28%)", "12 (3.28%)", "240 (65.57%)", "9 (2.46%)", "1 (0.27%)", "9 (2.46%)", "1 (0.27%)", "9 (2.46%)", "1 (0.27%)"};
+		for(int i=0;i<=23;i++) {
+			if(i%2 == 1) {
+				pageLoadCheck = $("text", i).text().trim();
+				String[] pLC = pageLoadCheck.split(" 수");
+				if(pLC[1].equals(nodeVisitDataCheck[i])) {
+					System.out.println(" *** contents_InternalPage node data ((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println("pLC[" + i + "] is :" + pLC[i]);
-					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-					close();
-				}
-			} else if (i % 2 == 0) {
-				if(pLC[i].substring(0, 1).equals(depthLevDataCheck[i])) {
-					System.out.println("pLC[" + i + "] is :" + pLC[i]);
-					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Success !! *** ");
-				} else {
-					System.out.println("pLC[" + i + "] is :" + pLC[i]);
-					System.out.println(" *** contents_MoveRoute depth level data " + depthLevDataCheck[i+9] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** contents_InternalPage node data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			}
-		}
-		/*
-		pageLoadCheck = $(".depthLev", i).text().trim();
-		String[] pLC;
-		for(int i=0;i<=0;i++) {
-			
-			pLC = pageLoadCheck.split(" : ");
-		}*/
+		}		
 		System.out.println(" ! ----- contents_MoveRoute End ----- ! ");
 	}
 	@AfterClass
