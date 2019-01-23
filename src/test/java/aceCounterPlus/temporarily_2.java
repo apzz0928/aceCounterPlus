@@ -445,7 +445,7 @@ public class temporarily_2 {
 		String[] depthLevDataCheck = {"366", "356", "", "10", "0", "", "10", "0", "", "10", "0", "((start page visit number))", "((start page end number))", "", "((1step page visit number))", "((1step page end number))", "", "((2step page visit number))", "((2step page end number))", "", "((3step page visit number))", "((3step page end number))"};
 		for(int i=0;i<=10;i++) {
 			if((i+25)%3 > 0) {
-				pageLoadCheck = $("text", (i+25)).text().trim();
+				pageLoadCheck = $("text", (i+25)).text().trim(); 
 				String[] pLC = pageLoadCheck.split(" : ");
 				if(pLC[1].equals(depthLevDataCheck[i])) {
 					System.out.println(" *** contents_InternalPage depth level data " + depthLevDataCheck[i+11] + "((" + i + "))" + " check Success !! *** ");
