@@ -51,6 +51,7 @@ public class testScript {
 		pw = "qordlf!@34";
 		
 		String urlToRemoteWD = hubUrl;
+		@SuppressWarnings("unused")
 		DesiredCapabilities cap;
 		ScreenShooter.captureSuccessfulTests = false;
 
@@ -109,6 +110,7 @@ public class testScript {
 			driver.manage().window().setSize(new Dimension(1650, 1000));
 		}*/
 	}
+	@SuppressWarnings("unused")
 	private static void js(String javaScriptSource) {
 		Object obj = executeJavaScript(javaScriptSource);
 	}
@@ -174,6 +176,7 @@ public class testScript {
 	    }
 	}
 	//@Test(priority = 2)
+	@SuppressWarnings("unused")
 	public void appMarketing() throws Exception {
 		open("https://new.acecounter.com/stats/getInflowSummary");
 		$("#uid").setValue("apzz0928888");
@@ -985,6 +988,7 @@ public class testScript {
 		sleep(2000);
 		open("http://10.77.129.82:8080/admin/noPassbookDeposit/makeview");
 		String checker = "";
+		@SuppressWarnings("unused")
 		String Msg = "";
 	    $(By.id("chargeType")).click();
 	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='요금구분'])[1]/following::option[3]")).click();

@@ -127,7 +127,7 @@ public class convert {
 		System.out.println(" ! ----- login End ----- ! ");
 	}
 	@Test(priority = 1)
-	public void get_Convert_Status() {
+	public void convert_status() {
 		System.out.println(" ! ----- get_convert_status Start ----- ! ");
 		$("#conv").click();
 		$(By.linkText("전환")).waitUntil(visible, 10000);
@@ -185,9 +185,9 @@ public class convert {
 		for(int i=0;i<=4;i++) {
 			pageLoadCheck = $(".summary-data", i).text().trim();
 			if (pageLoadCheck.equals(panelDataCheck[i])) {
-				System.out.println(" *** get_convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** get_convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** get_convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}			
 		}
@@ -196,9 +196,9 @@ public class convert {
 		for(int i=0; i<=6; i++) {
 			pageLoadCheck = $("td", (i+46)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck1[i])) {
-				System.out.println(" *** get_convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** get_convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** get_convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -207,9 +207,9 @@ public class convert {
 		for(int i=0; i<=5; i++) {
 			pageLoadCheck = $("td", (i+505)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck2[i])) {
-				System.out.println(" *** get_convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** get_convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** get_convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -257,16 +257,16 @@ public class convert {
 		for(int i=0;i<=7;i++) {
 			if(i>=1 && i<=5) {
 				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(barChartDataCheck[i].substring(barChartDataCheck[i].length()-2, barChartDataCheck[i].length()))) {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
+					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
 				if(pLC[i].equals(barChartDataCheck[i])) {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
+					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			}
@@ -278,9 +278,9 @@ public class convert {
 		for(int i=0; i<=4; i++) {
 			pageLoadCheck = $("td", (i+661)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck3[i])) {
-				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -295,16 +295,16 @@ public class convert {
 		for(int i=0;i<=4;i++) {
 			if(i>=1 && i<=5) {
 				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(lineChartDataCheck[i].substring(lineChartDataCheck[i].length()-2, lineChartDataCheck[i].length()))) {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}	
 			} else {
 				if(pLC[i].equals(lineChartDataCheck[i])) {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			}
@@ -313,7 +313,7 @@ public class convert {
 	    System.out.println(" ! ----- get_convert_status End ----- ! ");
 	}
 	@Test(priority = 2)
-	public void get_Convert_Step() {
+	public void convert_step() {
 		System.out.println(" ! ----- get_convert_step Start ----- ! ");
 		$(By.linkText("전환단계")).waitUntil(visible, 10000);
 		$(By.linkText("전환단계")).click();
@@ -330,9 +330,9 @@ public class convert {
 		for(int i=0; i<=12; i++) {
 			pageLoadCheck = $("td", (i+51)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** get_convert_step table data " + tableDataCheck[i+13] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** get_convert_step table data " + tableDataCheck[i+13] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_step table data " + tableDataCheck[i+13] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** get_convert_step table data " + tableDataCheck[i+13] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -344,9 +344,9 @@ public class convert {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=7;i++) {
 			if (pLC[i].equals(barChartDatacheck[i])) {
-				System.out.println(" *** get_convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** get_convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** get_convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -354,7 +354,7 @@ public class convert {
 	    System.out.println(" ! ----- get_convert_step End ----- ! ");
 	}
 	@Test(priority = 11)
-	public void indirect_conversion() {
+	public void convert_multiChannel() {
 		System.out.println(" ! ----- indirect_conversion Start ----- ! ");
 		$(By.linkText("멀티채널 전환")).waitUntil(visible, 10000);
 		$(By.linkText("멀티채널 전환")).click();
@@ -372,9 +372,9 @@ public class convert {
 		for(int i=0; i<=4; i++) {
 			pageLoadCheck = $("td", (i+17)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** indirect_conversion table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** indirect_conversion table data " + tableDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** indirect_conversion table data " + tableDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** indirect_conversion table data " + tableDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -385,9 +385,9 @@ public class convert {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=2;i++) {
 			if (pLC[i].equals(barChartDatacheck[i])) {
-				System.out.println(" *** indirect_conversion bar chart data " + barChartDatacheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** indirect_conversion bar chart data " + barChartDatacheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** indirect_conversion bar chart data " + barChartDatacheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** indirect_conversion bar chart data " + barChartDatacheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}

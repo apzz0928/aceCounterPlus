@@ -184,9 +184,9 @@ public class marketing {
 		for(int i=0;i<=4;i++) {
 			pageLoadCheck = $(".summary-data", i).text().trim();
 			if (pageLoadCheck.equals(panelDataCheck[i])) {
-				System.out.println(" *** marketing_summary panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** marketing_summary panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** marketing_summary panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** marketing_summary panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}			
 		}
@@ -196,9 +196,9 @@ public class marketing {
 		for(int i=0;i<=14;i++) {
 			pageLoadCheck = $("td", (i+37)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** marketing_summary table data " + tableDataCheck[i+15] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** marketing_summary table data " + tableDataCheck[i+15] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** marketing_summary table data " + tableDataCheck[i+15] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** marketing_summary table data " + tableDataCheck[i+15] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -210,9 +210,9 @@ public class marketing {
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=2;i++) {
 			if (pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** marketing_summary bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** marketing_summary bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** marketing_summary bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** marketing_summary bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}			
 		}
@@ -225,9 +225,9 @@ public class marketing {
 			pageLoadCheck = $(".highcharts-tooltip", 2).text().trim();
 			/*System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");*/
 			if(pageLoadCheck.equals(pieChartDataCheck[i])) {
-				System.out.println(" *** marketing_summary pie chart data " + pieChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** marketing_summary pie chart data " + pieChartDataCheck[i+4] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** marketing_summary pie chart data " + pieChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** marketing_summary pie chart data " + pieChartDataCheck[i+4] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -239,9 +239,9 @@ public class marketing {
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=2;i++) {
 			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** marketing_summary line chart data " + lineChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** marketing_summary line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** marketing_summary line chart data " + lineChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** marketing_summary line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -271,9 +271,9 @@ public class marketing {
 	    for(int i=0;i<=13;i++) {
 			pageLoadCheck = $("td", (i+41)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** marketing_detail table data " + tableDataCheck[i+14] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** marketing_detail table data " + tableDataCheck[i+14] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** marketing_detail table data " + tableDataCheck[i+14] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** marketing_detail table data " + tableDataCheck[i+14] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 	    }
@@ -284,9 +284,9 @@ public class marketing {
 		String[] pLC = pageLoadCheck.split("● ");
 	    for(int i=0;i<=2;i++) {
 			if (pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** marketing_detail bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** marketing_detail bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** marketing_detail bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** marketing_detail bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 	    }
@@ -304,16 +304,16 @@ public class marketing {
 	    pLC = pageLoadCheck.split("● ");
 	    for(int i=0;i<=2;i++) {
 			if (pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** marketing_detail line chart data " + lineChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** marketing_detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** marketing_detail line chart data " + lineChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** marketing_detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 	    }
 	    System.out.println(" ! ----- marketing_detail End ----- ! ");
 	}
 	@Test(priority = 3)
-	public void marketing_clickchoice() {
+	public void marketing_clickChoice() {
 		System.out.println(" ! ----- marketing_clickchoice Start ----- ! ");
 		$(By.linkText("네이버 검색광고")).waitUntil(visible, 10000);
 		$(By.linkText("네이버 검색광고")).click();
@@ -329,9 +329,9 @@ public class marketing {
 		for(int i=0;i<=4;i++) {
 			pageLoadCheck = $(".summary-data", i).text().trim();
 			if (pageLoadCheck.equals(panelDataCheck[i])) {
-				System.out.println(" *** marketing_clickchoice panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** marketing_clickchoice panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** marketing_clickchoice panel summary data " + panelDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** marketing_clickchoice panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}

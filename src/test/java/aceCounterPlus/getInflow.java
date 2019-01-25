@@ -127,7 +127,7 @@ public class getInflow {
 	}
 
 	@Test(priority = 1)
-	public void getInflow_Summary() {
+	public void inflow_getInflow_summary() {
 		System.out.println(" ! ----- getInflow_Summary Start ----- ! ");
 		$("#uip").click();
 		$(By.linkText("유입출처")).waitUntil(visible, 10000);
@@ -186,16 +186,16 @@ public class getInflow {
 			if(i==0) { //드릴다운때문에 자연유입만 따로체크
 				String[] getInflowSummaryCheck = pageLoadCheck.split("자");
 				if(getInflowSummaryCheck[1].equals(tableDataCheck[0])) {
-					System.out.println(" *** getInflow_Summary table data " + tableDataCheck[i+12] + "((" + i + "))" + " check Success !! *** ");		
+					System.out.println(" *** getInflow_Summary table data " + tableDataCheck[i+12] + "((" + i + ")) check Success !! *** ");		
 				} else {
-					System.out.println(" *** getInflow_Summary table data " + tableDataCheck[i+12] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** getInflow_Summary table data " + tableDataCheck[i+12] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
 				if(pageLoadCheck.equals(tableDataCheck[i])) {
-					System.out.println(" *** getInflow_Summary table data " + tableDataCheck[i+12] + "((" + i + "))" + " check Success !! *** ");		
+					System.out.println(" *** getInflow_Summary table data " + tableDataCheck[i+12] + "((" + i + ")) check Success !! *** ");		
 				} else {
-					System.out.println(" *** getInflow_Summary table data " + tableDataCheck[i+12] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** getInflow_Summary table data " + tableDataCheck[i+12] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}				
 			}
@@ -207,9 +207,9 @@ public class getInflow {
 		String[] barChartDataCheck = {"2018.12.07(금)", "유료마케팅: 0", "일반마케팅: 0", "인하우스마케팅: 0", "자연유입: 127", "합계: 127", "((date))", "((charge marketing))", "((no charge marketing))", "((inhouse marketing))", "((nature inflow))", "((total))"};
 		for(int i=0;i<=5;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Summary bar chart data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Summary bar chart data " + barChartDataCheck[i+6] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Summary bar chart data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Summary bar chart data " + barChartDataCheck[i+6] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -234,16 +234,16 @@ public class getInflow {
 		String[] lineChartDataCheck = {"2018.12.07(금)", "유료마케팅: 0", "일반마케팅: 0", "인하우스마케팅: 0", "자연유입: 127", "((date))", "((charge marketing))", "((no charge marketing))", "((inhouse marketing))", "((nature inflow))"};
 		for(int i=0;i<=4;i++) {
 			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Summary line chart data " + lineChartDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Summary line chart data " + lineChartDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Summary line chart data " + lineChartDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Summary line chart data " + lineChartDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 	    System.out.println(" ! ----- getInflow_Summary End ----- ! ");
 	}
 	@Test(priority = 2)
-	public void getInflow_Detail() {
+	public void inflow_getInflow_detail() {
 		System.out.println(" ! ----- getInflow_Detail Start ----- ! ");
 		$(By.linkText("상세")).waitUntil(visible, 10000);
 		$(By.linkText("상세")).click();
@@ -265,16 +265,16 @@ public class getInflow {
 			if(i==0) { //드릴다운때문에 구분만 따로체크
 				String[] getInflowDetailCheck = pageLoadCheck.split("다");
 				if(getInflowDetailCheck[1].equals(tableDataCheck[0])) {
-					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + "))" + " check Success !! *** ");		
+					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Success !! *** ");		
 				} else {
-					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
 				if(pageLoadCheck.equals(tableDataCheck[i])) {
-					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + "))" + " check Success !! *** ");		
+					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Success !! *** ");		
 				} else {
-					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}				
 			}
@@ -287,9 +287,9 @@ public class getInflow {
 		String[] barChartDataCheck = {"2018.12.07(금)", "신규방문: 0", "재방문: 127", "방문수: 127", "((date))", "((new visit))", "((re visit))", "((visit number))"};
 		for(int i=0;i<=3;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Detail bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Detail bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Detail bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Detail bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -303,9 +303,9 @@ public class getInflow {
 		String[] lineChartDataCheck = {"2018.12.07(금)", "검색엔진: 89", "다이렉트: 38", "((date))", "((search engine))", "((direct))"};
 		for(int i=0;i<=2;i++) {
 			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Detail line chart data " + lineChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Detail line chart data " + lineChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -313,7 +313,7 @@ public class getInflow {
 	    System.out.println(" ! ----- getInflow_Detail End ----- ! ");
 	}
 	@Test(priority = 3)
-	public void getInflow_TreeMap() {
+	public void inflow_getInflow_treeMap() {
 		System.out.println(" ! ----- getInflow_TreeMap Start ----- ! ");
 		$(By.linkText("트리맵")).waitUntil(visible, 10000);
 		$(By.linkText("트리맵")).click();
@@ -345,7 +345,7 @@ public class getInflow {
 	    System.out.println(" ! ----- getInflow_TreeMap End ----- ! ");
 	}
 	@Test(priority = 11)
-	public void getInflow_Search() {
+	public void searchEngine_getInflow_search() {
 		System.out.println(" ! ----- getInflow_Search Start ----- ! ");
 		open("https://new.acecounter.com/stats/getInflowSearch");
 		$(By.linkText("검색엔진")).waitUntil(visible, 10000);
@@ -363,9 +363,9 @@ public class getInflow {
 		for(int i=0;i<=2;i++) {
 			pageLoadCheck = $("td", (i+16)).text().trim().replace(" ", "");
 			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -383,9 +383,9 @@ public class getInflow {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Search bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Search bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Search bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Search bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -394,7 +394,7 @@ public class getInflow {
 	    System.out.println(" ! ----- getInflow_Search End ----- ! ");
 	}
 	@Test(priority = 21)
-	public void getInflow_Domain() {
+	public void inflowDomain_getInflow_domain() {
 		System.out.println(" ! ----- getInflow_Domain Start ----- ! ");
 		$(By.linkText("유입도메인")).waitUntil(visible, 10000);
 		$(By.linkText("유입도메인")).click();
@@ -408,7 +408,7 @@ public class getInflow {
 		}
 		$(".panel-body", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".panel-body", 0).text().trim();
-		if (pageLoadCheck.equals("방문수\n" + "89\n" + 	"89(0.00%)")) {
+		if (pageLoadCheck.equals("방문수\n89\n89(0.00%)")) {
 			System.out.println(" *** getInflow_Domain panel text check Success !! *** ");
 		} else {
 			System.out.println(" *** getInflow_Domain panel text check Fail ... !@#$%^&*() *** ");
@@ -421,9 +421,9 @@ public class getInflow {
 		for(int i=0;i<=10;i++) {
 			pageLoadCheck = $("td", (i+40)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** getInflow_Domain table data " + tableDataCheck[i+11] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Domain table data " + tableDataCheck[i+11] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Domain table data " + tableDataCheck[i+11] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Domain table data " + tableDataCheck[i+11] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -435,9 +435,9 @@ public class getInflow {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
 			if (pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Domain bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Domain bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Domain bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Domain bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -453,16 +453,16 @@ public class getInflow {
 		String[] lineChartDataCheck = {"2018.12.07(금)", "google.com: 89", "((date))", "((inflow domain))"};
 		for(int i=0;i<=1;i++) {
 			if (pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Domain line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Domain line chart data " + lineChartDataCheck[i+2] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Domain line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Domain line chart data " + lineChartDataCheck[i+2] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 		System.out.println(" ! ----- getInflowDomain End ----- ! ");
 	}
 	@Test(priority = 31)
-	public void getInflow_Over() {
+	public void overlabInflow_getInflow_over() {
 		System.out.println(" ! ----- getInflow_Over Start ----- ! ");
 		$(By.linkText("중복유입")).waitUntil(visible, 10000);
 		$(By.linkText("중복유입")).click();
@@ -510,9 +510,9 @@ public class getInflow {
 		for(int i=0;i<=8;i++) {
 			pageLoadCheck = $("td", (i+17)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** getInflow_Over table data " + tableDataCheck[i+9] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** getInflow_Over table data " + tableDataCheck[i+9] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Over table data " + tableDataCheck[i+9] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_Over table data " + tableDataCheck[i+9] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}

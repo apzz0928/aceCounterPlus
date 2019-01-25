@@ -127,7 +127,7 @@ public class user {
 	}
 
 	@Test(priority = 1)
-	public void user_stats() {
+	public void user_user_stats() {
 		System.out.println(" ! ----- user_stats Start ----- ! ");
 		$("#user").click();
 		$(By.linkText("사용자")).waitUntil(visible, 10000);
@@ -219,7 +219,7 @@ public class user {
 	    System.out.println(" ! ----- user_stats End ----- ! ");
 	}
 	@Test(priority = 2)
-	public void user_active_stats() {
+	public void user_user_active_stats() {
 		System.out.println(" ! ----- user_active_stats Start ----- ! ");
 		$(By.linkText("액티브 사용자")).waitUntil(visible, 10000);
 		$(By.linkText("액티브 사용자")).click();
@@ -261,7 +261,7 @@ public class user {
 	    System.out.println(" ! ----- user_active_stats End ----- ! ");
 	}
 	@Test(priority = 3)
-	public void user_stats_percent() {
+	public void user_user_stats_percent() {
 		System.out.println(" ! ----- user_stats_percent Start ----- ! ");
 		$(By.linkText("유지율")).waitUntil(visible, 10000);
 		$(By.linkText("유지율")).click();
@@ -284,7 +284,7 @@ public class user {
 	    System.out.println(" ! ----- user_stats_percent End ----- ! ");
 	}
 	@Test(priority = 4)
-	public void user_visit_frequency() {
+	public void user_user_visit_frequency() {
 		System.out.println(" ! ----- user_visit_frequency Start ----- ! ");
 		$(By.linkText("방문빈도")).waitUntil(visible, 10000);
 		$(By.linkText("방문빈도")).click();
@@ -399,7 +399,7 @@ public class user {
 	    System.out.println(" ! ----- user_visit_frequency End ----- ! ");
 	}
 	@Test(priority = 11)
-	public void user_system_web() {
+	public void system_user_system_web() {
 		System.out.println(" ! ----- user_system_web Start ----- ! ");
 		$(By.linkText("시스템")).waitUntil(visible, 10000);
 		$(By.linkText("시스템")).click();
@@ -439,6 +439,7 @@ public class user {
 		}
 		pLC = null;
 		$("#btnChartLine").click();
+		$("#chartSelect3").waitUntil(hidden, 10000);
 		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
 		$(".highcharts-tracker", 6).hover();
 		String[] lineChartDataCheck = {"2018.12.07(금)", "PC: 127", "((date))", "((system type))"};
@@ -466,7 +467,7 @@ public class user {
 	    System.out.println(" ! ----- user_system_web End ----- ! ");
 	}
 	@Test(priority = 21)
-	public void user_region() {
+	public void region_user_region() {
 		System.out.println(" ! ----- user_region Start ----- ! ");
 		$(By.linkText("지역")).waitUntil(visible, 10000);
 		$(By.linkText("지역")).click();
@@ -492,7 +493,7 @@ public class user {
 	    System.out.println(" ! ----- user_region End ----- ! ");
 	}
 	@Test(priority = 31)
-	public void user_member_status() {
+	public void member_user_member_status() {
 		System.out.println(" ! ----- user_member_status Start ----- ! ");
 		$(By.linkText("회원")).waitUntil(visible, 10000);
 		$(By.linkText("회원")).click();
@@ -555,7 +556,7 @@ public class user {
 	    System.out.println(" ! ----- user_member_status End ----- ! ");
 	}
 	@Test(priority = 41)
-	public void user_list() {
+	public void userList_user_list() {
 		System.out.println(" ! ----- user_list Start ----- ! ");
 		$(By.linkText("사용자리스트")).waitUntil(visible, 10000);
 		$(By.linkText("사용자리스트")).click();
