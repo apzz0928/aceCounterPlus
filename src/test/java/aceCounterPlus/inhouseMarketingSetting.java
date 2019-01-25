@@ -403,6 +403,7 @@ public class inhouseMarketingSetting {
 		valCheck("viralSetting_del_confirm");
 		valCheck("viralSetting_del_alert");
 		$("td", 3).waitUntil(hidden, 10000);
+		refresh();
 		pageLoadCheck = $("td", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("\n");
 		if(pLC[0].equals("등록된 캠페인이 없습니다.")) {
