@@ -1614,7 +1614,7 @@ public class serviceManagement {
 		$(".mh20", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".mh20", 0).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
-		if(pLC[12].substring(0, 10).equals("2019-01-19")) {
+		if(pLC[0].equals("고객님께서")) {
 			System.out.println(" *** myAllimList detailView check Success !! *** ");
 		} else {
 			System.out.println(" *** myAllimList detailView check Fail ... !@#$%^&*() *** ");
@@ -1641,6 +1641,7 @@ public class serviceManagement {
 		$(By.name("s_key")).setValue("");
 		$("#btn-search").click();
 		System.out.println(" ! ----- myAllimList End ----- ! ");
+		open("http://apzz092888.blogspot.com"); //3일 이상 수집데이터 없으면 알람 내용 변경되서 추가함
 	}
 	@AfterClass
 	public void afterTest() {
