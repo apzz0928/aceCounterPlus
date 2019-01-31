@@ -195,24 +195,29 @@ public class userSetting {
 		$(By.linkText("IP필터링설정")).click();
 		$("h5", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $("h5", 2).text();
-		if(pageLoadCheck.equals("고객지원센터")) { //IP주소가 남아있으면 지우고 시작 아니면 페이지 로딩만 체크
-			$(".btn-gray").click();
-			$(".btn-info", 1).waitUntil(visible, 10000);
-			$("#chkAll").click();
-			$(".btn-info", 1).click();
-			$(".btn-info", 1).waitUntil(hidden, 10000);
-			sleep(1000);
-			valCheck("IPFilterring_del");
-			$("h5", 2).waitUntil(visible, 10000);
-			pageLoadCheck = "등록된 IP가 없습니다.";
-		} else {
-			if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
-				System.out.println(" *** IP Filterring Page load Success !! *** ");
+		for(int i=0;i<=1;i++) {
+			if(pageLoadCheck.equals("고객지원센터")) { //IP주소가 남아있으면 지우고 페이지 로딩 다시 체크
+				$(".btn-gray").click();
+				$(".btn-info", 1).waitUntil(visible, 10000);
+				$("#chkAll").click();
+				$(".btn-info", 1).click();
+				$(".btn-info", 1).waitUntil(hidden, 10000);
+				sleep(1000);
+				valCheck("IPFilterring_del");
+				$("h5", 2).waitUntil(visible, 10000);
+				pageLoadCheck = "등록된 IP가 없습니다.";
+				System.out.println(" *** IP Filterring Page garbage data delete Success !! *** ");
 			} else {
-				System.out.println(" *** IP Filterring Page load Fail ... *** ");
-				close();
-			}		
+				if(pageLoadCheck.equals("등록된 IP가 없습니다.")) {
+					System.out.println(" *** IP Filterring Page load Success !! *** ");
+					break;
+				} else {
+					System.out.println(" *** IP Filterring Page load Fail ... *** ");
+					close();
+				}		
+			}			
 		}
+
 		$(".btn-info", 0).click();
 		$(".btn-info", 2).waitUntil(visible, 10000);
 		$(".btn-info", 2).click();

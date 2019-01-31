@@ -824,11 +824,28 @@ public class contentSetting {
 	    $(By.linkText("파일다운로드")).click();
 	    $(".col-xs-9").waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 3).text().trim();
-		if(pageLoadCheck.equals("*.zip")) {
-			System.out.println(" *** fileDownload_add list Page load Success !! *** ");
-		} else {
-			System.out.println(" *** fileDownload_add list Page load Fail ... !@#$%^&*() *** ");
-			close();
+		for(int i=0;i<=1;i++) {
+			if(!pageLoadCheck.equals("*.zipp")) { //파일 다운로드 패턴이 남아있으면 지우고 페이지 로딩 다시 체크
+			    $("#btn-list-delete").click();
+			    $("#btn-list-select-delete").waitUntil(visible, 10000);
+			    $("#list-checkbox-0").click();
+			    $("#btn-list-select-delete").click();
+			    valCheck("downPattern_del_confirm");
+			    valCheck("downPattern_del_alert");
+			    $("#list-checkbox-0").waitUntil(hidden, 10000);
+			    pageLoadCheck = "*.zipp";
+			    System.out.println(" *** fileDownload_add list garbage data delete Success !! *** ");
+			    refresh();
+				$(".col-xs-9").waitUntil(visible, 10000);
+			} else {
+				if(pageLoadCheck.equals("*.zipp")) {
+					System.out.println(" *** fileDownload_add list Page load Success !! *** ");
+					break;
+				} else {
+					System.out.println(" *** fileDownload_add list Page load Fail ... !@#$%^&*() *** ");
+					close();
+				}	
+			}	
 		}
 	    $(".btn-info", 0).click();
 	    $("th", 0).waitUntil(visible, 10000);
