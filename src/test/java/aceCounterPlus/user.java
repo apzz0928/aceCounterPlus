@@ -247,6 +247,8 @@ public class user {
 		pLC = null;
 		chartDataCheck[1] = "1일 사용자: 0";
 		$(".highcharts-series-group", 1).hover();
+		$(".highcharts-series-group", 0).hover();
+		$(".highcharts-series-group", 1).hover();
 		$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
@@ -439,7 +441,6 @@ public class user {
 		}
 		pLC = null;
 		$("#btnChartLine").click();
-		$("#chartSelect3").waitUntil(hidden, 10000);
 		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
 		$(".highcharts-tracker", 6).hover();
 		String[] lineChartDataCheck = {"2018.12.07(금)", "PC: 127", "((date))", "((system type))"};
