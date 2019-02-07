@@ -420,10 +420,10 @@ public class user {
 			pageLoadCheck = $("svg", i).text().trim();
 			String[] pLC = pageLoadCheck.split("Created with Highcharts 4.2.5");
 			if (pLC[0].equals(pieChartDataCheck[i])) {
-				System.out.println(" *** system Chart a legend(" + i + ") check Success !! *** ");
+				System.out.println(" *** system chart a legend(" + i + ") check Success !! *** ");
 				pLC = null;
 			} else {
-				System.out.println(" *** system Chart a legend(" + i + ") check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** system chart a legend(" + i + ") check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -442,6 +442,15 @@ public class user {
 		}
 		pLC = null;
 		$("#btnChartLine").click();
+		pageLoadCheck = $("text", 29).text().trim();
+		for(int i=0;i<=19;i++) {
+			if(pageLoadCheck.equals("PC")) {
+				System.out.println(" *** system line chart load check Success !! *** ");
+				break;
+			} else {
+				sleep(100);
+			}
+		}
 		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
 		$(".highcharts-tracker", 6).hover();
 		String[] lineChartDataCheck = {"2018.12.07(±Ý)", "PC: 127", "((date))", "((system type))"};
