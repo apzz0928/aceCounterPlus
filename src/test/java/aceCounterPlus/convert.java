@@ -422,9 +422,10 @@ public class convert {
 		for(int i=0;i<=9;i++) {
 			pageLoadCheck = $("td", 32).text().trim();
 			if(pageLoadCheck.equals("└ 다이렉트")) {
-				System.out.println(" *** table drill down data Success *** ");
+				System.out.println(" *** multiChannelConvert_weighted table drill down data load check Success *** ");
 				break;
 			} else {
+				System.out.println(" *** multiChannelConvert_weighted table drill down data loading wait 0." + i + " second *** ");
 				sleep(100);
 			}
 		}

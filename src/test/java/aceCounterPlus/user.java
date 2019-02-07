@@ -448,6 +448,7 @@ public class user {
 				System.out.println(" *** system line chart load check Success !! *** ");
 				break;
 			} else {
+				System.out.println(" *** system line chart loading wait 0." + i + " second *** ");
 				sleep(100);
 			}
 		}
