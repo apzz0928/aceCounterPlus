@@ -127,7 +127,7 @@ public class getInflow {
 	}
 
 	@Test(priority = 1)
-	public void inflow_getInflow_summary() {
+	public void getInflow_summary() {
 		System.out.println(" ! ----- getInflow_Summary Start ----- ! ");
 		$("#uip").click();
 		$(By.linkText("유입출처")).waitUntil(visible, 10000);
@@ -243,15 +243,15 @@ public class getInflow {
 	    System.out.println(" ! ----- getInflow_Summary End ----- ! ");
 	}
 	@Test(priority = 2)
-	public void inflow_getInflow_detail() {
-		System.out.println(" ! ----- getInflow_Detail Start ----- ! ");
+	public void getInflow_detail() {
+		System.out.println(" ! ----- getInflow_detail Start ----- ! ");
 		$(By.linkText("상세")).waitUntil(visible, 10000);
 		$(By.linkText("상세")).click();
 		pageLoadCheck = $(".active", 2).text().trim();
 		if (pageLoadCheck.equals("상세")) {
-			System.out.println(" *** getInflow_Detail page load Success !! *** ");
+			System.out.println(" *** getInflow_detail page load Success !! *** ");
 		} else {
-			System.out.println(" *** getInflow_Detail page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** getInflow_detail page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#select_inflow_options_0").waitUntil(visible, 10000);
@@ -265,16 +265,16 @@ public class getInflow {
 			if(i==0) { //드릴다운때문에 구분만 따로체크
 				String[] getInflowDetailCheck = pageLoadCheck.split("다");
 				if(getInflowDetailCheck[1].equals(tableDataCheck[0])) {
-					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Success !! *** ");		
+					System.out.println(" *** getInflow_detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Success !! *** ");		
 				} else {
-					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** getInflow_detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
 				if(pageLoadCheck.equals(tableDataCheck[i])) {
-					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Success !! *** ");		
+					System.out.println(" *** getInflow_detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Success !! *** ");		
 				} else {
-					System.out.println(" *** getInflow_Detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** getInflow_detail table data " + tableDataCheck[i+11] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}				
 			}
@@ -287,9 +287,9 @@ public class getInflow {
 		String[] barChartDataCheck = {"2018.12.07(금)", "신규방문: 0", "재방문: 127", "방문수: 127", "((date))", "((new visit))", "((re visit))", "((visit number))"};
 		for(int i=0;i<=3;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Detail bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** getInflow_detail bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Detail bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_detail bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -303,25 +303,25 @@ public class getInflow {
 		String[] lineChartDataCheck = {"2018.12.07(금)", "검색엔진: 89", "다이렉트: 38", "((date))", "((search engine))", "((direct))"};
 		for(int i=0;i<=2;i++) {
 			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** getInflow_detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 		pLC = null;
-	    System.out.println(" ! ----- getInflow_Detail End ----- ! ");
+	    System.out.println(" ! ----- getInflow_detail End ----- ! ");
 	}
 	@Test(priority = 3)
-	public void inflow_getInflow_treeMap() {
-		System.out.println(" ! ----- getInflow_TreeMap Start ----- ! ");
+	public void getInflow_treeMap() {
+		System.out.println(" ! ----- getInflow_treeMap Start ----- ! ");
 		$(By.linkText("트리맵")).waitUntil(visible, 10000);
 		$(By.linkText("트리맵")).click();
 		pageLoadCheck = $(".active", 2).text().trim();
 		if (pageLoadCheck.equals("트리맵")) {
-			System.out.println(" *** getInflow_TreeMap page load Success !! *** ");
+			System.out.println(" *** getInflow_treeMap page load Success !! *** ");
 		} else {
-			System.out.println(" *** getInflow_TreeMap page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** getInflow_treeMap page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		String[] treeMapdataCheck = {"자연유입 : 127", "검색엔진 : 89", "Google USA : 89", "구글 검색어없음 : 89"};
@@ -336,26 +336,26 @@ public class getInflow {
 			$(".highcharts-tracker", 1).hover();
 			pageLoadCheck = $(".highcharts-tooltip").text().trim();
 			if(pageLoadCheck.equals(treeMapdataCheck[i])) {
-				System.out.println(" *** getInflow_TreeMap treeMap data ((" + i + ")) check Success !! *** ");
+				System.out.println(" *** getInflow_treeMap treeMap data ((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_TreeMap treeMap data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** getInflow_treeMap treeMap data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-	    System.out.println(" ! ----- getInflow_TreeMap End ----- ! ");
+	    System.out.println(" ! ----- getInflow_treeMap End ----- ! ");
 	}
 	@Test(priority = 11)
-	public void searchEngine_getInflow_search() {
-		System.out.println(" ! ----- getInflow_Search Start ----- ! ");
+	public void searchEngine() {
+		System.out.println(" ! ----- searchEngine Start ----- ! ");
 		open("https://new.acecounter.com/stats/getInflowSearch");
 		$(By.linkText("검색엔진")).waitUntil(visible, 10000);
 		$(By.linkText("검색엔진")).click();
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("검색엔진")) {
-			System.out.println(" *** getInflow_Search page load Success !! *** ");
+			System.out.println(" *** searchEngine page load Success !! *** ");
 		} else {
-			System.out.println(" *** getInflow_Search page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** searchEngine page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("td", 22).waitUntil(visible, 10000);
@@ -363,9 +363,9 @@ public class getInflow {
 		for(int i=0;i<=2;i++) {
 			pageLoadCheck = $("td", (i+16)).text().trim().replace(" ", "");
 			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** searchEngine table data " + tableDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Search table data " + tableDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** searchEngine table data " + tableDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -383,35 +383,35 @@ public class getInflow {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Search bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** searchEngine bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Search bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** searchEngine bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 		pLC = null;
 		$(By.linkText("유입도메인")).waitUntil(visible, 10000);
-	    System.out.println(" ! ----- getInflow_Search End ----- ! ");
+	    System.out.println(" ! ----- searchEngine End ----- ! ");
 	}
 	@Test(priority = 21)
-	public void inflowDomain_getInflow_domain() {
-		System.out.println(" ! ----- getInflow_Domain Start ----- ! ");
+	public void inflowDomain() {
+		System.out.println(" ! ----- inflowDomain Start ----- ! ");
 		$(By.linkText("유입도메인")).waitUntil(visible, 10000);
 		$(By.linkText("유입도메인")).click();
 		$("td", 38).waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("유입 도메인")) {
-			System.out.println(" *** getInflow_Domain page load Success !! *** ");
+			System.out.println(" *** inflowDomain page load Success !! *** ");
 		} else {
-			System.out.println(" *** getInflow_Domain page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** inflowDomain page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".panel-body", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".panel-body", 0).text().trim();
 		if (pageLoadCheck.equals("방문수\n89\n89(0.00%)")) {
-			System.out.println(" *** getInflow_Domain panel text check Success !! *** ");
+			System.out.println(" *** inflowDomain panel text check Success !! *** ");
 		} else {
-			System.out.println(" *** getInflow_Domain panel text check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** inflowDomain panel text check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("td", 28).waitUntil(visible, 10000);
@@ -421,9 +421,9 @@ public class getInflow {
 		for(int i=0;i<=10;i++) {
 			pageLoadCheck = $("td", (i+40)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** getInflow_Domain table data " + tableDataCheck[i+11] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** inflowDomain table data " + tableDataCheck[i+11] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Domain table data " + tableDataCheck[i+11] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** inflowDomain table data " + tableDataCheck[i+11] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -435,9 +435,9 @@ public class getInflow {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
 			if (pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Domain bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** inflowDomain bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Domain bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** inflowDomain bar chart data " + barChartDataCheck[i+4] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -453,25 +453,25 @@ public class getInflow {
 		String[] lineChartDataCheck = {"2018.12.07(금)", "google.com: 89", "((date))", "((inflow domain))"};
 		for(int i=0;i<=1;i++) {
 			if (pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** getInflow_Domain line chart data " + lineChartDataCheck[i+2] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** inflowDomain line chart data " + lineChartDataCheck[i+2] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Domain line chart data " + lineChartDataCheck[i+2] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** inflowDomain line chart data " + lineChartDataCheck[i+2] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		System.out.println(" ! ----- getInflowDomain End ----- ! ");
+		System.out.println(" ! ----- inflowDomain End ----- ! ");
 	}
 	@Test(priority = 31)
-	public void overlabInflow_getInflow_over() {
-		System.out.println(" ! ----- getInflow_Over Start ----- ! ");
+	public void overlabInflow() {
+		System.out.println(" ! ----- overlabInflow Start ----- ! ");
 		$(By.linkText("중복유입")).waitUntil(visible, 10000);
 		$(By.linkText("중복유입")).click();
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("중복유입")) {
-			System.out.println(" *** getInflow_Over page load Success !! *** ");
+			System.out.println(" *** overlabInflow page load Success !! *** ");
 		} else {
-			System.out.println(" *** getInflow_Over page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** overlabInflow page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$("#daterangepicker2").waitUntil(visible, 10000);
@@ -510,13 +510,13 @@ public class getInflow {
 		for(int i=0;i<=8;i++) {
 			pageLoadCheck = $("td", (i+17)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** getInflow_Over table data " + tableDataCheck[i+9] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** overlabInflow table data " + tableDataCheck[i+9] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** getInflow_Over table data " + tableDataCheck[i+9] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** overlabInflow table data " + tableDataCheck[i+9] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		System.out.println(" ! ----- getInflow_Over End ----- ! ");
+		System.out.println(" ! ----- overlabInflow End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {

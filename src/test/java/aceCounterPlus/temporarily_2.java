@@ -228,7 +228,7 @@ public class temporarily_2 {
 		System.out.println(" ! ----- page_contents_popularPage End ----- ! ");
 	}
 	//@Test(priority = 2)
-	public void page_page_contents_groupPage() {
+	public void page_contents_groupPage() {
 		System.out.println(" ! ----- page_contents_groupPage Start ----- ! ");
 		$(By.linkText("페이지그룹")).waitUntil(visible, 10000);
 		$(By.linkText("페이지그룹")).click();
@@ -271,7 +271,7 @@ public class temporarily_2 {
 		System.out.println(" ! ----- page_contents_groupPage End ----- ! ");
 	}
 	//@Test(priority = 3)
-	public void page_page_contents_InlinkPage() {
+	public void page_contents_InlinkPage() {
 		System.out.println(" ! ----- page_contents_InlinkPage Start ----- ! ");
 		$(By.linkText("내부배너")).waitUntil(visible, 10000);
 		$(By.linkText("내부배너")).click();
@@ -339,7 +339,7 @@ public class temporarily_2 {
 		System.out.println(" ! ----- page_page_contents_InlinkPage End ----- ! ");
 	}
 	//@Test(priority = 4)
-	public void page_page_contents_InternalPage() {
+	public void page_contents_InternalPage() {
 		System.out.println(" ! ----- page_contents_InternalPage Start ----- ! ");
 		$(By.linkText("내부검색")).waitUntil(visible, 10000);
 		$(By.linkText("내부검색")).click();
@@ -429,7 +429,7 @@ public class temporarily_2 {
 		System.out.println(" ! ----- page_contents_InternalPage End ----- ! ");
 	}
 	@Test(priority = 11)
-	public void route_route_contents_moveRoute() {
+	public void route_contents_moveRoute() {
 		System.out.println(" ! ----- route_contents_moveRoute Start ----- ! ");
 		$(By.linkText("경로")).waitUntil(visible, 10000);
 		$(By.linkText("경로")).click();
@@ -540,7 +540,7 @@ public class temporarily_2 {
 		System.out.println(" ! ----- route_contents_scenario End ----- ! ");
 	}
 	@Test(priority = 21)
-	public void link_link_contents_eventLink() {
+	public void link_contents_eventLink() {
 		System.out.println(" ! ----- link_contents_eventLink Start ----- ! ");
 		$(By.linkText("링크")).waitUntil(visible, 10000);
 		$(By.linkText("링크")).click();
@@ -598,7 +598,7 @@ public class temporarily_2 {
 		System.out.println(" ! ----- link_contents_eventLink End ----- ! ");
 	}
 	@Test(priority = 22)
-	public void link_link_contents_share() {
+	public void link_contents_share() {
 		System.out.println(" ! ----- link_contents_share Start ----- ! ");
 		$(By.linkText("공유")).waitUntil(visible, 10000);
 		$(By.linkText("공유")).click();
@@ -729,7 +729,8 @@ public class temporarily_2 {
 		$(".highcharts-tracker", 8).hover();
 		$(".highcharts-tracker", 7).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 3).text().trim();
-		if(pageLoadCheck.equals("아웃링크배너.Series 1: 100.0%")) {
+		System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
+		if(pageLoadCheck.equals("아웃링크배너.클릭수: 100.0%")) {
 			System.out.println(" *** link_contents_outLinkBanner right pie chart data check Success !! *** ");
 		} else {
 			System.out.println(" *** link_contents_outLinkBanner right pie chart data check Fail ... !@#$%^&*() *** ");
@@ -737,6 +738,43 @@ public class temporarily_2 {
 		}		
 		System.out.println(" ! ----- link_contents_outLinkBanner End ----- ! ");
 	}
+	public void perfornamce_page_speed() {
+		System.out.println(" ! ----- perfornamce_page_speed Start ----- ! ");
+		$(By.linkText("성능")).waitUntil(visible, 10000);
+		$(By.linkText("성능")).click();
+		$("#top-menu-name").waitUntil(visible, 15000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		if (pageLoadCheck.equals("성능")) {
+			System.out.println(" *** perfornamce_page_speed page load Success !! *** ");
+		} else {
+			System.out.println(" *** perfornamce_page_speed page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		pageLoadCheck = $("td", 13).text().trim();
+		if(pageLoadCheck.equals(nodata)) {
+			System.out.println(" *** perfornamce_page_speed table chart data check Success !! *** ");
+		} else {
+			System.out.println(" *** perfornamce_page_speed table data check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".highcharts-tracker", 1).waitUntil(visible, 10000);
+		$(".highcharts-tracker", 1).hover();
+		$(".highcharts-tracker", 2).hover();
+		$(".highcharts-tracker", 1).hover();
+		pageLoadCheck = $(".highcharts-tooltip").text().trim();
+		String[] pLC = pageLoadCheck.split("● ");
+		String[] barChartDataCheck = {"2018.12.21(금)", "순클릭: 0", "클릭수: 0"};
+		for(int i=0;i<=2;i++) {
+			if(pLC[i].equals(barChartDataCheck[i])) {
+				System.out.println(" *** perfornamce_page_speed bar chart data ((" + i + ")) check Success !! *** ");
+			} else {
+				System.out.println(" *** perfornamce_page_speed bar chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		System.out.println(" ! ----- perfornamce_page_speed End ----- ! ");
+	}
+	
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();

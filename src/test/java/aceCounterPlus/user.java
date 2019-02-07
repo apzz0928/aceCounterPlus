@@ -26,7 +26,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 public class user {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, pw, A, pageLoadCheck, dateCheck;
+	private static String baseUrl, hubUrl, TestBrowser, pw, A, pageLoadCheck, dateCheck, nodata;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -35,6 +35,7 @@ public class user {
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
 		pw = "qordlf";
 		A = "!@34";
+		nodata = "조회된 데이터가 없습니다.";
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
@@ -127,7 +128,7 @@ public class user {
 	}
 
 	@Test(priority = 1)
-	public void user_user_stats() {
+	public void user_stats() {
 		System.out.println(" ! ----- user_stats Start ----- ! ");
 		$("#user").click();
 		$(By.linkText("사용자")).waitUntil(visible, 10000);
@@ -219,16 +220,16 @@ public class user {
 	    System.out.println(" ! ----- user_stats End ----- ! ");
 	}
 	@Test(priority = 2)
-	public void user_user_active_stats() {
-		System.out.println(" ! ----- user_active_stats Start ----- ! ");
+	public void user_activeStats() {
+		System.out.println(" ! ----- user_activeStats Start ----- ! ");
 		$(By.linkText("액티브 사용자")).waitUntil(visible, 10000);
 		$(By.linkText("액티브 사용자")).click();
 		$(".active", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 2).text().trim();
 		if (pageLoadCheck.equals("액티브 사용자")) {
-			System.out.println(" *** user_active_stats page load Success !! *** ");
+			System.out.println(" *** user_activeStats page load Success !! *** ");
 		} else {
-			System.out.println(" *** user_active_stats page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** user_activeStats page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		String[] chartDataCheck = {"2018.12.07(금)", "1일 사용자: 2", "7일 사용자: 2", "14일 사용자: 2", "30일 사용자: 2", "((date))", "((1day visit))", "((7day visit))", "((14day visit))", "((30day visit))"};
@@ -238,9 +239,9 @@ public class user {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=4;i++) {
 			if (pLC[i].equals(chartDataCheck[i])) {
-				System.out.println(" *** user_active_stats accrue active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** user_activeStats accrue active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_active_stats accrue active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** user_activeStats accrue active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -254,48 +255,48 @@ public class user {
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=4;i++) {
 			if (pLC[i].equals(chartDataCheck[i])) {
-				System.out.println(" *** user_active_stats new active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** user_activeStats new active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_active_stats new active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** user_activeStats new active user chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-	    System.out.println(" ! ----- user_active_stats End ----- ! ");
+	    System.out.println(" ! ----- user_activeStats End ----- ! ");
 	}
 	@Test(priority = 3)
-	public void user_user_stats_percent() {
-		System.out.println(" ! ----- user_stats_percent Start ----- ! ");
+	public void userStatsPercent() {
+		System.out.println(" ! ----- userStatsPercent Start ----- ! ");
 		$(By.linkText("유지율")).waitUntil(visible, 10000);
 		$(By.linkText("유지율")).click();
 		$(".active", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 2).text().trim();
 		if (pageLoadCheck.equals("유지율")) {
-			System.out.println(" *** user_stats_percent page load Success !! *** ");
+			System.out.println(" *** userStatsPercent page load Success !! *** ");
 		} else {
-			System.out.println(" *** user_stats_percent page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** userStatsPercent page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".another-class", 3).waitUntil(visible, 10000);
 		pageLoadCheck = $(".another-class", 3).text().trim();
 		if (pageLoadCheck.equals("2018.12.07 (금)")) {
-			System.out.println(" *** user_stats_percent table text check Success !! *** ");
+			System.out.println(" *** userStatsPercent table text check Success !! *** ");
 		} else {
-			System.out.println(" *** user_stats_percent table text check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** userStatsPercent table text check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-	    System.out.println(" ! ----- user_stats_percent End ----- ! ");
+	    System.out.println(" ! ----- userStatsPercent End ----- ! ");
 	}
 	@Test(priority = 4)
-	public void user_user_visit_frequency() {
-		System.out.println(" ! ----- user_visit_frequency Start ----- ! ");
+	public void userVisitFrequency() {
+		System.out.println(" ! ----- userVisitFrequency Start ----- ! ");
 		$(By.linkText("방문빈도")).waitUntil(visible, 10000);
 		$(By.linkText("방문빈도")).click();
 		$(".active", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 2).text().trim();
 		if (pageLoadCheck.equals("방문빈도")) {
-			System.out.println(" *** user_visit_frequency page load Success !! *** ");
+			System.out.println(" *** userVisitFrequency page load Success !! *** ");
 		} else {
-			System.out.println(" *** user_visit_frequency page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** userVisitFrequency page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		String[] barChartDataCheck = {"당일", "방문수: 125", "방문당 페이지뷰: 9", "2~7일", "방문수: 2", "방문당 페이지뷰: 18", "((date))", "((visit number))", "((visit pageview number))"};
@@ -310,16 +311,16 @@ public class user {
 			for(int i=0;i<=2;i++) {
 				if(y==1){
 					if (pLC[i].equals(barChartDataCheck[i])) {
-						System.out.println(" *** user_visit_frequency bar chart today tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+						System.out.println(" *** userVisitFrequency bar chart today tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
 					} else {
-						System.out.println(" *** user_visit_frequency bar chart today tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+						System.out.println(" *** userVisitFrequency bar chart today tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 						close();
 					}
 				} else {
 					if (pLC[i].equals(barChartDataCheck[i+3])) {
-						System.out.println(" *** user_visit_frequency bar chart 2~7day tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+						System.out.println(" *** userVisitFrequency bar chart 2~7day tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
 					} else {
-						System.out.println(" *** user_visit_frequency bar chart 2~7day tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+						System.out.println(" *** userVisitFrequency bar chart 2~7day tooltip data " + barChartDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 						close();
 					}
 			    }
@@ -341,17 +342,17 @@ public class user {
 			for(int i=0;i<=1;i++) {
 				if (pageLoadCheck.equals(pieChartDataCheck[i])) {
 					if(x==0) {
-						System.out.println(" *** user_visit_frequency pie chart visit number tooltip data " + pieChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
+						System.out.println(" *** userVisitFrequency pie chart visit number tooltip data " + pieChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
 					} else {
-						System.out.println(" *** user_visit_frequency pie chart convert number tooltip data " + pieChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
+						System.out.println(" *** userVisitFrequency pie chart convert number tooltip data " + pieChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
 					}
 
 				} else {
 					if(x==0) {
-						System.out.println(" *** user_visit_frequency pie chart visit number tooltip data " + pieChartDataCheck[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+						System.out.println(" *** userVisitFrequency pie chart visit number tooltip data " + pieChartDataCheck[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 						close();						
 					} else {
-						System.out.println(" *** user_visit_frequency pie chart convert number tooltip data " + pieChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+						System.out.println(" *** userVisitFrequency pie chart convert number tooltip data " + pieChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 						System.out.println("." + pieChartDataCheck[i] + ".");
 						System.out.println("." + pageLoadCheck + ".");
 						close();
@@ -381,9 +382,9 @@ public class user {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=7;i++) {
 			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** user_visit_frequency line chart visit number tooltip data " + lineChartDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** userVisitFrequency line chart visit number tooltip data " + lineChartDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_visit_frequency line chart visit number tooltip data " + lineChartDataCheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** userVisitFrequency line chart visit number tooltip data " + lineChartDataCheck[i+8] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -392,25 +393,25 @@ public class user {
 		for(int i=0,x=32;i<=8;i++,x++) {
 			pageLoadCheck = $("td", x).text();
 			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** user_visit_frequency table data " + tableDataCheck[i+9] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** userVisitFrequency table data " + tableDataCheck[i+9] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_visit_frequency table data " + tableDataCheck[i+9] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** userVisitFrequency table data " + tableDataCheck[i+9] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-	    System.out.println(" ! ----- user_visit_frequency End ----- ! ");
+	    System.out.println(" ! ----- userVisitFrequency End ----- ! ");
 	}
 	@Test(priority = 11)
-	public void system_user_system_web() {
-		System.out.println(" ! ----- user_system_web Start ----- ! ");
+	public void system() {
+		System.out.println(" ! ----- system Start ----- ! ");
 		$(By.linkText("시스템")).waitUntil(visible, 10000);
 		$(By.linkText("시스템")).click();
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("시스템")) {
-			System.out.println(" *** user_system_web page load Success !! *** ");
+			System.out.println(" *** system page load Success !! *** ");
 		} else {
-			System.out.println(" *** user_system_web page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** system page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		String[] pieChartDataCheck = {"기기타입PC", "웹브라우저firefox 62.0chrome 70.0", "운영체제windows 10"};
@@ -419,10 +420,10 @@ public class user {
 			pageLoadCheck = $("svg", i).text().trim();
 			String[] pLC = pageLoadCheck.split("Created with Highcharts 4.2.5");
 			if (pLC[0].equals(pieChartDataCheck[i])) {
-				System.out.println(" *** user_visit_frequency Chart a legend(" + i + ") check Success !! *** ");
+				System.out.println(" *** system Chart a legend(" + i + ") check Success !! *** ");
 				pLC = null;
 			} else {
-				System.out.println(" *** user_visit_frequency Chart a legend(" + i + ") check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** system Chart a legend(" + i + ") check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -433,9 +434,9 @@ public class user {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=2;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** user_system_web bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** system bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_system_web bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** system bar chart data " + barChartDataCheck[i+3] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -448,9 +449,9 @@ public class user {
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=1;i++) {
 			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** user_system_web line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** system line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_system_web line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** system line chart data " + lineChartDataCheck[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -459,25 +460,25 @@ public class user {
 		for(int i=0;i<=5;i++) {
 			pageLoadCheck = $("td", (i+17)).text().trim();
 			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** user_system_web table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** system table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_system_web table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** system table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-	    System.out.println(" ! ----- user_system_web End ----- ! ");
+	    System.out.println(" ! ----- system End ----- ! ");
 	}
 	@Test(priority = 21)
-	public void region_user_region() {
-		System.out.println(" ! ----- user_region Start ----- ! ");
+	public void region() {
+		System.out.println(" ! ----- region Start ----- ! ");
 		$(By.linkText("지역")).waitUntil(visible, 10000);
 		$(By.linkText("지역")).click();
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("지역")) {
-			System.out.println(" *** user_region page load Success !! *** ");
+			System.out.println(" *** region page load Success !! *** ");
 		} else {
-			System.out.println(" *** user_region page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** region page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		String[] tableDataCheck = {"알수없음", "127", "100%", "2", "9.28", "00:00:12", "((region))", "((visit number))", "((visit percent))", "((unique visit))", "((visit page view))", "((visit stay time))"};
@@ -485,25 +486,25 @@ public class user {
 		for(int i=0,x=13;i<=5;i++,x++) {
 			pageLoadCheck = $("td", x).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** user_region table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** region table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_region table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** region table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-	    System.out.println(" ! ----- user_region End ----- ! ");
+	    System.out.println(" ! ----- region End ----- ! ");
 	}
 	@Test(priority = 31)
-	public void member_user_member_status() {
-		System.out.println(" ! ----- user_member_status Start ----- ! ");
+	public void member_memberStatus() {
+		System.out.println(" ! ----- member_memberStatus Start ----- ! ");
 		$(By.linkText("회원")).waitUntil(visible, 10000);
 		$(By.linkText("회원")).click();
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("회원")) {
-			System.out.println(" *** user_member_status page load Success !! *** ");
+			System.out.println(" *** member_memberStatus page load Success !! *** ");
 		} else {
-			System.out.println(" *** user_member_status page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** member_memberStatus page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		String[] barChartDataCheck = {"2018.12.07(금)", "회원: 0", "비회원: 127", "방문수: 127", "((date))", "((member))", "((nonmember))", "((visit number))"};
@@ -512,9 +513,9 @@ public class user {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** user_member_status bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** member_memberStatus bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_member_status bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** member_memberStatus bar chart data " + barChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -529,9 +530,9 @@ public class user {
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
 			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** user_member_status line chart data " + lineChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** member_memberStatus line chart data " + lineChartDataCheck[i+4] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_member_status line chart data " + lineChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** member_memberStatus line chart data " + lineChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -539,45 +540,57 @@ public class user {
 		for(int i=19;i<=30;i++) {
 			pageLoadCheck = $("td", i).text().trim();
 			if(pageLoadCheck.equals(tableDataCheck[i-19])) {
-				System.out.println(" *** user_member_status table data " + tableDataCheck[i-7] + "((" + i + "))" + " check Success !! *** ");
+				System.out.println(" *** member_memberStatus table data " + tableDataCheck[i-7] + "((" + i + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** user_member_status table data " + tableDataCheck[i-7] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** member_memberStatus table data " + tableDataCheck[i-7] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
+		System.out.println(" ! ----- member_memberStatus End ----- ! ");
+	}
+	@Test(priority = 32)
+	public void member_memberFavorite() {
+	    System.out.println(" ! ----- member_memberFavorite Start ----- ! ");
 		$(By.linkText("회원 인기 페이지")).click();
 		$("#btnTopCond").waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 2).text().trim();
 		if(pageLoadCheck.equals("회원 인기 페이지")) {
-			System.out.println(" *** user_member_favorite page load check Success !! *** ");
+			System.out.println(" *** member_memberFavorite page load check Success !! *** ");
 		} else {
-			System.out.println(" *** user_member_favorite page load check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** member_memberFavorite page load check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-	    System.out.println(" ! ----- user_member_status End ----- ! ");
+		pageLoadCheck = $("td", 7).text().trim();
+		if(pageLoadCheck.equals(nodata)) {
+			System.out.println(" *** member_memberFavorite table data check Success !! *** ");
+		} else {
+			System.out.println(" *** member_memberFavorite table data check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+	    System.out.println(" ! ----- member_memberFavorite End ----- ! ");
 	}
 	@Test(priority = 41)
-	public void userList_user_list() {
-		System.out.println(" ! ----- user_list Start ----- ! ");
+	public void userList() {
+		System.out.println(" ! ----- userList Start ----- ! ");
 		$(By.linkText("사용자리스트")).waitUntil(visible, 10000);
 		$(By.linkText("사용자리스트")).click();
 		$(".notokr-bold", 0).waitUntil(visible, 10000);
 		$("td", 12).waitUntil(visible, 10000);
 		pageLoadCheck = $(".notokr-bold", 0).text().trim();
 		if (pageLoadCheck.equals("사용자리스트")) {
-			System.out.println(" *** user_list page load Success !! *** ");
+			System.out.println(" *** userList page load Success !! *** ");
 		} else {
-			System.out.println(" *** user_list page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** userList page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		pageLoadCheck = $("td", 12).text().trim();
-		if (pageLoadCheck.equals("조회된 데이터가 없습니다.")) {
-			System.out.println(" *** user_member_status table data check Success !! *** ");
+		if (pageLoadCheck.equals(nodata)) {
+			System.out.println(" *** userList table data check Success !! *** ");
 		} else {
 			System.out.println(" *** user_member_status table data check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-	    System.out.println(" ! ----- user_list End ----- ! ");
+	    System.out.println(" ! ----- userList End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {

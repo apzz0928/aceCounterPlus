@@ -26,7 +26,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 public class convert {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, pw, A, pageLoadCheck, dateCheck;
+	private static String baseUrl, hubUrl, TestBrowser, pw, A, pageLoadCheck, dateCheck, nodata;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -35,6 +35,7 @@ public class convert {
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
 		pw = "qordlf";
 		A = "!@34";
+		nodata = "조회된 데이터가 없습니다.";
 
 		String urlToRemoteWD = hubUrl;
 		DesiredCapabilities cap;
@@ -128,16 +129,16 @@ public class convert {
 	}
 	@Test(priority = 1)
 	public void convert_status() {
-		System.out.println(" ! ----- get_convert_status Start ----- ! ");
+		System.out.println(" ! ----- convert_status Start ----- ! ");
 		$("#conv").click();
 		$(By.linkText("전환")).waitUntil(visible, 10000);
 		$(By.linkText("전환")).click();
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("전환")) {
-			System.out.println(" *** get_convert_status page load Success !! *** ");
+			System.out.println(" *** convert_status page load Success !! *** ");
 		} else {
-			System.out.println(" *** get_convert_status page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** convert_status page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		sleep(1500);
@@ -174,10 +175,10 @@ public class convert {
 		dateCheck = $("#compareTermText").text();
 		String[] pLC = dateCheck.split(" ");
 		if (pLC[0].equals("2018.12.20") && pLC[2].equals("2018.12.20")) {
-			System.out.println(" *** get_convert_status date range pick Success !! *** ");
+			System.out.println(" *** convert_status date range pick Success !! *** ");
 			pLC = null;
 		} else {
-			System.out.println(" *** get_convert_status date range pick Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** convert_status date range pick Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		$(".summary-data", 0).waitUntil(visible, 10000);
@@ -185,9 +186,9 @@ public class convert {
 		for(int i=0;i<=4;i++) {
 			pageLoadCheck = $(".summary-data", i).text().trim();
 			if (pageLoadCheck.equals(panelDataCheck[i])) {
-				System.out.println(" *** get_convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** convert_status panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}			
 		}
@@ -196,9 +197,9 @@ public class convert {
 		for(int i=0; i<=6; i++) {
 			pageLoadCheck = $("td", (i+46)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck1[i])) {
-				System.out.println(" *** get_convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** convert_status table1 data " + tableDataCheck1[i+7] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -207,9 +208,9 @@ public class convert {
 		for(int i=0; i<=5; i++) {
 			pageLoadCheck = $("td", (i+505)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck2[i])) {
-				System.out.println(" *** get_convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** convert_status table2 data " + tableDataCheck2[i+6] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -218,9 +219,9 @@ public class convert {
 		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
 		if (pageLoadCheck.equals(pieChartDataCheck[0])) {
-			System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[5] + "((0))" + " check Success !! *** ");
+			System.out.println(" *** convert_status pie chart tooltip data " + pieChartDataCheck[5] + "((0))" + " check Success !! *** ");
 		} else {
-			System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[5] + "((0))" + " check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** convert_status pie chart tooltip data " + pieChartDataCheck[5] + "((0))" + " check Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		for(int i=0;i<=1;i++) {
@@ -228,9 +229,9 @@ public class convert {
 			$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
 			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 			if (pageLoadCheck.equals(pieChartDataCheck[(i+1)])) {
-				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[6] + "((" + (i+1) + "))" + " check Success !! *** ");
+				System.out.println(" *** convert_status pie chart tooltip data " + pieChartDataCheck[6] + "((" + (i+1) + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[6] + "((" + (i+1) + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** convert_status pie chart tooltip data " + pieChartDataCheck[6] + "((" + (i+1) + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -240,9 +241,9 @@ public class convert {
 			$(".highcharts-tooltip", 2).waitUntil(visible, 10000);
 			pageLoadCheck = $(".highcharts-tooltip", 2).text().trim();
 			if (pageLoadCheck.equals(pieChartDataCheck[(i+3)])) {
-				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[7] + "((" + (i+3) + "))" + " check Success !! *** ");
+				System.out.println(" *** convert_status pie chart tooltip data " + pieChartDataCheck[7] + "((" + (i+3) + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status pie chart tooltip data " + pieChartDataCheck[7] + "((" + (i+3) + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** convert_status pie chart tooltip data " + pieChartDataCheck[7] + "((" + (i+3) + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -257,16 +258,16 @@ public class convert {
 		for(int i=0;i<=7;i++) {
 			if(i>=1 && i<=5) {
 				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(barChartDataCheck[i].substring(barChartDataCheck[i].length()-2, barChartDataCheck[i].length()))) {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Success !! *** ");
+					System.out.println(" *** convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
 				if(pLC[i].equals(barChartDataCheck[i])) {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Success !! *** ");
+					System.out.println(" *** convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** get_convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** convert_status bar chart data " + barChartDataCheck[i+8] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			}
@@ -278,9 +279,9 @@ public class convert {
 		for(int i=0; i<=4; i++) {
 			pageLoadCheck = $("td", (i+661)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck3[i])) {
-				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** convert_status table3 data " + tableDataCheck3[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -295,33 +296,33 @@ public class convert {
 		for(int i=0;i<=4;i++) {
 			if(i>=1 && i<=5) {
 				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(lineChartDataCheck[i].substring(lineChartDataCheck[i].length()-2, lineChartDataCheck[i].length()))) {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Success !! *** ");
+					System.out.println(" *** convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}	
 			} else {
 				if(pLC[i].equals(lineChartDataCheck[i])) {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Success !! *** ");
+					System.out.println(" *** convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** get_convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** convert_status line chart data " + lineChartDataCheck[i+6] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			}
 		}
 		pLC = null;
-	    System.out.println(" ! ----- get_convert_status End ----- ! ");
+	    System.out.println(" ! ----- convert_status End ----- ! ");
 	}
 	@Test(priority = 2)
 	public void convert_step() {
-		System.out.println(" ! ----- get_convert_step Start ----- ! ");
+		System.out.println(" ! ----- convert_step Start ----- ! ");
 		$(By.linkText("전환단계")).waitUntil(visible, 10000);
 		$(By.linkText("전환단계")).click();
 		pageLoadCheck = $(".active", 2).text().trim();
 		if (pageLoadCheck.equals("전환단계")) {
-			System.out.println(" *** get_convert_step page load Success !! *** ");
+			System.out.println(" *** convert_step page load Success !! *** ");
 		} else {
-			System.out.println(" *** get_convert_step page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** convert_step page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		String[] tableDataCheck = {"자연유입", "270", "0", "270", "260", "96.30%", "0", "0", "0", "0", "0", "21", "21", "((inflow source))", "((visit number))", "((new visit number))", "((re visit number))", "((return number))", "((return percent))", 
@@ -330,9 +331,9 @@ public class convert {
 		for(int i=0; i<=12; i++) {
 			pageLoadCheck = $("td", (i+51)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** get_convert_step table data " + tableDataCheck[i+13] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** convert_step table data " + tableDataCheck[i+13] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_step table data " + tableDataCheck[i+13] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** convert_step table data " + tableDataCheck[i+13] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -344,37 +345,36 @@ public class convert {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=7;i++) {
 			if (pLC[i].equals(barChartDatacheck[i])) {
-				System.out.println(" *** get_convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** get_convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** convert_step bar chart data " + barChartDatacheck[i+8] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 		pLC = null;
-	    System.out.println(" ! ----- get_convert_step End ----- ! ");
+	    System.out.println(" ! ----- convert_step End ----- ! ");
 	}
 	@Test(priority = 11)
-	public void convert_multiChannel() {
-		System.out.println(" ! ----- indirect_conversion Start ----- ! ");
+	public void multiChannelConvert_indirect() {
+		System.out.println(" ! ----- multiChannelConvert_indirect Start ----- ! ");
 		$(By.linkText("멀티채널 전환")).waitUntil(visible, 10000);
 		$(By.linkText("멀티채널 전환")).click();
 		$("#top-menu-name").waitUntil(visible, 10000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
 		if (pageLoadCheck.equals("멀티채널 전환")) {
-			System.out.println(" *** indirect_conversion page load Success !! *** ");
+			System.out.println(" *** multiChannelConvert_indirect page load Success !! *** ");
 		} else {
-			System.out.println(" *** indirect_conversion page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** multiChannelConvert_indirect page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		String[] tableDataCheck = {"합계", "48", "100%", "48", "100%", "((advertisement product))", "((visit number))", "((visit percent))", "((re visit number))", "((re visit percent))"};
 		$("td", 51).waitUntil(visible, 10000);
-		//17 ~ 21
 		for(int i=0; i<=4; i++) {
 			pageLoadCheck = $("td", (i+17)).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** indirect_conversion table data " + tableDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** multiChannelConvert_indirect table data " + tableDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** indirect_conversion table data " + tableDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** multiChannelConvert_indirect table data " + tableDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -385,9 +385,9 @@ public class convert {
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=2;i++) {
 			if (pLC[i].equals(barChartDatacheck[i])) {
-				System.out.println(" *** indirect_conversion bar chart data " + barChartDatacheck[i+3] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** multiChannelConvert_indirect bar chart data " + barChartDatacheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** indirect_conversion bar chart data " + barChartDatacheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** multiChannelConvert_indirect bar chart data " + barChartDatacheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
@@ -398,12 +398,109 @@ public class convert {
 		pageLoadCheck = $("tspan", 0).text();
 		pLC = pageLoadCheck.split("\\.");
 		if(pLC[0].equals("조회된 데이터가 없습니다")) {
-			System.out.println(" *** indirect_conversion line chart data check Success !! *** ");
+			System.out.println(" *** multiChannelConvert_indirect line chart data check Success !! *** ");
 		} else {
-			System.out.println(" *** indirect_conversion line chart data check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** multiChannelConvert_indirect line chart data check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-	    System.out.println(" ! ----- indirect_conversion End ----- ! ");
+	    System.out.println(" ! ----- multiChannelConvert_indirect End ----- ! ");
+	}
+	@Test(priority = 12)
+	public void multiChannelConvert_weighted() {
+		System.out.println(" ! ----- multiChannelConvert_weighted Start ----- ! ");
+		$(By.linkText("가중치")).waitUntil(visible, 10000);
+		$(By.linkText("가중치")).click();
+		pageLoadCheck = $(".active", 2).text().trim();
+		if (pageLoadCheck.equals("가중치")) {
+			System.out.println(" *** multiChannelConvert_weighted page load Success !! *** ");
+		} else {
+			System.out.println(" *** multiChannelConvert_weighted page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("td", 22).waitUntil(visible, 10000);
+		$("td", 22).click();
+		for(int i=0;i<=9;i++) {
+			pageLoadCheck = $("td", 32).text().trim();
+			if(pageLoadCheck.equals("└ 다이렉트")) {
+				System.out.println(" *** table drill down data Success *** ");
+				break;
+			} else {
+				sleep(100);
+			}
+		}
+		String[] tableDataCheck = {"└ 다이렉트", "208", "56.83%", "((inflow source))", "((visit number))", "((visit percent))"};
+		for(int i=0; i<=2; i++) {
+			pageLoadCheck = $("td", (i+32)).text().trim();
+			if (pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** multiChannelConvert_weighted table data " + tableDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
+			} else {
+				System.out.println(" *** multiChannelConvert_weighted table data " + tableDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		for(int i=0;i<=1;i++) {
+			if(i==1) {
+				i=2;
+			}
+			pageLoadCheck = $("tspan", i).text().trim();
+			if (pageLoadCheck.equals(nodata)) {
+				System.out.println(" *** multiChannelConvert_weighted pie chart data ((" + (i/2) + ")) check Success !! *** ");
+			} else {
+				System.out.println(" *** multiChannelConvert_weighted pie chart data ((" + (i/2) + ")) check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		$("#btnChartLine").click();
+		$(".highcharts-tracker", 4).waitUntil(visible, 10000);
+		$(".highcharts-tracker", 4).hover();
+		$(".highcharts-tracker", 6).hover();
+		$(".highcharts-tracker", 4).hover();
+		String[] lineChartDataCheck = {"2018-12-21(금)", "0", "0", "0", "0", "((date))", "((normal marketing))", "((inhouse marketing))", "((charged marketing))", "((nature marketing))"};
+		pageLoadCheck = $(".highcharts-tooltip", 2).text().trim();
+		String[] pLC = pageLoadCheck.split("● ");
+		for(int i=0;i<=4;i++) {
+			if(i==0) {
+				if(pLC[i].equals(lineChartDataCheck[i])) {
+					System.out.println(" *** multiChannelConvert_weighted line chart data " + lineChartDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
+				} else {
+					System.out.println(" *** multiChannelConvert_weighted line chart data " + lineChartDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			} else {
+				if(pLC[i].substring(pLC[i].length()-1, pLC[i].length()).equals(lineChartDataCheck[i])) {
+					System.out.println(" *** multiChannelConvert_weighted line chart data " + lineChartDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
+				} else {
+					System.out.println(" *** multiChannelConvert_weighted line chart data " + lineChartDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					close();
+				}
+			}
+		}		
+	    System.out.println(" ! ----- multiChannelConvert_weighted End ----- ! ");
+	}
+	@Test(priority = 13)
+	public void multiChannelConvert_path() {
+		System.out.println(" ! ----- multiChannelConvert_path Start ----- ! ");
+		$(By.linkText("경로")).waitUntil(visible, 10000);
+		$(By.linkText("경로")).click();
+		pageLoadCheck = $(".active", 2).text().trim();
+		if (pageLoadCheck.equals("경로")) {
+			System.out.println(" *** multiChannelConvert_path page load Success !! *** ");
+		} else {
+			System.out.println(" *** multiChannelConvert_path page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("td", 6).waitUntil(visible, 10000);
+		for(int i=0;i<=7;i++) {
+			pageLoadCheck = $("td", i+6).text().trim();
+			if(pageLoadCheck.equals(nodata)) {
+				System.out.println(" *** multiChannelConvert_path table data((" + (i/7) + ")) check Success !! *** ");
+			} else {
+				System.out.println(" *** multiChannelConvert_path table data((" + (i/7) + ")) check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+			i = i+6;
+		}
+	    System.out.println(" ! ----- multiChannelConvert_path End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {

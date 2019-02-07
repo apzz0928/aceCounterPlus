@@ -314,36 +314,36 @@ public class marketing {
 	}
 	@Test(priority = 3)
 	public void marketing_clickChoice() {
-		System.out.println(" ! ----- marketing_clickchoice Start ----- ! ");
+		System.out.println(" ! ----- marketing_clickChoice Start ----- ! ");
 		$(By.linkText("네이버 검색광고")).waitUntil(visible, 10000);
 		$(By.linkText("네이버 검색광고")).click();
 		$(".active", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 2).text().trim();
 		if (pageLoadCheck.equals("네이버 검색광고")) {
-			System.out.println(" *** marketing_clickchoice page load Success !! *** ");
+			System.out.println(" *** marketing_clickChoice page load Success !! *** ");
 		} else {
-			System.out.println(" *** marketing_clickchoice page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** marketing_clickChoice page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
 		String[] panelDataCheck = {"0", "0", "0", "0", "0", "((visit number))", "((new visit number))", "((return percent))", "((purchase number))", "((sales))"};
 		for(int i=0;i<=4;i++) {
 			pageLoadCheck = $(".summary-data", i).text().trim();
 			if (pageLoadCheck.equals(panelDataCheck[i])) {
-				System.out.println(" *** marketing_clickchoice panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** marketing_clickChoice panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** marketing_clickchoice panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** marketing_clickChoice panel summary data " + panelDataCheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 		String[] tableDataCheck = {"조회된 데이터가 없습니다.", "((no-records-found))"};
 		pageLoadCheck = $("td", 7).text();
 		if(pageLoadCheck.equals(tableDataCheck[0])) {
-			System.out.println(" *** marketing_clickchoice table data " + panelDataCheck[1] + "((0))" + " check Success !! *** ");
+			System.out.println(" *** marketing_clickChoice table data " + panelDataCheck[1] + "((0))" + " check Success !! *** ");
 		} else {
-			System.out.println(" *** marketing_clickchoice panel summary data " + panelDataCheck[1] + "((0))" + " check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** marketing_clickChoice panel summary data " + panelDataCheck[1] + "((0))" + " check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-	    System.out.println(" ! ----- marketing_clickchoice End ----- ! ");
+	    System.out.println(" ! ----- marketing_clickChoice End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {
