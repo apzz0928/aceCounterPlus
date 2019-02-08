@@ -128,24 +128,24 @@ public class temporarily_2 {
 		System.out.println(" ! ----- login End ----- ! ");
 	}
 	@Test(priority = 1)
-	public void page_contents_popularPage() {
-		System.out.println(" ! ----- page_contents_popularPage Start ----- ! ");
-		$("#contents").click();
-		$(By.linkText("페이지")).waitUntil(visible, 10000);
-		$(By.linkText("페이지")).click();
+	public void viral_impr() {
+		System.out.println(" ! ----- viral_impr Start ----- ! ");
+		$("#inhouse").click();
+		$(By.linkText("바이럴")).waitUntil(visible, 10000);
+		$(By.linkText("바이럴")).click();
 		$("#top-menu-name").waitUntil(visible, 15000);
 		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("페이지")) {
-			System.out.println(" *** page_contents_popularPage page load Success !! *** ");
+		if (pageLoadCheck.equals("바이럴")) {
+			System.out.println(" *** viral_impr page load Success !! *** ");
 		} else {
-			System.out.println(" *** page_contents_popularPage page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** viral_impr page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("td", 98).waitUntil(visible, 30000);
+		//날짜선택 (2018.12.21)
+		sleep(1500);
 		$("#daterangepicker2").waitUntil(visible, 10000);
 		$("#daterangepicker2").click();
 		$(".month", 0).waitUntil(visible, 10000);
-		//날짜선택
 		for(int i=0;i<=1;i++) { //과거 날짜 : 시작캘린더부터 선택(0과 1 변경, 부등호 변경, ++와 --변경)
 			if(i==0) {
 				System.out.println("start calender date selecting..");	
@@ -171,610 +171,133 @@ public class temporarily_2 {
 		}
 		$(".btn-apply").click();
 		refresh();
-		$(".pull-right", 3).waitUntil(visible, 10000);
-		dateCheck = $(".pull-right", 3).text().trim();
-		String[] pLC = dateCheck.split(" 어제");
-		if (pLC[0].equals("오늘 순위를")) {
-			System.out.println(" *** page_contents_popularPage date range pick Success !! *** ");
-			pLC = null;
+		dateCheck = $("#compareTermText").text();
+		String[] pLC = dateCheck.split(" ");
+		if (pLC[0].equals("2018.12.20") && pLC[2].equals("2018.12.20")) { ////////////////데이터 다시 쌓는중
+			System.out.println(" *** viral_impr date range pick Success !! *** ");
 		} else {
-			System.out.println(" *** page_contents_popularPage date range pick Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** viral_impr date range pick Fail ... !@#$%^&*() *** ");
 			close();
-		}
-		String[] tableDataCheck = {"/", "79", "11.50%", "00:00:15", "00:00:00", "78", "78", "69", "68"};
-	    $("td", 36).waitUntil(visible, 10000);
-		//td 36
-		for(int i=0;i<=8;i++) {
-			pageLoadCheck = $("td", (i+36)).text().trim();
-			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** page_contents_popularPage table data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** page_contents_popularPage table data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		$(".highcharts-tracker", 0).hover();
-		$(".highcharts-tracker", 1).hover();
-		$(".highcharts-tracker", 2).hover();
-		pageLoadCheck = $(".highcharts-tooltip").text().trim();
-		pLC = pageLoadCheck.split("● ");
-		String[] barChartDataCheck = {"2018.12.21(금)", "페이지뷰: 687", "페이지 방문수: 665"};
-		for(int i=0;i<=2;i++) {
-			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** page_contents_popularPage bar chart data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** page_contents_popularPage bar chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
 		}
 		pLC = null;
-		$("#btnChartLine").click();
-		$(".highcharts-tracker", 9).waitUntil(visible, 10000);
-		$(".highcharts-tracker", 3).hover();
-		$(".highcharts-tracker", 5).hover();
-		$(".highcharts-tracker", 7).hover();
-		$(".highcharts-tracker", 9).hover();
-		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();		
+		pageLoadCheck = $("td", 13).text().trim();
+		if(pageLoadCheck.equals(nodata)) {
+			System.out.println(" *** viral_impr table data check Success !! *** ");
+		} else {
+			System.out.println(" *** viral_impr table data check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		for(int i=0;i<=3;i++) {
+		    pageLoadCheck = $(".summary-data", i).text().trim();
+		    if(pageLoadCheck.equals("0")) {
+		        System.out.println(" *** viral_impr panel data ((" + i + ")) check Success !! *** ");
+		    } else {
+		        System.out.println(" *** viral_impr panel data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+		        close();
+		    }
+		}
+		$(".highcharts-tracker", 1).hover();
+		$(".highcharts-tracker", 2).hover();
+		$(".highcharts-tracker", 1).hover();
+		String[] barChartDataCheck = {"2018.12.21(금)", "PC노출수: 0", "Mobile노출수: 0", "((date))", "((PC))", "((Mobile))"};
+		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		pLC = pageLoadCheck.split("● ");
-		String[] lineChartDataCheck = {"2018.12.21(금)", "/: 79", "/search/label/missing/missingPage: 27", "/search/label/marketing-normal: 21", "/search/label/change-order: 21", "/search/label/inHouse-Talk/: 21"};
-		for(int i=0;i<=5;i++) {
-			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** page_contents_popularPage line chart data ((" + i + ")) check Success !! *** ");
+		for(int i=0;i<=2;i++) {
+			if(pLC[i].equals(barChartDataCheck[i])) {
+				System.out.println(" *** viral_impr bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** page_contents_popularPage line chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** viral_impr bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		System.out.println(" ! ----- page_contents_popularPage End ----- ! ");
+		$("#btnChartLine").click();
+		for(int i=0;i<=19;i++) {
+			if($("tspan", 7).text().trim().equals(nodata)) {
+				System.out.println(" *** viral_impr line chart data check Success !! *** ");
+				break;
+			} else {
+				System.out.println(" *** viral_impr line chart loading wait 0." + i + " second *** ");
+				sleep(100);
+			}
+		}
+		System.out.println(" ! ----- viral_impr End ----- ! ");
 	}
-	//@Test(priority = 2)
-	public void page_contents_groupPage() {
-		System.out.println(" ! ----- page_contents_groupPage Start ----- ! ");
-		$(By.linkText("페이지그룹")).waitUntil(visible, 10000);
-		$(By.linkText("페이지그룹")).click();
+	@Test(priority = 2)
+	public void viral_effective() {
+		System.out.println(" ! ----- viral_effective Start ----- ! ");
+		$(By.linkText("효율")).waitUntil(visible, 10000);
+		$(By.linkText("효율")).click();
 		pageLoadCheck = $(".active", 2).text().trim();
-		if (pageLoadCheck.equals("페이지그룹")) {
-			System.out.println(" *** page_contents_groupPage page load Success !! *** ");
+		if (pageLoadCheck.equals("효율")) {
+			System.out.println(" *** viral_effective page load Success !! *** ");
 		} else {
-			System.out.println(" *** page_contents_groupPage page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** viral_effective page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		String[] tableDataCheck = {"미등록페이지", "687", "100%", "366", "1.88"};
-		$("td", 14).waitUntil(visible, 10000);
+		$("td", 26).waitUntil(visible, 10000);
+		String[] panelDatacheck = {"12", "0%", "100%", "0", "0", "((visit number))", "((inflow number))", "((return percent))", "((buy number))", "((sales))"};
 		for(int i=0;i<=4;i++) {
-			pageLoadCheck = $("td", (i+14)).text().trim();
+			pageLoadCheck = $(".summary-data", i).text().trim();
+			if(pageLoadCheck.equals(panelDatacheck[i])) {
+				System.out.println(" *** viral_effective panel data " + panelDatacheck[i+9] + "((" + i + ")) check Success !! *** ");
+			} else {
+				System.out.println(" *** viral_effective panel data " + panelDatacheck[i+9] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		$("td", 26).click();
+		String[] tableDataCheck = {"└ /search/label/inHouse-viral/", "-", "12", "100%", "-", "12", "100%", "1", "00:00:00", "((campaign))", "((exposure number))", "((visit number))"
+				, "((visit percent))", "((inflow percent))", "((return number))", "((return percent))", "((visit pageview))", "((visit stay time))"};
+		for(int i=0;i<=8;i++) {
+			pageLoadCheck = $("td", i+40).text().trim();
 			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** page_contents_groupPage table data ((" + i + ")) check Success !! *** ");
+				System.out.println(" *** viral_effective table data " + tableDataCheck[i+9] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** page_contents_groupPage table data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** viral_effective table data " + tableDataCheck[i+9] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		pageLoadCheck = $("tspan", 0).text().trim();
-		if(pageLoadCheck.equals(nodata)) {
-			System.out.println(" *** page_contents_groupPage line chart data check Success !! *** ");
-		} else {
-			System.out.println(" *** page_contents_groupPage line chart data check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#btnChartPie").click();
-		$("tspan", 1).waitUntil(visible, 10000);
-		for(int i=0;i<=1;i++) {
-			pageLoadCheck = $("tspan", i).text().trim();
-			if(pageLoadCheck.equals(nodata)) {
-				System.out.println(" *** page_contents_groupPage pie chart data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** page_contents_groupPage pie chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}	
-		}
-		System.out.println(" ! ----- page_contents_groupPage End ----- ! ");
-	}
-	//@Test(priority = 3)
-	public void page_contents_InlinkPage() {
-		System.out.println(" ! ----- page_contents_InlinkPage Start ----- ! ");
-		$(By.linkText("내부배너")).waitUntil(visible, 10000);
-		$(By.linkText("내부배너")).click();
-		pageLoadCheck = $(".active", 2).text().trim();
-		if (pageLoadCheck.equals("내부배너")) {
-			System.out.println(" *** page_contents_InlinkPage page load Success !! *** ");
-		} else {
-			System.out.println(" *** page_contents_InlinkPage page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		String[] panelDataCheck = {"내부배너( banner-inner )\n9", "내부배너( banner-inner )\n0%", "-\n0"};
-		$(".top-component", 0).waitUntil(visible, 10000);
-		for(int i=0;i<=2;i++) {
-			pageLoadCheck = $(".top-component", (i)).text().trim();
-			if(pageLoadCheck.equals(panelDataCheck[i])) {
-				System.out.println(" *** page_page_contents_InlinkPage panel data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** page_page_contents_InlinkPage panel data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		$("td", 21).click();
-		$("td", 30).waitUntil(visible, 10000);
-		String[] tableDataCheck = {"└ banner-inner", "9", "9", "100%"};
-		for(int i=0;i<=3;i++) {
-			pageLoadCheck = $("td", (i+30)).text().trim();
-			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** page_page_contents_InlinkPage table data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** page_page_contents_InlinkPage table data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		$(".highcharts-tracker", 0).hover();
-		$(".highcharts-tracker", 1).hover();
-		$(".highcharts-tracker", 2).hover();
-		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
-		String[] pLC = pageLoadCheck.split("● ");
-		String[] barChartDataCheck = {"2018.12.21(금)", "내부배너: 9", "합계: 9"};
-		for(int i=0;i<=2;i++) {
-			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** page_page_contents_InlinkPage bar chart data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** page_page_contents_InlinkPage bar chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		pLC = null;
-		$("#btnChartLine").click();
-		$(".highcharts-tracker", 3).waitUntil(visible, 10000);
-		$(".highcharts-tracker", 3).hover();		
-		$(".highcharts-tracker", 4).hover();
-		$(".highcharts-tracker", 3).hover();
-		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
-		pLC = pageLoadCheck.split("● ");
-		String[] lineChartDataCheck = {"2018.12.21(금)", "내부배너: 9"};
-		for(int i=0;i<=1;i++) {
-			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** page_page_contents_InlinkPage line chart data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** page_page_contents_InlinkPage line chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		System.out.println(" ! ----- page_page_contents_InlinkPage End ----- ! ");
-	}
-	//@Test(priority = 4)
-	public void page_contents_InternalPage() {
-		System.out.println(" ! ----- page_contents_InternalPage Start ----- ! ");
-		$(By.linkText("내부검색")).waitUntil(visible, 10000);
-		$(By.linkText("내부검색")).click();
-		pageLoadCheck = $(".active", 2).text().trim();
-		if (pageLoadCheck.equals("내부검색")) {
-			System.out.println(" *** page_contents_InternalPage page load Success !! *** ");
-		} else {
-			System.out.println(" *** page_contents_InternalPage page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("td", 29).waitUntil(visible, 10000);
-		String[] tableDataCheck = {"합계", "149", "100%", "144"};
-		for(int i=0;i<=3;i++) {
-			pageLoadCheck = $("td", (i+29)).text().trim();
-			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** page_contents_InternalPage table data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** page_contents_InternalPage table data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		$(".highcharts-tracker", 0).hover();
-		$(".highcharts-tracker", 1).hover();
-		$(".highcharts-tracker", 2).hover();
-		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
-		String[] pLC = pageLoadCheck.split("● ");
-		String[] barChartDataCheck = {"2018.12.21 (금)", "검색횟수: 149", "구매건수: 0"};
-		for(int i=0;i<=2;i++) {
-			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** page_contents_InternalPage bar chart data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** page_contents_InternalPage bar chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		pLC = null;
-		$("#btnChartPie").click();
-		$(".highcharts-tracker > path", 6).waitUntil(visible, 10000);
-		String[] pieChartDataCheck = {"8.1%", "8.1%", "8.1%", "8.1%", "8.1%", "기타검색횟수: 59.7%"};
-		for(int i=0;i<=5;i++) {
-			$(".highcharts-tracker > path", (i+1)).hover();
-			$(".highcharts-tracker > path", (i+1)).hover();
-			$(".highcharts-tracker > path", (i+1)).hover();
-			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
-			if(i<5) {
-				if(pageLoadCheck.substring(pageLoadCheck.length()-4, pageLoadCheck.length()).equals(pieChartDataCheck[i])) {
-					System.out.println(" *** page_contents_InternalPage pie chart data ((" + i + ")) check Success !! *** ");
-				} else {
-					System.out.println(" *** page_contents_InternalPage pie chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-					close();
-				}
-			} else {
-				if(pageLoadCheck.equals(pieChartDataCheck[i])) {
-					System.out.println(" *** page_contents_InternalPage pie chart data ((" + i + ")) check Success !! *** ");
-				} else {
-					System.out.println(" *** page_contents_InternalPage pie chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-					close();
-				}
-			}	
-		}
-		pLC = null;
-		$("#btnChartLine").click();
-		$(".highcharts-tracker", 11).waitUntil(visible, 10000);
-		$(".highcharts-tracker", 9).hover();		
-		$(".highcharts-tracker", 7).hover();
-		$(".highcharts-tracker", 11).hover();
-		pageLoadCheck = $(".highcharts-tooltip", 2).text().trim();
-		pLC = pageLoadCheck.split("● ");
-		String[] lineChartDataCheck = {"2018.12.21 (금)", "12", "12", "12", "12", "12"};
-		for(int i=0;i<=5;i++) {
-			if(i == 0) {
-				if(pLC[i].equals(lineChartDataCheck[i])) {
-					System.out.println(" *** page_contents_InternalPage pie chart data ((" + i + ")) check Success !! *** ");
-				} else {
-					System.out.println(" *** page_contents_InternalPage pie chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-					close();
-				}
-			} else {
-				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(lineChartDataCheck[i].substring(lineChartDataCheck[i].length()-2, lineChartDataCheck[i].length()))) {
-					System.out.println(" *** page_contents_InternalPage pie chart data ((" + i + ")) check Success !! *** ");
-				} else {
-					System.out.println(" *** page_contents_InternalPage pie chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-					close();
-				}
-			}
-		}
-		System.out.println(" ! ----- page_contents_InternalPage End ----- ! ");
-	}
-	@Test(priority = 11)
-	public void route_contents_moveRoute() {
-		System.out.println(" ! ----- route_contents_moveRoute Start ----- ! ");
-		$(By.linkText("경로")).waitUntil(visible, 10000);
-		$(By.linkText("경로")).click();
-		$("#top-menu-name").waitUntil(visible, 15000);
-		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("경로")) {
-			System.out.println(" *** contents_popularPage page load Success !! *** ");
-		} else {
-			System.out.println(" *** contents_popularPage page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".blockUI", 2).waitUntil(hidden, 10000);
-		String[] depthLevDataCheck = {"366", "356", "", "10", "0", "", "10", "0", "", "10", "0"};
-		for(int i=0;i<=10;i++) {
-			if((i+25)%3 > 0) {
-				pageLoadCheck = $("text", (i+25)).text().trim();
-				String[] pLC = pageLoadCheck.split(" : ");
-				if(pLC[1].equals(depthLevDataCheck[i])) {
-					System.out.println(" *** page_contents_InternalPage depth level data ((" + i + ")) check Success !! *** ");
-				} else {
-					System.out.println(" *** page_contents_InternalPage depth level data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-					close();
-				}
-				pLC = null;
-			}
-		}
-		String[] nodeVisitDataCheck = {"78 (21.31%)", "12 (3.28%)", "12 (3.28%)", "12 (3.28%)", "12 (3.28%)", "240 (65.57%)", "9 (2.46%)", "1 (0.27%)", "9 (2.46%)", "1 (0.27%)", "9 (2.46%)", "1 (0.27%)"};
-		for(int i=0,x=0;i<=23;i++) {
-			if(i%2 == 1) {
-				pageLoadCheck = $("text", i).text().trim();
-				String[] pLC = pageLoadCheck.split("수 ");
-				if(pLC[1].equals(nodeVisitDataCheck[(x)])) {
-					System.out.println(" *** route_contents_moveRoute node data ((" + x + ")) check Success !! *** ");
-				} else {
-					System.out.println(" *** route_contents_moveRoute node data ((" + x + ")) check Fail ... !@#$%^&*() *** ");
-					close();
-				}
-				x++;
-				pLC = null;
-			}
-		}		
-		System.out.println(" ! ----- route_contents_moveRoute End ----- ! ");
-	}
-	@Test(priority = 12)
-	public void route_route_contents_preNextPage() {
-		System.out.println(" ! ----- route_contents_preNextPage Start ----- ! ");
-		$(By.linkText("이전/다음 페이지")).waitUntil(visible, 10000);
-		$(By.linkText("이전/다음 페이지")).click();
-		pageLoadCheck = $(".active", 2).text().trim();
-		if (pageLoadCheck.equals("이전/다음 페이지")) {
-			System.out.println(" *** route_contents_preNextPage page load Success !! *** ");
-		} else {
-			System.out.println(" *** route_contents_preNextPage page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#infoTitle_0").waitUntil(visible, 10000);
-		String[] prePageDataCheck = {"방문시작", "12", "/", "9"};
-		for(int i=0;i<=3;i++) {
-			pageLoadCheck = $("text", i).text().trim();
-			if(pageLoadCheck.equals(prePageDataCheck[i])) {
-				System.out.println(" *** route_contents_preNextPage pre page data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** route_contents_preNextPage pre page data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		String[] nextPageDataCheck = {"/search/label/marketing...", "9", "방문종료", "12"};
-		for(int i=0;i<=3;i++) {
-			pageLoadCheck = $("text", (i+7)).text().trim();
-			if(pageLoadCheck.equals(nextPageDataCheck[i])) {
-				System.out.println(" *** route_contents_preNextPage next page data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** route_contents_preNextPage next page data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}		
-		String[] standardPageDataCheck = {"페이지 방문수21", "페이지뷰21", "방문당 페이지뷰1", "내부이동수9", "종료수12", "종료율57.14%"};
-		for(int i=0;i<=5;i++) {
-			pageLoadCheck = $("#infoTitle_" + i).text().trim();
-			if(pageLoadCheck.equals(standardPageDataCheck[i])) {
-				System.out.println(" *** route_contents_preNextPage standard page data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** route_contents_preNextPage standard page data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		System.out.println(" ! ----- route_contents_preNextPage End ----- ! ");
-	}
-	@Test(priority = 13)
-	public void route_route_contents_scenario() {
-		System.out.println(" ! ----- route_contents_scenario Start ----- ! ");
-		$(By.linkText("시나리오")).waitUntil(visible, 10000);
-		$(By.linkText("시나리오")).click();
-		pageLoadCheck = $(".active", 2).text().trim();
-		if (pageLoadCheck.equals("시나리오")) {
-			System.out.println(" *** route_contents_scenario page load Success !! *** ");
-		} else {
-			System.out.println(" *** route_contents_scenario page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		pageLoadCheck = $("h2").text().trim();
-		if(pageLoadCheck.equals("달성률0.0%")) {
-			System.out.println(" *** route_contents_scenario page check Success !! *** ");
-		} else {
-			System.out.println(" *** route_contents_scenario page check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- route_contents_scenario End ----- ! ");
-	}
-	@Test(priority = 21)
-	public void link_contents_eventLink() {
-		System.out.println(" ! ----- link_contents_eventLink Start ----- ! ");
-		$(By.linkText("링크")).waitUntil(visible, 10000);
-		$(By.linkText("링크")).click();
-		$("#top-menu-name").waitUntil(visible, 15000);
-		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("링크")) {
-			System.out.println(" *** link_contents_eventLink page load Success !! *** ");
-		} else {
-			System.out.println(" *** link_contents_eventLink page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		pageLoadCheck = $("td", 13).text().trim();
-		if(pageLoadCheck.equals(nodata)) {
-			System.out.println(" *** link_contents_eventLink table chart data check Success !! *** ");
-		} else {
-			System.out.println(" *** link_contents_eventLink table data check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".highcharts-tracker", 1).waitUntil(visible, 10000);
 		$(".highcharts-tracker", 1).hover();
 		$(".highcharts-tracker", 2).hover();
 		$(".highcharts-tracker", 1).hover();
-		pageLoadCheck = $(".highcharts-tooltip").text().trim();
-		String[] pLC = pageLoadCheck.split("● ");
-		String[] barChartDataCheck = {"2018.12.21(금)", "순클릭: 0", "클릭수: 0"};
-		for(int i=0;i<=2;i++) {
-			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** link_contents_eventLink bar chart data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** link_contents_eventLink bar chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		pLC = null;
-		$("#btnChartLine").click();
-		$("tspan", 7).waitUntil(visible, 10000);
-		pageLoadCheck = $("tspan", 7).text().trim();
-		if(pageLoadCheck.equals(nodata)) {
-			System.out.println(" *** link_contents_eventLink line chart data check Success !! *** ");
-		} else {
-			System.out.println(" *** link_contents_eventLink line data check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#btnChartPie").click();
-		$("tspan", 9).waitUntil(visible, 10000);
-		for(int i=0;i<=1;i++) {
-			pageLoadCheck = $("tspan", (i+8)).text().trim();
-			if(pageLoadCheck.equals(nodata)) {
-				System.out.println(" *** link_contents_eventLink pie chart data check Success !! *** ");
-			} else {
-				System.out.println(" *** link_contents_eventLink pie chart data check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		System.out.println(" ! ----- link_contents_eventLink End ----- ! ");
-	}
-	@Test(priority = 22)
-	public void link_contents_share() {
-		System.out.println(" ! ----- link_contents_share Start ----- ! ");
-		$(By.linkText("공유")).waitUntil(visible, 10000);
-		$(By.linkText("공유")).click();
-		pageLoadCheck = $(".active", 2).text().trim();
-		if (pageLoadCheck.equals("공유")) {
-			System.out.println(" *** link_contents_share page load Success !! *** ");
-		} else {
-			System.out.println(" *** link_contents_share page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("td", 7).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 7).text().trim();
-		if(pageLoadCheck.equals(nodata)) {
-			System.out.println(" *** link_contents_share table data check Success !! *** ");
-		} else {
-			System.out.println(" *** link_contents_share table data check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".highcharts-axis", 0).hover();
+		String[] barChartDataCheck = {"2018.12.21", "인하우스-바이럴: 12", "합계: 12", "((date))", "((inhouse-viral))", "((total))"};
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
-		String[] barChartDataCheck = {"2018-12-21(금)", "공유클릭수: 0"};
-		for(int i=0;i<=1;i++) {
-			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** link_contents_share bar chart data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** link_contents_share bar chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		$("#btnChartPie").click();
-		//$("tspan", 1).waitUntil(visible, 10000);
-		pageLoadCheck = $("tspan").text().trim();
-		System.out.println("pageLoadCheck is :" + pageLoadCheck);
-		//pageLoadCheck = $("tspan", 1).text().trim();
-		if(pageLoadCheck.equals(nodata)) {
-			System.out.println(" *** link_contents_share pie chart data check Success !! *** ");
-		} else {
-			System.out.println(" *** link_contents_share pie chart data check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$("#btnChartLine").click();
-		$("tspan").waitUntil(visible, 10000);
-		if(pageLoadCheck.equals(nodata)) {
-			System.out.println(" *** link_contents_share line chart data check Success !! *** ");
-		} else {
-			System.out.println(" *** link_contents_share line chart data check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		System.out.println(" ! ----- link_contents_share End ----- ! ");
-	}
-	@Test(priority = 22)
-	public void link_contents_outLinkBanner() {
-		System.out.println(" ! ----- link_contents_outLinkBanner Start ----- ! ");
-		$(By.linkText("아웃링크배너")).waitUntil(visible, 10000);
-		$(By.linkText("아웃링크배너")).click();
-		pageLoadCheck = $(".active", 2).text().trim();
-		if (pageLoadCheck.equals("아웃링크배너")) {
-			System.out.println(" *** link_contents_outLinkBanner page load Success !! *** ");
-		} else {
-			System.out.println(" *** link_contents_outLinkBanner page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		String[] panelDataCheck = {"노출수\n0\n-", "클릭수\n9\n9(0.00%)", "순클릭\n9\n9(0.00%)"};
-		for(int i=0;i<=2;i++) {
-			pageLoadCheck = $(".panel-body", i).text().trim();
-			if(pageLoadCheck.equals(panelDataCheck[i])) {
-				System.out.println(" *** link_contents_outLinkBanner panel data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** link_contents_outLinkBanner panel data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}		
-		$("td", 27).waitUntil(visible, 10000);
-		$("td", 27).click();
-		$("td", 34).waitUntil(visible, 10000);
-		String[] tableDataCheck = {"└ 아웃링크배너.", "0", "9", "0%", "9", "0%"};
-		for(int i=0;i<=5;i++) {
-			pageLoadCheck = $("td", (i+34)).text().trim();
-			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** link_contents_outLinkBanner table data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** link_contents_outLinkBanner table data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		$(".highcharts-tracker", 1).hover();
-		$(".highcharts-tracker", 2).hover();		
-		$(".highcharts-tracker", 1).hover();
-		pageLoadCheck = $(".highcharts-tooltip").text().trim();
-		String[] pLC = pageLoadCheck.split("● ");
-		String[] barChartDataCheck = {"2018.12.21(금)", "노출수: 0", "클릭수: 9"};
 		for(int i=0;i<=2;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** link_contents_outLinkBanner bar chart data ((" + i + ")) check Success !! *** ");
+				System.out.println(" *** viral_effective bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** link_contents_outLinkBanner bar chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** viral_effective bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
 		pLC = null;
 		$("#btnChartLine").click();
-		$(".highcharts-tracker", 3).waitUntil(visible, 10000);
+		for(int i=0;i<=19;i++) {
+			if($("text", 14).text().trim().equals("인하우스 - 바이럴")) {
+				System.out.println(" *** viral_effective line chart data loading check Success !! *** ");
+				break;
+			} else {
+				System.out.println(" *** viral_effective line chart loading wait 0." + i + " second *** ");
+				sleep(100);
+			}
+		}
 		$(".highcharts-tracker", 3).hover();
 		$(".highcharts-tracker", 4).hover();
 		$(".highcharts-tracker", 3).hover();
+		String[] lineChartDataCheck = {"2018.12.21(금)", "인하우스 - 바이럴: 12", "((date))", "((inhouse-viral))"};
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
-		String[] lineChartDataCheck = {"2018.12.21(금)", "아웃링크배너.: 0"};
 		for(int i=0;i<=1;i++) {
 			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** link_contents_outLinkBanner line chart data ((" + i + ")) check Success !! *** ");
+				System.out.println(" *** viral_effective line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** link_contents_outLinkBanner line chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** viral_effective line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		$("#btnChartPie").click();		
-		$("tspan", 11).waitUntil(visible, 10000);
-		pageLoadCheck = $("tspan", 11).text().trim();
-		if(pageLoadCheck.equals(nodata) ) {
-			System.out.println(" *** link_contents_outLinkBanner left pie chart data check Success !! *** ");
-		} else {
-			System.out.println(" *** link_contents_outLinkBanner left pie chart data check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".highcharts-tracker", 7).hover();
-		$(".highcharts-tracker", 8).hover();
-		$(".highcharts-tracker", 7).hover();
-		pageLoadCheck = $(".highcharts-tooltip", 3).text().trim();
-		System.out.println("pageLoadCheck is :" + pageLoadCheck + ".");
-		if(pageLoadCheck.equals("아웃링크배너.클릭수: 100.0%")) {
-			System.out.println(" *** link_contents_outLinkBanner right pie chart data check Success !! *** ");
-		} else {
-			System.out.println(" *** link_contents_outLinkBanner right pie chart data check Fail ... !@#$%^&*() *** ");
-			close();
-		}		
-		System.out.println(" ! ----- link_contents_outLinkBanner End ----- ! ");
+		System.out.println(" ! ----- viral_effective End ----- ! ");
 	}
-	public void perfornamce_page_speed() {
-		System.out.println(" ! ----- perfornamce_page_speed Start ----- ! ");
-		$(By.linkText("성능")).waitUntil(visible, 10000);
-		$(By.linkText("성능")).click();
-		$("#top-menu-name").waitUntil(visible, 15000);
-		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("성능")) {
-			System.out.println(" *** perfornamce_page_speed page load Success !! *** ");
-		} else {
-			System.out.println(" *** perfornamce_page_speed page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		pageLoadCheck = $("td", 13).text().trim();
-		if(pageLoadCheck.equals(nodata)) {
-			System.out.println(" *** perfornamce_page_speed table chart data check Success !! *** ");
-		} else {
-			System.out.println(" *** perfornamce_page_speed table data check Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".highcharts-tracker", 1).waitUntil(visible, 10000);
-		$(".highcharts-tracker", 1).hover();
-		$(".highcharts-tracker", 2).hover();
-		$(".highcharts-tracker", 1).hover();
-		pageLoadCheck = $(".highcharts-tooltip").text().trim();
-		String[] pLC = pageLoadCheck.split("● ");
-		String[] barChartDataCheck = {"2018.12.21(금)", "순클릭: 0", "클릭수: 0"};
-		for(int i=0;i<=2;i++) {
-			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** perfornamce_page_speed bar chart data ((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** perfornamce_page_speed bar chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		System.out.println(" ! ----- perfornamce_page_speed End ----- ! ");
-	}
-	
 	@AfterClass
 	public void afterTest() {
 		closeWebDriver();
