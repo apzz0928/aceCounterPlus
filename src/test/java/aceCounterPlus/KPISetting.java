@@ -242,15 +242,22 @@ public class KPISetting {
 		$("#redirectConfBtn").click();
 		$(".input-sm").waitUntil(visible, 10000);
 		$(".sidebar-title", 6).click();
-		$("td", 0).waitUntil(visible, 10000);
-		pageLoadCheck = $("td", 0).text().trim();
-	    String[] pLC = pageLoadCheck.split(" ");
-	    if(pLC[0].equals("등록된")) {
+		$("#top-menu-name").waitUntil(visible, 15000);
+		pageLoadCheck = $("#top-menu-name").text().trim();
+		if (pageLoadCheck.equals("KPI설정")) {
 			System.out.println(" *** KPISetting_add list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** KPISetting_add list Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		/*$("td", 2).waitUntil(visible, 10000);
+		pageLoadCheck = $("td", 2).text().trim();
+	    if(pageLoadCheck.equals("테스트")) {
+			System.out.println(" *** KPISetting_add list Page load Success !! *** ");
+		} else {
+			System.out.println(" *** KPISetting_add list Page load Fail ... !@#$%^&*() *** ");
+			close();
+		}*/
 		$("#addControl").click();
 		$("h4", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $("h4", 0).text();
@@ -310,7 +317,7 @@ public class KPISetting {
 	@Test(priority = 2)
 	public void KPISetting_modify() {
 		System.out.println(" ! ----- KPISetting_modify Start ----- ! ");
-		$(".btn-xs").click();
+		$(".btn-xs", 0).click();
 		pageLoadCheck = $("h4", 0).text();
 		if(pageLoadCheck.equals("Step1. 지표선택")) {
 			System.out.println(" *** KPISetting_modify modify Page load Success !! *** ");
@@ -364,14 +371,13 @@ public class KPISetting {
 		$("#delProcess").waitUntil(visible, 10000);
 		$("#delProcess").click();
 		valCheck("KPISetting_del_null");
-		$("#mainDelCheck").click();
+		$(".mainDelCheck", 1).click();
 		$("#delProcess").click();
 		valCheck("KPISetting_del_confirm");
 		valCheck("KPISetting_del_alert");
 		$("#delProcess").waitUntil(hidden, 10000);
-		pageLoadCheck = $("td").text().trim();
-	    String[] pLC = pageLoadCheck.split(" ");
-	    if(pLC[0].equals("등록된")) {
+		pageLoadCheck = $("td", 2).text().trim();
+	    if(pageLoadCheck.equals("테스트")) {
 			System.out.println(" *** KPISetting_add list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** KPISetting_add list Page load Fail ... !@#$%^&*() *** ");

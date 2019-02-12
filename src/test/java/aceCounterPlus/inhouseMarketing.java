@@ -23,7 +23,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 /*import com.codeborne.selenide.testng.ScreenShooter;*/
 
-public class temporarily_2 {
+public class inhouseMarketing {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, pw, A, pageLoadCheck, dateCheck, nodata;
