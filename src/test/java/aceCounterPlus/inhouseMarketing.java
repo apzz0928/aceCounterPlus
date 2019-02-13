@@ -212,14 +212,17 @@ public class inhouseMarketing {
 			}
 		}
 		$("#btnChartLine").click();
-		for(int i=0;i<=19;i++) {
+		for(int i=0;i<=20;i++) {
 			if($("tspan", 7).text().trim().equals(nodata)) {
 				System.out.println(" *** viral_impr line chart data check Success !! *** ");
 				break;
-			} else {
+		    } else if(i<=19) {
 				System.out.println(" *** viral_impr line chart loading wait 0." + i + " second *** ");
 				sleep(100);
-			}
+		    } else {
+		    	System.out.println(" *** viral_impr line chart data check Fail ... !@#$%^&*() *** ");
+		        close();
+		    }
 		}
 		System.out.println(" ! ----- viral_impr End ----- ! ");
 	}
@@ -274,14 +277,17 @@ public class inhouseMarketing {
 		}
 		pLC = null;
 		$("#btnChartLine").click();
-		for(int i=0;i<=19;i++) {
-			if($("text", 14).text().trim().equals("인하우스 - 바이럴")) {
+		for(int i=0;i<=20;i++) {
+			if($("text", 8).text().trim().equals("인하우스 - 바이럴")) {
 				System.out.println(" *** viral_effective line chart data loading check Success !! *** ");
 				break;
-			} else {
+		    } else if(i<=19) {
 				System.out.println(" *** viral_effective line chart loading wait 0." + i + " second *** ");
 				sleep(100);
-			}
+		    } else {
+				System.out.println(" *** viral_effective line chart data loading check Fail ... !@#$%^&*() *** ");
+		        close();
+		    }
 		}
 		$(".highcharts-tracker", 3).hover();
 		$(".highcharts-tracker", 4).hover();
@@ -359,14 +365,17 @@ public class inhouseMarketing {
 		}
 		pLC = null;
 		$("#btnChartLine").click();
-		for(int i=0;i<=19;i++) {
+		for(int i=0;i<=20;i++) {
 			if($("text", 24).text().trim().equals("인하우스-이메일")) {
 				System.out.println(" *** email line chart data loading check Success !! *** ");
 				break;
-			} else {
+		    } else if(i<=19) {
 				System.out.println(" *** email line chart loading wait 0." + i + " second *** ");
 				sleep(100);
-			}
+		    } else {
+				System.out.println(" *** email line chart data loading check Fail ... !@#$%^&*() *** ");
+		        close();
+		    }
 		}
 		$(".highcharts-tracker", 3).hover();
 		$(".highcharts-tracker", 4).hover();
@@ -436,14 +445,17 @@ public class inhouseMarketing {
 		}
 		pLC = null;
 		$("#btnChartLine").click();
-		for(int i=0;i<=19;i++) {
-			if($("text", 14).text().trim().equals("인하우스 - talk.")) {
+		for(int i=0;i<=20;i++) {
+			if($("text", 8).text().trim().equals("인하우스 - talk.")) {
 				System.out.println(" *** Talk line chart data loading check Success !! *** ");
 				break;
-			} else {
+		    } else if(i<=19) {
 				System.out.println(" *** Talk line chart loading wait 0." + i + " second *** ");
 				sleep(100);
-			}
+		    } else {
+				System.out.println(" *** Talk line chart data loading check Fail ... !@#$%^&*() *** ");
+		        close();
+		    }
 		}
 		$(".highcharts-tracker", 3).hover();
 		$(".highcharts-tracker", 4).hover();

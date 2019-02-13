@@ -419,15 +419,18 @@ public class convert {
 		}
 		$("td", 22).waitUntil(visible, 10000);
 		$("td", 22).click();
-		for(int i=0;i<=9;i++) {
+		for(int i=0;i<=20;i++) {
 			pageLoadCheck = $("td", 32).text().trim();
 			if(pageLoadCheck.equals("└ 다이렉트")) {
 				System.out.println(" *** multiChannelConvert_weighted table drill down data load check Success *** ");
 				break;
-			} else {
+		    } else if(i<=19) {
 				System.out.println(" *** multiChannelConvert_weighted table drill down data loading wait 0." + i + " second *** ");
 				sleep(100);
-			}
+		    } else {
+				System.out.println(" *** multiChannelConvert_weighted table drill down data load check Fail ... !@#$%^&*() *** ");
+		        close();
+		    }
 		}
 		String[] tableDataCheck = {"└ 다이렉트", "208", "56.83%", "((inflow source))", "((visit number))", "((visit percent))"};
 		for(int i=0; i<=2; i++) {

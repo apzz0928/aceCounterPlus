@@ -748,17 +748,20 @@ public class content {
 			close();
 		}
 		pageLoadCheck = $(".th-inner", 6).text().trim();
-		for(int i=0;i<=19;i++) {
+		for(int i=0;i<=20;i++) {
 			if(pageLoadCheck.equals("페이지 방문수")) {
 				System.out.println(" *** perfornamce_pageSpeed table data loading check Success !! *** ");
 				break;
-			} else {
+		    } else if(i<=19) {
 				System.out.println(" *** perfornamce_pageSpeed table data loading wait 0." + i + " second *** ");
 				sleep(100);
-			}
+		    } else {
+				System.out.println(" *** perfornamce_pageSpeed table data loading check Fail ... !@#$%^&*() *** ");
+		        close();
+		    }
 		}
 		$(".th-inner", 6).click();
-		for(int i=0;i<=19;i++) {
+		for(int i=0;i<=19;i++) { //로딩 체크용이 아니고 데이터 소팅 체크용이라 다름
 			if($("td", 17).text().trim().equals("조회된 데이터가 없습니다.")) {
 				System.out.println(" *** perfornamce_pageSpeed table data sorting wait 0." + i + " second *** ");
 				sleep(100);
@@ -834,14 +837,17 @@ public class content {
 			close();
 		}
 		pageLoadCheck = $("td", 13).text().trim();
-		for(int i=0;i<=19;i++) {
+		for(int i=0;i<=20;i++) {
 			if(pageLoadCheck.equals(nodata)) {
 				System.out.println(" *** perfornamce_errorPage table data check Success !! *** ");
 				break;
-			} else {
+		    } else if(i<=19) {
 				System.out.println(" *** perfornamce_errorPage table data loading wait 0." + i + " second *** ");
 				sleep(100);
-			}
+		    } else {
+				System.out.println(" *** perfornamce_errorPage table data check Fail ... !@#$%^&*() *** ");
+		        close();
+		    }
 		}
 		String[] barChartDataCheck = {"2018-12-21(금)", "에러횟수: 0", "페이지뷰: 0", "((date))", "((error number))", "((pageview))"};
 		$(".highcharts-tracker", 1).hover();

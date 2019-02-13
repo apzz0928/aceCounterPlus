@@ -442,15 +442,18 @@ public class user {
 		}
 		pLC = null;
 		$("#btnChartLine").click();
-		pageLoadCheck = $("text", 29).text().trim();
-		for(int i=0;i<=19;i++) {
-			if(pageLoadCheck.equals("PC")) {
+		$("text", 22).waitUntil(visible, 10000);
+		for(int i=0;i<=20;i++) {
+			if($("text", 22).text().trim().equals("PC")) {
 				System.out.println(" *** system line chart load check Success !! *** ");
 				break;
-			} else {
+		    } else if(i<=19) {
 				System.out.println(" *** system line chart loading wait 0." + i + " second *** ");
 				sleep(100);
-			}
+		    } else {
+				System.out.println(" *** system line chart load check Fail ... !@#$%^&*() *** ");
+		        close();
+		    }
 		}
 		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
 		$(".highcharts-tracker", 6).hover();
