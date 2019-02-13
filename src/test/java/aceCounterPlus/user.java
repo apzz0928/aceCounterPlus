@@ -234,6 +234,8 @@ public class user {
 		}
 		String[] chartDataCheck = {"2018.12.07(금)", "1일 사용자: 2", "7일 사용자: 2", "14일 사용자: 2", "30일 사용자: 2", "((date))", "((1day visit))", "((7day visit))", "((14day visit))", "((30day visit))"};
 		$(".highcharts-series-group", 0).hover();
+		$(".highcharts-series-group", 1).hover();
+		$(".highcharts-series-group", 0).hover();
 		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
