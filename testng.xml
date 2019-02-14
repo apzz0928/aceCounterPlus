@@ -6,8 +6,9 @@
   <classes>
 <!-- <class name="aceCounterPlus.backOffice"/> -->
 <!-- <class name="aceCounterPlus.temporarily"/> -->
-<class name="aceCounterPlus.temporarily_2"/>
+<!-- <class name="aceCounterPlus.temporarily_2"/> -->
 <!-- <class name="aceCounterPlus.getInflow"/> -->
+<class name="aceCounterPlus.inhouseMarketing"/>
 <!-- <class name="aceCounterPlus.inhouseMarketingSetting"/> -->
 <!-- <class name="aceCounterPlus.testScript"/> -->
 <!-- <class name="aceCounterPlus.changePassword"/> -->

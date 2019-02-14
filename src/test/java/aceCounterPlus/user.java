@@ -208,8 +208,8 @@ public class user {
 		}*/
 		String[] tableDataCheck = {"2018.12.07(±Ý)", "127", "100%", "2", "1,178", "9.28", "00:24:51", "00:00:11", "((date))", "((visit number))", "((visit percent))", "((unique visit))", "((page view))", "((visit page view))", "((stay time))", "((visit stay time))"};
 		$("td", 15).waitUntil(visible, 10000);
-		for(int i=0, x=15; i<=7; i++, x++) {
-			pageLoadCheck = $("td", x).text().trim();
+		for(int i=0;i<=7;i++) {
+			pageLoadCheck = $("td", i+14).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
 				System.out.println(" *** user_stats table data " + tableDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
 			} else {
@@ -217,7 +217,6 @@ public class user {
 				close();
 			}
 		}
-
 	    System.out.println(" ! ----- user_stats End ----- ! ");
 	}
 	@Test(priority = 2)
