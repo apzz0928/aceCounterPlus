@@ -186,7 +186,7 @@ public class temporarily_2 {
 			System.out.println(i + "을(를) 2로 나누면 몫은" + i/2);
 			System.out.println(i + "을(를) 2로 나누면 나머지는" + i%2);
 		}
-		for(int i=0;i<=2;i++) {
+		for(int i=0;i<=3;i++) {
 			if(i%2 == 0) {
 				if($("tspan", i).text().trim().equals(nodata)) {
 					System.out.println(" *** commerce_popularity pie chart data check Success !! *** ");
@@ -253,49 +253,14 @@ public class temporarily_2 {
 			close();
 		}
 		//제품 - 장바구니의 차트 할차례
-		
-		
-		
-		$(".highcharts-tracker", 1).hover();
-		$(".highcharts-tracker", 2).hover();
-		$(".highcharts-tracker", 1).hover();
-		String[] barChartDataCheck = {"2018.12.21 (금)", "인하우스 - 바이럴: 12", "합계: 12", "((date))", "((inhouse-viral))", "((total))"};
-		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
-		String[] pLC = pageLoadCheck.split("● ");
-		for(int i=0;i<=2;i++) {
-			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** commerce_basket bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** commerce_basket bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		pLC = null;
-		$("#btnChartLine").click();
-		for(int i=0;i<=20;i++) {
-			if($("text", 8).text().trim().equals("인하우스 - 바이럴")) {
-				System.out.println(" *** commerce_basket line chart data loading check Success !! *** ");
-				break;
-		    } else if(i<=19) {
-				System.out.println(" *** commerce_basket line chart loading wait 0." + i + " second *** ");
-				sleep(100);
-		    } else {
-				System.out.println(" *** commerce_basket line chart data loading check Fail ... !@#$%^&*() *** ");
-		        close();
-		    }
-		}
-		$(".highcharts-tracker", 3).hover();
-		$(".highcharts-tracker", 4).hover();
-		$(".highcharts-tracker", 3).hover();
-		String[] lineChartDataCheck = {"2018.12.21(금)", "인하우스 - 바이럴: 12", "((date))", "((inhouse-viral))"};
-		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
-		pLC = pageLoadCheck.split("● ");
-		for(int i=0;i<=1;i++) {
-			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** commerce_basket line chart data " + lineChartDataCheck[i+2] + "((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** commerce_basket line chart data " + lineChartDataCheck[i+2] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
+		for(int i=0;i<=3;i++) {
+			if(i%2 == 0) {
+				if($("tspan", i).text().trim().equals(nodata)) {
+					System.out.println(" *** commerce_basket bar chart data check Success !! *** ");
+				} else {
+					System.out.println(" *** commerce_basket bar chart data check Fail ... !@#$%^&*() *** ");
+					close();
+				}
 			}
 		}
 		System.out.println(" ! ----- commerce_basket End ----- ! ");
