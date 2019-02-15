@@ -443,7 +443,7 @@ public class user {
 		}
 		pLC = null;
 		$("#btnChartLine").click();
-		for(int i=0;i<=20;i++) {
+		/*for(int i=0;i<=20;i++) {
 			if($("highcharts-legend-item", 6).text().trim().equals("PC")) {
 				System.out.println(" *** system line chart load check Success !! *** ");
 				break;
@@ -454,7 +454,7 @@ public class user {
 				System.out.println(" *** system line chart load check Fail ... !@#$%^&*() *** ");
 		        close();
 		    }
-		}
+		}*/
 		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
 		$(".highcharts-tracker", 6).hover();
 		String[] lineChartDataCheck = {"2018.12.07(±Ý)", "PC: 127", "((date))", "((system type))"};

@@ -26,7 +26,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 public class temporarily_2 {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
-	private static String baseUrl, hubUrl, TestBrowser, pw, A, pageLoadCheck, dateCheck, nodata;
+	private static String baseUrl, hubUrl, TestBrowser, pw, A, pageLoadCheck, nodata;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -118,8 +118,7 @@ public class temporarily_2 {
 		}
 		$(".go_stat").click();
 		$("#top-menu-name").waitUntil(visible, 10000);
-		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("Live 대시보드")) {
+		if ($("#top-menu-name").text().trim().equals("Live 대시보드")) {
 			System.out.println(" *** stats convert login Success !! *** ");
 		} else {
 			System.out.println(" *** stats convert login Fail ... !@#$%^&*() *** ");
@@ -134,8 +133,7 @@ public class temporarily_2 {
 		$(By.linkText("제품")).waitUntil(visible, 10000);
 		$(By.linkText("제품")).click();
 		$("#top-menu-name").waitUntil(visible, 15000);
-		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("제품")) {
+		if ($("#top-menu-name").text().trim().equals("제품")) {
 			System.out.println(" *** product_popularity page load Success !! *** ");
 		} else {
 			System.out.println(" *** product_popularity page load Fail ... !@#$%^&*() *** ");
@@ -152,15 +150,13 @@ public class temporarily_2 {
 			} else {
 				System.out.println("end calender date selecting..");				
 			}
-			dateCheck = $(".month", i).text().trim(); //2번째 달력 월 확인
-			for(int x=0;x<=100;x++) { //2018.12가 될때까지 << 클릭
-				if(dateCheck.equals("2018.12")) {
+			for(int x=0;x<=100;x++) { //달력의 월 확인 후 2018.12가 될때까지 << 클릭
+				if($(".month", i).text().trim().equals("2018.12")) {
 					$("td[data-title=r3c5]", i).click(); //21일 선택
 					break;
 				} else {
-					System.out.println("no"+ (i+1) + ". calender month is  : " + dateCheck + " // need nextBtn(" + x + ") click");
+					System.out.println("no"+ (i+1) + ". calender month is  : " + $(".month", i).text().trim() + " // need nextBtn(" + x + ") click");
 					$(".prev", i).click();
-					dateCheck = $(".month", i).text().trim();
 				}
 			}
 			if(i==0) {
@@ -179,12 +175,6 @@ public class temporarily_2 {
 				System.out.println(" *** product_popularity ranking table data check Fail ... !@#$%^&*() *** ");
 				close();
 			}
-		}
-		for(int i=0;i<=3;i++) {
-			System.out.println(i + "을(를) 1로 나누면 몫은" + i/1);
-			System.out.println(i + "을(를) 1로 나누면 나머지는" + i%1);
-			System.out.println(i + "을(를) 2로 나누면 몫은" + i/2);
-			System.out.println(i + "을(를) 2로 나누면 나머지는" + i%2);
 		}
 		for(int i=0;i<=3;i++) {
 			if(i%2 == 0) {
@@ -227,8 +217,7 @@ public class temporarily_2 {
 		System.out.println(" ! ----- product_basket Start ----- ! ");
 		$(By.linkText("장바구니")).waitUntil(visible, 10000);
 		$(By.linkText("장바구니")).click();
-		pageLoadCheck = $(".active", 2).text().trim();
-		if (pageLoadCheck.equals("장바구니")) {
+		if ($(".active", 2).text().trim().equals("장바구니")) {
 			System.out.println(" *** product_basket page load Success !! *** ");
 		} else {
 			System.out.println(" *** product_basket page load Fail ... !@#$%^&*() *** ");
@@ -237,8 +226,7 @@ public class temporarily_2 {
 		$("td", 7).waitUntil(visible, 10000);
 		String[] panelDatacheck = {"0", "0", "0", "0%", "0%"};
 		for(int i=0;i<=4;i++) {
-			pageLoadCheck = $(".summary-data", i).text().trim();
-			if(pageLoadCheck.equals(panelDatacheck[i])) {
+			if($(".summary-data", i).text().trim().equals(panelDatacheck[i])) {
 				System.out.println(" *** product_basket panel data ((" + i + ")) check Success !! *** ");
 			} else {
 				System.out.println(" *** product_basket panel data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
@@ -269,8 +257,7 @@ public class temporarily_2 {
 		System.out.println(" ! ----- product_postScript Start ----- ! ");
 		$(By.linkText("후기")).waitUntil(visible, 10000);
 		$(By.linkText("후기")).click();
-		pageLoadCheck = $(".active", 2).text().trim();
-		if (pageLoadCheck.equals("후기")) {
+		if ($(".active", 2).text().trim().equals("후기")) {
 			System.out.println(" *** product_postScript page load Success !! *** ");
 		} else {
 			System.out.println(" *** product_postScript page load Fail ... !@#$%^&*() *** ");
@@ -287,7 +274,7 @@ public class temporarily_2 {
 		$("path", 2).hover();
 		$("path", 3).hover();
 		$("path", 2).hover();
-		String[] reviewChartDataCheck = {"2018-12-21(금)불만족:", "0%미흡:", "0%보통:", " 0%만족:", " 0%매우만족:", " 0%"};
+		String[] reviewChartDataCheck = {"2018-12-21(금)불만족:", "0%미흡:", "0%보통:", "0%만족:", "0%매우만족:", "0%"};
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
 		for(int i=0;i<=5;i++) {
@@ -299,10 +286,11 @@ public class temporarily_2 {
 			}
 		}
 		for(int i=0;i<=3;i++) {
-			if(i%2 == 1) {
+			if(i%2 == 0) {
 				if($("tspan", i+11).text().trim().equals(nodata)) {
 					System.out.println(" *** product_postScript TOP5 chart data check Success !! *** ");
 				} else {
+					System.out.println($("tspan", i+11).text().trim());
 					System.out.println(" *** product_postScript TOP5 chart data check Fail ... !@#$%^&*() *** ");
 					close();
 				}
@@ -316,8 +304,7 @@ public class temporarily_2 {
 		$(By.linkText("연관제품")).waitUntil(visible, 10000);
 		$(By.linkText("연관제품")).click();
 		$("#top-menu-name").waitUntil(visible, 15000);
-		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("연관제품")) {
+		if ($("#top-menu-name").text().trim().equals("연관제품")) {
 			System.out.println(" *** correlationProduct page load Success !! *** ");
 		} else {
 			System.out.println(" *** correlationProduct page load Fail ... !@#$%^&*() *** ");
@@ -326,16 +313,15 @@ public class temporarily_2 {
 		$("td", 6).waitUntil(visible, 10000);
 		String[] tableDataCheck = {"제품명", "페이지뷰", "장바구니", "구매수량", "구매건수", "제품금액", "인기연령", "인기성별"};
 		for(int i=0;i<=7;i++) {
-			pageLoadCheck = $(".th-inner", i).text().trim();
 			if(i==0) {
-				if(pageLoadCheck.equals(tableDataCheck[i])) {
+				if($(".th-inner", i).text().trim().equals(tableDataCheck[i])) {
 					System.out.println(" *** correlationProduct table head data ((" + i + ")) check Success !! *** ");
 				} else {
 					System.out.println(" *** correlationProduct table head data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
-				if(pageLoadCheck.substring(0, 4).equals(tableDataCheck[i])) {
+				if($(".th-inner", i).text().trim().substring(0, 4).equals(tableDataCheck[i])) {
 					System.out.println(" *** correlationProduct table head data ((" + i + ")) check Success !! *** ");
 				} else {
 					System.out.println(" *** correlationProduct table head data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
@@ -352,92 +338,129 @@ public class temporarily_2 {
 		System.out.println(" ! ----- correlationProduct End ----- ! ");
 	}
 	@Test(priority = 21)
-	public void potentialGuest() {
+	public void potentialGuest_all() {
 		$(By.linkText("잠재고객")).waitUntil(visible, 10000);
 		$(By.linkText("잠재고객")).click();
 		$("#top-menu-name").waitUntil(visible, 15000);
-		pageLoadCheck = $("#top-menu-name").text().trim();
-		if (pageLoadCheck.equals("잠재고객")) {
-			System.out.println(" *** potentialGuest page load Success !! *** ");
+		if ($("#top-menu-name").text().trim().equals("잠재고객")) {
+			System.out.println(" *** potentialGuest_all page load Success !! *** ");
 		} else {
-			System.out.println(" *** potentialGuest page load Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** potentialGuest_all page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		$("td", 25).waitUntil(visible, 10000);
-		$("td", 25).click();
-		String[] panelDatacheck = {"12", "100%", "1", "0", "0", "((visit number))", "((return percent))", "((visit pageview))", "((purchases number))", "((sales))"};
-		for(int i=0;i<=4;i++) {
-			pageLoadCheck = $(".summary-data", i).text().trim();
-			if(pageLoadCheck.equals(panelDatacheck[i])) {
-				System.out.println(" *** potentialGuest panel data " + panelDatacheck[i+5] + "((" + i + ")) check Success !! *** ");
+		String[] tableDataCheck = {"2018-12-21(금)", "0", "0", "0%", "0", "0%", "0", "0%", "0", "0%", "0"};
+		for(int i=0;i<=10;i++) {
+			if($("td", i+17).text().trim().equals(tableDataCheck[i])) {
+				System.out.println(" *** potentialGuest_all table data ((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** potentialGuest panel data " + panelDatacheck[i+5] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
+				System.out.println(" *** potentialGuest_all table data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				close();	
 			}
 		}
-		String[] tableDataCheck = {"└ inhouse-potentialGuest", "2018-12-03", "5", "12", "100%", "240%", "100%", "1", "((campaign))", "((send date))", "((send number))"
-				, "((visit number))", "((visit percent))", "((inflow percent))", "((return percent))", "((visit pageview))"};
-		for(int i=0;i<=7;i++) {
-			pageLoadCheck = $("td", i+38).text().trim();
-			if(pageLoadCheck.equals(tableDataCheck[i])) {
-				System.out.println(" *** potentialGuest table data " + tableDataCheck[i+8] + "((" + i + ")) check Success !! *** ");
-			} else {
-				System.out.println(" *** potentialGuest table data " + tableDataCheck[i+8] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
-			}
-		}
-		$(".highcharts-tracker", 1).hover();
-		$(".highcharts-tracker", 2).hover();
-		$(".highcharts-tracker", 1).hover();
-		String[] barChartDataCheck = {"2018.12.21(금)", "인하우스 - potentialGuest.: 12", "합계: 12", "((date))", "((inhouse - potentialGuest))", "((total))"};
+		$(".highcharts-tracker", 4).hover();
+		$(".highcharts-tracker", 5).hover();
+		$(".highcharts-tracker", 4).hover();
+		$(".highcharts-tracker", 5).hover();
+		String[] barChartDataCheck = {"2018-12-21(금)", "탐색: 0", "비교: 0", "담기: 0", "구매: 0", "방문수: 0"};
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
-		for(int i=0;i<=2;i++) {
+		for(int i=0;i<=5;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
-				System.out.println(" *** potentialGuest bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** potentialGuest_all bar chart data ((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** potentialGuest bar chart data " + barChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
-				close();
+				System.out.println(" *** potentialGuest_all bar chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				close();	
 			}
 		}
 		pLC = null;
 		$("#btnChartLine").click();
 		for(int i=0;i<=20;i++) {
-			if($("text", 8).text().trim().equals("인하우스 - potentialGuest.")) {
-				System.out.println(" *** potentialGuest line chart data loading check Success !! *** ");
+			if($("text", 1).text().trim().equals("탐색")) {
+				System.out.println(" *** potentialGuest_all line chart data loading check Success !! *** ");
 				break;
 		    } else if(i<=19) {
-				System.out.println(" *** potentialGuest line chart loading wait 0." + i + " second *** ");
+				System.out.println(" *** potentialGuest_all line chart loading wait 0." + i + " second *** ");
 				sleep(100);
 		    } else {
-				System.out.println(" *** potentialGuest line chart data loading check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** potentialGuest_all line chart data loading check Fail ... !@#$%^&*() *** ");
 		        close();
 		    }
 		}
-		$(".highcharts-tracker", 3).hover();
-		$(".highcharts-tracker", 4).hover();
-		$(".highcharts-tracker", 3).hover();
-		String[] lineChartDataCheck = {"2018.12.21(금)", "인하우스 - potentialGuest.: 12", "((date))", "((inhouse-potentialGuest))"};
+		$(".highcharts-tracker", 0).hover();
+		$(".highcharts-tracker", 2).hover();
+		$(".highcharts-tracker", 0).hover();
+		$(".highcharts-tracker", 2).hover();
+		String[] lineChartDataCheck = {"2018-12-21(금)", "탐색: 0", "비교: 0", "담기: 0", "구매: 0"};
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
-		for(int i=0;i<=1;i++) {
+		for(int i=0;i<=4;i++) {
 			if(pLC[i].equals(lineChartDataCheck[i])) {
-				System.out.println(" *** potentialGuest line chart data " + lineChartDataCheck[i+2] + "((" + i + ")) check Success !! *** ");
+				System.out.println(" *** potentialGuest_all line chart data ((" + i + ")) check Success !! *** ");
 			} else {
-				System.out.println(" *** potentialGuest line chart data " + lineChartDataCheck[i+2] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** potentialGuest_all line chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				close();	
+			}
+		}
+		System.out.println(" ! ----- potentialGuest_all End ----- ! ");
+	}
+	@Test(priority = 22)
+	public void potentialGuest_detail() {
+		System.out.println(" ! ----- potentialGuest_detail Start ----- ! ");
+		$(By.linkText("상세")).waitUntil(visible, 10000);
+		$(By.linkText("상세")).click();
+		if ($(".active", 2).text().trim().equals("상세")) {
+			System.out.println(" *** potentialGuest_detail page load Success !! *** ");
+		} else {
+			System.out.println(" *** potentialGuest_detail page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("td", 6).waitUntil(visible, 10000);
+		String[] tableDataCheck = {"순번", "방문일시", "IP", "유입출처", "랜딩페이지", "회원여부", "비교 제품수"};
+		for(int i=0;i<=6;i++) {;
+			if($(".summary-data", i).text().trim().equals(tableDataCheck[i])) {
+				System.out.println(" *** potentialGuest_detail table head data ((" + i + ")) check Success !! *** ");
+			} else {
+				System.out.println(" *** potentialGuest_detail table head data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
-		System.out.println(" ! ----- potentialGuest End ----- ! ");
+		if($("td", 6).text().trim().equals(nodata)) {
+			System.out.println(" *** potentialGuest_detail table data check Success !! *** ");
+		} else {
+			System.out.println(" *** potentialGuest_detail table data check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- potentialGuest_detail End ----- ! ");
+	}
+	@Test(priority = 22)
+	public void mainProduct() {
+		System.out.println(" ! ----- mainProduct Start ----- ! ");
+		$(By.linkText("메인제품")).waitUntil(visible, 10000);
+		$(By.linkText("메인제품")).click();
+		if ($(".active", 2).text().trim().equals("메인제품")) {
+			System.out.println(" *** mainProduct page load Success !! *** ");
+		} else {
+			System.out.println(" *** mainProduct page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$("td", 6).waitUntil(visible, 10000);
+		String[] tableDataCheck = {"순번", "방문일시", "IP", "유입출처", "랜딩페이지", "회원여부", "비교 제품수"};
+		for(int i=0;i<=6;i++) {
+			pageLoadCheck = $(".summary-data", i).text().trim();
+			if(pageLoadCheck.equals(tableDataCheck[i])) {
+				System.out.println(" *** mainProduct table head data ((" + i + ")) check Success !! *** ");
+			} else {
+				System.out.println(" *** mainProduct table head data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+				close();
+			}
+		}
+		if($("td", 6).text().trim().equals(nodata)) {
+			System.out.println(" *** mainProduct table data check Success !! *** ");
+		} else {
+			System.out.println(" *** mainProduct table data check Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		System.out.println(" ! ----- mainProduct End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {
