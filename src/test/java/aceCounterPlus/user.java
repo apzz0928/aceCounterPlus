@@ -443,7 +443,6 @@ public class user {
 		}
 		pLC = null;
 		$("#btnChartLine").click();
-		$("text", 22).waitUntil(visible, 10000);
 		for(int i=0;i<=20;i++) {
 			if($("text", 22).text().trim().equals("PC")) {
 				System.out.println(" *** system line chart load check Success !! *** ");
