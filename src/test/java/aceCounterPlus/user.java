@@ -444,7 +444,7 @@ public class user {
 		pLC = null;
 		$("#btnChartLine").click();
 		for(int i=0;i<=20;i++) {
-			if($("text", 22).text().trim().equals("PC")) {
+			if($("highcharts-legend-item", 6).text().trim().equals("PC")) {
 				System.out.println(" *** system line chart load check Success !! *** ");
 				break;
 		    } else if(i<=19) {

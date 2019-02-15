@@ -366,7 +366,7 @@ public class inhouseMarketing {
 		pLC = null;
 		$("#btnChartLine").click();
 		for(int i=0;i<=20;i++) {
-			if($("text", 24).text().trim().equals("인하우스-이메일")) {
+			if($("text", 18).text().trim().equals("인하우스-이메일")) {
 				System.out.println(" *** email line chart data loading check Success !! *** ");
 				break;
 		    } else if(i<=19) {
