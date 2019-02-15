@@ -192,8 +192,7 @@ public class user {
 				close();
 			}			
 		}
-		//차트 버그 수정될때까지 예외처리
-		/*String[] chartDataCheck = {"2018.12.07(금)", "방문수: 127", "순방문수: 2", "신규방문수: 0", "페이지뷰: 1,178", "((date))", "((visit number))", "((unique visit))", "((new visit))", "((page view))"};
+		String[] chartDataCheck = {"2018.12.07(금)", "방문수: 127", "순방문수: 2", "신규방문수: 0", "페이지뷰: 1,178", "((date))", "((visit number))", "((unique visit))", "((new visit))", "((page view))"};
 		$(".highcharts-series-group").hover();
 		$(".highcharts-tooltip").waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
@@ -205,11 +204,11 @@ public class user {
 				System.out.println(" *** user_stats chart tooltip data " + chartDataCheck[i+5] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}			
-		}*/
+		}
 		String[] tableDataCheck = {"2018.12.07(금)", "127", "100%", "2", "1,178", "9.28", "00:24:51", "00:00:11", "((date))", "((visit number))", "((visit percent))", "((unique visit))", "((page view))", "((visit page view))", "((stay time))", "((visit stay time))"};
 		$("td", 15).waitUntil(visible, 10000);
 		for(int i=0;i<=7;i++) {
-			pageLoadCheck = $("td", i+14).text().trim();
+			pageLoadCheck = $("td", i+15).text().trim();
 			if (pageLoadCheck.equals(tableDataCheck[i])) {
 				System.out.println(" *** user_stats table data " + tableDataCheck[i+8] + "((" + i + "))" + " check Success !! *** ");
 			} else {
