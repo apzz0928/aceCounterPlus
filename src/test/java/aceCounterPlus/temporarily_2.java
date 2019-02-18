@@ -339,6 +339,7 @@ public class temporarily_2 {
 	}
 	@Test(priority = 21)
 	public void potentialGuest_all() {
+		System.out.println(" ! ----- potentialGuest_all Start ----- ! ");
 		$(By.linkText("잠재고객")).waitUntil(visible, 10000);
 		$(By.linkText("잠재고객")).click();
 		$("#top-menu-name").waitUntil(visible, 15000);
@@ -348,11 +349,13 @@ public class temporarily_2 {
 			System.out.println(" *** potentialGuest_all page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		$("td", 27).waitUntil(visible, 10000);
 		String[] tableDataCheck = {"2018-12-21(금)", "0", "0", "0%", "0", "0%", "0", "0%", "0", "0%", "0"};
 		for(int i=0;i<=10;i++) {
 			if($("td", i+17).text().trim().equals(tableDataCheck[i])) {
 				System.out.println(" *** potentialGuest_all table data ((" + i + ")) check Success !! *** ");
 			} else {
+				System.out.println($("td", i+17).text().trim());
 				System.out.println(" *** potentialGuest_all table data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();	
 			}
@@ -417,7 +420,7 @@ public class temporarily_2 {
 		$("td", 6).waitUntil(visible, 10000);
 		String[] tableDataCheck = {"순번", "방문일시", "IP", "유입출처", "랜딩페이지", "회원여부", "비교 제품수"};
 		for(int i=0;i<=6;i++) {;
-			if($(".summary-data", i).text().trim().equals(tableDataCheck[i])) {
+			if($(".th-inner", i).text().trim().equals(tableDataCheck[i])) {
 				System.out.println(" *** potentialGuest_detail table head data ((" + i + ")) check Success !! *** ");
 			} else {
 				System.out.println(" *** potentialGuest_detail table head data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
@@ -432,12 +435,13 @@ public class temporarily_2 {
 		}
 		System.out.println(" ! ----- potentialGuest_detail End ----- ! ");
 	}
-	@Test(priority = 22)
+	//@Test(priority = 31)
 	public void mainProduct() {
 		System.out.println(" ! ----- mainProduct Start ----- ! ");
 		$(By.linkText("메인제품")).waitUntil(visible, 10000);
 		$(By.linkText("메인제품")).click();
-		if ($(".active", 2).text().trim().equals("메인제품")) {
+		$("#top-menu-name").waitUntil(visible, 15000);
+		if ($("#top-menu-name").text().trim().equals("메인제품")) {
 			System.out.println(" *** mainProduct page load Success !! *** ");
 		} else {
 			System.out.println(" *** mainProduct page load Fail ... !@#$%^&*() *** ");

@@ -455,7 +455,9 @@ public class user {
 		        close();
 		    }
 		}*/
-		$(".highcharts-tracker", 6).waitUntil(visible, 10000);
+		//$(".highcharts-tracker", 6).waitUntil(visible, 10000);
+		$(".highcharts-tracker", 6).hover();
+		$(".highcharts-tracker", 7).hover();
 		$(".highcharts-tracker", 6).hover();
 		String[] lineChartDataCheck = {"2018.12.07(±Ý)", "PC: 127", "((date))", "((system type))"};
 		pageLoadCheck = $(".highcharts-tooltip", 4).text();
