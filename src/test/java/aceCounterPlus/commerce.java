@@ -1,4 +1,4 @@
-package aceCounterPlus;
+package aceCounterPlus; //커머스 설정 > (제품가격대, 통화단위)
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -23,7 +23,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 
 /*import com.codeborne.selenide.testng.ScreenShooter;*/
 
-public class temporarily_2 {
+public class commerce {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, pw, A, pageLoadCheck, nodata;
@@ -588,8 +588,7 @@ public class temporarily_2 {
 				System.out.println(" *** rePurchaseTerm data check Fail ... !@#$%^&*() *** ");
 				close();
 			}
-		}
-		
+		}		
 		System.out.println(" ! ----- buyStatusPeriod End ----- ! ");
 	}
 	@AfterClass
