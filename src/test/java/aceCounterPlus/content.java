@@ -108,9 +108,8 @@ public class content {
 		$("#uid").setValue("apzz0928888");
 		$("#upw").setValue(pw + A);
 		$(".btn_login").click();
-		String loginCheck = $(".btn_logout").text().trim();
-		$(".btn_logout").getValue();
-		if (loginCheck.equals("·Î±×¾Æ¿ô")) {
+		$(".btn_logout").waitUntil(visible, 10000);
+		if ($(".btn_logout").text().trim().equals("·Î±×¾Æ¿ô")) {
 			System.out.println(" *** Login Success !! *** ");
 		} else {
 			System.out.println(" *** Login Fail ... !@#$%^&*() *** ");

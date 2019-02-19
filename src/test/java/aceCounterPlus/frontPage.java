@@ -87,8 +87,8 @@ public class frontPage {
 		$(".menu1").hover();
 		$(".go_product_intro").click();
 		$("#Map_beta").scrollTo();
-		$("#Map").scrollIntoView(true);
-		$(".customer-support").scrollIntoView(true);
+		$("#Map").scrollTo();
+		$(".customer-support").scrollTo();
 		$("img", 40).click();
 		System.out.println(" ** -- * Product Intro * -- **");
 		$(".gnb").waitUntil(visible, 3000);
