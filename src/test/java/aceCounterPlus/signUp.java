@@ -315,7 +315,7 @@ public class signUp {
 		}
 		System.out.println(" ! ----- app_signUp End ----- ! ");
   	}
-  	@Test(priority = 11) 
+  	//@Test(priority = 11) 
 	public void findAccount() {
 		System.out.println(" ! ----- findAccount Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
@@ -412,7 +412,7 @@ public class signUp {
 		}
 		System.out.println(" ! ----- findAccount End ----- ! ");
   	}
-  	@Test(priority = 12)
+  	//@Test(priority = 12)
 	public void restorationPassword() {
 		System.out.println(" ! ----- restorationPassword Start ----- ! ");
 		$(".go_setting").click();
