@@ -295,6 +295,7 @@ public class contentSetting {
 		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
 		$(By.linkText("URL 설정")).click();
 		$("td", 5).waitUntil(visible, 10000);
+		$("td", 5).click(); //시간 딜레이
 		pageLoadCheck = $("td", 5).text().trim();
 		if(pageLoadCheck.equals("/search")) {
 			System.out.println(" *** URLSetting_dynamicPage_add Page load Success !! *** ");
@@ -303,7 +304,7 @@ public class contentSetting {
 			close();
 		}
 		$(".btn-info", 0).click();
-		$("#page-url").waitUntil(visible, 10000);
+		$("#btn-add").waitUntil(visible, 15000);
 		pageLoadCheck = $("#btn-add").text().trim();
 		if(pageLoadCheck.equals("등록")) {
 			System.out.println(" *** URLSetting_dynamicPage_add register UI load Success !! *** ");
@@ -333,7 +334,7 @@ public class contentSetting {
 		System.out.println(" ! ----- URLSetting_dynamicPage_update Start ----- ! ");
 		$(".btn-info", 0).waitUntil(visible, 10000);
 		$(".btn-info", 0).click();
-		$("#page-url").waitUntil(visible, 10000);
+		$("#btn-add").waitUntil(visible, 15000);
 		pageLoadCheck = $("#btn-add").text().trim();
 		if(pageLoadCheck.equals("등록")) {
 			System.out.println(" *** URLSetting_dynamicPage_update register UI load Success !! *** ");
@@ -625,6 +626,7 @@ public class contentSetting {
 		valCheck("pattern_menu_null");
 		$(".fancytree-title", 0).click();
 		$(By.linkText("패턴등록")).click();
+		$("h3", 2).waitUntil(visible, 15000);
 		pageLoadCheck = $("h3", 2).text().trim();
 		if(pageLoadCheck.equals("패턴등록")) {
 			System.out.println(" *** pageGroupSetting_patternRegister page load Success !! *** ");
