@@ -1389,7 +1389,7 @@ public class serviceManagement {
 			close();
 		}
 		$("label", 15).click();
-		sleep(500);
+		sleep(1000);
 		$("#virtual-account").waitUntil(visible, 15000);
 		$("#virtual-account").scrollIntoView(false);
 		pageLoadCheck = $("#virtual-account").text().trim();
@@ -1402,7 +1402,7 @@ public class serviceManagement {
 			close();
 		}
 		$("label", 16).click();
-		sleep(500);
+		sleep(1000);
 		$("#payco").waitUntil(visible, 15000);
 		$("#payco").scrollIntoView(false);
 		pageLoadCheck = $("#payco").text().trim();

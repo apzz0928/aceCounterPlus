@@ -20,9 +20,9 @@
 <!-- <class name="aceCounterPlus.frontPage"/> -->
 <!-- <class name="aceCounterPlus.adminManage"/> -->
 <!-- <class name="aceCounterPlus.userSetting"/> -->
-<!-- <class name="aceCounterPlus.commercePrice"/> -->
+<class name="aceCounterPlus.commercePrice"/>
 <!-- <class name="aceCounterPlus.contentSetting"/> -->
-<class name="aceCounterPlus.marketingInflowSetting"/>
+<!-- <class name="aceCounterPlus.marketingInflowSetting"/> -->
 <!-- <class name="aceCounterPlus.serviceManagement"/> -->
 <!-- <class name="aceCounterPlus.user"/> -->
 <!-- <class name="aceCounterPlus.marketing"/> -->

@@ -403,7 +403,7 @@ public class commercePrice {
 		System.out.println(" ! ----- commerce_currencyUnit Start ----- ! ");
 		$(By.linkText("통화 단위")).waitUntil(visible, 10000);
 		$(By.linkText("통화 단위")).click();
-		sleep(25000);
+		sleep(26000);
 		String	pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("KRW")) {
 			System.out.println(" *** commerce_currencyUnit Page load Success !! *** ");
