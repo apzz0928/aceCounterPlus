@@ -131,7 +131,7 @@ public class marketingInflowSetting {
 	      break;
 	    }
 	    $(".modal-backdrop").waitUntil(visible, 10000);	
-	    $$("p").last().click();
+	    sleep(800);
 	    String msgCheck = $$("p").last().text().trim();
 	    Thread.onSpinWait();
 	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
@@ -309,9 +309,7 @@ public class marketingInflowSetting {
 		$("#deleteBtn").click();
 		valCheck("mktInflowSetting_del_confirm");
 		valCheck("mktInflowSetting_del_alert");
-		confirm("현재 페이지를 표시하려면, Firefox가 이전에 수행했던 정보가 필요합니다. 이전에 수행했던 작업(검색 혹은 입력 양식 제출)을 다시 반복 합니다.");
-		$("td", 1).waitUntil(hidden, 10000);
-		$("td", 0).waitUntil(visible, 10000);
+		sleep(800);
 		pageLoadCheck = $("td", 0).text().trim();
 		pLC = pageLoadCheck.split(" ");
 		if(pLC[3].equals("않습니다.")) {
