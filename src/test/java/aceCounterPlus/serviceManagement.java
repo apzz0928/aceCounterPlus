@@ -372,8 +372,9 @@ public class serviceManagement {
 			break;
 		}
 		$(".modal-backdrop").waitUntil(visible, 10000);
-	    $$("p").last().click();
-	    String msgCheck = $$("p").last().text().trim();
+	    //$$("p").last().click();
+	    sleep(800);
+		String msgCheck = $$("p").last().text().trim();
 	    Thread.onSpinWait();
 	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
 	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
@@ -502,7 +503,7 @@ public class serviceManagement {
 		$(".tit_subject", 0).click();
 		$(".txt_filename").waitUntil(visible, 15000);
 		pageLoadCheck = $(".txt_filename").text().trim();
-		if (pageLoadCheck.equals("script(ap0420121150.com).zip")) {
+		if (pageLoadCheck.equals("script(www.ap0420121150.com).zip")) {
 			System.out.println(" *** scriptList send mail fileName check Success !! *** ");
 		} else {
 			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
@@ -530,8 +531,8 @@ public class serviceManagement {
 			System.out.println(" *** scriptList aceCounter+ page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#scroll_target_121331").waitUntil(visible, 15000);
-		$("#scroll_target_121331").click();
+		$("#scroll_target_146588").waitUntil(visible, 15000);
+		$("#scroll_target_146588").click();
 		$(".text-danger", 0).waitUntil(visible, 15000);
 		pageLoadCheck = $(".text-danger", 0).text().trim();
 		if (pageLoadCheck.equals("데이터 수집/분석중지")) {
@@ -540,8 +541,6 @@ public class serviceManagement {
 			System.out.println(" *** scriptList detailView check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("#scroll_target_121331").click();
-		// $(".text-danger", 0).waitUntil(hidden, 10000);
 		System.out.println(" ! ----- scriptList End ----- ! ");
 	}
 
@@ -559,8 +558,10 @@ public class serviceManagement {
 		}
 		$("#btn_next_step1").click();
 		valCheck("installApply_null");
+		sleep(500);
 		$("#checkbox_svc_0").click();
 		$("#btn_next_step1").click();
+		$("#btn_submit").waitUntil(visible, 15000);
 		$("#btn_submit").scrollIntoView(false);
 		$("#btn_submit").click();
 		valCheck("installApply_name_null");
@@ -689,7 +690,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- memberInfo End ----- ! ");
 	}
 
-	@Test(priority = 31)
+	//@Test(priority = 31)
 	public void myCoupon() {
 		System.out.println(" ! ----- myCoupon Start ----- ! ");
 		$(By.linkText("쿠폰관리")).waitUntil(visible, 10000);
@@ -726,7 +727,9 @@ public class serviceManagement {
 	public void addService() {
 		System.out.println(" ! ----- addService Start ----- ! ");
 		$(By.linkText("서비스추가")).waitUntil(visible, 10000);
+		$(By.linkText("서비스추가")).scrollIntoView(false);
 		$(By.linkText("서비스추가")).click();
+		open("https://new.acecounter.com/manage/serviceInfo/addService");
 		$("#btn_submit").waitUntil(visible, 15000);
 		pageLoadCheck = $("#btn_submit").text().trim();
 		if (pageLoadCheck.equals("등록하기")) {
@@ -792,9 +795,9 @@ public class serviceManagement {
 	//@Test(priority = 61)
 	public void addIntegralReport() {
 		System.out.println(" ! ----- addIntegralReport Start ----- ! ");
-		/*$(By.linkText("통합리포트 생성")).waitUntil(visible, 10000);
-		$(By.linkText("통합리포트 생성")).click();*/
-		open("https://new.acecounter.com/manage/serviceInfo/addIntegralReport");
+		$(By.linkText("통합리포트 생성")).waitUntil(visible, 10000);
+		$(By.linkText("통합리포트 생성")).scrollIntoView(false);
+		$(By.linkText("통합리포트 생성")).click();
 		$(".nano-content", 2).waitUntil(visible, 15000);
 		pageLoadCheck = $(".nano-content", 2).text().trim();
 		if (pageLoadCheck.equals("이용중인 서비스가 없습니다.")) {
@@ -846,7 +849,7 @@ public class serviceManagement {
 		$(".cross", 0).waitUntil(visible, 15000);
 		$(".btn-info", 1).click();
 		valCheck("editService_edit_alert");
-		sleep(500);
+		sleep(1000);
 		//$(".btn-info", 1).waitUntil(hidden, 10000);
 		$(".btn-info", 1).waitUntil(visible, 15000);
 		pageLoadCheck = $("#svc_nm_title_0").text().trim();
@@ -856,6 +859,7 @@ public class serviceManagement {
 			System.out.println(" *** editService edit Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		sleep(1000);
 		$(".cross", 0).click();
 		$(".gui-input", 1).setValue("ap0420121150.com");
 		$(".br-dark", 0).click();
@@ -902,9 +906,9 @@ public class serviceManagement {
 			close();
 		}
 		$(".tit_subject", 0).click();
-		$("h1", 1).waitUntil(visible, 15000);
-		pageLoadCheck = $("h1", 1).text().trim();
-		if (pageLoadCheck.equals("주간요약 리포트입니다.")) {
+		$("h2", 5).waitUntil(visible, 15000);
+		pageLoadCheck = $("h2", 5).text().trim();
+		if (pageLoadCheck.substring(11, 15).equals("주간요약")) {
 			System.out.println(" *** scriptList weeklySummary Report mail detailView check Success !! *** ");
 		} else {
 			System.out.println(" *** scriptList weeklySummary Report mail detailView check Fail ... !@#$%^&*() *** ");
@@ -924,7 +928,6 @@ public class serviceManagement {
 		sleep(2000);
 		$(".check_type2").click();
 		$(By.linkText("받은메일함")).click();
-		switchTo().window(0);
 		switchTo().window(0);
 		$("#btn-save").scrollIntoView(false);
 		$(".cross", 1).click();
@@ -959,7 +962,9 @@ public class serviceManagement {
 	public void notifyReport() {
 		System.out.println(" ! ----- notifyReport Start ----- ! ");
 		$(By.linkText("알림메일 발송")).waitUntil(visible, 10000);
+		$(By.linkText("알림메일 발송")).scrollIntoView(false);
 		$(By.linkText("알림메일 발송")).click();
+		//$("li", 60).click();
 		$("#btn-save").waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 1).text().trim();
 		if (pageLoadCheck.equals("알림메일 발송")) {
@@ -1033,13 +1038,13 @@ public class serviceManagement {
 	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::button[1]")).click();
 	    $(By.id("treeDemo_2_check")).click();
 	    $(By.id("select_auth")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스추가해지테스트0001(test00011.org)'])[2]/following::option[3]")).click();
+	    $(By.id("select_auth")).selectOption("통계보기/설정하기");
 	    $("#btn_add_svc").click();
 		$("#btn_mail").click();
 		valCheck("subManager_email_send");
 		switchTo().window(1);
+		sleep(3500);
 		refresh();
-		sleep(2000);
 		pageLoadCheck = $(".tit_subject", 0).text().trim();
 		if(pageLoadCheck.substring(22).equals("부관리자 안내 메일입니다.")) {
 			System.out.println(" *** subManager guide mail title Check Success !! *** ");
@@ -1048,13 +1053,15 @@ public class serviceManagement {
 			close();
 		}
 		$(".tit_subject", 0).click();
-		pageLoadCheck = $("h1", 1).text().trim();
-		if (pageLoadCheck.equals("부관리자 회원가입 안내")) {
+		sleep(1000);
+		pageLoadCheck = $("h2", 5).text().trim();
+		if (pageLoadCheck.substring(11).equals("부관리자 회원가입 안내")) {
 			System.out.println(" *** subManager signin mail detailView check Success !! *** ");
 		} else {
 			System.out.println(" *** subManager signin mail detailView check Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		$(By.linkText("부관리자 회원가입 바로가기")).scrollIntoView(false);
 		$(By.linkText("부관리자 회원가입 바로가기")).click();
 		switchTo().window(2);
 		$("label", 0).waitUntil(visible, 15000);
@@ -1093,7 +1100,7 @@ public class serviceManagement {
 		$(".indicator").click();
 		$(".btn-info", 1).waitUntil(visible, 15000);
 	    $(By.id("select_added_auth_11000")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='[Web Pre]'])[5]/following::option[1]")).click();
+	    $(By.id("select_added_auth_11000")).selectOption("통계보기"); //부관리자 권한 변경
 	    $(".btn-info", 1).click();
 	    $("#btn-modal-alert-yes").waitUntil(visible, 15000);
 	    $("#btn-modal-alert-yes").click();
@@ -1120,10 +1127,13 @@ public class serviceManagement {
 		$("p", 4).waitUntil(visible, 15000);
 		valCheck("subManager_pw_alert");
 		open("https://new.acecounter.com/auth/logout");
+		$("#uid").waitUntil(visible, 15000);
 		$("#uid").setValue("apzz0928888");
-		$("#upw").setValue(pw + A); 
+		$("#upw").setValue(pw + A);
 		$(".btn_login").click();
+		$(".btn_logout").waitUntil(visible, 15000);
 		open("https://new.acecounter.com/manage/serviceInfo/submanager");
+		$(".br-dark", 2).waitUntil(visible, 15000);
 		$(".br-dark", 2).click();
 		valCheck("subManager_delete_confirm");
 		valCheck("subManager_delete_check");
@@ -1134,8 +1144,10 @@ public class serviceManagement {
 	public void leaveService() {
 		System.out.println(" ! ----- leaveService Start ----- ! ");
 		/*$(By.linkText("서비스 해지")).waitUntil(visible, 10000);
+		$(By.linkText("서비스 해지")).scrollIntoView(false);
 		$(By.linkText("서비스 해지")).click();*/
 		open("https://new.acecounter.com/manage/serviceInfo/leaveService");
+		sleep(500);
 		$(".m10", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".m10", 0).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
@@ -1182,12 +1194,20 @@ public class serviceManagement {
 		        $(".gui-input", x).setValue(leaveService_value);
 		    }
 		    $("#btnApply").click();
-			//테스트 확인용 System.out.println("입력창 번호 : " + x + " // 입력값 : " + leaveService_value + " // 체크값 : " + leaveService_check);
+			//System.out.println("입력창 번호 : " + x + " // 입력값 : " + leaveService_value + " // 체크값 : " + leaveService_check);
 		    valCheck(leaveService_check);
 		}
+		$("label", 5).scrollIntoView(false);
 		$("label", 5).click();
 		String inputCheck = "";
 		String userInfoCheck = "";
+		for(int i=0;i<=30;i++) {
+			if($(".gui-input", 0).text() != "원래이름") {
+				sleep(100);
+			} else {
+				break;
+			}
+		}
 		for(int i=0;i<=5;i++) {
 			switch(i) {
 			case 0:
@@ -1220,6 +1240,7 @@ public class serviceManagement {
 	public void extendCharge() {
 		System.out.println(" ! ----- extendCharge Start ----- ! ");
 		$(By.linkText("연장요금")).waitUntil(visible, 10000);
+		$(By.linkText("연장요금")).scrollIntoView(false);
 		$(By.linkText("연장요금")).click();
 		$("#btn_step1_next").waitUntil(visible, 10000);
 		pageLoadCheck = $("#headingStep1.panel-heading.active").text().trim();
@@ -1248,14 +1269,13 @@ public class serviceManagement {
 			close();
 		}
 		$(By.id("select_chargelist_0")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스요금표'])[1]/following::option[2]")).click();
-	    pageLoadCheck = $(".text-danger", 0).text().trim();
+		$(By.id("select_chargelist_0")).selectOption("100,001 ~ 200,000");
+	    sleep(100);
+		pageLoadCheck = $(".text-danger", 0).text().trim();
 		$(By.id("select_chargelist_0")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='서비스요금표'])[1]/following::option[1]")).click();
-		pLC = pageLoadCheck.split(" ");
-		if(pLC[0].equals("44,000")) { //월 서비스 요금 확인
+		$(By.id("select_chargelist_0")).selectOption("1 ~ 100,000");
+		if(pageLoadCheck.equals("44,000")) { //월 서비스 요금 확인
 			System.out.println(" *** extendCharge month service charge check Success !! *** ");
-			pLC = null;
 		} else {
 			System.out.println(" *** extendCharge month service charge check Fail ... !@#$%^&*() *** ");
 			close();
@@ -1300,13 +1320,20 @@ public class serviceManagement {
 			if(i > 0){
 				$(".gui-input", x).setValue(extendCharge_value);
 			}
-			//테스트 확인용 System.out.println("입력창 번호 : " + x + " // 입력값 : " + extendCharge_value + " // 체크값 : " + extendCharge_check);
+			//System.out.println("입력창 번호 : " + x + " // 입력값 : " + extendCharge_value + " // 체크값 : " + extendCharge_check);
 			$("#btn_consult_submit").click();
 			valCheck(extendCharge_check);
 		}
 		$("label", 10).click();
 		String inputCheck = "";
 		String userInfoCheck = "";
+		for(int i=0;i<=30;i++) {
+			if($(".gui-input", 0).text() != "원래이름") {
+				sleep(100);
+			} else {
+				break;
+			}
+		}
 		for(int i=0;i<=5;i++) {
 			switch(i) {
 			case 0:
@@ -1333,8 +1360,9 @@ public class serviceManagement {
 				close();
 			}
 		}
+		/*$("#btn_consult").waitUntil(visible, 15000);
 		$("#btn_consult").click();
-		$("#btn_consult_submit").waitUntil(hidden, 10000);
+		$("#btn_consult_submit").waitUntil(hidden, 10000);*/
 		$("#btn_step2_next").click();
 		$("#headingStep3.panel-heading.active").waitUntil(visible, 10000);
 		pageLoadCheck = $("#headingStep3.panel-heading.active").text().trim();
@@ -1346,8 +1374,13 @@ public class serviceManagement {
 			System.out.println(" *** extendCharge step3 page load check Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		$("#credit-card").waitUntil(visible, 15000);
+		$("#credit-card").scrollIntoView(false);
 		pageLoadCheck = $("#credit-card").text().trim();
 		pLC = pageLoadCheck.split("\n결제하실 금액\n");
+		/*for(int i=0;i<=pLC.length-1;i++) {
+			System.out.println("pLC[" + i + "] =  " + pLC[i]);
+		}*/
 		if(pLC[0].equals("신용카드") && pLC[1].substring(0, 7).equals("66,000원")) {
 			System.out.println(" *** extendCharge step3 credit-card payment check Success !! *** ");
 			pLC = null;
@@ -1356,6 +1389,8 @@ public class serviceManagement {
 			close();
 		}
 		$("label", 15).click();
+		$("#virtual-account").waitUntil(visible, 15000);
+		$("#virtual-account").scrollIntoView(false);
 		pageLoadCheck = $("#virtual-account").text().trim();
 		pLC = pageLoadCheck.split(" 발급 신청\n결제하실 금액\n");
 		if(pLC[0].equals("가상계좌") && pLC[1].substring(0, 7).equals("66,000원")) {
@@ -1366,6 +1401,8 @@ public class serviceManagement {
 			close();
 		}
 		$("label", 16).click();
+		$("#payco").waitUntil(visible, 15000);
+		$("#payco").scrollIntoView(false);
 		pageLoadCheck = $("#payco").text().trim();
 		pLC = pageLoadCheck.split(" 간편결제\n결제하실 금액\n");
 		if(pLC[0].equals("페이코") && pLC[1].substring(0, 8).equals("66,000 원")) {
@@ -1375,7 +1412,6 @@ public class serviceManagement {
 			System.out.println(" *** extendCharge step3 payco payment check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		
 		System.out.println(" ! ----- extendCharge End ----- ! ");
 	}
 	@Test(priority = 121)
