@@ -472,7 +472,6 @@ public class KPISetting {
 		$(".btn-dark", 0).click();
 		valCheck("reportDownload_reservedel_confirm");
 		valCheck("reportDownload_reservedel_alert");
-		$(".btn-dark", 0).waitUntil(hidden, 10000);
 		$(".btn-info").waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 0).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
