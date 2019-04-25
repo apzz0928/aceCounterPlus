@@ -22,9 +22,9 @@
 <!-- <class name="aceCounterPlus.userSetting"/> -->
 <!-- <class name="aceCounterPlus.commercePrice"/> -->
 <!-- <class name="aceCounterPlus.contentSetting"/> -->
-<class name="aceCounterPlus.KPISetting"/>
+<!-- <class name="aceCounterPlus.KPISetting"/> -->
 <!-- <class name="aceCounterPlus.marketingInflowSetting"/> -->
-<!-- <class name="aceCounterPlus.serviceManagement"/> -->
+<class name="aceCounterPlus.serviceManagement"/>
 <!-- <class name="aceCounterPlus.user"/> -->
 <!-- <class name="aceCounterPlus.marketing"/> -->
 <!-- <class name="aceCounterPlus.convert"/> -->

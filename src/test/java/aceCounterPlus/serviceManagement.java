@@ -501,6 +501,7 @@ public class serviceManagement {
 		}
 		$(".tit_subject", 0).waitUntil(visible, 15000);
 		$(".tit_subject", 0).click();
+		System.out.println("메일 제목 클릭");
 		$(".txt_filename").waitUntil(visible, 15000);
 		pageLoadCheck = $(".txt_filename").text().trim();
 		if (pageLoadCheck.equals("script(www.ap0420121150.com).zip")) {
@@ -511,9 +512,12 @@ public class serviceManagement {
 		}
 		//메일삭제
 		$(By.linkText("받은메일함")).click();
+		System.out.println("받은메일함으로 이동");
 		sleep(1000);
 		$(".select_all").waitUntil(visible, 10000);
+		System.out.println("전체 체크 체크박스 노출 대기");
 		$(".select_all").click();
+		System.out.println("전체 체크 체크박스 클릭");
 		$(".wrap_bold > .btn_del", 0).click();
 		$(By.linkText("휴지통")).click();
 		sleep(1000);
@@ -896,9 +900,11 @@ public class serviceManagement {
 		$(".sendEmail").waitUntil(visible, 15000);
 		$("#btn-sendMail").click();
 		$(".modal-center", 5).waitUntil(visible, 15000);
-		valCheck("summaryReport_sendEmail_send");switchTo().window(1);
+		valCheck("summaryReport_sendEmail_send");
+		switchTo().window(1);
 		refresh();
 		pageLoadCheck = $(".tit_subject", 0).text().trim();
+		System.out.println(".tit_subject, 0 is" + pageLoadCheck);
 		if (pageLoadCheck.substring(15, 22).equals("주간요약리포트")) {
 			System.out.println(" *** scriptList weeklySummary Report mail subject check Success !! *** ");
 		} else {
@@ -908,6 +914,7 @@ public class serviceManagement {
 		$(".tit_subject", 0).click();
 		$("h2", 5).waitUntil(visible, 15000);
 		pageLoadCheck = $("h2", 5).text().trim();
+		System.out.println("h2, 5 is" + pageLoadCheck);
 		if (pageLoadCheck.substring(11, 15).equals("주간요약")) {
 			System.out.println(" *** scriptList weeklySummary Report mail detailView check Success !! *** ");
 		} else {
@@ -916,9 +923,12 @@ public class serviceManagement {
 		}
 		//메일삭제
 		$(By.linkText("받은메일함")).click();
+		//System.out.println("받은메일함으로 이동");
 		sleep(1000);
 		$(".select_all").waitUntil(visible, 10000);
+		//System.out.println("전체 체크 체크박스 노출 대기");
 		$(".select_all").click();
+		//System.out.println("전체 체크 체크박스 클릭");
 		$(".wrap_bold > .btn_del", 0).click();
 		$(By.linkText("휴지통")).click();
 		sleep(1000);
@@ -961,9 +971,10 @@ public class serviceManagement {
 	@Test(priority = 82)
 	public void notifyReport() {
 		System.out.println(" ! ----- notifyReport Start ----- ! ");
-		$(By.linkText("알림메일 발송")).waitUntil(visible, 10000);
+		/*$(By.linkText("알림메일 발송")).waitUntil(visible, 10000);
 		$(By.linkText("알림메일 발송")).scrollIntoView(false);
-		$(By.linkText("알림메일 발송")).click();
+		$(By.linkText("알림메일 발송")).click();*/
+		$(".nav-tabs > li", 1).click();
 		//$("li", 60).click();
 		$("#btn-save").waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 1).text().trim();
@@ -1389,7 +1400,8 @@ public class serviceManagement {
 			close();
 		}
 		$("label", 15).click();
-		sleep(1000);
+		$("label", 17).waitUntil(visible, 15000);
+		sleep(1000);		
 		$("#virtual-account").waitUntil(visible, 15000);
 		$("#virtual-account").scrollIntoView(false);
 		pageLoadCheck = $("#virtual-account").text().trim();
