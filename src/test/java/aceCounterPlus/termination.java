@@ -132,7 +132,7 @@ public class termination {
 				pageLoadCheck = "Web Trial";				
 			}
 		    System.out.println("terminationApply SID is :" + $("a", x).text() + ".");
-			$(By.linkText(pageLoadCheck), 1).click();
+			$$(By.linkText(pageLoadCheck)).last().click(); //가입한지 가장 오래된 사용자 선택
 			sleep(1000);
 			switchTo().window(1);
 			open("https://new-admin.acecounter.com/manage/serviceInfo/leaveService");
