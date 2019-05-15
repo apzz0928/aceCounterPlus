@@ -483,7 +483,7 @@ public class serviceManagement {
 		$(".btn-dark", 1).click();
 		$(".btn-dark", 1).waitUntil(hidden, 10000);
 		valCheck("scriptList_email_send");
-		js("window.open('https://logins.daum.net/accounts/loginform.do?url=https%3A%2F%2Fmail.daum.net%2F');");
+		js("window.open('https://logins.daum.net/accounts/signinform.do?url=https%3A%2F%2Fmail.daum.net%2F');");
 		//다음메일 탭으로 포커스 변경
 		switchTo().window(1);
 		$("#id").setValue("apzz092888");
@@ -501,9 +501,7 @@ public class serviceManagement {
 		}
 		$(".tit_subject", 0).waitUntil(visible, 15000);
 		$(".tit_subject", 0).click();
-		System.out.println("메일 제목 클릭");
 		$(".txt_filename").waitUntil(visible, 15000);
-		pageLoadCheck = $(".txt_filename").text().trim();
 		if (pageLoadCheck.equals("script(www.ap0420121150.com).zip")) {
 			System.out.println(" *** scriptList send mail fileName check Success !! *** ");
 		} else {
@@ -512,12 +510,9 @@ public class serviceManagement {
 		}
 		//메일삭제
 		$(By.linkText("받은메일함")).click();
-		System.out.println("받은메일함으로 이동");
 		sleep(1000);
 		$(".select_all").waitUntil(visible, 10000);
-		System.out.println("전체 체크 체크박스 노출 대기");
 		$(".select_all").click();
-		System.out.println("전체 체크 체크박스 클릭");
 		$(".wrap_bold > .btn_del", 0).click();
 		$(By.linkText("휴지통")).click();
 		sleep(1000);
