@@ -214,10 +214,12 @@ public class getInflow {
 		}
 		pLC = null;
 		$("#btnChartPie").click();
+		sleep(500);
 		$(".highcharts-series-0", 2).waitUntil(visible, 10000);
 		$(".highcharts-series-0", 2).hover();
 		$(".highcharts-series-0", 2).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
+		System.out.println("highcharts-tooltip : " + pageLoadCheck);
 		if(pageLoadCheck.equals("자연유입방문수: 100.0%")) {
 			System.out.println(" *** getInflow_Summary pie chart data check Success !! *** ");
 		} else {

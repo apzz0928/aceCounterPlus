@@ -901,6 +901,7 @@ public class serviceManagement {
 		$(".modal-center", 5).waitUntil(visible, 15000);
 		valCheck("summaryReport_sendEmail_send");
 		switchTo().window(1);
+		sleep(3000);
 		refresh();
 		pageLoadCheck = $(".tit_subject", 0).text().trim();
 		if (pageLoadCheck.substring(15, 22).equals("주간요약리포트")) {
@@ -910,6 +911,7 @@ public class serviceManagement {
 			close();
 		}
 		$(".tit_subject", 0).click();
+		sleep(1000);
 		$("h2", 5).waitUntil(visible, 15000);
 		pageLoadCheck = $("h2", 5).text().trim();
 		if (pageLoadCheck.substring(11, 15).equals("주간요약")) {
