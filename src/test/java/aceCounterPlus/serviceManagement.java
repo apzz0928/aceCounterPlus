@@ -479,14 +479,14 @@ public class serviceManagement {
 		$("#mail_to").setValue(date);
 		$(".btn-dark", 1).click();
 		valCheck("scriptList_email_validation");
-		$("#mail_to").setValue("apzz092888@daum.net");
+		$("#mail_to").setValue("apzz0928888@daum.net");
 		$(".btn-dark", 1).click();
 		$(".btn-dark", 1).waitUntil(hidden, 10000);
 		valCheck("scriptList_email_send");
 		js("window.open('https://logins.daum.net/accounts/signinform.do?url=https%3A%2F%2Fmail.daum.net%2F');");
 		//다음메일 탭으로 포커스 변경
 		switchTo().window(1);
-		$("#id").setValue("apzz092888");
+		$("#id").setValue("apzz0928888");
 		$("#inputPwd").setValue(pw + A);
 		$("#loginBtn").click();
 		$(".link_check").waitUntil(visible, 15000);
@@ -502,6 +502,7 @@ public class serviceManagement {
 		$(".tit_subject", 0).waitUntil(visible, 15000);
 		$(".tit_subject", 0).click();
 		$(".txt_filename").waitUntil(visible, 15000);
+		pageLoadCheck = $(".txt_filename").text().trim();
 		if (pageLoadCheck.equals("script(www.ap0420121150.com).zip")) {
 			System.out.println(" *** scriptList send mail fileName check Success !! *** ");
 		} else {
@@ -655,8 +656,11 @@ public class serviceManagement {
 			}
 			$("#prePwd").waitUntil(visible, 10000);
 			$("#prePwd").setValue(pw);
+			sleep(500);
 			$("#changePwd").setValue(pw1);
+			sleep(500);
 			$("#changePwdConfirm").setValue(pw1);
+			sleep(500);
 			$("#modifyProc").click();
 			sleep(1000);
 			valCheck("memberInfo_change_password_confirm");
@@ -683,7 +687,7 @@ public class serviceManagement {
 	    $(By.xpath("//option[@value='010']")).click();
 	    $("#s_hp2").setValue("9743");
 	    $("#s_hp3").setValue("0928");
-		$("#s_email").setValue("apzz092888@daum.net");
+		$("#s_email").setValue("apzz0928888@daum.net");
 	    $(".btn-lg", 1).click();
 	    valCheck("memberInfo_change_alert");
 		System.out.println(" ! ----- memberInfo End ----- ! ");
@@ -887,10 +891,10 @@ public class serviceManagement {
 		$(".sendEmail").waitUntil(hidden, 10000);
 		$("#btn-sendMail").click();
 		valCheck("summaryReport_sendEmail_null");
-		$(".gui-input", 0).setValue("apzz092888@");
+		$(".gui-input", 0).setValue("apzz0928888@");
 		$("#btn-sendEmail").click();
 		valCheck("summaryReport_sendEmail_check");
-		$(".gui-input", 0).setValue("apzz092888@daum.net");
+		$(".gui-input", 0).setValue("apzz0928888@daum.net");
 		$("#btn-sendEmail").click();
 		$(".sendEmail").waitUntil(visible, 15000);
 		$("#btn-sendMail").click();
@@ -899,7 +903,6 @@ public class serviceManagement {
 		switchTo().window(1);
 		refresh();
 		pageLoadCheck = $(".tit_subject", 0).text().trim();
-		System.out.println(".tit_subject, 0 is" + pageLoadCheck);
 		if (pageLoadCheck.substring(15, 22).equals("주간요약리포트")) {
 			System.out.println(" *** scriptList weeklySummary Report mail subject check Success !! *** ");
 		} else {
@@ -909,7 +912,6 @@ public class serviceManagement {
 		$(".tit_subject", 0).click();
 		$("h2", 5).waitUntil(visible, 15000);
 		pageLoadCheck = $("h2", 5).text().trim();
-		System.out.println("h2, 5 is" + pageLoadCheck);
 		if (pageLoadCheck.substring(11, 15).equals("주간요약")) {
 			System.out.println(" *** scriptList weeklySummary Report mail detailView check Success !! *** ");
 		} else {
@@ -918,12 +920,9 @@ public class serviceManagement {
 		}
 		//메일삭제
 		$(By.linkText("받은메일함")).click();
-		//System.out.println("받은메일함으로 이동");
 		sleep(1000);
 		$(".select_all").waitUntil(visible, 10000);
-		//System.out.println("전체 체크 체크박스 노출 대기");
 		$(".select_all").click();
-		//System.out.println("전체 체크 체크박스 클릭");
 		$(".wrap_bold > .btn_del", 0).click();
 		$(By.linkText("휴지통")).click();
 		sleep(1000);
@@ -939,10 +938,10 @@ public class serviceManagement {
 		$(".reserveEmail").waitUntil(hidden, 10000);
 		$("#btn-save").click();
 		valCheck("summaryReport_reserveEmail_null");
-		$(".gui-input", 3).setValue("apzz092888@");
+		$(".gui-input", 3).setValue("apzz0928888@");
 		$("#btn-reserveEmail").click();
 		valCheck("summaryReport_reserveEmail_check");
-		$(".gui-input", 3).setValue("apzz092888@daum.net");
+		$(".gui-input", 3).setValue("apzz0928888@daum.net");
 		$("#btn-reserveEmail").click();
 		$(".reserveEmail").waitUntil(visible, 10000);
 		$("label", 18).waitUntil(visible, 10000);
@@ -969,8 +968,9 @@ public class serviceManagement {
 		/*$(By.linkText("알림메일 발송")).waitUntil(visible, 10000);
 		$(By.linkText("알림메일 발송")).scrollIntoView(false);
 		$(By.linkText("알림메일 발송")).click();*/
-		$(".nav-tabs > li", 1).click();
-		//$("li", 60).click();
+		$("li", 60).waitUntil(visible, 10000);
+		$("li", 60).scrollIntoView(false);
+		$("li", 60).click();
 		$("#btn-save").waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 1).text().trim();
 		if (pageLoadCheck.equals("알림메일 발송")) {
@@ -1035,10 +1035,10 @@ public class serviceManagement {
 		$("#submanager_nm").setValue("부관리자테스트");
 		$("#btn_mail").click();
 		valCheck("subManager_email_null");
-		$("#submanager_email").setValue("apzz092888@");
+		$("#submanager_email").setValue("apzz0928888@");
 		$("#btn_mail").click();
 		valCheck("subManager_email_check");
-		$("#submanager_email").setValue("apzz092888@daum.net");
+		$("#submanager_email").setValue("apzz0928888@daum.net");
 		$("#btn_mail").click();
 		valCheck("subManager_service_null");
 	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::button[1]")).click();
@@ -1229,7 +1229,7 @@ public class serviceManagement {
 				userInfoCheck = "0928";
 				break;
 			case 5:
-				userInfoCheck = "apzz092888@daum.net";
+				userInfoCheck = "apzz0928888@daum.net";
 				break;
 			}
 			inputCheck = $(".gui-input", i).getValue().trim();
@@ -1355,7 +1355,7 @@ public class serviceManagement {
 				userInfoCheck = "0928";
 				break;
 			case 5:
-				userInfoCheck = "apzz092888@daum.net";
+				userInfoCheck = "apzz0928888@daum.net";
 				break;
 			}
 			inputCheck = $(".gui-input", i).getValue().trim();
@@ -1394,9 +1394,10 @@ public class serviceManagement {
 			System.out.println(" *** extendCharge step3 credit-card payment check Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		sleep(500);
 		$("label", 15).click();
-		$("label", 17).waitUntil(visible, 15000);
-		sleep(1000);		
+		//$("label", 17).waitUntil(visible, 15000);
+		sleep(1500);
 		$("#virtual-account").waitUntil(visible, 15000);
 		$("#virtual-account").scrollIntoView(false);
 		pageLoadCheck = $("#virtual-account").text().trim();
