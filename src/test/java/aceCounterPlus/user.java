@@ -278,7 +278,7 @@ public class user {
 		}
 		$(".another-class", 3).waitUntil(visible, 10000);
 		pageLoadCheck = $(".another-class", 3).text().trim();
-		if (pageLoadCheck.equals("2018.12.07 (금)")) {
+		if (pageLoadCheck.equals("2018.12.07(금)")) {
 			System.out.println(" *** userStatsPercent table text check Success !! *** ");
 		} else {
 			System.out.println(" *** userStatsPercent table text check Fail ... !@#$%^&*() *** ");
@@ -330,6 +330,9 @@ public class user {
 		$("#btnChartPie").click();
 		String[] pieChartDataCheck = {"당일방문수: 98.4%", "2~7일방문수: 1.6%", "((today visit number))", "((2~7day visit number))", "((today convert number))", "((2~7day convert number))"};
 		$(".highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
+		for(int i=0;i<=pieChartDataCheck.length-1;i++) {
+			System.out.println("pieChartDataCheck[" + i + "] is : " + pieChartDataCheck[i]); //데이터 확인용
+		}
 		for(int x=0;x<=1;x++) {
 			if(x==0) {
 				$(".highcharts-series-" + x + ".highcharts-tracker > path", 0).hover();	
@@ -339,7 +342,8 @@ public class user {
 			}
 			$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
 			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
-			for(int i=0;i<=1;i++) {
+			for(int i=0;i<=1;i++) { 
+				System.out.println("i is : " + i + "/ x is :" + x + " pageLoadCheck is : " + pageLoadCheck);
 				if (pageLoadCheck.equals(pieChartDataCheck[i])) {
 					if(x==0) {
 						System.out.println(" *** userVisitFrequency pie chart visit number tooltip data " + pieChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
@@ -363,11 +367,13 @@ public class user {
 					$(".highcharts-series-" + x + ".highcharts-tracker > path", 3).hover();
 					$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
 					pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
+					System.out.println("i is : " + i + "/ x is :" + x + " pageLoadCheck is : " + pageLoadCheck);
 				} else if(x==1 && i==0) {
 					$(".highcharts-series-" + x + ".highcharts-tracker > path", 5).waitUntil(visible, 10000);
 					$(".highcharts-series-" + x + ".highcharts-tracker > path", 5).hover();
 					$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
-					pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();					
+					pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
+					System.out.println("i is : " + i + "/ x is :" + x + " pageLoadCheck is : " + pageLoadCheck);
 				}
 			}
 			pieChartDataCheck[0] = "당일전환수: 96.7%";

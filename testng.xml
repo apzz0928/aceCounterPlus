@@ -11,9 +11,9 @@
 <!-- <class name="aceCounterPlus.inhouseMarketingSetting"/> -->
 <!-- <class name="aceCounterPlus.KPISetting"/> -->
 <!-- <class name="aceCounterPlus.serviceManagement"/> -->
-<class name="aceCounterPlus.getInflow"/>
+<!-- <class name="aceCounterPlus.getInflow"/> -->
 <!-- <class name="aceCounterPlus.marketing"/> -->
-<!-- <class name="aceCounterPlus.user"/> -->
+<class name="aceCounterPlus.user"/>
 <!-- <class name="aceCounterPlus.convert"/> -->
 <!-- <class name="aceCounterPlus.commerce"/> -->
 <!-- <class name="aceCounterPlus.content"/> -->

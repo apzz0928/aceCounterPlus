@@ -396,7 +396,9 @@ public class KPISetting {
 			System.out.println(" *** reportDownload_reserveAdd list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** reportDownload_reserveAdd list Page load Fail ... !@#$%^&*() *** ");
+			close();
 		}
+		$(".btn-dark", 2).click(); //공지사항 레이어 닫기 버튼 클릭
 		$(".btn-info").click();
 		$("#btn-select-report-all").waitUntil(visible, 10000);
 		pageLoadCheck = $("#btn-select-report-all").text();
@@ -479,6 +481,7 @@ public class KPISetting {
 			System.out.println(" *** reportDownload_reserveDel list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** reportDownload_reserveDel list Page load Fail ... !@#$%^&*() *** ");
+			close();
 		}
 		System.out.println(" ! ----- reportDownload_reserveDel End ----- ! ");
 	}

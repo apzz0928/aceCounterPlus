@@ -231,8 +231,11 @@ public class marketing {
 			}
 		}
 		$("#btnChartLine").click();
+		sleep(1000);
 		String[] lineChartDataCheck = {"2018.12.19(수)", "다음브랜드검색: 19", "네이버브랜드검색: 13", "((date))", "((daum brand search))", "((naver brand search))"};
 		$(".highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
+		$(".highcharts-series-0.highcharts-tracker > path", 0).hover();
+		$(".highcharts-series-1.highcharts-tracker > path", 0).hover();
 		$(".highcharts-series-0.highcharts-tracker > path", 0).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
@@ -279,6 +282,7 @@ public class marketing {
 	    
 	    String[] barChartDataCheck = {"2018.12.19(수)", "방문수: 56", "노출수: 0", "daily publication", "visit number", "reach number"};
 	    $(".highcharts-series-0.highcharts-tracker", 0).hover();
+	    $(".highcharts-series-0.highcharts-tracker", 0).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
 	    for(int i=0;i<=2;i++) {
@@ -301,6 +305,10 @@ public class marketing {
 	    String[] lineChartDataCheck = {"2018.12.19(수)", "다음브랜드검색: 19", "네이버브랜드검색: 13", "((daily publication))", "((daum brand search))", "((naver brand search))"};
 	    pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 	    pLC = pageLoadCheck.split("● ");
+		for(int i=0;i<=pLC.length-1;i++) {
+			System.out.println("pLC[" + i + "] is : " + pLC[i]);
+		}
+	    sleep(100000);
 	    for(int i=0;i<=2;i++) {
 			if (pLC[i].equals(lineChartDataCheck[i])) {
 				System.out.println(" *** marketing_detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
