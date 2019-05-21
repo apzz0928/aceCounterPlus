@@ -398,7 +398,8 @@ public class KPISetting {
 			System.out.println(" *** reportDownload_reserveAdd list Page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".btn-dark", 2).click(); //공지사항 레이어 닫기 버튼 클릭
+		//공지사항 레이어 때문에 추가
+		$(".btn-dark", 2).click();
 		$(".btn-info").click();
 		$("#btn-select-report-all").waitUntil(visible, 10000);
 		pageLoadCheck = $("#btn-select-report-all").text();
@@ -450,6 +451,8 @@ public class KPISetting {
 	@Test(priority = 12)
 	public void reportDownload_reserveDel() {
 		System.out.println(" ! ----- reportDownload_reserveDel Start ----- ! ");
+		//공지사항 레이어 때문에 추가
+		$(".btn-dark", 3).click();
 		$(By.linkText(date)).click();
 		$(".form-control", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $("th", 0).text();
@@ -474,6 +477,7 @@ public class KPISetting {
 		$(".btn-dark", 0).click();
 		valCheck("reportDownload_reservedel_confirm");
 		valCheck("reportDownload_reservedel_alert");
+		sleep(500);
 		$(".btn-info").waitUntil(visible, 10000);
 		pageLoadCheck = $("td", 0).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
@@ -489,6 +493,8 @@ public class KPISetting {
 	public void reportDownload_oneshotAdd() {
 		System.out.println(" ! ----- reportDownload_oneshotAdd Start ----- ! ");
 		sleep(1000);
+		//공지사항 레이어 때문에 추가
+		$(".btn-dark", 2).click();
 		$(".btn-info").click();
 		$("#btn-select-report-all").waitUntil(visible, 10000);
 		pageLoadCheck = $("#btn-select-report-all").text();
