@@ -192,7 +192,9 @@ public class user {
 			}			
 		}
 		String[] chartDataCheck = {"2018.12.07(금)", "방문수: 127", "순방문수: 2", "신규방문수: 0", "페이지뷰: 1,178", "((date))", "((visit number))", "((unique visit))", "((new visit))", "((page view))"};
-		$(".highcharts-series-group").hover();
+		$(".highcharts-series-group > .highcharts-markers.highcharts-series-0.highcharts-tracker > path").hover();
+		$(".highcharts-series-group > .highcharts-markers.highcharts-series-1.highcharts-tracker > path").hover();
+		$(".highcharts-series-group > .highcharts-markers.highcharts-series-2.highcharts-tracker > path").hover();
 		$(".highcharts-tooltip").waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
 		pLC = pageLoadCheck.split("● ");
@@ -328,6 +330,7 @@ public class user {
 			pLC = null;
 	    }	
 		$("#btnChartPie").click();
+		sleep(3000);
 		String[] pieChartDataCheck = {"당일방문수: 98.4%", "2~7일방문수: 1.6%", "((today visit number))", "((2~7day visit number))", "((today convert number))", "((2~7day convert number))"};
 		$(".highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
 		for(int i=0;i<=pieChartDataCheck.length-1;i++) {
@@ -335,15 +338,22 @@ public class user {
 		}
 		for(int x=0;x<=1;x++) {
 			if(x==0) {
-				$(".highcharts-series-" + x + ".highcharts-tracker > path", 0).hover();	
+				$(".highcharts-series-" + x + ".highcharts-tracker > path", 0).hover();
+				$(".highcharts-series-" + x + ".highcharts-tracker > path", 0).hover();
+				$(".highcharts-series-" + x + ".highcharts-tracker > path", 0).hover();
+				System.out.println(".highcharts-series-" + x + ".highcharts-tracker > path 2 hover");
+				System.out.println("방문수 " + x + "번째" + $(".highcharts-tooltip", 1).text().trim());
 			} else {
-				$(".highcharts-series-" + x + ".highcharts-tracker > path", 2).hover();
-				$(".highcharts-series-" + x + ".highcharts-tracker > path", 4).hover();
+				$(".highcharts-series-" + x + ".highcharts-tracker > path", 0).hover();
+				$(".highcharts-series-" + x + ".highcharts-tracker > path", 0).hover();
+				$(".highcharts-series-" + x + ".highcharts-tracker > path", 0).hover();
+				System.out.println(".highcharts-series-" + x + ".highcharts-tracker > path 2 hover");
+				System.out.println("전환 " + x + "번째" + $(".highcharts-tooltip", 1).text().trim());
 			}
 			$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
 			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 			for(int i=0;i<=1;i++) { 
-				System.out.println("i is : " + i + "/ x is :" + x + " pageLoadCheck is : " + pageLoadCheck);
+				//System.out.println("i is : " + i + "/ x is :" + x + " pageLoadCheck is : " + pageLoadCheck);
 				if (pageLoadCheck.equals(pieChartDataCheck[i])) {
 					if(x==0) {
 						System.out.println(" *** userVisitFrequency pie chart visit number tooltip data " + pieChartDataCheck[i+2] + "((" + i + "))" + " check Success !! *** ");
@@ -354,26 +364,30 @@ public class user {
 				} else {
 					if(x==0) {
 						System.out.println(" *** userVisitFrequency pie chart visit number tooltip data " + pieChartDataCheck[i+2] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
-						close();						
+						System.out.println("." + pieChartDataCheck[i] + ".");
+						System.out.println("." + pageLoadCheck + ".");
+						//close();						
 					} else {
 						System.out.println(" *** userVisitFrequency pie chart convert number tooltip data " + pieChartDataCheck[i+4] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
 						System.out.println("." + pieChartDataCheck[i] + ".");
 						System.out.println("." + pageLoadCheck + ".");
-						close();
+						//close();
 					}
 				}
 				if(x==0 && i==0) {
+					$(".highcharts-series-" + x + ".highcharts-tracker > path", 1).hover();
+					$(".highcharts-series-" + x + ".highcharts-tracker > path", 1).hover();
+					$(".highcharts-series-" + x + ".highcharts-tracker > path", 1).hover();
+					$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
+					pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
+					//System.out.println("i is : " + i + "/ x is :" + x + " pageLoadCheck is : " + pageLoadCheck);
+				} else if(x==1 && i==0) {
 					$(".highcharts-series-" + x + ".highcharts-tracker > path", 3).waitUntil(visible, 10000);
+					$(".highcharts-series-" + x + ".highcharts-tracker > path", 3).hover();
 					$(".highcharts-series-" + x + ".highcharts-tracker > path", 3).hover();
 					$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
 					pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
-					System.out.println("i is : " + i + "/ x is :" + x + " pageLoadCheck is : " + pageLoadCheck);
-				} else if(x==1 && i==0) {
-					$(".highcharts-series-" + x + ".highcharts-tracker > path", 5).waitUntil(visible, 10000);
-					$(".highcharts-series-" + x + ".highcharts-tracker > path", 5).hover();
-					$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
-					pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
-					System.out.println("i is : " + i + "/ x is :" + x + " pageLoadCheck is : " + pageLoadCheck);
+					//System.out.println("i is : " + i + "/ x is :" + x + " pageLoadCheck is : " + pageLoadCheck);
 				}
 			}
 			pieChartDataCheck[0] = "당일전환수: 96.7%";
