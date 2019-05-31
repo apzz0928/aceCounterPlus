@@ -183,7 +183,7 @@ public class inhouseMarketingSetting {
 			if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
 				System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
 				$$(".btn-info").last().click();
-			    $(".modal-backdrop").waitUntil(hidden, 10000);
+			    sleep(500);
 			} else { //confirm 아니면 .btn-sm클릭
 				System.out.println(" *** " + val +  " - check Success !! *** ");
 				$$(".btn-sm").last().click();
