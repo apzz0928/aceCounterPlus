@@ -629,7 +629,7 @@ public class KPISetting {
 		}
 		$(".cross", 1).scrollTo();
 		$(".cross", 1).waitUntil(visible, 10000);
-		for(int i=19;i>=1;i--) { //나의 메뉴 삭제
+		for(int i=1;i>=19;i++) { //나의 메뉴 삭제
 			$(".cross", 1).click();
 			System.out.println("myMenu del btn number is " + i);
 		}
