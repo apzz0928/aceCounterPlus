@@ -631,6 +631,7 @@ public class KPISetting {
 		$(".cross", 19).waitUntil(visible, 10000);
 		for(int i=19;i>=1;i--) { //나의 메뉴 삭제
 			$(".cross", i).click();
+			sleep(300);
 			System.out.println("myMenu del btn number is " + i);
 		}
 		$("#saveBtn").click();
