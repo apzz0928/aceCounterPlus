@@ -627,11 +627,10 @@ public class KPISetting {
 			System.out.println(" *** myMenu_add register Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".cross", 19).scrollTo();
-		$(".cross", 19).waitUntil(visible, 10000);
+		$(".cross", 1).scrollTo();
+		$(".cross", 1).waitUntil(visible, 10000);
 		for(int i=19;i>=1;i--) { //나의 메뉴 삭제
-			$(".cross", i).click();
-			sleep(300);
+			$(".cross", 1).click();
 			System.out.println("myMenu del btn number is " + i);
 		}
 		$("#saveBtn").click();
