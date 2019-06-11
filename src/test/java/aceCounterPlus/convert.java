@@ -213,7 +213,8 @@ public class convert {
 				close();
 			}
 		}
-		String[] pieChartDataCheck = {"/62.8%", "21 페이지 이상62.8%", "1 페이지37.2%", "당일93.0%", "2일7.0%", "((landingPage))", "((visit path depth))", "((convert time required))"};
+		String[] pieChartDataCheck = {"/랜딩페이지: 62.8%", "21 페이지 이상방문경로깊이: 62.8%", "1 페이지방문경로깊이: 37.2%", "당일전환까지 소요기간: 93.0%", "2일전환까지 소요기간: 7.0%", "((landingPage))", "((visit path depth))", "((convert time required))"};
+		$(".highcharts-series-0 > path", 0).hover();
 		$(".highcharts-series-0 > path", 0).hover();
 		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
 		pageLoadCheck = $(".highcharts-tooltip").text().trim();
@@ -224,6 +225,7 @@ public class convert {
 			close();
 		}
 		for(int i=0;i<=1;i++) {
+			$(".highcharts-series-0 > path", (i+10)).hover();
 			$(".highcharts-series-0 > path", (i+10)).hover();
 			$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
 			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();

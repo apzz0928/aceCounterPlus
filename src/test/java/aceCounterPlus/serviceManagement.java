@@ -515,6 +515,7 @@ public class serviceManagement {
 		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
+		System.out.println(" *** move to basket *** ");
 		$(By.linkText("휴지통")).click();
 		sleep(1000);
 		$(".select_all").waitUntil(visible, 10000);
@@ -522,7 +523,9 @@ public class serviceManagement {
 		$(".wrap_bold > .btn_permanent").click();
 		sleep(2000);
 		$(".check_type2").click();
+		System.out.println(" *** delete mail *** ");
 		$(By.linkText("받은메일함")).click();
+		System.out.println(" *** move to inbox *** ");
 		switchTo().window(0);
 		pageLoadCheck = $("#scriptList").text().trim();
 		if (pageLoadCheck.equals("분석스크립트")) {
@@ -926,6 +929,7 @@ public class serviceManagement {
 		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
+		System.out.println(" *** move to basket *** ");
 		$(By.linkText("휴지통")).click();
 		sleep(1000);
 		$(".select_all").waitUntil(visible, 10000);
@@ -933,7 +937,9 @@ public class serviceManagement {
 		$(".wrap_bold > .btn_permanent").click();
 		sleep(2000);
 		$(".check_type2").click();
+		System.out.println(" *** delete mail *** ");
 		$(By.linkText("받은메일함")).click();
+		System.out.println(" *** move to inbox *** ");
 		switchTo().window(0);
 		$("#btn-save").scrollIntoView(false);
 		$(".cross", 1).click();
@@ -1087,6 +1093,7 @@ public class serviceManagement {
 		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
+		System.out.println(" *** move to basket *** ");
 		$(By.linkText("휴지통")).click();
 		sleep(1000);
 		$(".select_all").waitUntil(visible, 10000);
@@ -1094,7 +1101,9 @@ public class serviceManagement {
 		$(".wrap_bold > .btn_permanent").click();
 		sleep(2000);
 		$(".check_type2").click();
+		System.out.println(" *** delete mail *** ");
 		$(By.linkText("받은메일함")).click();
+		System.out.println(" *** move to inbox *** ");
 		switchTo().window(0);
 		switchTo().window(0);
 		refresh();
