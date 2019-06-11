@@ -392,7 +392,7 @@ public class user {
 			System.out.println(" *** system page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		String[] pieChartDataCheck = {"기기타입PC", "웹브라우저firefox 62.0chrome 70.0", "운영체제windows 10"};
+		String[] pieChartDataCheck = {"기기타입\nPC", "웹브라우저\nfirefox 62.0\nchrome 70.0", "운영체제\nwindows 10"};
 		$("svg", 0).waitUntil(visible, 10000);
 		for(int i=0;i<=2;i++) {
 			pageLoadCheck = $("svg", i).text().trim();
@@ -501,6 +501,8 @@ public class user {
 		}
 		String[] barChartDataCheck = {"2018.12.07(금)", "회원: 0", "비회원: 127", "방문수: 127", "((date))", "((member))", "((nonmember))", "((visit number))"};
 		$(".highcharts-tracker", 2).hover();
+		$(".highcharts-tracker", 2).hover();
+		$(".highcharts-tracker", 2).hover();
 		pageLoadCheck = $(".highcharts-tooltip").text();
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
@@ -528,16 +530,18 @@ public class user {
 				close();
 			}
 		}
+		js("window.scrollTo(0, 2000)");
 		String[] tableDataCheck = {"2018.12.07(금)", "127", "0", "127", "0", "0%", "0", "0", "0", "0%", "0", "0", "((date))", "((visit number))", "((member))", "((nonmember))", "((signin number))", "((signin percent))", "((login number))", "((cancel number))", "((member convert number))", "((member convert percent))", "((member convert sales))", "((visit sales))"};
-		for(int i=19;i<=30;i++) {
-			pageLoadCheck = $("td", i).text().trim();
-			if(pageLoadCheck.equals(tableDataCheck[i-19])) {
-				System.out.println(" *** member_memberStatus table data " + tableDataCheck[i-7] + "((" + i + "))" + " check Success !! *** ");
+		for(int i=12;i<=23;i++) {
+			pageLoadCheck = $("tr.text-nowrap.another-class > td", i).text();
+			if(pageLoadCheck.equals(tableDataCheck[i-12])) {
+				System.out.println(" *** member_memberStatus table data " + tableDataCheck[i] + "((" + (i-12) + "))" + " check Success !! *** ");
 			} else {
-				System.out.println(" *** member_memberStatus table data " + tableDataCheck[i-7] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** member_memberStatus table data " + tableDataCheck[i] + "((" + (i-12) + "))" + " check Fail ... !@#$%^&*() *** ");
 				close();
 			}
 		}
+		js("window.scrollTo(0, 0)");
 		System.out.println(" ! ----- member_memberStatus End ----- ! ");
 	}
 	@Test(priority = 32)
