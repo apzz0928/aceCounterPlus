@@ -263,9 +263,9 @@ public class marketing {
 			close();
 		}
 	    $(By.id("chartSelect1")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='조회'])[1]/following::option[1]")).click();
+	    $(By.id("chartSelect1")).selectOption("방문수");
 	    $(By.id("chartSelect2")).click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='조회'])[1]/following::option[23]")).click();
+	    $(By.id("chartSelect2")).selectOption("노출수");
 	    $(".highcharts-series-0.highcharts-tracker > rect").waitUntil(visible, 10000);
 	    String[] tableDataCheck = {"네이버브랜드검색", "13", "92.31%", "0", "0", "0", "0%", "0", "0", "0%", "0", "0%", "0", "0", "((product))", "((visit number))", "((return percent))", 
 	    		"((reach number))", "((click number))", "((advertising cost))", "((CTR))", "((CPC))", "((CPA))", "((ROAS))", "((convert number))", "((convert percent))", "((convert sales))", "((visit sales))"};
@@ -302,13 +302,13 @@ public class marketing {
 	    $(".highcharts-tracker", 5).hover();
 	    $(".highcharts-tracker", 7).hover();
 	    $(".highcharts-tracker", 3).hover();
+	    sleep(50000);
 	    String[] lineChartDataCheck = {"2018.12.19(수)", "다음브랜드검색: 19", "네이버브랜드검색: 13", "((daily publication))", "((daum brand search))", "((naver brand search))"};
 	    pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 	    pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=pLC.length-1;i++) {
 			System.out.println("pLC[" + i + "] is : " + pLC[i]);
 		}
-	    sleep(100000);
 	    for(int i=0;i<=2;i++) {
 			if (pLC[i].equals(lineChartDataCheck[i])) {
 				System.out.println(" *** marketing_detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
@@ -322,7 +322,7 @@ public class marketing {
 	@Test(priority = 3)
 	public void marketing_clickChoice() {
 		System.out.println(" ! ----- marketing_clickChoice Start ----- ! ");
-		$(By.linkText("네이버 검색광고")).waitUntil(visible, 10000);
+		//$(By.linkText("네이버 검색광고")).waitUntil(visible, 10000);
 		$(By.linkText("네이버 검색광고")).click();
 		$(".active", 2).waitUntil(visible, 10000);
 		pageLoadCheck = $(".active", 2).text().trim();

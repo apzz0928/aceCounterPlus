@@ -676,6 +676,7 @@ public class contentSetting {
 			System.out.println(" *** pageGroupSetting_pageUpload page load Success !! *** ");
 		} else {
 			System.out.println(" *** pageGroupSetting_pageUpload page load Fail ... !@#$%^&*() *** ");
+			System.out.println("pageLoadCheck is : " + pageLoadCheck);
 			close();
 		}
 	    System.out.println(" ! ----- pageGroupSetting_pageUpload End ----- ! ");
