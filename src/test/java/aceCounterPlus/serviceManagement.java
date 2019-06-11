@@ -490,7 +490,7 @@ public class serviceManagement {
 		$("#inputPwd").setValue(pw + A);
 		$("#loginBtn").click();
 		$(".link_check").waitUntil(visible, 15000);
-		sleep(1000);
+		sleep(3000);
 		refresh();
 		pageLoadCheck = $("h1").text().trim();
 		if (pageLoadCheck.equals("Daum\n" + "메일")) {
@@ -914,7 +914,7 @@ public class serviceManagement {
 			close();
 		}
 		$(".tit_subject", 0).click();
-		sleep(1000);
+		sleep(3000);
 		$("h2", 5).waitUntil(visible, 15000);
 		pageLoadCheck = $("h2", 5).text().trim();
 		if (pageLoadCheck.substring(11, 15).equals("주간요약")) {
@@ -1067,7 +1067,7 @@ public class serviceManagement {
 			close();
 		}
 		$(".tit_subject", 0).click();
-		sleep(1000);
+		sleep(3000);
 		pageLoadCheck = $("h2", 5).text().trim();
 		if (pageLoadCheck.substring(11).equals("부관리자 회원가입 안내")) {
 			System.out.println(" *** subManager signin mail detailView check Success !! *** ");

@@ -273,7 +273,7 @@ public class commerce {
 		$("path", 2).hover();
 		$("path", 3).hover();
 		$("path", 2).hover();
-		String[] reviewChartDataCheck = {"2018-12-21(금)불만족:", "0%미흡:", "0%보통:", "0%만족:", "0%매우만족:", "0%"};
+		String[] reviewChartDataCheck = {"2018.12.21(금)불만족:", "0%미흡:", "0%보통:", "0%만족:", "0%매우만족:", "0%"};
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split(" ");
 		for(int i=0;i<=5;i++) {
@@ -349,7 +349,7 @@ public class commerce {
 			close();
 		}
 		$("td", 27).waitUntil(visible, 10000);
-		String[] tableDataCheck = {"2018-12-21(금)", "0", "0", "0%", "0", "0%", "0", "0%", "0", "0%", "0"};
+		String[] tableDataCheck = {"2018.12.21(금)", "0", "0", "0%", "0", "0%", "0", "0%", "0", "0%", "0"};
 		for(int i=0;i<=10;i++) {
 			if($("td", i+17).text().trim().equals(tableDataCheck[i])) {
 				System.out.println(" *** potentialGuest_all table data ((" + i + ")) check Success !! *** ");
@@ -363,7 +363,7 @@ public class commerce {
 		$(".highcharts-tracker", 5).hover();
 		$(".highcharts-tracker", 4).hover();
 		$(".highcharts-tracker", 5).hover();
-		String[] barChartDataCheck = {"2018-12-21(금)", "탐색: 0", "비교: 0", "담기: 0", "구매: 0", "방문수: 0"};
+		String[] barChartDataCheck = {"2018.12.21(금)", "탐색: 0", "비교: 0", "담기: 0", "구매: 0", "방문수: 0"};
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=5;i++) {
@@ -392,7 +392,7 @@ public class commerce {
 		$(".highcharts-tracker", 2).hover();
 		$(".highcharts-tracker", 0).hover();
 		$(".highcharts-tracker", 2).hover();
-		String[] lineChartDataCheck = {"2018-12-21(금)", "탐색: 0", "비교: 0", "담기: 0", "구매: 0"};
+		String[] lineChartDataCheck = {"2018.12.21(금)", "탐색: 0", "비교: 0", "담기: 0", "구매: 0"};
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=4;i++) {
@@ -503,7 +503,7 @@ public class commerce {
 			close();
 		}
 		$("td", 25).waitUntil(visible, 10000);
-		if($("td", 25).text().trim().equals("2018-12-21(금)")) {
+		if($("td", 25).text().trim().equals("2018.12.21(금)")) {
 			System.out.println(" *** buyStatus table data check Success !! *** ");
 		} else {
 			System.out.println(" *** buyStatus table data check Fail ... !@#$%^&*() *** ");
@@ -515,7 +515,7 @@ public class commerce {
 		$(".highcharts-tracker", 3).hover();
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
-		String[] barChartDataCheck = {"2018-12-21(금)", "신규구매: 0", "재구매: 0", "합계: 0"};
+		String[] barChartDataCheck = {"2018.12.21(금)", "신규구매: 0", "재구매: 0", "합계: 0"};
 		for(int i=0;i<=3;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
 				System.out.println(" *** buyStatus bar chart data ((" + i + ")) check Success !! *** ");
@@ -532,7 +532,7 @@ public class commerce {
 		$(".highcharts-tracker", 0).hover();
 		$(".highcharts-tracker", 2).hover();
 		$(".highcharts-tracker", 4).hover();
-		String[] lineChartDataCheck = {"2018-12-21(금)", "신규구매: 0", "재구매: 0", "합계: 0"};
+		String[] lineChartDataCheck = {"2018.12.21(금)", "신규구매: 0", "재구매: 0", "합계: 0"};
 		pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 		pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=3;i++) {
@@ -589,6 +589,85 @@ public class commerce {
 			}
 		}		
 		System.out.println(" ! ----- buyStatusPeriod End ----- ! ");
+	}
+	@Test(priority = 43)
+	public void buyStatusOrder() {
+		System.out.println(" ! ----- buyStatusOrder Start ----- ! ");
+		$(By.linkText("주문")).waitUntil(visible, 10000);
+		$(By.linkText("주문")).click();
+		if ($(".active", 2).text().trim().equals("주문")) {
+			System.out.println(" *** buyStatusOrder page load Success !! *** ");
+		} else {
+			System.out.println(" *** buyStatusOrder page load Fail ... !@#$%^&*() *** ");
+			close();
+		}
+		$(".no-records-found > td").waitUntil(visible, 10000);
+		String[] chartDataCheck = {"2018.12.21(금)", "매출액", "제품금액"};
+		$(".highcharts-markers.highcharts-series-1.highcharts-tracker > path").hover();
+		$(".highcharts-markers.highcharts-series-1.highcharts-tracker > path").hover();
+		pageLoadCheck = $(".highcharts-tooltip").text().trim();
+		String pLC[] = pageLoadCheck.split("● ");
+		for(int i=0;i<=pLC.length-1;i++) {
+			System.out.println("pLC[" + i + "] is : " + pLC[i] + ".");
+		}
+		for(int i=0;i<=2;i++) {
+			if(i == 0) {
+				if(pLC[i] == chartDataCheck[i]) {
+					System.out.println(" *** buyStatusOrder chart data ((" + i + ")) check Success !! *** ");
+				} else {
+					System.out.println(" *** buyStatusOrder chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(pLC[i]);
+					close();	
+				}
+			} else if(i == 1) {
+				A = pLC[i];
+				if(A.substring(0, 3) == chartDataCheck[i]) {
+					System.out.println(" *** buyStatusOrder chart data ((" + i + ")) check Success !! *** ");
+				} else {
+					System.out.println(" *** buyStatusOrder chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(pLC[i]);
+					close();	
+				}
+			} else if(i == 2) {
+				A = pLC[i];
+				if(A.substring(0, 4) == chartDataCheck[i]) {
+					System.out.println(" *** buyStatusOrder chart data ((" + i + ")) check Success !! *** ");
+				} else {
+					System.out.println(" *** buyStatusOrder chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(pLC[i]);
+					close();	
+				}
+			}
+			pLC = null;
+		}
+		String[] tableDataCheck = {"주문번호", "유입출처", "구매수량", "제품금액", "배송비", "매출액-제품금액-배송비", "매출액"};
+		//3~9
+		for(int i=3;i<=9;i++) {
+			pageLoadCheck = $(".th-inner").text().trim();
+			if(i == 7 || i == 9) {
+				if(pageLoadCheck.substring(0, 3) == tableDataCheck[i-3]) {
+					System.out.println(" *** buyStatusOrder table data ((" + (i-3) + ")) check Success !! *** ");
+				} else {
+					System.out.println(" *** buyStatusOrder table data ((" + (i-3) + ")) check Fail ... !@#$%^&*() *** ");
+					close();	
+				}
+			} else if (i == 8) {
+				if(pageLoadCheck.substring(0, 12) == tableDataCheck[i-3]) {
+					System.out.println(" *** buyStatusOrder table data ((" + (i-3) + ")) check Success !! *** ");
+				} else {
+					System.out.println(" *** buyStatusOrder table data ((" + (i-3) + ")) check Fail ... !@#$%^&*() *** ");
+					close();	
+				}
+			} else {
+				if(pageLoadCheck.substring(0, 4) == tableDataCheck[i-3]) {
+					System.out.println(" *** buyStatusOrder table data ((" + (i-3) + ")) check Success !! *** ");
+				} else {
+					System.out.println(" *** buyStatusOrder table data ((" + (i-3) + ")) check Fail ... !@#$%^&*() *** ");
+					close();	
+				}
+			}
+		}
+		System.out.println(" ! ----- buyStatusOrder End ----- ! ");
 	}
 	@AfterClass
 	public void afterTest() {

@@ -14,8 +14,8 @@
 <!-- <class name="aceCounterPlus.getInflow"/> -->
 <!-- <class name="aceCounterPlus.marketing"/> -->
 <!-- <class name="aceCounterPlus.user"/> -->
-<class name="aceCounterPlus.convert"/>
-<!-- <class name="aceCounterPlus.commerce"/> -->
+<!-- <class name="aceCounterPlus.convert"/> -->
+<class name="aceCounterPlus.commerce"/>
 <!-- <class name="aceCounterPlus.content"/> -->
 <!-- <class name="aceCounterPlus.inhouseMarketing"/> -->
 <!-- <class name="aceCounterPlus.KPISegment"/> -->

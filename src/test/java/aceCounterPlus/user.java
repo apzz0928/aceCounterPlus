@@ -94,7 +94,6 @@ public class user {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	private static void js(String javaScript) {
 		executeJavaScript(javaScript);
 	}
