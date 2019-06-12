@@ -263,7 +263,7 @@ public class inhouseMarketing {
 		$(".highcharts-tracker", 1).hover();
 		$(".highcharts-tracker", 2).hover();
 		$(".highcharts-tracker", 1).hover();
-		String[] barChartDataCheck = {"2018.12.21 (금)", "인하우스 - 바이럴: 12", "합계: 12", "((date))", "((inhouse-viral))", "((total))"};
+		String[] barChartDataCheck = {"2018.12.21(금)", "인하우스 - 바이럴: 12", "합계: 12", "((date))", "((inhouse-viral))", "((total))"};
 		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
 		String[] pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=2;i++) {
@@ -405,8 +405,8 @@ public class inhouseMarketing {
 			System.out.println(" *** Talk page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("td", 25).waitUntil(visible, 10000);
-		$("td", 25).click();
+		$(".text-nowrap.another-class.cursor > td", 14).waitUntil(visible, 10000);
+		$(".text-nowrap.another-class.cursor > td", 14).click();
 		String[] panelDatacheck = {"12", "100%", "1", "0", "0", "((visit number))", "((return percent))", "((visit pageview))", "((purchases number))", "((sales))"};
 		for(int i=0;i<=4;i++) {
 			pageLoadCheck = $(".summary-data", i).text().trim();
@@ -419,8 +419,8 @@ public class inhouseMarketing {
 		}
 		String[] tableDataCheck = {"└ inhouse-talk", "2018-12-03", "5", "12", "100%", "240%", "100%", "1", "((campaign))", "((send date))", "((send number))"
 				, "((visit number))", "((visit percent))", "((inflow percent))", "((return percent))", "((visit pageview))"};
-		for(int i=0;i<=7;i++) {
-			pageLoadCheck = $("td", i+38).text().trim();
+		for(int i=0;i<=7;i++) { //26~33
+			pageLoadCheck = $(".text-nowrap.another-class.cursor > td", i+26).text().trim();
 			if(pageLoadCheck.equals(tableDataCheck[i])) {
 				System.out.println(" *** Talk table data " + tableDataCheck[i+8] + "((" + i + ")) check Success !! *** ");
 			} else {

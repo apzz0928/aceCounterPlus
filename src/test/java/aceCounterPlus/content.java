@@ -95,7 +95,6 @@ public class content {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	private static void js(String javaScript) {
 		executeJavaScript(javaScript);
 	}
