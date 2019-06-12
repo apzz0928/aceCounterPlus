@@ -294,8 +294,7 @@ public class contentSetting {
 		System.out.println(" ! ----- URLSetting_dynamicPage_add Start ----- ! ");
 		$(By.linkText("URL 설정")).waitUntil(visible, 10000);
 		$(By.linkText("URL 설정")).click();
-		$("td", 5).waitUntil(visible, 10000);
-		$("td", 5).click(); //시간 딜레이
+		sleep(1500);
 		pageLoadCheck = $("td", 5).text().trim();
 		if(pageLoadCheck.equals("/search")) {
 			System.out.println(" *** URLSetting_dynamicPage_add Page load Success !! *** ");

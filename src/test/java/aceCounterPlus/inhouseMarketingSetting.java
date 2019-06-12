@@ -255,7 +255,7 @@ public class inhouseMarketingSetting {
 		$(".accordion-toggle", 4).click();
 		$(By.linkText("바이럴 설정")).waitUntil(visible, 10000);
 		$(By.linkText("바이럴 설정")).click();
-		$("td", 1).waitUntil(visible, 10000);
+		sleep(1500);
 		pageLoadCheck = $("td", 2).text();
 		if(pageLoadCheck.equals("디코딩-인하우스마케팅-바이럴")) {
 			System.out.println(" *** viralSetting_add list Page load Success !! *** ");
