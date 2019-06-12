@@ -171,7 +171,7 @@ public class content {
 		$(".btn-apply").click();
 		refresh();
 		$(".pull-right", 3).waitUntil(visible, 10000);
-		dateCheck = $(".pull-right", 3).text().trim();
+		dateCheck = $(".pull-right", 2).text().trim();
 		String[] pLC = dateCheck.split(" 어제");
 		if (pLC[0].equals("오늘 순위를")) {
 			System.out.println(" *** page_popularPage date range pick Success !! *** ");
@@ -349,10 +349,10 @@ public class content {
 			System.out.println(" *** page_internalPage page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("td", 29).waitUntil(visible, 10000);
+		$("tr.text-nowrap.another-class > td", 0).waitUntil(visible, 10000);
 		String[] tableDataCheck = {"합계", "149", "100%", "144"};
 		for(int i=0;i<=3;i++) {
-			pageLoadCheck = $("td", (i+29)).text().trim();
+			pageLoadCheck = $("tr.text-nowrap.another-class > td", i).text().trim();
 			if(pageLoadCheck.equals(tableDataCheck[i])) {
 				System.out.println(" *** page_internalPage table data ((" + i + ")) check Success !! *** ");
 			} else {
@@ -378,26 +378,26 @@ public class content {
 		$("#btnChartPie").click();
 		$(".highcharts-tracker > path", 6).waitUntil(visible, 10000);
 		String[] pieChartDataCheck = {"8.1%", "8.1%", "8.1%", "8.1%", "8.1%", "기타검색횟수: 59.7%"};
-		for(int i=0;i<=5;i++) {
-			$(".highcharts-tracker > path", (i+1)).hover();
-			$(".highcharts-tracker > path", (i+1)).hover();
-			$(".highcharts-tracker > path", (i+1)).hover();
+		for(int i=1;i<=6;i++) {
+			js("$('.highcharts-tracker > path').eq(" + i + ").mouseover()");
+			js("$('.highcharts-tracker > path').eq(" + i + ").mouseover()");
 			pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
-			if(i<5) {
-				if(pageLoadCheck.substring(pageLoadCheck.length()-4, pageLoadCheck.length()).equals(pieChartDataCheck[i])) {
-					System.out.println(" *** page_internalPage pie chart data ((" + i + ")) check Success !! *** ");
+			if(i<6) {
+				if(pageLoadCheck.substring(pageLoadCheck.length()-4, pageLoadCheck.length()).equals(pieChartDataCheck[i-1])) {
+					System.out.println(" *** page_internalPage pie chart data ((" + (i-1) + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** page_internalPage pie chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** page_internalPage pie chart data ((" + (i-1) + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
-				if(pageLoadCheck.equals(pieChartDataCheck[i])) {
-					System.out.println(" *** page_internalPage pie chart data ((" + i + ")) check Success !! *** ");
+				if(pageLoadCheck.equals(pieChartDataCheck[i-1])) {
+					System.out.println(" *** page_internalPage pie chart data ((" + (i-1) + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** page_internalPage pie chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** page_internalPage pie chart data ((" + (i-1) + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
-			}	
+			}
+			System.out.println("for문 " + i + " 번째 도는중");
 		}
 		pLC = null;
 		$("#btnChartLine").click();
@@ -411,16 +411,16 @@ public class content {
 		for(int i=0;i<=5;i++) {
 			if(i == 0) {
 				if(pLC[i].equals(lineChartDataCheck[i])) {
-					System.out.println(" *** page_internalPage pie chart data ((" + i + ")) check Success !! *** ");
+					System.out.println(" *** page_internalPage line chart data ((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** page_internalPage pie chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** page_internalPage line chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			} else {
 				if(pLC[i].substring(pLC[i].length()-2, pLC[i].length()).equals(lineChartDataCheck[i].substring(lineChartDataCheck[i].length()-2, lineChartDataCheck[i].length()))) {
-					System.out.println(" *** page_internalPage pie chart data ((" + i + ")) check Success !! *** ");
+					System.out.println(" *** page_internalPage line chart data ((" + i + ")) check Success !! *** ");
 				} else {
-					System.out.println(" *** page_internalPage pie chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
+					System.out.println(" *** page_internalPage line chart data ((" + i + ")) check Fail ... !@#$%^&*() *** ");
 					close();
 				}
 			}
@@ -616,10 +616,10 @@ public class content {
 			System.out.println(" *** link_share table data check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".highcharts-axis", 0).hover();
-		pageLoadCheck = $(".highcharts-tooltip", 0).text().trim();
-		String[] pLC = pageLoadCheck.split("● ");
-		String[] barChartDataCheck = {"2018-12-21(금)", "공유클릭수: 0"};
+		String[] pLC = {"", ""};
+		pLC[0] = $(".highcharts-axis-labels.highcharts-xaxis-labels > text").text().trim();
+		pLC[1] = $(".highcharts-legend-item > text").text().trim();
+		String[] barChartDataCheck = {"2018-12-21(금)", "공유클릭수"};
 		for(int i=0;i<=1;i++) {
 			if(pLC[i].equals(barChartDataCheck[i])) {
 				System.out.println(" *** link_share bar chart data ((" + i + ")) check Success !! *** ");
@@ -628,6 +628,7 @@ public class content {
 				close();
 			}
 		}
+		pLC = null;
 		$("#btnChartPie").click();
 		pageLoadCheck = $("tspan").text().trim();
 		if(pageLoadCheck.equals(nodata)) {
@@ -646,7 +647,7 @@ public class content {
 		}
 		System.out.println(" ! ----- link_share End ----- ! ");
 	}
-	@Test(priority = 22)
+	@Test(priority = 23)
 	public void link_outlinkBanner() {
 		System.out.println(" ! ----- link_outlinkBanner Start ----- ! ");
 		$(By.linkText("아웃링크배너")).waitUntil(visible, 10000);
