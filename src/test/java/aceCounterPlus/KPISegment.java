@@ -208,15 +208,15 @@ public class KPISegment {
 					$("td[data-title=r3c5]", i).click(); //21일 선택
 					break;
 				} else {
-					System.out.println("no"+ (i+1) + ". calender month is  : " + dateCheck + " // need nextBtn(" + x + ") click");
+					System.out.println("no"+ (i+1) + ". calender month is : " + dateCheck + " // need nextBtn(" + x + ") click");
 					$(".prev", i).click();
 					dateCheck = $(".month", i).text().trim();
 				}
 			}
 			if(i==0) {
-				System.out.println("start calender date select!");	
+				System.out.println("start calender date select!");
 			} else {
-				System.out.println("end calender date select!");				
+				System.out.println("end calender date select!");
 			}
 		}
 		$(".btn-apply").click();
@@ -261,7 +261,7 @@ public class KPISegment {
 				, "간편결제클릭수", "제품 페이지뷰", "제품 페이지뷰 비중", "담김수/제품 페이지뷰(%)"};
 		for(int i=0;i<=45;i++) {
 			if((i+21)%10 == 0) {
-				$(".th-inner", i+21).scrollIntoView("{behavior: 'smooth', inline: 'start'}");
+				$(".th-inner", i+21).scrollIntoView("{behavior: 'instant', inline: 'start'}");
 			}
 			pageLoadCheck = $(".th-inner", i+21).text().trim();
 			if(pageLoadCheck.equals(metricDataCheck[i])) {
@@ -302,6 +302,7 @@ public class KPISegment {
 		    }
 		}
 		$(".btnSave").click();
+		sleep(1000);
 		if($$("p").last().text().trim().equals("나의 세그먼트가 저장되었습니다.")) {
 			$$(".btn-sm").last().click();
 	        System.out.println(" *** mySegmentSave layer save alert msg check Success !! *** ");
@@ -367,6 +368,7 @@ public class KPISegment {
 		$(".delete", 0).click();
 		$("#btn-modal-alert-yes").waitUntil(visible, 10000);
 		$$("#btn-modal-alert-yes").last().click();
+		sleep(1000);
 		if($$("p").last().text().trim().equals("삭제가 완료되었습니다.")) {
 	        System.out.println(" *** segment_mySegment delete alert msg check Success !! *** ");
 			$$(".btn-sm").last().click();
