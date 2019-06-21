@@ -133,7 +133,7 @@ public class marketingInflowSetting {
 	    $(".modal-backdrop").waitUntil(visible, 10000);	
 	    sleep(800);
 	    String msgCheck = $$("p").last().text().trim();
-	    Thread.onSpinWait();
+	    //Thread.onSpinWait();
 	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
 	        if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
 	        	System.out.println(" *** " + val +  " - confirm check Success !! *** ");

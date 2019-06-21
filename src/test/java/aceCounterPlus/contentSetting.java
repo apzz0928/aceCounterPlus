@@ -210,7 +210,7 @@ public class contentSetting {
 		$(".modal-backdrop").waitUntil(visible, 10000);
 		$$("p").last().click();
 		String msgCheck = $$("p").last().text().trim();
-        Thread.onSpinWait();
+        //Thread.onSpinWait();
 		if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
 			if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
 				System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
