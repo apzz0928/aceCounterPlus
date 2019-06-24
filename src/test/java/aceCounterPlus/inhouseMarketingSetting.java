@@ -175,7 +175,7 @@ public class inhouseMarketingSetting {
             case "talkSetting_del_alert": checkMsg = "TALK 설정 삭제가 완료되었습니다.";
             break;
         }
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		sleep(800);
 		$$("p").last().click();
 		String msgCheck = $$("p").last().text().trim();
         //Thread.onSpinWait();
