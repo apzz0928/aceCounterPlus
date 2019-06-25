@@ -194,6 +194,7 @@ public class userSetting {
 		$(By.linkText("IP필터링설정")).waitUntil(visible, 10000);
 		$(By.linkText("IP필터링설정")).click();
 		$("h5", 2).waitUntil(visible, 10000);
+		sleep(500);
 		pageLoadCheck = $("h5", 2).text();
 		for(int i=0;i<=1;i++) {
 			if(pageLoadCheck.equals("고객지원센터")) { //IP주소가 남아있으면 지우고 페이지 로딩 다시 체크

@@ -6,10 +6,10 @@
   <classes>
 <!-- 	<class name="aceCounterPlus.marketingInflowSetting"/> -->
 <!-- <class name="aceCounterPlus.userSetting"/> -->  
-<!-- <class name="aceCounterPlus.commercePrice"/> -->
+<class name="aceCounterPlus.commercePrice"/>
 <!-- <class name="aceCounterPlus.contentSetting"/> -->
 <!-- <class name="aceCounterPlus.inhouseMarketingSetting"/> -->
-<class name="aceCounterPlus.KPISetting"/>
+<!-- <class name="aceCounterPlus.KPISetting"/> -->
 <!-- <class name="aceCounterPlus.serviceManagement"/> -->
 <!-- <class name="aceCounterPlus.getInflow"/> -->
 <!-- <class name="aceCounterPlus.marketing"/> -->
