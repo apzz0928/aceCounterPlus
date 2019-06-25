@@ -171,6 +171,7 @@ public class commercePrice {
 		$("#inflowAddBtn").waitUntil(visible, 30000);
 		$(".accordion-toggle", 2).click();
 		$(By.linkText("제품가격대")).waitUntil(visible, 30000);
+		sleep(500);
 		$(By.linkText("제품가격대")).click();
 		$("h5", 1).waitUntil(visible, 30000);
 		pageLoadCheck = $("h5", 1).text();
