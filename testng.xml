@@ -9,7 +9,7 @@
 <!-- <class name="aceCounterPlus.commercePrice"/> -->
 <!-- <class name="aceCounterPlus.contentSetting"/> -->
 <!-- <class name="aceCounterPlus.inhouseMarketingSetting"/> -->
-<!-- <class name="aceCounterPlus.KPISetting"/> -->
+<class name="aceCounterPlus.KPISetting"/>
 <!-- <class name="aceCounterPlus.serviceManagement"/> -->
 <!-- <class name="aceCounterPlus.getInflow"/> -->
 <!-- <class name="aceCounterPlus.marketing"/> -->
@@ -28,7 +28,7 @@
 <!-- <class name="aceCounterPlus.changeMemberInfo"/> -->
 <!-- <class name="aceCounterPlus.serviceInfo"/> -->
 <!-- <class name="aceCounterPlus.charge"/> -->
-<class name="aceCounterPlus.signUp"/>
+<!-- <class name="aceCounterPlus.signUp"/> -->
 <!-- <class name="aceCounterPlus.termination"/> -->
 <!-- <class name="aceCounterPlus.frontPage"/> -->
 <!-- <class name="aceCounterPlus.adminManage"/> -->

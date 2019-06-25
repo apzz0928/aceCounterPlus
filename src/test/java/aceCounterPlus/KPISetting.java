@@ -627,7 +627,7 @@ public class KPISetting {
 			System.out.println(" *** myMenu_add register Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".cross", 1).scrollTo();
+		$(".cross", 1).scrollIntoView(false);
 		$(".cross", 1).waitUntil(visible, 10000);
 		for(int i=1;i<=19;i++) { //나의 메뉴 삭제
 			$(".cross", 1).click();
