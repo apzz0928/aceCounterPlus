@@ -340,6 +340,7 @@ public class content {
 	public void page_internalPage() {
 		System.out.println(" ! ----- page_internalPage Start ----- ! ");
 		$(By.linkText("내부검색")).waitUntil(visible, 10000);
+		$(By.linkText("내부검색")).scrollIntoView(false);
 		$(By.linkText("내부검색")).click();
 		pageLoadCheck = $(".active", 2).text().trim();
 		if (pageLoadCheck.equals("내부검색")) {
@@ -396,7 +397,7 @@ public class content {
 					close();
 				}
 			}
-			System.out.println("for문 " + i + " 번째 도는중");
+			System.out.println("pie chart data " + i + " check");
 		}
 		pLC = null;
 		$("#btnChartLine").click();
