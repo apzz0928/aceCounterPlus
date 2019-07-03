@@ -201,7 +201,7 @@ public class marketing {
 				close();
 			}
 		}
-		String[] barChartDataCheck = {"2018.12.19(수)", "다음브랜드검색: 19", "네이버브랜드검색: 13", "((daily publication))", "((daum brand search))", "((naver brand search))"}; 
+		String[] barChartDataCheck = {"2018.12.19(수)", "카카오브랜드검색: 19", "네이버브랜드검색: 13", "((daily publication))", "((daum brand search))", "((naver brand search))"}; 
 		$(".highcharts-series-group", 0).hover();
 		$(".highcharts-series-group", 0).hover();
 		$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
@@ -216,7 +216,7 @@ public class marketing {
 			}			
 		}
 		$("#btnChartPie").click();
-		String[] pieChartDataCheck = {"네이버브랜드검색방문수: 23.2%", "다음브랜드검색방문수: 33.9%", "카카오톡방문수: 21.4%", "구글애드워즈방문수: 21.4%", "((naver brand search))", "((daum brand search))", "((kakaotalk))", "((google adwords))"};
+		String[] pieChartDataCheck = {"네이버브랜드검색방문수: 23.2%", "카카오브랜드검색방문수: 33.9%", "카카오톡방문수: 21.4%", "구글Ads방문수: 21.4%", "((naver brand search))", "((daum brand search))", "((kakaotalk))", "((google adwords))"};
 		$(".highcharts-series-0.highcharts-tracker > path", 7).waitUntil(visible, 10000);
 		for(int i=0;i<=3;i++) {
 			$(".highcharts-series-0.highcharts-tracker > path", i).hover();
@@ -232,7 +232,7 @@ public class marketing {
 		}
 		$("#btnChartLine").click();
 		sleep(1000);
-		String[] lineChartDataCheck = {"2018.12.19(수)", "다음브랜드검색: 19", "네이버브랜드검색: 13", "((date))", "((daum brand search))", "((naver brand search))"};
+		String[] lineChartDataCheck = {"2018.12.19(수)", "카카오브랜드검색: 19", "네이버브랜드검색: 13", "((date))", "((daum brand search))", "((naver brand search))"};
 		$(".highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
 		$(".highcharts-series-0.highcharts-tracker > path", 0).hover();
 		$(".highcharts-series-1.highcharts-tracker > path", 0).hover();
@@ -296,14 +296,19 @@ public class marketing {
 	    pLC = null;
 	    $("#btnChartLine").click();
 	    $("#chartSelect3").waitUntil(visible, 10000);
-	    $("#chartSelect3").click();
-	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='조회'])[2]/following::option[1]")).click();
+		/*
+		 * $("#chartSelect3").click(); $(By.
+		 * xpath("(.//*[normalize-space(text()) and normalize-space(.)='조회'])[2]/following::option[1]"
+		 * )).click();
+		 */
+	    $(By.id("chartSelect3")).click();
+	    $(By.id("chartSelect3")).selectOption("방문수");
 	    $(".highcharts-tracker", 3).hover();
 	    $(".highcharts-tracker", 5).hover();
 	    $(".highcharts-tracker", 7).hover();
 	    $(".highcharts-tracker", 3).hover();
 	    //라인차트 버그로인해 주석처리
-	    /*String[] lineChartDataCheck = {"2018.12.19(수)", "다음브랜드검색: 19", "네이버브랜드검색: 13", "((daily publication))", "((daum brand search))", "((naver brand search))"};
+	    String[] lineChartDataCheck = {"2018.12.19(수)", "카카오브랜드검색: 19", "네이버브랜드검색: 13", "((daily publication))", "((daum brand search))", "((naver brand search))"};
 	    pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 	    pLC = pageLoadCheck.split("● ");
 		for(int i=0;i<=pLC.length-1;i++) {
@@ -316,7 +321,7 @@ public class marketing {
 				System.out.println(" *** marketing_detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Fail ... !@#$%^&*() *** ");
 				close();
 			}
-	    }*/
+	    }
 	    System.out.println(" ! ----- marketing_detail End ----- ! ");
 	}
 	@Test(priority = 3)
