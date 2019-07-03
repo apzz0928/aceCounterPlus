@@ -307,13 +307,9 @@ public class marketing {
 	    $(".highcharts-tracker", 5).hover();
 	    $(".highcharts-tracker", 7).hover();
 	    $(".highcharts-tracker", 3).hover();
-	    //라인차트 버그로인해 주석처리
 	    String[] lineChartDataCheck = {"2018.12.19(수)", "카카오브랜드검색: 19", "네이버브랜드검색: 13", "((daily publication))", "((daum brand search))", "((naver brand search))"};
 	    pageLoadCheck = $(".highcharts-tooltip", 1).text().trim();
 	    pLC = pageLoadCheck.split("● ");
-		for(int i=0;i<=pLC.length-1;i++) {
-			System.out.println("pLC[" + i + "] is : " + pLC[i]);
-		}
 	    for(int i=0;i<=2;i++) {
 			if (pLC[i].equals(lineChartDataCheck[i])) {
 				System.out.println(" *** marketing_detail line chart data " + lineChartDataCheck[i+3] + "((" + i + ")) check Success !! *** ");
