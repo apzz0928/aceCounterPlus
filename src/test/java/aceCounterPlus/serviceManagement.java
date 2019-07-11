@@ -783,7 +783,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- addService End ----- ! ");
 	}
 
-	@Test(priority = 51)
+	//@Test(priority = 51)
 	public void addView() {
 		System.out.println(" ! ----- addView Start ----- ! ");
 		$(By.linkText("∫‰« ≈Õ √ﬂ∞°")).click();
