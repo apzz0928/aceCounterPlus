@@ -516,7 +516,7 @@ public class serviceManagement {
 		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
 		System.out.println(" *** move to basket *** ");
-		$(By.linkText("»ﬁ¡ˆ≈Î")).click();
+		$(".ui-droppable", 4).click();
 		sleep(1000);
 		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
@@ -930,7 +930,7 @@ public class serviceManagement {
 		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
 		System.out.println(" *** move to basket *** ");
-		$(By.linkText("»ﬁ¡ˆ≈Î")).click();
+		$(".ui-droppable", 4).click();
 		sleep(1000);
 		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
@@ -1094,7 +1094,7 @@ public class serviceManagement {
 		$(".select_all").click();
 		$(".wrap_bold > .btn_del", 0).click();
 		System.out.println(" *** move to basket *** ");
-		$(By.linkText("»ﬁ¡ˆ≈Î")).click();
+		$(".ui-droppable", 4).click();
 		sleep(1000);
 		$(".select_all").waitUntil(visible, 10000);
 		$(".select_all").click();
