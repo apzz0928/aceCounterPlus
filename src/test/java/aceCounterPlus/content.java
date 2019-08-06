@@ -139,7 +139,7 @@ public class content {
 			System.out.println(" *** page_popularPage page load Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$("td", 98).waitUntil(visible, 30000);
+		$(".no-records-found").waitUntil(visible, 30000);
 		$("#daterangepicker2").waitUntil(visible, 10000);
 		$("#daterangepicker2").click();
 		$(".month", 0).waitUntil(visible, 10000);
