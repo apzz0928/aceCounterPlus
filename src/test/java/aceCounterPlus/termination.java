@@ -125,6 +125,7 @@ public class termination {
 	    $(".input-sm", 5).setValue("apzz0928@nate.com");		
 		$(".btn-dark").click();
 		sleep(3000);
+		System.out.println("Account Remaining : " + $(".text-danger.bold").text().trim());
 		for(int i=0,x=81;i<=1;i++) {
 			if(i==0) {
 				pageLoadCheck = "App Trial";
