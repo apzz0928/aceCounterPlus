@@ -118,7 +118,7 @@ public class termination {
 		open("https://new-admin.acecounter.com/admin/regCustomer/userList");
 		sleep(1000);
 	    $("#__BVID__4_").click();
-	    $("#__BVID__4_").selectOptionByValue("t1"); //상태 : 트라이얼(정상) 선택
+	    $("#__BVID__4_").selectOptionByValue("t1"); //상태 : 트라이얼(종료) 선택
 	    $("#__BVID__5_").click();
 	    $("#__BVID__5_").selectOptionByValue("u.email_addr"); //이메일 선택
 	    sleep(1000);
@@ -131,7 +131,6 @@ public class termination {
 			} else {
 				pageLoadCheck = "Web Trial";				
 			}
-		    //System.out.println("terminationApply SID is :" + $("a", x).text() + ".");
 			$$(By.linkText(pageLoadCheck)).last().click();
 			sleep(1000);
 			switchTo().window(1);

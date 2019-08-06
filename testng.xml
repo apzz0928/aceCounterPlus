@@ -18,7 +18,7 @@
 <!-- <class name="aceCounterPlus.commerce"/> -->
 <!-- <class name="aceCounterPlus.content"/> -->
 <!-- <class name="aceCounterPlus.inhouseMarketing"/> -->
-<class name="aceCounterPlus.KPISegment"/>
+<!-- <class name="aceCounterPlus.KPISegment"/> -->
 
 
 <!-- <class name="aceCounterPlus.temporarily"/> -->
@@ -29,7 +29,7 @@
 <!-- <class name="aceCounterPlus.serviceInfo"/> -->
 <!-- <class name="aceCounterPlus.charge"/> -->
 <!-- <class name="aceCounterPlus.signUp"/> -->
-<!-- <class name="aceCounterPlus.termination"/> -->
+<class name="aceCounterPlus.termination"/>
 <!-- <class name="aceCounterPlus.frontPage"/> -->
 <!-- <class name="aceCounterPlus.adminManage"/> -->
   </classes>
