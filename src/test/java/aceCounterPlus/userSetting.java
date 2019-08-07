@@ -189,10 +189,9 @@ public class userSetting {
 	public void IPFilterring_add() {
 		System.out.println(" ! ----- IP Filterring_add Start ----- ! ");
 		$("#redirectConfBtn").click();
-		$(".input-sm").waitUntil(visible, 10000);
+		$("#inflowMrkCodeDown").waitUntil(visible, 10000);
 		$(".accordion-toggle", 1).click();
-		$(By.linkText("IP필터링설정")).waitUntil(visible, 10000);
-		$(By.linkText("IP필터링설정")).click();
+		open("https://new.acecounter.com/setting/user/ipconf");
 		sleep(1500);
 		pageLoadCheck = $("h5", 2).text();
 		for(int i=0;i<=1;i++) {
