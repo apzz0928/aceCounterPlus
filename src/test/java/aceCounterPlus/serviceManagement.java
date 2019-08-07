@@ -490,7 +490,7 @@ public class serviceManagement {
 		$("#inputPwd").setValue(pw + A);
 		$("#loginBtn").click();
 		$(".link_check").waitUntil(visible, 15000);
-		sleep(3000);
+		sleep(3500);
 		refresh();
 		pageLoadCheck = $("h1").text().trim();
 		if (pageLoadCheck.equals("Daum\n" + "∏ﬁ¿œ")) {
