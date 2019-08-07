@@ -509,23 +509,23 @@ public class serviceManagement {
 			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		//메일삭제
-		$(By.linkText("받은메일함")).click();
+		//받은메일함으로 이동 후 메일 삭제
+		$(".ui-droppable", 0).click();
 		sleep(1000);
-		$(".select_all").waitUntil(visible, 10000);
-		$(".select_all").click();
-		$(".wrap_bold > .btn_del", 0).click();
-		System.out.println(" *** move to basket *** ");
+		js("$('#allCk').click()");
+		$(".btn_toolbar.btn_del").click();
+		$(".info_none").waitUntil(visible, 10000);
 		$(".ui-droppable", 4).click();
+        System.out.println(" *** move to basket *** ");
 		sleep(1000);
-		$(".select_all").waitUntil(visible, 10000);
-		$(".select_all").click();
-		$(".wrap_bold > .btn_permanent").click();
-		sleep(2000);
-		$(".check_type2").click();
-		System.out.println(" *** delete mail *** ");
-		$(By.linkText("받은메일함")).click();
-		System.out.println(" *** move to inbox *** ");
+		js("$('#allCk').click()");
+		$(".btn_toolbar.btn_permanent").click();
+		$(".btn_box").waitUntil(visible, 10000);
+		$(".btn_g.check_type2").click();
+        System.out.println(" *** delete mail *** ");
+		$(".btn_box").waitUntil(hidden, 10000);
+		$(".ui-droppable", 0).click();
+        System.out.println(" *** move to inbox *** ");
 		switchTo().window(0);
 		pageLoadCheck = $("#scriptList").text().trim();
 		if (pageLoadCheck.equals("분석스크립트")) {
@@ -923,23 +923,23 @@ public class serviceManagement {
 			System.out.println(" *** scriptList weeklySummary Report mail detailView check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		//메일삭제
-		$(By.linkText("받은메일함")).click();
+		//받은메일함으로 이동 후 메일 삭제
+		$(".ui-droppable", 0).click();
 		sleep(1000);
-		$(".select_all").waitUntil(visible, 10000);
-		$(".select_all").click();
-		$(".wrap_bold > .btn_del", 0).click();
-		System.out.println(" *** move to basket *** ");
+		js("$('#allCk').click()");
+		$(".btn_toolbar.btn_del").click();
+		$(".info_none").waitUntil(visible, 10000);
 		$(".ui-droppable", 4).click();
+        System.out.println(" *** move to basket *** ");
 		sleep(1000);
-		$(".select_all").waitUntil(visible, 10000);
-		$(".select_all").click();
-		$(".wrap_bold > .btn_permanent").click();
-		sleep(2000);
-		$(".check_type2").click();
-		System.out.println(" *** delete mail *** ");
-		$(By.linkText("받은메일함")).click();
-		System.out.println(" *** move to inbox *** ");
+		js("$('#allCk').click()");
+		$(".btn_toolbar.btn_permanent").click();
+		$(".btn_box").waitUntil(visible, 10000);
+		$(".btn_g.check_type2").click();
+        System.out.println(" *** delete mail *** ");
+		$(".btn_box").waitUntil(hidden, 10000);
+		$(".ui-droppable", 0).click();
+        System.out.println(" *** move to inbox *** ");
 		switchTo().window(0);
 		$("#btn-save").scrollIntoView(false);
 		$(".cross", 1).click();
@@ -1087,23 +1087,23 @@ public class serviceManagement {
 		$(".btn_join").click();
 		$(".btn_pop_submit").click();
 		switchTo().window(1);
-		//메일삭제
-		$(By.linkText("받은메일함")).click();
+		//받은메일함으로 이동 후 메일 삭제
+		$(".ui-droppable", 0).click();
 		sleep(1000);
-		$(".select_all").waitUntil(visible, 10000);
-		$(".select_all").click();
-		$(".wrap_bold > .btn_del", 0).click();
-		System.out.println(" *** move to basket *** ");
+		js("$('#allCk').click()");
+		$(".btn_toolbar.btn_del").click();
+		$(".info_none").waitUntil(visible, 10000);
 		$(".ui-droppable", 4).click();
+        System.out.println(" *** move to basket *** ");
 		sleep(1000);
-		$(".select_all").waitUntil(visible, 10000);
-		$(".select_all").click();
-		$(".wrap_bold > .btn_permanent").click();
-		sleep(2000);
-		$(".check_type2").click();
-		System.out.println(" *** delete mail *** ");
-		$(By.linkText("받은메일함")).click();
-		System.out.println(" *** move to inbox *** ");
+		js("$('#allCk').click()");
+		$(".btn_toolbar.btn_permanent").click();
+		$(".btn_box").waitUntil(visible, 10000);
+		$(".btn_g.check_type2").click();
+        System.out.println(" *** delete mail *** ");
+		$(".btn_box").waitUntil(hidden, 10000);
+		$(".ui-droppable", 0).click();
+        System.out.println(" *** move to inbox *** ");
 		switchTo().window(0);
 		switchTo().window(0);
 		refresh();
