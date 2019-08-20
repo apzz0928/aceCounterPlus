@@ -620,6 +620,7 @@ public class KPISetting {
 		valCheck("myMenu_add_menu_max");
 		$("#saveBtn").click();
 		valCheck("myMenu_save");
+		$(".cross", 15).waitUntil(visible, 10000);
 		pageLoadCheck = $("h4", 0).text();
 		if(pageLoadCheck.equals("Step1. 통계선택")) {
 			System.out.println(" *** myMenu_add register Success !! *** ");
