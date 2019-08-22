@@ -447,6 +447,7 @@ public class user {
 			}
 		}
 		pLC = null;
+		$("td", 17).scrollIntoView(false);
 		String[] tableDataCheck = {"PC", "127", "100%", "2", "9.28", "00:00:12", "((equipment type))", "((visit number))", "((visit percent))", "((unique visit))", "((visit pageview))", "((visit stay time))"};
 		for(int i=0;i<=5;i++) {
 			pageLoadCheck = $("td", (i+17)).text().trim();
@@ -454,6 +455,7 @@ public class user {
 				System.out.println(" *** system table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Success !! *** ");
 			} else {
 				System.out.println(" *** system table data " + tableDataCheck[i+6] + "((" + i + "))" + " check Fail ... !@#$%^&*() *** ");
+				System.out.println("pageLoadCheck is : " + pageLoadCheck + ".");
 				close();
 			}
 		}
