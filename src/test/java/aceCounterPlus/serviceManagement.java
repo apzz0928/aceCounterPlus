@@ -890,10 +890,6 @@ public class serviceManagement {
 		$(By.linkText("발송메일 설정")).waitUntil(visible, 10000);
 		$(By.linkText("발송메일 설정")).click();
 		$("#btn-sendMail").waitUntil(visible, 15000);
-		// 공지 레이어 노출동안 임시 내용
-		$(By.name("donot_show")).click();
-		$(".btn-dark", 0).click();
-		//
 		$(".cross", 0).click();
 		$(".sendEmail").waitUntil(hidden, 10000);
 		$("#btn-sendMail").click();
