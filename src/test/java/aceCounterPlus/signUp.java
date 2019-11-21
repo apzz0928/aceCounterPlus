@@ -42,7 +42,7 @@ public class signUp {
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "https://new.acecounter.com/common/front";
-		hubUrl = "http://10.77.129.79:5555/wd/hub";
+		hubUrl = "http://10.0.75.1:5555/wd/hub";
 		id = "ap";
 		pw = "qordlf";
 		pw1 = "qordlf";
