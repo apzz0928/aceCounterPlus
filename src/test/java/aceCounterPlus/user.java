@@ -32,8 +32,8 @@ public class user {
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "https://new.acecounter.com/common/front";
-		//hubUrl = "http://10.0.75.1:5555/wd/hub";
-		hubUrl = "http://10.77.129.79:5555/wd/hub";
+		hubUrl = "http://10.0.75.1:5555/wd/hub";
+		//hubUrl = "http://10.77.129.79:5555/wd/hub";
 		pw = "qordlf";
 		A = "!@34";
 		nodata = "조회된 데이터가 없습니다.";

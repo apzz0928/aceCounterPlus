@@ -32,8 +32,8 @@ public class backOffice {
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "http://new.acecounter.com/admin/login";
-		//hubUrl = "http://10.0.75.1:5555/wd/hub";
-		hubUrl = "http://10.77.129.79:5555/wd/hub";
+		hubUrl = "http://10.0.75.1:5555/wd/hub";
+		//hubUrl = "http://10.77.129.79:5555/wd/hub";
 		id = "apzz0928";
 		pw = "qordlf!@34";
 
