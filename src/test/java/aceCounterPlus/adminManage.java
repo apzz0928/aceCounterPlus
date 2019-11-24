@@ -34,8 +34,8 @@ public class adminManage {
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "http://new.acecounter.com";
-		hubUrl = "http://10.0.75.1:5555/wd/hub";
-		//hubUrl = "http://10.77.129.79:5555/wd/hub";
+		//hubUrl = "http://10.0.75.1:5555/wd/hub";
+		hubUrl = "http://10.77.129.79:5555/wd/hub";
 		id = "apzz0928888";
 		pw1 = "qordlf!@34";
 		pw2 = "qordlf12#$";
