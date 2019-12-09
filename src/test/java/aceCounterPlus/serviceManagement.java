@@ -372,8 +372,9 @@ public class serviceManagement {
 			checkMsg = "저장되었습니다.";
 			break;
 		}
-		$(".modal-backdrop").waitUntil(visible, 10000);
-	    //$$("p").last().click();
+		//$(".modal-backdrop").waitUntil(visible, 10000);
+		sleep(500);
+		//$$("p").last().click();
 	    sleep(800);
 		String msgCheck = $$("p").last().text().trim();
 	    //Thread.onSpinWait();

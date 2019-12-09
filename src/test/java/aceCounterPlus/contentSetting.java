@@ -208,7 +208,8 @@ public class contentSetting {
             case "outLinkBanner_del_alert": checkMsg = "삭제가 완료되었습니다.";
             break;
         }
-		$(".modal-backdrop").waitUntil(visible, 10000);
+		//$(".modal-backdrop").waitUntil(visible, 10000);
+        sleep(500);
 		$$("p").last().click();
 		String msgCheck = $$("p").last().text().trim();
         //Thread.onSpinWait();
