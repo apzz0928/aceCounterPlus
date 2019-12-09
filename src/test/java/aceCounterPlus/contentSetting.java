@@ -217,11 +217,13 @@ public class contentSetting {
 			if(val.substring(val.length()-7, val.length()).equals("confirm")) { //val 끝에 7자리 confirm이랑 비교해서 맞으면 btn-info 클릭
 				System.out.println(" *** val : " + val +  " - confirm check Success !! *** ");
 				$$(".btn-info").last().click();
-			    $(".modal-backdrop").waitUntil(hidden, 10000);
+				sleep(500);
+			    //$(".modal-backdrop").waitUntil(hidden, 10000);
 			} else { //confirm 아니면 .btn-sm클릭
 				System.out.println(" *** " + val +  " - check Success !! *** ");
 				$$(".btn-sm").last().click();
-			    $(".modal-backdrop").waitUntil(hidden, 10000);
+				sleep(500);
+			    //$(".modal-backdrop").waitUntil(hidden, 10000);
 			}
 		} else if (msgCheck.isEmpty()) { //alert 로딩이 늦거나 노출되지 않았을때 체크하기위해 빈값 체크
 	        System.out.println(" *** ☆★☆★☆★ val : " + val + " // pTag text is : " + msgCheck +  " // - msgCheck is Empty ... ☆★☆★☆★ *** ");

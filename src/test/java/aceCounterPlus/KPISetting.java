@@ -553,17 +553,10 @@ public class KPISetting {
 		$(".btn-delete").click();
 		valCheck("reportDownload_oneshotDel_confirm");
 		valCheck("reportDownload_oneshotDel_alert");
-		$("td", 2).waitUntil(visible, 10000);
+		$("td", 2).waitUntil(hidden, 10000);
 		$(".muted").waitUntil(visible, 10000);
 		pageLoadCheck = $(".muted").text();
 		if(pageLoadCheck.equals("리포트 생성 이력이 없습니다.\n" + "추가 탭에서 리포트를 생성하세요.")) {
-			System.out.println(" *** reportDownload_oneshotDel list Page load Success !! *** ");
-		} else {
-			System.out.println(" *** reportDownload_oneshotDel modify Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		pageLoadCheck = $("td", 2).text();
-		if(pageLoadCheck.equals("통계리포트")) {
 			System.out.println(" *** reportDownload_oneshotDel list Page load Success !! *** ");
 		} else {
 			System.out.println(" *** reportDownload_oneshotDel modify Fail ... !@#$%^&*() *** ");
