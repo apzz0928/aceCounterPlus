@@ -461,7 +461,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- serviceManage_main End ----- ! ");
 	}
 
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void scriptList() {
 		System.out.println(" ! ----- scriptList Start ----- ! ");
 		$(By.linkText("분석스크립트")).waitUntil(visible, 10000);
@@ -1033,7 +1033,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- notifyReport End ----- ! ");
 	}
 
-	@Test(priority = 91)
+	//@Test(priority = 91)
 	public void add_subManager() {
 		System.out.println(" ! ----- add_subManager Start ----- ! ");
 		sleep(1000);
@@ -1127,7 +1127,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
 	
-	@Test(priority = 92)
+	//@Test(priority = 92)
 	public void subManager_modifyInfoAndDel() {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
