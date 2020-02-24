@@ -1008,6 +1008,7 @@ public class serviceManagement {
 		$("#btn-save").click();
 		valCheck("notifyReport_save_check");
 		refresh();
+		$(".switch-info").waitUntil(visible, 10000);
 		$(".switch-info").click();
 		$("#reserveEmail_0").waitUntil(hidden, 10000);
 		$("#btn-save").click();
