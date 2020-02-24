@@ -504,6 +504,7 @@ public class serviceManagement {
 			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
 			close();
 		}
+		sleep(300);
 		back();
 		$(".nmSubjectIn", 0).waitUntil(visible, 10000);
 		$(".chk", 0).click();
@@ -917,6 +918,7 @@ public class serviceManagement {
 			close();
 		}
 		switchTo().parentFrame();
+		sleep(300);
 		back();
 		$(".nmSubjectIn", 0).waitUntil(visible, 10000);
 		$(".chk", 0).click();
@@ -1083,6 +1085,7 @@ public class serviceManagement {
 		$(".btn_join").click();
 		$(".btn_pop_submit").click();
 		switchTo().window(1);
+		sleep(300);
 		back();
 		$(".nmSubjectIn", 0).waitUntil(visible, 10000);
 		$(".chk", 0).click();
