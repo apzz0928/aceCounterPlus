@@ -372,10 +372,10 @@ public class serviceManagement {
 			checkMsg = "저장되었습니다.";
 			break;
 		}
-		//$(".modal-backdrop").waitUntil(visible, 10000);
-		sleep(500);
-		//$$("p").last().click();
-	    sleep(800);
+		$(".modal-backdrop").waitUntil(visible, 10000);
+		sleep(300);
+		$$("p").last().click();
+	    //sleep(800);
 		String msgCheck = $$("p").last().text().trim();
 	    //Thread.onSpinWait();
 	    if(msgCheck.equals(checkMsg)) { //val과 checkMsg 비교해서 맞으면
@@ -461,14 +461,15 @@ public class serviceManagement {
 		System.out.println(" ! ----- serviceManage_main End ----- ! ");
 	}
 
-	//@Test(priority = 1)
+	@Test(priority = 1)
 	public void scriptList() {
 		System.out.println(" ! ----- scriptList Start ----- ! ");
 		$(By.linkText("분석스크립트")).waitUntil(visible, 10000);
 		$(By.linkText("분석스크립트")).click();
 		$("#items").waitUntil(visible, 15000);
-		$(".br-dark").click();
+		$(".br-dark", 0).click();
 		$(".modal-backdrop").waitUntil(visible, 15000);
+		$(".btn-dark", 1).waitUntil(visible, 10000);
 		pageLoadCheck = $(".modal-title").text().trim();
 		if (pageLoadCheck.equals("분석스크립트 메일발송")) {
 			System.out.println(" *** scriptList layerPopup load Success !! *** ");
@@ -481,53 +482,35 @@ public class serviceManagement {
 		$("#mail_to").setValue(date);
 		$(".btn-dark", 1).click();
 		valCheck("scriptList_email_validation");
-		$("#mail_to").setValue("apzz0928888@daum.net");
+		$("#mail_to").setValue("apzz0928@nate.com");
 		$(".btn-dark", 1).click();
 		$(".btn-dark", 1).waitUntil(hidden, 10000);
 		valCheck("scriptList_email_send");
-		js("window.open('https://logins.daum.net/accounts/signinform.do?url=https%3A%2F%2Fmail.daum.net%2F');");
-		//다음메일 탭으로 포커스 변경
+		js("window.open('http://home.mail.nate.com/login/login.html?s=mail&redirect=http%3A%2F%2Fmail3.nate.com%2F');");
+		//네이트온 메일로 탭 이동
 		switchTo().window(1);
-		$("#id").setValue("apzz0928888");
-		$("#inputPwd").setValue(pw + A);
-		$("#loginBtn").click();
-		$(".link_check").waitUntil(visible, 15000);
-		sleep(3500);
-		refresh();
-		pageLoadCheck = $("h1").text().trim();
-		if (pageLoadCheck.equals("Daum\n" + "메일")) {
-			System.out.println(" *** scriptList daum mail list page load Success !! *** ");
-		} else {
-			System.out.println(" *** scriptList daum mail list page load Fail ... !@#$%^&*() *** ");
-			close();
-		}
-		$(".tit_subject", 0).waitUntil(visible, 15000);
-		$(".tit_subject", 0).click();
-		$(".txt_filename").waitUntil(visible, 15000);
-		pageLoadCheck = $(".txt_filename").text().trim();
+		$("#ID").setValue("apzz0928");
+		$("#PASSWD").setValue(pw + A);
+		$(".btn_login").click();
+		$(".nmSubjectIn", 0).waitUntil(visible, 10000);
+		$(".nmCustomTit._nmBtn", 0).click();
+		$(".nmSubjectIn", 0).waitUntil(visible, 10000);		
+		$(".nmSubjectIn", 0).click();
+		$(".filename").waitUntil(visible, 10000);
+		pageLoadCheck = $(".filename").text().trim();
 		if (pageLoadCheck.equals("script(www.ap0420121150.com).zip")) {
 			System.out.println(" *** scriptList send mail fileName check Success !! *** ");
 		} else {
 			System.out.println(" *** scriptList send mail fileName check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		//받은메일함으로 이동 후 메일 삭제
-		$(".ui-droppable", 0).click();
-		sleep(1000);
-		js("$('#allCk').click()");
-		$(".btn_toolbar.btn_del").click();
-		$(".info_none").waitUntil(visible, 10000);
-		$(".ui-droppable", 4).click();
-        System.out.println(" *** move to basket *** ");
-		sleep(1000);
-		js("$('#allCk').click()");
-		$(".btn_toolbar.btn_permanent").click();
-		$(".btn_box").waitUntil(visible, 10000);
-		$(".btn_g.check_type2").click();
-        System.out.println(" *** delete mail *** ");
-		$(".btn_box").waitUntil(hidden, 10000);
-		$(".ui-droppable", 0).click();
-        System.out.println(" *** move to inbox *** ");
+		back();
+		$(".nmSubjectIn", 0).waitUntil(visible, 10000);
+		$(".chk", 0).click();
+		$(".nmBtnTypeDelLess").click();
+		$(".btn", 4).click();
+		$(".btn01").waitUntil(visible, 10000);
+		$(".btn01").click();
 		switchTo().window(0);
 		pageLoadCheck = $("#scriptList").text().trim();
 		if (pageLoadCheck.equals("분석스크립트")) {
@@ -885,7 +868,6 @@ public class serviceManagement {
 		}
 		System.out.println(" ! ----- editService End ----- ! ");
 	}
-
 	@Test(priority = 81)
 	public void summaryReport() {
 		System.out.println(" ! ----- summaryReport Start ----- ! ");
@@ -896,52 +878,52 @@ public class serviceManagement {
 		$(".sendEmail").waitUntil(hidden, 10000);
 		$("#btn-sendMail").click();
 		valCheck("summaryReport_sendEmail_null");
-		$(".gui-input", 0).setValue("apzz0928888@");
+		$(".gui-input", 0).setValue("apzz0928@");
 		$("#btn-sendEmail").click();
 		valCheck("summaryReport_sendEmail_check");
-		$(".gui-input", 0).setValue("apzz0928888@daum.net");
+		$(".gui-input", 0).setValue("apzz0928@nate.com");
 		$("#btn-sendEmail").click();
 		$(".sendEmail").waitUntil(visible, 15000);
 		$("#btn-sendMail").click();
 		$(".modal-center", 5).waitUntil(visible, 15000);
 		valCheck("summaryReport_sendEmail_send");
 		switchTo().window(1);
-		sleep(3000);
 		refresh();
-		pageLoadCheck = $(".tit_subject", 0).text().trim();
+		for(int i=0;i<=50;i++) {
+			if($(".title", 0).text().trim().equals("[ACE Counter+] 주간요약리포트 - [Web Trial] 서비스추가해지테스트0001(test0001.org)")) {
+				break;
+			} else {
+				refresh();
+				sleep(500);
+			}
+		}
+		$(".nmSubjectIn", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $(".title", 0).text().trim();
 		if (pageLoadCheck.substring(15, 22).equals("주간요약리포트")) {
 			System.out.println(" *** scriptList weeklySummary Report mail subject check Success !! *** ");
 		} else {
 			System.out.println(" *** scriptList weeklySummary Report mail subject check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".tit_subject", 0).click();
-		sleep(3000);
-		$("h2", 5).waitUntil(visible, 15000);
-		pageLoadCheck = $("h2", 5).text().trim();
+		$(".nmSubjectIn", 0).click();
+		$(".nmReadHeader", 0).waitUntil(visible, 15000);
+		sleep(1000);
+		switchTo().frame(0); //nate 메일은 iframe이라서 프레임 인덱스로 변경
+		pageLoadCheck = $("h2", 0).text().trim();
 		if (pageLoadCheck.substring(11, 15).equals("주간요약")) {
 			System.out.println(" *** scriptList weeklySummary Report mail detailView check Success !! *** ");
 		} else {
 			System.out.println(" *** scriptList weeklySummary Report mail detailView check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		//받은메일함으로 이동 후 메일 삭제
-		$(".ui-droppable", 0).click();
-		sleep(1000);
-		js("$('#allCk').click()");
-		$(".btn_toolbar.btn_del").click();
-		$(".info_none").waitUntil(visible, 10000);
-		$(".ui-droppable", 4).click();
-        System.out.println(" *** move to basket *** ");
-		sleep(1000);
-		js("$('#allCk').click()");
-		$(".btn_toolbar.btn_permanent").click();
-		$(".btn_box").waitUntil(visible, 10000);
-		$(".btn_g.check_type2").click();
-        System.out.println(" *** delete mail *** ");
-		$(".btn_box").waitUntil(hidden, 10000);
-		$(".ui-droppable", 0).click();
-        System.out.println(" *** move to inbox *** ");
+		switchTo().parentFrame();
+		back();
+		$(".nmSubjectIn", 0).waitUntil(visible, 10000);
+		$(".chk", 0).click();
+		$(".nmBtnTypeDelLess").click();
+		$(".btn", 4).click();
+		$(".btn01").waitUntil(visible, 10000);
+		$(".btn01").click();
 		switchTo().window(0);
 		$("#btn-save").scrollIntoView(false);
 		$(".cross", 1).click();
@@ -1033,7 +1015,7 @@ public class serviceManagement {
 		System.out.println(" ! ----- notifyReport End ----- ! ");
 	}
 
-	//@Test(priority = 91)
+	@Test(priority = 91)
 	public void add_subManager() {
 		System.out.println(" ! ----- add_subManager Start ----- ! ");
 		sleep(1000);
@@ -1045,10 +1027,10 @@ public class serviceManagement {
 		$("#submanager_nm").setValue("부관리자테스트");
 		$("#btn_mail").click();
 		valCheck("subManager_email_null");
-		$("#submanager_email").setValue("apzz0928888@");
+		$("#submanager_email").setValue("apzz0928@");
 		$("#btn_mail").click();
 		valCheck("subManager_email_check");
-		$("#submanager_email").setValue("apzz0928888@daum.net");
+		$("#submanager_email").setValue("apzz0928@nate.com");
 		$("#btn_mail").click();
 		valCheck("subManager_service_null");
 	    $(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::button[1]")).click();
@@ -1059,26 +1041,37 @@ public class serviceManagement {
 		$("#btn_mail").click();
 		valCheck("subManager_email_send");
 		switchTo().window(1);
-		sleep(3500);
 		refresh();
-		pageLoadCheck = $(".tit_subject", 0).text().trim();
+		for(int i=0;i<=50;i++) {
+			if($(".title", 0).text().trim().equals("[ACE Counter+] 에이스카운터 부관리자 안내 메일입니다.")) {
+				break;
+			} else {
+				refresh();
+				sleep(500);
+			}
+		}
+		$(".nmSubjectIn", 0).waitUntil(visible, 10000);
+		pageLoadCheck = $(".title", 0).text().trim();
 		if(pageLoadCheck.substring(22).equals("부관리자 안내 메일입니다.")) {
 			System.out.println(" *** subManager guide mail title Check Success !! *** ");
 		} else {
 			System.out.println(" *** subManager guide mail title Check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(".tit_subject", 0).click();
-		sleep(3000);
-		pageLoadCheck = $("h2", 5).text().trim();
+		$(".nmSubjectIn", 0).click();
+		$(".nmReadHeader", 0).waitUntil(visible, 15000);
+		sleep(1000);
+		switchTo().frame(0); //nate 메일은 iframe이라서 프레임 인덱스로 변경
+		pageLoadCheck = $("h2", 0).text().trim();
 		if (pageLoadCheck.substring(11).equals("부관리자 회원가입 안내")) {
 			System.out.println(" *** subManager signin mail detailView check Success !! *** ");
 		} else {
 			System.out.println(" *** subManager signin mail detailView check Fail ... !@#$%^&*() *** ");
 			close();
 		}
-		$(By.linkText("부관리자 회원가입 바로가기")).scrollIntoView(false);
-		$(By.linkText("부관리자 회원가입 바로가기")).click();
+		$("h3 > a").scrollIntoView(false);
+		$("h3 > a").click();
+		switchTo().parentFrame();
 		switchTo().window(2);
 		$("label", 0).waitUntil(visible, 15000);
 		$("label", 0).click();
@@ -1089,24 +1082,13 @@ public class serviceManagement {
 		$(".btn_join").click();
 		$(".btn_pop_submit").click();
 		switchTo().window(1);
-		//받은메일함으로 이동 후 메일 삭제
-		$(".ui-droppable", 0).click();
-		sleep(1000);
-		js("$('#allCk').click()");
-		$(".btn_toolbar.btn_del").click();
-		$(".info_none").waitUntil(visible, 10000);
-		$(".ui-droppable", 4).click();
-        System.out.println(" *** move to basket *** ");
-		sleep(1000);
-		js("$('#allCk').click()");
-		$(".btn_toolbar.btn_permanent").click();
-		$(".btn_box").waitUntil(visible, 10000);
-		$(".btn_g.check_type2").click();
-        System.out.println(" *** delete mail *** ");
-		$(".btn_box").waitUntil(hidden, 10000);
-		$(".ui-droppable", 0).click();
-        System.out.println(" *** move to inbox *** ");
-		switchTo().window(0);
+		back();
+		$(".nmSubjectIn", 0).waitUntil(visible, 10000);
+		$(".chk", 0).click();
+		$(".nmBtnTypeDelLess").click();
+		$(".btn", 4).click();
+		$(".btn01").waitUntil(visible, 10000);
+		$(".btn01").click();
 		switchTo().window(0);
 		refresh();
 		pageLoadCheck = $(".text-dark", 3).text().trim();
@@ -1126,8 +1108,7 @@ public class serviceManagement {
 		valCheck("submanager_authority_modify_check");
 		System.out.println(" ! ----- add_subManager End ----- ! ");
 	}
-	
-	//@Test(priority = 92)
+	@Test(priority = 92)
 	public void subManager_modifyInfoAndDel() {
 		System.out.println(" ! ----- subManager_modifyInfoAndDel Start ----- ! ");
 		open("https://new.acecounter.com/auth/logout");
@@ -1645,7 +1626,7 @@ public class serviceManagement {
 		$("#btn-search").waitUntil(visible, 10000);
 		System.out.println(" ! ----- myNoticeList End ----- ! ");
 	}
-	@Test(priority = 161)
+	//@Test(priority = 161)
 	public void myAllimList() {
 		System.out.println(" ! ----- myAllimList Start ----- ! ");
 		$(By.linkText("서비스 알림내역")).waitUntil(visible, 10000);
