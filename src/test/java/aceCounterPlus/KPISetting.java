@@ -537,7 +537,7 @@ public class KPISetting {
 		}
 		System.out.println(" ! ----- reportDownload_oneshotAdd End ----- ! ");
 	}
-	@Test(priority = 14)
+	//@Test(priority = 14)
 	public void reportDownload_oneshotDel() {
 		System.out.println(" ! ----- reportDownload_oneshotDel Start ----- ! ");
 		$(".form-control", 1).setValue(date);
