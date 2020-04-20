@@ -180,7 +180,7 @@ public class KPISegment {
 		}
 		System.out.println(" ! ----- KPI End ----- ! ");
 	}
-	@Test(priority = 11)
+	//@Test(priority = 11)
 	public void segment_list() {
 		System.out.println(" ! ----- segment_list Start ----- ! ");
 		$("#SEGMENT").click();
@@ -313,7 +313,7 @@ public class KPISegment {
 	    }
 		System.out.println(" ! ----- segment_list End ----- ! ");
 	}
-	@Test(priority = 12)
+	//@Test(priority = 12)
 	public void segment_mySegment() {
 		System.out.println(" ! ----- segment_mySegment Start ----- ! ");
 		$(".delete", 0).waitUntil(visible, 10000);
